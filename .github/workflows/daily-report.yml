@@ -59,8 +59,10 @@ jobs:
       
       - name: Deploy to pages branch
         run: |
-          # Save docs to temp
+          # Save docs and assets to temp
           cp -r docs /tmp/docs-output
+          mkdir -p /tmp/docs-output/assets
+          cp assets/style.css /tmp/docs-output/assets/
           
           # Checkout or create pages branch
           git fetch origin pages || true
