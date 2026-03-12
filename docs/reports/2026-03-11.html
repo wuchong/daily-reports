@@ -24,13 +24,13 @@
         <section class="highlights">
             <h2>🔥 核心要点</h2>
             <ul>
-                <li>🎉 [PR #2814] 支持 Java Typed API 的复杂数据类型（Map 和 Array）</li><li>🎉 [PR #2837] 支持 log.replica.min-in-sync-replicas-number 动态配置</li><li>🎉 [PR #2820] 支持 kv.snapshot.interval 动态配置</li><li>🎉 [PR #2842] Iceberg 源表优化：仅在存在扫描过滤条件时启用列统计信息</li><li>🐛 [Issue #2851] 修复 ListDatabaseSummary 返回表计数始终为 0 或 1 的问题</li><li>🐛 [Issue #2843] PK 表部分更新无效问题（已标记 version: 0.9.1）</li>
+                <li>🎉 合并 PR #2814，Java Typed API 正式支持 Map 和 Array 复杂数据类型</li><li>✨ 合并 PR #2837 与 #2820，支持动态调整日志同步副本数和 KV 快照间隔配置</li><li>🚀 合并 PR #2842，优化 Iceberg 扫描计划，仅在存在过滤条件时启用列统计信息</li><li>🐛 修复 ListDatabaseSummary 返回表数量始终为 0 或 1 的 Bug (#2851, PR #2852)</li><li>📚 完善 Helm Chart 文档结构，并增加 CI 测试工作流 (#2777, #2846)</li>
             </ul>
         </section>
         
         <section class="critical">
             <h2>⚠️ 重点关注</h2>
-            <ul class="critical-list"><li>⚠️ Issue #2843: PK 表存在无效部分更新的 Bug，已标记影响版本 0.9.1，需要关注修复进展</li></ul>
+            <ul class="critical-list"><li>⚠️ #2843: PK 表存在无效部分更新的问题，可能影响数据正确性，目前作者正在尝试修复</li><li>⚠️ #2854: 测试 FlussAuthorizationITCase 不稳定，需要关注</li></ul>
         </section>
         
         <section class="new-items">
@@ -44,9 +44,9 @@
         <section class="activity">
             <h2>💬 Issue/PR 动态</h2>
             <h3>Issue 讨论</h3>
-            <p>讨论主要集中在：1) RoaringBitmap 函数的 FIP 提案已在邮件列表讨论；2) PK 表部分更新问题正在由 zuston 处理；3) Iceberg 列统计信息优化需保留 includeColumnStats() 以避免 NPE；4) 动态配置验证逻辑需与集群启动行为保持一致。</p>
+            <p>社区讨论了 RoaringBitmap 功能提案与 FIP 邮件列表讨论的关联；针对 PK 表部分更新 Bug (#2843) 展开了修复意向讨论；确认了动态配置参数的校验逻辑；部分不稳定测试用例正在本地环境复现排查中。</p>
             <h3>PR Review</h3>
-            <p>Review 关注点包括：1) Helm charts 的 metrics 和 security 配置改进；2) COS 安全令牌提供者的凭据处理安全性；3) Iceberg 列统计优化需补充测试用例；4) Lake Tiering 指标和状态管理代码质量；5) 建议使用 null 表示未知文件大小。</p>
+            <p>Review 重点集中在 Helm Chart 的安全配置、指标模板及 README 结构优化；深入讨论了 Lake Tiering 模块的指标统计实现与 Paimon/Iceberg 兼容性细节；同时针对 COS 安全凭证处理逻辑提出了安全性改进建议。</p>
         </section>
         
         <section class="closed">
