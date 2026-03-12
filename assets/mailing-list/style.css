@@ -234,81 +234,76 @@ section h2::after {
 
 /* === Vote Items === */
 .votes {
-    padding: 1rem 1.5rem;
+    padding: 0;
 }
 
 .votes h2 {
-    margin: -1rem -1.5rem 1rem;
+    margin: 0;
+    padding: 1rem 1.5rem;
 }
 
-.vote-item {
-    padding: 1.25rem;
-    margin-bottom: 1rem;
-    background: var(--gray-50);
-    border-radius: var(--radius-md);
-    border-left: 4px solid var(--success);
-    transition: all var(--transition-normal);
-    cursor: pointer;
+.vote-list {
+    list-style: none;
+    padding: 0.5rem 0;
 }
 
-.vote-item:last-child {
-    margin-bottom: 0;
+.vote-list li {
+    padding: 0.75rem 1.5rem;
+    border-bottom: 1px solid var(--gray-100);
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
 }
 
-.vote-item:hover {
-    background: var(--white);
-    box-shadow: var(--shadow-md);
-    transform: translateX(4px);
+.vote-list li:last-child {
+    border-bottom: none;
 }
 
-.vote-item.has-objection {
-    border-left-color: var(--warning);
+.vote-list li:hover {
+    background: var(--primary-blue-subtle);
 }
 
-.vote-item h3 {
-    font-size: 0.95rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-}
-
-.vote-item h3 a {
+.vote-list a {
     color: var(--gray-800);
     text-decoration: none;
+    font-weight: 500;
     transition: color var(--transition-fast);
 }
 
-.vote-item h3 a:hover {
+.vote-list a:hover {
     color: var(--primary-blue);
 }
 
-.vote-item .status {
+.vote-list .status {
     display: inline-flex;
     align-items: center;
-    gap: 0.35rem;
-    padding: 0.3rem 0.75rem;
-    border-radius: 20px;
-    font-size: 0.8rem;
+    gap: 0.25rem;
+    padding: 0.15rem 0.5rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
     font-weight: 500;
 }
 
-.vote-item .status.passed {
+.vote-list .status.passed {
     background: var(--success-light);
     color: #059669;
 }
 
-.vote-item .status.warning {
+.vote-list .status.warning {
     background: var(--warning-light);
     color: #D97706;
 }
 
-.vote-item .objection {
-    margin-top: 0.75rem;
-    padding: 0.875rem 1rem;
+.vote-list .objection-inline {
+    width: 100%;
+    margin: 0.25rem 0 0 0;
+    padding: 0.5rem 0.75rem;
     background: var(--warning-light);
     border-radius: var(--radius-sm);
-    font-size: 0.875rem;
-    color: var(--gray-700);
-    border-left: 3px solid var(--warning);
+    font-size: 0.8rem;
+    color: var(--gray-600);
+    border-left: 2px solid var(--warning);
 }
 
 /* === Discussion Items === */

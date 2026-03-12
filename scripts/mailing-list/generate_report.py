@@ -38,29 +38,21 @@ def render_votes(votes: list) -> str:
     if not votes:
         return '<p class="empty">本周无投票</p>'
     
-    html_parts = []
+    items = []
     for vote in votes:
         has_objection = vote.get("has_objection", False)
-        css_class = "vote-item has-objection" if has_objection else "vote-item"
-        
-        status_html = ""
         if has_objection:
-            status_html = '<span class="status warning">⚠️ 有异议</span>'
+            status = '<span class="status warning">⚠️ 有异议</span>'
         else:
-            status_html = '<span class="status passed">✅ 已通过</span>'
+            status = '<span class="status passed">✅ 已通过</span>'
         
         objection_html = ""
         if has_objection and vote.get("objection_summary"):
-            objection_html = f'<p class="objection">{vote["objection_summary"]}</p>'
+            objection_html = f'<p class="objection-inline">{vote["objection_summary"]}</p>'
         
-        html_parts.append(f'''
-        <article class="{css_class}">
-            <h3><a href="{vote["link"]}">{vote["subject"]}</a></h3>
-            {status_html}
-            {objection_html}
-        </article>''')
+        items.append(f'<li><a href="{vote["link"]}">{vote["subject"]}</a> {status}{objection_html}</li>')
     
-    return "\n".join(html_parts)
+    return f'<ul class="vote-list">{"\n".join(items)}</ul>'
 
 
 def render_discussions(discussions: list) -> str:
