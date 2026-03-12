@@ -136,32 +136,32 @@ def generate_html(summary: dict) -> str:
         </section>
 
         <section class="top-signals">
-            <h2>A. Top Signals</h2>
+            <h2>📡 重要信号</h2>
             {top_signals_html if top_signals_html else '<p class="empty">暂无</p>'}
         </section>
 
         <section class="product-tech">
-            <h2>B. Product & Tech</h2>
+            <h2>💻 产品与技术</h2>
             {product_tech_html if product_tech_html else '<p class="empty">暂无</p>'}
         </section>
 
         <section class="people-views">
-            <h2>C. People & Views</h2>
+            <h2>👤 人物与观点</h2>
             {people_views_html if people_views_html else '<p class="empty">暂无</p>'}
         </section>
 
         <section class="analyst-insights">
-            <h2>D. Analyst Insights</h2>
+            <h2>📊 分析师洞察</h2>
             {analyst_html if analyst_html else '<p class="empty">暂无</p>'}
         </section>
 
         <section class="watchlist">
-            <h2>E. Watchlist</h2>
+            <h2>👀 观察列表</h2>
             {watchlist_html if watchlist_html else '<p class="empty">暂无</p>'}
         </section>
 
         <section class="stock-analysis">
-            <h2>F. 股票分析</h2>
+            <h2>📈 股票分析</h2>
             <p class="disclaimer">⚠️ 以下内容仅供参考，不构成任何投资建议。投资有风险，入市需谨慎。</p>
             {stock_html if stock_html else '<p class="empty">暂无相关股票分析</p>'}
         </section>
