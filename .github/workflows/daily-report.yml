@@ -41,7 +41,7 @@ jobs:
         run: bash scripts/collect_data.sh ${{ steps.date.outputs.date }}
       
       - name: Generate summary with Claude
-        uses: anthropic/claude-code-action@v1
+        uses: anthropics/claude-code-action@v1
         env:
           ANTHROPIC_BASE_URL: ${{ secrets.ANTHROPIC_BASE_URL }}
           ANTHROPIC_AUTH_TOKEN: ${{ secrets.ANTHROPIC_AUTH_TOKEN }}
