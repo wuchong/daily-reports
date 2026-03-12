@@ -428,7 +428,6 @@ section h2::after {
     padding: 0.875rem 1rem;
     background: var(--primary-blue-subtle);
     border-radius: var(--radius-sm);
-    border-left: 3px solid var(--primary-blue);
     font-size: 0.85rem;
 }
 
