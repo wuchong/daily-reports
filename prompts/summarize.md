@@ -29,9 +29,15 @@ Generate a JSON response with this exact structure:
       "number": 123,
       "title": "Issue 标题",
       "url": "https://github.com/apache/fluss/issues/123",
-      "points": [
-        "讨论要点1: xxx",
-        "讨论要点2: xxx"
+      "comments": [
+        {
+          "user": "username1",
+          "summary": "该用户评论的摘要内容"
+        },
+        {
+          "user": "username2",
+          "summary": "该用户评论的摘要内容"
+        }
       ]
     }
   ],
@@ -40,9 +46,11 @@ Generate a JSON response with this exact structure:
       "number": 456,
       "title": "PR 标题",
       "url": "https://github.com/apache/fluss/pull/456",
-      "points": [
-        "Review 要点1: xxx",
-        "Review 要点2: xxx"
+      "comments": [
+        {
+          "user": "reviewer1",
+          "summary": "该用户 Review 的摘要内容"
+        }
       ]
     }
   ]
@@ -62,14 +70,14 @@ Generate a JSON response with this exact structure:
    - **必须包含完整链接**: 使用 `[Issue #编号](url)` 格式
    - 如果没有则返回空数组
 
-3. **issue_activity**: 按 Issue 组织的讨论要点
-   - 每个 Issue 包含 number, title, url, points
-   - points 是讨论的主要要点列表（每条 20-50 字）
+3. **issue_activity**: 按 Issue 组织的讨论
+   - 每个 Issue 包含 number, title, url, comments
+   - comments 按回复人分组，每人一条摘要（20-50 字）
    - 如果没有评论则返回空数组
 
-4. **pr_activity**: 按 PR 组织的 Review 要点
-   - 每个 PR 包含 number, title, url, points
-   - points 是 Review 的主要要点列表（每条 20-50 字）
+4. **pr_activity**: 按 PR 组织的 Review
+   - 每个 PR 包含 number, title, url, comments
+   - comments 按回复人分组，每人一条摘要（20-50 字）
    - 如果没有评论则返回空数组
 
 Only output valid JSON, no other text.

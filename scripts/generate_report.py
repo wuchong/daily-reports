@@ -38,23 +38,27 @@ def generate_critical_section(critical_issues: list) -> str:
     return '<ul class="critical-list">' + ''.join(items) + '</ul>'
 
 
-def generate_activity_section(activity: list, title: str) -> str:
+def generate_activity_section(activity: list, item_type: str) -> str:
     """Generate per-issue/PR activity section."""
     if not activity:
         return '<p class="empty">暂无</p>'
     
+    prefix = "Issue" if item_type == "issue" else "PR"
     html_items = []
     for item in activity:
         number = item.get('number', '')
         item_title = item.get('title', '')
         url = item.get('url', '')
-        points = item.get('points', [])
+        comments = item.get('comments', [])
         
-        points_html = ''.join(f'<li>{markdown_links_to_html(p)}</li>' for p in points)
+        comments_html = ''.join(
+            f'<li><span class="author">@{c.get("user", "unknown")}</span>: {markdown_links_to_html(c.get("summary", ""))}</li>'
+            for c in comments
+        )
         html_items.append(f'''
         <div class="activity-item">
-            <h4><a href="{url}">#{number}</a> {item_title}</h4>
-            <ul>{points_html}</ul>
+            <h4><a href="{url}">{prefix} #{number}</a> {item_title}</h4>
+            <ul>{comments_html}</ul>
         </div>''')
     
     return ''.join(html_items)
@@ -125,9 +129,9 @@ def generate_html_report(raw_data: dict, summary: dict, output_path: str):
         <section class="activity">
             <h2>💬 Issue/PR 动态</h2>
             <h3>Issue 讨论</h3>
-            {generate_activity_section(summary.get('issue_activity', []), 'Issue')}
+            {generate_activity_section(summary.get('issue_activity', []), 'issue')}
             <h3>PR Review</h3>
-            {generate_activity_section(summary.get('pr_activity', []), 'PR')}
+            {generate_activity_section(summary.get('pr_activity', []), 'pr')}
         </section>
                 
         <section class="new-items">

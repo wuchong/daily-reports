@@ -154,18 +154,32 @@ li a:hover {
 .activity-item h4 a {
     color: var(--accent);
     text-decoration: none;
+    font-weight: 500;
+}
+
+.activity-item h4 a:hover {
+    text-decoration: underline;
 }
 
 .activity-item ul {
     margin-left: 1rem;
-    list-style: disc;
+    list-style: none;
 }
 
 .activity-item li {
     padding: 0.25rem 0;
     border-bottom: none;
     font-size: 0.9rem;
-    color: var(--text-secondary);
+    color: var(--text-primary);
+}
+
+.activity-item li a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.activity-item li a:hover {
+    text-decoration: underline;
 }
 
 footer {
