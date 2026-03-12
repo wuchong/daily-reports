@@ -3,6 +3,7 @@
 
 import json
 import os
+import re
 from pathlib import Path
 
 
@@ -23,19 +24,20 @@ def render_sources(sources: list) -> str:
     return f'<p class="sources">📌 {" | ".join(links)}</p>'
 
 
+def strip_impact_prefix(text: str) -> str:
+    """Remove duplicate impact prefix if LLM already included it."""
+    return re.sub(r'^(📊\s*)?(数据平台影响[：:]\s*)?', '', text)
+
+
 def render_news_item(item: dict) -> str:
     """Render a single news item."""
-    # Remove duplicate prefix if LLM already included it
-    impact = item.get("data_platform_impact", "")
-    if impact.startswith("📊") or impact.startswith("数据平台影响"):
-        impact = impact.replace("📊 数据平台影响：", "").replace("📊数据平台影响：", "").replace("数据平台影响：", "")
-    
+    impact = strip_impact_prefix(item.get('data_platform_impact', ''))
     return f'''
     <article class="news-item">
-        <h3>{item.get("title", "")}</h3>
-        {render_sources(item.get("sources", []))}
-        <p class="date">{item.get("date", "")}</p>
-        <p class="summary">{item.get("summary", "")}</p>
+        <h3>{item.get('title', '')}</h3>
+        {render_sources(item.get('sources', []))}
+        <p class="date">{item.get('date', '')}</p>
+        <p class="summary">{item.get('summary', '')}</p>
         <div class="impact">📊 数据平台影响：{impact}</div>
     </article>'''
 
@@ -68,9 +70,10 @@ def generate_html(summary: dict) -> str:
     sections = summary.get('sections', {})
     
     # Render top 3 changes
-    top_changes_html = ''
-    for i, change in enumerate(summary.get('top_3_changes', []), 1):
-        top_changes_html += f'<li><strong>{change.get("title", "")}</strong> — {change.get("summary", "")}</li>'
+    top_changes_html = ''.join(
+        f'<li><strong>{c.get("title", "")}</strong> — {c.get("summary", "")}</li>'
+        for c in summary.get('top_3_changes', [])
+    )
     
     # Render sections
     top_signals_html = ''.join(render_news_item(item) for item in sections.get('top_signals', []))
