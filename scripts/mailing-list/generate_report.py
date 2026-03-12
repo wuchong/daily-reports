@@ -40,11 +40,16 @@ def render_votes(votes: list) -> str:
     
     items = []
     for vote in votes:
+        vote_status = vote.get("status", "in_progress")
         has_objection = vote.get("has_objection", False)
-        if has_objection:
+        
+        # Determine display status
+        if vote_status == "passed":
+            status = '<span class="status passed">✅ 已通过</span>'
+        elif has_objection:
             status = '<span class="status warning">⚠️ 有异议</span>'
         else:
-            status = '<span class="status passed">✅ 已通过</span>'
+            status = '<span class="status in-progress">🗳️ 进行中</span>'
         
         objection_html = ""
         if has_objection and vote.get("objection_summary"):

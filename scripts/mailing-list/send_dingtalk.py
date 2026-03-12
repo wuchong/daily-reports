@@ -65,9 +65,18 @@ def build_message(summary: dict, project_name: str, project_id: str) -> dict:
     if votes:
         vote_text = f"🗳️ **投票** ({len(votes)})\n"
         for v in votes:
-            status = "⚠️ 有异议" if v.get("has_objection") else "✅ 已通过"
+            vote_status = v.get("status", "in_progress")
+            has_objection = v.get("has_objection", False)
+            
+            if vote_status == "passed":
+                status = "✅ 已通过"
+            elif has_objection:
+                status = "⚠️ 有异议"
+            else:
+                status = "🗳️ 进行中"
+            
             vote_text += f"- {v['subject']} → {status} [🔗]({v['link']})\n"
-            if v.get("has_objection") and v.get("objection_summary"):
+            if has_objection and v.get("objection_summary"):
                 vote_text += f"  {v['objection_summary']}\n"
     else:
         vote_text = "🗳️ **投票** (0)\n- 本周无投票\n"

@@ -17,6 +17,9 @@ PATTERNS = {
     "discuss": re.compile(r"\[DISCUSS\]", re.IGNORECASE),
 }
 
+# Pattern to detect [RESULT] tag
+RESULT_PATTERN = re.compile(r"\[RESULT\]", re.IGNORECASE)
+
 # Objection patterns for votes
 OBJECTION_PATTERNS = re.compile(r"(?:^|\s)([+-]0|-1)(?:\s|$|,|\.)")
 
@@ -121,29 +124,40 @@ def process_emails(raw_data: dict) -> dict:
             "date": root_email.get("date", "")
         })
     
-    # Votes: group by thread, check for objections
+    # Votes: group by thread, check for objections and result status
     vote_threads = group_into_threads(categorized["vote"])
     for root_subject, thread_emails in vote_threads.items():
         thread_emails.sort(key=lambda e: e.get("epoch", 0))
         root_email = thread_emails[0]
         
-        # Check for objections in replies
-        objection_emails = []
-        for email in thread_emails[1:]:  # Skip root
-            body = email.get("body", "")
-            if has_objection(body):
-                objection_emails.append({
-                    "from": email.get("from", ""),
-                    "body": body,
-                    "mid": email.get("mid", "")
-                })
+        # Check if any email has [RESULT] tag (vote concluded)
+        has_result = any(
+            RESULT_PATTERN.search(e.get("subject", ""))
+            for e in thread_emails
+        )
         
+        # Check for objections in replies (only relevant for in-progress votes)
+        objection_emails = []
+        if not has_result:
+            for email in thread_emails[1:]:  # Skip root
+                body = email.get("body", "")
+                if has_objection(body):
+                    objection_emails.append({
+                        "from": email.get("from", ""),
+                        "body": body,
+                        "mid": email.get("mid", "")
+                    })
+        
+        # Determine vote status:
+        # - has_result=True -> "passed" (已通过)
+        # - has_result=False -> "in_progress" (进行中)
         result["votes"].append({
             "subject": clean_subject(root_subject),
             "link": build_thread_link(root_email.get("mid", "")),
             "from": root_email.get("from", ""),
             "date": root_email.get("date", ""),
             "reply_count": len(thread_emails) - 1,
+            "status": "passed" if has_result else "in_progress",
             "has_objection": len(objection_emails) > 0,
             "objection_emails": objection_emails
         })

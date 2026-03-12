@@ -295,6 +295,11 @@ section h2::after {
     color: #D97706;
 }
 
+.vote-list .status.in-progress {
+    background: var(--primary-blue-light);
+    color: var(--primary-blue-dark);
+}
+
 .vote-list .objection-inline {
     width: 100%;
     margin: 0.25rem 0 0 0;
