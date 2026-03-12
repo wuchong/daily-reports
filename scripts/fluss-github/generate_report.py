@@ -198,7 +198,7 @@ def generate_dingtalk_message(raw_data: dict, summary: dict, report_url: str) ->
 
 def update_index_html():
     """Update the archive index page."""
-    reports_dir = Path('docs/reports')
+    reports_dir = Path('docs/fluss-github/reports')
     reports_dir.mkdir(parents=True, exist_ok=True)
     
     # Get all report files
@@ -242,9 +242,9 @@ def update_index_html():
 </body>
 </html>'''
     
-    with open('docs/index.html', 'w', encoding='utf-8') as f:
+    with open('docs/fluss-github/index.html', 'w', encoding='utf-8') as f:
         f.write(html)
-    print("Index updated: docs/index.html")
+    print("Index updated: docs/fluss-github/index.html")
 
 
 def main():
@@ -256,11 +256,11 @@ def main():
     date = raw_data['date']
     
     # Generate HTML report
-    html_path = f'docs/reports/{date}.html'
+    html_path = f'docs/fluss-github/reports/{date}.html'
     generate_html_report(raw_data, summary, html_path)
     
     # Generate DingTalk message
-    report_url = f"{GITHUB_PAGES_URL}/reports/{date}.html"
+    report_url = f"{GITHUB_PAGES_URL}/fluss-github/reports/{date}.html"
     dingtalk_msg = generate_dingtalk_message(raw_data, summary, report_url)
     save_json(dingtalk_msg, 'dingtalk_message.json')
     print("DingTalk message saved to dingtalk_message.json")

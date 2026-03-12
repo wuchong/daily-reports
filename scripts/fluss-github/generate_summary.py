@@ -56,7 +56,7 @@ def main():
     
     # Load raw data and prompt template
     raw_data = load_file("raw_data.json")
-    prompt_template = load_file("prompts/summarize.md")
+    prompt_template = load_file("prompts/fluss-github-summarize.md")
     
     # Build prompt
     prompt = prompt_template.replace("{{RAW_DATA}}", raw_data)

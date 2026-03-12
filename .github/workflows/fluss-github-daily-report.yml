@@ -1,4 +1,4 @@
-name: Daily Report
+name: Fluss GitHub Daily Report
 
 on:
   schedule:
@@ -38,31 +38,31 @@ jobs:
       - name: Collect GitHub data
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: bash scripts/collect_data.sh ${{ steps.date.outputs.date }}
+        run: bash scripts/fluss-github/collect_data.sh ${{ steps.date.outputs.date }}
       
       - name: Generate summary with Claude
         env:
           OPENAI_BASE_URL: ${{ secrets.OPENAI_BASE_URL }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-        run: python scripts/generate_summary.py
+        run: python scripts/fluss-github/generate_summary.py
       
       - name: Generate reports
         env:
           GITHUB_PAGES_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
-        run: python scripts/generate_report.py
+        run: python scripts/fluss-github/generate_report.py
       
       - name: Send to DingTalk
         env:
           DINGTALK_WEBHOOK: ${{ secrets.DINGTALK_WEBHOOK }}
           DINGTALK_SECRET: ${{ secrets.DINGTALK_SECRET }}
-        run: python scripts/send_dingtalk.py
+        run: python scripts/fluss-github/send_dingtalk.py
       
       - name: Deploy to pages branch
         run: |
-          # Save docs and assets to temp
-          cp -r docs /tmp/docs-output
-          mkdir -p /tmp/docs-output/assets
-          cp assets/style.css /tmp/docs-output/assets/
+          # Save fluss-github docs to temp
+          cp -r docs/fluss-github /tmp/fluss-github-output
+          mkdir -p /tmp/fluss-github-output/assets
+          cp assets/fluss-github/style.css /tmp/fluss-github-output/assets/
           
           # Checkout or create pages branch
           git fetch origin pages || true
@@ -73,9 +73,9 @@ jobs:
             git rm -rf . || true
           fi
           
-          # Copy docs content to root
-          rm -rf reports assets index.html || true
-          cp -r /tmp/docs-output/* .
+          # Merge fluss-github content (preserve data-ai)
+          rm -rf fluss-github || true
+          cp -r /tmp/fluss-github-output fluss-github
           
           # Commit and push
           git config user.name "github-actions[bot]"
