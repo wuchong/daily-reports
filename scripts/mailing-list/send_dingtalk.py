@@ -89,7 +89,7 @@ def build_message(summary: dict, project_name: str, project_id: str) -> dict:
     # JIRA
     jira_count = summary.get("jira_count", 0)
     jira_summary = summary.get("jira_summary", "")
-    jira_text = f"🎫 **JIRA**: 本周新建 {jira_count} 个\n{jira_summary}\n"
+    jira_text = f"🎫 **JIRA** ({jira_count})\n\n{jira_summary}\n"
     
     # Report link
     report_url = f"{GITHUB_PAGES_URL}/{project_id}/reports/{week}.html"
