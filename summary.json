@@ -1,0 +1,15 @@
+{
+  "highlights": [
+    "🎉 [PR #2814](https://github.com/apache/fluss/pull/2814) Java Typed API 支持 Map 和 Array 等复杂数据类型",
+    "🎉 [PR #2837](https://github.com/apache/fluss/pull/2837) 支持 log.replica.min-in-sync-replicas-number 动态配置",
+    "🎉 [PR #2820](https://github.com/apache/fluss/pull/2820) 支持 kv.snapshot.interval 动态配置",
+    "✨ [PR #2855](https://github.com/apache/fluss/pull/2855) 新增 KV 表恢复时从远程存储下载 CDC log segments 功能",
+    "🐛 [PR #2857](https://github.com/apache/fluss/pull/2857) 修复 alterClusterConfigs 返回误导性 UnknownServerException 问题"
+  ],
+  "critical_issues": [
+    "⚠️ [Issue #2843](https://github.com/apache/fluss/issues/2843) PK 表部分更新无效问题，已标记为 0.9.1 版本需修复",
+    "⚠️ [Issue #2856](https://github.com/apache/fluss/issues/2856) Admin.alterClusterConfigs() 验证失败时返回错误异常类型"
+  ],
+  "issue_comments_summary": "主要讨论包括：@polyzos 主动协助处理 PK 表部分更新问题(#2843)；RoaringBitmap 功能提案(#2848)与邮件列表 FIP 讨论相关联；多个 PR 请求 code review；Iceberg 列统计优化讨论。",
+  "pr_review_summary": "Review 重点包括：动态配置参数校验策略（#2837 确定不设上限）；Iceberg 扫描过滤与列统计优化（#2842）；Lake tiering 指标实现细节；COS 安全令牌处理建议；Helm chart 配置结构优化讨论。"
+}

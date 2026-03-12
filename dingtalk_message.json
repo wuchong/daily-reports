@@ -1,0 +1,7 @@
+{
+  "msgtype": "markdown",
+  "markdown": {
+    "title": "Fluss 每日动态 (2026-03-11)",
+    "text": "## 🌊 Fluss 每日动态 (2026-03-11)\n\n📊 **统计**: 8 新 Issues | 5 关闭 | 6 新 PR | 8 合并\n\n🔥 **核心要点**:\n- 🎉 [PR #2814](https://github.com/apache/fluss/pull/2814) Java Typed API 支持 Map 和 Array 等复杂数据类型\n- 🎉 [PR #2837](https://github.com/apache/fluss/pull/2837) 支持 log.replica.min-in-sync-replicas-number 动态配置\n- 🎉 [PR #2820](https://github.com/apache/fluss/pull/2820) 支持 kv.snapshot.interval 动态配置\n- ✨ [PR #2855](https://github.com/apache/fluss/pull/2855) 新增 KV 表恢复时从远程存储下载 CDC log segments 功能\n- 🐛 [PR #2857](https://github.com/apache/fluss/pull/2857) 修复 alterClusterConfigs 返回误导性 UnknownServerException 问题\n\n⚠️ **需要关注**: \n- ⚠️ [Issue #2843](https://github.com/apache/fluss/issues/2843) PK 表部分更新无效问题，已标记为 0.9.1 版本需修复\n- ⚠️ [Issue #2856](https://github.com/apache/fluss/issues/2856) Admin.alterClusterConfigs() 验证失败时返回错误异常类型\n\n🔗 [查看完整报告](https://wuchong.github.io/daily-reports/reports/2026-03-11.html)"
+  }
+}
