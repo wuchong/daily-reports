@@ -81,7 +81,7 @@ def build_message(summary: dict, project_name: str, project_id: str) -> dict:
             llm_summary = d.get("llm_summary", {})
             summary_text = llm_summary.get("summary", "")
             
-            discuss_text += f"**{i}. [{d['subject']}]({d['link']})**\n"
+            discuss_text += f"**{i}. [{d['subject']}]({d['link']})**\n\n"
             discuss_text += f"{summary_text}\n\n"
     else:
         discuss_text = "💬 **讨论** (0)\n- 本周无讨论\n"
