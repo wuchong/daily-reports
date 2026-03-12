@@ -35,8 +35,8 @@ cd daily-reports
 
 | Secret | 说明 |
 |--------|------|
-| `ANTHROPIC_BASE_URL` | Claude API 地址 |
-| `ANTHROPIC_API_KEY` | Claude API Key |
+| `OPENAI_BASE_URL` | LLM API 地址 |
+| `OPENAI_API_KEY` | LLM API Key |
 | `DINGTALK_WEBHOOK` | 钉钉机器人 Webhook URL |
 
 ### 3. 启用 GitHub Pages

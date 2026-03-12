@@ -15,7 +15,12 @@ def load_file(path: str) -> str:
 
 def call_claude_api(base_url: str, api_key: str, prompt: str) -> str:
     """Call LLM API (OpenAI-compatible format)."""
-    url = f"{base_url.rstrip('/')}/v1/chat/completions"
+    # If base_url ends with version path, use /chat/completions directly
+    # Otherwise use /v1/chat/completions
+    if base_url.rstrip('/').endswith(('/v1', '/v2', '/v3', '/v4')):
+        url = f"{base_url.rstrip('/')}/chat/completions"
+    else:
+        url = f"{base_url.rstrip('/')}/v1/chat/completions"
     
     data = json.dumps({
         "model": "glm-5",
@@ -42,11 +47,11 @@ def call_claude_api(base_url: str, api_key: str, prompt: str) -> str:
 
 
 def main():
-    base_url = os.environ.get("ANTHROPIC_BASE_URL", "https://api.anthropic.com")
-    api_key = os.environ.get("ANTHROPIC_API_KEY")
+    base_url = os.environ.get("OPENAI_BASE_URL", "https://api.openai.com")
+    api_key = os.environ.get("OPENAI_API_KEY")
     
     if not api_key:
-        print("Error: ANTHROPIC_API_KEY required")
+        print("Error: OPENAI_API_KEY required")
         sys.exit(1)
     
     # Load raw data and prompt template
