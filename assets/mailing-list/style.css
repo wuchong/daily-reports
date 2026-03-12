@@ -136,6 +136,22 @@ header h1 {
     margin-bottom: 0.5rem;
 }
 
+.back-link {
+    margin-bottom: 1rem;
+}
+
+.back-link a {
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color var(--transition-fast);
+}
+
+.back-link a:hover {
+    color: var(--primary-blue-dark);
+}
+
 .date-range {
     font-size: 0.95rem;
     color: var(--primary-blue);

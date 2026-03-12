@@ -135,6 +135,7 @@ def generate_html(summary: dict, project_name: str) -> str:
 <body>
     <div class="container">
         <header>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
             <h1>{project_name} 社区周报 | {week}</h1>
             <p class="date-range">{start} ~ {end}</p>
         </header>
