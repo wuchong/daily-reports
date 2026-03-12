@@ -3,12 +3,19 @@
 
 import json
 import os
+import re
 from datetime import datetime
 from pathlib import Path
 
 REPO = "apache/fluss"
 REPO_NAME = "Fluss"
 GITHUB_PAGES_URL = os.environ.get("GITHUB_PAGES_URL", "https://your-username.github.io/daily-reports")
+
+
+def markdown_links_to_html(text: str) -> str:
+    """Convert markdown links [text](url) to HTML <a href='url'>text</a>."""
+    pattern = r'\[([^\]]+)\]\(([^)]+)\)'
+    return re.sub(pattern, r'<a href="\2">\1</a>', text)
 
 
 def load_json(filepath: str) -> dict:
@@ -27,7 +34,30 @@ def generate_critical_section(critical_issues: list) -> str:
     """Generate critical issues section."""
     if not critical_issues:
         return '<p class="no-issues">✅ 今日无重大问题</p>'
-    return '<ul class="critical-list">' + ''.join(f'<li>{issue}</li>' for issue in critical_issues) + '</ul>'
+    items = [f'<li>{markdown_links_to_html(issue)}</li>' for issue in critical_issues]
+    return '<ul class="critical-list">' + ''.join(items) + '</ul>'
+
+
+def generate_activity_section(activity: list, title: str) -> str:
+    """Generate per-issue/PR activity section."""
+    if not activity:
+        return '<p class="empty">暂无</p>'
+    
+    html_items = []
+    for item in activity:
+        number = item.get('number', '')
+        item_title = item.get('title', '')
+        url = item.get('url', '')
+        points = item.get('points', [])
+        
+        points_html = ''.join(f'<li>{markdown_links_to_html(p)}</li>' for p in points)
+        html_items.append(f'''
+        <div class="activity-item">
+            <h4><a href="{url}">#{number}</a> {item_title}</h4>
+            <ul>{points_html}</ul>
+        </div>''')
+    
+    return ''.join(html_items)
 
 
 def generate_item_list(items: list, item_type: str) -> str:
@@ -83,15 +113,23 @@ def generate_html_report(raw_data: dict, summary: dict, output_path: str):
         <section class="highlights">
             <h2>🔥 核心要点</h2>
             <ul>
-                {"".join(f'<li>{h}</li>' for h in summary.get('highlights', ['暂无']))}
+                {"".join(f'<li>{markdown_links_to_html(h)}</li>' for h in summary.get('highlights', ['暂无']))}
             </ul>
         </section>
-        
+                
         <section class="critical">
             <h2>⚠️ 重点关注</h2>
             {generate_critical_section(summary.get('critical_issues', []))}
         </section>
-        
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            {generate_activity_section(summary.get('issue_activity', []), 'Issue')}
+            <h3>PR Review</h3>
+            {generate_activity_section(summary.get('pr_activity', []), 'PR')}
+        </section>
+                
         <section class="new-items">
             <h2>📝 新建 Issue/PR</h2>
             <h3>Issues</h3>
@@ -99,15 +137,7 @@ def generate_html_report(raw_data: dict, summary: dict, output_path: str):
             <h3>Pull Requests</h3>
             {generate_item_list(raw_data.get('open_prs', []), 'pr')}
         </section>
-        
-        <section class="activity">
-            <h2>💬 Issue/PR 动态</h2>
-            <h3>Issue 讨论</h3>
-            <p>{summary.get('issue_comments_summary', '今日无新评论')}</p>
-            <h3>PR Review</h3>
-            <p>{summary.get('pr_review_summary', '今日无新 Review 评论')}</p>
-        </section>
-        
+                
         <section class="closed">
             <h2>✅ 关闭 Issue/PR</h2>
             <h3>已关闭 Issues</h3>

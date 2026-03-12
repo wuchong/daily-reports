@@ -139,6 +139,35 @@ li a:hover {
     font-style: italic;
 }
 
+.activity-item {
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+    background: var(--bg-primary);
+    border-radius: 6px;
+}
+
+.activity-item h4 {
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.activity-item h4 a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.activity-item ul {
+    margin-left: 1rem;
+    list-style: disc;
+}
+
+.activity-item li {
+    padding: 0.25rem 0;
+    border-bottom: none;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
 footer {
     text-align: center;
     color: var(--text-secondary);

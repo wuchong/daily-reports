@@ -24,8 +24,28 @@ Generate a JSON response with this exact structure:
   "critical_issues": [
     "⚠️ [Issue #789](https://github.com/apache/fluss/issues/789) 描述需要紧急关注的问题"
   ],
-  "issue_comments_summary": "Issue 讨论的主要内容摘要...",
-  "pr_review_summary": "PR Review 的主要关注点摘要..."
+  "issue_activity": [
+    {
+      "number": 123,
+      "title": "Issue 标题",
+      "url": "https://github.com/apache/fluss/issues/123",
+      "points": [
+        "讨论要点1: xxx",
+        "讨论要点2: xxx"
+      ]
+    }
+  ],
+  "pr_activity": [
+    {
+      "number": 456,
+      "title": "PR 标题",
+      "url": "https://github.com/apache/fluss/pull/456",
+      "points": [
+        "Review 要点1: xxx",
+        "Review 要点2: xxx"
+      ]
+    }
+  ]
 }
 ```
 
@@ -42,12 +62,14 @@ Generate a JSON response with this exact structure:
    - **必须包含完整链接**: 使用 `[Issue #编号](url)` 格式
    - 如果没有则返回空数组
 
-3. **issue_comments_summary**: 50-100字摘要
-   - 总结主要讨论话题
-   - 如果没有评论则返回 "今日无新评论"
+3. **issue_activity**: 按 Issue 组织的讨论要点
+   - 每个 Issue 包含 number, title, url, points
+   - points 是讨论的主要要点列表（每条 20-50 字）
+   - 如果没有评论则返回空数组
 
-4. **pr_review_summary**: 50-100字摘要
-   - 总结 code review 的主要关注点
-   - 如果没有评论则返回 "今日无新 Review 评论"
+4. **pr_activity**: 按 PR 组织的 Review 要点
+   - 每个 PR 包含 number, title, url, points
+   - points 是 Review 的主要要点列表（每条 20-50 字）
+   - 如果没有评论则返回空数组
 
 Only output valid JSON, no other text.
