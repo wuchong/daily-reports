@@ -1,0 +1,45 @@
+search:
+  api: google
+  queries:
+    tier_1:
+      - "AWS data announcement"
+      - "Google Cloud data platform"
+      - "Azure data analytics"
+      - "Databricks news"
+      - "Snowflake announcement"
+      - "阿里云 数据 发布"
+      - "腾讯云 数据 发布"
+      - "华为云 数据 发布"
+      - "火山引擎 数据"
+    tier_2:
+      - "Confluent news"
+      - "MongoDB announcement"
+      - "ClickHouse release"
+      - "dbt Labs news"
+      - "Fivetran announcement"
+    tier_3:
+      - "Apache Spark release"
+      - "Apache Flink news"
+      - "Apache Iceberg"
+      - "Apache Kafka release"
+    conditional:
+      - "NVIDIA AI data center"
+      - "Intel data center AI"
+      - "AMD AI accelerator"
+
+blogs:
+  - name: Databricks Blog
+    url: https://www.databricks.com/blog/feed
+    type: rss
+  - name: AWS Big Data Blog
+    url: https://aws.amazon.com/blogs/big-data/feed/
+    type: rss
+  - name: Google Cloud Blog
+    url: https://cloud.google.com/feeds/blog.xml
+    type: rss
+  - name: Snowflake Blog
+    url: https://www.snowflake.com/blog/feed/
+    type: rss
+  - name: Confluent Blog
+    url: https://www.confluent.io/blog/feed/
+    type: rss
