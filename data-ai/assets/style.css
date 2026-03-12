@@ -1,0 +1,302 @@
+/* Data+AI 全球日报 - 像素级复刻样式 */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, "system-ui", "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f8f9fa;
+    color: #202124;
+    line-height: 1.8;
+    font-size: 16px;
+    padding: 20px;
+}
+
+.container {
+    max-width: 780px;
+    margin: 0 auto;
+}
+
+/* Header - 深蓝背景白字 */
+header {
+    background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%);
+    color: #fff;
+    padding: 24px 32px;
+    margin-bottom: 24px;
+    border-radius: 4px;
+}
+
+header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    color: #fff;
+}
+
+header p {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+/* Section 标题 - 橙色 */
+section {
+    margin-bottom: 28px;
+}
+
+section h2 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #e87102;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: none;
+}
+
+/* Top Changes - 今日最重要的3个变化 */
+.top-changes {
+    background: #fff;
+    padding: 20px 24px;
+    border-radius: 4px;
+    margin-bottom: 24px;
+    border-left: 4px solid #1e3a5f;
+}
+
+.top-changes h2 {
+    color: #e87102;
+    font-size: 16px;
+    margin-bottom: 16px;
+}
+
+.top-changes ol {
+    margin-left: 20px;
+    margin-bottom: 16px;
+}
+
+.top-changes li {
+    margin-bottom: 12px;
+    line-height: 1.7;
+}
+
+.top-changes li strong {
+    color: #1e3a5f;
+}
+
+.judgment {
+    background: #1e3a5f;
+    color: #fff;
+    padding: 16px 20px;
+    border-radius: 4px;
+    margin-top: 16px;
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+.judgment strong {
+    color: #fff;
+}
+
+/* News Items - 新闻卡片 */
+.news-item {
+    background: #fff;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+    border-radius: 4px;
+    border-left: 4px solid #1e3a5f;
+}
+
+.news-item h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #202124;
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+.sources {
+    font-size: 13px;
+    color: #5f6368;
+    margin-bottom: 8px;
+}
+
+.sources a {
+    color: #1a73e8;
+    text-decoration: none;
+}
+
+.sources a:hover {
+    text-decoration: underline;
+}
+
+.date {
+    font-size: 13px;
+    color: #5f6368;
+    margin-bottom: 8px;
+}
+
+.summary {
+    margin-bottom: 12px;
+    line-height: 1.8;
+}
+
+/* 数据平台影响 - 深蓝背景白字 */
+.impact {
+    background: #1e3a5f;
+    color: #fff;
+    padding: 12px 16px;
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+/* Analyst Items */
+.analyst-item {
+    background: #fff;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+    border-radius: 4px;
+    border-left: 4px solid #e87102;
+}
+
+.analyst-item h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #202124;
+    margin-bottom: 8px;
+}
+
+.meta {
+    font-size: 13px;
+    color: #5f6368;
+    margin-bottom: 12px;
+}
+
+.key-data, .implication {
+    margin-bottom: 8px;
+    line-height: 1.7;
+}
+
+.key-data strong, .implication strong {
+    color: #1e3a5f;
+}
+
+/* Watchlist Items */
+.watchlist-item {
+    background: #fff;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+    border-radius: 4px;
+    border-left: 4px solid #fbbc04;
+}
+
+.watchlist-item h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #202124;
+    margin-bottom: 8px;
+    display: inline;
+}
+
+.status {
+    display: inline-block;
+    background: #fbbc04;
+    color: #202124;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+    margin-left: 8px;
+    vertical-align: middle;
+}
+
+.reason {
+    margin-top: 12px;
+    margin-bottom: 8px;
+    line-height: 1.7;
+}
+
+.milestone {
+    line-height: 1.7;
+}
+
+.milestone strong {
+    color: #1e3a5f;
+}
+
+/* Index Page */
+.month {
+    background: #fff;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+    border-radius: 4px;
+    border-left: 4px solid #1e3a5f;
+}
+
+.month h2 {
+    color: #e87102;
+    margin-bottom: 12px;
+}
+
+.month ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 8px;
+}
+
+.month li a {
+    display: block;
+    padding: 8px 12px;
+    background: #f8f9fa;
+    border-radius: 4px;
+    color: #1a73e8;
+    text-decoration: none;
+    text-align: center;
+    font-size: 14px;
+    transition: background 0.2s;
+}
+
+.month li a:hover {
+    background: #e8f0fe;
+}
+
+/* Empty State */
+.empty {
+    color: #5f6368;
+    font-style: italic;
+    padding: 20px;
+    text-align: center;
+    background: #fff;
+    border-radius: 4px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 24px 0;
+    margin-top: 32px;
+    color: #5f6368;
+    font-size: 13px;
+    border-top: 1px solid #dadce0;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    body {
+        padding: 12px;
+    }
+    
+    header {
+        padding: 20px;
+    }
+    
+    header h1 {
+        font-size: 22px;
+    }
+    
+    .news-item, .analyst-item, .watchlist-item, .top-changes, .month {
+        padding: 16px;
+    }
+}

@@ -1,0 +1,7 @@
+{
+  "msgtype": "markdown",
+  "markdown": {
+    "title": "Data+AI 全球日报 (2026-03-11)",
+    "text": "## Data+AI 全球日报 (2026-03-11)\n\n🔥 **今日最重要的3个变化**\n\n1. **Databricks 发布 Genie Code 并收购 Quotient AI** — Databricks 推出自主 AI 智能体 Genie Code，并收购 Quotient AI 以增强 AI 评估能力，标志着数据平台从代码辅助向智能体工程的重大转型。\n2. **dbt Labs 与 Fivetran 达成合并协议** — 现代数据栈核心厂商 dbt Labs 与 Fivetran 签署最终合并协议，将数据转换与集成能力整合，预示着数据工具链的垂直整合趋势加速。\n3. **中国云厂商 AI 算力与定价策略分化** — 腾讯云宣布部分 AI 模型 Token 涨价超 400%，而华为云与阿里云则聚焦于 AI 基础设施与 Agent 平台建设，市场进入差异化竞争阶段。\n\n**总判断**：今日行业信号显示数据平台正加速向“智能体化”和“全栈化”演进。Databricks 和 dbt/Fivetran 的动作重塑了数据工程工具格局，而中国市场的价格调整则反映了 AI 推理成本与价值回归理性的趋势。\n\n🔗 [查看完整报告](https://wuchong.github.io/daily-reports/data-ai/reports/2026-03-11.html)"
+  }
+}

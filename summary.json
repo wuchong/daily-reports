@@ -1,0 +1,210 @@
+{
+  "date": "2026-03-11",
+  "top_3_changes": [
+    {
+      "title": "Databricks 发布 Genie Code 并收购 Quotient AI",
+      "summary": "Databricks 推出自主 AI 智能体 Genie Code，并收购 Quotient AI 以增强 AI 评估能力，标志着数据平台从代码辅助向智能体工程的重大转型。"
+    },
+    {
+      "title": "dbt Labs 与 Fivetran 达成合并协议",
+      "summary": "现代数据栈核心厂商 dbt Labs 与 Fivetran 签署最终合并协议，将数据转换与集成能力整合，预示着数据工具链的垂直整合趋势加速。"
+    },
+    {
+      "title": "中国云厂商 AI 算力与定价策略分化",
+      "summary": "腾讯云宣布部分 AI 模型 Token 涨价超 400%，而华为云与阿里云则聚焦于 AI 基础设施与 Agent 平台建设，市场进入差异化竞争阶段。"
+    }
+  ],
+  "overall_judgment": "今日行业信号显示数据平台正加速向“智能体化”和“全栈化”演进。Databricks 和 dbt/Fivetran 的动作重塑了数据工程工具格局，而中国市场的价格调整则反映了 AI 推理成本与价值回归理性的趋势。",
+  "sections": {
+    "top_signals": [
+      {
+        "title": "Databricks 发布 Genie Code 并收购 Quotient AI",
+        "sources": [
+          {
+            "name": "Databricks Blog",
+            "url": "https://www.databricks.com/company/newsroom/press-releases/databricks-launches-genie-code-bringing-agentic-engineering-data"
+          },
+          {
+            "name": "Bloomberg",
+            "url": "https://www.youtube.com/watch?v=ljQ-rubispo"
+          }
+        ],
+        "date": "2026-03-11",
+        "summary": "Databricks 发布 Genie Code，这是一款专为数据团队设计的自主 AI 智能体，旨在自动化数据工程任务。同时，公司宣布收购 Quotient AI，以加强 AI 智能体的评估与强化学习能力。CEO Ali Ghodsi 表示软件开发已从代码辅助转向全智能体工程。",
+        "data_platform_impact": "📊 数据平台影响：此举标志着数据平台竞争进入“Agentic AI”新阶段，平台不仅要提供算力与存储，更需提供能自主完成数据任务的智能体，大幅降低技术门槛。"
+      },
+      {
+        "title": "dbt Labs 与 Fivetran 签署最终合并协议",
+        "sources": [
+          {
+            "name": "dbt Labs Blog",
+            "url": "https://www.getdbt.com/blog/how-a-global-investment-firm-reduced-runtimes-by-30-40-with-the-dbt-fusion-engine"
+          }
+        ],
+        "date": "2026-03-11",
+        "summary": "现代数据栈（MDS）两大核心厂商 dbt Labs（转换层）与 Fivetran（集成层）宣布签署最终合并协议。此次合并将打通数据摄入与转换的关键环节，为客户提供更紧密的端到端数据管道解决方案。",
+        "data_platform_impact": "📊 数据平台影响：MDS 工具链的垂直整合趋势确立，独立工具厂商面临被整合或构建更深生态护城河的压力，企业数据架构选型将更倾向于一体化解决方案。"
+      },
+      {
+        "title": "Google Cloud 完成收购 Wiz 以加强 AI 与多云安全",
+        "sources": [
+          {
+            "name": "The Fast Mode",
+            "url": "https://www.thefastmode.com/solution-vendors-m-a/47569-google-cloud-completes-acquisition-of-wiz-to-strengthen-ai-and-multicloud-security"
+          }
+        ],
+        "date": "2026-03-11",
+        "summary": "Google Cloud 宣布完成对云安全巨头 Wiz 的收购。此次收购旨在提升 Google Cloud 在多云环境和 AI 平台上的安全能力，帮助组织在任何云或 AI 平台上安全快速地构建应用。",
+        "data_platform_impact": "📊 数据平台影响：安全能力成为云数据平台的核心卖点，特别是在 AI 应用处理敏感数据的背景下，多云安全能力的整合将直接影响企业对云平台的选择。"
+      },
+      {
+        "title": "NVIDIA 向 Nebius 投资 20 亿美元建设 AI 数据中心",
+        "sources": [
+          {
+            "name": "Investors.com",
+            "url": "https://www.investors.com/news/technology/nvidia-stock-nebius-investment-partnership/"
+          }
+        ],
+        "date": "2026-03-11",
+        "summary": "NVIDIA 宣布向 AI 云服务商 Nebius 投资 20 亿美元，以支持其 AI 数据中心基础设施的扩展。Nebius 持有 ClickHouse 28% 的股份，此次投资也将间接增强 ClickHouse 的生态协同能力。",
+        "data_platform_impact": "📊 数据平台影响：AI 基础设施资金持续涌入，算力供给端的扩张将进一步降低模型训练与推理成本，利好下游数据应用与 ClickHouse 等关联生态。"
+      }
+    ],
+    "product_tech": [
+      {
+        "title": "ClickHouse 发布 chDB 4 并集成 Hex",
+        "sources": [
+          {
+            "name": "ClickHouse Blog",
+            "url": "https://clickhouse.com/blog"
+          },
+          {
+            "name": "Hex Changelog",
+            "url": "https://learn.hex.tech/changelog"
+          }
+        ],
+        "date": "2026-03-11",
+        "summary": "ClickHouse 发布 chDB 4，引入了类似 Pandas 的 DataStore API，并宣布与数据笔记本平台 Hex 达成官方集成。这使得数据科学家可以在 Python 环境中直接利用 ClickHouse 的高性能 OLAP 能力。",
+        "data_platform_impact": "📊 数据平台影响：OLAP 数据库与数据科学工具的边界进一步模糊，通过 Python 原生 API 嵌入分析工作流，ClickHouse 正在争夺数据科学家桌面端的话语权。"
+      },
+      {
+        "title": "腾讯云宣布 AI 模型 Token 涨价最高超 400%",
+        "sources": [
+          {
+            "name": "证券时报",
+            "url": "https://www.stcn.com/live/video-detail/21224.html"
+          },
+          {
+            "name": "财联社",
+            "url": "https://www.cls.cn/detail/2309524"
+          }
+        ],
+        "date": "2026-03-11",
+        "summary": "腾讯云发布公告，宣布自 3 月 13 日起调整智能体开发平台部分模型的计费策略，部分模型输入价格涨幅高达 463%。行业分析认为，这标志着大模型“低价内卷”时代的结束，推理成本回归理性。",
+        "data_platform_impact": "📊 数据平台影响：大模型推理成本的定价策略调整将直接影响基于 Token 消耗的数据应用架构设计，企业需重新评估成本效益，可能推动更高效的模型蒸馏或端侧部署。"
+      },
+      {
+        "title": "华为云发布 OpenClaw 体验计划与新一代 AI 数据基础设施",
+        "sources": [
+          {
+            "name": "新浪财经",
+            "url": "https://finance.sina.com.cn/roll/2026-03-12/doc-inhqtkan1814988.shtml"
+          },
+          {
+            "name": "东方财富",
+            "url": "https://wap.eastmoney.com/a/202603113669108727.html"
+          }
+        ],
+        "date": "2026-03-11",
+        "summary": "华为云开启 OpenClaw 体验计划，支持用户在云端安全部署“龙虾”智能体。同时，华为宣布将发布新一代 AI 数据基础设施，聚焦中心推理与智能边缘场景，提供可被 AI Agent 直接消费的数据。",
+        "data_platform_impact": "📊 数据平台影响：华为云通过“云上养虾”方案解决本地部署的安全与门槛问题，其“AI 数据基础设施”概念强调数据对 Agent 的直接可用性，预示着数据架构向 Agent-Native 演进。"
+      },
+      {
+        "title": "阿里云 Qwen 占据中国企业级大模型日均调用量 32.1%",
+        "sources": [
+          {
+            "name": "搜狐",
+            "url": "https://m.sohu.com/a/995615914_121218495"
+          }
+        ],
+        "date": "2026-03-11",
+        "summary": "据智论锋芒数据，2025 下半年中国企业级大模型日均调用量达 37 万亿 tokens，其中阿里云 Qwen 占比 32.1%，位居行业第一。摩根士丹利研报指出，阿里凭借完整 AI 技术栈构成结构性优势。",
+        "data_platform_impact": "📊 数据平台影响：阿里云在模型市场的领先地位巩固了其作为 AI 基础设施提供商的优势，高占比的调用量意味着其数据生态与模型工具链具有极强的用户粘性。"
+      },
+      {
+        "title": "Confluent 发布 ML 模型流式集成指南",
+        "sources": [
+          {
+            "name": "Confluent Blog",
+            "url": "https://www.confluent.io/blog/first-ml-function-streaming/"
+          }
+        ],
+        "date": "2026-03-11",
+        "summary": "Confluent 发布博客指导用户如何将首个 ML 模型添加到实时流式管道中，介绍了一种简单、低风险的推理、评分和部署模式，结合 Apache Kafka 进行实时数据处理。",
+        "data_platform_impact": "📊 数据平台影响：流式数据平台正在向 AI 推理管道演进，将模型推理下沉到数据流中，是实现实时智能应用的关键技术路径。"
+      }
+    ],
+    "people_views": [
+      {
+        "title": "Ali Ghodsi：软件开发已从代码辅助转向智能体工程",
+        "sources": [
+          {
+            "name": "LinkedIn",
+            "url": "https://www.linkedin.com/posts/databricks_databricks-ceo-and-co-founder-ali-ghodsi-activity-7437595871665352704-XGKl"
+          },
+          {
+            "name": "IT Brief Asia",
+            "url": "https://itbrief.asia/story/databricks-debuts-genie-code-snaps-up-quotient-ai"
+          }
+        ],
+        "date": "2026-03-11",
+        "summary": "Databricks CEO Ali Ghodsi 在接受 Bloomberg 采访时表示，过去六个月软件开发已发生范式转移，从简单的代码辅助转向完全的智能体工程。他强调非技术人员也能通过 AI 智能体构建软件。",
+        "data_platform_impact": "📊 数据平台影响：行业领袖的判断指引平台演进方向，数据平台需重新思考用户交互模式，从提供工具转变为提供智能体协作环境。"
+      },
+      {
+        "title": "Joe Reis：Gartner 宣告 2026 为“上下文之年”",
+        "sources": [
+          {
+            "name": "Joe Reis Substack",
+            "url": "https://joereis.substack.com/p/gartner-declares-2026-the-year-of"
+          }
+        ],
+        "date": "2026-03-11",
+        "summary": "数据工程专家 Joe Reis 撰文解读 Gartner 的最新观点，称 2026 年为“上下文之年”。他提出了“上下文工程师”这一新角色，该角色结合了数据工程师、本体论专家和图书管理员的技能，专注于为 AI 提供正确的上下文。",
+        "data_platform_impact": "📊 数据平台影响：随着 AI 对上下文依赖的加深，数据治理与语义层的地位显著提升，数据平台需增强对上下文管理、知识图谱构建的支持。"
+      }
+    ],
+    "analyst_insights": [
+      {
+        "title": "Gartner 定义“上下文工程师”新角色",
+        "source": "Gartner (via Joe Reis)",
+        "report": "2026 Strategic Prediction",
+        "url": "https://joereis.substack.com/p/gartner-declares-2026-the-year-of",
+        "key_data": "新角色“上下文工程师”结合数据工程、本体论与图书馆学技能，中位年薪预期较高。",
+        "implication": "数据团队的人才结构将发生变化，单纯的管道构建者需向语义与上下文管理转型，以适应 AI Agent 的需求。"
+      },
+      {
+        "title": "中国企业级大模型调用量分布",
+        "source": "智论锋芒",
+        "report": "中国大模型公司综合实力排名",
+        "url": "https://m.sohu.com/a/995615914_121218495",
+        "key_data": "2025下半年中国企业级大模型日均调用量 37 万亿 tokens，阿里云 Qwen 占比 32.1%。",
+        "implication": "中国市场已形成明显的头部效应，阿里云凭借开源生态与云服务绑定策略占据主导，数据平台与模型服务的绑定更加紧密。"
+      }
+    ],
+    "watchlist": [
+      {
+        "signal": "OpenClaw（龙虾）生态标准化",
+        "status": "进行中",
+        "reason": "华为云、腾讯云、火山引擎均推出针对 OpenClaw 的云端部署或安全方案，该开源项目正成为中国 AI Agent 领域的事实标准之一。",
+        "next_milestone": "观察 OpenClaw 是否能形成跨云的统一 Agent 运行标准，以及各厂商差异化服务的竞争点。"
+      },
+      {
+        "signal": "大模型 Token 价格趋势",
+        "status": "待观察",
+        "reason": "腾讯云大幅涨价打破了行业低价竞争的预期，需观察阿里云、百度云等是否跟进，以及涨价对应用层活跃度的影响。",
+        "next_milestone": "关注下季度各大云厂商的模型调价策略及财报中 AI 收入的变化。"
+      }
+    ]
+  }
+}
