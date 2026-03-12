@@ -24,13 +24,13 @@
         <section class="highlights">
             <h2>🔥 核心要点</h2>
             <ul>
-                <li>🎉 合并 PR #2814，Java Typed API 正式支持 Map 和 Array 复杂数据类型</li><li>✨ 合并 PR #2837 与 #2820，支持动态调整日志同步副本数和 KV 快照间隔配置</li><li>🚀 合并 PR #2842，优化 Iceberg 扫描计划，仅在存在过滤条件时启用列统计信息</li><li>🐛 修复 ListDatabaseSummary 返回表数量始终为 0 或 1 的 Bug (#2851, PR #2852)</li><li>📚 完善 Helm Chart 文档结构，并增加 CI 测试工作流 (#2777, #2846)</li>
+                <li>🎉 [PR #2814](https://github.com/apache/fluss/pull/2814) Java Typed API 支持 Map 和 Array 复杂数据类型</li><li>🚀 [PR #2842](https://github.com/apache/fluss/pull/2842) 优化 Iceberg Scan 性能，仅在存在过滤条件时启用列统计</li><li>✨ [PR #2820](https://github.com/apache/fluss/pull/2820) & [PR #2837](https://github.com/apache/fluss/pull/2837) 支持 KV 快照间隔与 Log 副本同步数的动态配置</li><li>🐛 [PR #2630](https://github.com/apache/fluss/pull/2630) 修复 CI 中 AbfsFileSystemBehaviorITCase 地址占用失败问题</li>
             </ul>
         </section>
         
         <section class="critical">
             <h2>⚠️ 重点关注</h2>
-            <ul class="critical-list"><li>⚠️ #2843: PK 表存在无效部分更新的问题，可能影响数据正确性，目前作者正在尝试修复</li><li>⚠️ #2854: 测试 FlussAuthorizationITCase 不稳定，需要关注</li></ul>
+            <ul class="critical-list"><li>⚠️ [Issue #2843](https://github.com/apache/fluss/issues/2843) PK 表部分更新无效，涉及数据正确性问题</li></ul>
         </section>
         
         <section class="new-items">
@@ -44,9 +44,9 @@
         <section class="activity">
             <h2>💬 Issue/PR 动态</h2>
             <h3>Issue 讨论</h3>
-            <p>社区讨论了 RoaringBitmap 功能提案与 FIP 邮件列表讨论的关联；针对 PK 表部分更新 Bug (#2843) 展开了修复意向讨论；确认了动态配置参数的校验逻辑；部分不稳定测试用例正在本地环境复现排查中。</p>
+            <p>用户讨论了 RoaringBitmap 函数的实现方案，建议参考现有的 FIP 提案。针对 PK 表部分更新异常的问题，社区进行了反馈与认领。同时开发者确认了 Java Typed API 对复杂数据类型的支持进展。</p>
             <h3>PR Review</h3>
-            <p>Review 重点集中在 Helm Chart 的安全配置、指标模板及 README 结构优化；深入讨论了 Lake Tiering 模块的指标统计实现与 Paimon/Iceberg 兼容性细节；同时针对 COS 安全凭证处理逻辑提出了安全性改进建议。</p>
+            <p>Review 重点集中在 Helm Chart 的指标与安全配置模板化，以及动态配置参数的校验逻辑。此外，审查还提出了 COS Token 凭证处理的改进建议，并讨论了 Tiering 指标统计的实现细节。</p>
         </section>
         
         <section class="closed">
