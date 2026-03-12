@@ -32,7 +32,7 @@ def generate_summary(client: OpenAI, prompt: str, news_data: dict) -> dict:
 请根据 prompt 要求生成 Data+AI 全球日报。只输出 JSON，不要有其他内容。"""
 
     response = client.chat.completions.create(
-        model="claude-sonnet-4-20250514",
+        model="glm-5",
         messages=[
             {"role": "system", "content": prompt},
             {"role": "user", "content": user_content}
