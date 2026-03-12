@@ -32,8 +32,14 @@ def clean_subject(subject: str) -> str:
 
 
 def get_thread_root(subject: str) -> str:
-    """Extract thread root subject (remove Re: prefix)."""
-    return re.sub(r"^(Re:\s*)+", "", subject, flags=re.IGNORECASE).strip()
+    """Extract thread root subject (remove Re: prefix and tags)."""
+    cleaned = subject
+    # Remove Re: prefix
+    cleaned = re.sub(r"^(Re:\s*)+", "", cleaned, flags=re.IGNORECASE)
+    # Remove classification tags for grouping
+    for pattern in PATTERNS.values():
+        cleaned = pattern.sub("", cleaned)
+    return cleaned.strip()
 
 
 def classify_email(subject: str) -> str:
