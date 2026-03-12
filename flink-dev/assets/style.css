@@ -1,12 +1,12 @@
-/* Flink Dev Weekly Report - Modern Blue & White Theme */
+/* Apache Mailing List Weekly Report - Generic Blue & White Theme */
 
 /* === CSS Variables === */
 :root {
-    /* Primary Blue Palette - Flink inspired */
-    --flink-blue: #1880FF;
-    --flink-blue-dark: #0066DD;
-    --flink-blue-light: #E8F4FF;
-    --flink-blue-subtle: #F5FAFF;
+    /* Primary Blue Palette - Apache inspired */
+    --primary-blue: #1880FF;
+    --primary-blue-dark: #0066DD;
+    --primary-blue-light: #E8F4FF;
+    --primary-blue-subtle: #F5FAFF;
     
     /* Neutral Colors */
     --white: #FFFFFF;
@@ -68,7 +68,7 @@ body {
     font-size: 15px;
     line-height: 1.7;
     color: var(--gray-700);
-    background: linear-gradient(135deg, var(--flink-blue-subtle) 0%, var(--white) 50%, var(--gray-50) 100%);
+    background: linear-gradient(135deg, var(--primary-blue-subtle) 0%, var(--white) 50%, var(--gray-50) 100%);
     min-height: 100vh;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -112,7 +112,7 @@ header::before {
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(90deg, var(--flink-blue) 0%, var(--flink-blue-dark) 100%);
+    background: linear-gradient(90deg, var(--primary-blue) 0%, var(--primary-blue-dark) 100%);
 }
 
 header::after {
@@ -123,7 +123,7 @@ header::after {
     transform: translateX(-50%);
     width: 120px;
     height: 3px;
-    background: var(--flink-blue-light);
+    background: var(--primary-blue-light);
     border-radius: 0 0 4px 4px;
 }
 
@@ -136,17 +136,12 @@ header h1 {
     margin-bottom: 0.5rem;
 }
 
-header h1::before {
-    content: '🔥';
-    margin-right: 0.5rem;
-}
-
 .date-range {
     font-size: 0.95rem;
-    color: var(--flink-blue);
+    color: var(--primary-blue);
     font-weight: 500;
     padding: 0.4rem 1rem;
-    background: var(--flink-blue-light);
+    background: var(--primary-blue-light);
     border-radius: 20px;
     display: inline-block;
 }
@@ -203,7 +198,7 @@ section h2::after {
 }
 
 .announcements li:hover {
-    background: var(--flink-blue-subtle);
+    background: var(--primary-blue-subtle);
 }
 
 .announcements a {
@@ -222,7 +217,7 @@ section h2::after {
 }
 
 .announcements a:hover {
-    color: var(--flink-blue);
+    color: var(--primary-blue);
 }
 
 .announcements a::after {
@@ -234,86 +229,102 @@ section h2::after {
 
 .announcements a:hover::after {
     transform: translateX(4px);
-    color: var(--flink-blue);
+    color: var(--primary-blue);
 }
 
 /* === Vote Items === */
 .votes {
-    padding: 1rem 1.5rem;
+    padding: 0;
 }
 
 .votes h2 {
-    margin: -1rem -1.5rem 1rem;
+    margin: 0;
+    padding: 1rem 1.5rem;
 }
 
-.vote-item {
-    padding: 1.25rem;
-    margin-bottom: 1rem;
-    background: var(--gray-50);
-    border-radius: var(--radius-md);
-    border-left: 4px solid var(--success);
-    transition: all var(--transition-normal);
-    cursor: pointer;
+.vote-list {
+    list-style: none;
+    padding: 0.5rem 0;
 }
 
-.vote-item:last-child {
-    margin-bottom: 0;
+.vote-list li {
+    padding: 0.75rem 1.5rem;
+    border-bottom: 1px solid var(--gray-100);
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
 }
 
-.vote-item:hover {
-    background: var(--white);
-    box-shadow: var(--shadow-md);
-    transform: translateX(4px);
+.vote-list li:last-child {
+    border-bottom: none;
 }
 
-.vote-item.has-objection {
-    border-left-color: var(--warning);
+.vote-list li:hover {
+    background: var(--primary-blue-subtle);
 }
 
-.vote-item h3 {
-    font-size: 0.95rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-}
-
-.vote-item h3 a {
+.vote-list a {
     color: var(--gray-800);
     text-decoration: none;
+    font-weight: 500;
     transition: color var(--transition-fast);
 }
 
-.vote-item h3 a:hover {
-    color: var(--flink-blue);
+.vote-list a:hover {
+    color: var(--primary-blue);
 }
 
-.vote-item .status {
+.vote-list .status {
     display: inline-flex;
     align-items: center;
-    gap: 0.35rem;
-    padding: 0.3rem 0.75rem;
-    border-radius: 20px;
-    font-size: 0.8rem;
+    gap: 0.25rem;
+    padding: 0.15rem 0.5rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
     font-weight: 500;
 }
 
-.vote-item .status.passed {
+.vote-list .status.passed {
     background: var(--success-light);
     color: #059669;
 }
 
-.vote-item .status.warning {
+.vote-list .status.warning {
     background: var(--warning-light);
     color: #D97706;
 }
 
-.vote-item .objection {
-    margin-top: 0.75rem;
-    padding: 0.875rem 1rem;
+.vote-list .status.in-progress {
+    background: var(--primary-blue-light);
+    color: var(--primary-blue-dark);
+}
+
+.vote-list .status.failed {
+    background: var(--danger-light, #FEE2E2);
+    color: var(--danger, #DC2626);
+}
+
+.vote-list .fail-reason {
+    width: 100%;
+    margin: 0.25rem 0 0 0;
+    padding: 0.5rem 0.75rem;
+    background: var(--danger-light, #FEE2E2);
+    border-radius: var(--radius-sm);
+    font-size: 0.8rem;
+    color: var(--gray-600);
+    border-left: 2px solid var(--danger, #DC2626);
+}
+
+.vote-list .objection-inline {
+    width: 100%;
+    margin: 0.25rem 0 0 0;
+    padding: 0.5rem 0.75rem;
     background: var(--warning-light);
     border-radius: var(--radius-sm);
-    font-size: 0.875rem;
-    color: var(--gray-700);
-    border-left: 3px solid var(--warning);
+    font-size: 0.8rem;
+    color: var(--gray-600);
+    border-left: 2px solid var(--warning);
 }
 
 /* === Discussion Items === */
@@ -350,7 +361,7 @@ section h2::after {
     top: 0;
     bottom: 0;
     width: 4px;
-    background: var(--flink-blue);
+    background: var(--primary-blue);
     border-radius: 4px 0 0 4px;
     opacity: 0;
     transition: opacity var(--transition-fast);
@@ -373,7 +384,7 @@ section h2::after {
 }
 
 .discussion-item h3 a:hover {
-    color: var(--flink-blue);
+    color: var(--primary-blue);
 }
 
 .discussion-item .meta {
@@ -399,9 +410,9 @@ section h2::after {
 
 .discussion-item .key-points {
     padding: 0.875rem 1rem;
-    background: var(--flink-blue-subtle);
+    background: var(--primary-blue-subtle);
     border-radius: var(--radius-sm);
-    border-left: 3px solid var(--flink-blue);
+    border-left: 3px solid var(--primary-blue);
     font-size: 0.85rem;
 }
 
@@ -415,7 +426,7 @@ section h2::after {
 }
 
 .discussion-item .key-points strong {
-    color: var(--flink-blue-dark);
+    color: var(--primary-blue-dark);
 }
 
 .discussion-item .conclusion {
@@ -446,16 +457,16 @@ section h2::after {
 }
 
 .jira > p strong {
-    color: var(--flink-blue);
+    color: var(--primary-blue);
     font-size: 1.5rem;
     font-weight: 700;
 }
 
 .jira-summary {
     padding: 1.25rem;
-    background: linear-gradient(135deg, var(--flink-blue-subtle) 0%, var(--gray-50) 100%);
+    background: linear-gradient(135deg, var(--primary-blue-subtle) 0%, var(--gray-50) 100%);
     border-radius: var(--radius-md);
-    border: 1px solid var(--flink-blue-light);
+    border: 1px solid var(--primary-blue-light);
 }
 
 .jira-summary p {
@@ -534,9 +545,9 @@ footer p::before {
 }
 
 .month a:hover {
-    background: var(--flink-blue-light);
-    color: var(--flink-blue-dark);
-    border-color: var(--flink-blue);
+    background: var(--primary-blue-light);
+    color: var(--primary-blue-dark);
+    border-color: var(--primary-blue);
     transform: translateY(-2px);
     box-shadow: var(--shadow-sm);
 }
