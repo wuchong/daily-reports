@@ -2,7 +2,7 @@ name: Kafka Dev Weekly Report
 
 on:
   schedule:
-    - cron: '0 3 * * 4'  # UTC 03:00 Thursday = Beijing 11:00 Thursday
+    - cron: '30 0 * * 3'  # UTC 00:30 Wednesday = Beijing 08:30 Wednesday
   workflow_dispatch:
     inputs:
       week:

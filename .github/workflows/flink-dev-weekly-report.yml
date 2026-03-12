@@ -2,7 +2,7 @@ name: Flink Dev Weekly Report
 
 on:
   schedule:
-    - cron: '0 1 * * 4'  # UTC 01:00 Thursday = Beijing 09:00 Thursday
+    - cron: '30 0 * * 4'  # UTC 00:30 Thursday = Beijing 08:30 Thursday
   workflow_dispatch:
     inputs:
       week:
