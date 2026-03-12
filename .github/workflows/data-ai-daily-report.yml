@@ -1,0 +1,118 @@
+name: Data+AI Daily Report
+
+on:
+  schedule:
+    - cron: '0 1 * * *'  # UTC 01:00 = Beijing 09:00
+  workflow_dispatch:
+    inputs:
+      date:
+        description: '报告日期 (YYYY-MM-DD), 留空则为昨天'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+
+jobs:
+  generate-report:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests feedparser openai pyyaml
+
+      - name: Calculate date
+        id: date
+        run: |
+          if [ -n "${{ github.event.inputs.date }}" ]; then
+            echo "date=${{ github.event.inputs.date }}" >> $GITHUB_OUTPUT
+          else
+            echo "date=$(date -d 'yesterday' +%Y-%m-%d)" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Search news
+        env:
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          GOOGLE_CSE_ID: ${{ secrets.GOOGLE_CSE_ID }}
+          REPORT_DATE: ${{ steps.date.outputs.date }}
+        run: python scripts/data-ai/search_news.py
+
+      - name: Generate summary with LLM
+        env:
+          OPENAI_BASE_URL: ${{ secrets.OPENAI_BASE_URL }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: python scripts/data-ai/generate_summary.py
+
+      - name: Generate reports
+        env:
+          GITHUB_PAGES_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
+        run: python scripts/data-ai/generate_report.py
+
+      - name: Send to DingTalk
+        env:
+          DINGTALK_WEBHOOK: ${{ secrets.DINGTALK_WEBHOOK }}
+          DINGTALK_SECRET: ${{ secrets.DINGTALK_SECRET }}
+          GITHUB_PAGES_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
+        run: python scripts/data-ai/send_dingtalk.py
+
+      - name: Deploy to pages branch
+        run: |
+          # Save data-ai docs to temp
+          cp -r docs/data-ai /tmp/data-ai-output
+          mkdir -p /tmp/data-ai-output/assets
+          cp assets/data-ai/style.css /tmp/data-ai-output/assets/
+
+          # Checkout pages branch
+          git fetch origin pages || true
+          if git show-ref --verify --quiet refs/remotes/origin/pages; then
+            git checkout pages
+          else
+            git checkout --orphan pages
+            git rm -rf . || true
+          fi
+
+          # Merge data-ai content (preserve fluss-github)
+          rm -rf data-ai || true
+          cp -r /tmp/data-ai-output data-ai
+
+          # Update root index.html
+          cat > index.html << 'EOF'
+          <!DOCTYPE html>
+          <html lang="zh-CN">
+          <head>
+              <meta charset="UTF-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <title>Daily Reports</title>
+              <style>
+                  body { font-family: -apple-system, sans-serif; max-width: 600px; margin: 2rem auto; padding: 1rem; }
+                  h1 { color: #1a73e8; }
+                  .links { display: flex; gap: 1rem; margin-top: 2rem; }
+                  a { display: block; padding: 1.5rem 2rem; background: #f8f9fa; border-radius: 8px; text-decoration: none; color: #1a73e8; border: 1px solid #dadce0; }
+                  a:hover { background: #e8f0fe; }
+              </style>
+          </head>
+          <body>
+              <h1>Daily Reports</h1>
+              <p>Select a report type:</p>
+              <div class="links">
+                  <a href="fluss-github/">🌊 Fluss GitHub</a>
+                  <a href="data-ai/">📊 Data+AI</a>
+              </div>
+          </body>
+          </html>
+          EOF
+
+          # Commit and push
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --staged --quiet || git commit -m "chore: add data-ai daily report for ${{ steps.date.outputs.date }}"
+          git push origin pages
