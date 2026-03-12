@@ -23,7 +23,8 @@
     "product_tech": [...],
     "people_views": [...],
     "analyst_insights": [...],
-    "watchlist": [...]
+    "watchlist": [...],
+    "stock_analysis": [...]
   }
 }
 ```
@@ -63,12 +64,26 @@
 }
 ```
 
+### F. Stock Analysis (股票分析)
+重要：此栏目仅供参考，不构成投资建议！
+```json
+{
+  "ticker": "股票代码，如 SNOW/DBX/MDB",
+  "company": "公司名称",
+  "signal": "bullish/bearish/neutral",
+  "summary": "基于今日新闻的分析要点（50-100字）",
+  "catalysts": ["短期催化剂列表"],
+  "risks": ["风险因素列表"]
+}
+```
+
 ## 分类原则
 - **Top Signals**: 重大战略动态、融资、收购、政策
 - **Product & Tech**: 产品发布、技术更新、开源项目
 - **People & Views**: 人物观点、行业会议、分析评论
 - **Analyst Insights**: Gartner/Forrester/IDC 等研报数据
 - **Watchlist**: 值得持续跟踪但尚未定论的信号
+- **Stock Analysis**: 日报中提及的上市公司股票分析（仅供参考，不构成投资建议）
 
 ## 优先级
 按 Tier 排序：Tier 1 (云厂商) > Tier 2 (数据公司) > Tier 3 (开源项目)

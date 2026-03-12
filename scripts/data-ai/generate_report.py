@@ -64,6 +64,38 @@ def render_watchlist_item(item: dict) -> str:
     </article>'''
 
 
+def render_stock_item(item: dict) -> str:
+    """Render stock analysis item."""
+    signal = item.get('signal', 'neutral')
+    signal_class = f'signal-{signal}'
+    signal_text = {'bullish': '🟢 看多', 'bearish': '🔴 看空', 'neutral': '⚪ 中性'}.get(signal, '⚪ 中性')
+    
+    catalysts = item.get('catalysts', [])
+    risks = item.get('risks', [])
+    catalysts_html = ''.join(f'<li>{c}</li>' for c in catalysts) if catalysts else '<li>暂无</li>'
+    risks_html = ''.join(f'<li>{r}</li>' for r in risks) if risks else '<li>暂无</li>'
+    
+    return f'''
+    <article class="stock-item">
+        <div class="stock-header">
+            <span class="ticker">{item.get('ticker', '')}</span>
+            <span class="company">{item.get('company', '')}</span>
+            <span class="signal {signal_class}">{signal_text}</span>
+        </div>
+        <p class="stock-summary">{item.get('summary', '')}</p>
+        <div class="stock-details">
+            <div class="catalysts">
+                <strong>🚀 催化剂</strong>
+                <ul>{catalysts_html}</ul>
+            </div>
+            <div class="risks">
+                <strong>⚠️ 风险</strong>
+                <ul>{risks_html}</ul>
+            </div>
+        </div>
+    </article>'''
+
+
 def generate_html(summary: dict) -> str:
     """Generate full HTML report."""
     date = summary.get('date', '')
@@ -81,6 +113,7 @@ def generate_html(summary: dict) -> str:
     people_views_html = ''.join(render_news_item(item) for item in sections.get('people_views', []))
     analyst_html = ''.join(render_analyst_item(item) for item in sections.get('analyst_insights', []))
     watchlist_html = ''.join(render_watchlist_item(item) for item in sections.get('watchlist', []))
+    stock_html = ''.join(render_stock_item(item) for item in sections.get('stock_analysis', []))
     
     return f'''<!DOCTYPE html>
 <html lang="zh-CN">
@@ -125,6 +158,12 @@ def generate_html(summary: dict) -> str:
         <section class="watchlist">
             <h2>E. Watchlist</h2>
             {watchlist_html if watchlist_html else '<p class="empty">暂无</p>'}
+        </section>
+
+        <section class="stock-analysis">
+            <h2>F. 股票分析</h2>
+            <p class="disclaimer">⚠️ 以下内容仅供参考，不构成任何投资建议。投资有风险，入市需谨慎。</p>
+            {stock_html if stock_html else '<p class="empty">暂无相关股票分析</p>'}
         </section>
 
         <footer>
