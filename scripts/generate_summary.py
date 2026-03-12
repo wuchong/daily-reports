@@ -18,7 +18,7 @@ def call_claude_api(base_url: str, api_key: str, prompt: str) -> str:
     url = f"{base_url.rstrip('/')}/v1/messages"
     
     data = json.dumps({
-        "model": "claude-sonnet-4-20250514",
+        "model": "glm-5",
         "max_tokens": 4096,
         "messages": [
             {"role": "user", "content": prompt}
