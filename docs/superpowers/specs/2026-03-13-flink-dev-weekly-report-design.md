@@ -53,13 +53,37 @@ Pony Mail API → raw_emails.json → (分类/归并) → threads.json
 
 ### 1. 邮件抓取 (fetch_emails.py)
 
-调用 Pony Mail API 获取一周邮件，输出 `raw_emails.json`:
+**两阶段抓取**：
+
+1. **获取邮件列表**: 调用 `GET /api/stats.lua?list=dev&domain=flink.apache.org&d=lte=7d` 获取邮件元数据和线程结构
+2. **获取邮件正文**: 对每封邮件调用 `GET /api/email.lua?id=$mid` 获取完整内容
+
+**并发处理**：
+- 邮件数量通常达几百封，需使用 `asyncio` + `aiohttp` 并发请求
+- 并发数限制为 20-50，避免对 Apache 服务造成压力
+- 使用 `asyncio.Semaphore` 控制并发
+
+```python
+async def fetch_email_content(session, mid, semaphore):
+    async with semaphore:
+        url = f"https://lists.apache.org/api/email.lua?id={mid}"
+        async with session.get(url) as resp:
+            return await resp.json()
+
+async def fetch_all_emails(email_ids):
+    semaphore = asyncio.Semaphore(30)
+    async with aiohttp.ClientSession() as session:
+        tasks = [fetch_email_content(session, mid, semaphore) for mid in email_ids]
+        return await asyncio.gather(*tasks)
+```
+
+输出 `raw_emails.json`:
 
 ```json
 {
   "week": "2024-W11",
   "date_range": {"start": "2024-03-04", "end": "2024-03-10"},
-  "emails": [...],
+  "emails": [{"mid": "...", "subject": "...", "body": "完整正文...", ...}],
   "thread_struct": [...]
 }
 ```
@@ -220,7 +244,7 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: pip install requests openai
+        run: pip install requests aiohttp openai
 
       - name: Calculate week
         id: week
