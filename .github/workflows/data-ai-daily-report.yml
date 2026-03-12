@@ -40,8 +40,7 @@ jobs:
 
       - name: Search news
         env:
-          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
-          GOOGLE_CSE_ID: ${{ secrets.GOOGLE_CSE_ID }}
+          SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
           REPORT_DATE: ${{ steps.date.outputs.date }}
         run: python scripts/data-ai/search_news.py
 

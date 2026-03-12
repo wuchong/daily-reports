@@ -19,32 +19,34 @@ def load_sources():
         return yaml.safe_load(f)
 
 
-def search_google(query: str, api_key: str, cse_id: str) -> list:
-    """Search Google Custom Search API."""
-    url = "https://www.googleapis.com/customsearch/v1"
-    params = {
-        'key': api_key,
-        'cx': cse_id,
+def search_serper(query: str, api_key: str) -> list:
+    """Search using Serper.dev API (free tier: 2500/month)."""
+    url = "https://google.serper.dev/search"
+    headers = {
+        'X-API-KEY': api_key,
+        'Content-Type': 'application/json'
+    }
+    payload = {
         'q': query,
-        'dateRestrict': 'd1',  # Last 24 hours
-        'num': 10
+        'num': 10,
+        'tbs': 'qdr:d'  # Last 24 hours
     }
     try:
-        resp = requests.get(url, params=params, timeout=30)
+        resp = requests.post(url, json=payload, headers=headers, timeout=30)
         resp.raise_for_status()
         data = resp.json()
         results = []
-        for item in data.get('items', []):
+        for item in data.get('organic', []):
             results.append({
                 'title': item.get('title', ''),
                 'url': item.get('link', ''),
                 'snippet': item.get('snippet', ''),
-                'source': 'google_search',
+                'source': 'serper_search',
                 'query': query
             })
         return results
     except Exception as e:
-        print(f"Google search error for '{query}': {e}")
+        print(f"Serper search error for '{query}': {e}")
         return []
 
 
@@ -96,26 +98,25 @@ def main():
     """Main entry point."""
     # Load config
     sources = load_sources()
-    api_key = os.environ.get('GOOGLE_API_KEY')
-    cse_id = os.environ.get('GOOGLE_CSE_ID')
+    api_key = os.environ.get('SERPER_API_KEY')
     report_date = os.environ.get('REPORT_DATE', datetime.now().strftime('%Y-%m-%d'))
     
     all_results = []
     
-    # Search Google for all tiers
-    if api_key and cse_id:
+    # Search using Serper.dev API
+    if api_key:
         queries = []
         for tier in ['tier_1', 'tier_2', 'tier_3', 'conditional']:
             queries.extend(sources['search']['queries'].get(tier, []))
         
-        print(f"Searching {len(queries)} queries...")
+        print(f"Searching {len(queries)} queries via Serper.dev...")
         with ThreadPoolExecutor(max_workers=5) as executor:
-            futures = {executor.submit(search_google, q, api_key, cse_id): q for q in queries}
+            futures = {executor.submit(search_serper, q, api_key): q for q in queries}
             for future in as_completed(futures):
                 results = future.result()
                 all_results.extend(results)
     else:
-        print("Warning: GOOGLE_API_KEY or GOOGLE_CSE_ID not set, skipping search")
+        print("Warning: SERPER_API_KEY not set, skipping search")
     
     # Fetch RSS feeds
     print(f"Fetching {len(sources.get('blogs', []))} RSS feeds...")
