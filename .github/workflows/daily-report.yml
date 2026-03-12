@@ -12,7 +12,6 @@ on:
 
 permissions:
   contents: write
-  id-token: write
 
 jobs:
   generate-report:
@@ -42,14 +41,10 @@ jobs:
         run: bash scripts/collect_data.sh ${{ steps.date.outputs.date }}
       
       - name: Generate summary with Claude
-        uses: anthropics/claude-code-action@v1
         env:
           ANTHROPIC_BASE_URL: ${{ secrets.ANTHROPIC_BASE_URL }}
-          ANTHROPIC_AUTH_TOKEN: ${{ secrets.ANTHROPIC_AUTH_TOKEN }}
-        with:
-          prompt: |
-            Read the file raw_data.json and follow the instructions in prompts/summarize.md.
-            Save the output JSON to summary.json.
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python scripts/generate_summary.py
       
       - name: Generate reports
         env:
