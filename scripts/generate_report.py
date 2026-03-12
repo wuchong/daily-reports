@@ -130,48 +130,34 @@ def generate_html_report(raw_data: dict, summary: dict, output_path: str):
 
 
 def generate_dingtalk_message(raw_data: dict, summary: dict, report_url: str) -> dict:
-    """Generate DingTalk actionCard message."""
+    """Generate DingTalk webhook message."""
     date = raw_data['date']
     
-    new_issues = len(raw_data.get('new_issues', []))
-    closed_issues = len(raw_data.get('closed_issues', []))
-    open_prs = len(raw_data.get('open_prs', []))
-    merged_prs = len(raw_data.get('merged_prs', []))
+    stats = f"📊 **统计**: {len(raw_data.get('new_issues', []))} 新 Issues | {len(raw_data.get('closed_issues', []))} 关闭 | {len(raw_data.get('open_prs', []))} 新 PR | {len(raw_data.get('merged_prs', []))} 合并"
     
     highlights = summary.get('highlights', [])
-    highlights_text = '\n\n'.join(f'> {h}' for h in highlights[:5]) if highlights else '> 今日暂无重要更新'
+    highlights_text = '\n'.join(f'- {h}' for h in highlights[:5]) if highlights else '- 今日暂无重要更新'
     
     critical = summary.get('critical_issues', [])
-    critical_text = '\n\n'.join(f'> {c}' for c in critical) if critical else '> 无'
+    critical_text = '\n'.join(f'- {c}' for c in critical) if critical else '无'
     
-    markdown_content = f"""![header](https://img.alicdn.com/imgextra/i1/O1CN01KPnQnN1gZKnQnQnQn_!!6000000004156-2-tps-1920-480.png)
+    markdown_content = f"""## 🌊 Fluss 每日动态 ({date})
 
-### 📊 统计概览
+{stats}
 
-| 新建 Issues | 关闭 Issues | 新建 PRs | 合并 PRs |
-|:--:|:--:|:--:|:--:|
-| {new_issues} | {closed_issues} | {open_prs} | {merged_prs} |
-
----
-
-### 🔥 核心要点
-
+🔥 **核心要点**:
 {highlights_text}
 
----
+⚠️ **需要关注**: 
+{critical_text}
 
-### ⚠️ 重点关注
-
-{critical_text}"""
+🔗 [查看完整报告]({report_url})"""
 
     return {
-        "msgtype": "actionCard",
-        "actionCard": {
-            "title": f"🌊 Fluss 每日动态 ({date})",
-            "text": markdown_content,
-            "btnOrientation": "0",
-            "singleTitle": "🔗 查看完整报告",
-            "singleURL": report_url
+        "msgtype": "markdown",
+        "markdown": {
+            "title": f"Fluss 每日动态 ({date})",
+            "text": markdown_content
         }
     }
 
