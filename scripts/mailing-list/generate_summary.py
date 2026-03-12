@@ -117,6 +117,45 @@ def summarize_objection(client: OpenAI, vote: dict, project_name: str) -> str:
         return ""
 
 
+def analyze_vote_result(client: OpenAI, vote: dict, project_name: str) -> dict:
+    """Analyze vote result email to determine if passed or failed."""
+    result_email = vote.get("result_email", {})
+    if not result_email:
+        return {"status": "passed", "reason": ""}
+    
+    subject = result_email.get("subject", "")
+    body = result_email.get("body", "")[:1500]
+    
+    prompt = f"""请分析以下 {project_name} 社区投票结果邮件，判断投票是否通过。
+
+投票主题: {vote.get('subject', '')}
+结果邮件标题: {subject}
+结果邮件内容:
+{body}
+
+请分析并输出 JSON 格式：
+{{
+  "passed": true/false,
+  "reason": "如果未通过，简要说明原因（一句话）；如果通过则留空"
+}}"""
+
+    try:
+        response = client.chat.completions.create(
+            model="glm-5",
+            messages=[{"role": "user", "content": prompt}],
+            response_format={"type": "json_object"},
+            temperature=0.3
+        )
+        result = json.loads(response.choices[0].message.content)
+        return {
+            "status": "passed" if result.get("passed", True) else "failed",
+            "reason": result.get("reason", "")
+        }
+    except Exception as e:
+        print(f"Error analyzing vote result for '{vote.get('subject', '')}': {e}")
+        return {"status": "passed", "reason": ""}
+
+
 def summarize_jira(client: OpenAI, jira_titles: list[str], project_name: str) -> str:
     """Generate summary for JIRA issues."""
     if not jira_titles:
@@ -167,13 +206,23 @@ def main():
         discussion.pop("emails", None)
     threads["discussions"] = discussions
     
-    # Summarize vote objections
-    print("Summarizing vote objections...")
+    # Summarize vote objections and analyze results
+    print("Processing votes...")
     for vote in threads.get("votes", []):
-        if vote.get("has_objection"):
+        if vote.get("status") == "has_result":
+            # Analyze vote result using LLM
+            print(f"  Analyzing result for: {vote.get('subject', '')[:50]}...")
+            result = analyze_vote_result(client, vote, project_name)
+            vote["status"] = result["status"]  # "passed" or "failed"
+            vote["fail_reason"] = result["reason"]
+        elif vote.get("has_objection"):
+            # Summarize objections for in-progress votes
             print(f"  Processing objection for: {vote.get('subject', '')[:50]}...")
             vote["objection_summary"] = summarize_objection(client, vote, project_name)
-        vote.pop("objection_emails", None)  # Remove full emails
+        
+        # Cleanup
+        vote.pop("objection_emails", None)
+        vote.pop("result_email", None)
     
     # Summarize JIRA
     print("Summarizing JIRA...")

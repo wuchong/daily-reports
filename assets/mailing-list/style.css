@@ -300,6 +300,22 @@ section h2::after {
     color: var(--primary-blue-dark);
 }
 
+.vote-list .status.failed {
+    background: var(--danger-light, #FEE2E2);
+    color: var(--danger, #DC2626);
+}
+
+.vote-list .fail-reason {
+    width: 100%;
+    margin: 0.25rem 0 0 0;
+    padding: 0.5rem 0.75rem;
+    background: var(--danger-light, #FEE2E2);
+    border-radius: var(--radius-sm);
+    font-size: 0.8rem;
+    color: var(--gray-600);
+    border-left: 2px solid var(--danger, #DC2626);
+}
+
 .vote-list .objection-inline {
     width: 100%;
     margin: 0.25rem 0 0 0;

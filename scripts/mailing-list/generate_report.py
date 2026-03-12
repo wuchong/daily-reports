@@ -46,16 +46,21 @@ def render_votes(votes: list) -> str:
         # Determine display status
         if vote_status == "passed":
             status = '<span class="status passed">✅ 已通过</span>'
+        elif vote_status == "failed":
+            status = '<span class="status failed">❌ 未通过</span>'
         elif has_objection:
             status = '<span class="status warning">⚠️ 有异议</span>'
         else:
             status = '<span class="status in-progress">🗳️ 进行中</span>'
         
-        objection_html = ""
-        if has_objection and vote.get("objection_summary"):
-            objection_html = f'<p class="objection-inline">{vote["objection_summary"]}</p>'
+        # Show reason for failure or objection
+        reason_html = ""
+        if vote_status == "failed" and vote.get("fail_reason"):
+            reason_html = f'<p class="fail-reason">{vote["fail_reason"]}</p>'
+        elif has_objection and vote.get("objection_summary"):
+            reason_html = f'<p class="objection-inline">{vote["objection_summary"]}</p>'
         
-        items.append(f'<li><a href="{vote["link"]}">{vote["subject"]}</a> {status}{objection_html}</li>')
+        items.append(f'<li><a href="{vote["link"]}">{vote["subject"]}</a> {status}{reason_html}</li>')
     
     return f'<ul class="vote-list">{"\n".join(items)}</ul>'
 

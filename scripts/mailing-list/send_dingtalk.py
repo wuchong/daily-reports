@@ -70,13 +70,19 @@ def build_message(summary: dict, project_name: str, project_id: str) -> dict:
             
             if vote_status == "passed":
                 status = "✅ 已通过"
+            elif vote_status == "failed":
+                status = "❌ 未通过"
             elif has_objection:
                 status = "⚠️ 有异议"
             else:
                 status = "🗳️ 进行中"
             
             vote_text += f"- {v['subject']} → {status} [🔗]({v['link']})\n"
-            if has_objection and v.get("objection_summary"):
+            
+            # Show reason for failure or objection
+            if vote_status == "failed" and v.get("fail_reason"):
+                vote_text += f"  {v['fail_reason']}\n"
+            elif has_objection and v.get("objection_summary"):
                 vote_text += f"  {v['objection_summary']}\n"
     else:
         vote_text = "🗳️ **投票** (0)\n- 本周无投票\n"

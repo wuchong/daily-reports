@@ -130,11 +130,14 @@ def process_emails(raw_data: dict) -> dict:
         thread_emails.sort(key=lambda e: e.get("epoch", 0))
         root_email = thread_emails[0]
         
-        # Check if any email has [RESULT] tag (vote concluded)
-        has_result = any(
-            RESULT_PATTERN.search(e.get("subject", ""))
-            for e in thread_emails
-        )
+        # Find [RESULT] email if exists
+        result_email = None
+        for e in thread_emails:
+            if RESULT_PATTERN.search(e.get("subject", "")):
+                result_email = e
+                break
+        
+        has_result = result_email is not None
         
         # Check for objections in replies (only relevant for in-progress votes)
         objection_emails = []
@@ -148,19 +151,27 @@ def process_emails(raw_data: dict) -> dict:
                         "mid": email.get("mid", "")
                     })
         
-        # Determine vote status:
-        # - has_result=True -> "passed" (已通过)
-        # - has_result=False -> "in_progress" (进行中)
-        result["votes"].append({
+        # Build vote entry
+        vote_entry = {
             "subject": clean_subject(root_subject),
             "link": build_thread_link(root_email.get("mid", "")),
             "from": root_email.get("from", ""),
             "date": root_email.get("date", ""),
             "reply_count": len(thread_emails) - 1,
-            "status": "passed" if has_result else "in_progress",
+            "status": "has_result" if has_result else "in_progress",
             "has_objection": len(objection_emails) > 0,
             "objection_emails": objection_emails
-        })
+        }
+        
+        # If has result, include result email content for LLM analysis
+        if has_result and result_email:
+            vote_entry["result_email"] = {
+                "subject": result_email.get("subject", ""),
+                "body": result_email.get("body", "")[:2000],  # Truncate
+                "from": result_email.get("from", "")
+            }
+        
+        result["votes"].append(vote_entry)
     
     # Discussions: group by thread
     discussion_threads = group_into_threads(categorized["discussion"])
