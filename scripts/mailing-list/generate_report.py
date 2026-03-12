@@ -62,7 +62,8 @@ def render_votes(votes: list) -> str:
         
         items.append(f'<li><a href="{vote["link"]}">{vote["subject"]}</a> {status}{reason_html}</li>')
     
-    return f'<ul class="vote-list">{"\n".join(items)}</ul>'
+    items_html = "\n".join(items)
+    return f'<ul class="vote-list">{items_html}</ul>'
 
 
 def render_discussions(discussions: list) -> str:
