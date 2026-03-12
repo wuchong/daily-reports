@@ -24,13 +24,13 @@
         <section class="highlights">
             <h2>🔥 核心要点</h2>
             <ul>
-                <li>🎉 [kv] 支持 KV 表恢复时从远程存储下载 CDC 日志段 (#2855)</li><li>✨ [lake/iceberg] 优化：仅当存在扫描过滤器时启用列统计 (#2842)</li><li>✨ [log/kv] 支持动态配置 log.replica.min-in-sync-replicas-number 和 kv.snapshot.interval (#2837, #2820)</li><li>🐛 [fluss-client] 支持 Java Typed API 的复杂数据类型（Map 和 Array）(#2814)</li><li>📚 [helm] 添加 CI workflow 运行 Helm 测试，修复 .helmignore 排除测试文件 (#2777, #2847)</li>
+                <li>🎉 [PR #2814] 支持 Java Typed API 的复杂数据类型（Map 和 Array）</li><li>🎉 [PR #2837] 支持 log.replica.min-in-sync-replicas-number 动态配置</li><li>🎉 [PR #2820] 支持 kv.snapshot.interval 动态配置</li><li>🎉 [PR #2842] Iceberg 源表优化：仅在存在扫描过滤条件时启用列统计信息</li><li>🐛 [Issue #2851] 修复 ListDatabaseSummary 返回表计数始终为 0 或 1 的问题</li><li>🐛 [Issue #2843] PK 表部分更新无效问题（已标记 version: 0.9.1）</li>
             </ul>
         </section>
         
         <section class="critical">
             <h2>⚠️ 重点关注</h2>
-            <ul class="critical-list"><li>⚠️ #2843: PK 表的部分更新无效问题（标记为 version 0.9.1）</li><li>⚠️ #2851: ListDatabaseSummary 返回的表计数始终为 0 或 1</li></ul>
+            <ul class="critical-list"><li>⚠️ Issue #2843: PK 表存在无效部分更新的 Bug，已标记影响版本 0.9.1，需要关注修复进展</li></ul>
         </section>
         
         <section class="new-items">
@@ -44,9 +44,9 @@
         <section class="activity">
             <h2>💬 Issue/PR 动态</h2>
             <h3>Issue 讨论</h3>
-            <p>主要讨论包括：RoaringBitmap 功能需求 (#2848) 与社区 FIP 讨论相关联；PK 表部分更新问题 (#2843) zuston 表示将修复；Iceberg 列统计优化 (#2842) 探讨是否需要保留 includeColumnStats() 以避免 NPE。</p>
+            <p>讨论主要集中在：1) RoaringBitmap 函数的 FIP 提案已在邮件列表讨论；2) PK 表部分更新问题正在由 zuston 处理；3) Iceberg 列统计信息优化需保留 includeColumnStats() 以避免 NPE；4) 动态配置验证逻辑需与集群启动行为保持一致。</p>
             <h3>PR Review</h3>
-            <p>Review 关注点：动态配置验证 (#2837) 讨论同步副本数与复制因子的关系；Helm chart 改进 (#2711, #2506) 涉及 metrics 和 security 配置；Lake tiering metrics (#2454) 讨论统计数据准确性；COS token provider (#2836) 关注凭证类型转换和日志安全性。</p>
+            <p>Review 关注点包括：1) Helm charts 的 metrics 和 security 配置改进；2) COS 安全令牌提供者的凭据处理安全性；3) Iceberg 列统计优化需补充测试用例；4) Lake Tiering 指标和状态管理代码质量；5) 建议使用 null 表示未知文件大小。</p>
         </section>
         
         <section class="closed">
