@@ -14,8 +14,8 @@ def load_file(path: str) -> str:
 
 
 def call_claude_api(base_url: str, api_key: str, prompt: str) -> str:
-    """Call Claude API and return response."""
-    url = f"{base_url.rstrip('/')}/v1/messages"
+    """Call LLM API (OpenAI-compatible format)."""
+    url = f"{base_url.rstrip('/')}/v1/chat/completions"
     
     data = json.dumps({
         "model": "glm-5",
@@ -27,8 +27,7 @@ def call_claude_api(base_url: str, api_key: str, prompt: str) -> str:
     
     headers = {
         "Content-Type": "application/json",
-        "x-api-key": api_key,
-        "anthropic-version": "2023-06-01"
+        "Authorization": f"Bearer {api_key}"
     }
     
     req = urllib.request.Request(url, data=data, headers=headers)
@@ -36,7 +35,7 @@ def call_claude_api(base_url: str, api_key: str, prompt: str) -> str:
     try:
         with urllib.request.urlopen(req, timeout=120) as resp:
             result = json.loads(resp.read().decode('utf-8'))
-            return result["content"][0]["text"]
+            return result["choices"][0]["message"]["content"]
     except urllib.error.HTTPError as e:
         print(f"API Error: {e.code} - {e.read().decode('utf-8')}")
         sys.exit(1)
