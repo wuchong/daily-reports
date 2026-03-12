@@ -26,16 +26,16 @@ def clean_subject(subject: str) -> str:
     cleaned = subject
     for pattern in PATTERNS.values():
         cleaned = pattern.sub("", cleaned)
-    # Also remove Re: prefix for display
-    cleaned = re.sub(r"^(Re:\s*)+", "", cleaned, flags=re.IGNORECASE)
+    # Remove Re:/Fwd:/FW: prefix for display
+    cleaned = re.sub(r"^((Re:|Fwd:|FW:)\s*)+", "", cleaned, flags=re.IGNORECASE)
     return cleaned.strip()
 
 
 def get_thread_root(subject: str) -> str:
-    """Extract thread root subject (remove Re: prefix and tags)."""
+    """Extract thread root subject (remove Re:/Fwd:/FW: prefix and tags)."""
     cleaned = subject
-    # Remove Re: prefix
-    cleaned = re.sub(r"^(Re:\s*)+", "", cleaned, flags=re.IGNORECASE)
+    # Remove Re:/Fwd:/FW: prefix
+    cleaned = re.sub(r"^((Re:|Fwd:|FW:)\s*)+", "", cleaned, flags=re.IGNORECASE)
     # Remove classification tags for grouping
     for pattern in PATTERNS.values():
         cleaned = pattern.sub("", cleaned)
