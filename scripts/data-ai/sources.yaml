@@ -2,21 +2,21 @@ search:
   api: google
   queries:
     tier_1:
-      - "AWS data announcement"
-      - "Google Cloud data platform"
-      - "Azure data analytics"
       - "Databricks news"
       - "Snowflake announcement"
-      - "阿里云 数据 发布"
-      - "腾讯云 数据 发布"
-      - "华为云 数据 发布"
-      - "火山引擎 数据"
-    tier_2:
       - "Confluent news"
       - "MongoDB announcement"
       - "ClickHouse release"
       - "dbt Labs news"
       - "Fivetran announcement"
+    tier_2:
+      - "AWS data announcement"
+      - "Google Cloud data platform"
+      - "Azure data analytics"
+      - "阿里云 数据 发布"
+      - "腾讯云 数据 发布"
+      - "华为云 数据 发布"
+      - "火山引擎 数据"
     tier_3:
       # Data Infra / Engineering / Streaming / AI Influencers
       - "Zhamak Dehghani data mesh"

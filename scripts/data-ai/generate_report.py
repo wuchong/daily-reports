@@ -25,13 +25,18 @@ def render_sources(sources: list) -> str:
 
 def render_news_item(item: dict) -> str:
     """Render a single news item."""
+    # Remove duplicate prefix if LLM already included it
+    impact = item.get("data_platform_impact", "")
+    if impact.startswith("📊") or impact.startswith("数据平台影响"):
+        impact = impact.replace("📊 数据平台影响：", "").replace("📊数据平台影响：", "").replace("数据平台影响：", "")
+    
     return f'''
     <article class="news-item">
         <h3>{item.get("title", "")}</h3>
         {render_sources(item.get("sources", []))}
         <p class="date">{item.get("date", "")}</p>
         <p class="summary">{item.get("summary", "")}</p>
-        <p class="impact"><strong>📊 数据平台影响：</strong>{item.get("data_platform_impact", "")}</p>
+        <div class="impact">📊 数据平台影响：{impact}</div>
     </article>'''
 
 
