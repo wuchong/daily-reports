@@ -52,11 +52,10 @@ jobs:
         run: python scripts/generate_report.py
       
       - name: Send to DingTalk
-        if: success()
-        run: |
-          curl -s -X POST "${{ secrets.DINGTALK_WEBHOOK }}" \
-            -H "Content-Type: application/json" \
-            -d @dingtalk_message.json
+        env:
+          DINGTALK_WEBHOOK: ${{ secrets.DINGTALK_WEBHOOK }}
+          DINGTALK_SECRET: ${{ secrets.DINGTALK_SECRET }}
+        run: python scripts/send_dingtalk.py
       
       - name: Commit and push
         run: |

@@ -38,6 +38,7 @@ cd daily-reports
 | `OPENAI_BASE_URL` | LLM API 地址 |
 | `OPENAI_API_KEY` | LLM API Key |
 | `DINGTALK_WEBHOOK` | 钉钉机器人 Webhook URL |
+| `DINGTALK_SECRET` | 钉钉机器人加签密钥 |
 
 ### 3. 启用 GitHub Pages
 
