@@ -1,7 +1,0 @@
-{
-  "msgtype": "markdown",
-  "markdown": {
-    "title": "Fluss 每日动态 (2026-03-11)",
-    "text": "## 🌊 Fluss 每日动态 (2026-03-11)\n\n📊 **统计**: 8 新 Issues | 5 关闭 | 6 新 PR | 8 合并\n\n🔥 **核心要点**:\n- 🎉 [PR #2814](https://github.com/apache/fluss/pull/2814) 合并：支持 Java Typed API 的 Map 和 Array 复杂数据类型\n- 🎉 [PR #2837](https://github.com/apache/fluss/pull/2837) 合并：支持 log.replica.min-in-sync-replicas-number 动态配置\n- 🎉 [PR #2820](https://github.com/apache/fluss/pull/2820) 合并：支持 kv.snapshot.interval 动态配置\n- 🎉 [PR #2777](https://github.com/apache/fluss/pull/2777) 合并：添加 Helm 测试 CI 工作流\n- 🐛 [PR #2630](https://github.com/apache/fluss/pull/2630) 合并：修复 CI 中 AbfsFileSystemBehaviorITCase 端口占用失败问题\n\n⚠️ **需要关注**: \n- ⚠️ [Issue #2843](https://github.com/apache/fluss/issues/2843) PK 表部分更新无效，标记为 0.9.1 版本需修复\n- ⚠️ [Issue #2854](https://github.com/apache/fluss/issues/2854) 测试不稳定：FlussAuthorizationITCase.testDeleteProducerOffsetsAuthorization\n\n🔗 [查看完整报告](https://wuchong.github.io/daily-reports/reports/2026-03-11.html)"
-  }
-}
