@@ -63,6 +63,7 @@ jobs:
           cp -r docs/fluss-github /tmp/fluss-github-output
           mkdir -p /tmp/fluss-github-output/assets
           cp assets/fluss-github/style.css /tmp/fluss-github-output/assets/
+          cp assets/index.html /tmp/index-template.html
           
           # Remove existing content
           rm -rf docs/* *.json || true
@@ -79,6 +80,9 @@ jobs:
           # Merge fluss-github content (preserve data-ai)
           rm -rf fluss-github || true
           cp -r /tmp/fluss-github-output fluss-github
+          
+          # Update root index.html from template
+          cp /tmp/index-template.html index.html
           
           # Commit and push
           git config user.name "github-actions[bot]"

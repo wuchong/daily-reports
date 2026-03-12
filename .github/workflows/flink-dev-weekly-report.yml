@@ -76,6 +76,7 @@ jobs:
           cp -r docs/flink-dev /tmp/flink-dev-output
           mkdir -p /tmp/flink-dev-output/assets
           cp assets/mailing-list/style.css /tmp/flink-dev-output/assets/
+          cp assets/index.html /tmp/index-template.html
 
           # Remove existing content
           rm -rf docs/* *.json || true
@@ -93,36 +94,8 @@ jobs:
           rm -rf flink-dev || true
           cp -r /tmp/flink-dev-output flink-dev
 
-          # Update root index.html
-          cat > index.html << 'EOF'
-          <!DOCTYPE html>
-          <html lang="zh-CN">
-          <head>
-              <meta charset="UTF-8">
-              <meta name="viewport" content="width=device-width, initial-scale=1.0">
-              <title>Daily Reports</title>
-              <style>
-                  body { font-family: -apple-system, sans-serif; max-width: 600px; margin: 2rem auto; padding: 1rem; }
-                  h1 { color: #1a73e8; }
-                  .links { display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap; }
-                  a { display: block; padding: 1.5rem 2rem; background: #f8f9fa; border-radius: 8px; text-decoration: none; color: #1a73e8; border: 1px solid #dadce0; }
-                  a:hover { background: #e8f0fe; }
-              </style>
-          </head>
-          <body>
-              <h1>Daily Reports</h1>
-              <p>Select a report type:</p>
-              <div class="links">
-                  <a href="fluss-github/">🌊 Fluss GitHub</a>
-                  <a href="data-ai/">📊 Data+AI</a>
-                  <a href="flink-dev/">🐿️ Flink Dev</a>
-                  <a href="iceberg-dev/">🧊 Iceberg Dev</a>
-                  <a href="kafka-dev/">📨 Kafka Dev</a>
-                  <a href="spark-dev/">⚡ Spark Dev</a>
-              </div>
-          </body>
-          </html>
-          EOF
+          # Update root index.html from template
+          cp /tmp/index-template.html index.html
 
           # Commit and push
           git config user.name "github-actions[bot]"
