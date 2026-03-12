@@ -42,7 +42,7 @@ cd daily-reports
 
 ### 3. 启用 GitHub Pages
 
-Settings → Pages → Source: Deploy from branch → `main` branch, `/docs` folder
+Settings → Pages → Source: Deploy from branch → `pages` branch, `/ (root)` folder
 
 ### 4. 测试运行
 

@@ -3,6 +3,9 @@ raw_data.json
 summary.json
 dingtalk_message.json
 
+# Output
+docs/
+
 # Python
 __pycache__/
 *.pyc

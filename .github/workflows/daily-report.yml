@@ -57,10 +57,27 @@ jobs:
           DINGTALK_SECRET: ${{ secrets.DINGTALK_SECRET }}
         run: python scripts/send_dingtalk.py
       
-      - name: Commit and push
+      - name: Deploy to pages branch
         run: |
+          # Save docs to temp
+          cp -r docs /tmp/docs-output
+          
+          # Checkout or create pages branch
+          git fetch origin pages || true
+          if git show-ref --verify --quiet refs/remotes/origin/pages; then
+            git checkout pages
+          else
+            git checkout --orphan pages
+            git rm -rf . || true
+          fi
+          
+          # Copy docs content to root
+          rm -rf reports assets index.html || true
+          cp -r /tmp/docs-output/* .
+          
+          # Commit and push
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add docs/
+          git add -A
           git diff --staged --quiet || git commit -m "chore: add daily report for ${{ steps.date.outputs.date }}"
-          git push
+          git push origin pages
