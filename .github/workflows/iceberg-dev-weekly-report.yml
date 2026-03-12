@@ -1,8 +1,8 @@
-name: Flink Dev Weekly Report
+name: Iceberg Dev Weekly Report
 
 on:
   schedule:
-    - cron: '0 1 * * 4'  # UTC 01:00 Thursday = Beijing 09:00 Thursday
+    - cron: '0 2 * * 4'  # UTC 02:00 Thursday = Beijing 10:00 Thursday
   workflow_dispatch:
     inputs:
       week:
@@ -14,10 +14,10 @@ permissions:
   contents: write
 
 env:
-  PROJECT_NAME: Flink
-  PROJECT_ID: flink-dev
+  PROJECT_NAME: Iceberg
+  PROJECT_ID: iceberg-dev
   LIST_NAME: dev
-  LIST_DOMAIN: flink.apache.org
+  LIST_DOMAIN: iceberg.apache.org
 
 jobs:
   generate-report:
@@ -72,10 +72,10 @@ jobs:
 
       - name: Deploy to pages branch
         run: |
-          # Save flink-dev docs to temp
-          cp -r docs/flink-dev /tmp/flink-dev-output
-          mkdir -p /tmp/flink-dev-output/assets
-          cp assets/mailing-list/style.css /tmp/flink-dev-output/assets/
+          # Save iceberg-dev docs to temp
+          cp -r docs/iceberg-dev /tmp/iceberg-dev-output
+          mkdir -p /tmp/iceberg-dev-output/assets
+          cp assets/mailing-list/style.css /tmp/iceberg-dev-output/assets/
 
           # Remove existing content
           rm -rf docs/* *.json || true
@@ -89,9 +89,9 @@ jobs:
             git rm -rf . || true
           fi
 
-          # Merge flink-dev content (preserve other directories)
-          rm -rf flink-dev || true
-          cp -r /tmp/flink-dev-output flink-dev
+          # Merge iceberg-dev content (preserve other directories)
+          rm -rf iceberg-dev || true
+          cp -r /tmp/iceberg-dev-output iceberg-dev
 
           # Update root index.html
           cat > index.html << 'EOF'
@@ -128,5 +128,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add -A
-          git diff --staged --quiet || git commit -m "chore: add flink-dev weekly report for ${{ steps.week.outputs.week }}"
+          git diff --staged --quiet || git commit -m "chore: add iceberg-dev weekly report for ${{ steps.week.outputs.week }}"
           git push origin pages
