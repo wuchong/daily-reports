@@ -1,0 +1,234 @@
+/* Flink Weekly Report Styles */
+:root {
+    --primary-color: #e6526f;
+    --text-color: #333;
+    --bg-color: #f8f9fa;
+    --border-color: #dee2e6;
+    --success-color: #28a745;
+    --warning-color: #ffc107;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background: var(--bg-color);
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: white;
+    min-height: 100vh;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--primary-color);
+}
+
+header h1 {
+    color: var(--primary-color);
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.date-range {
+    color: #666;
+    font-size: 1rem;
+}
+
+section {
+    margin-bottom: 2rem;
+}
+
+section h2 {
+    font-size: 1.3rem;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* Announcements */
+.announcements ul {
+    list-style: none;
+}
+
+.announcements li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+.announcements a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.announcements a:hover {
+    text-decoration: underline;
+}
+
+/* Votes */
+.vote-item {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background: #fafafa;
+    border-radius: 8px;
+    border-left: 4px solid var(--success-color);
+}
+
+.vote-item.has-objection {
+    border-left-color: var(--warning-color);
+}
+
+.vote-item h3 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.vote-item h3 a {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.vote-item h3 a:hover {
+    color: var(--primary-color);
+}
+
+.vote-item .status {
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+}
+
+.vote-item .status.passed {
+    background: #d4edda;
+    color: #155724;
+}
+
+.vote-item .status.warning {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.vote-item .objection {
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    background: #fff3cd;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+/* Discussions */
+.discussion-item {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background: #fafafa;
+    border-radius: 8px;
+}
+
+.discussion-item h3 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.discussion-item h3 a {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.discussion-item h3 a:hover {
+    color: var(--primary-color);
+}
+
+.discussion-item .meta {
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+}
+
+.discussion-item .summary {
+    margin-bottom: 0.5rem;
+}
+
+.discussion-item .key-points {
+    padding-left: 1rem;
+    border-left: 3px solid var(--border-color);
+    font-size: 0.9rem;
+}
+
+.discussion-item .key-points p {
+    margin-bottom: 0.3rem;
+}
+
+.discussion-item .conclusion {
+    margin-top: 0.5rem;
+    font-style: italic;
+    color: #555;
+}
+
+/* JIRA */
+.jira p {
+    margin-bottom: 0.5rem;
+}
+
+.jira-summary {
+    padding: 1rem;
+    background: #fafafa;
+    border-radius: 8px;
+}
+
+/* Footer */
+footer {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+    color: #999;
+    font-size: 0.85rem;
+}
+
+/* Index page */
+.month {
+    margin-bottom: 1.5rem;
+}
+
+.month h2 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.month ul {
+    list-style: none;
+    padding-left: 1rem;
+}
+
+.month li {
+    padding: 0.3rem 0;
+}
+
+.month a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.month a:hover {
+    text-decoration: underline;
+}
+
+.empty {
+    color: #999;
+    font-style: italic;
+}

@@ -1,0 +1,120 @@
+name: Flink Dev Weekly Report
+
+on:
+  schedule:
+    - cron: '0 1 * * 4'  # UTC 01:00 Thursday = Beijing 09:00 Thursday
+  workflow_dispatch:
+    inputs:
+      week:
+        description: '报告周数 (YYYY-Www), 留空则为上一周'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+
+jobs:
+  generate-report:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests aiohttp openai
+
+      - name: Calculate week
+        id: week
+        run: |
+          if [ -n "${{ github.event.inputs.week }}" ]; then
+            echo "week=${{ github.event.inputs.week }}" >> $GITHUB_OUTPUT
+          else
+            echo "week=$(date -d 'last monday - 7 days' +%G-W%V)" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Fetch emails
+        env:
+          REPORT_WEEK: ${{ steps.week.outputs.week }}
+        run: python scripts/flink-dev/fetch_emails.py
+
+      - name: Classify emails
+        run: python scripts/flink-dev/classify_emails.py
+
+      - name: Generate summary with LLM
+        env:
+          OPENAI_BASE_URL: ${{ secrets.OPENAI_BASE_URL }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: python scripts/flink-dev/generate_summary.py
+
+      - name: Generate reports
+        env:
+          GITHUB_PAGES_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
+        run: python scripts/flink-dev/generate_report.py
+
+      - name: Send to DingTalk
+        env:
+          DINGTALK_WEBHOOK: ${{ secrets.DINGTALK_WEBHOOK }}
+          DINGTALK_SECRET: ${{ secrets.DINGTALK_SECRET }}
+          GITHUB_PAGES_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
+        run: python scripts/flink-dev/send_dingtalk.py
+
+      - name: Deploy to pages branch
+        run: |
+          # Save flink-dev docs to temp
+          cp -r docs/flink-dev /tmp/flink-dev-output
+          mkdir -p /tmp/flink-dev-output/assets
+          cp assets/flink-dev/style.css /tmp/flink-dev-output/assets/
+
+          # Checkout pages branch
+          git fetch origin pages || true
+          if git show-ref --verify --quiet refs/remotes/origin/pages; then
+            git checkout pages
+          else
+            git checkout --orphan pages
+            git rm -rf . || true
+          fi
+
+          # Merge flink-dev content (preserve other directories)
+          rm -rf flink-dev || true
+          cp -r /tmp/flink-dev-output flink-dev
+
+          # Update root index.html
+          cat > index.html << 'INDEXEOF'
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Reports</title>
+    <style>
+        body { font-family: -apple-system, sans-serif; max-width: 600px; margin: 2rem auto; padding: 1rem; }
+        h1 { color: #1a73e8; }
+        .links { display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap; }
+        a { display: block; padding: 1.5rem 2rem; background: #f8f9fa; border-radius: 8px; text-decoration: none; color: #1a73e8; border: 1px solid #dadce0; }
+        a:hover { background: #e8f0fe; }
+    </style>
+</head>
+<body>
+    <h1>Daily Reports</h1>
+    <p>Select a report type:</p>
+    <div class="links">
+        <a href="fluss-github/">🌊 Fluss GitHub</a>
+        <a href="data-ai/">📊 Data+AI</a>
+        <a href="flink-dev/">🔥 Flink Dev</a>
+    </div>
+</body>
+</html>
+INDEXEOF
+
+          # Commit and push
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --staged --quiet || git commit -m "chore: add flink-dev weekly report for ${{ steps.week.outputs.week }}"
+          git push origin pages
