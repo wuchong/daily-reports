@@ -1,0 +1,71 @@
+name: Daily Report
+
+on:
+  schedule:
+    - cron: '0 1 * * *'  # UTC 01:00 = Beijing 09:00
+  workflow_dispatch:
+    inputs:
+      date:
+        description: '报告日期 (YYYY-MM-DD), 留空则为昨天'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+
+jobs:
+  generate-report:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Calculate date
+        id: date
+        run: |
+          if [ -n "${{ github.event.inputs.date }}" ]; then
+            echo "date=${{ github.event.inputs.date }}" >> $GITHUB_OUTPUT
+          else
+            echo "date=$(date -d 'yesterday' +%Y-%m-%d)" >> $GITHUB_OUTPUT
+          fi
+      
+      - name: Collect GitHub data
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: bash scripts/collect_data.sh ${{ steps.date.outputs.date }}
+      
+      - name: Generate summary with Claude
+        uses: anthropic/claude-code-action@v1
+        env:
+          ANTHROPIC_BASE_URL: ${{ secrets.ANTHROPIC_BASE_URL }}
+          ANTHROPIC_AUTH_TOKEN: ${{ secrets.ANTHROPIC_AUTH_TOKEN }}
+        with:
+          prompt: |
+            Read the file raw_data.json and follow the instructions in prompts/summarize.md.
+            Save the output JSON to summary.json.
+      
+      - name: Generate reports
+        env:
+          GITHUB_PAGES_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
+        run: python scripts/generate_report.py
+      
+      - name: Send to DingTalk
+        if: success()
+        run: |
+          curl -s -X POST "${{ secrets.DINGTALK_WEBHOOK }}" \
+            -H "Content-Type: application/json" \
+            -d @dingtalk_message.json
+      
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/
+          git diff --staged --quiet || git commit -m "chore: add daily report for ${{ steps.date.outputs.date }}"
+          git push

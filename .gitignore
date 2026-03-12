@@ -1,0 +1,20 @@
+# Generated files
+raw_data.json
+summary.json
+dingtalk_message.json
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
