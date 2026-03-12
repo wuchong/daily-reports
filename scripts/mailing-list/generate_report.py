@@ -115,6 +115,12 @@ def generate_html(summary: dict, project_name: str) -> str:
     start = date_range.get("start", "")
     end = date_range.get("end", "")
     
+    announcements = summary.get("announcements", [])
+    votes = summary.get("votes", [])
+    discussions = summary.get("discussions", [])
+    jira_count = summary.get("jira_count", 0)
+    jira_summary = summary.get("jira_summary", "")
+    
     return f'''<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -131,23 +137,23 @@ def generate_html(summary: dict, project_name: str) -> str:
         </header>
 
         <section class="announcements">
-            <h2>📢 公告</h2>
-            {render_announcements(summary.get("announcements", []))}
+            <h2>📢 公告 ({len(announcements)})</h2>
+            {render_announcements(announcements)}
         </section>
 
         <section class="votes">
-            <h2>🗳️ 投票</h2>
-            {render_votes(summary.get("votes", []))}
+            <h2>🗳️ 投票 ({len(votes)})</h2>
+            {render_votes(votes)}
         </section>
 
         <section class="discussions">
-            <h2>💬 讨论</h2>
-            {render_discussions(summary.get("discussions", []))}
+            <h2>💬 讨论 ({len(discussions)})</h2>
+            {render_discussions(discussions)}
         </section>
 
         <section class="jira">
-            <h2>🎫 JIRA</h2>
-            {render_jira(summary.get("jira_count", 0), summary.get("jira_summary", ""))}
+            <h2>🎫 JIRA ({jira_count})</h2>
+            {render_jira(jira_count, jira_summary)}
         </section>
 
         <footer>
