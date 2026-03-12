@@ -1,0 +1,149 @@
+{
+  "highlights": [
+    "🎉 [PR #2814](https://github.com/apache/fluss/pull/2814) 合并：支持 Java Typed API 的 Map 和 Array 复杂数据类型",
+    "🎉 [PR #2837](https://github.com/apache/fluss/pull/2837) 合并：支持 log.replica.min-in-sync-replicas-number 动态配置",
+    "🎉 [PR #2820](https://github.com/apache/fluss/pull/2820) 合并：支持 kv.snapshot.interval 动态配置",
+    "🎉 [PR #2777](https://github.com/apache/fluss/pull/2777) 合并：添加 Helm 测试 CI 工作流",
+    "🐛 [PR #2630](https://github.com/apache/fluss/pull/2630) 合并：修复 CI 中 AbfsFileSystemBehaviorITCase 端口占用失败问题",
+    "✨ [PR #2842](https://github.com/apache/fluss/pull/2842) 合并：Iceberg 源仅在有扫描过滤器时启用列统计优化"
+  ],
+  "critical_issues": [
+    "⚠️ [Issue #2843](https://github.com/apache/fluss/issues/2843) PK 表部分更新无效，标记为 0.9.1 版本需修复",
+    "⚠️ [Issue #2854](https://github.com/apache/fluss/issues/2854) 测试不稳定：FlussAuthorizationITCase.testDeleteProducerOffsetsAuthorization"
+  ],
+  "issue_activity": [
+    {
+      "number": 2843,
+      "title": "Invalid partial update for PK table",
+      "url": "https://github.com/apache/fluss/issues/2843",
+      "comments": [
+        {
+          "user": "polyzos",
+          "summary": "感谢报告问题，询问是否正在处理修复，否则可以接手"
+        },
+        {
+          "user": "zuston",
+          "summary": "表示将尝试修复此问题"
+        }
+      ]
+    },
+    {
+      "number": 2848,
+      "title": "[Feature] Provide built-in Flink SQL functions for RoaringBitmap",
+      "url": "https://github.com/apache/fluss/issues/2848",
+      "comments": [
+        {
+          "user": "Prajwal-banakar",
+          "summary": "分享正在进行的 FIP 讨论，提出 BITMAP_BUILD_AGG 和 BITMAP_CARDINALITY 函数方案"
+        }
+      ]
+    },
+    {
+      "number": 2842,
+      "title": "[lake/iceberg] only enable column stats when scan filter exists",
+      "url": "https://github.com/apache/fluss/issues/2842",
+      "comments": [
+        {
+          "user": "beryllw",
+          "summary": "询问 IcebergRewriteDataFiles.java 中的代码是否也需要修复"
+        },
+        {
+          "user": "luoyuxia",
+          "summary": "解释必须保留 includeColumnStats()，因为 sortFileScanTask 需要 lowerBounds 进行排序"
+        }
+      ]
+    },
+    {
+      "number": 2837,
+      "title": "[log] Support dynamic configuration for log.replica.min-in-sync-replicas-number",
+      "url": "https://github.com/apache/fluss/issues/2837",
+      "comments": [
+        {
+          "user": "swuferhong",
+          "summary": "请求解决代码冲突"
+        },
+        {
+          "user": "zcoo",
+          "summary": "已解决代码冲突"
+        }
+      ]
+    }
+  ],
+  "pr_activity": [
+    {
+      "number": 2837,
+      "title": "[log] Support dynamic configuration for log.replica.min-in-sync-replicas-number",
+      "url": "https://github.com/apache/fluss/pull/2837",
+      "comments": [
+        {
+          "user": "platinumhamburg",
+          "summary": "询问 newMinInSyncReplicas 大于复制因子时会发生什么问题"
+        },
+        {
+          "user": "zcoo",
+          "summary": "解释为简化处理，限制 newMinInSyncReplicas 只能为 1 或 2"
+        },
+        {
+          "user": "swuferhong",
+          "summary": "说明动态配置行为应与集群启动时默认配置行为一致，不设上限"
+        }
+      ]
+    },
+    {
+      "number": 2454,
+      "title": "Add tiering metrics for Lakehouse tiering job",
+      "url": "https://github.com/apache/fluss/pull/2454",
+      "comments": [
+        {
+          "user": "luoyuxia",
+          "summary": "提出多项改进建议：空 commit 处理、TieringStats 返回类型、使用 Catalog#loadSnapshot 获取记录数等"
+        },
+        {
+          "user": "beryllw",
+          "summary": "在 Docker 环境中测试了指标名称和标签值"
+        }
+      ]
+    },
+    {
+      "number": 2846,
+      "title": "[helm] Rewrite README to point to website docs",
+      "url": "https://github.com/apache/fluss/pull/2846",
+      "comments": [
+        {
+          "user": "morazow",
+          "summary": "建议使用官方网站文档链接而非仓库文件链接"
+        },
+        {
+          "user": "affo",
+          "summary": "解释 README 用于开发目的，指向仓库文件更合适"
+        }
+      ]
+    },
+    {
+      "number": 2711,
+      "title": "[helm] Add support for metrics via serviceMonitor",
+      "url": "https://github.com/apache/fluss/pull/2711",
+      "comments": [
+        {
+          "user": "affo",
+          "summary": "提出多项建议：移除 Prometheus 相关字段、简化配置验证逻辑、建议只要求 port 参数"
+        },
+        {
+          "user": "morazow",
+          "summary": "讨论 metrics 配置方案，考虑禁止在 configurationOverrides 中设置 port"
+        }
+      ]
+    },
+    {
+      "number": 2836,
+      "title": "[fs/cos] Support COS security token propagation for tiering",
+      "url": "https://github.com/apache/fluss/pull/2836",
+      "comments": [
+        {
+          "user": "Copilot",
+          "summary": "提出多项改进建议：凭证类型处理、日志安全、异常信息优化、字段命名改进等"
+        }
+      ]
+    }
+  ]
+}
