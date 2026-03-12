@@ -71,6 +71,9 @@ jobs:
           mkdir -p /tmp/flink-dev-output/assets
           cp assets/flink-dev/style.css /tmp/flink-dev-output/assets/
 
+          # Remove existing content
+          rm -rf docs/* *.json || true
+
           # Checkout pages branch
           git fetch origin pages || true
           if git show-ref --verify --quiet refs/remotes/origin/pages; then
@@ -106,7 +109,7 @@ jobs:
               <div class="links">
                   <a href="fluss-github/">🌊 Fluss GitHub</a>
                   <a href="data-ai/">📊 Data+AI</a>
-                  <a href="flink-dev/">🔥 Flink Dev</a>
+                  <a href="flink-dev/">🐿️ Flink Dev</a>
               </div>
           </body>
           </html>

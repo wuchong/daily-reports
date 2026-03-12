@@ -64,6 +64,9 @@ jobs:
           mkdir -p /tmp/fluss-github-output/assets
           cp assets/fluss-github/style.css /tmp/fluss-github-output/assets/
           
+          # Remove existing content
+          rm -rf docs/* *.json || true
+          
           # Checkout or create pages branch
           git fetch origin pages || true
           if git show-ref --verify --quiet refs/remotes/origin/pages; then

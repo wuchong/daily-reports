@@ -69,6 +69,9 @@ jobs:
           mkdir -p /tmp/data-ai-output/assets
           cp assets/data-ai/style.css /tmp/data-ai-output/assets/
 
+          # Remove existing content
+          rm -rf docs/* *.json || true
+
           # Checkout pages branch
           git fetch origin pages || true
           if git show-ref --verify --quiet refs/remotes/origin/pages; then
@@ -93,7 +96,7 @@ jobs:
               <style>
                   body { font-family: -apple-system, sans-serif; max-width: 600px; margin: 2rem auto; padding: 1rem; }
                   h1 { color: #1a73e8; }
-                  .links { display: flex; gap: 1rem; margin-top: 2rem; }
+                  .links { display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap; }
                   a { display: block; padding: 1.5rem 2rem; background: #f8f9fa; border-radius: 8px; text-decoration: none; color: #1a73e8; border: 1px solid #dadce0; }
                   a:hover { background: #e8f0fe; }
               </style>
@@ -104,6 +107,7 @@ jobs:
               <div class="links">
                   <a href="fluss-github/">🌊 Fluss GitHub</a>
                   <a href="data-ai/">📊 Data+AI</a>
+                  <a href="flink-dev/">🐿️ Flink Dev</a>
               </div>
           </body>
           </html>
