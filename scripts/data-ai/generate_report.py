@@ -126,8 +126,8 @@ def generate_html(summary: dict) -> str:
 <body>
     <div class="container">
         <header>
-            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
             <h1>Data+AI 全球日报 | {date}</h1>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
         </header>
 
         <section class="top-changes">
