@@ -11,6 +11,7 @@
         <header>
             <h1>Flink 社区周报 | 2026-W10</h1>
             <p class="date-range">2026-03-02 ~ 2026-03-08</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
         </header>
 
         <section class="announcements">
@@ -31,97 +32,99 @@
         <article class="discussion-item">
             <h3><a href="https://lists.apache.org/thread/3jd5ymt59yvf5v8ssrb6x6xntjd23xoo">Release flink-connector-kafka v5.0.0</a></h3>
             <p class="meta">7 条回复 · 7 位参与者</p>
-            <p class="summary">Ferenc Csaky 提议发布 flink-connector-kafka v5.0.0，主要包含 Kafka 客户端升级至 4.x 等改进，并计划兼容 Flink 2.1 和 2.2。社区成员普遍支持该提议，同时指出了测试稳定性及文档同步等需要解决的问题。发布者确认将优先处理测试失败问题，随后推进发布流程。</p>
-            <div class="key-points"><p><strong>@Ferenc Csaky:</strong> 提议发布 v5.0.0（含 Kafka 客户端 4.x 升级），并自愿担任发布经理。</p>
-<p><strong>@Bowen Li:</strong> 建议更新 /flink-python 和 /docs 中的连接器版本，以解决 PyFlink 和文档结构的限制。</p>
-<p><strong>@Martijn Visser:</strong> 指出每周测试已长时间未成功运行，建议发布前先确保所有支持版本的测试通过。</p></div>
-            <p class="conclusion">社区原则上同意发布，但需先解决测试稳定性问题，发布者将在接下来的几天内优先处理此事。</p>
+            <p class="summary">Ferenc Csaky 提议发布 flink-connector-kafka v5.0.0，主要包含 Kafka 客户端从 3.x 升级至 4.x 等改进，并计划支持 Flink 2.1 和 2.2。社区成员普遍支持该提议，但指出需先解决测试稳定性问题及同步更新相关文档。发布者已确认将优先处理测试失败问题。</p>
+            <div class="key-points"><p><strong>@Ferenc Csaky:</strong> 提议发布 v5.0.0，核心变更为升级 Kafka 客户端至 4.x，并自愿担任发布经理。</p>
+<p><strong>@Martijn Visser:</strong> 支持发布，但强调需先修复长期未成功的每周测试，确保所有支持版本的测试稳定运行。</p>
+<p><strong>@Bowen Li:</strong> 支持发布，并指出需更新 /flink-python 和 /docs 中的 connector 版本以解决当前结构限制。</p></div>
+            <p class="conclusion">社区初步达成发布共识，下一步行动是由发布经理 Ferenc Csaky 在未来几天内优先排查并修复测试失败问题。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/l0n4w86v1o5cwkqpqtf2q7lb7zdyrymf">AI-Assisted Contributions and AI Tooling Support in Apache Flink</a></h3>
+            <p class="meta">3 条回复 · 4 位参与者</p>
+            <p class="summary">Martijn Visser 提议 Flink 社区制定 AI 辅助贡献指南（如强制披露、贡献者责任制）并引入 AGENTS.md 文件以辅助 AI 编码工具。多位社区成员对此表示支持，并进一步探讨了如何优化 AI 代码审查流程及利用 AI 代理辅助回答用户问题。</p>
+            <div class="key-points"><p><strong>@Martijn Visser:</strong> 建议采用 AI 贡献指南（要求披露工具和负责变更），并在根目录及各模块添加 AGENTS.md 文件以提供项目上下文。</p>
+<p><strong>@Leonard Xu:</strong> 支持提案，并建议引入 AI 代理来协助回答用户邮件列表中未被回复的问题。</p>
+<p><strong>@Zakelly Lan:</strong> 强调需关注 AI 生成代码在架构、性能和复用性上的短板，建议通过 GitHub 标签或机器人提醒机制优化审查流程。</p></div>
+            <p class="conclusion">社区对提案达成初步共识，下一步将着手制定具体的贡献指南和 AGENTS.md 文件内容。</p>
         </article>
 
         <article class="discussion-item">
             <h3><a href="https://lists.apache.org/thread/fjhdmz0xrzcdrgd154wwf8w8brrxtls1">FLIP-567: Introduce a ProcessTableFunction Test Harness</a></h3>
             <p class="meta">2 条回复 · 2 位参与者</p>
-            <p class="summary">讨论主要围绕 FLIP-567 展开，旨在引入 ProcessTableFunction (PTF) 测试工具以简化单元测试并支持状态和定时器验证。社区成员认可该提案价值，并针对生命周期管理、状态快照/恢复机制及状态后端兼容性提出了改进建议。提案作者已确认将补充自动资源管理和状态恢复测试功能。</p>
-            <div class="key-points"><p><strong>@Mika Naylor:</strong> 提议引入轻量级测试工具用于 PTF 单元测试；确认将实现 AutoCloseable 以管理生命周期，并计划支持状态快照与恢复功能。</p>
-<p><strong>@David Radley:</strong> 建议明确测试工具的适用范围（仅单元测试还是通用验证），并关注对处理时间语义的处理。</p>
-<p><strong>@Martijn Visser:</strong> 指出需补充 open()/close() 生命周期管理，建议增加 snapshot()/restore() 以模拟检查点恢复，并询问是否支持不同状态后端以发现序列化问题。</p></div>
-            <p class="conclusion">提案作者将根据反馈更新 FLIP，补充生命周期管理（自动关闭）、状态快照与恢复功能，并考虑支持不同状态后端的测试。</p>
+            <p class="summary">Mika Naylor 发起 FLIP-567 提案，旨在引入 ProcessTableFunction (PTF) 测试工具以简化单元测试流程，避免依赖完整的 Flink 集群集成测试。讨论主要集中在测试范围界定、生命周期管理、状态快照与恢复机制以及状态后端兼容性等技术细节上。</p>
+            <div class="key-points"><p><strong>@Mika Naylor:</strong> 提议构建轻量级测试框架以支持 PTF 的输出、状态和定时器验证；计划采纳建议，增加 AutoCloseable 支持及快照恢复功能。</p>
+<p><strong>@David Radley:</strong> 询问该工具的定位是仅用于单元测试还是通用验证，并关注处理时间的考量。</p>
+<p><strong>@Martijn Visser:</strong> 建议明确生命周期管理（open/close），增加对检查点和状态恢复的支持以捕获序列化问题，并考虑不同状态后端的兼容性。</p></div>
+            <p class="conclusion">提案作者计划根据反馈完善设计，特别是增加生命周期的自动管理（AutoCloseable）以及状态快照与恢复功能。</p>
         </article>
 
         <article class="discussion-item">
             <h3><a href="https://lists.apache.org/thread/jcffkxzcoc2dctktgb154lwsvby8vo4g">FLIP-565: Improve ProcessTableFunctions for late data handling and state access</a></h3>
             <p class="meta">2 条回复 · 2 位参与者</p>
-            <p class="summary">本次讨论围绕 FLIP-565 展开，旨在改进 ProcessTableFunctions 对迟到数据的处理和状态访问能力。社区成员对提案表示支持，特别是针对广播状态语义的改进，发起人计划于周一开始投票流程。</p>
-            <div class="key-points"><p><strong>@Gustavo de Morais:</strong> 支持该提案，认为 BROADCAST_SEMANTIC_TABLE 解锁了小查找表的优化场景，且支持 ORDER BY 优于额外参数特性。</p>
-<p><strong>@Ryan van Huuksloot:</strong> 认可提案的改进方向，赞同“先实现功能，再优化易用性”的渐进式开发策略。</p>
-<p><strong>@Natea Eshetu Beshada:</strong> 确认了在 NOTIFY_STATEFUL_SETS 重新评估期间允许 collect() 的设计，认为这支持了广播规则变更并重发结果的实用模式。</p></div>
-            <p class="conclusion">社区对 FLIP-565 达成初步共识，Timo Walther 宣布将于周一启动投票流程。</p>
+            <p class="summary">讨论主要围绕 FLIP-565 展开，旨在改进 ProcessTableFunctions 以处理迟到数据和状态访问。社区对提案反响积极，认可 BROADCAST_SEMANTIC_TABLE 等改进解决了实际痛点，并澄清了广播状态下的技术细节。若无异议，发起人将于周一开始投票。</p>
+            <div class="key-points"><p><strong>@Gustavo de Morais:</strong> 支持该提案，认为 BROADCAST_SEMANTIC_TABLE 解锁了小查找表的优化场景，并赞同支持 ORDER BY 的做法。</p>
+<p><strong>@Ryan van Huuksloot / Timo Walther:</strong> 认同“先实现功能，再优化易用性”的策略，指出 PTFs 主要面向平台开发者，且为 AI 编写代码提供原语很重要。</p>
+<p><strong>@Natea Eshetu Beshada / Timo Walther:</strong> 确认了广播状态设计中允许在重新评估期间调用 collect()，以支持广播规则变更后重新发送修正结果的实用模式。</p></div>
+            <p class="conclusion">社区已达成共识，若无异议，将于周一正式启动投票流程。</p>
         </article>
 
         <article class="discussion-item">
             <h3><a href="https://lists.apache.org/thread/sghw6l6kj19p5o90b23d1tjljj3ltqdn">FLIP-495: Support AdaptiveScheduler record and query the rescale history</a></h3>
             <p class="meta">1 条回复 · 2 位参与者</p>
-            <p class="summary">讨论主要围绕完善 FLIP-495 的动机描述，特别是如何向用户展示优化 Adaptive Scheduler 参数的价值。作者采纳了关于措辞修改的建议，并计划在文档中补充具体的使用场景示例，同时明确了该功能将与 FLIP-487 的子任务结合发布以支持历史记录查询。</p>
-            <div class="key-points"><p><strong>@David Radley:</strong> 建议修改动机部分的措辞，明确是提供信息供用户优化而非直接推荐优化，并请求增加具体示例以突显 FLIP 的价值。</p>
-<p><strong>@Yuepeng Pan:</strong> 确认采纳措辞建议，并计划在文档中添加具体场景（如通过分析资源等待时长来调整超时参数），同时说明将结合 FLIP-487 子任务发布查询功能。</p></div>
-            <p class="conclusion">作者将根据建议更新 FLIP 描述，并在相关文档任务（FLINK-38902）中补充具体的优化示例。</p>
+            <p class="summary">讨论围绕 FLIP-495（支持 AdaptiveScheduler 记录扩缩容历史）展开，重点优化了动机描述的清晰度。David Radley 建议改进措辞并补充具体示例以明确功能价值，Yuepeng Pan 采纳建议并说明了文档编写计划。此外，Yuepeng 还明确了该功能将配合 FLIP-487 的子任务一同发布以支持查询接口。</p>
+            <div class="key-points"><p><strong>@David Radley:</strong> 建议修改动机部分的措辞，使其更清晰地表达“提供信息以用于优化”，并请求增加激励性示例以直观展示 FLIP 的价值。</p>
+<p><strong>@Yuepeng Pan:</strong> 采纳措辞建议，明确初衷是提供历史和设置信息以供分析；计划在后续文档任务中补充具体优化场景示例（如根据资源等待时长调整超时参数）。</p></div>
+            <p class="conclusion">确认采纳动机描述的修改建议，将在相关文档任务中补充具体示例，并计划结合 FLIP-487 的子任务共同发布该功能。</p>
         </article>
 
         <article class="discussion-item">
             <h3><a href="https://lists.apache.org/thread/h0br68xnskmrrsyzh4p75dr0m6yhgomr">Request for review Lineage support for DataStream providers [FLINK-39219]</a></h3>
             <p class="meta">1 条回复 · 2 位参与者</p>
-            <p class="summary">Jaskaran Singh Kukreja 请求社区审查 PR #27727，旨在解决 FLINK-39219 中基于 DataStream 的 providers（如 Apache Paimon）无法为 FLIP-314 提取 LineageVertex 的问题。该问题是 Yelp 集成工作的阻碍点，修复范围仅涉及 table planner 的少量代码。Peter Huang 认可了该变更的合理性，并在 PR 上提出了少量评论。</p>
-            <div class="key-points"><p><strong>@Jaskaran Singh Kukreja:</strong> 当前 DataStream-based providers 无法提取 LineageVertex，阻碍了 Paimon 的 Lineage 集成，已提交修复 PR。</p>
-<p><strong>@Peter Huang:</strong> 认可该改进的合理性，已在 PR 上添加了次要评论。</p></div>
-            <p class="conclusion">PR 已获得初步认可，下一步需根据 PR 上的评论进行调整以推进合入。</p>
+            <p class="summary">Jaskaran 请求社区审查一个支持 DataStream providers（如 Apache Paimon）提取 LineageVertex 的 PR，以解决 FLIP-314 集成中的阻碍问题。Peter Huang 认为该改动合理，已在 PR 上留下了次要评论，目前进展顺利。</p>
+            <div class="key-points"><p><strong>@Jaskaran Singh Kukreja:</strong> 指出当前 DataStream providers 无法提取 LineageVertex 是集成 Paimon 的阻碍，并提交了针对 table planner 的小范围修复 PR。</p>
+<p><strong>@Peter Huang:</strong> 认可该改动是合理的改进，并在 PR 中添加了次要评论。</p></div>
+            <p class="conclusion">PR 已获得初步认可，作者需根据 PR 上的评论进行调整后继续推进。</p>
         </article>
 
         <article class="discussion-item">
             <h3><a href="https://lists.apache.org/thread/79fgvnsb9qmyrt0gbkh90qgl89oj6rf3">FLIP-504: Blue/Green Deployments for Flink on Kubernetes - Phase 2 (WIP/Draft PR)</a></h3>
             <p class="meta">0 条回复 · 1 位参与者</p>
-            <p class="summary">讨论主要围绕 FLIP-504 第二阶段（高级蓝绿部署）的设计方案展开，特别是 Gate Operator 的实现细节。Ryan 对 Gate Operator 要求修改用户管道的设计提出了异议，建议改用 Mixin 模式以兼容 FlinkSQL，并强调了跨集群迁移支持和 Watermark 校验的重要性。</p>
-            <div class="key-points"><p><strong>@Ryan van Huuksloot:</strong> 反对修改用户管道来使用 Gate Operator，建议将其设计为连接器实现的 Mixin，以更好地兼容 FlinkSQL。</p>
-<p><strong>@Ryan van Huuksloot:</strong> ConfigMap 解决方案应支持 Flink 作业在不同 Kubernetes 集群间的迁移，而非仅限于集群内操作。</p>
-<p><strong>@Ryan van Huuksloot:</strong> Watermark 是必要条件，询问 Flink K8s Operator 是否会验证管道是否使用了 Watermark。</p></div>
-            <p class="conclusion">Gate Operator 的设计是当前 FLIP 的关键点，需优先解决其实现方式的争议（GateFunction vs Mixin）后再推进后续讨论。</p>
+            <p class="summary">讨论主要针对 FLIP-504 第二阶段（Kubernetes 上的 Flink 蓝绿部署）的设计细节。Ryan van Huuksloot 对提案提出了关键反馈，特别是反对修改用户管道来实现 Gate Operator，建议改为连接器的 Mixin 模式，并强调了跨集群迁移支持和 Watermark 验证的重要性。</p>
+            <div class="key-points"><p><strong>@Ryan van Huuksloot:</strong> 反对通过修改用户管道来使用 Gate Operator，建议将其设计为连接器实现的 Mixin，以更好地兼容 FlinkSQL。</p>
+<p><strong>@Ryan van Huuksloot:</strong> ConfigMap 方案应支持 Flink 作业在不同 Kubernetes 集群间的迁移，不能仅局限于集群内操作。</p>
+<p><strong>@Ryan van Huuksloot:</strong> 询问 Flink Kubernetes Operator 是否会验证管道使用了 Watermark，并确认空闲配置下的记录丢失问题与 Phase 2 无关。</p></div>
+            <p class="conclusion">Gate Operator 的设计是当前 FLIP 的关键点，需要优先讨论并确定其实现方案后再推进后续工作。</p>
         </article>
 
         <article class="discussion-item">
             <h3><a href="https://lists.apache.org/thread/4pk4v0wx901t4blsncx4j1jm8csc59z2">Include observedGeneration for Suspended Flink Deployments</a></h3>
             <p class="meta">0 条回复 · 1 位参与者</p>
-            <p class="summary">Yanis Djeridi 发起关于 FLINK-39243 的讨论，指出 Flink Kubernetes Operator 在处理暂停状态部署时未正确更新 observedGeneration，违反了 Kubernetes API 约定并影响部署工具集成。他建议针对 FlinkDeployment 和 FlinkBlueGreenDeployment 分别修改状态更新逻辑，确保在暂停状态下也能正确记录 observedGeneration。</p>
-            <div class="key-points"><p><strong>@Yanis Djeridi:</strong> 当前 FlinkDeployment 在创建即为暂停状态时提前返回，导致 observedGeneration 等状态字段未设置，违反 Kubernetes API 约定。</p>
-<p><strong>@Yanis Djeridi:</strong> FlinkBlueGreenDeployment 的状态 schema 中完全缺失 observedGeneration 字段，导致部署工具无法判断控制器是否已处理 spec 变更。</p>
-<p><strong>@Yanis Djeridi:</strong> 建议修改代码逻辑，在暂停状态下也设置 observedGeneration 和相关状态，以符合 Kubernetes 规范。</p></div>
-            <p class="conclusion">目前处于征集反馈阶段，尚未达成最终结论。</p>
+            <p class="summary">Yanis Djeridi 发起讨论，指出 Flink Kubernetes Operator 在处理挂起部署时未正确设置 observedGeneration，违反了 Kubernetes API 约定。他提议修改 FlinkDeployment 和 FlinkBlueGreenDeployment 的逻辑，确保在挂起状态下也能正确标记已处理的 spec 变更。</p>
+            <div class="key-points"><p><strong>@Yanis Djeridi:</strong> 当前 FlinkDeployment 在创建即为挂起状态时，Operator 过早返回导致 observedGeneration 等状态字段未设置。</p>
+<p><strong>@Yanis Djeridi:</strong> FlinkBlueGreenDeployment 的状态模式中完全缺失 observedGeneration 字段，导致部署工具无法判断处理状态。</p>
+<p><strong>@Yanis Djeridi:</strong> 建议在挂起状态下设置 observedGeneration 和相关状态，无需部署实际资源即可符合 K8s 规范并兼容部署工具。</p></div>
+            <p class="conclusion">目前处于征集社区对提议方案的反馈阶段。</p>
         </article>
 
         <article class="discussion-item">
             <h3><a href="https://lists.apache.org/thread/lm73zy9dcosf4qv9s8kbk0gkv27hj2yw">[SUMMARY] Flink 2.3 release sync -- 3 weeks to feature freeze</a></h3>
             <p class="meta">0 条回复 · 1 位参与者</p>
-            <p class="summary">本次讨论同步了 Flink 2.3 的发布进度，指出距离功能冻结仅剩三周，部分 FLIP 面临无法按时完成的风险。此外，Azure CI 构建频繁失败，邮件呼吁被指派人员尽快修复相关不稳定测试。</p>
-            <div class="key-points"><p><strong>@David Anderson:</strong> 功能冻结将在 3 周后（3 月底）进行，有几个 FLIP 处于无法完成的危险中。</p>
-<p><strong>@David Anderson:</strong> Azure CI 构建经常失败，需要关注不稳定测试的修复。</p>
-<p><strong>@David Anderson:</strong> 列出了具体的 Jira 工单（如 FLINK-39145 等），要求被指派者跟进处理。</p></div>
-            <p class="conclusion">下一步行动是要求相关开发人员跟进并修复邮件中列出的不稳定测试工单，以解决 CI 构建失败问题。</p>
+            <p class="summary">Flink 2.3 版本同步会议指出，距离功能冻结仅剩 3 周，部分 FLIP 面临无法按时完成的风险。此外，Azure CI 构建频繁失败，需要相关人员尽快修复不稳定测试以确保发布进度。</p>
+            <div class="key-points"><p><strong>@David Anderson:</strong> 功能冻结将在 3 周后（3 月底）进行，部分 FLIP 可能无法按时完成。</p>
+<p><strong>@David Anderson:</strong> Azure CI 构建频繁失败，影响项目稳定性。</p>
+<p><strong>@David Anderson:</strong> 呼吁被指派修复不稳定测试的开发者跟进处理相关工单。</p></div>
+            <p class="conclusion">被指派修复不稳定测试的开发者需尽快跟进处理相关工单（如 FLINK-39145 等），以解决 CI 构建失败问题。</p>
         </article>
 
         <article class="discussion-item">
             <h3><a href="https://lists.apache.org/thread/vykrkc33xgfmp14hcn0wo9swbo86q3pb">FLIP-557: Granular Control over Data Reprocessing and State Retention in Materialized Table Evolution</a></h3>
             <p class="meta">0 条回复 · 1 位参与者</p>
-            <p class="summary">讨论主要围绕 FLIP-557 提案，旨在为物化表演变提供数据重处理和状态保留的细粒度控制。鉴于临近功能冻结期且状态保留功能较为复杂，Ramin 提议将原提案拆分，仅保留争议较小的 START_MODE 功能在当前 FLIP 中，将 STATE_RETENTION 移至独立 FLIP 讨论。</p>
-            <div class="key-points"><p><strong>@Ramin Gharib:</strong> 提议将 START_MODE 和 STATE_RETENTION 拆分为两个独立的 FLIP，以便前者能赶上即将到来的版本发布。</p>
-<p><strong>@Ramin Gharib:</strong> START_MODE 已基本达成共识，而 STATE_RETENTION 涉及更多复杂性和边缘情况，需要更深入的独立讨论。</p></div>
-            <p class="conclusion">若社区同意该拆分方案，作者将更新 FLIP-557 Wiki 以移除状态保留相关内容，并启动单独的文档来讨论 STATE_RETENTION。</p>
-        </article>
-
-        <article class="discussion-item">
-            <h3><a href="https://lists.apache.org/thread/98s8mkx8xz14xj39sxyjs9kgy3g0qlnv">Review request for FLINK-37288: Add Google Cloud Spanner dialect and catalog</a></h3>
-            <p class="meta">0 条回复 · 1 位参与者</p>
-            <p class="summary">Tomoyuki NAKAMURA 跟进了添加 Google Cloud Spanner 方言和 Catalog 支持的 PR，指出此前阻碍进展的 CI 稳定性和 JDBC Catalog 重构问题已解决。他已将代码变基至最新主分支并解决了兼容性问题，现请求社区审查该 PR，内容涵盖 Spanner 方言实现及数组类型写入支持等。</p>
-            <div class="key-points"><p><strong>@Tomoyuki NAKAMURA:</strong> 此前阻碍进展的 CI 稳定性和 JDBC Catalog 重构问题已解决并合并，相关 PR 已更新并准备好接受审查。</p>
-<p><strong>@Yuepeng Pan:</strong> 此前指出大型 PR（如新方言支持）需等待基础修复工作（如 CI 和 lineage 调整）完成后再推进。</p></div>
-            <p class="conclusion">PR 已解决之前的阻碍问题并完成变基，下一步等待社区成员对 PR #156 进行审查和反馈。</p>
+            <p class="summary">本次讨论主要针对 FLIP-557（物化表演进的数据重处理与状态保留控制）的推进策略。鉴于临近功能冻结期，Ramin Gharib 提议将原提案拆分，仅保留争议较小的 START_MODE 功能在当前 FLIP 中，而将复杂的 STATE_RETENTION 移至独立的 FLIP 进行后续讨论。此举旨在确保核心功能能按时合入即将发布的版本。</p>
+            <div class="key-points"><p><strong>@Ramin Gharib:</strong> 建议将 START_MODE 和 STATE_RETENTION 拆分为两个独立的 FLIP。</p>
+<p><strong>@Ramin Gharib:</strong> START_MODE 已基本达成一致，而 STATE_RETENTION 涉及更多复杂性和边缘情况。</p>
+<p><strong>@Ramin Gharib:</strong> 拆分提案可避免 START_MODE 因 STATE_RETENTION 的讨论延误而错过发布冻结期。</p></div>
+            <p class="conclusion">提议拆分 FLIP，若达成共识，下一步将更新 Wiki 以反映重新划定范围的 FLIP-557，并为状态保留功能启动单独的文档。</p>
         </article>
         </section>
 
@@ -130,7 +133,7 @@
             
     <p>本周新建 <strong>29</strong> 个 Issue</p>
     <div class="jira-summary">
-        <p>本周 JIRA 主要集中在连接器生态的完善与 CDC 功能增强，涉及 PostgreSQL、Kafka、Iceberg 等组件的类型支持、血缘提取及稳定性修复。SQL 与 Table API 方面重点推进了级联增量连接的支持、新增 IMMUTABLE 列约束，并修复了多个数据类型处理与查询执行相关的缺陷。此外，还包含了部分运行时错误修复、测试框架向 JUnit5 的迁移以及文档链接的优化工作。</p>
+        <p>本周 JIRA 主要集中在连接器生态建设与 CDC 功能增强，涉及 Kafka、StarRocks、PostgreSQL 及 Iceberg 等连接器的修复与新特性支持，以及 CDC Pipeline 的转换规则优化。其次，SQL 引擎与运行时层面也有较多更新，包括 Delta Join 级联支持、常量折叠优化、状态后端修复及 SQL 函数精度扩展。此外，还涵盖了 AI 推理集成改进、JUnit5 迁移及文档链接修复等基础设施工作。</p>
     </div>
         </section>
 
