@@ -102,10 +102,10 @@ def generate_html_report(raw_data: dict, summary: dict, output_path: str):
 <body>
     <div class="container">
         <header>
-            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
             <h1>🌊 {REPO_NAME} 每日动态</h1>
             <p class="date">📅 {date}</p>
             <p class="repo">🔗 <a href="https://github.com/{REPO}">{REPO}</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
         </header>
         
         <section class="stats">
