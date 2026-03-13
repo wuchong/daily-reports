@@ -11,6 +11,7 @@
         <header>
             <h1>Kafka 社区周报 | 2026-W10</h1>
             <p class="date-range">2026-03-02 ~ 2026-03-08</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
         </header>
 
         <section class="announcements">
@@ -19,10 +20,8 @@
         </section>
 
         <section class="votes">
-            <h2>🗳️ 投票 (8)</h2>
-            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/f9cqd9c8nbhom4zt7qx6tjwfx22r3xgj">KIP-1266: Bounding The Number Of RemoteLogMetadata Messages via Compacted Topic</a> <span class="status in-progress">🗳️ 进行中</span></li>
-<li><a href="https://lists.apache.org/thread/vd0ssm146gy5lrforlnbv9wp1tcrot4f">KIP-1191: Dead-letter queues for share groups</a> <span class="status in-progress">🗳️ 进行中</span></li>
-<li><a href="https://lists.apache.org/thread/rpwf70f3vhml2h1zzyf7nbvrjwnynk38">KIP-1242: Detection and handling of misrouted connections</a> <span class="status in-progress">🗳️ 进行中</span></li>
+            <h2>🗳️ 投票 (6)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/rpwf70f3vhml2h1zzyf7nbvrjwnynk38">KIP-1242: Detection and handling of misrouted connections</a> <span class="status in-progress">🗳️ 进行中</span></li>
 <li><a href="https://lists.apache.org/thread/l3h2bs4opz6gxr53sz0kxh7nndr18kzl">KIP-1284 Introduce CloseOptions.DEFAULT for Kafka Streams</a> <span class="status in-progress">🗳️ 进行中</span></li>
 <li><a href="https://lists.apache.org/thread/t4o7dnyl4lt3r17mmqdzmvzk8dd4nbt9">KIP-1220: kafka-broker-api-versions tool support bootstrap controllers</a> <span class="status in-progress">🗳️ 进行中</span></li>
 <li><a href="https://lists.apache.org/thread/2whj3nv33kdll4sz9czh69dc7nxq4q9m">KIP-1141: Simplifying MetadataQuorumCommand by Leveraging Admin API for Controller Management</a> <span class="status in-progress">🗳️ 进行中</span></li>
@@ -34,108 +33,110 @@
             <h2>💬 讨论 (10)</h2>
             
         <article class="discussion-item">
-            <h3><a href="https://lists.apache.org/thread/rvc981638xgq8ggdj82cl2kwbn4gmlgc">KIP-1282: Prevent data loss during partition expansion for dynamically added partitions</a></h3>
-            <p class="meta">10 条回复 · 6 位参与者</p>
-            <p class="summary">KIP-1282 提议引入 `by_start_time` 策略以解决分区扩容时的数据丢失问题。讨论中揭示了依赖客户端本地时间戳在静态成员重启等边缘情况下的缺陷，并探讨了结合服务端时间戳或显式配置的改进方案。目前讨论倾向于将策略分离，以区分纯客户端模式和服务端支持模式。</p>
-            <div class="key-points"><p><strong>@David Jacot:</strong> 指出本地时间戳方案存在消费者启动时间早于分区创建时间的边缘情况，建议考虑服务端时间戳以保证“发生先于”关系的确定性。</p>
-<p><strong>@Ryan Leslie:</strong> 指出静态成员重启会重置本地时间戳导致数据丢失风险，认为显式时间戳配置增加了用户负担，当前方案仅为权宜之计。</p>
-<p><strong>@黃竣陽:</strong> 提议将策略分离为基于本地启动时间的 `by_start_time` 和基于服务端时间戳的组级策略，后者在不可用时应显式失败而非静默回退。</p></div>
-            <p class="conclusion">初步结论是倾向于采用分离策略：保留纯客户端的 `by_start_time` 用于动态消费者，同时探索基于服务端时间戳的组级策略；下一步需评估是否修改协议以支持服务端时间戳，并明确服务端不支持时的失败行为。</p>
+            <h3><a href="https://lists.apache.org/thread/y6zm918vomhyv4q170wz3r3pcrll4bvh">KIP-1279: Cluster Mirroring</a></h3>
+            <p class="meta">7 条回复 · 4 位参与者</p>
+            <p class="summary">讨论围绕 KIP-1279 集群镜像功能展开，重点涉及 Unclean Leader Election 的处理算法、命令行工具优化及 API 细节完善。社区成员对授权模型、错误处理、版本兼容性及迁移路径提出了详细反馈，作者针对 Unclean Leader Election 提出的 Epoch 解决方案获得了初步认可。</p>
+            <div class="key-points"><p><strong>@Andrew Schofield:</strong> 建议增加 --all-topics 选项以简化故障转移操作，并要求完善 RPC 授权文档、新增错误代码及明确 Admin API 的授权资源定义。</p>
+<p><strong>@Luke Chen:</strong> 提出通过记录 'last mirrored leader epoch' 来解决 Unclean Leader Election 导致的数据一致性问题，并已撰写相关子文档说明算法细节。</p>
+<p><strong>@Rajini Sivaram:</strong> 质疑当前的 ACL 授权设计，建议新增 ClusterMirror 资源类型替代 Cluster:ClusterAction，并询问了版本降级、循环镜像及 Tiered Storage 的处理逻辑。</p></div>
+            <p class="conclusion">讨论仍在进行中，尚未投票。作者需进一步回应关于 Admin API 缺失方法、MM2 迁移路径、授权模型细节及版本降级影响等问题，并整合社区反馈完善提案。</p>
         </article>
 
         <article class="discussion-item">
-            <h3><a href="https://lists.apache.org/thread/y6zm918vomhyv4q170wz3r3pcrll4bvh">KIP-1279: Cluster Mirroring</a></h3>
+            <h3><a href="https://lists.apache.org/thread/v70yck63lpggdj9yvkwvmjqn63jnglyd">KIP-1282: Prevent data loss during partition expansion for dynamically added partitions</a></h3>
             <p class="meta">7 条回复 · 4 位参与者</p>
-            <p class="summary">社区针对 KIP-1279（集群镜像）提案展开了深入讨论，重点集中在故障转移机制、命令行工具增强、授权模型及协议细节上。Andrew 与 Luke 就非干净领导者选举的解决方案达成初步共识，而 Paolo 和 Rajini 等参与者则提出了关于 Admin API 完善、权限设计及 MM2 迁移路径的诸多疑问。</p>
-            <div class="key-points"><p><strong>@Andrew Schofield:</strong> 建议在 kafka-mirror.sh 工具中增加 --all-topics 选项以简化故障转移操作，并请求补充 RPC 组件图及详细的授权检查表。</p>
-<p><strong>@Luke Chen:</strong> 提出利用“最后镜像领导者 Epoch”语义来解决非干净领导者选举时的日志截断与数据归属判定问题。</p>
-<p><strong>@Rajini Sivaram:</strong> 质疑当前的权限设计，建议新增 ClusterMirror 资源类型；指出 Producer ID 转换带来的 CRC 计算成本及循环镜像场景需进一步考量。</p></div>
-            <p class="conclusion">Andrew 已确认 Luke 提出的非干净领导者选举方案可行；后续提案作者需针对 Admin API 缺失方法、授权模型优化、错误代码定义及 MM2 迁移路径进行补充和完善。</p>
+            <p class="summary">讨论主要围绕 KIP-1282 展开，旨在通过引入基于时间戳的 auto.offset.reset 策略来防止分区扩容时的数据丢失。参与者深入分析了客户端与服务端时间戳的优劣，特别是针对静态成员重启的边缘情况进行了探讨，最终倾向于将方案拆分为客户端本地时间策略和服务端组时间策略。</p>
+            <div class="key-points"><p><strong>@Chia-Ping Tsai:</strong> 指出服务端时间戳存在跨节点时钟同步难题，建议为静态成员增加显式时间戳配置，并提出了结合服务端时间戳与本地时间戳的混合方案。</p>
+<p><strong>@Ryan Leslie:</strong> 强调静态成员重启会导致本地时间戳重置从而引发数据丢失，认为显式配置时间戳虽有用户负担但可接受，总体支持该 KIP 方向。</p>
+<p><strong>@黃竣陽:</strong> 解释了时间戳方案在日志截断场景下的优势，并建议将策略分离：一种使用客户端本地启动时间，另一种依赖服务端时间戳且不可用时报错，以保证行为确定性。</p></div>
+            <p class="conclusion">初步结论是倾向于将策略分离，即保留 by_start_time（客户端时间）用于动态消费者，同时探索基于服务端时间戳的组级策略（需修改 RPC 协议），若服务端时间不可用则显式失败而非隐式回退。</p>
         </article>
 
         <article class="discussion-item">
             <h3><a href="https://lists.apache.org/thread/zo1rg8ck580xhr5rk7m0w1rp6q6fbxfs">[PR] Improve wording of KAFKA-20254 migration warning [kafka-site]</a></h3>
             <p class="meta">5 条回复 · 1 位参与者</p>
-            <p class="summary">本次讨论主要针对 KAFKA-20254 迁移警告的措辞进行修正，以消除歧义并明确适用范围。lucasbru 连续提交了多个 PR，旨在将建议从“升级到更高版本”改为“修复将针对未来版本”，并澄清该警告仅适用于将经典组迁移至新协议的场景。最终，相关修改已通过 PR #827 合并。</p>
-            <div class="key-points"><p><strong>@lucasbru:</strong> 原警告建议“升级到更高版本”具有误导性，暗示修复版本已存在，需要修正。</p>
-<p><strong>@lucasbru:</strong> 警告内容需明确指出修复将在未来版本中提供，并限定问题仅发生在经典组迁移至新协议时。</p></div>
-            <p class="conclusion">经过多次迭代（PR #825 关闭，#826 合并，#827 合并），最终确定的措辞修改已成功合并到仓库中。</p>
+            <p class="summary">讨论主要围绕修正 KAFKA-20254 迁移警告的措辞展开。lucasbru 通过提交多个 PR（#825, #826, #827），修正了原文暗示修复版本已存在的误导性表述，明确指出修复将针对未来版本，并澄清该警告仅适用于将经典组迁移至新协议的场景。</p>
+            <div class="key-points"><p><strong>@lucasbru:</strong> 原警告建议“升级到后续版本”具有误导性，因为修复版本尚未发布。</p>
+<p><strong>@lucasbru:</strong> 措辞应更新为“修复将针对未来版本”，避免让用户误以为当前已有修复版本。</p>
+<p><strong>@lucasbru:</strong> 需明确警告适用范围是“将经典组迁移到新协议”。</p></div>
+            <p class="conclusion">PR #826 和 #827 已成功合并，文档措辞已按要求修正完毕。</p>
         </article>
 
         <article class="discussion-item">
             <h3><a href="https://lists.apache.org/thread/j9675hzqt9nllzx69m1d73bdgxk4oqh2">KIP-1242: Detection and handling of misrouted connections</a></h3>
-            <p class="meta">2 条回复 · 3 位参与者</p>
-            <p class="summary">讨论主要围绕 KIP-1242（错误路由连接的检测与处理）展开，旨在解决客户端连接到错误集群的问题。作者 Andrew Schofield 根据反馈调整了错误码为 REBOOTSTRAP_REQUIRED，并针对配置兼容性和旧版 Broker 支持问题更新了提案。</p>
-            <div class="key-points"><p><strong>@Gaurav Narula:</strong> 分享了过往因缓存节点信息导致连接错误路由到其他集群的经历，认为该 KIP 能填补现有错误处理的空白。</p>
-<p><strong>@Luke Chen:</strong> 询问当 metadata.recovery.strategy=NONE 时如何处理检查开启的情况，以及 Broker 不支持 ApiVersions v5 时的行为。</p>
-<p><strong>@Andrew Schofield:</strong> 建议若恢复策略为 NONE 则禁用检查以避免配置冲突，并提议通过文档说明而非日志记录来处理旧版 Broker 的兼容性。</p></div>
-            <p class="conclusion">作者已根据讨论更新了 KIP 内容以解决配置冲突和兼容性说明问题，下一步将等待社区确认更新后的提案。</p>
+            <p class="meta">3 条回复 · 3 位参与者</p>
+            <p class="summary">讨论主要围绕 KIP-1242（错误路由连接的检测与处理）展开，旨在解决客户端因缓存过期连接到错误集群的问题。Andrew Schofield 根据反馈调整了错误码和配置逻辑，Luke Chen 提出的配置兼容性问题得到解决，最终方案获得通过。</p>
+            <div class="key-points"><p><strong>@Gaurav Narula:</strong> 支持该 KIP，指出其填补了当缓存节点指向错误集群且未触发认证异常时的处理空白。</p>
+<p><strong>@Andrew Schofield:</strong> 将错误码改为 REBOOTSTRAP_REQUIRED 以支持集群恢复切换；建议若 recovery.strategy 设为 NONE 则禁用检查以避免升级冲突；对不支持 ApiVersions v5 的 Broker 仅做文档说明而不记录日志。</p>
+<p><strong>@Luke Chen:</strong> 关注配置冲突（recovery.strategy=NONE 与 cluster.check.enable=true）及旧版 Broker 兼容性问题，最终认可 Andrew 的解决方案。</p></div>
+            <p class="conclusion">针对配置兼容性和旧版 Broker 支持的讨论已达成一致，Andrew 已更新 KIP 文档，Luke 确认方案可行（LGTM）。</p>
         </article>
 
         <article class="discussion-item">
             <h3><a href="https://lists.apache.org/thread/bqwpx8h3sfvmrk5g8zlvh8tbpl49vwgm">KIP-1291: Extended I/O Metrics Collection</a></h3>
-            <p class="meta">2 条回复 · 2 位参与者</p>
-            <p class="summary">讨论主要围绕 KIP-1291 展开，该提案旨在从 /proc/self/io 暴露额外的 5 个 Linux I/O 指标以增强 Kafka 的可观测性。讨论重点涉及指标类型的选择以及进程级聚合数据的语义澄清，提案者已针对审阅者的疑虑进行了详细解答。</p>
-            <div class="key-points"><p><strong>@Manan Gupta:</strong> 建议将单调递增的指标类型改为 Counter 以便计算速率，并指出需明确区分进程级聚合 I/O 与单盘 I/O 以防误读。</p>
-<p><strong>@Sahil Devgon:</strong> 坚持使用 Gauge 类型，理由是 Yammer Metrics 的技术限制以及需与现有指标保持一致性；已在文档中明确说明指标反映的是聚合代理进程 I/O 而非单盘活动。</p></div>
-            <p class="conclusion">提案者已回应主要技术关切并完善了文档说明，若无进一步异议，计划在近期启动投票流程。</p>
+            <p class="meta">3 条回复 · 2 位参与者</p>
+            <p class="summary">KIP-1291 提议将 Kafka 暴露的 Linux I/O 指标从现有的 2 个扩展至 7 个，以增强 I/O 可观测性并诊断性能问题。讨论主要围绕指标类型的选择以及进程级与磁盘级指标的区分展开，最终双方达成共识。</p>
+            <div class="key-points"><p><strong>@Manan Gupta:</strong> 质疑将单调递增的指标定义为 Gauge 而非 Counter 的合理性，并担心在多磁盘部署中，进程级指标可能被误读为磁盘级信号。</p>
+<p><strong>@Sahil Devgon:</strong> 解释选择 Gauge 是为了符合 Yammer Metrics 的轮询机制及与现有指标保持一致，并已更新文档明确指标反映的是聚合的 Broker 进程 I/O 而非单盘活动。</p></div>
+            <p class="conclusion">Manan Gupta 同意了 Sahil 的解释，认为提案可行；Sahil 将推进启动该 KIP 的投票流程。</p>
         </article>
 
         <article class="discussion-item">
             <h3><a href="https://lists.apache.org/thread/g6xq2mtnos77l41rxb5rspghmqwtg33t">KAFKA-20199: Metric tag for controller-only nodes in NodeToControllerChannelManagerImpl</a></h3>
             <p class="meta">2 条回复 · 2 位参与者</p>
-            <p class="summary">讨论主要针对 KAFKA-20199，指出在 KRaft 模式下，Controller-only 节点使用 'BrokerId' 作为指标标签具有误导性。提议根据节点角色调整标签，Controller-only 节点改用 'NodeId'，而 Broker 节点保持不变，并确认该变更需通过 KIP 流程。</p>
-            <div class="key-points"><p><strong>@nileshkumar3:</strong> 提议将 Controller-only 节点的指标标签从 'BrokerId' 改为 'NodeId'，以消除误导性并询问是否需要 KIP。</p>
-<p><strong>@Chia-Ping Tsai:</strong> 建议参考 KIP 流程指南，并提醒注意 JIRA 票据的分配情况。</p>
-<p><strong>@nileshkumar3:</strong> 确认理解需要 KIP 流程，并表示愿意起草 KIP 以推进讨论。</p></div>
-            <p class="conclusion">初步结论是变更涉及公共指标，必须遵循 KIP 流程；下一步行动由 nileshkumar3 起草 KIP 文档。</p>
+            <p class="summary">讨论围绕 KAFKA-20199 展开，指出 NodeToControllerChannelManagerImpl 在 controller-only 节点上使用 "BrokerId" 作为指标标签具有误导性。提议对此类节点改用 "NodeId" 标签，同时保持 broker 节点不变。鉴于涉及公共指标变更，社区建议需遵循 KIP 流程。</p>
+            <div class="key-points"><p><strong>@nileshkumar3:</strong> 指出 controller-only 节点使用 "BrokerId" 标签存在误导，提议改用 "NodeId" 并询问是否需要 KIP。</p>
+<p><strong>@Chia-Ping Tsai:</strong> 提醒应查阅 KIP 页面，并指出此类公共指标变更应遵循 KIP 流程。</p></div>
+            <p class="conclusion">初步确认需要通过 KIP 流程来处理公共指标变更，下一步将由 Nilesh 起草 KIP 并发起讨论。</p>
         </article>
 
         <article class="discussion-item">
-            <h3><a href="https://lists.apache.org/thread/ky3sv5jzsygxbfmmypxc7dy1sspbll2s">[PR] MINOR: fix: the broken link of version 0.8.0 [kafka-site]</a></h3>
-            <p class="meta">1 条回复 · 2 位参与者</p>
-            <p class="summary">cychiu8 提交了一个 PR 旨在修复 Kafka 网站发布页面中 0.8.0 版本的失效链接。该修复请求随后被维护者 chia7712 合并，问题得到解决。</p>
-            <div class="key-points"><p><strong>@cychiu8:</strong> 指出发布页面中 0.8.0 版本的链接已损坏，并提交了修复。</p>
-<p><strong>@chia7712:</strong> 审核并合并了该 PR。</p></div>
-            <p class="conclusion">PR #822 已成功合并，链接问题已修复。</p>
+            <h3><a href="https://lists.apache.org/thread/flpm1qrm7cwj6fqr1j8c0p8sbqysgv34">READ_WRITE_TOTAL_TIMEOUT_MS in kafka-connect's KafkaConfigBackingStore is low</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">讨论主要针对 Kafka Connect 中 `READ_WRITE_TOTAL_TIMEOUT_MS` 硬编码超时时间（30秒）在大规模任务场景下不足的问题。Henry 提议增加该值或将其可配置化，Chris Egerton 同意通过补丁增加硬编码值，但提醒需避免数值过高导致 Worker 脱离集群，且配置化需经过 KIP 流程。</p>
+            <div class="key-points"><p><strong>@Henry Haiying Cai:</strong> 现有 30 秒超时对于 500+ 任务的环境太短，建议增加该值或使其可配置。</p>
+<p><strong>@Chris Egerton:</strong> 同意增加硬编码值，但配置化需 KIP；建议暂时通过调整生产者配置（如 linger.ms, batch.size）来提高吞吐量。</p>
+<p><strong>@Henry Haiying Cai:</strong> 询问补丁可接受的具体超时数值（60s-300s），并将尝试生产者调优。</p></div>
+            <p class="conclusion">初步同意通过补丁增加硬编码超时时间，下一步需确定具体数值，同时建议用户尝试调整生产者参数作为临时方案。</p>
         </article>
 
         <article class="discussion-item">
             <h3><a href="https://lists.apache.org/thread/zyvtssnzvnkgfvwxmmlm3rnv31nyrl6k">KIP-1249: Better offset reset for the new consumer group rebalance protocol</a></h3>
             <p class="meta">1 条回复 · 2 位参与者</p>
-            <p class="summary">讨论围绕 KIP-1249 展开，旨在改进新消费者组重平衡协议的位移重置功能。社区成员针对共享组支持、心跳 API 利用及 Admin Client 操作流程提出了疑问，作者就重点聚焦新协议及后续规划进行了回复。</p>
-            <div class="key-points"><p><strong>@Sushant Mahajan:</strong> 询问为何不支持共享组，并建议利用心跳 API 通知消费者暂停分区以防止无效 fetch 调用。</p>
-<p><strong>@Sean Quah:</strong> 询问 Admin Client 在重置活跃组位移时的具体等待和重试机制。</p>
-<p><strong>@Levani Kokhreidze:</strong> 回应称共享组支持可作为后续 KIP，新协议将利用心跳 API 更新分配，建议优先关注新协议而非即将弃用的经典组。</p></div>
-            <p class="conclusion">初步确定共享组支持将作为后续 KIP 讨论，重点聚焦于新消费者组协议；关于 Admin Client 具体操作流程的问题尚待进一步解答。</p>
+            <p class="summary">讨论围绕 KIP-1249 展开，旨在改进新消费者组重平衡协议的位移重置功能。参与者提出了关于共享组支持、心跳 API 利用及 Admin Client 处理活跃组方式的问题。作者回应称当前重点在新协议，共享组支持可后续跟进，并确认了心跳 API 在新协议中的作用。</p>
+            <div class="key-points"><p><strong>@Sushant Mahajan:</strong> 询问为何不支持共享组，并建议利用心跳 API 通知消费者暂停的分区以减少 fetch 调用。</p>
+<p><strong>@Sean Quah:</strong> 询问 Admin Client 在重置活跃组位移时的具体流程，例如是否需要轮询 DescribeGroup 或重试 OffsetCommits。</p>
+<p><strong>@Levani Kokhreidze:</strong> 回应称共享组支持可作为后续 KIP，新协议将利用心跳 API 更新分配，重点在于新协议而非即将弃用的经典组。</p></div>
+            <p class="conclusion">初步明确了该 KIP 优先支持新消费者组协议，共享组支持留待后续讨论；关于 Admin Client 处理活跃组的具体细节仍需进一步明确。</p>
         </article>
 
         <article class="discussion-item">
             <h3><a href="https://lists.apache.org/thread/swm30343s5mt9458yfhhtnsv3cojpyk5">KIP-1269: Configurable number of batches to retain in broker</a></h3>
             <p class="meta">1 条回复 · 2 位参与者</p>
-            <p class="summary">讨论主要围绕 KIP-1269 中配置保留批次数的层级展开，核心争议在于应采用 Broker 级还是分区级配置。PoAn Yang 认为分区级配置无法覆盖连接级背压需求且增加复杂性，主张 Broker 级配置；Andrew Schofield 则认为分区级控制更符合现有逻辑且能避免针对最坏情况配置，建议结合两者优势。目前双方尚未达成一致，Andrew 认为当前提案仅解决了一半问题。</p>
-            <div class="key-points"><p><strong>@PoAn Yang:</strong> 分区级配置无法替代连接级限制，因为它们分别处理分区流控和连接背压，且双层限制会增加用户和实现层面的复杂性。</p>
-<p><strong>@PoAn Yang:</strong> Broker 级配置在低延迟环境下也能显著降低延迟，具有普适性优势。</p>
-<p><strong>@Andrew Schofield:</strong> 现有的 `NUM_BATCHES_TO_RETAIN` 已是分区级概念，混合连接级与分区级逻辑显得怪异，建议结合分区级限制与连接级限制以实现最佳效果。</p></div>
-            <p class="conclusion">尚未达成明确结论，Andrew 指出当前方案只解决了一半问题，后续可能需要进一步探讨如何整合分区级与连接级的流控机制。</p>
+            <p class="summary">讨论主要围绕 KIP-1269 中应采用 Broker 级配置还是分区级限制来控制保留批次数。PoAn Yang 认为分区级配置无法替代连接级限制且会增加复杂性，而 Andrew Schofield 建议通过客户端分区级限制来结合两者的优势。目前双方仍在探讨最佳实现方式。</p>
+            <div class="key-points"><p><strong>@PoAn Yang:</strong> 分区级配置无法覆盖连接级背压控制的场景，且两级限制会增加复杂性。</p>
+<p><strong>@PoAn Yang:</strong> Broker 级配置在低延迟环境下也能显著改善因严格排序导致的延迟问题。</p>
+<p><strong>@Andrew Schofield:</strong> 建议让 Producer 限制分区级的请求数，以同时实现高吞吐和有序性，认为当前方案只解决了一半问题。</p></div>
+            <p class="conclusion">尚未达成明确共识，Andrew 提出了客户端侧分区级限制的替代思路，等待进一步讨论。</p>
         </article>
 
         <article class="discussion-item">
             <h3><a href="https://lists.apache.org/thread/6w0mbpoq0wroxv287mg88crs1jzpl00j">KIP-1191 — Feedback on implementation-level safety guards</a></h3>
             <p class="meta">1 条回复 · 2 位参与者</p>
-            <p class="summary">Vaquar Khan 指出 KIP-1191 在协调器故障转移、DLQ 写入超时及重试机制上存在运维风险，建议引入熔断器以防止系统性故障。Andrew Schofield 澄清了内存压力受控于 in-flight 限制，建议通过后续 KIP 解决原子性问题，并鼓励就熔断器提案发起独立 KIP。</p>
-            <div class="key-points"><p><strong>@vaquar khan:</strong> 指出非原子性操作会导致审计合规问题，DLQ 故障可能导致记录卡死或无限重试，建议增加熔断器以在高错误率时暂停消费组。</p>
-<p><strong>@Andrew Schofield:</strong> 反驳了内存无限增长的观点（受 in-flight 限制），认为当前原子性限制可接受，建议利用 KIP-1249 或新 KIP 实现熔断器功能。</p></div>
-            <p class="conclusion">建议将熔断器机制作为后续独立的 KIP 进行开发，当前 KIP-1191 将维持现有设计范围。</p>
+            <p class="summary">讨论主要围绕 KIP-1191 实施层面的安全防护机制，Vaquar Khan 指出了协调器故障转移导致的数据重复、DLQ 写入受阻引发的内存压力以及缺乏熔断机制等运维风险。Andrew Schofield 回应称内存压力问题已有控制机制，并建议原子性写入和熔断机制等改进可通过后续 KIP（如 KIP-1289 或新的微型 KIP）来实现。</p>
+            <div class="key-points"><p><strong>@vaquar khan:</strong> 指出 DLQ 写入与状态更新的非原子性会导致故障转移时产生重复数据，破坏审计追踪，建议增加去重机制。</p>
+<p><strong>@vaquar khan:</strong> 建议引入熔断机制，当下游服务故障导致大量消息进入 DLQ 时自动暂停组，以保护消息顺序和系统稳定性。</p>
+<p><strong>@Andrew Schofield:</strong> 澄清内存压力问题受限于“在途记录”数量，不会无限增长；建议熔断器等新功能通过提交新的微型 KIP 来实现。</p></div>
+            <p class="conclusion">Andrew 建议针对熔断器机制提交新的 KIP，原子性写入改进将依赖未来的 KIP-1289，当前 KIP-1191 将维持现有设计并记录局限性。</p>
         </article>
         </section>
 
         <section class="jira">
-            <h2>🎫 JIRA (57)</h2>
+            <h2>🎫 JIRA (63)</h2>
             
-    <p>本周新建 <strong>57</strong> 个 Issue</p>
+    <p>本周新建 <strong>63</strong> 个 Issue</p>
     <div class="jira-summary">
-        <p>本周 JIRA 主要集中在消费者组协调器的重构与优化，涉及分配纪元管理、重平衡逻辑改进以及共享组的配置增强。其次，Kafka Streams 在存储接口实现（如支持 Headers）和异常处理方面也有多项更新。此外，社区还处理了多个安全漏洞（CVE）修复、代码模块迁移及文档完善工作。</p>
+        <p>本周 JIRA 主要集中在组协调器和重平衡机制的优化，涉及分配纪元调整、经典成员迁移策略以及共享组的配置验证。其次，Kafka Streams 增加了对带 Headers 存储的支持，并修复了若干安全漏洞（CVE）和测试稳定性问题。此外，社区还推进了部分代码重构与模块迁移工作，并完善了 CLI 工具及升级相关的文档。</p>
     </div>
         </section>
 
