@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-03-12</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-03-12</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 4 新 Issues</div>
+            <div class="stat">✅ 3 关闭</div>
+            <div class="stat">✨ 6 新 PRs</div>
+            <div class="stat">🎉 5 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/2842">PR #2842</a> 优化 Iceberg 扫描性能，仅在存在过滤条件时启用列统计</li><li>🎉 <a href="https://github.com/apache/fluss/pull/2472">PR #2472</a> 实现 Helm Chart 组件配置隔离</li><li>🐛 <a href="https://github.com/apache/fluss/pull/2630">PR #2630</a> 修复 CI 中 AbfsFileSystemBehaviorITCase 端口占用问题</li><li>✨ <a href="https://github.com/apache/fluss/pull/2855">PR #2855</a> 支持 KV 表恢复时从远程存储下载 CDC 日志段</li><li>📚 <a href="https://github.com/apache/fluss/pull/2845">PR #2845</a> 更新 Java 客户端复杂类型文档</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <ul class="critical-list"><li>⚠️ <a href="https://github.com/apache/fluss/issues/2854">Issue #2854</a> 不稳定测试 FlussAuthorizationITCase.testDeleteProducerOffsetsAuthorization 需要关注</li></ul>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2842">Issue #2842</a> [lake/iceberg] only enable column stats when scan filter exists</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 解释必须保留 includeColumnStats() 的原因，移除会导致 lowerBounds() 返回 null 引发 NPE</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2845">Issue #2845</a> [docs] Update doc in api/java-client about complex type</h4>
+            <ul><li><span class="author">@nhuantho</span>: 说明遗漏了 Java 客户端文档更新，已创建另一个 PR 进行补充</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2827">Issue #2827</a> Issue #2827</h4>
+            <ul><li><span class="author">@LiebingYu</span>: 请求 @wuchong 进行最终审查</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/1677">Issue #1677</a> Issue #1677</h4>
+            <ul><li><span class="author">@swuferhong</span>: 提供新的 CI 实例链接，说明该问题可在本地环境稳定复现</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/1746">Issue #1746</a> Issue #1746</h4>
+            <ul><li><span class="author">@swuferhong</span>: 询问 @Samrat002 是否有时间根据 @wuchong 的建议进行修改</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2454">Issue #2454</a> Issue #2454</h4>
+            <ul><li><span class="author">@beryllw</span>: 在 Docker 环境中测试并验证了指标名称和标签值</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2846">Issue #2846</a> Issue #2846</h4>
+            <ul><li><span class="author">@affo</span>: 采用折中方案：Development 指向最新构建的文档网站，Contributing 添加指向仓库文档文件的段落</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2191">Issue #2191</a> [helm] Create region config for components in value file</h4>
+            <ul><li><span class="author">@hemanthsavasere</span>: 通知 @swuferhong 已完成更改，请求审查 PR</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2848">Issue #2848</a> Issue #2848</h4>
+            <ul><li><span class="author">@matrixsparse</span>: 感谢提出的解决方案，已订阅邮件列表并期待 FIP 推进</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2858">Issue #2858</a> update docs for data formats</h4>
+            <ul><li><span class="author">@polyzos</span>: 请求 @wuchong 审查此 PR</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2711">PR #2711</a> PR #2711</h4>
+            <ul><li><span class="author">@affo</span>: 建议只接受 port 参数，其他 Prometheus 选项留给 overrides 配置</li><li><span class="author">@morazow</span>: 认为这是个好的折中方案，可以在 SASL PR 中添加验证逻辑</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2506">PR #2506</a> PR #2506</h4>
+            <ul><li><span class="author">@affo</span>: 建议使用 default helper 简化 SASL 用户名密码配置，并清理相关检查逻辑</li><li><span class="author">@morazow</span>: 确认已完成修改</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2846">PR #2846</a> PR #2846</h4>
+            <ul><li><span class="author">@morazow</span>: 建议 README 使用官方文档链接而非相对路径</li><li><span class="author">@affo</span>: 解释 README 用于开发目的，应指向实际文件供开发者编辑</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2454">PR #2454</a> PR #2454</h4>
+            <ul><li><span class="author">@Copilot</span>: 指出注释与断言不一致，建议修正注释以反映正确行为</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/2856">#2856</a> [server] Admin.alterClusterConfigs() returns UnknownServerException instead of ConfigException on validation failure <span class="author">@LiebingYu</span> </li><li><a href="https://github.com/apache/fluss/issues/2854">#2854</a> [test] Unstable test FlussAuthorizationITCase.testDeleteProducerOffsetsAuthorization <span class="author">@app/github-actions</span> </li><li><a href="https://github.com/apache/fluss/issues/2853">#2853</a> [Feature] Support downloading CDC log segments from remote storage during KV table recovery <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/issues/2851">#2851</a> ListDatabaseSummary always return table count as 0 or 1 <span class="author">@loserwang1024</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/2859">#2859</a> [lake/tiering] fallback to Flink's `io.tmp.dir` when `client.scanner.io.tmpdir` is not set <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/pull/2858">#2858</a> update docs for data formats <span class="author">@polyzos</span> </li><li><a href="https://github.com/apache/fluss/pull/2857">#2857</a> [server] Register ConfigException in Errors to fix misleading UnknownServerException from alterClusterConfigs <span class="author">@LiebingYu</span> </li><li><a href="https://github.com/apache/fluss/pull/2855">#2855</a> [kv] Support downloading CDC log segments from remote storage during KV table recovery <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/pull/2852">#2852</a> [server] Fix get table count of database. <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/pull/2850">#2850</a> [docs] Update s3.region in quickstart docs of flink and lakehouse <span class="author">@nhuantho</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/2844">#2844</a> [docs] Update doc in api/java-client about complex type <span class="author">@nhuantho</span> </li><li><a href="https://github.com/apache/fluss/issues/2629">#2629</a> AbfsFileSystemBehaviorITCase fails with "Bind Address already in use" in CI <span class="author">@litiliu</span> </li><li><a href="https://github.com/apache/fluss/issues/2191">#2191</a> [helm] Create region config for components in value file <span class="author">@nhuantho</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/2845">#2845</a> [docs] Update doc in api/java-client about complex type <span class="author">@nhuantho</span> </li><li><a href="https://github.com/apache/fluss/pull/2842">#2842</a> [lake/iceberg] only enable column stats when scan filter exists <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/pull/2798">#2798</a> [typo] Fix typo in log loading period <span class="author">@zcoo</span> </li><li><a href="https://github.com/apache/fluss/pull/2630">#2630</a> [Fix][UT]Fix AbfsFileSystemBehaviorITCase fails with "Bind Address already in use" in CI  <span class="author">@litiliu</span> </li><li><a href="https://github.com/apache/fluss/pull/2472">#2472</a> [Helm] Chart Component Configuration Isolation <span class="author">@hemanthsavasere</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
