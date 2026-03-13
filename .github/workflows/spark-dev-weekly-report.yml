@@ -2,7 +2,7 @@ name: Spark Dev Weekly Report
 
 on:
   schedule:
-    - cron: '30 0 * * 1'  # UTC 00:30 Monday = Beijing 08:30 Monday
+    - cron: '0 23 * * 0'  # UTC 23:00 Sunday = Beijing 07:00 Monday
   workflow_dispatch:
     inputs:
       week:

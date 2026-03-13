@@ -2,7 +2,7 @@ name: Iceberg Dev Weekly Report
 
 on:
   schedule:
-    - cron: '30 0 * * 2'  # UTC 00:30 Tuesday = Beijing 08:30 Tuesday
+    - cron: '0 23 * * 1'  # UTC 23:00 Monday = Beijing 07:00 Tuesday
   workflow_dispatch:
     inputs:
       week:
