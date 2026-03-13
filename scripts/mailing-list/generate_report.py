@@ -168,8 +168,31 @@ def generate_html(summary: dict, project_name: str) -> str:
 </html>'''
 
 
+def generate_rss_feed(reports: list[str], project_name: str, project_id: str, base_url: str) -> str:
+    """Generate RSS feed XML."""
+    items = []
+    for week in reports[:20]:  # Latest 20 reports
+        items.append(f'''    <item>
+      <title>{project_name} 社区周报 - {week}</title>
+      <link>{base_url}/{project_id}/reports/{week}.html</link>
+      <guid>{base_url}/{project_id}/reports/{week}.html</guid>
+      <pubDate>{week}</pubDate>
+    </item>''')
+    
+    return f'''<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>{project_name} 社区周报</title>
+    <link>{base_url}/{project_id}/</link>
+    <description>Apache {project_name} dev 邮件列表周报归档</description>
+    <language>zh-CN</language>
+{chr(10).join(items)}
+  </channel>
+</rss>'''
+
+
 def update_index(week: str, project_id: str, project_name: str):
-    """Update index.html with report list."""
+    """Update index.html and RSS feed with report list."""
     reports_dir = Path(f"docs/{project_id}/reports")
     reports_dir.mkdir(parents=True, exist_ok=True)
     
@@ -197,12 +220,14 @@ def update_index(week: str, project_id: str, project_name: str):
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{project_name} 社区周报</title>
     <link rel="stylesheet" href="assets/style.css">
+    <link rel="alternate" type="application/rss+xml" title="{project_name} Weekly Reports RSS" href="feed.xml">
 </head>
 <body>
     <div class="container">
         <header>
             <h1>{project_name} 社区周报</h1>
             <p>Apache {project_name} dev 邮件列表周报归档</p>
+            <a class="rss-button" href="feed.xml" title="RSS 订阅">📡 RSS 订阅</a>
         </header>
         {sections if sections else '<p>暂无报告</p>'}
     </div>
@@ -213,6 +238,13 @@ def update_index(week: str, project_id: str, project_name: str):
     with open(index_path, "w", encoding="utf-8") as f:
         f.write(html)
     print(f"Index updated: {index_path}")
+    
+    # Generate RSS feed
+    rss = generate_rss_feed(reports, project_name, project_id, GITHUB_PAGES_URL)
+    rss_path = Path(f"docs/{project_id}/feed.xml")
+    with open(rss_path, "w", encoding="utf-8") as f:
+        f.write(rss)
+    print(f"RSS feed updated: {rss_path}")
 
 
 def main():

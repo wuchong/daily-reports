@@ -215,18 +215,41 @@ def generate_dingtalk_message(raw_data: dict, summary: dict, report_url: str) ->
     }
 
 
+def generate_rss_feed(reports: list[str], base_url: str) -> str:
+    """Generate RSS feed XML."""
+    items = []
+    for date_str in reports[:20]:  # Latest 20 reports
+        items.append(f'''    <item>
+      <title>Fluss 每日动态 - {date_str}</title>
+      <link>{base_url}/fluss-github/reports/{date_str}.html</link>
+      <guid>{base_url}/fluss-github/reports/{date_str}.html</guid>
+      <pubDate>{date_str}</pubDate>
+    </item>''')
+    
+    return f'''<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Fluss Daily Reports</title>
+    <link>{base_url}/fluss-github/</link>
+    <description>Apache Fluss 每日动态归档</description>
+    <language>zh-CN</language>
+{chr(10).join(items)}
+  </channel>
+</rss>'''
+
+
 def update_index_html():
-    """Update the archive index page."""
+    """Update the archive index page and RSS feed."""
     reports_dir = Path('docs/fluss-github/reports')
     reports_dir.mkdir(parents=True, exist_ok=True)
     
     # Get all report files
     report_files = sorted(reports_dir.glob('*.html'), reverse=True)
+    all_dates = [f.stem for f in report_files]
     
     # Group by month
     months = {}
-    for f in report_files:
-        date_str = f.stem  # YYYY-MM-DD
+    for date_str in all_dates:
         month = date_str[:7]  # YYYY-MM
         if month not in months:
             months[month] = []
@@ -249,12 +272,14 @@ def update_index_html():
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🌊 Fluss Daily Reports</title>
     <link rel="stylesheet" href="assets/style.css">
+    <link rel="alternate" type="application/rss+xml" title="Fluss Daily Reports RSS" href="feed.xml">
 </head>
 <body>
     <div class="container">
         <header>
             <h1>🌊 Fluss Daily Reports</h1>
             <p>apache/fluss 每日动态归档</p>
+            <a class="rss-button" href="feed.xml" title="RSS 订阅">📡 RSS 订阅</a>
         </header>
         {"".join(sections) if sections else '<p>暂无报告</p>'}
     </div>
@@ -264,6 +289,12 @@ def update_index_html():
     with open('docs/fluss-github/index.html', 'w', encoding='utf-8') as f:
         f.write(html)
     print("Index updated: docs/fluss-github/index.html")
+    
+    # Generate RSS feed
+    rss = generate_rss_feed(all_dates, GITHUB_PAGES_URL)
+    with open('docs/fluss-github/feed.xml', 'w', encoding='utf-8') as f:
+        f.write(rss)
+    print("RSS feed updated: docs/fluss-github/feed.xml")
 
 
 def main():

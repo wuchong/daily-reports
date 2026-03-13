@@ -175,8 +175,31 @@ def generate_html(summary: dict) -> str:
 </html>'''
 
 
+def generate_rss_feed(reports: list[str], base_url: str) -> str:
+    """Generate RSS feed XML."""
+    items = []
+    for date_str in reports[:20]:  # Latest 20 reports
+        items.append(f'''    <item>
+      <title>Data+AI 全球日报 - {date_str}</title>
+      <link>{base_url}/data-ai/reports/{date_str}.html</link>
+      <guid>{base_url}/data-ai/reports/{date_str}.html</guid>
+      <pubDate>{date_str}</pubDate>
+    </item>''')
+    
+    return f'''<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Data+AI 全球日报</title>
+    <link>{base_url}/data-ai/</link>
+    <description>Data+AI 领域每日动态归档</description>
+    <language>zh-CN</language>
+{chr(10).join(items)}
+  </channel>
+</rss>'''
+
+
 def update_index(date: str):
-    """Update index.html with report list."""
+    """Update index.html and RSS feed with report list."""
     reports_dir = Path('docs/data-ai/reports')
     reports_dir.mkdir(parents=True, exist_ok=True)
     
@@ -204,12 +227,14 @@ def update_index(date: str):
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data+AI Daily Reports</title>
     <link rel="stylesheet" href="assets/style.css">
+    <link rel="alternate" type="application/rss+xml" title="Data+AI Daily Reports RSS" href="feed.xml">
 </head>
 <body>
     <div class="container">
         <header>
             <h1>Data+AI 全球日报</h1>
             <p>Data+AI 领域每日动态归档</p>
+            <a class="rss-button" href="feed.xml" title="RSS 订阅">📡 RSS 订阅</a>
         </header>
         {sections if sections else '<p>暂无报告</p>'}
     </div>
@@ -219,6 +244,12 @@ def update_index(date: str):
     with open('docs/data-ai/index.html', 'w', encoding='utf-8') as f:
         f.write(html)
     print("Index updated: docs/data-ai/index.html")
+    
+    # Generate RSS feed
+    rss = generate_rss_feed(reports, GITHUB_PAGES_URL)
+    with open('docs/data-ai/feed.xml', 'w', encoding='utf-8') as f:
+        f.write(rss)
+    print("RSS feed updated: docs/data-ai/feed.xml")
 
 
 def main():
