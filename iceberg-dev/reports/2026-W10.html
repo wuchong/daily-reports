@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iceberg 社区周报 | 2026-W10</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Iceberg 社区周报 | 2026-W10</h1>
+            <p class="date-range">2026-03-02 ~ 2026-03-08</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (1)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/bsp885vy4v8yzd4j73f4jvh2kkm8bv2t">New Committer and PMC Members</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (3)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/oj2ndp1yrtt8v92vdnky0c9mr3t0xgm6">Promote the remote signing endpoint to the main REST spec (attempt #2)</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/mt4y8vw80glnqqwsr8czfmwvhqf09h46">REST: Adding scan planning mode to loadTable API</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/v65l93htwt2wn4h58x5oxhj607cjyfts">Release Apache Iceberg Rust 0.9.0 rc.1</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/129f3n8zgdck3nc5hmdf63sntzcy9tjg">Enforcing AI contribution guidelines</a></h3>
+            <p class="meta">9 条回复 · 10 位参与者</p>
+            <p class="summary">社区针对近期出现的全自动 AI 生成 PR 展开讨论，一致认为需执行现有指南以保护审查者时间，避免低质量代码流入。讨论重点从单纯的惩罚措施转向了技术防范手段，如使用 PR 模板、自动化检测工具以及为 AI 代理设置专门的指令文件。</p>
+            <div class="key-points"><p><strong>@Huaxin Gao:</strong> 提议对无视指南的行为制定后果，如关闭未经人工审查的 PR 或限制违规者的贡献权限。</p>
+<p><strong>@Sung Yun:</strong> 建议将关注点从“是否使用 AI”转向“贡献质量与准备情况”，通过明确 PR “准备审查”的标准来引导贡献者。</p>
+<p><strong>@Steve Loughran / Vaquar Khan:</strong> 提出技术解决方案，如创建 CLAUDE.md 等指令文件规范 AI 行为，或开发 AIV 工具检测代码逻辑密度以过滤低质量提交。</p></div>
+            <p class="conclusion">初步达成共识需关闭低质量 AI PR，下一步将更新贡献指南以明确后果，并探索引入 PR 模板、自动化检测工具及 AI 指令文件等技术手段。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/tssbptlm2ft8sbch7r2r192znw54r1y7">March board report</a></h3>
+            <p class="meta">5 条回复 · 5 位参与者</p>
+            <p class="summary">Ryan Blue 提交了 Apache Iceberg 三月董事会报告初稿，汇报了项目状态、人员变动及多语言版本发布等核心进展。Péter Váry 和 Kevin Liu 等成员对报告细节提出了修改建议，包括完善 v4 规范描述、补充 Flink 维护状态及增加社区宣传渠道信息。</p>
+            <div class="key-points"><p><strong>@Ryan Blue:</strong> 提交报告初稿，涵盖 Java/Python/Go 等多语言版本发布及 v4 表规范设计进展。</p>
+<p><strong>@Péter Váry:</strong> 建议修改二级索引描述措辞，并补充 Flink 维护状态及文件格式 API 相关内容。</p>
+<p><strong>@Kevin Liu:</strong> 提议在社区部分增加项目新博客链接及 LinkedIn 主页所有权转移信息。</p></div>
+            <p class="conclusion">报告初稿整体获得认可，作者将采纳建议完善 v4 规范描述、Flink 维护状态及社区宣传部分，以形成最终报告。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/ltwsp42jlkgfhv54p8l1j7jqfzv9s2qm">Iceberg Public Dataset Launch</a></h3>
+            <p class="meta">4 条回复 · 2 位参与者</p>
+            <p class="summary">讨论主要针对用户在使用 Iceberg 公共数据集时遇到的 BigLake REST Catalog 请求配额超限（HTTP 429）问题。维护者排查后发现服务端存在异常并实施了缓解措施，最终恢复了用户的正常访问。</p>
+            <div class="key-points"><p><strong>@Manu Zhang:</strong> 报告在加载表时触发了 BigLake 的每分钟读取请求配额限制（默认 300 次），且无法通过控制台将配额提升至 200 以上。</p>
+<p><strong>@Talat Uyarer:</strong> 最初建议用户在 Google Cloud Console 申请提高配额，随后发现服务端存在问题并实施了修复，确认当前限制为每项目每分钟 200 次请求。</p></div>
+            <p class="conclusion">维护者修复了服务端问题后，用户确认数据集已可正常访问，问题得到解决。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/9h157zrmbvzp6nrgj94x7c337qxcwzx8">Dedicated sync for Iceberg materialized view</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">讨论主要围绕 Iceberg 物化视图 Spec PR (#11041) 的合并请求展开。Jan Kaul 提议合并该 PR，但 Steven Wu 建议先完成 Java 参考实现的 PoC 以验证设计选择。目前 Walaa Eldin Moustafa 正在更新实现代码以适配最新的 Spec 变更。</p>
+            <div class="key-points"><p><strong>@Jan Kaul:</strong> 提议合并已根据会议讨论更新的 Spec PR (#11041)。</p>
+<p><strong>@Steven Wu:</strong> 建议先完成 Java PoC 实现验证设计；会议共识包括删除 max stateless config 定义并保留“refresh-state”列表。</p>
+<p><strong>@Walaa Eldin Moustafa:</strong> 正在更新实现代码以适配 Spec 变更，即将分享。</p></div>
+            <p class="conclusion">下一步是将 Java 参考实现推进至 PoC 状态以验证设计，根据实现反馈决定是否调整 Spec 措辞，之后再进行投票合并。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/25k9cy51bl57wwqwx656yk7ly41bz4jt">V3 missing features in Iceberg Java API</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论主要关注 Iceberg Java API 中尚未实现的 V3 规范特性（即 date 到 timestamp 的类型提升）。Antoni Reus Darder 指出相关 PR #15159 缺乏有写入权限的审核者，并询问该特性是否计划纳入 1.11.0 版本。PR 作者 Alex Stephen 随后回应并请求社区协助审核以推进合并。</p>
+            <div class="key-points"><p><strong>@Antoni Reus Darder:</strong> V3 规范允许 date 到 timestamp 的类型提升，但 Java API 尚未实现，且相关 PR #15159 正等待审核。</p>
+<p><strong>@Alex Stephen:</strong> 确认自己是该 PR 的作者，希望能获得社区审核以推进合并。</p></div>
+            <p class="conclusion">尚未确定是否包含在 1.11.0 版本中，下一步行动是寻求社区对 PR #15159 进行审核以推动合并。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/9gdtbvhkvl3vyxqdp9wlkbpwm6ksm56q">Apache Iceberg 1.10.2 Patch Release</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">Amogh Jahagirdar 提议发布 Apache Iceberg 1.10.2 补丁版本，旨在修复 1.10 版本中存在的正确性问题和回归缺陷。目前已建立相应里程碑并开始收集待回移植的 PR，Steve Loughran 随后补充了一个涉及 Avro CVE 漏洞修复的回移植请求。</p>
+            <div class="key-points"><p><strong>@Amogh Jahagirdar:</strong> 提议发布 1.10.2 补丁以解决正确性问题和回归问题，并创建了里程碑供社区补充需要回移植的 PR。</p>
+<p><strong>@Steve Loughran:</strong> 建议回移植 Avro 更新以修复 CVE 漏洞（涉及解析恶意 .avsc 模式文件的安全问题）。</p></div>
+            <p class="conclusion">社区正在向 1.10.2 里程碑中补充关键的修复 PR，后续将推进版本的发布流程。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/9qly8km5q816300t93cn6d130r2lvy7r">Extending Iceberg expressions</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Ryan Blue 指出当前 Iceberg 表达式结构存在局限性，阻碍了新用例的发展，因此提出扩展提案以解除限制。该提案建议增加函数调用、支持目录及 SQL 函数，并引入基于 ID 的引用，旨在统一改动并推动生成列等新特性。</p>
+            <div class="key-points"><p><strong>@Ryan Blue:</strong> 当前表达式结构基于 Java 实现，已无法满足新用例（如生成列、统计信息）的需求。</p>
+<p><strong>@Ryan Blue:</strong> 提议扩展内容包括：增加函数调用、支持 Catalog/SQL 函数、以及添加基于 ID 的引用。</p>
+<p><strong>@Ryan Blue:</strong> 提案旨在整合各项改动以避免重复工作，重点在于表达式结构而非具体函数实现规范。</p></div>
+            <p class="conclusion">作者邀请社区查阅提案文档，以推动多个需要交换表达式的用例向前发展。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/3cyf1g5768jpmm09hr8c31tpyfvmyrn5">Table and Column Label Metadata in Iceberg REST Catalog</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论旨在解决 Iceberg REST Catalog 中缺乏标准机制传递运营元数据（如所有权、成本归属）的问题。Andrei 提议在 `LoadTableResponse` 中增加可选的 `labels` 字段，Ryan Blue 对此表示支持，认为这能有效解决元数据交换难题且不增加规范负担。</p>
+            <div class="key-points"><p><strong>@Andrei Tserakhau:</strong> 现有的 Properties 和自定义字段无法满足临时性运营上下文的传递需求，提议新增 `labels` 字段作为按请求生成的非持久化元数据扩展点。</p>
+<p><strong>@Ryan Blue:</strong> 支持该提议，认为这允许目录以通用方式提供非规范元数据，避免了将其作为一等公民元数据的负担，同时也防止了覆盖表属性的反模式。</p></div>
+            <p class="conclusion">提案获得了积极反馈，初步确认了通过 `labels` 字段解决目录元数据互操作性问题的方向。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/3b0sgfdr95vg8mozn1pnmhy2czl090f9">Thoughts on Adding a `doc` Property for Schema Objects</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论主要围绕是否应在 Iceberg 表元数据中添加表注释或描述属性。社区倾向于将其作为标准约定记录在表元数据中，Steven Wu 发现之前的 PR 遗漏了属性键的定义，因此提交了新的 PR 进行修复。</p>
+            <div class="key-points"><p><strong>@Steven Wu:</strong> 表描述属于表元数据，已提交 PR 修复属性键未在 TableProperties 中定义的问题。</p>
+<p><strong>@Huaxin Gao:</strong> 同意表注释属于元数据，支持将其文档化为标准约定。</p>
+<p><strong>@Kevin Liu:</strong> 指出在元数据中更新注释会触发快照生成，建议考虑由 Catalog 层处理。</p></div>
+            <p class="conclusion">初步结论是将表注释存储在表元数据中，下一步行动是处理 Steven Wu 提交的 PR #15531 以完善代码实现。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/88cgcojook8bx07lf76bpopkxmjrjc3v">Subject: [PR Review] Updating Delta Lake Migration to use Delta Kernel (PR #15407)</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">本次讨论围绕 PR #15407 展开，旨在更新 Delta Lake 迁移代码以使用 Delta Kernel。目前该 PR 已实现与主分支现有代码的功能对等，并新增了对 Delta reader v3 和 writer v7 的支持，作者正在请求社区进行新一轮代码评审。</p>
+            <div class="key-points"><p><strong>@Vladislav Sidorovich:</strong> PR 已达成功能对等里程碑，后续计划重构以移除内部 Delta Kernel 类，并增加 Deletion Vectors 支持及增量转换功能。</p>
+<p><strong>@Anoop Johnson:</strong> 指出 UniForm v1/v2 因表示差异曾限制 Deletion Vectors，但 Iceberg v3 解决了该问题，未来的 IcebergCompatV3 将解除此限制。</p></div>
+            <p class="conclusion">作者请求社区对当前代码进行评审，后续将进行代码重构、支持 Deletion Vectors 转换以及实现增量转换。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (0)</h2>
+            
+    <p>本周新建 <strong>0</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周无新建 JIRA。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Iceberg Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
