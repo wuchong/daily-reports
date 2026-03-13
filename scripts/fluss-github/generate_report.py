@@ -1,6 +1,12 @@
 #!/usr/bin/env python3
-"""Generate HTML report and DingTalk message from GitHub activity data."""
+"""Generate HTML report and DingTalk message from GitHub activity data.
 
+Usage:
+  python generate_report.py [--skip-index]  # Generate report only, skip index/RSS
+  python generate_report.py --index-only    # Update index/RSS only (run from pages branch)
+"""
+
+import argparse
 import json
 import os
 import re
@@ -299,6 +305,16 @@ def update_index_html():
 
 def main():
     """Main entry point."""
+    parser = argparse.ArgumentParser(description="Generate HTML report")
+    parser.add_argument("--skip-index", action="store_true", help="Skip index/RSS generation")
+    parser.add_argument("--index-only", action="store_true", help="Only update index/RSS (for pages branch)")
+    args = parser.parse_args()
+    
+    if args.index_only:
+        # Only update index/RSS - used after switching to pages branch
+        update_index_html()
+        return
+    
     # Load data
     raw_data = load_json('raw_data.json')
     summary = load_json('summary.json')
@@ -315,8 +331,9 @@ def main():
     save_json(dingtalk_msg, 'dingtalk_message.json')
     print("DingTalk message saved to dingtalk_message.json")
     
-    # Update index.html
-    update_index_html()
+    # Update index.html unless skipped
+    if not args.skip_index:
+        update_index_html()
 
 
 if __name__ == '__main__':

@@ -61,7 +61,7 @@ jobs:
       - name: Generate reports
         env:
           GITHUB_PAGES_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
-        run: python scripts/mailing-list/generate_report.py
+        run: python scripts/mailing-list/generate_report.py --skip-index
 
       - name: Send to DingTalk
         env:
@@ -71,12 +71,17 @@ jobs:
         run: python scripts/mailing-list/send_dingtalk.py
 
       - name: Deploy to pages branch
+        env:
+          GITHUB_PAGES_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
         run: |
           # Save iceberg-dev docs to temp
           cp -r docs/iceberg-dev /tmp/iceberg-dev-output
           mkdir -p /tmp/iceberg-dev-output/assets
           cp assets/mailing-list/style.css /tmp/iceberg-dev-output/assets/
           cp assets/index.html /tmp/index-template.html
+          
+          # Copy scripts for index generation
+          cp scripts/mailing-list/generate_report.py /tmp/generate_report.py
 
           # Remove existing content
           rm -rf docs/* *.json || true
@@ -94,6 +99,14 @@ jobs:
           mkdir -p iceberg-dev/reports
           mkdir -p iceberg-dev/assets
           cp -r /tmp/iceberg-dev-output/* iceberg-dev/
+          
+          # Generate index.html and RSS feed with all historical reports
+          mkdir -p docs/iceberg-dev
+          ln -sf $(pwd)/iceberg-dev/reports docs/iceberg-dev/reports
+          python /tmp/generate_report.py --index-only
+          cp docs/iceberg-dev/index.html iceberg-dev/
+          cp docs/iceberg-dev/feed.xml iceberg-dev/
+          rm -rf docs
 
           # Update root index.html from template
           cp /tmp/index-template.html index.html

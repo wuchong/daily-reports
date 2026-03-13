@@ -61,7 +61,7 @@ jobs:
       - name: Generate reports
         env:
           GITHUB_PAGES_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
-        run: python scripts/mailing-list/generate_report.py
+        run: python scripts/mailing-list/generate_report.py --skip-index
 
       - name: Send to DingTalk
         env:
@@ -71,12 +71,17 @@ jobs:
         run: python scripts/mailing-list/send_dingtalk.py
 
       - name: Deploy to pages branch
+        env:
+          GITHUB_PAGES_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
         run: |
           # Save fluss-dev docs to temp
           cp -r docs/fluss-dev /tmp/fluss-dev-output
           mkdir -p /tmp/fluss-dev-output/assets
           cp assets/mailing-list/style.css /tmp/fluss-dev-output/assets/
           cp assets/index.html /tmp/index-template.html
+          
+          # Copy scripts for index generation
+          cp scripts/mailing-list/generate_report.py /tmp/generate_report.py
 
           # Remove existing content
           rm -rf docs/* *.json || true
@@ -94,6 +99,14 @@ jobs:
           mkdir -p fluss-dev/reports
           mkdir -p fluss-dev/assets
           cp -r /tmp/fluss-dev-output/* fluss-dev/
+          
+          # Generate index.html and RSS feed with all historical reports
+          mkdir -p docs/fluss-dev
+          ln -sf $(pwd)/fluss-dev/reports docs/fluss-dev/reports
+          python /tmp/generate_report.py --index-only
+          cp docs/fluss-dev/index.html fluss-dev/
+          cp docs/fluss-dev/feed.xml fluss-dev/
+          rm -rf docs
 
           # Update root index.html from template
           cp /tmp/index-template.html index.html

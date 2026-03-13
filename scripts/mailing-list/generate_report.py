@@ -5,8 +5,13 @@ Environment variables:
 - PROJECT_NAME: Project display name (e.g., Flink, Iceberg, Kafka, Spark)
 - PROJECT_ID: Project identifier for paths (e.g., flink-dev, iceberg-dev)
 - GITHUB_PAGES_URL: Base URL for GitHub Pages
+
+Usage:
+  python generate_report.py [--skip-index]  # Generate report only, skip index/RSS
+  python generate_report.py --index-only    # Update index/RSS only (run from pages branch)
 """
 
+import argparse
 import json
 import os
 from pathlib import Path
@@ -249,8 +254,18 @@ def update_index(week: str, project_id: str, project_name: str):
 
 def main():
     """Main entry point."""
+    parser = argparse.ArgumentParser(description="Generate HTML report")
+    parser.add_argument("--skip-index", action="store_true", help="Skip index/RSS generation")
+    parser.add_argument("--index-only", action="store_true", help="Only update index/RSS (for pages branch)")
+    args = parser.parse_args()
+    
     project_name = os.environ.get("PROJECT_NAME", "Apache")
     project_id = os.environ.get("PROJECT_ID", "mailing-list")
+    
+    if args.index_only:
+        # Only update index/RSS - used after switching to pages branch
+        update_index("", project_id, project_name)
+        return
     
     summary = load_summary()
     week = summary.get("week", "")
@@ -267,8 +282,9 @@ def main():
         f.write(html)
     print(f"Report saved to {output_path}")
     
-    # Update index
-    update_index(week, project_id, project_name)
+    # Update index unless skipped
+    if not args.skip_index:
+        update_index(week, project_id, project_name)
 
 
 if __name__ == "__main__":

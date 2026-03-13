@@ -1,6 +1,12 @@
 #!/usr/bin/env python3
-"""Generate HTML report from summary."""
+"""Generate HTML report from summary.
 
+Usage:
+  python generate_report.py [--skip-index]  # Generate report only, skip index/RSS
+  python generate_report.py --index-only    # Update index/RSS only (run from pages branch)
+"""
+
+import argparse
 import json
 import os
 import re
@@ -254,6 +260,16 @@ def update_index(date: str):
 
 def main():
     """Main entry point."""
+    parser = argparse.ArgumentParser(description="Generate HTML report")
+    parser.add_argument("--skip-index", action="store_true", help="Skip index/RSS generation")
+    parser.add_argument("--index-only", action="store_true", help="Only update index/RSS (for pages branch)")
+    args = parser.parse_args()
+    
+    if args.index_only:
+        # Only update index/RSS - used after switching to pages branch
+        update_index("")
+        return
+    
     summary = load_summary()
     date = summary.get('date', '')
     
@@ -269,8 +285,9 @@ def main():
         f.write(html)
     print(f"Report saved to {output_path}")
     
-    # Update index
-    update_index(date)
+    # Update index unless skipped
+    if not args.skip_index:
+        update_index(date)
 
 
 if __name__ == '__main__':
