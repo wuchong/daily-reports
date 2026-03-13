@@ -3,6 +3,7 @@
 
 import json
 import os
+import re
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timedelta
 from pathlib import Path
@@ -19,8 +20,143 @@ def load_sources():
         return yaml.safe_load(f)
 
 
-def search_serper(query: str, api_key: str) -> list:
-    """Search using Serper.dev API (free tier: 2500/month)."""
+def parse_serper_date(date_str: str) -> datetime | None:
+    """Parse Serper date string to datetime.
+    
+    Supports formats:
+    - Relative: '2 hours ago', '23 hours ago', '1 day ago', '3 days ago'
+    - Absolute: 'Jan 27, 2026', 'Feb 3, 2026'
+    """
+    if not date_str:
+        return None
+    
+    now = datetime.now()
+    
+    # Try relative time format
+    relative_match = re.match(r'(\d+)\s+(hour|day|minute|week|month)s?\s+ago', date_str, re.I)
+    if relative_match:
+        amount = int(relative_match.group(1))
+        unit = relative_match.group(2).lower()
+        if unit == 'minute':
+            return now - timedelta(minutes=amount)
+        elif unit == 'hour':
+            return now - timedelta(hours=amount)
+        elif unit == 'day':
+            return now - timedelta(days=amount)
+        elif unit == 'week':
+            return now - timedelta(weeks=amount)
+        elif unit == 'month':
+            return now - timedelta(days=amount * 30)
+    
+    # Try absolute date format (e.g., 'Jan 27, 2026')
+    try:
+        return datetime.strptime(date_str, '%b %d, %Y')
+    except ValueError:
+        pass
+    
+    # Try other common formats
+    for fmt in ['%B %d, %Y', '%Y-%m-%d', '%d %b %Y']:
+        try:
+            return datetime.strptime(date_str, fmt)
+        except ValueError:
+            continue
+    
+    return None
+
+
+def fetch_article(url: str, timeout: int = 10) -> dict:
+    """Fetch article content and parse publish date from URL."""
+    import re
+    from bs4 import BeautifulSoup
+    
+    result = {'content': '', 'published': None, 'error': None}
+    
+    try:
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36'
+        }
+        resp = requests.get(url, headers=headers, timeout=timeout)
+        resp.raise_for_status()
+        soup = BeautifulSoup(resp.text, 'html.parser')
+        
+        # 1. Try JSON-LD for datePublished
+        for script in soup.find_all('script', type='application/ld+json'):
+            try:
+                import json
+                ld_data = json.loads(script.string)
+                if isinstance(ld_data, list):
+                    ld_data = ld_data[0] if ld_data else {}
+                date_str = ld_data.get('datePublished') or ld_data.get('dateCreated')
+                if date_str:
+                    result['published'] = parse_iso_date(date_str)
+                    break
+            except:
+                continue
+        
+        # 2. Try meta tags
+        if not result['published']:
+            date_metas = [
+                ('property', 'article:published_time'),
+                ('name', 'pubdate'),
+                ('name', 'date'),
+                ('name', 'DC.date.issued'),
+                ('itemprop', 'datePublished'),
+            ]
+            for attr, value in date_metas:
+                meta = soup.find('meta', {attr: value})
+                if meta and meta.get('content'):
+                    result['published'] = parse_iso_date(meta['content'])
+                    if result['published']:
+                        break
+        
+        # 3. Extract main content
+        # Remove script, style, nav, header, footer
+        for tag in soup(['script', 'style', 'nav', 'header', 'footer', 'aside', 'form']):
+            tag.decompose()
+        
+        # Try article tag first, then main, then body
+        main_content = soup.find('article') or soup.find('main') or soup.find('body')
+        if main_content:
+            # Get text, clean up whitespace
+            text = main_content.get_text(separator='\n', strip=True)
+            # Limit content length
+            result['content'] = text[:5000] if len(text) > 5000 else text
+        
+    except Exception as e:
+        result['error'] = str(e)
+    
+    return result
+
+
+def parse_iso_date(date_str: str) -> datetime | None:
+    """Parse ISO format date string."""
+    if not date_str:
+        return None
+    
+    # Handle various ISO formats
+    formats = [
+        '%Y-%m-%dT%H:%M:%S%z',
+        '%Y-%m-%dT%H:%M:%SZ',
+        '%Y-%m-%dT%H:%M:%S',
+        '%Y-%m-%d %H:%M:%S',
+        '%Y-%m-%d',
+    ]
+    
+    # Remove timezone info for simpler parsing
+    clean_date = re.sub(r'[+-]\d{2}:\d{2}$', '', date_str)
+    clean_date = clean_date.replace('Z', '')
+    
+    for fmt in formats:
+        try:
+            return datetime.strptime(clean_date, fmt)
+        except ValueError:
+            continue
+    
+    return None
+
+
+def search_serper(query: str, api_key: str, max_age_hours: int = 24) -> list:
+    """Search using Serper.dev API and fetch article content."""
     url = "https://google.serper.dev/search"
     headers = {
         'X-API-KEY': api_key,
@@ -36,13 +172,25 @@ def search_serper(query: str, api_key: str) -> list:
         resp.raise_for_status()
         data = resp.json()
         results = []
+        cutoff = datetime.now() - timedelta(hours=max_age_hours)
+        
         for item in data.get('organic', []):
+            # Parse and filter by date
+            date_str = item.get('date', '')
+            published = parse_serper_date(date_str)
+            
+            # Skip if date is available and older than cutoff
+            if published and published < cutoff:
+                continue
+            
             results.append({
                 'title': item.get('title', ''),
                 'url': item.get('link', ''),
                 'snippet': item.get('snippet', ''),
                 'source': 'serper_search',
-                'query': query
+                'query': query,
+                'date': date_str,
+                'published': published.isoformat() if published else None
             })
         return results
     except Exception as e:
@@ -130,11 +278,50 @@ def main():
     unique_results = deduplicate(all_results)
     print(f"Collected {len(unique_results)} unique items")
     
+    # Fetch article content and verify publish dates
+    print(f"Fetching article content for {len(unique_results)} items...")
+    cutoff = datetime.now() - timedelta(hours=24)
+    verified_results = []
+    
+    def process_article(item):
+        """Fetch article and verify date."""
+        url = item.get('url', '')
+        if not url:
+            return None
+        
+        article = fetch_article(url)
+        
+        # Use fetched publish date if available, otherwise keep original
+        if article['published']:
+            item['published'] = article['published'].isoformat()
+            item['published_verified'] = True
+        else:
+            item['published_verified'] = False
+        
+        # Add content for LLM summarization
+        if article['content']:
+            item['content'] = article['content']
+        
+        # Filter by verified date
+        if article['published'] and article['published'] < cutoff:
+            return None  # Skip old news
+        
+        return item
+    
+    with ThreadPoolExecutor(max_workers=10) as executor:
+        futures = {executor.submit(process_article, item): item['url'] for item in unique_results}
+        for future in as_completed(futures):
+            result = future.result()
+            if result:
+                verified_results.append(result)
+    
+    print(f"Verified {len(verified_results)} items within 24 hours")
+    
     # Save output
     output = {
         'date': report_date,
         'collected_at': datetime.now().isoformat(),
-        'items': unique_results
+        'items': verified_results
     }
     
     with open('raw_news.json', 'w', encoding='utf-8') as f:
