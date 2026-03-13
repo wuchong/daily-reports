@@ -43,6 +43,28 @@ echo "Fetching PR review comments..."
 PR_COMMENTS=$(gh api "repos/$REPO/pulls/comments?since=${DATE}T00:00:00Z&per_page=100" \
   --jq '[.[] | {pull_request_url, body, user: .user.login, path, created_at}]' 2>/dev/null || echo "[]")
 
+# Extract issue numbers from comments and fetch their titles
+echo "Fetching titles for commented issues..."
+COMMENTED_ISSUE_NUMBERS=$(echo "$ISSUE_COMMENTS" | jq -r '.[].issue_url' | grep -oE '[0-9]+$' | sort -u)
+COMMENTED_ISSUES="[]"
+for num in $COMMENTED_ISSUE_NUMBERS; do
+  ISSUE_INFO=$(gh api "repos/$REPO/issues/$num" --jq '{number, title, url: .html_url}' 2>/dev/null || echo "")
+  if [ -n "$ISSUE_INFO" ]; then
+    COMMENTED_ISSUES=$(echo "$COMMENTED_ISSUES" | jq ". + [$ISSUE_INFO]")
+  fi
+done
+
+# Extract PR numbers from review comments and fetch their titles
+echo "Fetching titles for commented PRs..."
+COMMENTED_PR_NUMBERS=$(echo "$PR_COMMENTS" | jq -r '.[].pull_request_url' | grep -oE '[0-9]+$' | sort -u)
+COMMENTED_PRS="[]"
+for num in $COMMENTED_PR_NUMBERS; do
+  PR_INFO=$(gh api "repos/$REPO/pulls/$num" --jq '{number, title, url: .html_url}' 2>/dev/null || echo "")
+  if [ -n "$PR_INFO" ]; then
+    COMMENTED_PRS=$(echo "$COMMENTED_PRS" | jq ". + [$PR_INFO]")
+  fi
+done
+
 # Assemble JSON output
 cat > $OUTPUT_FILE << EOF
 {
@@ -53,7 +75,9 @@ cat > $OUTPUT_FILE << EOF
   "open_prs": $OPEN_PRS,
   "merged_prs": $MERGED_PRS,
   "issue_comments": $ISSUE_COMMENTS,
-  "pr_review_comments": $PR_COMMENTS
+  "pr_review_comments": $PR_COMMENTS,
+  "commented_issues": $COMMENTED_ISSUES,
+  "commented_prs": $COMMENTED_PRS
 }
 EOF
 

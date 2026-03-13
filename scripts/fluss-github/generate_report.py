@@ -38,11 +38,24 @@ def generate_critical_section(critical_issues: list) -> str:
     return '<ul class="critical-list">' + ''.join(items) + '</ul>'
 
 
-def generate_activity_section(activity: list, item_type: str) -> str:
+def build_title_map(raw_data: dict) -> dict:
+    """Build a mapping from issue/PR number to title."""
+    title_map = {}
+    for source in ['new_issues', 'closed_issues', 'open_prs', 'merged_prs', 'commented_issues', 'commented_prs']:
+        for item in raw_data.get(source, []):
+            number = item.get('number')
+            title = item.get('title', '')
+            if number and title:
+                title_map[number] = title
+    return title_map
+
+
+def generate_activity_section(activity: list, item_type: str, title_map: dict = None) -> str:
     """Generate per-issue/PR activity section."""
     if not activity:
         return '<p class="empty">暂无</p>'
     
+    title_map = title_map or {}
     prefix = "Issue" if item_type == "issue" else "PR"
     html_items = []
     for item in activity:
@@ -50,6 +63,10 @@ def generate_activity_section(activity: list, item_type: str) -> str:
         item_title = item.get('title', '')
         url = item.get('url', '')
         comments = item.get('comments', [])
+        
+        # Use title from raw_data if LLM returned invalid title
+        if not item_title or item_title.startswith(('Issue #', 'PR #')):
+            item_title = title_map.get(number, '')
         
         comments_html = ''.join(
             f'<li><span class="author">@{c.get("user", "unknown")}</span>: {markdown_links_to_html(c.get("summary", ""))}</li>'
@@ -90,6 +107,7 @@ def generate_item_list(items: list, item_type: str) -> str:
 def generate_html_report(raw_data: dict, summary: dict, output_path: str):
     """Generate full HTML report."""
     date = raw_data['date']
+    title_map = build_title_map(raw_data)
     
     html = f'''<!DOCTYPE html>
 <html lang="zh-CN">
@@ -130,9 +148,9 @@ def generate_html_report(raw_data: dict, summary: dict, output_path: str):
         <section class="activity">
             <h2>💬 Issue/PR 动态</h2>
             <h3>Issue 讨论</h3>
-            {generate_activity_section(summary.get('issue_activity', []), 'issue')}
+            {generate_activity_section(summary.get('issue_activity', []), 'issue', title_map)}
             <h3>PR Review</h3>
-            {generate_activity_section(summary.get('pr_activity', []), 'pr')}
+            {generate_activity_section(summary.get('pr_activity', []), 'pr', title_map)}
         </section>
                 
         <section class="new-items">
