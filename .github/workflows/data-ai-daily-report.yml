@@ -27,7 +27,7 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: pip install requests feedparser openai pyyaml
+        run: pip install requests feedparser openai pyyaml beautifulsoup4
 
       - name: Calculate date
         id: date
