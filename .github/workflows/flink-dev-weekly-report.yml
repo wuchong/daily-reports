@@ -90,9 +90,10 @@ jobs:
             git rm -rf . || true
           fi
 
-          # Merge flink-dev content (preserve other directories)
-          rm -rf flink-dev || true
-          cp -r /tmp/flink-dev-output flink-dev
+          # Merge flink-dev content (create dir if not exists)
+          mkdir -p flink-dev/reports
+          mkdir -p flink-dev/assets
+          cp -r /tmp/flink-dev-output/* flink-dev/
 
           # Update root index.html from template
           cp /tmp/index-template.html index.html
