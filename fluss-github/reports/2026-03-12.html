@@ -16,22 +16,22 @@
         </header>
         
         <section class="stats">
-            <div class="stat">📝 4 新 Issues</div>
-            <div class="stat">✅ 3 关闭</div>
-            <div class="stat">✨ 6 新 PRs</div>
-            <div class="stat">🎉 6 合并</div>
+            <div class="stat">📝 6 新 Issues</div>
+            <div class="stat">✅ 5 关闭</div>
+            <div class="stat">✨ 8 新 PRs</div>
+            <div class="stat">🎉 9 合并</div>
         </section>
         
         <section class="highlights">
             <h2>🔥 核心要点</h2>
             <ul>
-                <li>🎉 <a href="https://github.com/apache/fluss/pull/2859">PR #2859</a> 修复当 client.scanner.io.tmpdir 未设置时回退到 Flink 的 io.tmp.dir</li><li>🎉 <a href="https://github.com/apache/fluss/pull/2472">PR #2472</a> 实现 Helm Chart 组件配置隔离，支持各组件独立资源配置</li><li>🎉 <a href="https://github.com/apache/fluss/pull/2842">PR #2842</a> Iceberg 集成优化：仅在存在扫描过滤时启用列统计信息</li><li>🐛 <a href="https://github.com/apache/fluss/pull/2630">PR #2630</a> 修复 AbfsFileSystemBehaviorITCase 测试 CI 中 "Bind Address already in use" 问题</li><li>✨ <a href="https://github.com/apache/fluss/issues/2853">Issue #2853</a> 新功能提案：支持 KV 表恢复时从远程存储下载 CDC 日志段</li>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/2454">PR #2454</a> 新增 Lake Tiering 表级监控指标，提升系统可观测性</li><li>🎉 <a href="https://github.com/apache/fluss/pull/2862">PR #2862</a> 修复 Paimon lake 表分区过期策略从未触发的问题</li><li>🎉 <a href="https://github.com/apache/fluss/pull/2842">PR #2842</a> 优化 Iceberg 扫描，仅在存在过滤条件时启用列统计</li><li>🐛 <a href="https://github.com/apache/fluss/pull/2860">PR #2860</a> 修复 ServerConnection 重试认证任务未正确取消的问题</li><li>⚠️ <a href="https://github.com/apache/fluss/pull/2863">PR #2863</a> 回滚 Helm Chart 组件配置隔离功能，因评审意见未妥善处理</li>
             </ul>
         </section>
                 
         <section class="critical">
             <h2>⚠️ 重点关注</h2>
-            <p class="no-issues">✅ 今日无重大问题</p>
+            <ul class="critical-list"><li>⚠️ <a href="https://github.com/apache/fluss/issues/2856">Issue #2856</a> Admin.alterClusterConfigs() 在校验失败时返回 UnknownServerException 而非 ConfigException</li><li>⚠️ <a href="https://github.com/apache/fluss/issues/2854">Issue #2854</a> 测试用例 FlussAuthorizationITCase.testDeleteProducerOffsetsAuthorization 不稳定</li></ul>
         </section>
                 
         <section class="activity">
@@ -40,62 +40,70 @@
             
         <div class="activity-item">
             <h4><a href="https://github.com/apache/fluss/pull/2809">Issue #2809</a> [KV] Support Full KV Scan</h4>
-            <ul><li><span class="author">@platinumhamburg</span>: 指出三个待解决问题：close_scanner 请求无法发送、scanner 生命周期未集成、客户端未处理扫描错误</li></ul>
-        </div>
-        <div class="activity-item">
-            <h4><a href="https://github.com/apache/fluss/issues/2848">Issue #2848</a> [Feature] Provide built-in Flink SQL functions for RoaringBitmap</h4>
-            <ul><li><span class="author">@matrixsparse</span>: 表示该方案完美解决了手动字节操作的需求，已订阅邮件列表跟进 FIP 讨论</li></ul>
+            <ul><li><span class="author">@platinumhamburg</span>: 指出三个问题：close_scanner请求无法发送、scanner生命周期未集成、客户端未处理扫描错误</li><li><span class="author">@polyzos</span>: 感谢详细反馈，将逐一修复这三个问题并继续迭代</li></ul>
         </div>
         <div class="activity-item">
             <h4><a href="https://github.com/apache/fluss/pull/2454">Issue #2454</a> [lake/tiering] Add per-table monitoring metrics for Lake Tiering</h4>
-            <ul><li><span class="author">@luoyuxia</span>: 指出文档中 Counter 类型错误，建议对 UnsupportedOperationException 使用 trace/debug 日志级别</li><li><span class="author">@Copilot</span>: 指出代码注释与实际行为不一致，建议在代码中显式传递 TieringStats.UNKNOWN</li></ul>
+            <ul><li><span class="author">@beryllw</span>: 已在 Docker 环境中验证指标名称和标签值正确</li></ul>
         </div>
         <div class="activity-item">
-            <h4><a href="https://github.com/apache/fluss/issues/2191">Issue #2191</a> [helm] Create region config for components in value file</h4>
-            <ul><li><span class="author">@hemanthsavasere</span>: 请求 reviewer 审阅 PR，表示已完成所有修改</li></ul>
+            <h4><a href="https://github.com/apache/fluss/pull/2859">Issue #2859</a> [lake/tiering] fallback to Flink's `io.tmp.dir` when `client.scanner.io.tmpdir` is not set</h4>
+            <ul><li><span class="author">@zuston</span>: 请求 @luoyuxia 和 @wuchong 审阅此 PR</li></ul>
         </div>
         <div class="activity-item">
-            <h4><a href="https://github.com/apache/fluss/pull/2857">Issue #2857</a> [server] Register ConfigException in Errors to fix misleading UnknownServerException</h4>
-            <ul><li><span class="author">@LiebingYu</span>: 请求 @loserwang1024 协助审阅该修复 PR</li></ul>
+            <h4><a href="https://github.com/apache/fluss/issues/2865">Issue #2865</a> [Helm] Restructure helm chart of Fluss</h4>
+            <ul><li><span class="author">@nhuantho</span>: 询问这是否是改进 Fluss Helm Chart 的正确方向</li></ul>
         </div>
         <div class="activity-item">
-            <h4><a href="https://github.com/apache/fluss/pull/2859">Issue #2859</a> [lake/tiering] fallback to Flink's io.tmp.dir when client.scanner.io.tmpdir is not set</h4>
-            <ul><li><span class="author">@zuston</span>: 请求 @luoyuxia 和 @wuchong 审阅该 PR</li></ul>
+            <h4><a href="https://github.com/apache/fluss/pull/2863">Issue #2863</a> [Helm] Revert Chart Component Configuration Isolation (#2472)</h4>
+            <ul><li><span class="author">@swuferhong</span>: 回滚 #2472 因为评审意见未妥善处理，如需继续请先讨论</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2581">Issue #2581</a> [test] Unstable test FlussAuthorizationITCase. testInitWriter</h4>
+            <ul><li><span class="author">@Prajwal-banakar</span>: 建议将 waitUntilTableReady 超时从1分钟增加到2分钟</li></ul>
         </div>
             <h3>PR Review</h3>
             
         <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2711">PR #2711</a> [helm] Enable metrics reporting on helm charts</h4>
+            <ul><li><span class="author">@affo</span>: 建议只接受端口配置，其他 Prometheus 选项通过 overrides 设置</li><li><span class="author">@morazow</span>: 同意方案，建议在配置冲突时直接报错</li></ul>
+        </div>
+        <div class="activity-item">
             <h4><a href="https://github.com/apache/fluss/pull/2454">PR #2454</a> [lake/tiering] Add per-table monitoring metrics for Lake Tiering</h4>
-            <ul><li><span class="author">@luoyuxia</span>: 建议将 totalLakeFileSize 和 totalLakeRecordCount 合并到 TieringStats 中，并添加 @Nullable 注解</li><li><span class="author">@Copilot</span>: 指出注释与断言不一致，建议传递 TieringStats.UNKNOWN 而非 null 以符合文档约定</li></ul>
+            <ul><li><span class="author">@Copilot</span>: 指出注释与断言不一致、null应改为UNKNOWN、NPE风险等多处代码问题</li><li><span class="author">@luoyuxia</span>: 建议将指标类型改为 Counter，对 UnsupportedOperationException 使用 trace/Debug 级别</li></ul>
         </div>
         <div class="activity-item">
-            <h4><a href="https://github.com/apache/fluss/pull/2859">PR #2859</a> [lake/tiering] fallback to Flink's io.tmp.dir when client.scanner.io.tmpdir is not set</h4>
-            <ul><li><span class="author">@Copilot</span>: 指出路径拼接问题：Java 中子路径以 / 开头会被视为绝对路径，导致父目录被忽略</li></ul>
+            <h4><a href="https://github.com/apache/fluss/pull/2839">PR #2839</a> [metric] Support influxdb reporter</h4>
+            <ul><li><span class="author">@Copilot</span>: 指出编译错误、NPE风险、异常处理缺失、测试方法脆弱性及模块未集成到发布包等问题</li></ul>
         </div>
         <div class="activity-item">
-            <h4><a href="https://github.com/apache/fluss/pull/2506">PR #2506</a> [helm] Enable SASL authentication configurations</h4>
-            <ul><li><span class="author">@affo</span>: 建议简化 SASL 配置逻辑，使用 helper 函数生成默认用户名和密码</li></ul>
+            <h4><a href="https://github.com/apache/fluss/pull/2859">PR #2859</a> [lake/tiering] fallback to Flink's `io.tmp.dir` when `client.scanner.io.tmpdir` is not set</h4>
+            <ul><li><span class="author">@Copilot</span>: 指出路径拼接使用 /fluss 绝对路径会忽略父目录，需修复为相对路径</li></ul>
         </div>
         <div class="activity-item">
             <h4><a href="https://github.com/apache/fluss/pull/2846">PR #2846</a> [helm] Rewrite README to point to website docs</h4>
-            <ul><li><span class="author">@morazow</span>: 建议 README 中使用渲染后的官网链接替代仓库文件链接</li><li><span class="author">@affo</span>: 解释 README 面向开发目的，更适合引导开发者查看仓库中的实际文件</li></ul>
+            <ul><li><span class="author">@morazow</span>: 建议使用渲染后的文档链接，添加本地开发指引</li><li><span class="author">@affo</span>: README 用于开发目的，应该指向实际文件以便开发者编辑</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2862">PR #2862</a> [lake/paimon] Fix partition expiration never triggered in Paimon lake table managed by Tiering Service</h4>
+            <ul><li><span class="author">@Copilot</span>: 指出注释中的配置值与实际配置格式不一致，三元表达式冗余</li></ul>
         </div>
         </section>
                 
         <section class="new-items">
             <h2>📝 新建 Issue/PR</h2>
             <h3>Issues</h3>
-            <ul><li><a href="https://github.com/apache/fluss/issues/2856">#2856</a> [server] Admin.alterClusterConfigs() returns UnknownServerException instead of ConfigException on validation failure <span class="author">@LiebingYu</span> </li><li><a href="https://github.com/apache/fluss/issues/2854">#2854</a> [test] Unstable test FlussAuthorizationITCase.testDeleteProducerOffsetsAuthorization <span class="author">@app/github-actions</span> </li><li><a href="https://github.com/apache/fluss/issues/2853">#2853</a> [Feature] Support downloading CDC log segments from remote storage during KV table recovery <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/issues/2851">#2851</a> ListDatabaseSummary always return table count as 0 or 1 <span class="author">@loserwang1024</span> </li></ul>
+            <ul><li><a href="https://github.com/apache/fluss/issues/2865">#2865</a> [Helm] Restructure helm chart of Fluss <span class="author">@nhuantho</span> </li><li><a href="https://github.com/apache/fluss/issues/2861">#2861</a> [lake/paimon] Partition expiration never fires in Paimon lake table when managed by Tiering Service <span class="author">@LiebingYu</span> </li><li><a href="https://github.com/apache/fluss/issues/2856">#2856</a> [server] Admin.alterClusterConfigs() returns UnknownServerException instead of ConfigException on validation failure <span class="author">@LiebingYu</span> </li><li><a href="https://github.com/apache/fluss/issues/2854">#2854</a> [test] Unstable test FlussAuthorizationITCase.testDeleteProducerOffsetsAuthorization <span class="author">@app/github-actions</span> </li><li><a href="https://github.com/apache/fluss/issues/2853">#2853</a> [Feature] Support downloading CDC log segments from remote storage during KV table recovery <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/issues/2851">#2851</a> ListDatabaseSummary always return table count as 0 or 1 <span class="author">@loserwang1024</span> </li></ul>
             <h3>Pull Requests</h3>
-            <ul><li><a href="https://github.com/apache/fluss/pull/2860">#2860</a> [rpc] Fixed the issue about ServerConnection retry authentication tasks were not canceled <span class="author">@xuzifu666</span> </li><li><a href="https://github.com/apache/fluss/pull/2858">#2858</a> update docs for data formats <span class="author">@polyzos</span> </li><li><a href="https://github.com/apache/fluss/pull/2857">#2857</a> [server] Register ConfigException in Errors to fix misleading UnknownServerException from alterClusterConfigs <span class="author">@LiebingYu</span> </li><li><a href="https://github.com/apache/fluss/pull/2855">#2855</a> [kv] Support downloading CDC log segments from remote storage during KV table recovery <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/pull/2852">#2852</a> [server] Fix get table count of database. <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/pull/2850">#2850</a> [docs] Update s3.region in quickstart docs of flink and lakehouse <span class="author">@nhuantho</span> </li></ul>
+            <ul><li><a href="https://github.com/apache/fluss/pull/2866">#2866</a> Fix Unstable test FlussAuthorizationITCase.testDeleteProducerOffsetsAuthorization <span class="author">@hemanthsavasere</span> </li><li><a href="https://github.com/apache/fluss/pull/2864">#2864</a> [flink][test] Fix OOM when startTaskManager in FlinkMetricsITCase <span class="author">@Prajwal-banakar</span> </li><li><a href="https://github.com/apache/fluss/pull/2860">#2860</a> [rpc] Fixed the issue about ServerConnection retry authentication tasks were not canceled <span class="author">@xuzifu666</span> </li><li><a href="https://github.com/apache/fluss/pull/2858">#2858</a> update docs for data formats <span class="author">@polyzos</span> </li><li><a href="https://github.com/apache/fluss/pull/2857">#2857</a> [server] Register ConfigException in Errors to fix misleading UnknownServerException from alterClusterConfigs <span class="author">@LiebingYu</span> </li><li><a href="https://github.com/apache/fluss/pull/2855">#2855</a> [kv] Support downloading CDC log segments from remote storage during KV table recovery <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/pull/2852">#2852</a> [server] Fix get table count of database. <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/pull/2850">#2850</a> [docs] Update s3.region in quickstart docs of flink and lakehouse <span class="author">@nhuantho</span> </li></ul>
         </section>
                 
         <section class="closed">
             <h2>✅ 关闭 Issue/PR</h2>
             <h3>已关闭 Issues</h3>
-            <ul><li><a href="https://github.com/apache/fluss/issues/2844">#2844</a> [docs] Update doc in api/java-client about complex type <span class="author">@nhuantho</span> </li><li><a href="https://github.com/apache/fluss/issues/2629">#2629</a> AbfsFileSystemBehaviorITCase fails with "Bind Address already in use" in CI <span class="author">@litiliu</span> </li><li><a href="https://github.com/apache/fluss/issues/2191">#2191</a> [helm] Create region config for components in value file <span class="author">@nhuantho</span> </li></ul>
+            <ul><li><a href="https://github.com/apache/fluss/issues/2861">#2861</a> [lake/paimon] Partition expiration never fires in Paimon lake table when managed by Tiering Service <span class="author">@LiebingYu</span> </li><li><a href="https://github.com/apache/fluss/issues/2844">#2844</a> [docs] Update doc in api/java-client about complex type <span class="author">@nhuantho</span> </li><li><a href="https://github.com/apache/fluss/issues/2629">#2629</a> AbfsFileSystemBehaviorITCase fails with "Bind Address already in use" in CI <span class="author">@litiliu</span> </li><li><a href="https://github.com/apache/fluss/issues/2440">#2440</a> [lake/tiering] Add Server-Level Monitoring Metrics for Lake Tiering <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/issues/2191">#2191</a> [helm] Create region config for components in value file <span class="author">@nhuantho</span> </li></ul>
             <h3>已合并 PRs</h3>
-            <ul><li><a href="https://github.com/apache/fluss/pull/2859">#2859</a> [lake/tiering] fallback to Flink's `io.tmp.dir` when `client.scanner.io.tmpdir` is not set <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/pull/2845">#2845</a> [docs] Update doc in api/java-client about complex type <span class="author">@nhuantho</span> </li><li><a href="https://github.com/apache/fluss/pull/2842">#2842</a> [lake/iceberg] only enable column stats when scan filter exists <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/pull/2798">#2798</a> [typo] Fix typo in log loading period <span class="author">@zcoo</span> </li><li><a href="https://github.com/apache/fluss/pull/2630">#2630</a> [Fix][UT]Fix AbfsFileSystemBehaviorITCase fails with "Bind Address already in use" in CI  <span class="author">@litiliu</span> </li><li><a href="https://github.com/apache/fluss/pull/2472">#2472</a> [Helm] Chart Component Configuration Isolation <span class="author">@hemanthsavasere</span> </li></ul>
+            <ul><li><a href="https://github.com/apache/fluss/pull/2863">#2863</a> [Helm] Revert Chart Component Configuration Isolation (#2472) <span class="author">@affo</span> </li><li><a href="https://github.com/apache/fluss/pull/2862">#2862</a> [lake/paimon] Fix partition expiration never triggered in Paimon lake table managed by Tiering Service <span class="author">@LiebingYu</span> </li><li><a href="https://github.com/apache/fluss/pull/2859">#2859</a> [lake/tiering] fallback to Flink's `io.tmp.dir` when `client.scanner.io.tmpdir` is not set <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/pull/2845">#2845</a> [docs] Update doc in api/java-client about complex type <span class="author">@nhuantho</span> </li><li><a href="https://github.com/apache/fluss/pull/2842">#2842</a> [lake/iceberg] only enable column stats when scan filter exists <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/pull/2798">#2798</a> [typo] Fix typo in log loading period <span class="author">@zcoo</span> </li><li><a href="https://github.com/apache/fluss/pull/2630">#2630</a> [Fix][UT]Fix AbfsFileSystemBehaviorITCase fails with "Bind Address already in use" in CI  <span class="author">@litiliu</span> </li><li><a href="https://github.com/apache/fluss/pull/2472">#2472</a> [Helm] Chart Component Configuration Isolation <span class="author">@hemanthsavasere</span> </li><li><a href="https://github.com/apache/fluss/pull/2454">#2454</a> [lake/tiering] Add per-table monitoring metrics for Lake Tiering <span class="author">@beryllw</span> </li></ul>
         </section>
         
         <footer>
