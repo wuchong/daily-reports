@@ -261,18 +261,25 @@ def main():
         with ThreadPoolExecutor(max_workers=5) as executor:
             futures = {executor.submit(search_serper, q, api_key): q for q in queries}
             for future in as_completed(futures):
-                results = future.result()
-                all_results.extend(results)
+                try:
+                    results = future.result()
+                    all_results.extend(results)
+                except Exception as e:
+                    print(f"Error in search future: {e}")
     else:
         print("Warning: SERPER_API_KEY not set, skipping search")
     
     # Fetch RSS feeds
-    print(f"Fetching {len(sources.get('blogs', []))} RSS feeds...")
+    blogs = sources.get('blogs', [])
+    print(f"Fetching {len(blogs)} RSS feeds...")
     with ThreadPoolExecutor(max_workers=5) as executor:
-        futures = {executor.submit(fetch_rss, blog): blog['name'] for blog in sources.get('blogs', [])}
+        futures = {executor.submit(fetch_rss, blog): blog.get('name', 'unknown') for blog in blogs}
         for future in as_completed(futures):
-            results = future.result()
-            all_results.extend(results)
+            try:
+                results = future.result()
+                all_results.extend(results)
+            except Exception as e:
+                print(f"Error in RSS future: {e}")
     
     # Deduplicate
     unique_results = deduplicate(all_results)
@@ -285,35 +292,42 @@ def main():
     
     def process_article(item):
         """Fetch article and verify date."""
-        url = item.get('url', '')
-        if not url:
+        try:
+            url = item.get('url', '')
+            if not url:
+                return None
+            
+            article = fetch_article(url)
+            
+            # Use fetched publish date if available, otherwise keep original
+            if article['published']:
+                item['published'] = article['published'].isoformat()
+                item['published_verified'] = True
+            else:
+                item['published_verified'] = False
+            
+            # Add content for LLM summarization
+            if article['content']:
+                item['content'] = article['content']
+            
+            # Filter by verified date
+            if article['published'] and article['published'] < cutoff:
+                return None  # Skip old news
+            
+            return item
+        except Exception as e:
+            print(f"Error processing article {item.get('url', 'unknown')}: {e}")
             return None
-        
-        article = fetch_article(url)
-        
-        # Use fetched publish date if available, otherwise keep original
-        if article['published']:
-            item['published'] = article['published'].isoformat()
-            item['published_verified'] = True
-        else:
-            item['published_verified'] = False
-        
-        # Add content for LLM summarization
-        if article['content']:
-            item['content'] = article['content']
-        
-        # Filter by verified date
-        if article['published'] and article['published'] < cutoff:
-            return None  # Skip old news
-        
-        return item
     
     with ThreadPoolExecutor(max_workers=10) as executor:
-        futures = {executor.submit(process_article, item): item['url'] for item in unique_results}
+        futures = {executor.submit(process_article, item): item.get('url', 'unknown') for item in unique_results}
         for future in as_completed(futures):
-            result = future.result()
-            if result:
-                verified_results.append(result)
+            try:
+                result = future.result()
+                if result:
+                    verified_results.append(result)
+            except Exception as e:
+                print(f"Error in future result: {e}")
     
     print(f"Verified {len(verified_results)} items within 24 hours")
     
