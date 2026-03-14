@@ -24,6 +24,34 @@ def load_raw_news():
         return json.load(f)
 
 
+def compress_news_data(news_data: dict, max_items: int = 100, max_snippet_len: int = 300) -> dict:
+    """Compress news data to fit within LLM token limits.
+    
+    - Remove full content field (too large)
+    - Truncate snippets
+    - Limit number of items
+    """
+    items = news_data.get('items', [])
+    
+    compressed_items = []
+    for item in items[:max_items]:
+        compressed_item = {
+            'title': item.get('title', ''),
+            'url': item.get('url', ''),
+            'snippet': (item.get('snippet', '') or '')[:max_snippet_len],
+            'source': item.get('source', ''),
+            'published': item.get('published', '')
+        }
+        compressed_items.append(compressed_item)
+    
+    return {
+        'date': news_data.get('date', ''),
+        'items': compressed_items,
+        'total_collected': len(items),
+        'included_in_summary': len(compressed_items)
+    }
+
+
 def generate_summary(client: OpenAI, prompt: str, news_data: dict) -> dict:
     """Call LLM to generate summary."""
     user_content = f"""以下是今日采集的新闻数据：
@@ -75,7 +103,7 @@ def main():
     news_data = load_raw_news()
     
     items_count = len(news_data.get('items', []))
-    print(f"Generating summary for {items_count} items...")
+    print(f"Loaded {items_count} items from raw_news.json")
     
     # If no items, create empty summary
     if items_count == 0:
@@ -86,8 +114,12 @@ def main():
             'total_items': 0
         }
     else:
+        # Compress data to fit LLM token limits
+        compressed_data = compress_news_data(news_data)
+        print(f"Compressed to {compressed_data['included_in_summary']} items for LLM")
+        
         # Generate summary
-        summary = generate_summary(client, prompt, news_data)
+        summary = generate_summary(client, prompt, compressed_data)
     
     # Save output
     with open('summary.json', 'w', encoding='utf-8') as f:
