@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-03-13</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-03-13</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 5 新 Issues</div>
+            <div class="stat">✅ 2 关闭</div>
+            <div class="stat">✨ 6 新 PRs</div>
+            <div class="stat">🎉 4 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/2862">PR #2862</a> 修复 Paimon lake 表分区过期未触发问题</li><li>🎉 <a href="https://github.com/apache/fluss/pull/2454">PR #2454</a> 添加 Lake Tiering 每表监控指标</li><li>🎉 <a href="https://github.com/apache/fluss/pull/2859">PR #2859</a> 支持 Flink io.tmp.dir 回退配置</li><li>🎉 <a href="https://github.com/apache/fluss/pull/2863">PR #2863</a> 回滚 Helm Chart 组件配置隔离功能</li><li>🐛 发现 3 个不稳定测试问题：TableChangeWatcherTest、CoordinatorEventProcessorTest、IcebergRewriteITCase</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <ul class="critical-list"><li>⚠️ <a href="https://github.com/apache/fluss/issues/2869">Issue #2869</a> 不稳定测试 TableChangeWatcherTest.testSchemaChanges</li><li>⚠️ <a href="https://github.com/apache/fluss/issues/2868">Issue #2868</a> 不稳定测试 CoordinatorEventProcessorTest.testCreateAndDropPartition</li><li>⚠️ <a href="https://github.com/apache/fluss/issues/2867">Issue #2867</a> 不稳定测试 IcebergRewriteITCase.testLogTableCompaction</li></ul>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2809">Issue #2809</a> [KV] Support Full KV Scan</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: 指出三个问题：close_scanner请求无法发送、scanner生命周期未集成到leader迁移流程、客户端未处理scan错误</li><li><span class="author">@polyzos</span>: 回复将添加future handler和错误检查，并将ScannerManager传递给ReplicaManager解决这些问题</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2865">Issue #2865</a> [Helm] Restructure helm chart of Fluss</h4>
+            <ul><li><span class="author">@nhuantho</span>: 询问此方向是否正确改进 Fluss Helm chart</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2581">Issue #2581</a> [test] Unstable test FlussAuthorizationITCase. testInitWriter</h4>
+            <ul><li><span class="author">@Prajwal-banakar</span>: 分析CI环境负载高导致leader选举超时，建议将等待时间从1分钟增至2分钟</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2863">Issue #2863</a> [Helm] Revert Chart Component Configuration Isolation (#2472)</h4>
+            <ul><li><span class="author">@swuferhong</span>: 感谢贡献，回滚#2472因review comments未得到适当处理，需要与@affo讨论后再推进</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2854">Issue #2854</a> [test] Unstable test FlussAuthorizationITCase.testDeleteProducerOffsetsAuthorization</h4>
+            <ul><li><span class="author">@hemanthsavasere</span>: 请求分配该issue，正在修复中</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2683">Issue #2683</a> [docs] Reintroduce the fluss-quickstart-flink Docker image</h4>
+            <ul><li><span class="author">@joebowbeer</span>: 建议将快速启动步骤打包成 .devcontainer 配置</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2472">Issue #2472</a> [Helm] Chart Component Configuration Isolation</h4>
+            <ul><li><span class="author">@hsavasere</span>: 已根据评论更新PR，请求review</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2859">Issue #2859</a> [lake/tiering] fallback to Flink's `io.tmp.dir` when `client.scanner.io.tmpdir` is not set</h4>
+            <ul><li><span class="author">@zuston</span>: 请求 @luoyuxia @wuchong review</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2864">Issue #2864</a> [flink][test] Fix OOM when startTaskManager in FlinkMetricsITCase</h4>
+            <ul><li><span class="author">@Prajwal-banakar</span>: CC @loserwang1024 请求review</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2454">PR #2454</a> [lake/tiering] Add per-table monitoring metrics for Lake Tiering</h4>
+            <ul><li><span class="author">@Copilot</span>: 指出注释与断言不符、建议传TieringStats.UNKNOWN替代null、注释应更新为正确描述</li><li><span class="author">@luoyuxia</span>: 建议改为Counter类型、trace日志避免过多warning、合并字段到TieringStats、添加nullable注解</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2859">PR #2859</a> [lake/tiering] fallback to Flink's `io.tmp.dir` when `client.scanner.io.tmpdir` is not set</h4>
+            <ul><li><span class="author">@Copilot</span>: 发现路径拼接问题，/fluss前的/导致父路径被忽略，应使用相对路径拼接</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2862">PR #2862</a> [lake/paimon] Fix partition expiration never triggered in Paimon lake table managed by Tiering Service</h4>
+            <ul><li><span class="author">@Copilot</span>: 建议对齐注释与配置值、使用Boolean.toString替代冗余三元表达式</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2839">PR #2839</a> [metric] Support influxdb reporter</h4>
+            <ul><li><span class="author">@Copilot</span>: 多处问题：SimpleEntry应改为AbstractMap、需异常处理、NPE风险、编译错误、log4j配置错误等</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2711">PR #2711</a> [helm] Enable metrics reporting on helm charts</h4>
+            <ul><li><span class="author">@affo</span>: 建议优化模板定义、创建getWithOverride辅助函数、统一reporter.enabled判断逻辑</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/2869">#2869</a> [test] Unstable test TableChangeWatcherTest.testSchemaChanges <span class="author">@app/github-actions</span> </li><li><a href="https://github.com/apache/fluss/issues/2868">#2868</a> [test] Unstable test CoordinatorEventProcessorTest.testCreateAndDropPartition <span class="author">@app/github-actions</span> </li><li><a href="https://github.com/apache/fluss/issues/2867">#2867</a> [test] Unstable test IcebergRewriteITCase.testLogTableCompaction <span class="author">@app/github-actions</span> </li><li><a href="https://github.com/apache/fluss/issues/2865">#2865</a> [Helm] Restructure helm chart of Fluss <span class="author">@nhuantho</span> </li><li><a href="https://github.com/apache/fluss/issues/2861">#2861</a> [lake/paimon] Partition expiration never fires in Paimon lake table when managed by Tiering Service <span class="author">@LiebingYu</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/2872">#2872</a> [Lake/Iceberg] Fix testLogTableCompaction flakiness by adding compaction timeout and retry logic <span class="author">@hemanthsavasere</span> </li><li><a href="https://github.com/apache/fluss/pull/2871">#2871</a> [helm] Restructure helm chart of Fluss <span class="author">@nhuantho</span> </li><li><a href="https://github.com/apache/fluss/pull/2870">#2870</a> [Helm] Create region config for components in value file  <span class="author">@hemanthsavasere</span> </li><li><a href="https://github.com/apache/fluss/pull/2866">#2866</a> Fix Unstable test FlussAuthorizationITCase.testDeleteProducerOffsetsAuthorization <span class="author">@hemanthsavasere</span> </li><li><a href="https://github.com/apache/fluss/pull/2864">#2864</a> [flink][test] Fix OOM when startTaskManager in FlinkMetricsITCase <span class="author">@Prajwal-banakar</span> </li><li><a href="https://github.com/apache/fluss/pull/2860">#2860</a> [rpc] Fixed the issue about ServerConnection retry authentication tasks were not canceled <span class="author">@xuzifu666</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/2861">#2861</a> [lake/paimon] Partition expiration never fires in Paimon lake table when managed by Tiering Service <span class="author">@LiebingYu</span> </li><li><a href="https://github.com/apache/fluss/issues/2440">#2440</a> [lake/tiering] Add Server-Level Monitoring Metrics for Lake Tiering <span class="author">@beryllw</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/2863">#2863</a> [Helm] Revert Chart Component Configuration Isolation (#2472) <span class="author">@affo</span> </li><li><a href="https://github.com/apache/fluss/pull/2862">#2862</a> [lake/paimon] Fix partition expiration never triggered in Paimon lake table managed by Tiering Service <span class="author">@LiebingYu</span> </li><li><a href="https://github.com/apache/fluss/pull/2859">#2859</a> [lake/tiering] fallback to Flink's `io.tmp.dir` when `client.scanner.io.tmpdir` is not set <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/pull/2454">#2454</a> [lake/tiering] Add per-table monitoring metrics for Lake Tiering <span class="author">@beryllw</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
