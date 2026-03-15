@@ -20,62 +20,50 @@
         </section>
 
         <section class="votes">
-            <h2>🗳️ 投票 (3)</h2>
-            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/lg7hnwmjw4gtpgsv20gs4mg44dx0b7t8">SPIP: Change Data Capture (CDC) Support</a> <span class="status passed">✅ 已通过</span></li>
-<li><a href="https://lists.apache.org/thread/vbl63fozv6d2cw3v6xn2xxxw7nlkg48c">Release Spark 4.2.0-preview3 (RC1)</a> <span class="status passed">✅ 已通过</span></li>
-<li><a href="https://lists.apache.org/thread/k6k50ck0b7djlmnt8t45720jx2qov678">Release Apache Spark K8s Operator 0.8.0 (RC1)</a> <span class="status warning">⚠️ 有异议</span><p class="objection-inline">提供的邮件回复中未发现异议，所有回复（Zhou Jiang、huaxin gao、L. C. Hsieh、Wenchen Fan）均为 +1 赞成票。</p></li></ul>
+            <h2>🗳️ 投票 (2)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/vbl63fozv6d2cw3v6xn2xxxw7nlkg48c">Release Spark 4.2.0-preview3 (RC1)</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/k6k50ck0b7djlmnt8t45720jx2qov678">Release Apache Spark K8s Operator 0.8.0 (RC1)</a> <span class="status warning">⚠️ 有异议</span><p class="objection-inline">提供的回复中未包含异议，所有投票者均投了 +1 表示支持发布。</p></li></ul>
         </section>
 
         <section class="discussions">
-            <h2>💬 讨论 (5)</h2>
+            <h2>💬 讨论 (4)</h2>
             
         <article class="discussion-item">
-            <h3><a href="https://lists.apache.org/thread/28190ld7fr1v045l2cvm0lmy8y5c8tc0">Implementing SaveMode.Overwrite in my v2 DataSource</a></h3>
-            <p class="meta">8 条回复 · 3 位参与者</p>
-            <p class="summary">Joeri van Ruth 正在为 MonetDB 开发自定义 Spark DataSource V2 以提升写入性能，但在实现 SaveMode.Overwrite 时对表生命周期管理感到困惑。讨论澄清了使用 df.write.save() 时无需实现 CatalogPlugin，连接器内部直接处理表创建与覆盖逻辑是正确做法。</p>
-            <div class="key-points"><p><strong>@Joeri van Ruth:</strong> 标准 JDBC 写入效率低，需通过自定义 DataSource 实现批量加载，但不确定如何正确集成 Overwrite 模式下的表检测与创建机制。</p>
-<p><strong>@Mich Talebzadeh:</strong> 建议使用 V2 API 并实现 SupportsOverwriteV2；明确指出 df.write.save() 路径不经过 CatalogPlugin，连接器内部自行处理表生命周期（如 TRUNCATE 或 CREATE）是预期模式。</p>
-<p><strong>@Khalid Mammadov:</strong> 分享了一篇关于使用 V2 API 和定义 Catalog 的博客文章链接，供参考。</p></div>
-            <p class="conclusion">Joeri 确认将按照建议，在 V2 API 中实现 SupportsOverwriteV2，并在连接器内部处理表的生命周期逻辑。</p>
+            <h3><a href="https://lists.apache.org/thread/b0qsjvj4qy118qocj1k7j645h7n74r4q">Drop support for pypy</a></h3>
+            <p class="meta">7 条回复 · 7 位参与者</p>
+            <p class="summary">本次讨论主要提议放弃对 PyPy 的支持，理由是其维护停滞、核心依赖库（如 NumPy 和 PyArrow）已不支持、以及 CI 测试覆盖率低且长期失败。该提议获得了多位核心贡献者的一致赞同。讨论确认了后续处理流程，即无需发起正式投票，只需在迁移指南中记录此变更。</p>
+            <div class="key-points"><p><strong>@Tian Gao:</strong> PyPy 维护不善，NumPy 已放弃支持，且 CI 长期失败无人修复，建议放弃支持以节省资源。</p>
+<p><strong>@Ruifeng Zheng:</strong> PyArrow 也不支持 PyPy，导致测试覆盖率低；建议参考过往做法，仅在迁移指南中说明，无需 SPIP 或正式投票。</p>
+<p><strong>@Hyukjin Kwon / Reynold Xin 等:</strong> 赞同放弃对 PyPy 的支持。</p></div>
+            <p class="conclusion">社区达成共识放弃 PyPy 支持，下一步将在迁移指南中添加相关说明，无需进行正式投票流程。</p>
         </article>
 
         <article class="discussion-item">
-            <h3><a href="https://lists.apache.org/thread/glcq0zgr33sozo7y4y7jqph24yh3m92p">Drop support for pypy</a></h3>
-            <p class="meta">8 条回复 · 7 位参与者</p>
-            <p class="summary">讨论主要关于提议放弃对 PyPy 的支持，原因包括其维护状况不佳、CI 长期失败且关键依赖库（如 numpy）已不再支持。该提议获得了社区成员的一致赞同，认为目前的测试覆盖率低且缺乏实际维护价值。后续确认无需正式投票流程，只需在迁移指南中记录即可。</p>
-            <div class="key-points"><p><strong>@Tian Gao:</strong> PyPy 维护停滞，CI 长期失败，且关键依赖 numpy 已放弃支持，建议停止支持以节省 CI 资源。</p>
-<p><strong>@Ruifeng Zheng:</strong> PyArrow 也不支持 PyPy，导致测试覆盖率极低；参考以往移除 Python 版本的先例，无需 SPIP 或投票，只需更新迁移指南。</p>
-<p><strong>@Hyukjin Kwon / Reynold Xin 等:</strong> 赞同放弃支持，认为现有依赖缺失导致 PyPy 在 Spark 中的可用性受限。</p></div>
-            <p class="conclusion">社区达成共识放弃对 PyPy 的支持，下一步将在迁移指南中记录此变更，无需发起正式投票。</p>
+            <h3><a href="https://lists.apache.org/thread/7bnlom11gfc50ygh7l7k6y5b563mbhbl">Implementing SaveMode.Overwrite in my v2 DataSource</a></h3>
+            <p class="meta">6 条回复 · 3 位参与者</p>
+            <p class="summary">讨论主要围绕如何在自定义 DataSource V2 中实现 SaveMode.Overwrite 以及如何处理表生命周期管理。Joeri 询问是否需要实现 CatalogPlugin，Mich 澄清对于 df.write.format(...).save() 模式，Spark 不经过 CatalogPlugin，连接器内部自行处理表的检测与创建是预期行为。</p>
+            <div class="key-points"><p><strong>@Joeri van Ruth:</strong> 因 JDBC 写入性能不足，寻求利用 V2 API 实现高效的批量写入和 Overwrite 模式的最佳实践，特别是关于表创建和 Catalog 集成的困惑。</p>
+<p><strong>@Mich Talebzadeh:</strong> 建议使用 V2 API，并指出对于 format().save() 路径，无需实现 CatalogPlugin，连接器内部处理表生命周期（如 TRUNCATE 或 DROP+CREATE）是标准做法。</p>
+<p><strong>@Mich Talebzadeh:</strong> 针对 Overwrite 功能，建议声明 OVERWRITE_BY_FILTER 并实现 SupportsOverwriteV2，若表无分区则可忽略 OverwriteDynamic。</p></div>
+            <p class="conclusion">Joeri 明确了实现路径：不需要依赖 CatalogPlugin，直接在连接器内部实现表检测与创建逻辑，并按建议实现 Overwrite 接口。</p>
         </article>
 
         <article class="discussion-item">
-            <h3><a href="https://lists.apache.org/thread/f8qrpgfqfwrypmzyb5xb7n90bjxrobpv">Unsubscribe</a></h3>
-            <p class="meta">0 条回复 · 1 位参与者</p>
-            <p class="summary">讨论主要关于用户 Subhasis Mukherjee 无法退订 Spark 邮件列表的问题。Lisa N. Cao 提供了自动退订邮箱地址作为解决方案，Subhasis 对此表示感谢并准备尝试。</p>
-            <div class="key-points"><p><strong>@Subhasis Mukherjee:</strong> 抱怨多次尝试退订失败，邮件堆积严重，请求协助退订。</p>
-<p><strong>@Lisa N. Cao:</strong> 建议向 list-unsubscribe@spark.apache.org 发送邮件，这是自动退订系统。</p>
-<p><strong>@Subhasis Mukherjee:</strong> 感谢建议，将尝试向该邮箱发送退订请求。</p></div>
-            <p class="conclusion">用户已获知正确的自动退订方式，问题有望通过用户自行发送邮件解决。</p>
+            <h3><a href="https://lists.apache.org/thread/3sjsxn8s7hwvgx02j9tyym9hbtkkk9x5">[Community] Seeking advice on PR follow-up process</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">Sergei Repnikov 提交了一个关于 ANSI 模式的小型修复 PR，但因原 JIRA 报告人长期未响应，向社区询问后续处理流程。Mich Talebzadeh 建议将此类开发流程讨论从 user@ 转移至 dev@ 邮件列表，以获得提交者更好的关注。Sergei 随后采纳建议，在 dev@ 列表中正式请求代码审查并咨询最佳实践。</p>
+            <div class="key-points"><p><strong>@Mich Talebzadeh:</strong> 指出 user@ 列表主要用于使用问题，PR 和贡献流程问题应在 dev@ 列表讨论；建议直接发邮件引用 JIRA 和 PR 链接请求审查。</p>
+<p><strong>@Sergei Repnikov:</strong> 提交了 PR #54644 修复 ANSI 模式配置建议，面临原审查者失联的困境，希望了解处理此类情况的标准礼仪和后续步骤。</p></div>
+            <p class="conclusion">提问者已采纳建议，将问题转发至 dev@ 邮件列表，目前等待社区成员进行代码审查或提供关于处理无响应审查者的进一步指导。</p>
         </article>
 
         <article class="discussion-item">
             <h3><a href="https://lists.apache.org/thread/mqfysmjmkdnw0fxy9t5dp7bxpvo36jrv">[FYI] SPARK-55719: Remove deprecation warning for spark.sql.hive.convertCTAS</a></h3>
             <p class="meta">0 条回复 · 1 位参与者</p>
-            <p class="summary">Dongjoon Hyun 发起通知，宣布将在 Apache Spark 4.2.0 中移除 spark.sql.hive.convertCTAS 的弃用警告。该改动属于改进类型，实质上是恢复了 Spark 3.1.0 版本中引入的 SPARK-33693 提案。</p>
-            <div class="key-points"><p><strong>@Dongjoon Hyun:</strong> 此次变更针对 Apache Spark 4.2.0，旨在移除 spark.sql.hive.convertCTAS 的弃用警告。</p>
-<p><strong>@Dongjoon Hyun:</strong> 该 PR 实际上是恢复了 Spark 3.1.0 版本中引入的 SPARK-33693 变更。</p></div>
-            <p class="conclusion">该邮件仅为通知性质，相关改动已通过 PR #54521 提交。</p>
-        </article>
-
-        <article class="discussion-item">
-            <h3><a href="https://lists.apache.org/thread/3sjsxn8s7hwvgx02j9tyym9hbtkkk9x5">[Community] Seeking advice on PR follow-up process</a></h3>
-            <p class="meta">0 条回复 · 1 位参与者</p>
-            <p class="summary">讨论主要围绕新贡献者 Sergei Repnikov 遇到的 PR 审查者长期未响应问题展开。Mich Talebzadeh 指出此类流程问题应转移至 dev@ 邮件列表讨论，并建议直接发帖引用相关 JIRA 和 PR 以寻求新的审查者。</p>
-            <div class="key-points"><p><strong>@Sergei Repnikov:</strong> 提交了一个小型修复 PR，但分配的审查者已 inactive 超过 6 个月，希望了解后续处理的正确礼仪。</p>
-<p><strong>@Mich Talebzadeh:</strong> 用户邮件列表主要用于使用问题，贡献和 PR 流程讨论应在 dev@ 邮件列表进行。</p>
-<p><strong>@Mich Talebzadeh:</strong> 建议在 dev@ 列表中引用 JIRA 和 PR 链接，请求他人审查。</p></div>
-            <p class="conclusion">建议发件人将问题转至 dev@spark.apache.org 邮件列表，并在邮件中附上 JIRA 和 PR 编号以寻求社区审查。</p>
+            <p class="summary">本次讨论是关于 Apache Spark 4.2.0 中移除 `spark.sql.hive.convertCTAS` 配置项弃用警告的预告。该变更（SPARK-55719）实质上是恢复了 Spark 3.1.0 版本中引入的 SPARK-33693 提案，属于改进类型的 JIRA 任务。</p>
+            <div class="key-points"><p><strong>@Dongjoon Hyun:</strong> 这是一个关于 Spark 4.2.0 版本中弃用警告变更的预告，旨在移除 `spark.sql.hive.convertCTAS` 的弃用警告。</p>
+<p><strong>@Dongjoon Hyun:</strong> 此变更（SPARK-55719）等同于撤销 Spark 3.1.0 中的 SPARK-33693，具体技术细节可参考相关 PR。</p></div>
+            <p class="conclusion">作者已发布相关 JIRA 和 PR 供社区查阅，作为一项改进提案推进。</p>
         </article>
         </section>
 
