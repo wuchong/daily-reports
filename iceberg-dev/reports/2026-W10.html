@@ -15,14 +15,14 @@
         </header>
 
         <section class="announcements">
-            <h2>📢 公告 (1)</h2>
-            <ul><li><a href="https://lists.apache.org/thread/bsp885vy4v8yzd4j73f4jvh2kkm8bv2t">New Committer and PMC Members</a></li></ul>
+            <h2>📢 公告 (2)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/bsp885vy4v8yzd4j73f4jvh2kkm8bv2t">New Committer and PMC Members</a></li>
+<li><a href="https://lists.apache.org/thread/dt03b25ncc42l5cp9vh3qpcjr7jshoow">Iceberg Community Meetup Europe - April Basel</a></li></ul>
         </section>
 
         <section class="votes">
-            <h2>🗳️ 投票 (3)</h2>
-            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/oj2ndp1yrtt8v92vdnky0c9mr3t0xgm6">Promote the remote signing endpoint to the main REST spec (attempt #2)</a> <span class="status in-progress">🗳️ 进行中</span></li>
-<li><a href="https://lists.apache.org/thread/mt4y8vw80glnqqwsr8czfmwvhqf09h46">REST: Adding scan planning mode to loadTable API</a> <span class="status in-progress">🗳️ 进行中</span></li>
+            <h2>🗳️ 投票 (2)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/c96vmncxvv2vh0hypd0fkgs5qzzg4wm3">REST: Adding scan planning mode to loadTable API</a> <span class="status in-progress">🗳️ 进行中</span></li>
 <li><a href="https://lists.apache.org/thread/v65l93htwt2wn4h58x5oxhj607cjyfts">Release Apache Iceberg Rust 0.9.0 rc.1</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
         </section>
 
@@ -31,97 +31,100 @@
             
         <article class="discussion-item">
             <h3><a href="https://lists.apache.org/thread/129f3n8zgdck3nc5hmdf63sntzcy9tjg">Enforcing AI contribution guidelines</a></h3>
-            <p class="meta">9 条回复 · 10 位参与者</p>
-            <p class="summary">社区针对近期出现的全自动 AI 生成 PR 展开讨论，一致认为需执行现有指南以保护审查者时间，避免低质量代码流入。讨论重点从单纯的惩罚措施转向了技术防范手段，如使用 PR 模板、自动化检测工具以及为 AI 代理设置专门的指令文件。</p>
-            <div class="key-points"><p><strong>@Huaxin Gao:</strong> 提议对无视指南的行为制定后果，如关闭未经人工审查的 PR 或限制违规者的贡献权限。</p>
-<p><strong>@Sung Yun:</strong> 建议将关注点从“是否使用 AI”转向“贡献质量与准备情况”，通过明确 PR “准备审查”的标准来引导贡献者。</p>
-<p><strong>@Steve Loughran / Vaquar Khan:</strong> 提出技术解决方案，如创建 CLAUDE.md 等指令文件规范 AI 行为，或开发 AIV 工具检测代码逻辑密度以过滤低质量提交。</p></div>
-            <p class="conclusion">初步达成共识需关闭低质量 AI PR，下一步将更新贡献指南以明确后果，并探索引入 PR 模板、自动化检测工具及 AI 指令文件等技术手段。</p>
+            <p class="meta">10 条回复 · 10 位参与者</p>
+            <p class="summary">社区针对缺乏人工审查的 AI 生成 PR 展开讨论，一致认为需执行贡献指南以保护审查者资源。讨论重点从单纯检测 AI 转向关注贡献质量和准备度，并提出了添加 PR 模板、AGENTS.md 文件及明确违规后果等具体建议。</p>
+            <div class="key-points"><p><strong>@Huaxin Gao:</strong> 提议关闭未经人工审查的 PR，并对屡次无视指南的贡献者进行限制。</p>
+<p><strong>@Sung Yun:</strong> 建议关注贡献质量和准备度而非单纯针对 AI 使用，制定规范明确 PR 何时才算准备好接受审查。</p>
+<p><strong>@Kevin Liu:</strong> 建议添加 AGENTS.md 文件以约束 AI 代理行为，并强调需在指南中明确审查者的负担和资源限制。</p></div>
+            <p class="conclusion">社区达成初步共识，将更新指南以明确违规后果，并计划在下次同步会议中继续讨论应对全自动代理 PR 的方案。</p>
         </article>
 
         <article class="discussion-item">
             <h3><a href="https://lists.apache.org/thread/tssbptlm2ft8sbch7r2r192znw54r1y7">March board report</a></h3>
             <p class="meta">5 条回复 · 5 位参与者</p>
-            <p class="summary">Ryan Blue 提交了 Apache Iceberg 三月董事会报告初稿，汇报了项目状态、人员变动及多语言版本发布等核心进展。Péter Váry 和 Kevin Liu 等成员对报告细节提出了修改建议，包括完善 v4 规范描述、补充 Flink 维护状态及增加社区宣传渠道信息。</p>
-            <div class="key-points"><p><strong>@Ryan Blue:</strong> 提交报告初稿，涵盖 Java/Python/Go 等多语言版本发布及 v4 表规范设计进展。</p>
-<p><strong>@Péter Váry:</strong> 建议修改二级索引描述措辞，并补充 Flink 维护状态及文件格式 API 相关内容。</p>
-<p><strong>@Kevin Liu:</strong> 提议在社区部分增加项目新博客链接及 LinkedIn 主页所有权转移信息。</p></div>
-            <p class="conclusion">报告初稿整体获得认可，作者将采纳建议完善 v4 规范描述、Flink 维护状态及社区宣传部分，以形成最终报告。</p>
+            <p class="summary">本次讨论主要围绕 Apache Iceberg 的三月董事会报告草案展开，Ryan Blue 发起了包含社区变更、多语言版本发布及 v4 规范进展的报告。参与者对报告内容提出了具体修改建议，包括更新二级索引状态、补充 Flink 维护信息及社区推广渠道，报告正根据反馈进行完善。</p>
+            <div class="key-points"><p><strong>@Ryan Blue:</strong> 发布了董事会报告初稿，涵盖了 PMC/Committer 变更、多语言版本发布（Go, Python, Rust, Java 等）、REST 规范更新及 v4 表规范的设计进展。</p>
+<p><strong>@Péter Váry:</strong> 建议将二级索引描述改为“早期阶段”，并补充列更新规范讨论、文件格式 API 合并及 Flink 仅维护模式等进展。</p>
+<p><strong>@Kevin Liu:</strong> 建议在社区部分增加新的项目博客链接和 LinkedIn 页面所有权转移的信息。</p></div>
+            <p class="conclusion">报告草案获得积极反馈，Ryan Blue 将采纳关于二级索引描述、Flink 维护状态及社区资源的补充建议，完成最终版报告。</p>
         </article>
 
         <article class="discussion-item">
-            <h3><a href="https://lists.apache.org/thread/ltwsp42jlkgfhv54p8l1j7jqfzv9s2qm">Iceberg Public Dataset Launch</a></h3>
-            <p class="meta">4 条回复 · 2 位参与者</p>
-            <p class="summary">讨论主要针对用户在使用 Iceberg 公共数据集时遇到的 BigLake REST Catalog 请求配额超限（HTTP 429）问题。维护者排查后发现服务端存在异常并实施了缓解措施，最终恢复了用户的正常访问。</p>
-            <div class="key-points"><p><strong>@Manu Zhang:</strong> 报告在加载表时触发了 BigLake 的每分钟读取请求配额限制（默认 300 次），且无法通过控制台将配额提升至 200 以上。</p>
-<p><strong>@Talat Uyarer:</strong> 最初建议用户在 Google Cloud Console 申请提高配额，随后发现服务端存在问题并实施了修复，确认当前限制为每项目每分钟 200 次请求。</p></div>
-            <p class="conclusion">维护者修复了服务端问题后，用户确认数据集已可正常访问，问题得到解决。</p>
+            <h3><a href="https://lists.apache.org/thread/zmq8gmz8zon29zgskgf10756j1lndo8d">Spark 4.1 support</a></h3>
+            <p class="meta">4 条回复 · 3 位参与者</p>
+            <p class="summary">讨论主要围绕 Iceberg 对 Spark 4.1 的支持进展展开。Anton 确认所有相关工作已合并并等待发布候选版本。Romain 表示虽然自行构建可行，但在企业环境中较复杂，更期待正式版本的发布。</p>
+            <div class="key-points"><p><strong>@Anton Okolnychyi:</strong> 所有 Spark 4.1 相关工作已合并，目前正等待发布候选版本。</p>
+<p><strong>@Romain Manni-Bucau:</strong> 询问了支持进度，确认主分支测试通过，但因企业环境限制倾向于等待正式发布而非自行构建。</p>
+<p><strong>@Steve Loughran:</strong> 建议用户通过下载源码并自行构建来提前获取更新和验证功能。</p></div>
+            <p class="conclusion">Spark 4.1 支持功能代码已就绪并合并，下一步将进行发布候选版本的准备。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/9gdtbvhkvl3vyxqdp9wlkbpwm6ksm56q">Apache Iceberg 1.10.2 Patch Release</a></h3>
+            <p class="meta">3 条回复 · 4 位参与者</p>
+            <p class="summary">Amogh Jahagirdar 提议发布 Apache Iceberg 1.10.2 补丁版本，旨在修复 1.10 版本中的正确性问题和回归缺陷。社区成员建议纳入 Avro CVE 安全修复以及 rewrite_position_deletes 过程失效的问题。</p>
+            <div class="key-points"><p><strong>@Amogh Jahagirdar:</strong> 提议发布 1.10.2 补丁版本以解决正确性问题和回归问题，并已建立里程碑收集待回溯移植的 PR。</p>
+<p><strong>@Steve Loughran:</strong> 建议回溯移植 Avro 更新以修复解析恶意 .avsc 文件相关的 CVE 漏洞。</p>
+<p><strong>@Omer Hadari:</strong> 请求纳入修复 rewrite_position_deletes 过程在 1.10.x 版本中对非原始类型列失效的问题。</p></div>
+            <p class="conclusion">社区已确认发布计划，正在收集并评审需要回溯移植的修复 PR，后续将继续完善相关代码并推进发布。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/9b7y34p194xg9fdfmfbpfhr6sflcyd54">Support sort order in CTAS/RTAS via TBLPROPERTIES — revisiting #4889 and #14612</a></h3>
+            <p class="meta">3 条回复 · 2 位参与者</p>
+            <p class="summary">Hemanth Boyina 提议在 CTAS/RTAS 操作中通过 TBLPROPERTIES 支持排序设置，旨在解决现有方案中表暂时不可用或双重写入导致的高成本问题。Ryan Blue 对此持保留意见，建议直接在 SELECT 查询中使用 ORDER BY 子句，认为通过表属性传递排序信息不符合标准用法。</p>
+            <div class="key-points"><p><strong>@Hemanth Boyina:</strong> 现有的 ALTER TABLE 或重写数据文件方案存在缺陷（如表窗口期不可用或计算成本翻倍），提议通过 TBLPROPERTIES 传递排序信息以实现原子性并自动协调分布与排序。</p>
+<p><strong>@Ryan Blue:</strong> 建议直接在 SELECT 查询中使用 ORDER BY 来实现物理排序，认为利用 TBLPROPERTIES 传递非属性信息是一种怪异的用法，倾向于使用标准 SQL 子句而非绕过 Spark 的限制。</p></div>
+            <p class="conclusion">目前尚未达成共识，Ryan Blue 不支持通过 TBLPROPERTIES 实现该功能的方案，倾向于使用标准 SQL 解决问题，提议者可能需要寻找其他实现路径或进一步论证标准方案的不足。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/fm3ly9q3xlwwtqgcfqxhrblot665rf6c">Spark: Support CREATE TABLE LIKE</a></h3>
+            <p class="meta">3 条回复 · 3 位参与者</p>
+            <p class="summary">Max 请求审核支持 'CREATE TABLE LIKE' 功能的 PR，并询问此前被忽略的原因。讨论指出社区倾向于避免维护脆弱的 Iceberg 扩展，且发现 Spark 端已有相关 PR。最终决定关闭 Iceberg 侧的 PR，转而支持 Spark 原生实现。</p>
+            <div class="key-points"><p><strong>@Max Konstantinov:</strong> 请求社区审核该功能的 PR，并质疑其是否因过时或优先级低而被忽略。</p>
+<p><strong>@Anurag Mantripragada:</strong> 社区倾向于移除难以维护的扩展，认为直接在 Spark 端支持该功能是正确的做法。</p>
+<p><strong>@Szehon Ho:</strong> 指出 Spark 社区已有类似功能的 PR 正在进行中。</p></div>
+            <p class="conclusion">初步结论是关闭 Iceberg 仓库中的相关 PR，等待 Spark 端的原生支持实现。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/25k9cy51bl57wwqwx656yk7ly41bz4jt">V3 missing features in Iceberg Java API</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">讨论主要关注 Iceberg Java API 尚未支持 V3 规范中 date 到 timestamp 的类型升级功能。Antoni Reus Darder 询问相关 PR (#15159) 是否会包含在即将发布的 1.11.0 版本中，并指出该 PR 缺少有写入权限者的审核。PR 作者 Alex Stephen 希望社区能协助审核以推进合并，Antoni 随后表示已协助审核并希望引起更多关注。</p>
+            <div class="key-points"><p><strong>@Antoni Reus Darder:</strong> 指出 Java API 缺失 V3 的 date 到 timestamp 类型升级支持，询问该特性是否计划在 1.11.0 版本中发布。</p>
+<p><strong>@Alex Stephen:</strong> 确认自己是相关 PR 的作者，请求社区协助审核以帮助代码合并。</p>
+<p><strong>@Antoni Reus Darder:</strong> 已对 PR 添加了评论/审核，希望能引起社区更多关注。</p></div>
+            <p class="conclusion">目前尚未确定是否包含在 1.11.0 版本中，下一步行动是等待具有写入权限的审核人员对 PR #15159 进行审核。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/zfm6rttqfqyf7xqbm59zdmyd88bt0l7g">Iceberg Public Dataset Launch</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">Manu Zhang 在使用 Iceberg 公共数据集时遇到了 REST Catalog 读取请求配额超限（Error 429）的问题。Talat Uyarer 最初建议用户自行申请提升配额，但在确认无法提升后，排查发现服务端存在问题并实施了修复。最终，Manu Zhang 确认问题已解决，服务恢复正常。</p>
+            <div class="key-points"><p><strong>@Manu Zhang:</strong> 报告在使用公共数据集时遇到配额超限错误（Error 429），且无法在控制台手动提升配额上限。</p>
+<p><strong>@Talat Uyarer:</strong> 最初建议检查消费者项目的配额设置，后发现服务端存在问题并进行了修复。</p>
+<p><strong>@Talat Uyarer:</strong> 说明修复后请求限制仍为 200 次/分钟，但之前的错误应不再出现。</p></div>
+            <p class="conclusion">问题已解决，Manu Zhang 确认服务恢复正常。</p>
         </article>
 
         <article class="discussion-item">
             <h3><a href="https://lists.apache.org/thread/9h157zrmbvzp6nrgj94x7c337qxcwzx8">Dedicated sync for Iceberg materialized view</a></h3>
             <p class="meta">2 条回复 · 3 位参与者</p>
-            <p class="summary">讨论主要围绕 Iceberg 物化视图 Spec PR (#11041) 的合并请求展开。Jan Kaul 提议合并该 PR，但 Steven Wu 建议先完成 Java 参考实现的 PoC 以验证设计选择。目前 Walaa Eldin Moustafa 正在更新实现代码以适配最新的 Spec 变更。</p>
+            <p class="summary">讨论主要围绕 Iceberg 物化视图 Spec PR (#11041) 的合并时机展开。Jan Kaul 提议合并已更新的 PR，但 Steven Wu 建议先完成 Java 参考实现的 PoC 以验证设计选择，Walaa Eldin Moustafa 表示正在更新相关实现代码。</p>
             <div class="key-points"><p><strong>@Jan Kaul:</strong> 提议合并已根据会议讨论更新的 Spec PR (#11041)。</p>
-<p><strong>@Steven Wu:</strong> 建议先完成 Java PoC 实现验证设计；会议共识包括删除 max stateless config 定义并保留“refresh-state”列表。</p>
-<p><strong>@Walaa Eldin Moustafa:</strong> 正在更新实现代码以适配 Spec 变更，即将分享。</p></div>
-            <p class="conclusion">下一步是将 Java 参考实现推进至 PoC 状态以验证设计，根据实现反馈决定是否调整 Spec 措辞，之后再进行投票合并。</p>
+<p><strong>@Steven Wu:</strong> 建议先完成 Java PoC 实现以验证设计，再决定是否投票合并 Spec；会议中已同意移除 max stateless config 定义并保留 refresh-state 列表。</p>
+<p><strong>@Walaa Eldin Moustafa:</strong> 正在更新实现代码以适配最新的 Spec 变更，预计几天内分享。</p></div>
+            <p class="conclusion">暂不合并 Spec PR，下一步将推进 Java 参考实现至 PoC 状态以验证设计，并根据实现反馈决定是否调整 Spec 措辞。</p>
         </article>
 
         <article class="discussion-item">
-            <h3><a href="https://lists.apache.org/thread/25k9cy51bl57wwqwx656yk7ly41bz4jt">V3 missing features in Iceberg Java API</a></h3>
+            <h3><a href="https://lists.apache.org/thread/441bhlb37xo5hn2pl5mhfq3f288s4nwp">Implementation status page is lacking V3 status support for the different libraries</a></h3>
             <p class="meta">1 条回复 · 2 位参与者</p>
-            <p class="summary">讨论主要关注 Iceberg Java API 中尚未实现的 V3 规范特性（即 date 到 timestamp 的类型提升）。Antoni Reus Darder 指出相关 PR #15159 缺乏有写入权限的审核者，并询问该特性是否计划纳入 1.11.0 版本。PR 作者 Alex Stephen 随后回应并请求社区协助审核以推进合并。</p>
-            <div class="key-points"><p><strong>@Antoni Reus Darder:</strong> V3 规范允许 date 到 timestamp 的类型提升，但 Java API 尚未实现，且相关 PR #15159 正等待审核。</p>
-<p><strong>@Alex Stephen:</strong> 确认自己是该 PR 的作者，希望能获得社区审核以推进合并。</p></div>
-            <p class="conclusion">尚未确定是否包含在 1.11.0 版本中，下一步行动是寻求社区对 PR #15159 进行审核以推动合并。</p>
-        </article>
-
-        <article class="discussion-item">
-            <h3><a href="https://lists.apache.org/thread/9gdtbvhkvl3vyxqdp9wlkbpwm6ksm56q">Apache Iceberg 1.10.2 Patch Release</a></h3>
-            <p class="meta">1 条回复 · 2 位参与者</p>
-            <p class="summary">Amogh Jahagirdar 提议发布 Apache Iceberg 1.10.2 补丁版本，旨在修复 1.10 版本中存在的正确性问题和回归缺陷。目前已建立相应里程碑并开始收集待回移植的 PR，Steve Loughran 随后补充了一个涉及 Avro CVE 漏洞修复的回移植请求。</p>
-            <div class="key-points"><p><strong>@Amogh Jahagirdar:</strong> 提议发布 1.10.2 补丁以解决正确性问题和回归问题，并创建了里程碑供社区补充需要回移植的 PR。</p>
-<p><strong>@Steve Loughran:</strong> 建议回移植 Avro 更新以修复 CVE 漏洞（涉及解析恶意 .avsc 模式文件的安全问题）。</p></div>
-            <p class="conclusion">社区正在向 1.10.2 里程碑中补充关键的修复 PR，后续将推进版本的发布流程。</p>
-        </article>
-
-        <article class="discussion-item">
-            <h3><a href="https://lists.apache.org/thread/9qly8km5q816300t93cn6d130r2lvy7r">Extending Iceberg expressions</a></h3>
-            <p class="meta">0 条回复 · 1 位参与者</p>
-            <p class="summary">Ryan Blue 指出当前 Iceberg 表达式结构存在局限性，阻碍了新用例的发展，因此提出扩展提案以解除限制。该提案建议增加函数调用、支持目录及 SQL 函数，并引入基于 ID 的引用，旨在统一改动并推动生成列等新特性。</p>
-            <div class="key-points"><p><strong>@Ryan Blue:</strong> 当前表达式结构基于 Java 实现，已无法满足新用例（如生成列、统计信息）的需求。</p>
-<p><strong>@Ryan Blue:</strong> 提议扩展内容包括：增加函数调用、支持 Catalog/SQL 函数、以及添加基于 ID 的引用。</p>
-<p><strong>@Ryan Blue:</strong> 提案旨在整合各项改动以避免重复工作，重点在于表达式结构而非具体函数实现规范。</p></div>
-            <p class="conclusion">作者邀请社区查阅提案文档，以推动多个需要交换表达式的用例向前发展。</p>
-        </article>
-
-        <article class="discussion-item">
-            <h3><a href="https://lists.apache.org/thread/3cyf1g5768jpmm09hr8c31tpyfvmyrn5">Table and Column Label Metadata in Iceberg REST Catalog</a></h3>
-            <p class="meta">0 条回复 · 1 位参与者</p>
-            <p class="summary">讨论旨在解决 Iceberg REST Catalog 中缺乏标准机制传递运营元数据（如所有权、成本归属）的问题。Andrei 提议在 `LoadTableResponse` 中增加可选的 `labels` 字段，Ryan Blue 对此表示支持，认为这能有效解决元数据交换难题且不增加规范负担。</p>
-            <div class="key-points"><p><strong>@Andrei Tserakhau:</strong> 现有的 Properties 和自定义字段无法满足临时性运营上下文的传递需求，提议新增 `labels` 字段作为按请求生成的非持久化元数据扩展点。</p>
-<p><strong>@Ryan Blue:</strong> 支持该提议，认为这允许目录以通用方式提供非规范元数据，避免了将其作为一等公民元数据的负担，同时也防止了覆盖表属性的反模式。</p></div>
-            <p class="conclusion">提案获得了积极反馈，初步确认了通过 `labels` 字段解决目录元数据互操作性问题的方向。</p>
-        </article>
-
-        <article class="discussion-item">
-            <h3><a href="https://lists.apache.org/thread/3b0sgfdr95vg8mozn1pnmhy2czl090f9">Thoughts on Adding a `doc` Property for Schema Objects</a></h3>
-            <p class="meta">0 条回复 · 1 位参与者</p>
-            <p class="summary">讨论主要围绕是否应在 Iceberg 表元数据中添加表注释或描述属性。社区倾向于将其作为标准约定记录在表元数据中，Steven Wu 发现之前的 PR 遗漏了属性键的定义，因此提交了新的 PR 进行修复。</p>
-            <div class="key-points"><p><strong>@Steven Wu:</strong> 表描述属于表元数据，已提交 PR 修复属性键未在 TableProperties 中定义的问题。</p>
-<p><strong>@Huaxin Gao:</strong> 同意表注释属于元数据，支持将其文档化为标准约定。</p>
-<p><strong>@Kevin Liu:</strong> 指出在元数据中更新注释会触发快照生成，建议考虑由 Catalog 层处理。</p></div>
-            <p class="conclusion">初步结论是将表注释存储在表元数据中，下一步行动是处理 Steven Wu 提交的 PR #15531 以完善代码实现。</p>
-        </article>
-
-        <article class="discussion-item">
-            <h3><a href="https://lists.apache.org/thread/88cgcojook8bx07lf76bpopkxmjrjc3v">Subject: [PR Review] Updating Delta Lake Migration to use Delta Kernel (PR #15407)</a></h3>
-            <p class="meta">0 条回复 · 1 位参与者</p>
-            <p class="summary">本次讨论围绕 PR #15407 展开，旨在更新 Delta Lake 迁移代码以使用 Delta Kernel。目前该 PR 已实现与主分支现有代码的功能对等，并新增了对 Delta reader v3 和 writer v7 的支持，作者正在请求社区进行新一轮代码评审。</p>
-            <div class="key-points"><p><strong>@Vladislav Sidorovich:</strong> PR 已达成功能对等里程碑，后续计划重构以移除内部 Delta Kernel 类，并增加 Deletion Vectors 支持及增量转换功能。</p>
-<p><strong>@Anoop Johnson:</strong> 指出 UniForm v1/v2 因表示差异曾限制 Deletion Vectors，但 Iceberg v3 解决了该问题，未来的 IcebergCompatV3 将解除此限制。</p></div>
-            <p class="conclusion">作者请求社区对当前代码进行评审，后续将进行代码重构、支持 Deletion Vectors 转换以及实现增量转换。</p>
+            <p class="summary">Antoni Reus Darder 指出 Iceberg 官网的实现状态页面缺少 V3 规范的支持情况，询问是否有更新计划及如何贡献。Renjie Liu 回复指出了页面源码位置，建议直接提交 PR 进行更新。</p>
+            <div class="key-points"><p><strong>@Antoni Reus Darder:</strong> 发现官网状态页仅有 V1 和 V2 的支持列表，缺少 V3 的实现状态，且部分 V3 功能在 Java API 中仍在开发中。</p>
+<p><strong>@Renjie Liu:</strong> 提供了状态页面的源码链接，建议通过创建 PR 并邀请社区审查的方式来更新 V3 状态。</p></div>
+            <p class="conclusion">建议贡献者直接修改 GitHub 上的源码文件并提交 PR，以补充 V3 的实现状态。</p>
         </article>
         </section>
 
