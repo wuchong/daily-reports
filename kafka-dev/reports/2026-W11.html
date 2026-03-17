@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafka 社区周报 | 2026-W11</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Kafka 社区周报 | 2026-W11</h1>
+            <p class="date-range">2026-03-09 ~ 2026-03-15</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (1)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/og08645918kz159r36nc6p88zh9fyyr4">Apache Kafka 4.1.2</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (9)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/9ppxm1lstzc11zo2ybv8gx5hx1bmktcd">KIP-1242: Detection and handling of misrouted connections</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/t4o7dnyl4lt3r17mmqdzmvzk8dd4nbt9">KIP-1220: kafka-broker-api-versions tool support bootstrap controllers</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/2whj3nv33kdll4sz9czh69dc7nxq4q9m">KIP-1141: Simplifying MetadataQuorumCommand by Leveraging Admin API for Controller Management</a> <span class="status warning">⚠️ 有异议</span><p class="objection-inline">Chia-Ping Tsai 建议延长投票时间，原因是之前存在 -1 票，且希望 Colin 审查澄清内容及进一步讨论实现细节。</p></li>
+<li><a href="https://lists.apache.org/thread/10g7jwk61jd9oxotyyxc0ho4d0t7m997">KIP-1241: Reduce tiered storage redundancy with delayed upload (Topic-level feature)</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/3dz9tq51sxsfwyg97jp6bbt1k531vjq5">4.1.2 RC1</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/g1h715gw2m29p4s3g2n2rr1p8ochvmg8">4.0.2 RC3</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/dllnl649lj2qsr2myqcm6s80vc4gkmzn">KIP-1291: Extended I/O Metrics Collection</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/t17lml0nso7kv03hm9hxoon0fok6c6w1">KIP-1283: Clarify KafkaStreams cleanUp semantics to preserve process metadata and state directory lock file</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/4oxkxnkh1h8snjc0omrj2wtstnyxboyr">KIP-1262: Enable auto-formatting directories</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/gowh0jprvd3c1qgljtmsywypqnn5kyho">KIP-1282: Prevent data loss during partition expansion for dynamically added partitions</a></h3>
+            <p class="meta">10 条回复 · 5 位参与者</p>
+            <p class="summary">讨论主要围绕 KIP-1282 展开，旨在解决 Kafka 分区扩容时可能发生的数据丢失问题。经过对混合策略和多场景处理的探讨，社区最终倾向于采用“单一规则”方案，即统一使用消费者组的创建时间戳作为偏移量重置的基准，以简化逻辑并确保数据完整性。</p>
+            <div class="key-points"><p><strong>@Ryan Leslie:</strong> 详细拆解了 auto.offset.reset 的多种场景（如新组、新分区、偏移量越界等），指出混合逻辑会增加用户理解难度，建议行为应具备可预测性。</p>
+<p><strong>@Jian Fu:</strong> 提出“基本规则”建议，认为策略应仅影响初始启动决策，后续行为应保持一致（尽量消费所有可用数据），从而降低用户认知负担。</p>
+<p><strong>@黃竣陽:</strong> 总结并提出最终简化方案，建议直接使用组创建时间戳发起 ListOffsetsRequest，无需比较分区时间戳，从而消除条件分支并减少协议变更范围。</p></div>
+            <p class="conclusion">社区达成初步共识，将采用基于组创建时间戳的单一确定性规则来处理偏移量缺失或越界问题。下一步行动是更新 KIP 文档以反映该简化逻辑，并补充关于服务端时钟偏差风险的说明。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/zft6yt0712hco825fkn9o3852kk7lvmp">KIP-1279: Cluster Mirroring</a></h3>
+            <p class="meta">5 条回复 · 3 位参与者</p>
+            <p class="summary">社区正在对 KIP-1279（集群镜像）提案进行深入的技术细节审查，重点讨论协议兼容性、错误处理及故障转移机制。参与者针对镜像过程中的 PID 转换成本、配额管理和 API 定义完整性提出了多项改进建议，作者已对部分问题进行了澄清和文档更新。</p>
+            <div class="key-points"><p><strong>@Rajini Sivaram:</strong> 指出引入新错误码可能需要升级 Produce 请求版本，并担忧链式镜像场景下 PID 转换的成本与潜在冲突。</p>
+<p><strong>@Federico Valeri:</strong> 解释了镜像获取程序采用 read_committed 模式并在故障转移时截断至 LSO 的设计权衡，旨在平衡延迟与数据一致性。</p>
+<p><strong>@Paolo Patierno:</strong> 建议 KIP 应明确定义 API 响应类（如 DescribeMirrorsResult）的结构，以便于追踪和自动化系统使用。</p></div>
+            <p class="conclusion">作者已根据审查意见更新了 KIP 文档，解决了 API 一致性和配置管理等问题，但关于故障转移策略和链式镜像的边缘情况处理仍需进一步探讨。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/gnn7zph6owd7089d9oz71v2hd0h1r1c1">Missing Cwiki account provision</a></h3>
+            <p class="meta">4 条回复 · 2 位参与者</p>
+            <p class="summary">Aditya Kousik 报告在申请 CWiki 账户时未收到验证邮件，但 JIRA ID 已成功创建。Matthias J. Sax 协助调查并向 Apache INFRA 提交工单，发现是 Confluence ID 查找存在 Bug。问题修复后，Matthias 为该账户授予了必要的写入权限。</p>
+            <div class="key-points"><p><strong>@Aditya Kousik:</strong> 报告 CWiki 账户开通受阻（未收到验证邮件），后续确认问题源于 Confluence ID 查找 Bug。</p>
+<p><strong>@Matthias J. Sax:</strong> 核实后台无 Confluence 请求记录，提交 INFRA 工单，最终找到账户并授予写入权限。</p></div>
+            <p class="conclusion">问题已解决，确认为 Confluence ID 查找 Bug，账户已开通并获授权。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/flpm1qrm7cwj6fqr1j8c0p8sbqysgv34">READ_WRITE_TOTAL_TIMEOUT_MS in kafka-connect's KafkaConfigBackingStore is low</a></h3>
+            <p class="meta">4 条回复 · 2 位参与者</p>
+            <p class="summary">讨论主要针对 Kafka Connect 中 `READ_WRITE_TOTAL_TIMEOUT_MS` 硬编码为 30 秒导致大规模任务（500+）再均衡时写入超时的问题。Henry 提议增加该值或将其可配置化，Chris 则建议通过补丁提高硬编码值，并警告数值过高可能导致 Worker 掉线。双方最终探讨了基于 `max.poll.interval.ms` 动态调整超时时间的方案。</p>
+            <div class="key-points"><p><strong>@Henry Haiying Cai:</strong> 现有 30 秒超时对于 500+ 分区的场景不足，建议增加硬编码值或使其可配置，并提出基于 `max.poll.interval.ms` 动态计算的方案（如取其一半）。</p>
+<p><strong>@Chris Egerton:</strong> 同意增加硬编码值，但指出使其可配置需要 KIP；警告超时设置过高会导致 Worker 因两次轮询间隔过长而掉线。</p></div>
+            <p class="conclusion">Henry 提出了无需 KIP 的具体修改方案（将超时设为 `max(30s, max.poll.interval.ms / 2)`），作为下一步实施的备选建议。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/j8n6mhp3lszg21j39gspmb4gzh8nsxfp">KIP-1291: Extended I/O Metrics Collection</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">讨论主要围绕 KIP-1291 展开，该提案旨在将 Kafka 暴露的 Linux I/O 指标从 2 个扩展至 7 个，以增强 I/O 可观测性。Manan Gupta 对指标类型选择和粒度范围提出了疑问，Sahil Devgon 解释了技术限制并完善了文档说明。最终双方达成一致，提案已获认可。</p>
+            <div class="key-points"><p><strong>@Manan Gupta:</strong> 质疑为何将单调递增值设为 Gauge 而非 Counter，并担心进程级指标在多磁盘场景下可能被误解为磁盘级信号。</p>
+<p><strong>@Sahil Devgon:</strong> 解释使用 Gauge 是受 Yammer Metrics 限制及与现有指标保持一致性的影响；同时确认已在文档中明确说明指标反映的是聚合进程级 I/O 而非单盘活动。</p></div>
+            <p class="conclusion">主要争议已解决，提案获得审核通过，下一步将启动投票流程。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/g6xq2mtnos77l41rxb5rspghmqwtg33t">KAFKA-20199: Metric tag for controller-only nodes in NodeToControllerChannelManagerImpl</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">讨论主要针对 KAFKA-20199，指出在 KRaft 模式下控制器节点使用 "BrokerId" 作为指标标签具有误导性。提议对控制器专用节点改用 "NodeId" 标签，同时保持 Broker 节点的现有行为。作者确认需遵循 KIP 流程来处理此公共指标变更。</p>
+            <div class="key-points"><p><strong>@nileshkumar3:</strong> 指出控制器节点使用 "BrokerId" 标签不准确，建议改为 "NodeId"，并询问是否需要 KIP。</p>
+<p><strong>@Chia-Ping Tsai:</strong> 建议作者查阅 KIP 页面了解流程，并留意工单分配状态。</p>
+<p><strong>@nileshkumar3:</strong> 确认工单已分配给自己，同意该改动涉及公共指标需发起 KIP，并表示愿意起草。</p></div>
+            <p class="conclusion">初步确认需要通过 KIP 流程处理指标标签变更，下一步将由作者起草 KIP 发起讨论。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/tstcocjscc1mod4s0s53og0sfvl3y6r1">KIP-1242: Detection and handling of misrouted connections</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕 KIP-1242（错误路由连接的检测与处理）展开，重点探讨了客户端配置兼容性及对旧版 Broker 的处理逻辑。Andrew 回应了 Luke 关于配置冲突和日志记录的疑虑，提出了具体的解决方案并获得认可，KIP 已相应更新。</p>
+            <div class="key-points"><p><strong>@Luke Chen:</strong> 询问当 `metadata.recovery.strategy=NONE` 与 `metadata.cluster.check.enable=true` 冲突时的行为，以及 Broker 不支持 ApiVersions v5 时该功能的处理方式。</p>
+<p><strong>@Gaurav Narula:</strong> 支持该 KIP，指出其能填补控制器连接缓存指向错误集群地址时的处理空白。</p>
+<p><strong>@Andrew Schofield:</strong> 建议若 `recovery.strategy` 为 NONE 则禁用检查以避免升级冲突，并提议仅通过文档说明 Broker 版本要求而不增加日志，以免造成干扰。</p></div>
+            <p class="conclusion">讨论达成一致，Luke 对 Andrew 的修改建议表示认可（LGTM），KIP 文档已更新以明确配置逻辑和版本依赖。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/q78c4w5qycg5gr7j08gsl7pvknsn165k">KIP-1262: Enable auto-formatting directories</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">讨论主要围绕 KIP-1262 中 meta.properties 的版本差异展示及未格式化节点可能连接错误集群的风险展开。Kevin Wu 确认了相关风险机制并澄清了技术细节，同意补充文档说明。Jun Rao 此前已对 KIP 表示认可。</p>
+            <div class="key-points"><p><strong>@Luke Chen:</strong> 建议在 KIP 中展示 meta.properties v2 的 schema 及其与 v1 的区别，并询问未格式化节点连接错误集群控制器的风险。</p>
+<p><strong>@Kevin Wu:</strong> 确认未格式化节点确实可能连接到错误集群，但持久化 ID 后将无法与不同 ID 的 Leader 通信；澄清 v1 版本不可能缺少 cluster.id。</p>
+<p><strong>@Jun Rao:</strong> 此前已在邮件中表态认为当前的 KIP 看起来没问题。</p></div>
+            <p class="conclusion">Kevin Wu 将更新 KIP 以补充 schema 说明并修正文本错误，Luke Chen 对风险解释表示认可，讨论达成一致。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/fzk7v3cfnpprgwhhwc46kj8os0ls7md8">Request for Confluence edit access to create Kafka KIP</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">Nilesh 请求获取 Confluence 编辑权限以创建 KAFKA-20199 相关的 KIP 页面。Matthias 指出 Jira 和 Confluence 是独立系统，建议检查申请状态。最终 Nilesh 确认已成功获得权限。</p>
+            <div class="key-points"><p><strong>@nileshkumar3:</strong> 申请 Confluence 编辑权限以撰写 KAFKA-20199 相关的 KIP。</p>
+<p><strong>@Matthias J. Sax:</strong> 指出 Jira 和 Confluence 是独立系统，后台仅看到 Jira 申请记录，建议单独申请 Confluence。</p>
+<p><strong>@nileshkumar3:</strong> 确认已通过用户名 nileshkumar3 成功获得 Confluence 访问权限。</p></div>
+            <p class="conclusion">问题已解决，Nilesh 已获得 Confluence 编辑权限，可以继续进行 KIP 的创建工作。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/fkgym4hvbz529ho624l56ysmfw57qqfv">KIP:1295: Dead letter queue support for global store/KTable</a></h3>
+            <p class="meta">1 条回复 · 1 位参与者</p>
+            <p class="summary">该讨论主题为 KIP-1295，旨在为 global store/KTable 引入死信队列（DLQ）支持。这是 KIP-1270 的后续工作，目的是解决当前失败记录仅记录元数据而无法进入 DLQ 的问题，从而增强用户对失败数据的处理能力。目前发起人正在寻求社区反馈以推进该提案。</p>
+            <div class="key-points"><p><strong>@Arpit Goyal:</strong> 当前 global store/KTable 处理失败时不支持 DLQ，仅记录元数据。</p>
+<p><strong>@Arpit Goyal:</strong> 本提案旨在启用 DLQ 支持，使用户能更好地控制失败记录。</p></div>
+            <p class="conclusion">目前尚无明确结论，发起人正在等待社区提供意见以推动提案向前发展。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (67)</h2>
+            
+    <p>本周新建 <strong>67</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周 JIRA 重点集中在 Kafka Streams 的状态存储与 DSL 改进，特别是对 Headers 支持的扩展、Interactive Queries 的增强以及检查点机制的优化。同时，社区在消费者组与 Share Groups 的配置管理、元数据重构方面进行了大量工作，并修复了控制器注册、事务日志及客户端潜在的 Bug。此外，还包含多项测试稳定性修复、文档更新以及 CLI 工具的功能增强。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Kafka Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
