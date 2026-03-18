@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flink 社区周报 | 2026-W11</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Flink 社区周报 | 2026-W11</h1>
+            <p class="date-range">2026-03-09 ~ 2026-03-15</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (0)</h2>
+            <p class="empty">本周无公告</p>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (2)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/z92tqxgjmjfv30j28t75ko97p83vwomr">FLIP-565: Improve ProcessTableFunctions for late data handling and state access</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/zvrj0rr9xs5m78pwj83k79gy5w1c05sj">FLIP-567: Introduce a ProcessTableFunction Test Harness</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (6)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/l0n4w86v1o5cwkqpqtf2q7lb7zdyrymf">AI-Assisted Contributions and AI Tooling Support in Apache Flink</a></h3>
+            <p class="meta">5 条回复 · 5 位参与者</p>
+            <p class="summary">讨论主要围绕制定 Apache Flink 的 AI 辅助贡献指南及引入 AGENTS.md 文件以优化 AI 工具的代码上下文。社区成员普遍支持该提议，并就代码质量把控、用户邮件列表 AI 支持及构建系统硬性检查等扩展建议进行了讨论。发起人 Martijn Visser 已利用 AI 工具提交草稿 PR 以落实基础规范，并建议将其他扩展想法作为后续独立议题推进。</p>
+            <div class="key-points"><p><strong>@Martijn Visser:</strong> 提议建立 AI 贡献披露机制、添加 AGENTS.md 文件，并已提交草稿 PR 落实基础规范。</p>
+<p><strong>@Leonard Xu:</strong> 支持提议，并建议引入 AI 代理来回答用户邮件列表中的问题。</p>
+<p><strong>@Vaquar Khan:</strong> 指出 AGENTS.md 可能被 LLM 忽略，建议引入基于构建系统的“硬控制”来自动拦截低质量代码。</p></div>
+            <p class="conclusion">已创建草稿 PR 以实施基础贡献指南和根目录 AGENTS.md；模块级文档将增量添加，而用户支持代理和构建系统门禁等建议被视为后续跟进事项。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/vykrkc33xgfmp14hcn0wo9swbo86q3pb">FLIP-557: Granular Control over Data Reprocessing and State Retention in Materialized Table Evolution</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">本次讨论主要关于 FLIP-557 的范围调整，提议将 START_MODE 和 STATE_RETENTION 功能拆分为两个独立的 FLIP。为了赶在 3 月底功能冻结前交付核心价值，作者建议 FLIP-557 仅聚焦于已达成共识的 START_MODE，将复杂的 STATE_RETENTION 移至后续单独讨论。目前提案文档已更新，正准备结束投票流程。</p>
+            <div class="key-points"><p><strong>@Ramin Gharib:</strong> 提议拆分 FLIP-557，仅保留 START_MODE 以确保在功能冻结前交付，将复杂的 STATE_RETENTION 移至单独 FLIP。</p>
+<p><strong>@Sergey Nuyanzin:</strong> 同意该拆分提议。</p>
+<p><strong>@Ramin Gharib:</strong> 已更新 FLIP 文档移除 STATE_RETENTION 内容，建议无需重新投票即可结束当前投票。</p></div>
+            <p class="conclusion">FLIP-557 已缩减范围至仅包含 START_MODE，文档已更新，若无异议将结束当前投票，状态保留功能将留待后续 FLIP 处理。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/n2srzzzny8n53q1jgx48xqz8x1v90fro">FLIP-504: Blue/Green Deployments for Flink on Kubernetes - Phase 2 (WIP/Draft PR)</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">讨论聚焦于 FLIP-504 Phase 2 的实现架构，Sergio 建议放弃在 Sink 中直接构建功能，转而采用自定义的 `GateInjectorPipelineExecutor` 在作业提交前注入 Gate。Ryan 认可该方案能提供更好的隔离性和 SQL 支持，但建议默认将 Gate 置于 Sink 之前以降低用户对状态管理的理解难度。</p>
+            <div class="key-points"><p><strong>@Sergio Chong Loo:</strong> 反对将逻辑植入 Sink，主张通过 `GateInjectorPipelineExecutor` 自动注入 Gate，以避免连接器维护复杂化和职责混乱。</p>
+<p><strong>@Ryan van Huuksloot:</strong> 支持 `GateInjectorExecutor` 方案，但强调应优先考虑状态正确性，建议将 Gate 默认置于 Sink 之前而非 Source 之后。</p></div>
+            <p class="conclusion">初步确定采用 `GateInjectorPipelineExecutor` 方案，暂不处理跨集群迁移；Sergio 将在两周内分享开发进展并验证 Flink SQL 的兼容性。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/wfyxbh1sornj8l220og8p6bjhns99lot">FLIP-567: Introduce a ProcessTableFunction Test Harness</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕 FLIP-567 提议引入 ProcessTableFunction 测试 Harness 展开，作者 Mika 正根据反馈完善生命周期管理和状态快照/恢复机制。参与者重点讨论了如何对标现有 Operator 测试 Harness 的功能，包括状态后端支持、并行度配置及处理时间模拟等细节。</p>
+            <div class="key-points"><p><strong>@Mika Naylor:</strong> 计划实现 AutoCloseable 以自动管理 PTF 的 open()/close() 生命周期，并同意增加 snapshot() 和 restore() 方法以支持状态测试。</p>
+<p><strong>@Gustavo de Morais:</strong> 建议在构建 Harness 时对声明但未配置的表参数抛出异常，并指出需明确处理时间和并行度配置的支持范围。</p></div>
+            <p class="conclusion">提案获得初步支持 (+1)，作者已采纳生命周期管理和快照恢复的建议，后续需进一步明确处理时间、侧输出流及并行度配置等功能的支持范围。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/sjx4t69tj5bwp8xz5jh7two70kxncpzv">[SUMMARY] Flink 2.3 release sync -- 3 weeks to feature freeze</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">Flink 2.3 版本发布同步会议指出距离功能冻结仅剩三周，部分 FLIP 面临延期风险，且 Azure CI 构建频繁失败。发布管理团队呼吁 FLIP 负责人及时更新状态，特别是处于“危险中”的 FLIP 需确保参数一致性。同时，开发者正积极修复分配的不稳定测试问题。</p>
+            <div class="key-points"><p><strong>@David Anderson:</strong> 距离功能冻结仅剩三周，部分 FLIP 处于风险中，Azure CI 构建频繁失败，并列出了需要修复的不稳定测试清单。</p>
+<p><strong>@Yuepeng Pan:</strong> 要求 FLIP 所有者及时更新状态，处于“危险中”的 FLIP 需确保已合并代码无新参数引入，以维护功能一致性。</p>
+<p><strong>@MUKUL GUPTA:</strong> 已提交针对 FLINK-38534 不稳定测试的修复 PR，通过同步状态转换解决了检查点超时问题。</p></div>
+            <p class="conclusion">FLIP 负责人需及时更新 Wiki 状态信息，相关开发者需跟进不稳定测试的修复与审查工作，以确保按期完成功能冻结。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/98s8mkx8xz14xj39sxyjs9kgy3g0qlnv">Review request for FLINK-37288: Add Google Cloud Spanner dialect and catalog</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Tomoyuki NAKAMURA 请求社区审查添加 Google Cloud Spanner 方言和 Catalog 支持的 PR。此前阻碍进展的 CI 稳定性和 JDBC Catalog 重构工作已完成合并，作者已据此更新代码并解决兼容性问题。该 PR 涵盖了 Spanner 方言实现、Schema/Table 发现及数组类型写入等核心功能。</p>
+            <div class="key-points"><p><strong>@Tomoyuki NAKAMURA:</strong> 之前的阻碍（CI 稳定性和 JDBC Catalog 重构）已解决并合并，PR #156 已完成变基和兼容性修复，请求社区审查。</p>
+<p><strong>@Tomoyuki NAKAMURA:</strong> 该 PR 实现了 Spanner 方言、Catalog（含 Schema/Table 发现）、数组类型写入支持及 JDBC Catalog base-url 查询参数支持。</p>
+<p><strong>@Yuepeng Pan:</strong> 此前社区因 CI 问题对合并大型 PR 持谨慎态度，建议优先处理基础修复工作。</p></div>
+            <p class="conclusion">PR 已准备好接受审查，等待社区成员反馈。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (22)</h2>
+            
+    <p>本周新建 <strong>22</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周 JIRA 主要集中在 Process Table Functions (PTFs) 的功能增强，涉及 FLIP-564/565 中关于迟到数据处理、排序及 Changelog 转换的实现。连接器方面新增了对 AWS Glue Catalog、SqlServer CDC Source 及 MongoDB Sink 功能的支持，并修复了 PostgreSQL CDC 丢数等关键问题。此外，还包含多个 SQL 执行异常的 Bug 修复以及 Avro 纳秒类型支持等改进。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Flink Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>

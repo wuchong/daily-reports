@@ -162,6 +162,25 @@ header h1 {
     display: inline-block;
 }
 
+.rss-button {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background: var(--primary-blue-light);
+    color: var(--primary-blue);
+    border: 1px solid var(--primary-blue);
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all var(--transition-fast);
+}
+
+.rss-button:hover {
+    background: var(--primary-blue);
+    color: var(--white);
+}
+
 /* === Sections === */
 section {
     margin-bottom: 2rem;
