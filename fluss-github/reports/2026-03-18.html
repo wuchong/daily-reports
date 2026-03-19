@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-03-18</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-03-18</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 3 新 Issues</div>
+            <div class="stat">✅ 3 关闭</div>
+            <div class="stat">✨ 5 新 PRs</div>
+            <div class="stat">🎉 7 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/2905">PR #2905</a> 合并：支持 AGGREGATION merge engine 的部分更新功能</li><li>🎉 <a href="https://github.com/apache/fluss/pull/1172">PR #1172</a> 合并：支持修改数据库注释和自定义属性</li><li>🐛 <a href="https://github.com/apache/fluss/pull/2899">PR #2899</a> 合并：修复 ListDatabaseSummary 返回表数量错误问题（backport 0.9）</li><li>🎉 <a href="https://github.com/apache/fluss/pull/2893">PR #2893</a> 合并：修复 Helm 模板空白字符导致的异常</li><li>✨ <a href="https://github.com/apache/fluss/pull/2900">PR #2900</a> 开启：Java API 支持复杂数据类型 NestedRow/ROW</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <ul class="critical-list"><li>⚠️ <a href="https://github.com/apache/fluss/issues/2887">Issue #2887</a> 被标记为 0.9.0 关键问题：AGGREGATION merge engine 在常见用例下不工作</li></ul>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2887">Issue #2887</a> [flink] Allow partial updates for AGGREGATION merge engine</h4>
+            <ul><li><span class="author">@wuchong</span>: 认为这是 0.9.0 关键问题，请求针对 release-0.9 分支提交 PR</li><li><span class="author">@platinumhamburg</span>: 收到反馈，表示会尽快提交 PR</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2851">Issue #2851</a> ListDatabaseSummary always return table count as 0 or 1</h4>
+            <ul><li><span class="author">@wuchong</span>: 请求针对 release-0.9 分支也提交 PR，因为这是 0.9 功能</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2893">Issue #2893</a> [helm][hotfix] Go template whitespace trimming caused exceptions</h4>
+            <ul><li><span class="author">@affo</span>: 建议移除一些 `-` 避免吞掉空格，并强调许可协议应在文件顶部</li><li><span class="author">@morazow</span>: 解释两种方案均可行，最终更新使内容被正确渲染</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2898">Issue #2898</a> support kv snapshot lease in tiering service</h4>
+            <ul><li><span class="author">@beryllw</span>: 希望认领此 issue，请求分配</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2578">Issue #2578</a> [lake/lance] Add NestedRow type support for Lance</h4>
+            <ul><li><span class="author">@XuQianJin-Stars</span>: 更新 PR 后请求 reviewer 帮忙 review</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2900">Issue #2900</a> [fluss-client] Support Complex Data Types on the Java API (NestedRow/ROW)</h4>
+            <ul><li><span class="author">@XuQianJin-Stars</span>: 更新 PR 后请求 reviewer 帮忙 review</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/1746">Issue #1746</a> Fix RemoteLogDownloaderTest#testPrefetchNum flaky error</h4>
+            <ul><li><span class="author">@Samrat002</span>: 承诺在今天 EOD 前分享更新的补丁</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/155">Issue #155</a> [Umbrella][Feature] Support spark engine</h4>
+            <ul><li><span class="author">@joebowbeer</span>: 询问是否需要更新 roadmap</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/452">Issue #452</a> FIP-3: Support tiering Fluss data to Iceberg</h4>
+            <ul><li><span class="author">@joebowbeer</span>: 询问是否需要更新 roadmap</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/1172">PR #1172</a> [feature] Support alter database comment and custom properties</h4>
+            <ul><li><span class="author">@wuchong</span>: 建议移除 comment 更新支持直到 Flink SQL 官方支持，要求添加测试和 @Nullable 注解</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2578">PR #2578</a> [lake/lance] Add NestedRow type support for Lance</h4>
+            <ul><li><span class="author">@leekeiabstraction</span>: 建议更防御性编码、添加 row of row 测试，询问配置修改是否属于此变更</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2780">PR #2780</a> [Feature] Support coordinator switch when leader fail</h4>
+            <ul><li><span class="author">@zcoo</span>: 修正 typo，保持 /coordinators/active 与原路径一致</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2852">PR #2852</a> [server] Fix get table count of database.</h4>
+            <ul><li><span class="author">@loserwang1024</span>: 已完成修改</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/2903">#2903</a> [test] Unstable test TableChangeWatcherTest.testTableRegistrationChange <span class="author">@app/github-actions</span> </li><li><a href="https://github.com/apache/fluss/issues/2898">#2898</a> support kv snapshot lease in tiering service <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/issues/2895">#2895</a> [flink] Support Union Read via Flink DataStream API <span class="author">@beryllw</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/2902">#2902</a> [helm] Refactor validation warning and error checks <span class="author">@morazow</span> </li><li><a href="https://github.com/apache/fluss/pull/2901">#2901</a> [doc] Align the doc table <span class="author">@zcoo</span> </li><li><a href="https://github.com/apache/fluss/pull/2900">#2900</a> [fluss-client] Support Complex Data Types on the Java API (NestedRow/ROW) <span class="author">@XuQianJin-Stars</span> </li><li><a href="https://github.com/apache/fluss/pull/2897">#2897</a> [server] return all invalid option in err msg of InvalidAlterTableException. <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/pull/2896">#2896</a> [flink] Support Union Read via Flink DataStream API <span class="author">@beryllw</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/2887">#2887</a> [flink] Allow partial updates for AGGREGATION merge engine <span class="author">@platinumhamburg</span> <span class="labels">version: 0.9.1</span></li><li><a href="https://github.com/apache/fluss/issues/2851">#2851</a> ListDatabaseSummary always return table count as 0 or 1 <span class="author">@loserwang1024</span> <span class="labels">version: 0.9.1</span></li><li><a href="https://github.com/apache/fluss/issues/1151">#1151</a> [Feature] Support alter database to update comment and custom properties <span class="author">@LiebingYu</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/2905">#2905</a> [flink] Allow partial updates for AGGREGATION merge engine <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/2899">#2899</a> [server] [BP-0.9]Fix ListDatabaseSummary always return table count as 0 or 1 <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/pull/2893">#2893</a> [helm][hotfix] Go template whitespace trimming caused exceptions <span class="author">@morazow</span> </li><li><a href="https://github.com/apache/fluss/pull/2888">#2888</a> [flink] Allow partial updates for AGGREGATION merge engine <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/2852">#2852</a> [server] Fix get table count of database. <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/pull/2779">#2779</a> [test][kv] ensure ordered inserts for auto-increment ID tests <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/pull/1172">#1172</a> [feature] Support alter database comment and custom properties <span class="author">@LiebingYu</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
