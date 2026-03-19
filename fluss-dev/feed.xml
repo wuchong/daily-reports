@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Fluss 社区周报</title>
+    <link>https://wuchong.github.io/daily-reports/fluss-dev/</link>
+    <description>Apache Fluss dev 邮件列表周报归档</description>
+    <language>zh-CN</language>
+    <item>
+      <title>Fluss 社区周报 - 2026-W11</title>
+      <link>https://wuchong.github.io/daily-reports/fluss-dev/reports/2026-W11.html</link>
+      <guid>https://wuchong.github.io/daily-reports/fluss-dev/reports/2026-W11.html</guid>
+      <pubDate>2026-W11</pubDate>
+    </item>
+  </channel>
+</rss>
