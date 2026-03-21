@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-03-20</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-03-20</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 2 新 Issues</div>
+            <div class="stat">✅ 0 关闭</div>
+            <div class="stat">✨ 2 新 PRs</div>
+            <div class="stat">🎉 1 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/2901">PR #2901</a> 文档对齐修复已合并</li><li>🐛 <a href="https://github.com/apache/fluss/pull/2907">PR #2907</a> 修复 insertIfNotExists 同一批次相同键查找导致的死锁问题</li><li>✨ <a href="https://github.com/apache/fluss/pull/2909">PR #2909</a> Helm 部署使用 ConfigMap 重构 STS 配置项</li><li>🐛 <a href="https://github.com/apache/fluss/issues/2906">Issue #2906</a> 测试用例 AdjustIsrITCase.testIsrShrinkAndExpand 不稳定</li><li>📚 Roadmap 更新讨论进行中，PR #2696 等待审核</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/1155">Issue #1155</a> [Umbrella] Support Streaming Lakehouse for Lance table format</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 确认应该更新 roadmap</li><li><span class="author">@joebowbeer</span>: 指出 PR #2696 已更新 roadmap</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/452">Issue #452</a> FIP-3: Support tiering Fluss data to Iceberg</h4>
+            <ul><li><span class="author">@leonardBang</span>: 感谢反馈，将尽快更新 roadmap</li><li><span class="author">@MehulBatra</span>: 已有 PR #2696 等待审核</li><li><span class="author">@joebowbeer</span>: 感谢提供 PR 链接</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2462">Issue #2462</a> [docs] Add Rust client documentation</h4>
+            <ul><li><span class="author">@Prajwal-banakar</span>: 请求审核此 PR 和 #2461</li><li><span class="author">@leekeiabstraction</span>: 将在周日验证测试并合并</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2578">Issue #2578</a> [lake/lance] Add NestedRow type support for Lance</h4>
+            <ul><li><span class="author">@leekeiabstraction</span>: 整体 LGTM，周日手动测试后审核合并</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2588">Issue #2588</a> [docgen]Refine ConfigOptionsDocGenerator and fix MDX formatting</h4>
+            <ul><li><span class="author">@Prajwal-banakar</span>: 请求 Jark 审核此 PR</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2836">PR #2836</a> [FLUSS-2686] Add COS filesystem support</h4>
+            <ul><li><span class="author">@leekeiabstraction</span>: 建议将依赖放入测试 scope，字符串常量共享，确认 IT 测试已运行</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2763">PR #2763</a> [server] Extend metadata models to support per-table/partition remote data directory</h4>
+            <ul><li><span class="author">@wuchong</span>: 指出升级集群遗留表兼容性问题、listPartitionInfos 未填充字段、需添加 @Nullable 注解和兼容性测试</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2780">PR #2780</a> [Feature] Support coordinator switch when leader fail</h4>
+            <ul><li><span class="author">@Copilot</span>: 指出中断处理、测试重启实例、JavaDoc 路径不匹配、Watcher 忽略空数据、选举逻辑等潜在问题</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2886">PR #2886</a> Add V2 batch format with statistics collection</h4>
+            <ul><li><span class="author">@Copilot</span>: 指出配置默认值、Optional 返回 null、索引映射错误、CRC 计算内存占用、校验及注释等问题</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/2908">#2908</a> Allow enabling lakehouse on tables created before cluster-level lakehouse is enabled <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/issues/2906">#2906</a> [test] Unstable test AdjustIsrITCase.testIsrShrinkAndExpand <span class="author">@app/github-actions</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/2909">#2909</a> [helm] Refactor using config map for STS configuration entries <span class="author">@morazow</span> </li><li><a href="https://github.com/apache/fluss/pull/2907">#2907</a> [client][fix] Deduplicate insertIfNotExists lookups with same key in same batch to prevent deadlock <span class="author">@Prajwal-banakar</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <p class="empty">暂无</p>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/2901">#2901</a> [doc] Align the doc table <span class="author">@zcoo</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
