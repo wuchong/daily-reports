@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spark 社区周报 | 2026-W11</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Spark 社区周报 | 2026-W11</h1>
+            <p class="date-range">2026-03-09 ~ 2026-03-15</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (1)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/jrg0bpjwn278t8mfvlroy5v6pwkdjlcs">Apache Spark Kubernetes Operator 0.8.0 Released</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (3)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/rjrmwh9kvb6rfqf1lo06btlf30vzgrz0">Release Apache Spark K8s Operator 0.8.0 (RC1)</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/fnm5hoo5oc9g30odcp3spxqdb456xghr">SPIP: Language-Agnostic UDF Execution Protocol for Spark</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/126jm29blxrbb4yfmddqbpl79q9q3xsj">SPIP: Unified UDF Execution Protocol and Worker Specification for Multi-Language UDFs</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (6)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/jmtvj2krso7nthzc6ch31xxgwsy4gjkv">SPIP: Automated Integrity Validation (AIV) Gate for Apache Spark</a></h3>
+            <p class="meta">17 条回复 · 7 位参与者</p>
+            <p class="summary">Vaquar Khan 提议引入“自动完整性验证 (AIV) 门禁”以过滤 Apache Spark 中低质量的 AI 生成 PR。社区成员对此持怀疑态度，指出 Spark 目前的 AI 提交主要来自 PMC 成员的效率提升而非垃圾内容，且担心工具的误报率会增加维护负担。讨论建议先在外部项目验证工具的有效性，而非直接集成到 Spark 流程中。</p>
+            <div class="key-points"><p><strong>@Dongjoon Hyun:</strong> Spark 目前的 AI 提交主要来自 PMC 成员用于提升生产力，且已有 JIRA 等人工审核机制，缺乏足够证据表明 Spark 正面临严重的 AI 垃圾危机。</p>
+<p><strong>@Jungtaek Lim:</strong> 担心工具的误报会增加审查者的负担，建议先在其他开源项目上验证工具价值，而不是急于在 Spark 中集成或开启影子模式。</p>
+<p><strong>@Tian Gao:</strong> 质疑提案过于侧重推广工具而非解决问题，担心 AST 解析器的维护成本，并要求提供在大量 Spark PR 上运行的实际数据以证明其识别垃圾内容的能力。</p></div>
+            <p class="conclusion">社区目前未达成引入 AIV 的共识，倾向于维持现有的人工审核流程。下一步建议提案者先在外部项目验证工具，提案者表示将更新文档补充具体证据并计划进行离线基线测试。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/9gqgxdy5m69093958h33x5pzzjt6l3js">Spark + Hive 4 Integration Guide (Practical Approach)</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Mich Talebzadeh 分享了一份 Spark 与 Hive 4 集成的实用指南。针对 Spark 3.x 与 Hive 4 metastore API 不兼容的问题，提出了解耦架构：Spark 将数据写入 HDFS，Hive 通过外部表读取，从而避免直接连接 metastore。该方案旨在保留现有架构的前提下，实现环境的低成本升级。</p>
+            <div class="key-points"><p><strong>@Mich Talebzadeh:</strong> 由于 Spark 3.x 与 Hive 4 metastore API 不兼容，必须采用解耦方式集成。</p>
+<p><strong>@Mich Talebzadeh:</strong> 核心架构原则是 Spark 不直连 Hive metastore，而是将处理后的数据写入 HDFS。</p>
+<p><strong>@Mich Talebzadeh:</strong> Hive 通过创建外部表读取 HDFS 上的数据，实现与 Spark 的协同工作。</p></div>
+            <p class="conclusion">确立了以 HDFS 为中间层的 Spark + Hive 4 集成方案，解决了版本不兼容问题并保留了原有数据仓库架构。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/9wxfw7xx1xxzwj8qh36r70bwhqrnq3c0">[FYI] Replacing black with ruff for Python formatter</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Tian Gao 提议将 Spark 项目的 Python 格式化工具从 black 替换为 ruff，并已提交相关 PR。该提议主要基于 ruff 在执行速度上的显著优势以及能减少工具依赖的考量，目前正处于征求社区反馈阶段。</p>
+            <div class="key-points"><p><strong>@Tian Gao:</strong> ruff 速度显著优于 black（快 30-100 倍），能提升 pre-commit hook 体验。</p>
+<p><strong>@Tian Gao:</strong> Spark 已使用 ruff 进行 linting，统一工具可减少开发依赖。</p>
+<p><strong>@Tian Gao:</strong> 当前正值 black 版本升级导致大规模重构之际，此时切换可减少对开发者的干扰。</p></div>
+            <p class="conclusion">目前处于征求意见阶段，暂无最终结论，下一步将根据社区反馈决定是否合并 PR。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/fgxhp07lt86jj4l8zws4qwo1gcflppcb">SPIP: Upgrade Apache Hive to 4.x</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Mich Talebzadeh 分享了将 Hive 升级到 4.x 的实践经验，指出 Spark 3.5.5 目前与 Hive 4 元数据存储 API 不兼容。他提出了一种解耦架构方案，即 Spark 负责写入 Parquet 数据，而 Hive 通过外部表进行查询，从而绕过直接集成的问题。</p>
+            <div class="key-points"><p><strong>@Mich Talebzadeh:</strong> Hive 4 升级过程中的事务和锁问题通常源于元数据存储中事务计数器表的损坏，而非 Hive 4 本身的不稳定。</p>
+<p><strong>@Mich Talebzadeh:</strong> Spark 3.5.5 通过传统的 HiveExternalCatalog 方式与 Hive 4 元数据存储 API 存在不兼容问题（如 Invalid method name 错误）。</p>
+<p><strong>@Mich Talebzadeh:</strong> 采用解耦架构（Spark 写入 Parquet，Hive 通过外部表查询）是当前解决兼容性问题的有效方案。</p></div>
+            <p class="conclusion">Hive 4 升级可行但需验证元数据存储状态；由于 Spark 与 Hive 4 直接集成存在限制，建议采用解耦架构作为当前的最佳实践。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/nnfd2k75w4cmbsj7480mtm7q2g1n9fcm">[FYI] Request for feedback: Updating AGENTS.md (CLAUDE.md)</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Dongjoon Hyun 宣布社区正在收集关于更新 AGENTS.md (CLAUDE.md) 文件的反馈。该 PR 旨在通过添加内联构建/测试命令、PR 工作流和开发说明来改进文档，该项目由 Wenchen 发起。</p>
+            <div class="key-points"><p><strong>@Dongjoon Hyun:</strong> 邀请社区审查 PR #54899 并对 AGENTS.md 的修订提供反馈。</p>
+<p><strong>@Wenchen:</strong> 发起了更新 AGENTS.md 的倡议。</p></div>
+            <p class="conclusion">目前处于征集反馈阶段，下一步需社区成员审查 PR 并提出建议。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/6fkh2vo598y47mmrzvqxbg8pwjl8v2ly">[GSoC 2026][SPARK-55163] GSoC contributor seeking guidance on Spark Connect metadata caching</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">David Gvadzabia 计划参与 GSoC 2026 的 SPARK-55163 项目，已提交一个基础性 PR 旨在改进 Spark Connect 的元数据解析路径。他正在准备关于会话级客户端元数据缓存的提案，并请求社区评估其初始贡献的价值及项目范围的可行性。</p>
+            <div class="key-points"><p><strong>@David Gvadzabia:</strong> 提交了 PR #54939，旨在为 DataFrame 复用元数据计划，为后续工作奠定基础。</p>
+<p><strong>@David Gvadzabia:</strong> 计划围绕 Spark Connect 会话级客户端元数据缓存展开工作。</p>
+<p><strong>@David Gvadzabia:</strong> 寻求社区确认当前 PR 是否为良好的起点，以及项目范围对 GSoC 是否现实可行。</p></div>
+            <p class="conclusion">目前处于寻求指导阶段，等待社区对提案 PDF 和已提交 PR 的反馈，以确定后续工作方向。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (0)</h2>
+            
+    <p>本周新建 <strong>0</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周无新建 JIRA。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Spark Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
