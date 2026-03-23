@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iceberg 社区周报 | 2026-W11</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Iceberg 社区周报 | 2026-W11</h1>
+            <p class="date-range">2026-03-09 ~ 2026-03-15</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (1)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/sl882srzsjz0xvy881tlc4hjq5kqmpyf">Apache Iceberg Rust 0.9.0 Released</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (2)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/k6xz5pzn50p8s2xqs6xt8dqcdmglkh0q">Release Apache Iceberg Rust 0.9.0 rc.1</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/2cxy6o0l8q1rz35rtcdd8nol8c6h6t5d">Promote the remote signing endpoint to the main REST spec (attempt #2)</a> <span class="status warning">⚠️ 有异议</span><p class="objection-inline">Ryan Blue 提出 -0，原因是旧签名规范的弃用不应与 Java 库版本绑定，因为 REST 规范应独立于 Java 发布周期；此外，他认为移除旧 API 的时间表过于仓促，缺乏明确的迁移计划和对现有实现的考量。</p></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/rvbwmcbrlr3syd1movflw3vmprm27nmz">GSoC 2026 idea vetting: Parallel scan task execution in Iceberg Spark readers</a></h3>
+            <p class="meta">9 条回复 · 9 位参与者</p>
+            <p class="summary">Varun Lakhyani 发起讨论，提议将“Iceberg Spark readers 中的并行扫描任务执行”作为 GSoC 2026 项目，旨在优化大量小文件场景下的性能。他已提供 POC、设计文档以及在 AWS S3 上高达 76% 的性能提升基准测试结果，寻求社区审核。社区成员对该提议反响积极，一致支持将其作为 GSoC 2026 的项目方向。</p>
+            <div class="key-points"><p><strong>@Varun Lakhyani:</strong> 提议实现并行（异步）扫描任务执行，并提供了 POC 和基准测试，显示在处理大量小文件和高 IO 延迟时性能提升显著（AWS S3 上提升 76.4%）。</p>
+<p><strong>@Russell Spitzer:</strong> 认为这是一个很棒的 GSoC 2026 项目，并表示愿意支持该工作。</p>
+<p><strong>@Anurag Mantripragada:</strong> 支持该项目，认为这对压缩等用例是有益的改进，且初步数据表现良好。</p></div>
+            <p class="conclusion">社区已达成共识，一致支持该方向；下一步行动是作者在 3 月 31 日截止日期前正式提交 GSoC 2026 提案。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/tom8mk8ynr2cfk6dl4z1stocwjmqflvq">Future of Iceberg support in Apache DataFusion's Comet Spark Accelerator</a></h3>
+            <p class="meta">6 条回复 · 5 位参与者</p>
+            <p class="summary">Comet 社区决定转向 iceberg-rust 集成并停止维护 Iceberg-Java 集成，Andy Grove 因此提交 PR 请求移除 Iceberg-Java 中已损坏的 Comet 代码。然而，部分 Iceberg 社区成员认为移除操作缺乏充分讨论且不利于未来恢复，建议先修复代码或冻结工作版本。最终决定在下一次社区同步会议上详细讨论后续处理方案。</p>
+            <div class="key-points"><p><strong>@Andy Grove:</strong> Comet 社区认为 iceberg-rust 是最佳路径，不再维护 Iceberg-Java 集成，并已提交 PR 移除相关损坏代码。</p>
+<p><strong>@Anurag Mantripragada:</strong> 担心直接移除损坏代码会导致难以恢复，建议回滚 PR、修复代码并在 4 月 1 日的社区会议上讨论。</p>
+<p><strong>@Parth Chandra:</strong> 指出之前的修复 PR 因依赖已移除的代码而关闭，且现有代码已过时，恢复工作需要大量更新。</p></div>
+            <p class="conclusion">将在下次 Iceberg 社区同步会议上讨论待处理工作并确定最佳路径，Andy Grove 对回滚 PR 持开放态度。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/h7cb1h16vxc81o7mf0bvpj9dqn2zmgow">REST Spec: Clarify identifier uniqueness across catalog object types</a></h3>
+            <p class="meta">5 条回复 · 2 位参与者</p>
+            <p class="summary">讨论主要针对 REST Catalog 规范中关于标识符唯一性描述的不一致问题，旨在明确同一命名空间下表和视图是否允许同名。Steven Wu 提议明确跨类型唯一性并引入新的 `CatalogObjectType` 枚举，但 Péter Váry 对新类型的必要性及对函数等未来对象的命名限制提出了异议。</p>
+            <div class="key-points"><p><strong>@Steven Wu:</strong> 指出当前规范对 409 Conflict 的描述不一致，提议明确标识符必须在同一命名空间的所有对象类型中唯一，并引入 `CatalogObjectType` 以支持未来的函数和索引功能。</p>
+<p><strong>@Péter Váry:</strong> 同意表和视图应互斥同名，但质疑引入 `CatalogObjectType` 的必要性，并反对将其唯一性逻辑扩展到函数和索引，认为引擎应根据上下文区分同名对象。</p>
+<p><strong>@Steven Wu:</strong> 认同 Péter 关于函数可以处于独立维度的观点，表示可以从当前 PR 中移除 `CatalogObjectType`，推迟到后续相关功能（如函数端点）开发时再处理。</p></div>
+            <p class="conclusion">初步结论是表和视图在同一命名空间下必须唯一，但函数等对象可能允许同名。下一步行动倾向于从当前 PR 中移除 `CatalogObjectType` 的定义，仅保留对表和视图唯一性的明确说明，将通用对象类型的定义推迟到后续版本。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/gldqrycmo24r0vo77wzcj9s9b04rtvy7">Flink: Equality delete to DV conversion</a></h3>
+            <p class="meta">4 条回复 · 3 位参与者</p>
+            <p class="summary">讨论核心在于优化 Flink 写入路径，计划通过维护任务将 Equality deletes 转换为 Deletion Vectors (DV)，以最终从 Iceberg 规范中移除 Equality deletes。Maximilian 提出利用暂存分支和锁机制简化实现，虽然参与者对行血缘维护和内存风险提出了顾虑，但整体认可这是合理的过渡方案。</p>
+            <div class="key-points"><p><strong>@Maximilian Michels:</strong> 提议在 Flink 中增加 Equality delete 到 DV 的转换任务，利用暂存分支处理冲突，旨在逐步淘汰 Equality delete。</p>
+<p><strong>@Péter Váry:</strong> 支持提案方向，但强调需明确最终从规范中彻底移除 Equality delete 的目标，并指出了行血缘和索引更新成本的潜在问题。</p>
+<p><strong>@Manu Zhang:</strong> 关注转换任务若被阻塞导致 Equality delete 积累时，是否会出现内存溢出风险。</p></div>
+            <p class="conclusion">初步结论是该方案是当前可行的过渡路径。下一步将实施该转换逻辑，暂时限制并发维护任务，并计划在未来规范支持索引后进一步优化。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/70r2vz478sp9lrmks6jb511p5tqsno86">A dashboard pulling together Iceberg design docs, threads, and more</a></h3>
+            <p class="meta">3 条回复 · 4 位参与者</p>
+            <p class="summary">Guy Khazma 分享了一个名为 Agora 的实验性静态网站，旨在汇总 Iceberg 项目的设计文档、邮件讨论和 GitHub 活动等信息。社区成员对该工具表示欢迎，并探讨了将其集成到官方项目网站的可能性，以解决信息分散的问题。</p>
+            <div class="key-points"><p><strong>@Guy Khazma:</strong> 开发了 Agora 工具以解决项目信息分散的问题，代码开源并寻求社区反馈。</p>
+<p><strong>@Anurag Mantripragada:</strong> 建议将此类活动页面托管在官方站点，但需解决爬取和 AI 使用的资源问题。</p>
+<p><strong>@Yufei Gu:</strong> 支持该方向，建议概览页面应包含 WIP 提案、同步会议和 PR 等详细信息。</p></div>
+            <p class="conclusion">社区初步认可该工具价值，后续需讨论如何获取资源以支持官方托管或进一步集成。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/058dotj2d3gdr9wl1wwqp5cxblc4vtd3">Efficient column updates in Iceberg</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">讨论主要围绕 Iceberg 中列更新的实现方式，社区倾向于采用“全列更新”方案，因为部分更新所需的 LUSN 维护过于复杂且收益降低。目前全列更新的 PoC 已完成，初步测试显示写入性能和存储成本均有改善，但读取端的拼接成本仍需优化。</p>
+            <div class="key-points"><p><strong>@Péter Váry:</strong> 部分更新需要维护 LUSN，这引入了过多的复杂性（如额外文件或读取时合并）并抵消了收益，因此建议推进全列更新。</p>
+<p><strong>@Gang Wu:</strong> 支持全列更新方案，并指出了涉及模式演变和嵌套类型时的潜在问题。</p>
+<p><strong>@Gábor Kaszab:</strong> 分享了全列更新 PoC 结果，显示写入路径相比 MoR/CoW 有显著性能提升，存储成本降低，但读取成本随更新文件数量增加。</p></div>
+            <p class="conclusion">初步确定采用全列更新方案。下一步将在更大规模负载和云存储上测试 PoC，更新设计文档以解决模式演变等问题，并计划于 3 月 24 日进行同步会议讨论。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/jgx57j0n702yng74qz6253kcbn0x75yl">Apache Iceberg 1.10.2 Patch Release</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">讨论主要围绕 Apache Iceberg 1.10.2 补丁版本的发布内容展开，多位开发者提议将关于 Avro 行血缘（Row Lineage）修复及其他优化补丁反向移植到该版本中。目前参与者已为所有提议的修复提交了相应的反向移植 PR 供审核。</p>
+            <div class="key-points"><p><strong>@Denys Kuzmenko:</strong> 建议包含两个 Avro 行血缘相关的修复（#15508 和 #15187）。</p>
+<p><strong>@Igor Calabria:</strong> 建议包含 PR #14499，并提供了已开启的反向移植 PR #15698。</p>
+<p><strong>@Maximilian Michels:</strong> 建议包含 PR #15687，并提供了针对 1.10.x 的反向移植 PR #15738。</p></div>
+            <p class="conclusion">讨论目前处于提议阶段，尚未有最终的发布确认，下一步需要审核并决定是否合入这些反向移植的 PR。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/g0hn70s4sxh9f2m03kmw0155c8pgjyw0">Introduction: New contributor interested in Apache Iceberg</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">Divyansh Sahu 自我介绍并表示希望为 Apache Iceberg 做贡献，询问适合新手的任务。社区成员 Eduard 和 Kevin 热情欢迎，并提供了具体的入门指引。</p>
+            <div class="key-points"><p><strong>@Divyansh Sahu:</strong> 具备 Java 和 Spring Boot 经验，希望寻找适合新手的贡献机会。</p>
+<p><strong>@Eduard Tudenhöfner:</strong> 建议查看 GitHub 上标记为 'good first issue' 的开放议题。</p>
+<p><strong>@Kevin Liu:</strong> 推荐通过快速入门文档入手，改进文档或代码是很好的切入点。</p></div>
+            <p class="conclusion">新贡献者已获得明确的入门指引，下一步将根据建议查阅 GitHub Issues 或快速入门文档以寻找具体的贡献点。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/p4h2t4t79jr2m51lq48zygy2403g4kc8">Refreshing storage credentials for staged table creation</a></h3>
+            <p class="meta">1 条回复 · 1 位参与者</p>
+            <p class="summary">讨论主要围绕暂存表创建时存储凭证刷新机制的提案更新。作者根据社区同步会议的反馈更新了提案和 PR，明确了通用性和刷新粒度等需求，但最终决定仅支持在 loadCredentials 端点刷新凭证。目前提案已进入原型验证阶段，重点评估 S3 实现的可行性。</p>
+            <div class="key-points"><p><strong>@Maninder Parmar:</strong> 提案需满足通用性，能与现有 StorageCredential 机制集成，并支持凭证独立刷新。</p>
+<p><strong>@Maninder Parmar:</strong> 决定放弃在 loadTable API 上支持刷新的要求，仅限在 loadCredentials 端点进行刷新。</p>
+<p><strong>@Maninder Parmar:</strong> 进入原型阶段以降低实现风险，重点验证 S3 实现，并明确 commit table API 的凭证发送不在此次范围内。</p></div>
+            <p class="conclusion">提案进入原型阶段，将针对 S3 存储实现进行验证，以明确具体实现细节（如 config map 的使用）并降低风险。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/gtpn4ydovmoxb1bffz5wcnsso20n379c">Dedicated sync for Iceberg Index Support</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论主要围绕 Iceberg 索引支持的规范定义与具体实现展开。Péter Váry 总结了关于存储布局互操作性和索引版本控制的会议要点，Huaxin Gao 则提出了主键反向查找索引的具体提案以优化查询性能。</p>
+            <div class="key-points"><p><strong>@Péter Váry:</strong> 规范应定义存储级数据布局以实现跨引擎互操作性，支持索引类型扩展及同一快照的多版本索引共存。</p>
+<p><strong>@Huaxin Gao:</strong> 提出了主键反向查找索引提案，将键映射到物理位置，以支持文件裁剪、优化 Flink CDC 删除及 Spark MERGE INTO 操作。</p></div>
+            <p class="conclusion">Huaxin Gao 已发布主键反向查找索引的详细提案文档，下一步将收集社区反馈。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (0)</h2>
+            
+    <p>本周新建 <strong>0</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周无新建 JIRA。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Iceberg Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
