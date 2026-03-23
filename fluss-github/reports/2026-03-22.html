@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-03-22</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-03-22</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 6 新 Issues</div>
+            <div class="stat">✅ 3 关闭</div>
+            <div class="stat">✨ 2 新 PRs</div>
+            <div class="stat">🎉 4 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/2461">PR #2461</a> Python 客户端文档已合并，完善多语言客户端支持</li><li>🎉 <a href="https://github.com/apache/fluss/pull/2462">PR #2462</a> Rust 客户端文档已合并，丰富客户端生态</li><li>🎉 <a href="https://github.com/apache/fluss/pull/2578">PR #2578</a> Lance NestedRow 类型支持已合并，增强数据湖集成能力</li><li>🎉 <a href="https://github.com/apache/fluss/pull/2897">PR #2897</a> InvalidAlterTableException 错误信息改进已合并</li><li>🚀 <a href="https://github.com/apache/fluss/issues/2915">Issue #2915</a> 新增分层存储读写管道性能优化议题</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <ul class="critical-list"><li>⚠️ <a href="https://github.com/apache/fluss/issues/2910">Issue #2910</a> 测试不稳定：FlinkUnionReadPrimaryKeyTableITCase.testUnionReadInStreamMode</li><li>⚠️ <a href="https://github.com/apache/fluss/issues/2911">Issue #2911</a> 测试不稳定：KvReplicaRestoreITCase.testRestore</li></ul>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2912">Issue #2912</a> [docs] Remove / exclude _partial_config.mdx</h4>
+            <ul><li><span class="author">@leekeiabstraction</span>: 提及 Prajwal-banakar 关注此问题</li><li><span class="author">@Prajwal-banakar</span>: 说明此问题与 PR #2588 相关，将在 wuchong 指导下解决</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2588">Issue #2588</a> [docgen]Refine ConfigOptionsDocGenerator and fix MDX formatting</h4>
+            <ul><li><span class="author">@Prajwal-banakar</span>: PR 已准备好评审，提出修改构建阶段绑定以避免文件频繁再生成的建议</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2461">Issue #2461</a> [docs] add Python client documentation</h4>
+            <ul><li><span class="author">@leekeiabstraction</span>: 感谢贡献，重新排序章节、添加链接并移除 package-lock.json</li><li><span class="author">@Prajwal-banakar</span>: 发现 C++ 客户端文档页面缺失，询问是否可以继续贡献</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2448">Issue #2448</a> [Docs] Add documentation for C++ Client</h4>
+            <ul><li><span class="author">@leekeiabstraction</span>: 询问 hiTanishqkuchekar 是否继续认领，否则将分配给 Prajwal-banakar</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2373">Issue #2373</a> [Client] Fail Log Scanner when table is dropped during scan</h4>
+            <ul><li><span class="author">@Prajwal-banakar</span>: 请求 beryllw 和 swuferhong 进行评审</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2836">Issue #2836</a> [FLUSS-2686] Add COS filesystem support</h4>
+            <ul><li><span class="author">@XuQianJin-Stars</span>: 将稍后补充 COS 测试记录</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2869">Issue #2869</a> [test] Unstable test TableChangeWatcherTest.testSchemaChanges</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: 报告测试失败，出现 AssertionError 错误</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2763">Issue #2763</a> [server] Extend metadata models to support per-table/partition remote data directory</h4>
+            <ul><li><span class="author">@LiebingYu</span>: 感谢评审意见，已完成修改</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2836">PR #2836</a> [FLUSS-2686] Add COS filesystem support</h4>
+            <ul><li><span class="author">@XuQianJin-Stars</span>: 解释 test scope 已在父 pom 中定义，IT 测试已成功运行</li><li><span class="author">@leekeiabstraction</span>: 指出 _partial_config.mdx 文件中包含无关变更</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2578">PR #2578</a> [lake/lance] Add NestedRow type support for Lance</h4>
+            <ul><li><span class="author">@leekeiabstraction</span>: 评审指出测试代码中存在未使用的参数和多余的异常处理，建议移除</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/2916">#2916</a> [KV] Add retract support for Aggregation Merge Engine <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/2915">#2915</a> [tiering] Tiering Job Performance: Read-Write Pipeline Optimization <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/issues/2913">#2913</a> [kv] Implement KvTablet RocksDB Lazy Open <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/2912">#2912</a> [docs] Remove / exclude _partial_config.mdx <span class="author">@leekeiabstraction</span> </li><li><a href="https://github.com/apache/fluss/issues/2911">#2911</a> [test] Unstable test KvReplicaRestoreITCase.testRestore <span class="author">@app/github-actions</span> </li><li><a href="https://github.com/apache/fluss/issues/2910">#2910</a> [test] Unstable test FlinkUnionReadPrimaryKeyTableITCase.testUnionReadInStreamMode <span class="author">@app/github-actions</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/2917">#2917</a> [server] Add retract support for Aggregation Merge Engine <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/2914">#2914</a> [kv] Implement KvTablet RocksDB Lazy Open <span class="author">@platinumhamburg</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/2447">#2447</a> [Docs] Add documentation for Python Client <span class="author">@leekeiabstraction</span> <span class="labels">good first issue</span></li><li><a href="https://github.com/apache/fluss/issues/2446">#2446</a> [Docs] Add documentation for Rust Client <span class="author">@leekeiabstraction</span> <span class="labels">good first issue</span></li><li><a href="https://github.com/apache/fluss/issues/2404">#2404</a> [lake/lance] NestedRow type support for Lance <span class="author">@XuQianJin-Stars</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/2897">#2897</a> [server] return all invalid option in err msg of InvalidAlterTableException. <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/pull/2578">#2578</a> [lake/lance] Add NestedRow type support for Lance <span class="author">@XuQianJin-Stars</span> </li><li><a href="https://github.com/apache/fluss/pull/2462">#2462</a> [docs] Add Rust client documentation <span class="author">@Prajwal-banakar</span> </li><li><a href="https://github.com/apache/fluss/pull/2461">#2461</a> [docs] add Python client documentation <span class="author">@Prajwal-banakar</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
