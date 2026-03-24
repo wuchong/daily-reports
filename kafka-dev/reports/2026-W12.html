@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafka 社区周报 | 2026-W12</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Kafka 社区周报 | 2026-W12</h1>
+            <p class="date-range">2026-03-16 ~ 2026-03-22</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (2)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/v887dvv8yhldy3ls2l7djss7nqbysq1f">Apache Kafka 4.1.2</a></li>
+<li><a href="https://lists.apache.org/thread/0mg931305jqkod5xb2b6vo1v1pozvg5r">Apache Kafka 4.0.2</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (6)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/2rdv92yc5hwog5tdgh9wp278p9lhjgjd">KIP-1241: Reduce tiered storage redundancy with delayed upload (Topic-level feature)</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/4jg6ykhjvc5otgncpybxbj4tw2hh4jo6">KIP-1283: Clarify KafkaStreams cleanUp semantics to preserve process metadata and state directory lock file</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/pkx528wyhqhqqrj29jgzcv4zh9d7j55s">KIP-1262: Enable auto-formatting directories</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/kdo80hhvlw1z5zkc6s9sdh4m88p9j2rj">KIP-1187: Support to retrieve remote log size</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/2cqh1mybs52htn3g61vgjjvddg8mkwc2">KIP-1291: Extended I/O Metrics Collection</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/qjjqsllhkw0qszl0rd4jmwvsh4q4g0jg">KIP-1245: Enforce 'application.server' <server>:<port> format at config level</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/720ywvfqgkb1nh0cdwycdwfy2qdqxh86">Apache Kafka 4.3.0 release</a></h3>
+            <p class="meta">12 条回复 · 7 位参与者</p>
+            <p class="summary">讨论围绕 Apache Kafka 4.3.0 的发布进度展开，发布经理 Mickael Maison 宣布已进入功能冻结阶段并切出了 4.3 分支。多位开发者请求将 KIP-1285、KIP-909 等未及时合并的功能通过 cherry-pick 方式合入新分支，发布经理同意在尽快完成合并的前提下予以批准。下一步重点是确保相关 KIP 尽快合入，并准备迎接 4 月 8 日的代码冻结。</p>
+            <div class="key-points"><p><strong>@Mickael Maison:</strong> 宣布 4.3 分支已切出，同意部分 KIP 在短期内合并后 cherry-pick 进分支，但警告若无法尽快完成将推迟至下个版本。</p>
+<p><strong>@Matthias J. Sax & Chia-Ping Tsai & Bill Bejeck:</strong> 分别请求将 KIP-1285、KIP-909 和 KIP-1035 的待处理 PR 合入 4.3 版本，以避免功能缺失。</p>
+<p><strong>@David Jacot:</strong> 确认 KIP-1263 将拆分实施，仅 batching 功能进入 4.3，offloading 功能推迟至 4.4。</p></div>
+            <p class="conclusion">发布经理正在追踪 KIP-909、1035、1219、1285 的最终合入状态，若不能尽快完成将被移出 4.3 版本；下一里程碑为 4 月 8 日的代码冻结。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/p9pocggdspy8bydz7263yzdppcgld7pq">[PR] MINOR: Update downloads page for 4.0.2 [kafka-site]</a></h3>
+            <p class="meta">3 条回复 · 2 位参与者</p>
+            <p class="summary">该讨论主要关于更新 Kafka 官网的下载页面以发布新版本。审阅者指出发布说明链接应指向归档地址而非下载镜像，作者采纳建议并修正后合并了该 PR。</p>
+            <div class="key-points"><p><strong>@jlprat:</strong> 指出 Release Notes 的链接应指向 archive 归档地址，而非 closer.lua，以保持与过往版本格式一致。</p>
+<p><strong>@viktorsomogyi:</strong> 接受了建议，表示会修复链接问题。</p></div>
+            <p class="conclusion">PR #837 已成功合并，网站下载页面更新完成。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/zhgj3nrydctxwtrnc4d5cxbyt1q1fyt1">Gradle Webinar recording</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">David Arthur 分享了关于 Kafka 构建改进的 Gradle 网络研讨会录像链接，内容涵盖 CI 构建的现代化改进。社区成员对分享表示感谢，并认为该资料具有学习价值。</p>
+            <div class="key-points"><p><strong>@David Arthur:</strong> 发布了关于 Kafka 构建改进的网络研讨会录像，内容与去年 Community Over Code NA 展示的一致。</p>
+<p><strong>@Chia-Ping Tsai:</strong> 称赞演讲很棒，感谢将工具引入社区。</p>
+<p><strong>@jian fu:</strong> 感谢分享，认为这对学习很有价值。</p></div>
+            <p class="conclusion">无具体结论或下一步行动，仅为资源分享与致谢。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/hccr03hjbgpdqg368bbfhd40z1qbf7w7">Request for Confluence edit access to create Kafka KIP</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">Nilesh 请求获取 Confluence 编辑权限以创建 KIP 页面，最初因 Jira 和 Confluence 系统独立而遇到权限问题。经过沟通和排查，Matthias 最终解决了权限配置问题。</p>
+            <div class="key-points"><p><strong>@nileshkumar3:</strong> 请求 Confluence 编辑权限以便为 KAFKA-20199 创建 KIP 页面，虽然能登录但最初无法编辑。</p>
+<p><strong>@Matthias J. Sax:</strong> 指出 Jira 和 Confluence 是独立系统，需分别申请权限，最终确认已为用户配置好编辑权限。</p></div>
+            <p class="conclusion">问题已解决，nileshkumar3 现已拥有 Confluence 编辑权限。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/fcj1kjfk1jy9on2l3cj525scf50dgdrf">KIP-1241: Reduce tiered storage redundancy with delayed upload</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕 KIP-1241 展开，旨在通过延迟上传机制解决 Kafka 分层存储中本地与远程数据重复存储导致的资源浪费问题。Jian Fu 提出了该提案并回应了 Chia-Ping Tsai 关于配置动态性和监控指标的疑问。目前作者已更新文档澄清配置属性，并建议暂不新增监控指标。</p>
+            <div class="key-points"><p><strong>@Jian Fu:</strong> 指出当前分层存储在本地保留期内立即上传数据造成冗余，提议引入延迟上传以降低成本。</p>
+<p><strong>@Chia-Ping Tsai:</strong> 询问配置是否支持动态更新，并建议增加指标以追踪延迟上传的数据量。</p>
+<p><strong>@Jian Fu:</strong> 确认配置为动态 Broker 级并已更新文档；认为监控需求不紧迫，建议未来通过 KIP-1187 API 查询，暂不增加新指标。</p></div>
+            <p class="conclusion">作者已根据反馈更新 KIP 文档以明确配置属性；关于新增监控指标，作者建议暂缓实施，后续可利用 KIP-1187 API 满足查询需求。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/otqp124y3h6h9fl2zg9fklg036r50mvs">KIP-1262: Enable auto-formatting directories</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕 KIP-1262 展开，旨在移除 Kafka 节点启动前必须格式化目录的要求。José 对集群 ID 的处理方式、控制器恢复机制及实现细节提出了疑问，Kevin 则澄清了元数据版本的默认策略，并探讨了 Bootstrap Controller 在未格式化情况下的初始化挑战。</p>
+            <div class="key-points"><p><strong>@José Armando García Sancio:</strong> 询问 KIP 是否完全移除了格式化需求，并质疑 `kafka-storage format` 命令的具体实现细节（如写入 meta.properties 还是 checkpoint）。</p>
+<p><strong>@José Armando García Sancio:</strong> 指出 Bootstrap Controller 在缺少 meta.properties 时的异常处理逻辑需考虑磁盘故障后的自动恢复场景。</p>
+<p><strong>@Kevin Wu:</strong> 确认将默认使用最新 MV 以支持写入 ClusterIdRecord，并正在寻求解决 Bootstrap Controller 在未格式化时如何处理“空”集群 ID 的方案。</p></div>
+            <p class="conclusion">Kevin 将根据反馈修改 KIP 文档（如移除旧 MV 相关描述），但关于 Bootstrap Controller 如何在无预先格式化的情况下正确初始化集群 ID 仍需进一步明确技术方案。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/mmx4z79too6p9d47qy8ycpr7z4vwkfmt">Usage of initial controllers parameter when formatting scaled up controller storage</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论了在格式化扩容控制器存储时使用 `--initial-controllers` 参数的风险。Luke Chen 指出这可能导致脑裂问题，建议新增控制器应使用 `--no-initial-controllers` 进行格式化，Paolo Patierno 对此表示认同。</p>
+            <div class="key-points"><p><strong>@Luke Chen:</strong> 使用 `--initial-controllers` 格式化新增控制器会让其误认为自己是投票者，若无法连接现有仲裁，可能形成独立仲裁导致脑裂。</p>
+<p><strong>@Luke Chen:</strong> 应遵循文档建议，对新增控制器使用 `--no-initial-controllers` 格式化以规避风险。</p>
+<p><strong>@Paolo Patierno:</strong> 同意 Luke 的分析，认为其逻辑合理。</p></div>
+            <p class="conclusion">初步结论是新增控制器节点不应使用 `--initial-controllers` 参数，而应使用 `--no-initial-controllers`。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/h9ys4w5k1jgfc9fzfh6jrhscbz2flsyp">Kafka performance degradation between 3.9.2 and 4.0.0</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">Tomasz Forys 报告 kafka-clients 从 3.9.2 升级到 4.x 版本后出现严重性能下降（总耗时增加约 4-5 倍），并已排除 Spring-kafka 的因素。Sanghyeok An 推测性能下降可能与 `linger.ms` 默认值从 0 变更为 5 有关，建议通过显式设置参数进行验证。</p>
+            <div class="key-points"><p><strong>@Tomasz Forys:</strong> 确认 4.x 版本客户端相比 3.9.2 存在显著性能退化，测试显示总耗时从约 31 秒激增至 130-160 秒。</p>
+<p><strong>@Sanghyeok An:</strong> 指出 3.9.2 版本 `linger.ms` 默认值为 0，而 4.x 版本默认值变为 5，这可能是导致延迟增加的原因。</p></div>
+            <p class="conclusion">建议发件人显式设置 `linger.ms=0` 重新运行测试，以确认性能下降是否由该默认配置变更引起。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/5ypw514xbpbqp6ogq6zkdjkqzsxc470k">KIP-1279: Cluster Mirroring</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论主要围绕 KIP-1279 集群镜像功能的设计细节展开，重点涉及 Leader Epoch 重写策略、分层存储支持及日志截断机制。Jun Rao 提出了关于 Epoch 一致性和实现细节的担忧，Luke Chen 回应称已更新设计不再重写 Epoch，并解释了截断流程。</p>
+            <div class="key-points"><p><strong>@Jun Rao:</strong> 质疑 Epoch 重写对消费者故障转移时偏移量一致性的影响，并指出 AbstractFetcherThread 可能不适合用于集群镜像。</p>
+<p><strong>@Luke Chen:</strong> 确认已更新设计以支持不洁 Leader 选举，将不再重写 Leader Epoch。</p>
+<p><strong>@Luke Chen:</strong> 解释了日志截断流程，通过 MirrorMetadataManager 查询状态并从源集群获取最后镜像偏移量。</p></div>
+            <p class="conclusion">初步结论是修改设计以不再重写 Leader Epoch，下一步将完善日志截断的内部实现并补充命令工作流文档。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/r2j5yrd83hkf7k5l0nnl8mql32wxdvoj">KIP-1282: Prevent data loss during partition expansion for dynamically added partitions</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论围绕 KIP-1282 展开，旨在解决分区扩容时的数据丢失问题。黃竣陽提议简化方案，统一使用组创建时间戳进行偏移量查找，消除了复杂的条件判断。Chia-Ping Tsai 认可该简化，但指出文档需更新以匹配讨论并补充时间偏差风险，作者随后表示已更新 KIP。</p>
+            <div class="key-points"><p><strong>@黃竣陽:</strong> 提议简化逻辑，统一使用组创建时间戳进行偏移量查找，以替代原有的条件分支判断，使行为更符合语义且可预测。</p>
+<p><strong>@Chia-Ping Tsai:</strong> 赞赏简化方案，但指出 KIP 页面内容滞后（如仍提及两个时间戳），建议更新文档以匹配讨论内容并补充服务器时间偏差的风险说明。</p></div>
+            <p class="conclusion">作者已根据反馈更新了 KIP 文档，目前正寻求社区的进一步反馈。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (45)</h2>
+            
+    <p>本周新建 <strong>45</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周 JIRA 主要集中在 Kafka Streams 的功能增强与状态管理改进，以及 Share Group 相关特性的修复与优化。社区还重点关注了测试稳定性，修复了多个 Flaky 测试并重构了测试工具类，同时完成了 Jetty 和 Zookeeper 的依赖升级以修复安全漏洞。此外，文档更新与构建工具的改进也是本周的工作内容之一。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Kafka Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
