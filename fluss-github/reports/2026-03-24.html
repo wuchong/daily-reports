@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-03-24</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-03-24</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 4 新 Issues</div>
+            <div class="stat">✅ 3 关闭</div>
+            <div class="stat">✨ 8 新 PRs</div>
+            <div class="stat">🎉 5 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🐛 <a href="https://github.com/apache/fluss/pull/2926">PR #2926</a> 修复 ReplicaFetcherThread 在 fetchLog RPC 超时时的 Netty ByteBuf 内存泄漏问题</li><li>🎉 <a href="https://github.com/apache/fluss/pull/2763">PR #2763</a> 扩展元数据模型以支持每表/分区的远程数据目录</li><li>🐛 <a href="https://github.com/apache/fluss/pull/2919">PR #2919</a> 当 datalake format 不为空时跳过 datalake 前缀验证</li><li>✨ <a href="https://github.com/apache/fluss/pull/2934">PR #2934</a> 新增 Fluss Rust SDK 介绍博客文章</li><li>📚 <a href="https://github.com/apache/fluss/pull/2934">PR #2923</a> 新增 C++ 客户端文档</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <ul class="critical-list"><li>⚠️ <a href="https://github.com/apache/fluss/pull/2780">PR #2780</a> P1 问题：选举线程返回的 Future 未正确链接到错误处理，可能导致协调器静默失败</li><li>⚠️ <a href="https://github.com/apache/fluss/pull/2780">PR #2780</a> P3 问题：注册协调器时未携带 payload，导致 NewCoordinatorEvent 和 DeadCoordinatorEvent 永远不会触发</li></ul>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2448">Issue #2448</a> [Docs] Add documentation for C++ Client</h4>
+            <ul><li><span class="author">@leekeiabstraction</span>: 将该任务分配给 @Prajwal-banakar，询问其是否愿意接手</li><li><span class="author">@Prajwal-banakar</span>: 确认接受任务并提交了 PR</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2669">Issue #2669</a> [docs] Add Real-Time User Profile quickstart tutorial</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: 建议将 RoaringBitmap 插件迁移到 flink-extended/flink-roaringbitmap 仓库</li><li><span class="author">@Prajwal-banakar</span>: 同意迁移方案，并在邮件列表提出了 Native Bitmap 集成讨论</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2886">Issue #2886</a> Add V2 batch format with statistics collection</h4>
+            <ul><li><span class="author">@wuchong</span>: 指出 AlignedRow 和 StatisticsColumnsConfig 代码覆盖率低于 70% 的最低要求</li><li><span class="author">@platinumhamburg</span>: 感谢 @wuchong 的详细专业评审，已根据反馈优化修复</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2922">Issue #2922</a> [docs] Add AGENTS.md - AI agent coding guide</h4>
+            <ul><li><span class="author">@qzyu999</span>: 对比 Airflow 的 AGENTS.md，建议添加 git 命令指南和边界定义，并讨论文档长度平衡</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2926">Issue #2926</a> [hotfix] Fix Netty ByteBuf leak on follower fetchLog timeout</h4>
+            <ul><li><span class="author">@wuchong</span>: 指出 CI 编译失败，是 LanceTieringTest.java 的预存问题</li><li><span class="author">@platinumhamburg</span>: 解释 CI 失败非本 PR 引起，已用 retry() 替换 Thread.sleep 修复不稳定测试</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2700">PR #2700</a> [helm] Enable SASL authenticated connection to Zookeeper nodes</h4>
+            <ul><li><span class="author">@affo</span>: 建议不应生成凭证而应直接失败，Fluss 不管理 ZK 服务器</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2780">PR #2780</a> [Feature] Support coordinator switch when leader fail</h4>
+            <ul><li><span class="author">@wuchong</span>: 指出选举线程设计冗余，建议在 LeaderLatchListener 中直接处理；要求添加 leader 变 follower 后重新选举的测试</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2886">PR #2886</a> Add V2 batch format with statistics collection</h4>
+            <ul><li><span class="author">@wuchong</span>: 提供大量详细评审：建议用白名单替代黑名单验证类型、推荐直接写入 pagedOutputView 避免拷贝、要求添加零行测试用例</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2924">PR #2924</a> [server] Allow enabling lakehouse on tables created before cluster-level lakehouse is enabled</h4>
+            <ul><li><span class="author">@Copilot</span>: 指出 datalake.enabled 验证逻辑反转错误，建议从 newConfig 而非 currentConfiguration 获取 format</li><li><span class="author">@wuchong</span>: 要求更新文档说明兼容性问题，下游任务需先升级到 Fluss v1.0+ 才能解析 V1/V2 格式日志</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2934">PR #2934</a> [Blog] Fluss Rust SDK introduction blog</h4>
+            <ul><li><span class="author">@leekeiabstraction</span>: 建议提及社区计划将 fluss-rust 移入主仓库，并讨论持久性保证和部分更新的文档说明</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/2932">#2932</a> [lake/tiering] add total bytes read tracking and metrics for tiering jobs <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/issues/2925">#2925</a> [Server] Netty ByteBuf leak in ReplicaFetcherThread when fetchLog RPC times out <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/2921">#2921</a> Add AGENTS.md coding guide for AI agents <span class="author">@vaibhavk1992</span> </li><li><a href="https://github.com/apache/fluss/issues/2918">#2918</a> Skip datalake prefix validation when  datalake format is not null <span class="author">@loserwang1024</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/2934">#2934</a> [Blog] Fluss Rust SDK introduction blog <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/2933">#2933</a> [lake/tiering] add total bytes read tracking and metrics for tiering service <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/pull/2931">#2931</a> [flink] Remove redundant `bucket.num` and `bucket.key` from customer properties. <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/pull/2930">#2930</a> [IT][fix]ServerITCaseBase fails when stderr contains "Picked up JAVA_TOOL_OPTIONS"  <span class="author">@litiliu</span> </li><li><a href="https://github.com/apache/fluss/pull/2924">#2924</a> [server] Allow enabling lakehouse on tables created before cluster-level lakehouse is enabled <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/pull/2923">#2923</a> [docs] Add C++ client documentation <span class="author">@Prajwal-banakar</span> </li><li><a href="https://github.com/apache/fluss/pull/2922">#2922</a> [docs] Add AGENTS.md - AI agent coding guide <span class="author">@vaibhavk1992</span> </li><li><a href="https://github.com/apache/fluss/pull/2920">#2920</a> [lake/tiering] add table dropped handling and nullable write results <span class="author">@beryllw</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/2925">#2925</a> [Server] Netty ByteBuf leak in ReplicaFetcherThread when fetchLog RPC times out <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/2918">#2918</a> Skip datalake prefix validation when  datalake format is not null <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/issues/2754">#2754</a> [server] Extend metadata models to support per-table/partition remote data directory <span class="author">@LiebingYu</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/2928">#2928</a> [hotfix][lance] Fix compile problem in LanceTieringTest <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/pull/2927">#2927</a> [hotfix] update TableInfo constructor call in LanceTieringTest <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/pull/2926">#2926</a> [hotfix] Fix Netty ByteBuf leak on follower fetchLog timeout <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/2919">#2919</a> [server] Skip datalake prefix validation when datalake format is not null <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/pull/2763">#2763</a> [server] Extend metadata models to support per-table/partition remote data directory <span class="author">@LiebingYu</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
