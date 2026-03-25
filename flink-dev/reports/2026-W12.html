@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flink 社区周报 | 2026-W12</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Flink 社区周报 | 2026-W12</h1>
+            <p class="date-range">2026-03-16 ~ 2026-03-22</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (0)</h2>
+            <p class="empty">本周无公告</p>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (6)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/3jlpmbx4qzxo85oxyz9854690lpp7tvq">FLIP-557: Granular Control over Data Reprocessing and State Retention in Materialized Table Evolution</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/29bbk20ncrx4tvrj7904blx1zwz8cmng">Apache Flink Agents Release 0.2.1, release candidate #1</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/vmv6m2lw0vbmpzbl3mns1qm5ngn3tc09">Apache Flink CDC Release 3.6.0, release candidate #1</a> <span class="status warning">⚠️ 有异议</span><p class="objection-inline">Shuo Cheng 提出 -1，原因是发现 Hudi connector 打包存在阻塞缺陷；Hongshun Wang 提出 -1 (binding)，原因是测试发现从 Postgres CDC 到 Fluss 时 schema inference 无法工作。</p></li>
+<li><a href="https://lists.apache.org/thread/n95bczyocglsk93d2hcbckq0kwqqco9r">FLIP-557: Granular Control over Data Reprocessing in Materialized Table Evolution</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/bf28cmzf57vyt9jppylhcv6hsztp1yxv">FLIP-567: Introduce a ProcessTableFunction Test Harness</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/8853s0qr1j3y4974qbsvy4pcr68owrkk">Apache Flink CDC Release 3.6.0, release candidate #2</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/wxwm52fr98ryckp0wwjbpy0v46j6omhr">FLIP-568: Strict BYTES-to-STRING CAST with UTF-8 Validation Utilities</a></h3>
+            <p class="meta">6 条回复 · 4 位参与者</p>
+            <p class="summary">本次讨论围绕 FLIP-568 展开，旨在解决 CAST(bytes AS STRING) 因静默替换无效 UTF-8 字节而导致数据损坏和无法幂等转换的问题。提案建议引入新的校验工具函数，并将默认行为改为抛出错误，以避免数据丢失。讨论中参与者对提案方向达成共识，并就内部 API 调整和字符集支持范围等细节进行了确认。</p>
+            <div class="key-points"><p><strong>@Gustavo de Morais:</strong> 指出当前 CAST 操作会导致数据静默损坏，提议引入 UTF-8 校验工具并更改默认行为为抛出错误，同时澄清 UTF-16 支持不在本提案范围内。</p>
+<p><strong>@Timo Walther:</strong> 支持该提案，认为修复此缺陷对于防止难以调试的数据不一致问题至关重要。</p>
+<p><strong>@Xuyang:</strong> 建议增加 fromUtf8Bytes 重载函数，并同意关于内部 API 性能影响及后续独立调整的方案。</p></div>
+            <p class="conclusion">社区对提案表示认可，确认将增加函数重载，并决定将内部 API 的迁移作为后续独立任务处理，同时明确了不扩展至 UTF-16 等其他字符集的范围界定。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/df5lmx5lg4gofy9m4yxw74fj4wq7vw98">FLIP-569: Sunset the Stateful Functions (StateFun) Sub-project</a></h3>
+            <p class="meta">5 条回复 · 6 位参与者</p>
+            <p class="summary">Martijn Visser 发起 FLIP-569 讨论，提议正式终止已长期缺乏维护的 Stateful Functions (StateFun) 子项目。多位社区开发者迅速响应并表示支持，一致认为终止该项目是必要且合理的决定。</p>
+            <div class="key-points"><p><strong>@Martijn Visser:</strong> 提议正式终止 StateFun 子项目，并指出此前已有过相关讨论。</p>
+<p><strong>@Leonard Xu:</strong> 支持终止提案，理由是该项目已很长时间未维护。</p>
+<p><strong>@David Anderson:</strong> 支持提案，并表示这早该进行了。</p></div>
+            <p class="conclusion">社区成员一致投票赞成（+1），同意终止 StateFun 子项目，后续将推进 FLIP-569 的落地。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/orv4bytfh0m1nv7bmcr0pk2f8z6vm3mz">AI-Assisted Contributions and AI Tooling Support in Apache Flink</a></h3>
+            <p class="meta">3 条回复 · 4 位参与者</p>
+            <p class="summary">讨论主要围绕 Apache Flink 社区对 AI 辅助贡献的支持，Martijn Visser 提交了草案 PR 以引入根目录 `AGENTS.md` 指导文件和 PR 模板中的 AI 披露声明。社区对此反响积极，普遍赞同先建立基础规范，后续再逐步完善模块级文档及工具集成。</p>
+            <div class="key-points"><p><strong>@Martijn Visser:</strong> 提交了包含根目录 AGENTS.md（涵盖架构、编码规范等）和 PR 模板 AI 披露部分的草案，建议将模块级文件和自动化机器人集成作为后续工作。</p>
+<p><strong>@Gustavo de Morais:</strong> 支持仅从根目录 AGENTS.md 开始，认为简短且准确的上下文文件比冗长过时的文件更能提升 AI 工具的使用体验。</p>
+<p><strong>@Samrat Deb:</strong> 强调 AI 生成代码需遵循与人工代码相同的严格审查标准，作者需承担全责，并对用户支持型 AI 机器人的潜在风险表示担忧。</p></div>
+            <p class="conclusion">若没有更多异议，将于本周晚些时候启动投票流程。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/nvdso0ff5gttjq0kj83xssxxfmmppk5t">Can you check my access?</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">Alexandre Hoerbe Engelmann 询问其 Flink 项目 Jira 访问权限的申请状态，希望能开始贡献代码。Martijn Visser 表示未找到相关请求，Robert Thomson 随后指出可能是因为邮箱地址未完成验证，导致请求未成功提交。</p>
+            <div class="key-points"><p><strong>@Alexandre Hoerbe Engelmann:</strong> 上周申请了 Flink Jira 访问权限，目前显示审核中，希望能确认状态以便开始贡献。</p>
+<p><strong>@Martijn Visser:</strong> 无法找到该用户的申请记录，询问其申请时使用的用户名。</p>
+<p><strong>@Robert Thomson:</strong> 建议检查邮箱地址是否已完成验证，未验证可能导致请求未被接收。</p></div>
+            <p class="conclusion">初步判断请求可能因邮箱未验证而未成功提交，建议用户完成邮箱验证并检查垃圾邮件过滤设置。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/z5fjj9sszqmm41tgnswdby2mlj6omcws">JIRA account Request for Apache Flink</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">unigogyk 请求协助批准其未获通过的 Flink JIRA 账号申请。Leonard Xu 回复称未找到该申请记录，建议提供用户名或重新提交申请。</p>
+            <div class="key-points"><p><strong>@unigogyk:</strong> 已创建 JIRA 账号但一直未获批准，请求社区协助解决。</p>
+<p><strong>@Leonard Xu:</strong> 无法找到该账号申请记录，建议申请人提供用户名或重新提交申请。</p></div>
+            <p class="conclusion">申请人需提供具体的 JIRA 用户名或重新提交账号申请。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/hv2jsjx8ptrt2qt7s27gnx5jz0gj7ov4">FLIP-567: Introduce a ProcessTableFunction Test Harness</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论主要围绕 FLIP-567 引入 ProcessTableFunction 测试工具的提案展开，旨在优化开发和测试体验。Gustavo 针对参数校验、处理时间支持及并行度提出了具体改进建议，Mika 采纳了核心建议并明确了部分功能的范围界定。</p>
+            <div class="key-points"><p><strong>@Gustavo de Morais:</strong> 建议在构建测试工具时，若表参数已在 eval() 中声明但未配置，应直接抛出错误以提升开发体验。</p>
+<p><strong>@Gustavo de Morais:</strong> 指出提案需补充处理时间的支持细节，建议参考现有 API 或明确标注为非本期范围。</p>
+<p><strong>@Mika Naylor:</strong> 认同 Gustavo 的建议，已添加处理时间变更的方法，并决定将并行度问题留待后续增强。</p></div>
+            <p class="conclusion">双方就主要改进点达成一致，Mika 将更新提案以包含参数校验抛错和处理时间支持，并行度问题暂不纳入本期范围。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/m1cd53jclsld2fc7f686hwovlg9qfgom">FLIP-557: Granular Control over Data Reprocessing and State Retention in Materialized Table Evolution</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">本次讨论主要关于 FLIP-557 提案的范围调整，Ramin 提议将提案聚焦于 START_MODE 子句，移除复杂的 STATE_RETENTION 部分以加速功能落地。Xuyang 对此修订表示认可并投了赞成票。</p>
+            <div class="key-points"><p><strong>@Ramin Gharib:</strong> 更新 FLIP-557 以仅包含 START_MODE 功能，将 STATE_RETENTION 移至未来的独立 FLIP 讨论。</p>
+<p><strong>@Ramin Gharib:</strong> 由于范围严格缩小，建议无需重新发起投票，若无异议将结束当前的投票线程。</p>
+<p><strong>@Xuyang:</strong> 支持修订后的提案（+1）。</p></div>
+            <p class="conclusion">提案范围缩减已确定并获得支持，若无进一步异议，作者将结束投票流程。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/6thlq9c5twyvzmcw7q24nm4q0rcbz5qp">FLIP-XXX: Enhancing HistoryServer with Lazy Loading and Pluggable Storage</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Zihao Chen 发起了关于 FLIP-XXX 的讨论，旨在通过引入懒加载和可插拔存储机制来增强 HistoryServer。该提案主要解决处理大量归档作业时面临的启动缓慢、作业可见性延迟及小文件过多等问题，并保证了完全的向后兼容性。</p>
+            <div class="key-points"><p><strong>@zihao chen:</strong> 提议引入懒加载模式以实现按需获取作业归档，解决启动慢和延迟问题。</p>
+<p><strong>@zihao chen:</strong> 建议采用可选的基于 RocksDB 的存储方案，以减少小文件数量。</p>
+<p><strong>@zihao chen:</strong> 强调方案默认配置下完全向后兼容（EAGER + FILE）。</p></div>
+            <p class="conclusion">目前处于征集反馈阶段，等待社区对 FLIP 设计文档进行审阅和讨论。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/w4qrgopg6o41hvx1lg59z2drtw3jy7fd">FLIP-570: Support Runtime Data Sampling for Operators with WebUI Visualization</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Jiangang Liu 发起关于 FLIP-570 的讨论，提议为 Flink 引入原生运行时数据采样功能及 WebUI 可视化支持，以解决当前调试查看中间数据需修改代码或重启作业的痛点。该方案复用 FlameGraph 架构，支持通过 REST API 按需采样，具有极低的性能开销且默认安全。目前作者已发布详细设计，正公开征求社区意见。</p>
+            <div class="key-points"><p><strong>@Jiangang Liu:</strong> 现有查看中间数据的方法（如 print sink 或日志）具有侵入性，往往需要重启作业或修改拓扑，效率低下。</p>
+<p><strong>@Jiangang Liu:</strong> FLIP-570 提议通过 REST API 按需触发采样，无需重启作业，并在 WebUI 新增“Data Sample”标签页进行可视化展示。</p>
+<p><strong>@Jiangang Liu:</strong> 该设计注重性能与安全，禁用时零开销，启用时开销极低（典型生产负载下 <0.5%），且默认关闭并设有速率限制等保护机制。</p></div>
+            <p class="conclusion">提案已发布，目前处于征求社区反馈和意见的阶段。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/2d06gny1n84vp2216w38j8gy20pqhhkd">FLIP-571: Support Dynamically Updating Checkpoint Configuration at Runtime via REST API</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Jiangang Liu 发起了关于 FLIP-571 的讨论，提议通过 REST API 在运行时动态更新检查点配置。该提案旨在解决当前配置不可变导致的运维痛点，如级联故障需重启及超时浪费 I/O 资源。核心设计包括新增 PATCH 接口，支持立即生效超时修改及配置持久化恢复。</p>
+            <div class="key-points"><p><strong>@Jiangang Liu:</strong> 当前检查点配置不可变导致长周期作业运维困难，如级联故障需重启、超时丢弃近完成检查点浪费 I/O。</p>
+<p><strong>@Jiangang Liu:</strong> 提议新增 REST API 端点 `PATCH /jobs/:jobid/checkpoints/configuration` 支持动态修改配置。</p>
+<p><strong>@Jiangang Liu:</strong> 设计上支持超时修改立即生效以挽救进行中的检查点，且配置覆盖项持久化以便故障恢复。</p></div>
+            <p class="conclusion">提案已发起讨论，目前正等待社区反馈和建议。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (60)</h2>
+            
+    <p>本周新建 <strong>60</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周 JIRA 主要集中在物化表功能的完善与演进，涉及修复 CREATE OR ALTER 语句的 Schema 兼容性问题以及实现 FLIP-557 以支持数据重处理控制。同时，社区修复了多项关键缺陷，包括 Checkpoint 状态丢失、MySQL CDC 连接器在故障恢复后的卡顿问题以及自适应扩缩容逻辑的修正。此外，还包含了对 Redis/Paimon 连接器的改进、Avro 版本升级以及多项文档更新与翻译工作。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Flink Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
