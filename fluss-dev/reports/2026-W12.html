@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fluss 社区周报 | 2026-W12</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Fluss 社区周报 | 2026-W12</h1>
+            <p class="date-range">2026-03-16 ~ 2026-03-22</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (2)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/kcstn7tj9rqt8j0zb0orp83o9n1zxr5x">New Apache Fluss Committer: LiebingYu</a></li>
+<li><a href="https://lists.apache.org/thread/527l0lnpq91osmnvtkyb4br55tpzpwr6">New Apache Fluss Committer: Keith Lee</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (3)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/s6syqh16ly61rj9fn71zq76jzrkgrjzs">Release Apache Fluss clients (fluss-rust, fluss-python, fluss-cpp) 0.1.0-incubating (RC1)</a> <span class="status warning">⚠️ 有异议</span><p class="objection-inline">Yunhong Zheng 提出 -1，原因是 `pyfluss` 尚未发布到 TestPyPI，导致无法按照文档指引验证安装。</p></li>
+<li><a href="https://lists.apache.org/thread/f1on54v0qn6o8yzbnc0rg94ok08tr6l2">FIP-17 Support Full KV Scan for Primary Key Tables</a> <span class="status warning">⚠️ 有异议</span><p class="objection-inline">Lorenzo Affetti 提出 -1，原因是认为在采用当前设计之前，应充分评估其他两个值得探索的方向（带快照 ID 的分页请求和真正的流式 RPC）。</p></li>
+<li><a href="https://lists.apache.org/thread/2jszf1nfs0csvd7gn9tdy2klstol31xm">FIP-34: Making Fluss an AI-Native Project</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (8)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/wnhgtjs04pcgsbl54qt9ct7k5xojwsho">FIP-17: Streaming KV Scan RPC</a></h3>
+            <p class="meta">3 条回复 · 3 位参与者</p>
+            <p class="summary">讨论主要围绕 FIP-17（Streaming KV Scan RPC）的设计展开，重点探讨了服务端状态管理机制、API 接口统一性以及拉取式分页与推送式流 RPC 的优劣。经过权衡，社区决定保留基于 snapshot 的拉取式模型，并统一了 API 设计规范。</p>
+            <div class="key-points"><p><strong>@Lorenzo Affetti:</strong> 建议简化服务端状态管理（使用 snapshot_id 替代 ScannerManager），并提议先实现通用的流式 RPC 原语以支持推送模式。</p>
+<p><strong>@Jark Wu:</strong> 建议复用现有 Table.newScan API 以保持一致性，使用有符号整数简化 Protobuf 定义，并论证了拉取式模型在流控和容错上的优势。</p>
+<p><strong>@Giannis Polyzos:</strong> 采纳了关于 API 设计和配置命名的建议，已更新 FIP 以遵循现有的 BatchScanner 设计模式。</p></div>
+            <p class="conclusion">已达成初步共识，Giannis 已根据反馈更新了 FIP 文档，将沿用现有的 BatchScanner API 设计和拉取式分页机制。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/m7hq484hwf0136yr65rw0of0y9bc3r5n">Recurring sync meeting for Lance integration</a></h3>
+            <p class="meta">3 条回复 · 3 位参与者</p>
+            <p class="summary">Keith Lee 提议为 Lance 集成设立定期同步会议，以梳理当前进展（如主键表支持、Flink SQL 读取路径等）并规划未来路线图。讨论中大家倾向于先利用即将到来的月度社区会议讨论该议题，若议程过满则考虑改为双周例会并增加对美洲时区友好的时段。</p>
+            <div class="key-points"><p><strong>@Keith Lee:</strong> 建议设立定期同步会议以协调各工作流（写入/读取路径、类型支持等），明确优先级并解决阻塞问题。</p>
+<p><strong>@Giannis Polyzos:</strong> 认为无需单独设立月度会议，建议先开一次会制定路线图，并通过 Slack 投票确定时间。</p>
+<p><strong>@Jark Wu:</strong> 提议先在明天的月度社区会议上讨论，若时间不够再考虑双周例会，并建议增加对美洲贡献者友好的时段。</p></div>
+            <p class="conclusion">初步决定在明天的月度社区会议上讨论 Lance 集成议题，视讨论情况决定是否调整为双周例会及增加美洲时区时段。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/bq2txjb0jcxnd4xw9vv10skszpoc955b">FIP-34: Making Fluss an AI-Native Project</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">社区正在讨论 FIP-34 提案以将 Fluss 打造为 AI 原生项目，目前已达成共识并准备启动投票流程。鉴于 AGENT.md 议题简单且无争议，社区决定先行实施该功能以提升开发体验，相关 PR 已提交。</p>
+            <div class="key-points"><p><strong>@Jark Wu:</strong> 支持启动投票，并提议立即实施 AGENT.md 而无需等待正式投票结果；同时指出 REST API 和 CLI 的实现将依赖 FIP-32 中的 Rust 多协议网关。</p>
+<p><strong>@Vaibhav Kumar:</strong> 响应号召，已提交关于 AGENT.md 的 PR #2922。</p>
+<p><strong>@Yang Wang:</strong> 感谢社区的积极行动，计划近期发起 FIP-34 的正式投票，并推进后续基础文件（如 AGENTS.md）的落地。</p></div>
+            <p class="conclusion">AGENT.md 的实施已通过 PR #2922 先行启动，下一步将由 Yang Wang 发起 FIP-34 的正式投票，通过后将逐步落地其他基础项目。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/lhtkyss1zj2kn1vsb4sr8k18ooopyodq">FIP-24：Support tiering Fluss data to Hudi</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">Han 发起了 FIP-24 讨论，提议支持将 Fluss 数据分层存储到 Hudi，以补齐对主流数据湖格式的支持。Yuxia 对此表示总体认可，但针对读取路径提出了优化建议，希望能减少对 Flink 的依赖。</p>
+            <div class="key-points"><p><strong>@han:</strong> 提议 FIP-24，旨在像支持 Paimon 和 Iceberg 一样，支持将 Fluss 数据分层存储到 Hudi。</p>
+<p><strong>@yuxia:</strong> 整体支持该提案，认为这有助于 Fluss 更好地支持数据湖生态。</p>
+<p><strong>@yuxia:</strong> 建议读取路径直接转换为 Fluss InternalRow，避免依赖 Flink RowData，从而减轻 Hudi 模块的依赖负担。</p></div>
+            <p class="conclusion">目前处于提案讨论初期，Han 需要针对 Yuxia 提出的关于读取路径依赖优化的建议进行回复或确认可行性。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/ctryjv4bff84p4vbbjdnm442y9ysd892">Podling Fluss Report Reminder - April 2026</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Apache Incubator PMC 发出自动提醒，要求 Fluss 社区在 4 月 1 日前提交季度报告，以备战 4 月 15 日的董事会会议。报告需涵盖项目描述、毕业关键问题及社区发展状况等内容，并采用 Markdown 格式提交至 Incubator Wiki。</p>
+            <div class="key-points"><p><strong>@Apache Incubator PMC:</strong> 报告必须在董事会会议前两周（即 4 月 1 日）提交，以便留出足够的审核时间。</p>
+<p><strong>@Apache Incubator PMC:</strong> 报告内容需包含项目描述、毕业面临的三大问题、社区与项目进展及成熟度自评。</p>
+<p><strong>@Apache Incubator PMC:</strong> 严禁在报告中公开尚未正式当选的潜在 committer 或 PPMC 成员姓名。</p></div>
+            <p class="conclusion">Fluss 社区需按要求撰写报告并提交至指定 Wiki 页面，导师需跟进审核并在 Wiki 上签署。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/yt2nx9932hcm4r62n6jjzhcz6z5ryxog">Community Call - Friday, March 27th</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">本次邮件主要是 Mehul Batra 发出的 Fluss 社区会议邀请，会议定于 3 月 27 日举行。会议旨在汇聚社区成员分享生产环境见解与反馈，共同商讨社区优先事项。目前处于征集讨论议题阶段，欢迎各方参与。</p>
+            <div class="key-points"><p><strong>@Mehul Batra:</strong> 邀请社区成员参加 3 月 27 日的社区会议，以分享反馈并协助制定优先级。</p>
+<p><strong>@Mehul Batra:</strong> 提供了针对欧洲、印度、中国和美国时区的具体会议时间安排。</p>
+<p><strong>@Mehul Batra:</strong> 建议成员在共享文档（Community Sync Docs）中添加想要讨论的议题。</p></div>
+            <p class="conclusion">下一步行动是社区成员通过提供的链接加入会议，并在共享文档中提交希望讨论的议题。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/vsx6kzf8rkn0v0zv6p2f85b2233j28tb">FIP-32 Multiprotocol Query Gateway for Apache Fluss</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Anton Borisov 强烈支持基于 Rust 构建 FIP-32 网关的提议，并指出了 fluss-rust 当前的功能差距。他详细列出了尚不支持的前缀查找、批量查找和 LimitScan 操作，建议将其纳入交付计划。此外，他针对 Lookuper 的并发访问问题提出了具体的 Mutex 解决方案。</p>
+            <div class="key-points"><p><strong>@Anton Borisov:</strong> 强烈支持基于 fluss-rust 和 DataFusion 构建 Rust 网关的方案。</p>
+<p><strong>@Anton Borisov:</strong> 指出 fluss-rust 缺失前缀查找、批量查找和 LimitScan 三项操作，需明确纳入开发范围。</p>
+<p><strong>@Anton Borisov:</strong> 建议 Lookuper 使用 Mutex 包装编码器以解决并发访问的接口限制问题。</p></div>
+            <p class="conclusion">建议将缺失的数据操作纳入交付计划，并提前修复 Lookuper 的并发访问接口问题。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/q4wl33dk70p56og50106oynj73vmz0db">FIP-33: JBOD Phase 1 - Local Multi-Directory Support</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Liu han 发起关于 FIP-33 的讨论，旨在为 Fluss 引入 JBOD 支持以充分利用多磁盘服务器的容量和 I/O 带宽。该计划分三阶段实施，本次讨论聚焦第一阶段“本地多目录支持”，目标是在不改变元数据和协调器的情况下，实现 TabletServer 多目录配置及静态 bucket 放置。</p>
+            <div class="key-points"><p><strong>@liu han:</strong> 当前单目录设计无法充分利用多磁盘服务器的磁盘容量和 I/O 带宽。</p>
+<p><strong>@liu han:</strong> JBOD 实施分为三阶段，第一阶段专注于本地多目录支持、静态 bucket 放置和重启恢复，保持 log 与 kv 共置。</p>
+<p><strong>@liu han:</strong> 第一阶段设计保持低风险，不涉及元数据、RPC 或协调器变更，且兼容现有单目录部署模式。</p></div>
+            <p class="conclusion">目前处于提案讨论阶段，作者欢迎社区对 FIP-33 提出反馈和建议。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (0)</h2>
+            
+    <p>本周新建 <strong>0</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周无新建 JIRA。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Fluss Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
