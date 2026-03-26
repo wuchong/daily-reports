@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-03-25</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-03-25</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 7 新 Issues</div>
+            <div class="stat">✅ 4 关闭</div>
+            <div class="stat">✨ 7 新 PRs</div>
+            <div class="stat">🎉 8 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/2886">PR #2886</a> 添加 V2 batch format 支持统计信息收集用于过滤器下推优化</li><li>🎉 <a href="https://github.com/apache/fluss/pull/2711">PR #2711</a> 在 Helm charts 中启用 metrics 报告功能</li><li>🐛 <a href="https://github.com/apache/fluss/pull/2926">PR #2926</a> 修复 ReplicaFetcherThread 中 fetchLog 超时导致的 Netty ByteBuf 内存泄漏问题</li><li>🐛 <a href="https://github.com/apache/fluss/pull/2942">PR #2942</a> 修复 TabletServer 非正常关闭后因日志恢复 EOFException 无法重启的问题</li><li>📚 <a href="https://github.com/apache/fluss/pull/2934">PR #2934</a> 添加 Fluss Rust SDK 介绍博客文章</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <ul class="critical-list"><li>⚠️ <a href="https://github.com/apache/fluss/issues/2941">Issue #2941</a> TabletServer 在非正常关闭后因日志恢复中的 EOFException 无法重启</li><li>⚠️ <a href="https://github.com/apache/fluss/issues/2938">Issue #2938</a> 不稳定测试 BatchScannerITCase.testScanSnapshot</li><li>⚠️ <a href="https://github.com/apache/fluss/issues/2937">Issue #2937</a> 不稳定测试 Flink119TableSinkITCase.testWritePartitionedTable</li><li>⚠️ <a href="https://github.com/apache/fluss/issues/2935">Issue #2935</a> 由于 CuratorCache 初始同步竞争导致 TableChangeWatcherTest.testSchemaChanges 测试不稳定</li></ul>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2922">Issue #2922</a> [docs] Add AGENTS.md - AI agent coding guide</h4>
+            <ul><li><span class="author">@qzyu999</span>: 建议参考 Airflow 的 AGENTS.md，添加 git 命令指南和 AI 边界说明，并使用符号链接 CLAUDE.md 指向 AGENTS.md</li><li><span class="author">@vaibhavk1992</span>: 已将文档压缩到 500 行以内，保留了所有检查项，并会按要求添加符号链接 CLAUDE.md</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2669">Issue #2669</a> [docs] Add Real-Time User Profile quickstart tutorial</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: 建议将 RoaringBitmap 插件移至 flink-extended/flink-roaringbitmap 仓库，并添加 BITMAP_OR_AGG 函数支持 roll-up 聚合示例</li><li><span class="author">@Prajwal-banakar</span>: 同意迁移 UDF 到共享仓库，正在邮件列表讨论 Native Bitmap 集成方案</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2886">Issue #2886</a> Add V2 batch format with statistics collection</h4>
+            <ul><li><span class="author">@wuchong</span>: 指出代码覆盖率问题：AlignedRow 和 StatisticsColumnsConfig 类覆盖率低于 70% 的最低要求</li><li><span class="author">@platinumhamburg</span>: 感谢详细的审查意见，已根据反馈优化并解决了代码覆盖率问题</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2924">PR #2924</a> [server] Allow enabling lakehouse on tables created before cluster-level lakehouse is enabled</h4>
+            <ul><li><span class="author">@Copilot</span>: 指出多个问题：datalake.enabled/datalake.format 验证逻辑反转、格式验证逻辑缺失、测试可能因共享集群扩展而变得不稳定</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2780">PR #2780</a> [Feature] Support coordinator switch when leader fail</h4>
+            <ul><li><span class="author">@wuchong</span>: [P1] 指出选举线程的 Future 未链接到错误处理，可能导致进程假死；建议简化为直接在回调中调用而非使用额外线程</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2940">PR #2940</a> [fluss-common] Validate partition time when creating partition on auto partition table.</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: 指出 DynamicPartitionCreator 存在状态泄漏问题：验证失败后分区仍留在 inflight 集合中，建议将验证移到添加状态之前</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2926">PR #2926</a> [hotfix] Fix Netty ByteBuf leak on follower fetchLog timeout</h4>
+            <ul><li><span class="author">@wuchong</span>: 指出固定 Thread.sleep 无法保证测试可靠性，建议改用基于条件的重试机制</li><li><span class="author">@platinumhamburg</span>: 已改用 retry() 条件等待机制，测试会轮询直到所有 ByteBuf 的 refCnt == 0，15秒超时</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2934">PR #2934</a> [Blog] Fluss Rust SDK introduction blog</h4>
+            <ul><li><span class="author">@leekeiabstraction</span>: 建议添加图表增强可读性，提及社区计划将 fluss-rust 迁入主仓库，并考虑部分更新的使用场景</li><li><span class="author">@fresh-borzoni</span>: 确认会在后续添加图表和视觉元素，目前先确定文本内容和结构</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2931">PR #2931</a> [flink] Remove redundant `bucket.num` and `bucket.key` from customer properties.</h4>
+            <ul><li><span class="author">@beryllw</span>: 建议将 "customer properties" 改为 "custom properties"，有一个小的拼写错误</li><li><span class="author">@loserwang1024</span>: 已完成修改</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/2941">#2941</a> [server] TabletServer fails to restart after unclean shutdown due to EOFException in log recovery <span class="author">@LiebingYu</span> </li><li><a href="https://github.com/apache/fluss/issues/2939">#2939</a> Need to validate auto-partition time when creation and write new partition <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/issues/2938">#2938</a> [test] Unstable test BatchScannerITCase.testScanSnapshot <span class="author">@app/github-actions</span> </li><li><a href="https://github.com/apache/fluss/issues/2937">#2937</a> [test] Unstable test Flink119TableSinkITCase.testWritePartitionedTable <span class="author">@app/github-actions</span> </li><li><a href="https://github.com/apache/fluss/issues/2935">#2935</a> Flaky TableChangeWatcherTest.testSchemaChanges due to CuratorCache initial sync race <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/2932">#2932</a> [lake/tiering] add bytes written tracking and metrics for tiering service <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/issues/2925">#2925</a> [Server] Netty ByteBuf leak in ReplicaFetcherThread when fetchLog RPC times out <span class="author">@platinumhamburg</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/2942">#2942</a> [server] Fix TabletServer fails to restart after unclean shutdown due to EOFException in log recovery <span class="author">@LiebingYu</span> </li><li><a href="https://github.com/apache/fluss/pull/2940">#2940</a> [fluss-common] Validate partition time when creating partition on auto partition table. <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/pull/2936">#2936</a> [hotfix] Fix flaky TableChangeWatcherTest by awaiting CuratorCache init <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/2934">#2934</a> [Blog] Fluss Rust SDK introduction blog <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/2933">#2933</a> [lake/tiering] add bytes written tracking and metrics for tiering service <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/pull/2930">#2930</a> [IT][fix]ServerITCaseBase fails when stderr contains "Picked up JAVA_TOOL_OPTIONS"  <span class="author">@litiliu</span> </li><li><a href="https://github.com/apache/fluss/pull/2924">#2924</a> [server] Allow enabling lakehouse on tables created before cluster-level lakehouse is enabled <span class="author">@luoyuxia</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/2925">#2925</a> [Server] Netty ByteBuf leak in ReplicaFetcherThread when fetchLog RPC times out <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/2918">#2918</a> Skip datalake prefix validation when  datalake format is not null <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/issues/2885">#2885</a> [common] Add V2 batch format with statistics collection for filter pushdown <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/2677">#2677</a> [helm] Enable metrics reporting on helm charts <span class="author">@morazow</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/2931">#2931</a> [flink] Remove redundant `bucket.num` and `bucket.key` from customer properties. <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/pull/2928">#2928</a> [hotfix][lance] Fix compile problem in LanceTieringTest <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/pull/2927">#2927</a> [hotfix] update TableInfo constructor call in LanceTieringTest <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/pull/2926">#2926</a> [hotfix] Fix Netty ByteBuf leak on follower fetchLog timeout <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/2919">#2919</a> [server] Skip datalake prefix validation when datalake format is not null <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/pull/2886">#2886</a> Add V2 batch format with statistics collection <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/2847">#2847</a> [helm] Fix .helmignore to not package tests <span class="author">@affo</span> </li><li><a href="https://github.com/apache/fluss/pull/2711">#2711</a> [helm] Enable metrics reporting on helm charts <span class="author">@morazow</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
