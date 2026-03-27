@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-03-26</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-03-26</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 7 新 Issues</div>
+            <div class="stat">✅ 3 关闭</div>
+            <div class="stat">✨ 4 新 PRs</div>
+            <div class="stat">🎉 5 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/2886">PR #2886</a> 添加 V2 batch format 支持统计信息收集，用于过滤器下推优化</li><li>🎉 <a href="https://github.com/apache/fluss/pull/2940">PR #2940</a> 修复自动分区表创建分区时的分区时间验证问题</li><li>🎉 <a href="https://github.com/apache/fluss/pull/2711">PR #2711</a> 在 Helm charts 中启用 metrics 报告功能</li><li>🐛 <a href="https://github.com/apache/fluss/issues/2941">Issue #2941</a> TabletServer 因日志恢复 EOFException 导致重启失败</li><li>🐛 <a href="https://github.com/apache/fluss/issues/2943">Issue #2943</a> 恢复日志段时出现 NoSuchElementException</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <ul class="critical-list"><li>⚠️ <a href="https://github.com/apache/fluss/issues/2938">Issue #2938</a> 测试不稳定：BatchScannerITCase.testScanSnapshot</li><li>⚠️ <a href="https://github.com/apache/fluss/issues/2937">Issue #2937</a> 测试不稳定：Flink119TableSinkITCase.testWritePartitionedTable</li><li>⚠️ <a href="https://github.com/apache/fluss/issues/2935">Issue #2935</a> Flaky test: TableChangeWatcherTest.testSchemaChanges</li></ul>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2922">Issue #2922</a> [docs] Add AGENTS.md - AI agent coding guide</h4>
+            <ul><li><span class="author">@qzyu999</span>: 对比 Airflow AGENTS.md，建议添加 git 命令指导和边界说明，建议用符号链接保持文件简洁</li><li><span class="author">@vaibhavk1992</span>: 压缩文件到 500 行以内，添加 Airflow 相关内容，添加 CLAUDE.md 符号链接</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2940">Issue #2940</a> [fluss-common] Validate partition time when creating partition on auto partition table</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: 发现 DynamicPartitionCreator 状态泄漏问题，建议将验证移到修改 inflight 集合之前</li><li><span class="author">@loserwang1024</span>: 接受建议并修改了验证位置</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2780">Issue #2780</a> [Feature] Support coordinator switch when leader fail</h4>
+            <ul><li><span class="author">@zcoo</span>: 解释了必须创建独立选举线程的原因：避免 Curator 事件线程执行 ZK 请求导致的死锁</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2700">Issue #2700</a> [helm] Enable SASL authenticated connection to Zookeeper nodes</h4>
+            <ul><li><span class="author">@affo</span>: 建议统一命名风格，使用与 listeners security 相同的 mechanism 设计</li><li><span class="author">@morazow</span>: 确认内部和客户端 listener 机制的区分逻辑</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2373">Issue #2373</a> [Client] Fail Log Scanner when table is dropped during scan</h4>
+            <ul><li><span class="author">@beryllw</span>: 建议直接查询 ZooKeeper 检查表和分区删除状态，而非依赖缓存</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2669">Issue #2669</a> [docs] Add Real-Time User Profile quickstart tutorial</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: 建议在初始实现中添加 rb_or_agg 函数，以便在快速入门中展示 roll-up 查询示例</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2934">Issue #2934</a> [Blog] Fluss Rust SDK introduction blog</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 计划稍后添加图表，目前专注于文字和流程确认</li><li><span class="author">@leekeiabstraction</span>: 建议添加图表位置</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2933">Issue #2933</a> [lake/tiering] add bytes written tracking and metrics for tiering service</h4>
+            <ul><li><span class="author">@leekeiabstraction</span>: 关注 LanceLakeWriter 未实现 getBytesWritten() 可能影响 tiering 指标</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2886">Issue #2886</a> Add V2 batch format with statistics collection</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: 感谢贡献，这是一个很扎实的改进</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2875">Issue #2875</a> [Feature] Support for VARIANT data type</h4>
+            <ul><li><span class="author">@wuchong</span>: 关闭此 PR，需要先进行 FIP 讨论设计方案</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2920">PR #2920</a> [lake/tiering] add table dropped handling and nullable write results</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 建议处理 split 移动后表被删除的异常情况，并指出 poll 不会抛出 TableNotExistException</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2922">PR #2922</a> [docs] Add AGENTS.md - AI agent coding guide</h4>
+            <ul><li><span class="author">@qzyu999</span>: 建议文档保持 AI 代理无关性，使用 '<Agent Name and Version>' 占位符，添加 CLAUDE.md 符号链接</li><li><span class="author">@vaibhavk1992</span>: 已按要求添加 CLAUDE.md 符号链接，AI 辅助贡献指南将放在第二阶段</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2940">PR #2940</a> [fluss-common] Validate partition time when creating partition on auto partition table</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: 发现 DynamicPartitionCreator 状态泄漏问题，建议将验证提前到修改 inflight 集合之前</li><li><span class="author">@loserwang1024</span>: 接受建议并完成修改</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2931">PR #2931</a> [flink] Remove redundant `bucket.num` and `bucket.key` from customer properties</h4>
+            <ul><li><span class="author">@beryllw</span>: 建议将 'customer properties' 改为 'custom properties'</li><li><span class="author">@loserwang1024</span>: 已完成修改</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/2946">#2946</a> Azure FS token delegation does not take effect <span class="author">@affo</span> </li><li><a href="https://github.com/apache/fluss/issues/2943">#2943</a> Fix NoSuchElementException that occurs when recovering log segments <span class="author">@pisceslj</span> </li><li><a href="https://github.com/apache/fluss/issues/2941">#2941</a> [server] TabletServer fails to restart after unclean shutdown due to EOFException in log recovery <span class="author">@LiebingYu</span> </li><li><a href="https://github.com/apache/fluss/issues/2939">#2939</a> Need to validate auto-partition time when creation and write new partition <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/issues/2938">#2938</a> [test] Unstable test BatchScannerITCase.testScanSnapshot <span class="author">@app/github-actions</span> </li><li><a href="https://github.com/apache/fluss/issues/2937">#2937</a> [test] Unstable test Flink119TableSinkITCase.testWritePartitionedTable <span class="author">@app/github-actions</span> </li><li><a href="https://github.com/apache/fluss/issues/2935">#2935</a> Flaky TableChangeWatcherTest.testSchemaChanges due to CuratorCache initial sync race <span class="author">@platinumhamburg</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/2947">#2947</a> [fs/azure] Set auth.type=Custom for token delegation <span class="author">@affo</span> </li><li><a href="https://github.com/apache/fluss/pull/2945">#2945</a> [hotfix] Check if batches is empty to prevent readNextOffset from throwing NoSuchElementException. <span class="author">@pisceslj</span> </li><li><a href="https://github.com/apache/fluss/pull/2942">#2942</a> [server] Fix TabletServer fails to restart after unclean shutdown due to EOFException in log recovery <span class="author">@LiebingYu</span> </li><li><a href="https://github.com/apache/fluss/pull/2936">#2936</a> [hotfix] Fix flaky TableChangeWatcherTest by awaiting CuratorCache init <span class="author">@platinumhamburg</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/2939">#2939</a> Need to validate auto-partition time when creation and write new partition <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/issues/2885">#2885</a> [common] Add V2 batch format with statistics collection for filter pushdown <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/2677">#2677</a> [helm] Enable metrics reporting on helm charts <span class="author">@morazow</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/2940">#2940</a> [fluss-common] Validate partition time when creating partition on auto partition table. <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/pull/2931">#2931</a> [flink] Remove redundant `bucket.num` and `bucket.key` from customer properties. <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/pull/2886">#2886</a> Add V2 batch format with statistics collection <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/2847">#2847</a> [helm] Fix .helmignore to not package tests <span class="author">@affo</span> </li><li><a href="https://github.com/apache/fluss/pull/2711">#2711</a> [helm] Enable metrics reporting on helm charts <span class="author">@morazow</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
