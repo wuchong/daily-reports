@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-03-27</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-03-27</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 3 新 Issues</div>
+            <div class="stat">✅ 1 关闭</div>
+            <div class="stat">✨ 5 新 PRs</div>
+            <div class="stat">🎉 1 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/2940">PR #2940</a> 合并了自动分区表分区时间验证功能</li><li>🐛 <a href="https://github.com/apache/fluss/issues/2939">Issue #2939</a> 自动分区时间验证问题已修复并关闭</li><li>✨ <a href="https://github.com/apache/fluss/pull/2951">PR #2951</a> 新增服务端记录批过滤器执行功能</li><li>🚀 <a href="https://github.com/apache/fluss/pull/2948">PR #2948</a> 客户端零拷贝懒解析ByteBuf避免深拷贝</li><li>📚 <a href="https://github.com/apache/fluss/pull/2922">PR #2922</a> 新增 AGENTS.md AI 编码指南文档</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2836">Issue #2836</a> [FLUSS-2686] Add COS filesystem support</h4>
+            <ul><li><span class="author">@XuQianJin-Stars</span>: 分享了COS文件系统真实存储桶测试结果，38个测试全部通过，覆盖SecretId和Token两种认证方式</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2373">Issue #2373</a> [Client] Fail Log Scanner when table is dropped during scan</h4>
+            <ul><li><span class="author">@beryllw</span>: 指出当前方法依赖元数据请求检查状态，表和分区删除状态应直接查询ZK而非通过缓存</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2875">Issue #2875</a> [Feature] Support for VARIANT data type</h4>
+            <ul><li><span class="author">@wuchong</span>: 关闭此PR，表示需要先进行FIP讨论设计方案</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2922">Issue #2922</a> [docs] Add AGENTS.md - AI agent coding guide</h4>
+            <ul><li><span class="author">@vaibhavk1992</span>: 已按要求添加仓库结构概览和ASF合规的AI披露复选框</li><li><span class="author">@platinumhamburg</span>: 建议在关键规则部分添加Java 8兼容性要求，禁止var、List.of()等Java 9+特性</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2948">Issue #2948</a> [rpc] Client zero-copy lazy parse ByteBuf to avoid deep memory copy</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 请求维护者 @swuferhong @luoyuxia 审阅此PR</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2700">PR #2700</a> [helm] Enable SASL authenticated connection to Zookeeper nodes</h4>
+            <ul><li><span class="author">@affo</span>: 理解了SASL/PLAIN检查逻辑，确认内部和客户端检查方式正确</li><li><span class="author">@morazow</span>: 确认理解并同意修改方案</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2780">PR #2780</a> [Feature] Support coordinator switch when leader fail</h4>
+            <ul><li><span class="author">@zcoo</span>: 解释了ZK死锁问题原因，说明必须创建独立线程处理初始化和清理服务来避免死锁</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2809">PR #2809</a> [KV] Support Full KV Scan</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: 发现多个问题：错误码63被删除导致客户端无法识别异常，错误码64与CONFIG_EXCEPTION冲突，缺少日志表检查，超时缺失等</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2808">PR #2808</a> Fixing the Flaky Test for KvSnapshotBatchScannerITCase</h4>
+            <ul><li><span class="author">@leekeiabstraction</span>: 讨论了triggerSnapshot改进建议，建议添加retry断言来增强测试健壮性</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2923">PR #2923</a> [docs] Add C++ client documentation</h4>
+            <ul><li><span class="author">@leekeiabstraction</span>: 建议添加C++构建依赖安装步骤或链接到主文档中的前置条件说明</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2933">PR #2933</a> [lake/tiering] add bytes written tracking and metrics for tiering service</h4>
+            <ul><li><span class="author">@leekeiabstraction</span>: 询问LanceLakeWriter未实现getBytesWritten()是否会破坏Lance分层指标</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2940">PR #2940</a> [fluss-common] Validate partition time when creating partition on auto partition table.</h4>
+            <ul><li><span class="author">@loserwang1024</span>: 已按要求修改代码</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/2950">#2950</a> Add server-side record batch filter execution <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/2946">#2946</a> Azure FS token delegation does not take effect <span class="author">@affo</span> </li><li><a href="https://github.com/apache/fluss/issues/2943">#2943</a> Fix NoSuchElementException that occurs when recovering log segments <span class="author">@pisceslj</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/2951">#2951</a> [server] Add server-side filter execution and client-side integration <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/2949">#2949</a> [lake/lance] Add Map type support for Lance <span class="author">@XuQianJin-Stars</span> </li><li><a href="https://github.com/apache/fluss/pull/2948">#2948</a> [rpc] Client zero-copy lazy parse ByteBuf to avoid deep memory copy <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/2947">#2947</a> [fs/azure] Set auth.type=Custom for token delegation <span class="author">@affo</span> </li><li><a href="https://github.com/apache/fluss/pull/2945">#2945</a> [hotfix] Check if batches is empty to prevent readNextOffset from throwing NoSuchElementException. <span class="author">@pisceslj</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/2939">#2939</a> Need to validate auto-partition time when creation and write new partition <span class="author">@loserwang1024</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/2940">#2940</a> [fluss-common] Validate partition time when creating partition on auto partition table. <span class="author">@loserwang1024</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
