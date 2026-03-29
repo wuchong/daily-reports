@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spark 社区周报 | 2026-W12</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Spark 社区周报 | 2026-W12</h1>
+            <p class="date-range">2026-03-16 ~ 2026-03-22</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (1)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/s5fvocjxwvzqkc5tzlcmltbt3vysvtzg">Announcing Apache Spark 4.2.0-preview3</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (1)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/9ogjlwdd16yx458t3vxcxxtyn49xr3oc">SPIP: Unified UDF Execution Protocol and Worker Specification for Multi-Language UDFs</a> <span class="status passed">✅ 已通过</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (5)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/j6sj9wo9odgdpgzlxtvhoy7szs0jplf7">SPIP: Auto CDC support for Apache Spark</a></h3>
+            <p class="meta">6 条回复 · 6 位参与者</p>
+            <p class="summary">Andreas Neumann 提议为 Spark 引入“Auto CDC”功能，旨在通过声明式配置简化 SCD Type 1/2 的实现，避免手写复杂的 MERGE 逻辑。该提案获得了初步支持，但也引发了关于开源 Spark 与 Databricks 实现差异及流式 MERGE 等技术细节的深入讨论。</p>
+            <div class="key-points"><p><strong>@Andreas Neumann:</strong> 提议“Auto CDC”以抽象化 CDC 消费的复杂性（SCD 类型、乱序数据），旨在补充而非取代 MERGE 语句。</p>
+<p><strong>@Shixiong Zhu:</strong> 作为 Shepherd 表示强烈支持，认为手写流式乱序数据的 MERGE 逻辑极易出错，该提案能消除大量复杂代码。</p>
+<p><strong>@Vaquar Khan:</strong> 提出了关于 OSS 兼容性、流式 MERGE 支持缺失、墓碑 GC 及排序约束等技术阻碍，建议制定分阶段交付计划。</p></div>
+            <p class="conclusion">提案已获得初步认可，但作者需进一步澄清与 Databricks 私有实现的差异及在 OSS Spark 中的技术可行性（如流式 MERGE 支持），后续需完善技术细节与交付计划。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/pjbnfycmp5lt28bc242rvl4ln2t4nof3">Pinning PySpark dependencies?</a></h3>
+            <p class="meta">4 条回复 · 3 位参与者</p>
+            <p class="summary">讨论主要围绕是否应为 PySpark 固定依赖版本以应对供应链攻击风险。Holden 提议提供可选的固定版本或约束文件作为“已知安全”的起点，但 Tian Gao 反对库层面固定版本，认为这会引发冲突且无助于修复 CVE 漏洞。Nicholas Chammas 则指出了区分抽象依赖与具体依赖的复杂性，并提到现代打包工具已具备锁文件功能。</p>
+            <div class="key-points"><p><strong>@Holden Karau:</strong> 提议固定依赖以应对供应链攻击，建议通过可选参数（如 pyspark[pinned]）或约束文件提供发布时测试过的版本，方便用户作为安全起点。</p>
+<p><strong>@Tian Gao:</strong> 反对库本身固定版本，认为这会导致冲突且无法解决旧版本的 CVE 安全问题；建议仅在 CI/测试环境中固定版本，由终端服务决定依赖版本。</p>
+<p><strong>@Nicholas Chammas:</strong> 指出区分抽象依赖与具体构建依赖需要大量维护工作，且现代 Python 打包工具已支持自动生成锁文件，用户可自行管理。</p></div>
+            <p class="conclusion">讨论未达成明确共识，主要分歧在于库是否应提供默认的固定版本。Holden 认为提供约束文件能简化用户配置，而 Tian 和 Nicholas 则倾向于让用户或服务端自行管理依赖版本。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/byk74r9v1bntnfvcr3z5c87sody4tx95">[GSoC 2026][SPARK-55163] GSoC contributor seeking guidance on Spark Connect metadata caching</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论主要针对 GSoC 2026 项目 SPARK-55163（Spark Connect 元数据缓存），导师 Vaquar Khan 对贡献者 David Gvadzabia 的初步提案和 PR 表示认可。由于底层 SPIP 尚未获得 PMC 正式批准，该项目被明确定义为实验性原型，代码在 GSoC 期间不会合并至主分支，旨在帮助社区评估延迟改进。</p>
+            <div class="key-points"><p><strong>@Vaquar Khan:</strong> 明确项目性质为实验性原型，因底层 SPIP 尚未获批，代码不会合并至主分支。</p>
+<p><strong>@Vaquar Khan:</strong> GSoC 评估标准在于原型和测试的质量，而非代码是否合并。</p>
+<p><strong>@David Gvadzabia:</strong> 已提交提案并开启 PR 54939 展示第一阶段（客户端 Plan-ID 缓存）的实现方法。</p></div>
+            <p class="conclusion">导师将审查最终提案，贡献者需专注于完善原型和测试以通过评估。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/179qldwdfc4f2d6t93l7k0sfsp3mc4bj">Heads-up: Fix forward of offending commit was just pushed to master branch</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Jungtaek Lim 宣布已向 master 分支推送修复，解决了因两个 PR 合并冲突导致的 CI 构建失败问题。该问题源于 PR A 改变了行为而 PR B 的测试未同步更新，且合并前未重新触发 CI 验证。受影响的开发者需将代码变基至最新的 master 分支以解决流-流连接测试失败。</p>
+            <div class="key-points"><p><strong>@Jungtaek Lim:</strong> CI 中断是因为两个 PR 存在未捕获的依赖关系，合并时未重新触发 CI 验证。</p>
+<p><strong>@Jungtaek Lim:</strong> 已推送修复代码至 master 分支解决构建问题。</p>
+<p><strong>@Jungtaek Lim:</strong> 建议遇到 stream-stream join 测试失败的用户变基至最新 master 分支。</p></div>
+            <p class="conclusion">Master 分支 CI 问题已修复，相关 PR 作者需重新变基代码。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/vjcwoxxyyfqwh00704287lg03vr98z15">GSoC 2026 Applicant Intro Client Side Metadata Caching for Spark Connect</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">GSoC 2026 申请人 Goutam K 针对Spark Connect 客户端元数据缓存项目提出了基于 Plan ID 的实例缓存方案，旨在减少 gRPC 调用。他计划在社区 bonding 阶段深入研究 Plan ID 生命周期，并确认了每周 20-25 小时的投入时间。此外，他向导师咨询了关于会话重启时的缓存失效及 Plan ID 边缘情况的问题。</p>
+            <div class="key-points"><p><strong>@Goutam K:</strong> 提议使用基于 Plan ID 的 WeakValueDictionary 缓存机制，配合双重检查锁定保证线程安全，以减少元数据的重复 gRPC 调用。</p>
+<p><strong>@Goutam K:</strong> 计划在编码前利用前两周时间撰写 Plan ID 生命周期文档，以弥补在 PySpark gRPC 级别缓存经验的不足。</p>
+<p><strong>@Goutam K:</strong> 询问会话重启时的缓存失效策略是否已讨论，以及 SQL 查询或读操作中 Plan ID 的已知边缘情况。</p></div>
+            <p class="conclusion">目前尚无定论，申请人正等待导师关于缓存失效机制和 Plan ID 边缘情况的反馈，以便完善设计方案。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (0)</h2>
+            
+    <p>本周新建 <strong>0</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周无新建 JIRA。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Spark Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
