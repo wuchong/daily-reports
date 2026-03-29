@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-03-28</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-03-28</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 2 新 Issues</div>
+            <div class="stat">✅ 1 关闭</div>
+            <div class="stat">✨ 6 新 PRs</div>
+            <div class="stat">🎉 1 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/2700">PR #2700</a> 新增 Helm Chart 对 Zookeeper SASL 认证连接的支持，已合并</li><li>✨ <a href="https://github.com/apache/fluss/issues/2950">Issue #2950</a> 提议新增服务端记录批次过滤器执行功能</li><li>🚀 <a href="https://github.com/apache/fluss/pull/2948">PR #2948</a> 提出客户端零拷贝延迟解析 ByteBuf 以避免深拷贝，优化 RPC 性能</li><li>🐛 <a href="https://github.com/apache/fluss/issues/2954">Issue #2954</a> 报告测试用例 FlussSinkITCase.testPartialUpdateWithTwoWriters 不稳定</li><li>✨ <a href="https://github.com/apache/fluss/pull/2949">PR #2949</a> 为 Lance 存储格式添加 Map 类型支持</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <ul class="critical-list"><li>⚠️ <a href="https://github.com/apache/fluss/issues/2954">Issue #2954</a> 测试不稳定问题需要关注，Ruobing1997 已表示愿意提交修复</li></ul>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2954">Issue #2954</a> [test] Unstable test FlussSinkITCase.testPartialUpdateWithTwoWriters</h4>
+            <ul><li><span class="author">@Ruobing1997</span>: 主动表示可以快速修复这个不稳定测试问题</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2948">Issue #2948</a> [rpc] Client zero-copy lazy parse ByteBuf to avoid deep memory copy</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 请求维护者 swuferhong 和 luoyuxia 帮忙审核此性能优化 PR</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2949">Issue #2949</a> [lake/lance] Add Map type support for Lance</h4>
+            <ul><li><span class="author">@XuQianJin-Stars</span>: 更新了 PR，请求 wuchong 等维护者抽空审核</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2900">Issue #2900</a> [fluss-client] Support Complex Data Types on the Java API (NestedRow/ROW)</h4>
+            <ul><li><span class="author">@XuQianJin-Stars</span>: 已更新 PR，请求 polyzos 和 wuchong 帮忙审核</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2836">Issue #2836</a> [FLUSS-2686] Add COS filesystem support</h4>
+            <ul><li><span class="author">@XuQianJin-Stars</span>: 详细列出了 COS 文件系统的 38 个测试用例，全部通过验证</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2922">Issue #2922</a> [docs] Add AGENTS.md - AI agent coding guide</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: 建议增加 Java 8 兼容性规则，明确禁止 Java 9+ 特性，避免 AI 代码生成错误</li><li><span class="author">@vaibhavk1992</span>: 已采纳建议，添加了仓库结构概述和 ASF 合规的 AI 披露复选框</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2809">PR #2809</a> [KV] Support Full KV Scan</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: 详细审查发现错误码冲突、超时风险、资源泄漏等多个关键问题，建议修复后重新提交</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2808">PR #2808</a> Fixing the Flaky Test for org.apache.fluss.client.table.scanner.batch.KvSnapshotBatchScannerITCase.testKvSnapshotLease</h4>
+            <ul><li><span class="author">@leekeiabstraction</span>: 认可根本原因分析，建议通过 retry() 添加断言来增强测试鲁棒性</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2923">PR #2923</a> [docs] Add C++ client documentation</h4>
+            <ul><li><span class="author">@leekeiabstraction</span>: 建议补充 C++ 依赖安装步骤或链接到完整安装文档</li><li><span class="author">@Prajwal-banakar</span>: 已添加 macOS 和 Ubuntu/Debian 的依赖安装步骤，并链接到完整指南</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2934">PR #2934</a> [Blog] Fluss Rust SDK introduction blog</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 建议增加 Go SDK 方向支持原生日志摄入，以及提供 CLI 供 AI Agent 集成</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2730">PR #2730</a> [blog] Fluss rust / python / c++ client release blog draft</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 建议添加链接、更新贡献者数量、补充 Rust 核心架构说明、移除无用 storage-memory 模块</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/2954">#2954</a> [test] Unstable test FlussSinkITCase.testPartialUpdateWithTwoWriters <span class="author">@app/github-actions</span> </li><li><a href="https://github.com/apache/fluss/issues/2950">#2950</a> Add server-side record batch filter execution <span class="author">@platinumhamburg</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/2955">#2955</a> tiny fix to prevent NPE <span class="author">@Ruobing1997</span> </li><li><a href="https://github.com/apache/fluss/pull/2953">#2953</a> [client][backport] Skip blocked bucket instead of stopping drain loop <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/2952">#2952</a> [kv] Fix non-target columns not being nulled during partial update on first insert <span class="author">@binary-signal</span> </li><li><a href="https://github.com/apache/fluss/pull/2951">#2951</a> [server] Add server-side filter execution and client-side integration <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/2949">#2949</a> [lake/lance] Add Map type support for Lance <span class="author">@XuQianJin-Stars</span> </li><li><a href="https://github.com/apache/fluss/pull/2948">#2948</a> [rpc] Client zero-copy lazy parse ByteBuf to avoid deep memory copy <span class="author">@fresh-borzoni</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/2636">#2636</a> [helm] Enable SASL authenticated connection to Zookeeper nodes <span class="author">@morazow</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/2700">#2700</a> [helm] Enable SASL authenticated connection to Zookeeper nodes <span class="author">@morazow</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
