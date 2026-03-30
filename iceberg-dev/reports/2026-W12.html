@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iceberg 社区周报 | 2026-W12</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Iceberg 社区周报 | 2026-W12</h1>
+            <p class="date-range">2026-03-16 ~ 2026-03-22</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (1)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/f66dmvmvhw53yqj6lylxwbh9rdxkjnxo">Iceberg Community Meetup Europe - April Madrid</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (3)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/2647zx7omfyocxl8og7s2tbomgprxvts">REST Spec: apply the consistent wording on table identifier conflict for tables and views</a> <span class="status warning">⚠️ 有异议</span><p class="objection-inline">Daniel Weeks 提出 -1，认为当前讨论不足，仅修改描述无法解决标识符冲突的核心问题，特别是视图和表在创建或重命名时错误返回类型不一致的功能性差异。</p></li>
+<li><a href="https://lists.apache.org/thread/h1qp298d2xv8dz1hld80hxz0sx6rfzhf">Promote the remote signing endpoint to the main REST spec (attempt #2)</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/qd7jb3fdx65mcjvcjomrxg7rgxf3yn0m">[REST-SPEC] Add list and load function endpoints</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/bmc5qjkyjqrgxpbz9s5jtnl9hq708pw1">HostnameVerificationPolicy in TLSConfigurer</a></h3>
+            <p class="meta">11 条回复 · 4 位参与者</p>
+            <p class="summary">社区讨论了在 1.11.0 版本发布前，TLSConfigurer 中 HostnameVerificationPolicy 的默认设置问题。虽然最初提议默认使用更安全的 BOTH 模式，但讨论最终转向了更保守的方案，即根据是否提供自定义验证器来区分使用 CLIENT 或 BUILTIN，并决定不暴露 BOTH 选项以避免误用。</p>
+            <div class="key-points"><p><strong>@Russell Spitzer:</strong> 反对默认使用 BOTH 或将其暴露，认为这容易导致误用且缺乏实际需求；建议逻辑应为：若存在自定义验证器则用 CLIENT，否则用 BUILTIN。</p>
+<p><strong>@Alexandre Dutra:</strong> 最初支持 BOTH，认为其能结合自定义逻辑与标准 JSSE 验证以增强安全性，但也指出了实现细节上 hostnameVerifier 默认非空的问题。</p>
+<p><strong>@Steven Wu:</strong> 最终认同 Russell 的观点，认为应保持 API 的限制性，不暴露 BOTH，若未来有明确需求再开放新接口。</p></div>
+            <p class="conclusion">达成初步结论，不暴露 HostnameVerificationPolicy.BOTH，而是采用 Russell 建议的逻辑（有自定义验证器时用 CLIENT，无则用 BUILTIN），以此解除 1.11.0 版本的发布阻碍。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/l13koztw4k0fsq689n3ryq5pf6bzl4vf">REST Spec: Clarify identifier uniqueness across catalog object types</a></h3>
+            <p class="meta">9 条回复 · 7 位参与者</p>
+            <p class="summary">讨论主要集中在 REST 规范中表和视图的标识符唯一性规则及其错误提示信息的不一致问题。Steven Wu 更新了 PR 以统一 409 冲突的措辞，明确强制表和视图之间的跨类型唯一性。社区达成共识，表和视图共享命名空间，而函数作为独立对象不受此限制。</p>
+            <div class="key-points"><p><strong>@Steven Wu:</strong> 更新了 PR 以统一 409 冲突的错误提示，明确表和视图在重命名或创建时需强制跨类型唯一性检查。</p>
+<p><strong>@Péter Váry / Ryan Blue:</strong> 支持表和视图共享命名空间，但强调函数应作为独立对象处理，允许与表或视图同名。</p>
+<p><strong>@Daniel Weeks:</strong> 指出该问题主要局限于规范定义，对实现影响较小，建议通过简单的错误信息调整或 'oneOf' 响应来解决。</p></div>
+            <p class="conclusion">初步结论是确认表和视图必须跨类型唯一，而函数可以与它们同名。下一步行动是合并 Steven Wu 的 PR 以修复表/视图的错误信息，并由 Huaxin Gao 在后续的函数端点 PR 中明确说明函数的命名空间规则。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/07t5rfcxn3bbbpp75fkr2h1mwdp2o4mn">[SPEC] Add 404 response for /v1/config endpoint</a></h3>
+            <p class="meta">8 条回复 · 5 位参与者</p>
+            <p class="summary">讨论提议在 Iceberg REST Catalog 规范中为 /v1/config 端点增加 HTTP 404 响应，以明确处理请求的 warehouse 不存在的情况。经过对 404 与 204 状态码适用性的讨论，社区确认了 404 的合理性及其与现有实现（如 Snowflake、Polaris）的一致性。</p>
+            <div class="key-points"><p><strong>@Oğuzhan Ünlü:</strong> 提议将 404 响应正式纳入规范，以匹配 Snowflake Open Catalog 的现有生产行为，并保持与其他 Iceberg REST 端点处理缺失资源逻辑的一致性。</p>
+<p><strong>@Steven Wu:</strong> 最初质疑 404 可能引起歧义并建议使用 204 No Content，但在讨论后认可 404 是当前架构下的可接受方案。</p>
+<p><strong>@Kevin Liu:</strong> 支持该提议，指出 Apache Polaris 已有类似实现，并强调可通过错误响应中的 type 字段区分“路由不存在”和“资源不存在”。</p></div>
+            <p class="conclusion">社区达成共识，同意接受该提议，将通过 PR-15746 在 OpenAPI 规范中添加 NoSuchWarehouseResponse 以正式支持 404 响应。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/yjob8s5n0860zgby961lvhnfs95h8r94">Adding Tags field to Iceberg V4</a></h3>
+            <p class="meta">6 条回复 · 5 位参与者</p>
+            <p class="summary">讨论围绕是否在 Iceberg V4 规范中添加 'attributes' 字段展开，提案人 Micah 试图将其纳入 V4 元数据更新以统一字段编号。然而，Prashant Singh 和 Russell Spitzer 对此表示强烈反对，主要担忧其对查询性能、互操作性及生态分叉的潜在风险。目前社区尚未达成共识，计划通过后续会议或邮件继续讨论。</p>
+            <div class="key-points"><p><strong>@Micah Kornfield:</strong> 提议将字段重命名为 'attributes' 并纳入 V4 元数据提案，以确保字段编号一致性，并已根据社区反馈更新了相关限制细节。</p>
+<p><strong>@Prashant Singh:</strong> 反对提案，认为可配置的字段大小会严重影响清单文件条目数量和查询性能，且可能被用于存储供应商专有数据从而破坏互操作性。</p>
+<p><strong>@Russell Spitzer:</strong> 倾向于不添加该字段，认为这可能导致 Iceberg 生态分叉，且字段的复制行为难以定义，无法保证存储值的有效性。</p></div>
+            <p class="conclusion">由于存在重大反对意见，社区目前未达成共识。下一步行动是 Micah 将组织专门的同步会议（或利用社区例会时间）进行进一步讨论，同时也欢迎在邮件列表或设计文档中继续反馈。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/85y77ww8nn165sx85l1yzhjl16c06rcf">A dashboard pulling together Iceberg design docs, threads, and more</a></h3>
+            <p class="meta">3 条回复 · 4 位参与者</p>
+            <p class="summary">Guy Khazma 发起了一个仪表板项目，旨在整合 Iceberg 社区分散的设计文档、邮件讨论和 GitHub 信息。社区普遍认可该方向，认为能显著提升信息获取效率，但也指出当前版本存在内容缺失。讨论进一步涉及了是否将其托管至官网、资源维护方案以及标准化数据源的建议。</p>
+            <div class="key-points"><p><strong>@Péter Váry:</strong> 认为整体方向很好，但建议建立规则或结构以便于信息发现，并指出目前缺少关于列更新和二级索引的文档。</p>
+<p><strong>@Yufei Gu:</strong> 希望该页面能托管在 Iceberg 官网上，并建议列出所有进行中的提案详情（如设计文档、会议安排、PR 等）。</p>
+<p><strong>@Maximilian Michels:</strong> 建议重点在于标准化数据源和爬虫逻辑，这样可以为未来构建各种仪表板提供良好的基础。</p></div>
+            <p class="conclusion">初步结论是项目有价值但需完善。下一步行动是 Guy 将继续迭代爬虫以填补缺失内容，社区后续需讨论托管及资源支持方案。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/bnb55dp54ghr9b37d21ztsrvlv25s8dh">Efficient column updates in Iceberg</a></h3>
+            <p class="meta">3 条回复 · 4 位参与者</p>
+            <p class="summary">讨论主要围绕 Iceberg 高效列更新的 POC 实现展开，展示了行对齐列更新文件表示的初步结果，并探讨了变更检测机制。团队测试了多线程并行读取策略，发现在独立环境下能提升性能，但在 Spark 集成中因 CPU 饱和导致性能下降。</p>
+            <div class="key-points"><p><strong>@Anurag Mantripragada:</strong> 展示了行对齐列更新的初步结果，计划扩展 POC 以对比稀疏表示方案，并更新设计文档以涵盖变更检测内容。</p>
+<p><strong>@Péter Váry:</strong> 基准测试显示，单线程读取时间随列更新增加而延长，而多线程读取因基础文件读取量减少，运行时间略有缩短。</p>
+<p><strong>@Gábor Kaszab:</strong> 指出在 Spark 环境中，由于 CPU 已因行组拆分而饱和，额外的列级并行读取反而带来开销导致性能退化。</p></div>
+            <p class="conclusion">下一步将扩展 POC 以对比稀疏表示与行对齐方案的性能，在云存储大表上进行测试，并更新设计文档；同时需解决 Spark 环境下并行读取的性能瓶颈问题。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/lks7k1odmo0dvrr5wt7zgjn549nn9pl0">Joining the slack channel</a></h3>
+            <p class="meta">3 条回复 · 3 位参与者</p>
+            <p class="summary">Yong Jin Lee 反馈官网上的 Slack 邀请链接失效无法加入频道。Russell Spitzer 随即提供了新的有效链接，并提交 PR 以更新官网上的过期链接。</p>
+            <div class="key-points"><p><strong>@Yong Jin Lee:</strong> 官网上的 Slack 邀请链接无法使用。</p>
+<p><strong>@Russell Spitzer:</strong> 提供了新的有效链接，并指出链接每 400 人需更新一次。</p>
+<p><strong>@Russell Spitzer:</strong> 已提交 PR 更新官网上的过期链接。</p></div>
+            <p class="conclusion">问题已通过提供新链接解决，同时社区已提交 PR 更新官网链接以修复长期问题。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/0v7kgnl72lzjy7dpnko7zcrv6loz6zr0">validate-from-snapshot-id support in merge query</a></h3>
+            <p class="meta">3 条回复 · 2 位参与者</p>
+            <p class="summary">讨论主要关注 Iceberg merge 查询中无法显式设置 `validate_from_snapshot_id` 的问题，用户希望在多步骤流程开始时即进行快照验证以实现更严格的并发控制。目前该功能仅支持 overwrite 操作，Steven Wu 建议参考多语句事务设计，但用户指出具体代码实现存在缺口。用户最终引用相关 PR 询问是否需要提交功能请求。</p>
+            <div class="key-points"><p><strong>@Somesh Dhal:</strong> 需要在 merge 查询中支持 `validate_from_snapshot_id`，以便在多步骤流程的初始读取阶段（而非仅提交阶段）验证快照，目前该功能仅在 overwrite 操作中受支持。</p>
+<p><strong>@Steven Wu:</strong> 初步判断该需求属于“多语句事务”行为的范畴，并提供了相关的设计文档和开发邮件线索供参考。</p>
+<p><strong>@Somesh Dhal:</strong> 发现 PR #7607 涉及向 merge 操作传递 options 的讨论，询问这是否属于功能缺口，并表示愿意提交功能请求。</p></div>
+            <p class="conclusion">尚未得出明确结论，用户 Somesh Dhal 正在确认是否应针对此功能缺口提交新的功能请求。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/cxbt9rqbypxklhz3rpkns5k059gyr7dp">iceberg-rust / pyiceberg-core patch release, 0.9.1</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">Kevin Liu 指出 pyiceberg-core 0.9.0 版本因构建工作流 bug，导致 Linux 平台缺失 Python 3.12 wheels 且错误构建了已 EOL 的 Python 3.8 wheels。相关修复已合并并验证，社区讨论决定发布 0.9.1 补丁版本以提供正确的 wheels。</p>
+            <div class="key-points"><p><strong>@Kevin Liu:</strong> 指出构建错误源于 maturin-action 默认使用 Python 3.8，提议发布补丁版本。</p>
+<p><strong>@Shawn Chang:</strong> 支持发布补丁，并主动提出担任发布经理。</p>
+<p><strong>@Renjie Liu:</strong> 赞同发布补丁版本。</p></div>
+            <p class="conclusion">社区一致同意发布 0.9.1 补丁版本，Shawn Chang 将担任发布经理。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/zdvc0gmqjgws8whwxv0ztn7h1jqclzyk">[Discussion] Collation Support</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">Alexander Löser 提议在 Iceberg 规范中增加 Collation（排序规则）支持，旨在解决用户迁移痛点并提升多引擎互操作性。Andrei Tserakhau 基于 Delta 的实战经验表示愿意合作，并针对 ICU 版本稳定性、提供者抽象及操作正确性提出了关键改进建议。双方计划进一步协作并将讨论汇总至设计文档。</p>
+            <div class="key-points"><p><strong>@Alexander Löser:</strong> 提议扩展 Schema 以支持字符串字段的 Collation 注解，以满足 Snowflake 用户迁移至 Iceberg 的需求。</p>
+<p><strong>@Andrei Tserakhau:</strong> 指出 ICU 排序键跨版本不稳定，建议存储原始字符串值并允许按文件进行版本注释，而非依赖排序键。</p>
+<p><strong>@Andrei Tserakhau:</strong> 建议引入提供者抽象层以支持非 ICU 排序规则（如 Spark 的 UTF8_LCASE），并强调了分区转换和 Parquet 下推等操作层面的正确性挑战。</p></div>
+            <p class="conclusion">提案获得积极反馈，双方达成合作意向。下一步将共享 Delta 设计文档以供参考，并将邮件中的反馈意见迁移至 Google Doc 中进行集中讨论。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (0)</h2>
+            
+    <p>本周新建 <strong>0</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周无新建 JIRA。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Iceberg Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
