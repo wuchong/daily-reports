@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafka 社区周报 | 2026-W13</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Kafka 社区周报 | 2026-W13</h1>
+            <p class="date-range">2026-03-23 ~ 2026-03-29</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (1)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/yzwsw0pwx7hrvhf95vxh2so4blsq2xfm">New Committer: Kirk True</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (1)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/qmry8pgc7y8jxwdpx9wqojkltnbgt84c">KIP-1285: DSL Opt-in Support for Header-Aware State Stores</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/fbsrtkw50q3chf33lm8hrc60hq3453rk">Apache Kafka 4.3.0 release</a></h3>
+            <p class="meta">20 条回复 · 9 位参与者</p>
+            <p class="summary">讨论主要围绕 Apache Kafka 4.3.0 发布前的各项 KIP 进度追踪与代码冻结管理。发布经理确认 KIP-1035 已完成，KIP-1219 和 KIP-1285 核心功能已合并，但 KIP-909 因进度滞后被移至下一版本。此外，社区成员还讨论了多项 bug 修复和测试补充的合并事宜。</p>
+            <div class="key-points"><p><strong>@Mickael Maison:</strong> 严格执行发布计划，因 KIP-909 未按时合入且非关键特性，决定将其推迟至 4.4 版本；同时批准了 KIP-1035、KIP-1219 等特性的 cherry-pick 请求。</p>
+<p><strong>@Bill Bejeck:</strong> KIP-1035 的核心实现和指标 PR 已合并，请求在代码冻结前合入额外的单元测试和社区发现的 bug 修复。</p>
+<p><strong>@José Armando García Sancio:</strong> KIP-1219 实现已合并，解决了低带宽网络下的控制器不可用问题，已获准 cherry-pick 到 4.3 分支。</p></div>
+            <p class="conclusion">KIP-909 确认推迟至 4.4 版本；KIP-1035、KIP-1219 和 KIP-1285 的核心功能已确认进入 4.3.0；后续重点在于代码冻结前的测试补充和文档更新。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/r8s980n3ss4cgjkgltk76mn5t7k4j30m">Kafka 4.2.1 bug-fix release</a></h3>
+            <p class="meta">8 条回复 · 7 位参与者</p>
+            <p class="summary">Lucas Brutschy 发起关于 Kafka 4.2.1 版本发布的讨论，指出 4.2.0 存在若干阻塞缺陷。社区成员积极响应并补充了需要修复的 Bug，最终确认由 PoAn Yang 接任发布经理（RM）一职。</p>
+            <div class="key-points"><p><strong>@Lucas Brutschy:</strong> 建议启动 4.2.1 发布流程以修复 4.2.0 中的阻塞缺陷，并最初提议自己担任 RM。</p>
+<p><strong>@Edoardo Comar / Lianet Magrans:</strong> 补充了需要包含在 4.2.1 中的额外修复项（如 KAFKA-20302 和 KAFKA-20332）。</p>
+<p><strong>@PoAn Yang:</strong> 主动请缨担任发布经理，并获 Lucas 同意负责后续发布工作。</p></div>
+            <p class="conclusion">确认由 PoAn Yang 担任 4.2.1 的发布经理，下一步将发布详细的发布计划。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/1lg8y5ot07sbhgvq8dywwh9yxjoc9mng">KIP-1266 Bounding The Number Of RemoteLogMetadata Messages via Compacted RemoteLogMetadata Topic</a></h3>
+            <p class="meta">4 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕 KIP-1266 展开，旨在通过压缩机制限制 RemoteLogMetadata 消息数量。目前投票流程已启动，作者正针对 Kamal 提出的压缩导致事件丢失风险及 Schema 字段缺失等问题进行解答和方案完善。</p>
+            <div class="key-points"><p><strong>@Lijun Tong:</strong> 新功能受元数据版本控制以确保滚动升级安全，并计划增加后台线程清理过时消息。</p>
+<p><strong>@Kamal Chandraprakash:</strong> 担忧压缩可能导致事件丢失从而产生悬空远程日志段，并询问重启后如何获取缺失字段。</p>
+<p><strong>@Lijun Tong:</strong> 通过在新 Schema 中添加 endOffset 解决字段缺失问题，旧消息则依赖时间保留策略清理。</p></div>
+            <p class="conclusion">投票线程已开启，作者已根据反馈修正 KIP 描述并解释了技术实现细节，等待最终投票结果。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/p5zkp20rno8zz55mrjlw9brm6os5gfbv">KIP-1301: Support Share Groups (Queue Semantics) in Kafka Connect Sink Connectors</a></h3>
+            <p class="meta">4 条回复 · 3 位参与者</p>
+            <p class="summary">讨论主要围绕 KIP-1301/1302 展开，旨在将 Share Groups（队列语义）集成到 Kafka Connect Sink Connectors 中以提升吞吐量和性能。Shekhar 提议分阶段实施并从 MVP 开始，但社区成员对异步任务处理支持及消息顺序丢失的风险提出了担忧。Shekhar 回应将明确该特性仅适用于幂等且无序要求的连接器，并更新相关注意事项。</p>
+            <div class="key-points"><p><strong>@Shekhar Prasad Rajak:</strong> 提议利用 KIP-1289 和 KIP-1191 的基础工作，分阶段将 Share Groups 集成到 Sink Connectors，从精简 MVP 开始以快速推进。</p>
+<p><strong>@Chris Egerton:</strong> 强调必须支持异步处理记录的 Sink Connectors（使用 preCommit），这是该功能的必备特性。</p>
+<p><strong>@Ashwin:</strong> 指出 Share Groups 无法保证分区级别的消息顺序，需防止依赖顺序的 Connectors（如 JDBC sink）误用，并提醒切换组类型时的名称冲突问题。</p></div>
+            <p class="conclusion">Shekhar 计划更新 KIP，明确说明 Share Groups 仅适用于幂等且无序要求的连接器，并补充关于切换消费者组类型时状态主题和组名冲突的注意事项。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/qov3clstk6btdxdxz14gfrrz3vffr4xc">KIP-1262: Enable auto-formatting directories</a></h3>
+            <p class="meta">3 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕 KIP-1262 展开，旨在移除 Kafka 节点启动前的格式化要求。Jun Rao 建议将适用范围扩大至所有节点，并质疑动态仲裁与静态仲裁在格式化要求上的差异。Kevin Wu 解释了动态仲裁保留格式化要求的必要性，双方就部分措辞和版本细节达成一致，但在动态集群的具体处理逻辑上仍有探讨。</p>
+            <div class="key-points"><p><strong>@Jun Rao:</strong> 建议将 KIP 范围扩大，移除所有节点（不仅仅是 brokers）的格式化要求，并质疑为何新代码写入 V1 格式而非 V2。</p>
+<p><strong>@Jun Rao:</strong> 询问静态与动态 KRaft 部署在格式化要求上的具体区别及推荐做法。</p>
+<p><strong>@Kevin Wu:</strong> 同意修改措辞和版本格式，但指出动态仲裁（kraft.version=1）仍需格式化以安全写入初始 VotersRecord，否则可能导致脑裂或配置错误。</p></div>
+            <p class="conclusion">Kevin 同意更新 KIP 文档中的措辞（brokers 改为 nodes）和版本格式（改为 V2）。关于动态仲裁是否移除格式化要求，Kevin 解释了保留该要求的安全原因，并指出操作员可通过先启动再升级 kraft 版本的方式实现无格式化部署。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/lv20roc8x80h0yslxbsmscvyv3ld36fm">KIP-1296: Shadow Jetty dependencies to decouple from SLF4J version conflict</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">KIP-1296 旨在通过 Shadow Jetty 依赖解决 SLF4J 版本冲突以修复 CVE 漏洞。由于 Jetty 团队已在新版本中移除了对 SLF4J 2.x fluent API 的依赖，Kafka 可直接升级 Jetty 而无需 Shadow 处理。因此，提议者宣布该 KIP 不再需要并将撤回。</p>
+            <div class="key-points"><p><strong>@Ming-Yen Chung:</strong> 最初提议通过 Shadow JAR 模块打包 Jetty 和重定位的 SLF4J 2.x，以解决 Kafka 因版本锁定无法修复 CVE 的问题。</p>
+<p><strong>@Chia-Ping Tsai:</strong> 询问了若用户替换 Log4j2 实现的影响，以及未来 Kafka 升级 SLF4J 2 时的应对策略。</p>
+<p><strong>@Ming-Yen Chung:</strong> 更新称 Jetty 团队已移除 SLF4J 2.x API 调用，Kafka 可直接升级，故撤回 KIP。</p></div>
+            <p class="conclusion">KIP-1296 将被撤回，待 Jetty 12.0.34 发布后，Kafka 将直接升级 Jetty 版本以解决相关 CVE 问题。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/oh5j770nd0x4svhy7ltor4qm7qs6z605">[PR] Added Kirk True image and entry in committers.json [kafka-site]</a></h3>
+            <p class="meta">1 条回复 · 1 位参与者</p>
+            <p class="summary">本次讨论涉及 PR #838，旨在向 kafka-site 仓库添加 Kirk True 的头像及 committers.json 条目。该 PR 由 kirktrue 发起，并已顺利完成合并。</p>
+            <div class="key-points"><p><strong>@kirktrue:</strong> 发起了添加个人提交者信息和头像的 PR，并完成了合并操作。</p></div>
+            <p class="conclusion">PR #838 已成功合并，Kirk True 的提交者信息已更新至 Kafka 官网。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/xk7x2kzy9qn6f2v9xrpl8hnktt6gn3t5">Exception handling in WorkerSinkTask</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">Martin Andersson 质疑 WorkerSinkTask 中 preCommit() 的异常处理逻辑与 put() 不一致，目前仅回滚偏移量而未检查是否为 RetriableException 或终止任务。Chris Egerton 确认该行为虽不合理，但因向后兼容性考量一直保留，修改需通过 KIP 流程。</p>
+            <div class="key-points"><p><strong>@Martin Andersson:</strong> preCommit() 抛出异常时的处理方式应与 put() 保持一致，即检查 RetriableException 并在必要时终止任务，而非简单回滚。</p>
+<p><strong>@Chris Egerton:</strong> 保留当前行为是为了不破坏向后兼容性，若要修改需要提交 KIP 并设计平滑过渡方案。</p>
+<p><strong>@Chris Egerton:</strong> 建议目前的变通方案是在 preCommit 中捕获异常，若需终止任务则将其从 put 方法中抛出。</p></div>
+            <p class="conclusion">目前不会立即修改代码，若要改变现状需提交 KIP（Kafka 改进提案）以解决兼容性问题。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/j36g3kmsyy3pnth0kfqs981rrd7kbcyc">Build failed in Jenkins: Kafka » Kafka Branch Builder » 3.9 #272</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Apache Jenkins Server 发出通知，报告 Kafka 3.9 分支构建失败。日志片段显示在 Java 25 环境下，SchedulerTest 和 FeatureZNodeTest 等测试用例均已通过。</p>
+            <div class="key-points"><p><strong>@Apache Jenkins Server:</strong> 报告构建失败状态，并提供测试执行日志片段，显示可见测试均已通过。</p></div>
+            <p class="conclusion">需查看完整的 Jenkins 构建日志链接以定位具体的失败原因。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/23ldyx3qhl8y9w8lotqnh96gzb0dnnbc">KIP-646: Serializer API should support ByteBuffer</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论围绕 KIP-646 展开，旨在让 Serializer API 支持 ByteBuffer，从而支持高级应用的缓冲池管理。Florentin Simion 已通过代码验证了设计可行性，并针对方法命名和性能优化提出了具体建议，Adrian Muraru 对此表示强烈支持。</p>
+            <div class="key-points"><p><strong>@Adrian Muraru:</strong> 支持该改进，认为这对高级应用非常有用。</p>
+<p><strong>@Florentin Simion:</strong> 该功能对缓冲池管理至关重要，且已通过 PR 验证了设计可行性。</p>
+<p><strong>@Florentin Simion:</strong> 建议新方法命名为 serializeToByteBuffer 以避免混淆，并在默认实现中优化数组分配以防性能倒退。</p></div>
+            <p class="conclusion">提议获得了积极支持，且已有初步代码实现验证了设计可行性，后续需根据反馈完善命名规范及内部实现细节（如 murmur2 函数支持）。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (65)</h2>
+            
+    <p>本周新建 <strong>65</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周 JIRA 主要集中在修复大量 Flaky 测试和提升系统稳定性，涵盖 Streams、Consumer 及 Share Group 等多个模块。功能开发方面，重点推进了 Share Group 在 Kafka Connect 中的支持、KIP-1251 的实现以及部分指标与配置的优化。此外，还包含了代码模块重构、依赖库升级（如 Log4j2、Ducktape）及文档改进等维护工作。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Kafka Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
