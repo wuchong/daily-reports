@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flink 社区周报 | 2026-W13</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Flink 社区周报 | 2026-W13</h1>
+            <p class="date-range">2026-03-23 ~ 2026-03-29</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (2)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/v4wb16266c5n9b6ph9963wm721pvg1ox">Apache Flink Agents 0.2.1 released</a></li>
+<li><a href="https://lists.apache.org/thread/pvho3b3v9fcslzc2bz5q11nn62941p57">Apache Flink CDC 3.6.0 released</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (3)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/g0d9n8sky6l52jpm6vqc9r2qfkm7w7oh">FLIP-567: Introduce a ProcessTableFunction Test Harness</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/2oroozjbcqhfnfkdzq6f93y8jz0mkklz">Apache Flink CDC Release 3.6.0, release candidate #2</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/pzlxcstn5j6547m2rby1s99d24ylkhk4">FLIP-568: Strict BYTES-to-STRING CAST with UTF-8 Validation Utilities</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/n43rw40dk2tos8wbckj2t6hfjhqppn37">FLIP-572: Introduce Flink-Kafka Transactions Management Tool</a></h3>
+            <p class="meta">5 条回复 · 3 位参与者</p>
+            <p class="summary">Aleksandr Savonin 发起 FLIP-572 提案，建议引入独立的 CLI 工具来管理 Flink 作业异常终止后遗留的 Kafka 事务，以解决下游消费者被阻塞及数据丢失问题。讨论主要围绕该工具与现有 FLIP-511 恢复机制的区别、必要性以及存放位置展开，Aleksandr 解释了在作业彻底消失或 JVM 崩溃场景下手动干预提交数据的必要性。</p>
+            <div class="key-points"><p><strong>@Aleksandr Savonin:</strong> 提出当 Flink 作业在 checkpoint 和 commit 之间意外终止（如 JVM 崩溃）时，现有机制无法处理，需通过 CLI 工具手动提交或中止事务以保留数据并解除下游阻塞。</p>
+<p><strong>@Hongshun Wang:</strong> 质疑 CLI 与 Flink Writer 重启恢复逻辑的重复性，建议将事务中止逻辑嵌入 Sink 关闭路径，并认为该工具应放在 flink-connector-kafka 仓库而非 Flink 核心发行版中。</p>
+<p><strong>@Shekhar Rajak:</strong> 询问是否可以通过在 Kafka 事务协调器端进行修复来解决问题，而不必专门为 Kafka 引入事务管理工具。</p></div>
+            <p class="conclusion">双方就工具的必要性达成一定共识，确认该工具作为现有恢复机制的补充，用于处理作业无法重启且需手动提交数据的场景；同时采纳建议，将该工具作为独立模块置于 flink-connector-kafka 仓库中。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/00ls28dhqmz5dyb6wsz0k60nhbt7y0tx">FLIP-504: Blue/Green Deployments for Flink on Kubernetes - Phase 2 (WIP/Draft PR)</a></h3>
+            <p class="meta">4 条回复 · 3 位参与者</p>
+            <p class="summary">讨论主要围绕 FLIP-504 第二阶段中 Gate 自动注入功能的实现进展。Sergio 成功通过 Java Agent 和 Instrumentation API 实现了无需用户修改代码即可注入 Gate 的机制，并已提交包含自动配置逻辑的 Draft PR。Ryan 和 Daniel 对该方案表示赞赏，并计划进行测试验证。</p>
+            <div class="key-points"><p><strong>@Sergio Chong Loo:</strong> 成功利用 Java Agent 实现了 Gate 自动注入，支持在 Source 后或 Sink 前注入，用户无需修改管道代码。</p>
+<p><strong>@Sergio Chong Loo:</strong> 更新了 Draft PR，通过 Operator 自动注入 javaagent 标志和 init container，简化了用户配置。</p>
+<p><strong>@Daniel Rossos:</strong> 认为 Gate 自动注入的想法非常棒，计划本周测试 PR 并提供反馈。</p></div>
+            <p class="conclusion">Sergio 正在处理错误处理细节，Daniel 将测试 Draft PR，后续工作将基于测试反馈继续推进。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/3d9t3wydk8bl0vsndm1390wqynclr2kf">FLIP-569: Sunset the Stateful Functions (StateFun) Sub-project</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">Martijn Visser 发起 FLIP-569 讨论，提议正式终止 Stateful Functions (StateFun) 子项目。该提议获得了社区成员的一致同意，所有回复者均投了赞成票。</p>
+            <div class="key-points"><p><strong>@Martijn Visser:</strong> 提议正式终止 StateFun 子项目，并指出此前已有相关讨论。</p>
+<p><strong>@David Anderson:</strong> 表示赞成（+1），认为该决定虽令人遗憾但早该执行。</p>
+<p><strong>@Ramin Gharib / Jacky Lau / Samrat Deb:</strong> 均表示支持（+1）并感谢 Martijn 推动此事。</p></div>
+            <p class="conclusion">社区已达成共识，同意终止 StateFun 子项目。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/8wp92gc5vgro1j5l24vwob5bryjqnqo8">FLIP-567: Introduce a ProcessTableFunction Test Harness</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论主要围绕 FLIP-567 提议的 ProcessTableFunction 测试工具展开，Samrat Deb 在支持该功能的同时，针对序列化验证、定时器去重、迟到数据处理及易用性等方面提出了详细的技术疑问。Mika Naylor 回应称将考虑集成序列化测试机制，确认工具会原生支持定时器去重，但表示迟到数据处理暂不在当前范围内。</p>
+            <div class="key-points"><p><strong>@Samrat Deb:</strong> 建议测试工具应包含显式的序列化验证方法（如 snapshotState），以避免生产环境中因序列化失败导致的作业崩溃，并询问了定时器去重、RowKind 支持及 MetricGroup 注入等问题。</p>
+<p><strong>@Mika Naylor:</strong> 认同序列化验证的重要性，建议可通过快照机制或配置项强制执行序列化，并确认测试工具将原生处理定时器的去重逻辑。</p>
+<p><strong>@Mika Naylor:</strong> 指出关于迟到数据的处理机制目前不在该测试工具的范围内，但可作为后续的延伸目标。</p></div>
+            <p class="conclusion">双方就序列化验证和定时器去重逻辑达成初步共识，迟到数据处理暂不纳入当前计划。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/s3mogo5o1czhmp07237hvrvobz0rgfkl">FLIP-556 wiki edit permission question</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">FLIP-556 提议者 dylanhz 发现无法编辑对应的 CWiki 页面，询问是否需要额外授权。Ramin Gharib 回复确认这是权限问题，但他本人无权授予编辑权限。</p>
+            <div class="key-points"><p><strong>@dylanhz:</strong> 作为 FLIP-556 提议者，没有权限编辑已接受的提案 CWiki 页面。</p>
+<p><strong>@Ramin Gharib:</strong> 确认这是授权问题，但自己没有权限为 dylanhz 开通编辑权限。</p></div>
+            <p class="conclusion">问题已确认为权限不足导致，但尚未解决，需等待拥有更高权限的管理员协助。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/09lp1g1mvw1o2ow2oyjfms4n72gzlwdx">extending the feature freeze date of Flink 2.3</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">David Anderson 提议将 Flink 2.3 的功能冻结日期推迟两周（从 3 月 31 日至 4 月 14 日），以便完成 FLIP-547 和 FLIP-495 的代码审查与改进。该提议已在发布同步会议上讨论且无异议，现正式提交给社区讨论。</p>
+            <div class="key-points"><p><strong>@David Anderson:</strong> 提议将 Flink 2.3 功能冻结日期从 3 月 31 日延后至 4 月 14 日。</p>
+<p><strong>@David Anderson:</strong> 延期是为了给 FLIP-547 和 FLIP-495 留出更多时间进行 PR 审查和改进。</p>
+<p><strong>@David Anderson:</strong> 该提议已在发布同步会议上讨论，未收到反对意见。</p></div>
+            <p class="conclusion">会议已初步达成一致，下一步等待社区反馈以最终确认延期。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/sd13tcld3txyp4n6tl67rrm9rglcfozd">[SUMMARY] Flink 2.3 release sync -- reviews needed for flaky test PRs</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">本周的发布同步会议主要讨论了延长功能冻结期和修复不稳定测试的停滞 PR 问题。目前 CI 构建经常失败，虽然已有针对不稳定测试的修复 PR，但大多因等待审查而停滞数周。</p>
+            <div class="key-points"><p><strong>@David Anderson:</strong> CI 构建因不稳定测试而频繁失败，相关修复 PR 已提交。</p>
+<p><strong>@David Anderson:</strong> 大多数修复 PR 已停滞数周，主要瓶颈在于等待审查。</p></div>
+            <p class="conclusion">发布经理正在联系相关工单，以协助推动这些停滞的 PR 审查进程。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/f05pkbmd7j9vncq9jcw9s17rcgxbgv4q">[FLINK-39151] Hide warning about UnixOperatingSystemMXBean missing on Windows - request for review</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Piotr Przybylski 提交了一个旨在隐藏 Windows 系统上 UnixOperatingSystemMXBean 缺失警告的日志修复补丁。他请求社区指派该 Jira 工单并进行代码评审，希望能将其合入下一个 Flink 版本。</p>
+            <div class="key-points"><p><strong>@Piotr Przybylski:</strong> 提交了一个小的日志修复补丁（PR #27662），解决了 Windows 上的特定警告问题。</p>
+<p><strong>@Piotr Przybylski:</strong> 请求社区指派 Jira 工单并启动评审流程。</p>
+<p><strong>@Piotr Przybylski:</strong> 目标是让该修复进入下一个 Flink 发布版本。</p></div>
+            <p class="conclusion">等待社区成员指派工单并对 PR 进行评审。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/drg088t5h49fksqdr8q6t94p7pk38l0y">FLIP-568: Strict BYTES-to-STRING CAST with UTF-8 Validation Utilities</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论围绕 FLIP-568（带 UTF-8 验证的严格 BYTES 转 STRING 转换）展开，主要解决了关于 UTF-16 支持范围及内部 API 更新的问题。作者 Gustavo 明确表示 UTF-16 支持不在本次 FLIP 范围内，建议用户使用 DECODE 函数处理。目前讨论已结束，社区已正式启动投票流程。</p>
+            <div class="key-points"><p><strong>@Sergey Nuyanzin:</strong> 询问是否应引入 UTF-16 相关函数，因为 Flink 也支持该编码。</p>
+<p><strong>@Gustavo de Morais:</strong> 解释 Flink 内部存储为 UTF-8，验证问题主要针对 UTF-8；UTF-16 用户应使用 DECODE 而非 CAST，因此 UTF-16 验证不在本次 FLIP 范围内。</p>
+<p><strong>@Xuyang:</strong> 支持独立更新内部 API，对提案表示 +1。</p></div>
+            <p class="conclusion">Gustavo 已宣布启动投票流程。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/tmqyfskkwb0x6j993o8w20s9nb4gzgxx">[FLINK-38697] TaskInformation blobs accumulate without cleanup causing storage exhaustion - request for review</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Piotr Rudnicki 针对 TaskInformation blobs 因未清理导致存储耗尽的问题（FLINK-38697）提交了修复补丁。作者请求认领该 JIRA 工单，并邀请社区审核相关的 Pull Request。</p>
+            <div class="key-points"><p><strong>@Piotr Rudnicki:</strong> 已准备好修复代码并提交了 PR (#27726)，请求被分配该 JIRA 任务。</p></div>
+            <p class="conclusion">下一步需要社区审核 PR 并确认任务分配。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (61)</h2>
+            
+    <p>本周新建 <strong>61</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周 JIRA 主要涉及连接器的功能增强与问题修复，特别是对 HTTP Connector 进行了多项改进（如重试支持、请求超时配置），同时也更新了 MySQL、StarRocks 和 Kafka 等连接器。SQL 与 Table API 方面增加了 SELECT * EXCLUDE 等新语法支持，并修复了多处查询与元数据相关的 Bug。此外，还包含部分核心功能的代码清理、文档一致性优化以及不稳定测试的修复工作。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Flink Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
