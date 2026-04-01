@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-03-31</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-03-31</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 8 新 Issues</div>
+            <div class="stat">✅ 5 关闭</div>
+            <div class="stat">✨ 7 新 PRs</div>
+            <div class="stat">🎉 5 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/2780">PR #2780</a> 支持 Coordinator Leader 故障时自动切换，提升系统高可用性</li><li>🎉 <a href="https://github.com/apache/fluss/pull/2947">PR #2947</a> 修复 Azure 文件系统 Token 委托认证问题</li><li>🎉 <a href="https://github.com/apache/fluss/pull/2922">PR #2922</a> 添加 AI Agent 编码指南文档 AGENTS.md</li><li>🐛 <a href="https://github.com/apache/fluss/issues/2977">Issue #2977</a> 发现 PeriodicSnapshotManager 当 initialDelay 为 0 时静默跳过快照调度</li><li>✨ <a href="https://github.com/apache/fluss/pull/2976">PR #2976</a> 引入 KV Scan RPC 层，正在 Review 中</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <ul class="critical-list"><li>⚠️ <a href="https://github.com/apache/fluss/issues/2975">Issue #2975</a> 不稳定测试: CoordinatorEventProcessorTest.testDoBucketReassignment</li><li>⚠️ <a href="https://github.com/apache/fluss/issues/2974">Issue #2974</a> 不稳定测试: RebalanceManagerITCase.testRebalanceWithRemoteLog</li></ul>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2973">Issue #2973</a> [server] Allow enabling lakehouse for log tables without bucket key created before cluster-level lakehouse is enabled</h4>
+            <ul><li><span class="author">@Copilot</span>: 指出新增注释存在语法错误，建议重写以更清晰表达意图</li><li><span class="author">@beryllw</span>: LGTM，认可该 PR 的实现方案</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2900">Issue #2900</a> [fluss-client] Support Complex Data Types on the Java API (NestedRow/ROW)</h4>
+            <ul><li><span class="author">@polyzos</span>: 指出写路径每个元素重复创建 PojoToRowConverter 的性能问题，以及 Map<K, POJO> 类型不安全的往返问题</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2922">Issue #2922</a> [docs] Add AGENTS.md - AI agent coding guide</h4>
+            <ul><li><span class="author">@vaibhavk1992</span>: 询问是否需要进一步 PR 审批即可合并</li><li><span class="author">@platinumhamburg</span>: 表示需要等待 wuchong 作为最终审阅者确认</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2947">Issue #2947</a> [fs/azure] Set auth.type=Custom for token delegation</h4>
+            <ul><li><span class="author">@affo</span>: 修复了文档中的拼写错误并改进了注释，解释 auth.type 与 provider.type 配对使用</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2976">Issue #2976</a> Introduce RPC Layer for KV Scan</h4>
+            <ul><li><span class="author">@polyzos</span>: 修复了部分不稳定测试，请求 wuchong 等人审阅</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2780">Issue #2780</a> [Feature] Support coordinator switch when leader fail</h4>
+            <ul><li><span class="author">@wuchong</span>: 重构了代码：移除 @RequireCoordinatorLeader 注解、优化 leaderReadyFuture 逻辑、重用线程池</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2933">Issue #2933</a> [lake/tiering] add total bytes read tracking and metrics for tiering service</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 指出 TieringSplitReader 的快照字节数统计存在 ClassCastException 风险，建议重命名方法</li><li><span class="author">@leekeiabstraction</span>: 建议使用更精确的断言，询问是否期望其他行类型</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2730">Issue #2730</a> [blog] Fluss rust / python / c++ client release blog draft</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 建议修改博客标题以对齐其他发布博客格式，添加 releases 标签</li><li><span class="author">@leekeiabstraction</span>: 更新了内容，询问今天是否可以发布</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2669">Issue #2669</a> [docs] Add Real-Time User Profile quickstart tutorial</h4>
+            <ul><li><span class="author">@Prajwal-banakar</span>: 同意简化快速入门指南方案，将完整的 RoaringBitmap 示例移至博客文章</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2920">Issue #2920</a> [lake/tiering] add table dropped handling and nullable write results</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 提出多个改进建议：表删除应作为失败事件统一处理、询问 LakeWriter 为 null 的场景、Paimon/Iceberg 同样需要处理</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2855">Issue #2855</a> [kv] Support downloading CDC log segments from remote storage during KV table recovery</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: 指出多个问题：迭代器资源泄露、remoteLogEndOffset 包含性边界错误、缺少边界条件测试</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2769">Issue #2769</a> [server] Integrate remote directory selector into table/partition creation</h4>
+            <ul><li><span class="author">@Copilot</span>: 指出多处潜在问题：配置合并保留已删除键、删除配置检测失败、数组越界风险、不可变列表包装问题</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2948">Issue #2948</a> [rpc] Client zero-copy lazy parse ByteBuf to avoid deep memory copy</h4>
+            <ul><li><span class="author">@polyzos</span>: 指出 retain() 在无记录情况下也会调用导致资源浪费，应仅在 hasRecords 为 true 时调用</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2972">Issue #2972</a> [flink] Implement SupportsWatermarkPushDown for FlinkTableSource</h4>
+            <ul><li><span class="author">@Copilot</span>: 指出全局配置影响其他测试、执行计划断言过于脆弱、测试注释误导等问题</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2594">Issue #2594</a> [TASK-2293] use column id instead of position in Partial Update</h4>
+            <ul><li><span class="author">@polyzos</span>: 指出 RowEncoder 未关闭导致资源泄露，createFieldGetters 每条记录调用性能问题</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            <p class="empty">暂无</p>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/2977">#2977</a> [Server] PeriodicSnapshotManager.start() silently skips scheduling when initialDelay is 0 <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/2975">#2975</a> [test] Unstable test CoordinatorEventProcessorTest.testDoBucketReassignment <span class="author">@app/github-actions</span> </li><li><a href="https://github.com/apache/fluss/issues/2974">#2974</a> [test] Unstable test RebalanceManagerITCase.testRebalanceWithRemoteLog <span class="author">@app/github-actions</span> </li><li><a href="https://github.com/apache/fluss/issues/2971">#2971</a> [flink] FlinkTableSource should implement SupportsWatermarkPushDown <span class="author">@LiebingYu</span> </li><li><a href="https://github.com/apache/fluss/issues/2968">#2968</a> Fluss Introduces ChangelogNormalize Operator In WAL Image Mode <span class="author">@polyzos</span> </li><li><a href="https://github.com/apache/fluss/issues/2967">#2967</a> Fix OutOfBoundException in writeChangeType when the number of records is large <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/2966">#2966</a> TieringSourceReader adjust to scan arrow record batch and write arrow record batch to lake <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/issues/2965">#2965</a> support log scanner scan data as arrow reacord batch <span class="author">@luoyuxia</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/2978">#2978</a> [Server] Fix PeriodicSnapshotManager.start() silently disables snapshot <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/2976">#2976</a> Introduce RPC Layer for KV Scan <span class="author">@polyzos</span> </li><li><a href="https://github.com/apache/fluss/pull/2973">#2973</a> [server] Allow enabling lakehouse for log tables without bucket key created before cluster-level lakehouse is enabled  <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/pull/2972">#2972</a> [flink] Implement SupportsWatermarkPushDown for FlinkTableSource <span class="author">@LiebingYu</span> </li><li><a href="https://github.com/apache/fluss/pull/2970">#2970</a> [WIP] feat: log sub batch poc <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/pull/2969">#2969</a> [kv] Fix non-target columns not being nulled during partial update on first insert <span class="author">@binary-signal</span> </li><li><a href="https://github.com/apache/fluss/pull/2964">#2964</a> [server] allow user to alter partition nun retention. <span class="author">@loserwang1024</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/2968">#2968</a> Fluss Introduces ChangelogNormalize Operator In WAL Image Mode <span class="author">@polyzos</span> </li><li><a href="https://github.com/apache/fluss/issues/2946">#2946</a> Azure FS token delegation does not take effect <span class="author">@affo</span> </li><li><a href="https://github.com/apache/fluss/issues/2932">#2932</a> [lake/tiering] add total bytes read tracking and metrics for tiering service <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/issues/2770">#2770</a> [Feature] Support coordinator switch when leader fail <span class="author">@zcoo</span> </li><li><a href="https://github.com/apache/fluss/issues/1246">#1246</a> [file system] Add configuration option to enable/disable token delegation process for S3 file system (allows support for MinIO and other S3-compatible object stores) <span class="author">@michaelkoepf</span> <span class="labels">component=filesystem</span></li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/2953">#2953</a> [client][backport] Skip blocked bucket instead of stopping drain loop <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/2947">#2947</a> [fs/azure] Set auth.type=Custom for token delegation <span class="author">@affo</span> </li><li><a href="https://github.com/apache/fluss/pull/2933">#2933</a> [lake/tiering] add total bytes read tracking and metrics for tiering service <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/pull/2922">#2922</a> [docs] Add AGENTS.md - AI agent coding guide <span class="author">@vaibhavk1992</span> </li><li><a href="https://github.com/apache/fluss/pull/2780">#2780</a> [Feature] Support coordinator switch when leader fail <span class="author">@zcoo</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
