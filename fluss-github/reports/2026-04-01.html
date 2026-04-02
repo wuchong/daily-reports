@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-04-01</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-04-01</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 11 新 Issues</div>
+            <div class="stat">✅ 7 关闭</div>
+            <div class="stat">✨ 5 新 PRs</div>
+            <div class="stat">🎉 8 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/2594">PR #2594</a> 修复了 ADD COLUMN 后部分更新时的 ArrayIndexOutOfBoundsException 问题</li><li>🎉 <a href="https://github.com/apache/fluss/pull/2780">PR #2780</a> 新增 Leader 故障时的 Coordinator 切换支持</li><li>🚀 <a href="https://github.com/apache/fluss/pull/2948">PR #2948</a> 客户端零拷贝延迟解析 ByteBuf 避免深拷贝，提升性能</li><li>🐛 <a href="https://github.com/apache/fluss/pull/2978">PR #2978</a> 修复 PeriodicSnapshotManager.start() 静默跳过调度的问题</li><li>📚 <a href="https://github.com/apache/fluss/pull/2922">PR #2922</a> 添加 AGENTS.md - AI agent 编码指南文档</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <ul class="critical-list"><li>⚠️ <a href="https://github.com/apache/fluss/issues/2986">Issue #2986</a> Spark 批量读取 PK 表时使用随机列作为主键失败</li><li>⚠️ <a href="https://github.com/apache/fluss/issues/2982">Issue #2982</a> 不稳定测试: CommitRemoteLogManifestITCase.testDeleteOutOfSyncReplicaLogAfterCommit</li></ul>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2007">Issue #2007</a> Add missing authentication for RPC calls</h4>
+            <ul><li><span class="author">@vaibhavk1992</span>: 提出两阶段方案：外部 RPC 和内部 RPC 的授权检查，询问是否有参考设计文档</li><li><span class="author">@LiebingYu</span>: 确认任务分配，建议将缺失的认证方法分类并在多个 PR 中实现</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2956">Issue #2956</a> [spark] Add union read for lake-enabled log tables</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 说明 PR 已实现 log 表批量联合读取，PK 表联合读取后续跟进</li><li><span class="author">@Yohahaha</span>: 建议在 PR 描述中添加 "closes #2983" 链接对应 issue</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2976">Issue #2976</a> Introduce RPC Layer for KV Scan</h4>
+            <ul><li><span class="author">@polyzos</span>: 处理了 CI 不稳定问题，请求 reviewer 审阅</li><li><span class="author">@fresh-borzoni</span>: 质疑 close-scanner 请求是否会导致序列化膨胀，询问异常类差异</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2951">PR #2951</a> [server] Add server-side filter execution and client-side integration</h4>
+            <ul><li><span class="author">@wuchong</span>: 建议移除 null count 缓存相关改动到单独 PR，指出缓存 key 缺少 tableId</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2972">PR #2972</a> [flink] Implement SupportsWatermarkPushDown for FlinkTableSource</h4>
+            <ul><li><span class="author">@Copilot</span>: 指出全局配置覆盖可能影响其他测试，建议断言使用稳定子串而非完整计划</li><li><span class="author">@loserwang1024</span>: 询问 providerContext.generateUid() 的用途</li><li><span class="author">@LiebingYu</span>: 解释 uid 对 Flink 状态管理很重要，参考了 Kafka connector 实现</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2956">PR #2956</a> [spark] Add union read for lake-enabled log tables</h4>
+            <ul><li><span class="author">@Yohahaha</span>: 建议合并分区时保持纯函数，询问方法参数含义，建议引入 tiering 测试模块</li><li><span class="author">@fresh-borzoni</span>: 同意拆分测试模块的建议</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2976">PR #2976</a> Introduce RPC Layer for KV Scan</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 质疑 close-scanner 请求可能造成序列化膨胀，询问异常类之间的区别</li><li><span class="author">@leekeiabstraction</span>: 建议将 closeScanRequest 拆分为独立请求，保持 API 单一职责</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/2988">#2988</a> ArrayIndexOutOfBoundsException in partial updates after ADD COLUMN <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/2986">#2986</a> [spark][bug] Batch read PK table failed when use random column as primary key <span class="author">@Yohahaha</span> </li><li><a href="https://github.com/apache/fluss/issues/2985">#2985</a> [spark] Add spark tiering service <span class="author">@Yohahaha</span> </li><li><a href="https://github.com/apache/fluss/issues/2984">#2984</a> [spark] Batch union read for pk table <span class="author">@Yohahaha</span> </li><li><a href="https://github.com/apache/fluss/issues/2983">#2983</a> [spark] Batch union read for log table <span class="author">@Yohahaha</span> </li><li><a href="https://github.com/apache/fluss/issues/2982">#2982</a> [test] Unstable test CommitRemoteLogManifestITCase.testDeleteOutOfSyncReplicaLogAfterCommit <span class="author">@app/github-actions</span> </li><li><a href="https://github.com/apache/fluss/issues/2979">#2979</a> Paimon sorted reader fails when primary key contains TIMESTAMP <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/issues/2977">#2977</a> [Server] PeriodicSnapshotManager.start() silently skips scheduling when initialDelay is 0 <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/2975">#2975</a> [test] Unstable test CoordinatorEventProcessorTest.testDoBucketReassignment <span class="author">@app/github-actions</span> </li><li><a href="https://github.com/apache/fluss/issues/2974">#2974</a> [test] Unstable test RebalanceManagerITCase.testRebalanceWithRemoteLog <span class="author">@app/github-actions</span> </li><li><a href="https://github.com/apache/fluss/issues/2971">#2971</a> [flink] FlinkTableSource should implement SupportsWatermarkPushDown <span class="author">@LiebingYu</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/2987">#2987</a> [spark][bugfix] Use pk index for comparator align with SortMergeReader <span class="author">@Yohahaha</span> </li><li><a href="https://github.com/apache/fluss/pull/2981">#2981</a> [WIP] Support variant type and shredding <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/pull/2976">#2976</a> Introduce RPC Layer for KV Scan <span class="author">@polyzos</span> </li><li><a href="https://github.com/apache/fluss/pull/2972">#2972</a> [flink] Implement SupportsWatermarkPushDown for FlinkTableSource <span class="author">@LiebingYu</span> </li><li><a href="https://github.com/apache/fluss/pull/2970">#2970</a> [WIP] feat: log sub batch poc <span class="author">@gyang94</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/2988">#2988</a> ArrayIndexOutOfBoundsException in partial updates after ADD COLUMN <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/2979">#2979</a> Paimon sorted reader fails when primary key contains TIMESTAMP <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/issues/2977">#2977</a> [Server] PeriodicSnapshotManager.start() silently skips scheduling when initialDelay is 0 <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/2961">#2961</a> Allow enabling lakehouse for log tables without bucket key created before cluster-level lakehouse is enabled <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/issues/2932">#2932</a> [lake/tiering] add total bytes read tracking and metrics for tiering service <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/issues/2770">#2770</a> [Feature] Support coordinator switch when leader fail <span class="author">@zcoo</span> </li><li><a href="https://github.com/apache/fluss/issues/1184">#1184</a> Client lazy parse ByteBuf to avoid deeply memory copy <span class="author">@swuferhong</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/2980">#2980</a> [lake/paimon] Fix Paimon PK comparator row type <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/pull/2978">#2978</a> [Server] Fix PeriodicSnapshotManager.start() silently disables snapshot <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/2973">#2973</a> [server] Allow enabling lakehouse for log tables without bucket key created before cluster-level lakehouse is enabled  <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/pull/2948">#2948</a> [rpc] Client zero-copy lazy parse ByteBuf to avoid deep memory copy <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/2933">#2933</a> [lake/tiering] add total bytes read tracking and metrics for tiering service <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/pull/2922">#2922</a> [docs] Add AGENTS.md - AI agent coding guide <span class="author">@vaibhavk1992</span> </li><li><a href="https://github.com/apache/fluss/pull/2780">#2780</a> [Feature] Support coordinator switch when leader fail <span class="author">@zcoo</span> </li><li><a href="https://github.com/apache/fluss/pull/2594">#2594</a> [BugFix] Fix ArrayIndexOutOfBoundsException in partial updates after ADD COLUMN <span class="author">@fresh-borzoni</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
