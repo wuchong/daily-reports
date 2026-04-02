@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fluss 社区周报 | 2026-W13</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Fluss 社区周报 | 2026-W13</h1>
+            <p class="date-range">2026-03-23 ~ 2026-03-29</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (3)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/y54xonqsz15pzwkyqt2ot7104zm1ovl2">New Apache Fluss Committer: LiebingYu</a></li>
+<li><a href="https://lists.apache.org/thread/39wgkwm09rty7b6hwk8n4ctkn8lnddbt">New Apache Fluss Committer: Keith Lee</a></li>
+<li><a href="https://lists.apache.org/thread/dz7t4coy74djg7r8c697xdw34w8lfbn6">AGENTS.md Merged: Welcome to Use and Provide Feedback</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (3)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/72poj91g6hocs8og2dfkmk85sdsnsjl4">FIP-17 Support Full KV Scan for Primary Key Tables</a> <span class="status warning">⚠️ 有异议</span><p class="objection-inline">Lorenzo Affetti 提出 -1，原因是认为在采用当前设计前，应充分评估带快照 ID 的分页请求和真正的流式 RPC 这两个方向。</p></li>
+<li><a href="https://lists.apache.org/thread/1wpys58gfrqq538kt0z24jcrh204xw2m">Release Apache Fluss clients (fluss-rust, fluss-python, fluss-cpp) 0.1.0-incubating (RC1)</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/ppz00qw9szlp9k02mo9wf2k4do0oyb1k">FIP-34: Making Fluss an AI-Native Project</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (7)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/kw8635kjhnsty1spxklmt4q25zkvd2d7">FIP-17: Streaming KV Scan RPC</a></h3>
+            <p class="meta">3 条回复 · 3 位参与者</p>
+            <p class="summary">讨论主要围绕 FIP-17 中 Streaming KV Scan RPC 的延续模型展开，核心争议在于服务端维护迭代器会话与客户端持有不透明令牌两种方案的权衡。Anton 指出服务端会话存在内存占用高和重试复杂的问题，建议采用令牌方案；Giannis 则强调当前设计对 CDC 一致性保证的重要性。最终双方同意不阻碍投票进程，但记录了关于内存开销的顾虑。</p>
+            <div class="key-points"><p><strong>@Anton Borisov:</strong> 指出服务端迭代器会话会固定大量内存（测试显示 23MB），且重试逻辑复杂；建议评估类似 Cassandra 的不透明令牌方案，虽然会增加寻址开销，但能大幅减少服务端状态管理负担。</p>
+<p><strong>@Giannis Polyzos:</strong> 认为现有的会话生命周期管理机制成熟且必要；指出纯令牌方案可能破坏 CDC 引导所需的 log_offset 一致性保证，除非服务端仍保留快照状态。</p>
+<p><strong>@Lorenzo Affetti:</strong> 确认了当前分页设计与一致性需求相符，并认可了设计中选择拉取模式而非推送模式的决策。</p></div>
+            <p class="conclusion">Anton 表示不因上述顾虑阻碍当前的投票进程，但建议将服务端内存占用问题及令牌方案的权衡记录在案。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/kyn30tr1bfz0ysz54m9968g1cvqwf1n4">Slack Workspace Down</a></h3>
+            <p class="meta">3 条回复 · 4 位参与者</p>
+            <p class="summary">Fluss 社区发现 Slack 工作区无法访问且已被删除。Keith Lee 向基础设施团队反馈未果，Jark Wu 随后确认了该情况，并已联系 Slack 支持团队调查原因及寻求恢复。</p>
+            <div class="key-points"><p><strong>@Keith Lee:</strong> 报告无法访问 Slack，且基础设施团队表示不负责维护该工作区。</p>
+<p><strong>@Vaibhav Kumar:</strong> 确认工作区显示已被删除。</p>
+<p><strong>@Jark Wu:</strong> 已联系 Slack 支持团队调查并尝试恢复，建议暂时使用邮件列表沟通。</p></div>
+            <p class="conclusion">已联系 Slack 支持团队处理恢复事宜，在此期间社区成员需暂时使用邮件列表进行沟通。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/9oz6ww133k6h876hwxbvkqjg1vnfm2pn">FIP-33: JBOD Phase 1 - Local Multi-Directory Support</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">Liu Han 发起了关于 FIP-33（JBOD 第一阶段：本地多目录支持）的讨论，旨在解决 Fluss 当前单目录部署无法充分利用多磁盘服务器资源的问题。该提案计划分三阶段实施，本次聚焦于支持多数据目录、静态桶放置及保持兼容性的第一阶段。Jark Wu 审阅后认为整体设计良好，Liu Han 表示若无重大异议将推进投票流程。</p>
+            <div class="key-points"><p><strong>@Liu Han:</strong> 提议分三阶段引入 JBOD 支持，第一阶段专注于本地多目录支持、静态桶放置及兼容性，不涉及元数据或 RPC 变更。</p>
+<p><strong>@Jark Wu:</strong> 已审阅提案，认为整体设计良好（LGTM），支持后续的投票和跟进工作。</p></div>
+            <p class="conclusion">初步设计已获得认可，下一步将继续收集社区反馈，若无重大异议将启动投票流程。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/f610y9fbyv8ddp7w6yrk85byn9nmx7v9">Recurring sync meeting for Lance integration</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">社区正在筹备 Lance 集成的专项同步会议，Keith Lee 已发起投票确定会议时间。讨论重点涵盖了会议频率安排以及 Lance 集成的技术路线图，包括“联合读取”功能和向量搜索策略的架构选型。Lorenzo 提出了具体的会议议程建议，旨在解决功能差距和向量搜索实现方案。</p>
+            <div class="key-points"><p><strong>@Keith Lee:</strong> 已创建 Slack 投票以确定会议时间，并支持增加对美洲贡献者友好的时间段。</p>
+<p><strong>@Jark Wu:</strong> 建议若月度会议议程过满可改为双周制，并强调需照顾全球贡献者的时区。</p>
+<p><strong>@Lorenzo Affetti:</strong> 建议路线图聚焦功能对等、插件架构及向量查询接口，并以此作为下次同步会议的大纲。</p></div>
+            <p class="conclusion">初步结论是先通过投票确定会议时间（截止 UTC 时间 3 月 30 日中午），下一步将根据投票结果发出邀请，并计划在下次会议中讨论 Lorenzo 提出的技术路线图要点。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/b8wf0k77c7sjrmx7vkyorljg93k68rdv">FIP-24：Support tiering Fluss data to Hudi</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">本次讨论围绕 FIP-24（支持将 Fluss 数据分层存储至 Hudi）展开，主要探讨了读取路径中对 Flink RowData 的依赖问题。Fei Han 解释了 Hudi 采用引擎特定封装设计而非统一抽象模型的原因，旨在优化性能并减少序列化开销。最终，提问者 Yuxia 对解释表示认可，该提案整体通过初步审阅。</p>
+            <div class="key-points"><p><strong>@yuxia:</strong> 询问读取路径是否可以避免依赖 Flink 的 RowData 并直接转换为 Fluss InternalRow。</p>
+<p><strong>@han:</strong> 解释 Hudi 的设计采用引擎特定的数据结构（如 Flink 的 RowData）以优化性能和兼容性，缺乏通用的中间格式。</p>
+<p><strong>@han:</strong> 指出未来若支持 Spark 等其他引擎，需专门开发相应的解析逻辑。</p></div>
+            <p class="conclusion">Yuxia 对解释表示满意，确认无其他异议，整体态度为 LGTM（Looks Good To Me）。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/h8xow88y3h8o7l62clln9lzwqy7bdsr8">Community Call - Friday, March 27th</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">本次社区会议主要汇报了 Fluss-Client 0.1 RC 的发布投票进度及 Fluss v1.0 版本的开发状态，涉及过滤器下推、存储优化及数据类型支持等核心功能。会议还提出了 AI Native 计划以降低用户上手门槛，并探讨了 LanceDB 集成的“联合读取”功能及向量搜索策略。</p>
+            <div class="key-points"><p><strong>@社区:</strong> Fluss-Client 0.1 RC 已上线投票，尚需一票通过，且需修正投票标题并补充二进制分发文件。</p>
+<p><strong>@社区:</strong> 建议在 v1.0 中引入 AI 原生 CLI 和技能，利用 agents.md 规范来缩小与成熟项目的采用差距。</p>
+<p><strong>@社区:</strong> LanceDB 集成提议增加“联合读取”功能，但在向量搜索策略上存在简易实现与稳健实现的争议。</p></div>
+            <p class="conclusion">Fluss-Client 0.1 发布在即，v1.0 开发按计划推进；下一步将落实 AI Native CLI 的构建，并需解决 LanceDB 向量搜索的技术选型问题。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/pfxjmv0j5rtgbjltgbrrvwx05lo5ynss">Podling Fluss Report Reminder - April 2026</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Jark Wu 提交了 Fluss 项目 2026 年 4 月季度的 Podling 报告草案，请求 PPMC 和导师反馈并签字。报告指出项目近期发布了 v0.9.0，社区新增了提交者和 PPMC 成员，目前正重点推进 Fluss-Rust 的首次发布及毕业准备工作。</p>
+            <div class="key-points"><p><strong>@Jark Wu:</strong> 提交了季度报告草案，内容涵盖项目发布进度、社区人员增长及活动情况。</p>
+<p><strong>@Jark Wu:</strong> 明确了毕业前的三大重点任务：完成更多 Apache 发布（特别是 Fluss-Rust）、壮大社区以及完善成熟度模型。</p>
+<p><strong>@Jark Wu:</strong> 报告显示项目无关键问题，且已成功新增 2 名提交者和 1 名 PPMC 成员，社区发展健康。</p></div>
+            <p class="conclusion">报告草案已提交至 Wiki，等待社区反馈和签字确认；下一步将启动 Fluss-Rust 0.1.0 的 IPMC 投票流程。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (0)</h2>
+            
+    <p>本周新建 <strong>0</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周无新建 JIRA。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Fluss Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
