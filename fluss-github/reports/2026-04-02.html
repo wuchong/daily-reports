@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-04-02</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-04-02</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 11 新 Issues</div>
+            <div class="stat">✅ 5 关闭</div>
+            <div class="stat">✨ 5 新 PRs</div>
+            <div class="stat">🎉 5 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/2594">PR #2594</a> 修复 ADD COLUMN 后部分更新时的 ArrayIndexOutOfBoundsException</li><li>🎉 <a href="https://github.com/apache/fluss/pull/2594">PR #2948</a> 实现客户端零拷贝延迟解析 ByteBuf，避免深拷贝提升性能</li><li>🎉 <a href="https://github.com/apache/fluss/pull/2978">PR #2978</a> 修复 PeriodicSnapshotManager.start() 静默禁用快照的问题</li><li>🐛 <a href="https://github.com/apache/fluss/issues/2986">Issue #2986</a> Spark 批量读取 PK 表使用随机列作为主键时失败</li><li>✨ <a href="https://github.com/apache/fluss/pull/2995">PR #2995</a> 新增支持 log scanner 扫描为 Arrow record batch</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <ul class="critical-list"><li>⚠️ <a href="https://github.com/apache/fluss/issues/2986">Issue #2986</a> Spark批量读取PK表使用随机列作为主键时失败</li></ul>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2007">Issue #2007</a> Add missing authentication for RPC calls</h4>
+            <ul><li><span class="author">@LiebingYu</span>: 将 issue 分配给 vaibhavk1992，建议分多个 PR 实现各种认证方法</li><li><span class="author">@vaibhavk1992</span>: 提出分两阶段实现的方案：外部 RPC 和内部 RPC 的授权检查</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2956">Issue #2956</a> [spark] Add union read for lake-enabled log tables</h4>
+            <ul><li><span class="author">@Yohahaha</span>: 感谢 PR，创建了 #2983 跟踪，建议在 PR 描述中添加 closes 关键字</li><li><span class="author">@fresh-borzoni</span>: 说明此 PR 已实现 log 表 union read，PK 表 union read 后续跟进</li><li><span class="author">@polyzos</span>: 确认 #2983 已在此 PR 中实现，可关闭重复 issue</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2983">Issue #2983</a> [spark] Batch union read for log table</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 说明此功能已在 #2956 中实现</li><li><span class="author">@polyzos</span>: 确认功能已实现，建议关闭重复 issue</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2948">Issue #2948</a> [rpc] Client zero-copy lazy parse ByteBuf to avoid deep memory copy</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 感谢审核，已处理评论内容</li><li><span class="author">@polyzos</span>: 请求 rebase 后合并，最终 LGTM 批准</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2594">Issue #2594</a> [BugFix] Fix ArrayIndexOutOfBoundsException in partial updates after ADD COLUMN</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 感谢审核，已处理评论意见</li><li><span class="author">@polyzos</span>: LGTM 批准合并，感谢贡献</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2951">PR #2951</a> [server] Add server-side filter execution and client-side integration</h4>
+            <ul><li><span class="author">@wuchong</span>: 提出多项改进建议：异常处理、代码简化、参数封装、缓存优化等</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2976">PR #2976</a> Introduce RPC Layer for KV Scan</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 询问序列化问题和异常类的区别，建议添加 @PublicEvolving 注解</li><li><span class="author">@leekeiabstraction</span>: 建议命名改进，提出拆分 closeScanRequest 为独立请求</li><li><span class="author">@polyzos</span>: 回复 CI 问题，确认命名约定</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2989">PR #2989</a> [filesystem] Support AssumeRole STS for RustFS</h4>
+            <ul><li><span class="author">@Copilot</span>: 指出 STS client 资源泄漏风险、配置验证缺失、测试覆盖不足等问题</li><li><span class="author">@fresh-borzoni</span>: 请求审核者帮助审查此 PR</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2995">PR #2995</a> [client] Support log scanner scan to arrow record batch</h4>
+            <ul><li><span class="author">@Copilot</span>: 指出投影逻辑、内存安全（数组暴露、retain 不平衡）、Allocator 性能和依赖作用域问题</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2956">PR #2956</a> [spark] Add union read for lake-enabled log tables</h4>
+            <ul><li><span class="author">@Yohahaha</span>: 建议改进分区合并逻辑、添加注释、优化测试用例</li><li><span class="author">@fresh-borzoni</span>: 接受建议，处理了评论意见</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2972">PR #2972</a> [flink] Implement SupportsWatermarkPushDown for FlinkTableSource</h4>
+            <ul><li><span class="author">@loserwang1024</span>: 询问 uid 生成的用途</li><li><span class="author">@LiebingYu</span>: 解释 uid 对 Flink 状态管理的重要性，参考 Kafka connector 实现</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2718">PR #2718</a> [flink] Support ALTER TABLE to modify watermark for Fluss tables</h4>
+            <ul><li><span class="author">@loserwang1024</span>: 指出 watermark 不是非物理列，建议将计算列修改移至另一 PR</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2769">PR #2769</a> [server] Integrate remote directory selector into table/partition creation</h4>
+            <ul><li><span class="author">@LiebingYu</span>: 建议保留部分代码，其他问题将在另一个 PR 中解决</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2855">PR #2855</a> [kv] Support downloading CDC log segments from remote storage during KV table recovery</h4>
+            <ul><li><span class="author">@swuferhong</span>: 确认已处理评论意见</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/2994">#2994</a> [test] Unstable test RemoteLogITCase.remoteLogMiscTest <span class="author">@app/github-actions</span> </li><li><a href="https://github.com/apache/fluss/issues/2993">#2993</a> [test] Unstable test Flink120ProcedureITCase.testDropKvSnapshotLeaseProcedure <span class="author">@app/github-actions</span> </li><li><a href="https://github.com/apache/fluss/issues/2992">#2992</a> [test] Unstable test RemoteLogScannerITCase.testScanFromRemoteAndProject <span class="author">@app/github-actions</span> </li><li><a href="https://github.com/apache/fluss/issues/2990">#2990</a> [docs] Add documentation for lookup.insert-if-not-exists feature <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/2988">#2988</a> ArrayIndexOutOfBoundsException in partial updates after ADD COLUMN <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/2986">#2986</a> [spark][bug] Batch read PK table failed when use random column as primary key <span class="author">@Yohahaha</span> </li><li><a href="https://github.com/apache/fluss/issues/2985">#2985</a> [spark] Add spark tiering service <span class="author">@Yohahaha</span> </li><li><a href="https://github.com/apache/fluss/issues/2984">#2984</a> [spark] Batch union read for pk table <span class="author">@Yohahaha</span> </li><li><a href="https://github.com/apache/fluss/issues/2983">#2983</a> [spark] Batch union read for log table <span class="author">@Yohahaha</span> </li><li><a href="https://github.com/apache/fluss/issues/2982">#2982</a> [test] Unstable test CommitRemoteLogManifestITCase.testDeleteOutOfSyncReplicaLogAfterCommit <span class="author">@app/github-actions</span> </li><li><a href="https://github.com/apache/fluss/issues/2979">#2979</a> Paimon sorted reader fails when primary key contains TIMESTAMP <span class="author">@luoyuxia</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/2995">#2995</a> [client] Support log scanner scan to arrow record batch <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/pull/2991">#2991</a> [docs] Add Insert If Not Exists section to Lookup Joins documentation <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/2989">#2989</a> [filesystem] Support AssumeRole STS for RustFS <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/2987">#2987</a> [spark][bugfix] Use pk index for comparator align with SortMergeReader <span class="author">@Yohahaha</span> </li><li><a href="https://github.com/apache/fluss/pull/2981">#2981</a> [WIP] Support variant type and shredding <span class="author">@swuferhong</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/2988">#2988</a> ArrayIndexOutOfBoundsException in partial updates after ADD COLUMN <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/2979">#2979</a> Paimon sorted reader fails when primary key contains TIMESTAMP <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/issues/2977">#2977</a> [Server] PeriodicSnapshotManager.start() silently skips scheduling when initialDelay is 0 <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/2961">#2961</a> Allow enabling lakehouse for log tables without bucket key created before cluster-level lakehouse is enabled <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/issues/1184">#1184</a> Client lazy parse ByteBuf to avoid deeply memory copy <span class="author">@swuferhong</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/2980">#2980</a> [lake/paimon] Fix Paimon PK comparator row type <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/pull/2978">#2978</a> [Server] Fix PeriodicSnapshotManager.start() silently disables snapshot <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/2973">#2973</a> [server] Allow enabling lakehouse for log tables without bucket key created before cluster-level lakehouse is enabled  <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/pull/2948">#2948</a> [rpc] Client zero-copy lazy parse ByteBuf to avoid deep memory copy <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/2594">#2594</a> [BugFix] Fix ArrayIndexOutOfBoundsException in partial updates after ADD COLUMN <span class="author">@fresh-borzoni</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
