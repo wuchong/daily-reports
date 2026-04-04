@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-04-03</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-04-03</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 7 新 Issues</div>
+            <div class="stat">✅ 1 关闭</div>
+            <div class="stat">✨ 8 新 PRs</div>
+            <div class="stat">🎉 0 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🐛 <a href="https://github.com/apache/fluss/pull/3000">PR #3000</a> 修复 ADD COLUMN 后部分更新/删除的数组越界异常</li><li>🐛 <a href="https://github.com/apache/fluss/pull/3003">PR #3003</a> 修复 LimitBatchScanner 中的缓冲区泄漏问题</li><li>🐛 <a href="https://github.com/apache/fluss/pull/2997">PR #2997</a> 修复 client.fs.* 配置前缀未正确剥离的 bug</li><li>✨ <a href="https://github.com/apache/fluss/pull/2989">PR #2989</a> 为 RustFS 添加 AssumeRole STS 支持</li><li>✨ <a href="https://github.com/apache/fluss/pull/2995">PR #2995</a> 支持 log scanner 扫描为 Arrow record batch</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <ul class="critical-list"><li>⚠️ <a href="https://github.com/apache/fluss/issues/2998">Issue #2998</a> LimitScanResponse 中存在未释放缓冲区，且客户端零拷贝存在 OOM 风险 (priority=blocker)</li></ul>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2998">Issue #2998</a> Fix unreleased buffer in LimitScanResponse and evaluate client-side zero-copy OOM risk</h4>
+            <ul><li><span class="author">@wuchong</span>: 发现 LimitScan 中潜在的内存泄漏问题，需要评估 OOM 风险并创建此 issue 讨论</li><li><span class="author">@polyzos</span>: 确认内存泄漏问题存在，认为修复方案应该比较直接，建议尽快处理</li><li><span class="author">@fresh-borzoni</span>: 建议回滚 #2948 并等待 #2803 合并，同时已提交 #3003 修复缓冲区泄漏</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2967">Issue #2967</a> Fix OutOfBoundException in writeChangeType when the number of records is large</h4>
+            <ul><li><span class="author">@hemanthsavasere</span>: 表示希望参与此 issue 的开发工作</li><li><span class="author">@gyang94</span>: 感谢愿意帮忙，但表示自己没有权限分配 issue，需要 @wuchong 协助</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2988">Issue #2988</a> ArrayIndexOutOfBoundsException in partial updates after ADD COLUMN</h4>
+            <ul><li><span class="author">@wuchong</span>: 提供了代码审查链接，指出具体的实现问题</li><li><span class="author">@fresh-borzoni</span>: 感谢判断，已准备新的 PR #3000 来修复此问题</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2781">PR #2781</a> [Feature] Coordinator Server Supports coordinator epoch protect</h4>
+            <ul><li><span class="author">@wuchong</span>: 详细审查了 epoch 检查的实现逻辑，指出线程安全、分区重分配和 ZK 版本检查等问题</li><li><span class="author">@Copilot</span>: 发现递归创建 ZK 节点时可能的 NPE、字符编码不一致等多项代码质量问题</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2989">PR #2989</a> [filesystem] Support AssumeRole STS for RustFS</h4>
+            <ul><li><span class="author">@Copilot</span>: 指出 STS 客户端未关闭会导致资源泄漏、roleArn 校验和测试覆盖等问题</li><li><span class="author">@fresh-borzoni</span>: 回应部分建议超出现有代码范围，但表示会处理 STS 客户端关闭问题</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2995">PR #2995</a> [client] Support log scanner scan to arrow record batch</h4>
+            <ul><li><span class="author">@Copilot</span>: 发现压缩缓冲区的 retain 可能导致内存泄漏、Arrow 依赖 scope 问题以及每次批处理创建新分配器的性能问题</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2594">PR #2594</a> [BugFix] Fix ArrayIndexOutOfBoundsException in partial updates after ADD COLUMN</h4>
+            <ul><li><span class="author">@wuchong</span>: 指出 SchemaAlignmentContext 在热路径上无条件创建会导致性能退化，以及对齐逻辑的开销问题</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3001">#3001</a> [test]  Fix flaky RemoteLogScannerITCase.testScanFromRemoteAndProject <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/2998">#2998</a> Fix unreleased buffer in LimitScanResponse and evaluate client-side zero-copy OOM risk <span class="author">@wuchong</span> <span class="labels">priority=blocker</span></li><li><a href="https://github.com/apache/fluss/issues/2996">#2996</a> [filesystem][bug] client.fs.* config silently ignored by all filesystem plugins <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/2994">#2994</a> [test] Unstable test RemoteLogITCase.remoteLogMiscTest <span class="author">@app/github-actions</span> </li><li><a href="https://github.com/apache/fluss/issues/2993">#2993</a> [test] Unstable test Flink120ProcedureITCase.testDropKvSnapshotLeaseProcedure <span class="author">@app/github-actions</span> </li><li><a href="https://github.com/apache/fluss/issues/2992">#2992</a> [test] Unstable test RemoteLogScannerITCase.testScanFromRemoteAndProject <span class="author">@app/github-actions</span> </li><li><a href="https://github.com/apache/fluss/issues/2990">#2990</a> [docs] Add documentation for lookup.insert-if-not-exists feature <span class="author">@platinumhamburg</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3003">#3003</a> Fix buffer leak in LimitBatchScanner <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/3002">#3002</a> [test] chore: fix flaky RemoteLogScannerITCase <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/3000">#3000</a> [server][bug] Fix OOB in partial update/delete after ADD COLUMN <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/2999">#2999</a> Update version to 1.0-SNAPSHOT <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/pull/2997">#2997</a> [filesystem][bug] Fix client.fs.* config prefix not stripped before passing to… <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/2995">#2995</a> [client] Support log scanner scan to arrow record batch <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/pull/2991">#2991</a> [docs] Add Insert If Not Exists section to Lookup Joins documentation <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/2989">#2989</a> [filesystem] Support AssumeRole STS for RustFS <span class="author">@fresh-borzoni</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3001">#3001</a> [test]  Fix flaky RemoteLogScannerITCase.testScanFromRemoteAndProject <span class="author">@fresh-borzoni</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <p class="empty">暂无</p>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
