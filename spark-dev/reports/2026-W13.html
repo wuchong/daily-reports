@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spark 社区周报 | 2026-W13</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Spark 社区周报 | 2026-W13</h1>
+            <p class="date-range">2026-03-23 ~ 2026-03-29</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (0)</h2>
+            <p class="empty">本周无公告</p>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (1)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/sjmsbpdp4q6op466c4l0jb869frzth0f">SPIP: Auto CDC Support for Apache Spark</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (7)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/p96tcmg453fg31qodtxjxkb1qxxldtkf">Pinning PySpark dependencies?</a></h3>
+            <p class="meta">11 条回复 · 6 位参与者</p>
+            <p class="summary">社区讨论了是否应在 PySpark 中固定依赖版本以符合 Spark 的新发布策略。多数开发者反对直接锁定特定版本（==），认为这会破坏 Python 生态的依赖解析和用户体验。讨论最终转向折中方案，即发布测试环境的依赖快照供参考，而非强制锁定安装版本。</p>
+            <div class="key-points"><p><strong>@Cheng Pan:</strong> 支持固定依赖版本，认为这能确保环境一致性和安全性，避免宽松版本声明导致的兼容性故障。</p>
+<p><strong>@Tian Gao:</strong> 强烈反对固定版本，认为这会导致依赖冲突并破坏用户工作流，建议仅提供可选的固定版本安装方式（如 extras）。</p>
+<p><strong>@Sean Owen:</strong> 指出固定版本过于严格且不符合 Python 惯例，建议采用兼容性版本范围（~=），或通过发布环境锁定文件来提供参考。</p></div>
+            <p class="conclusion">初步达成共识，不在 PySpark 主安装包中强制锁定依赖版本，而是发布测试环境的依赖列表（如 pip freeze 输出）作为参考制品。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/j5tyvb5ox1tglw9kc3optfykn9ytk2ds">SPIP: Auto CDC support for Apache Spark</a></h3>
+            <p class="meta">8 条回复 · 4 位参与者</p>
+            <p class="summary">讨论主要围绕 Spark Auto CDC 的 SPIP 提案展开，重点探讨了 OSS 兼容性、流式 MERGE 支持及墓碑垃圾回收等技术细节。提案发起人澄清了该功能将主要依赖 MERGE 操作和 foreachBatch 机制，并回应了关于连接器要求和实现路径的疑问。</p>
+            <div class="key-points"><p><strong>@Vaquar Khan:</strong> 指出了 Databricks 私有实现与 OSS Spark 之间的架构差距，询问流式 MERGE、墓碑 GC 及序列化约束等技术阻碍的解决方案。</p>
+<p><strong>@Andreas Neumann:</strong> 确认 Auto CDC 将编译为 MERGE 操作，目标端仅需支持 MERGE，流式场景使用 foreachBatch，墓碑处理设计尚未最终确定。</p>
+<p><strong>@Mich Talebzadeh:</strong> 建议 Auto CDC 不应仅围绕 MERGE 构建，应将不可变的变更日志作为一等抽象，以支持审计和状态重建。</p></div>
+            <p class="conclusion">初步达成共识，Auto CDC 将优先基于 MERGE 支持实现，详细设计将在后续阶段完善；关于变更日志的审计功能被视为另一个相关但独立的 SPIP 范畴。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/zzv591lf97sw76jtz73dgvopvg2tonrh">Algolia search on website is broken</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">讨论主要围绕 Spark 网站 Algolia 搜索功能反复失效的问题展开，Gengliang Wang 已修复了因发布流程遗漏导致的配置问题。参与者重点探讨了如何建立监控机制以防止未来再次发生类似故障。</p>
+            <div class="key-points"><p><strong>@Nicholas Chammas:</strong> 指出这是两年内第三次出现故障，建议设置警报或 CI 测试以预防此类问题，并确认修复有效。</p>
+<p><strong>@Gengliang Wang:</strong> 确认故障原因是 Spark 4.1.1 发布后未更新爬虫配置，表示单元测试不可行，计划研究设置 Algolia 监控警报。</p></div>
+            <p class="conclusion">搜索功能已恢复，下一步行动是研究并设置 Algolia 监控警报，以便主动捕获未来的爬虫故障。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/9dwcpcnsgj98nn130lzm78wvg6q6mvhs">SPIP: Automated Integrity Validation (AIV) Gate for Apache Spark</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕是否需要为 Apache Spark 引入自动化完整性验证（AIV）门禁展开。Vaquar Khan 以 PR #54899 为例，指出即使经过资深成员的人工审查，代码仍存在结构性错误，以此证明自动化的必要性；而 Jungtaek Lim 对此表示质疑，认为该案例不具代表性，建议先在大量历史 PR 上验证工具的有效性。</p>
+            <div class="key-points"><p><strong>@vaquar khan:</strong> PR #54899 虽经 17 位资深成员审查，仍合并了导致自动化工具死循环的严重错误，证明单纯依赖人工审查不足以保证质量，支持引入 AIV。</p>
+<p><strong>@Jungtaek Lim:</strong> PR #54899 属于基础设施变更而非代码变更，不适合作为 AIV 的验证案例；建议提议者先在大量历史 PR 上验证工具价值，而非仅针对 Spark 社区推广。</p></div>
+            <p class="conclusion">双方未达成一致，Jungtaek 建议提议者先通过更大规模的历史数据分析来证明项目的通用性和价值，而非急于在社区实施。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/c0n14577qdddyzm5ycvyw2b0zph4xfd3">Extended pushdown PR</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Scott Schenkein 作为 IndexTables 维护者，提议扩展 Spark 的谓词下推机制以支持更多运算符。他已提交相关 JIRA 和 PR，但因难以找到审核人而向社区求助，希望能有人评估其设计方案。</p>
+            <div class="key-points"><p><strong>@Scott:</strong> Spark 目前缺乏谓词下推的扩展机制，导致其 IndexTables 项目不得不构建并行的下推结构。</p>
+<p><strong>@Scott:</strong> 已提交 PR (#54669) 旨在增加对相关能力的支持。</p>
+<p><strong>@Scott:</strong> 目前难以找到审核人，请求社区成员协助审核。</p></div>
+            <p class="conclusion">目前处于寻找审核人阶段，等待社区成员响应并认领审核任务。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/w8lrz1cb1744gw1prbn8ypjlzt5xzoqb">[GSoC 2026] Client-Side Metadata Caching for Spark Connect — Silas Maughan</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Silas Maughan 自我介绍并提交了针对 SPARK-55163（Spark Connect 客户端元数据缓存）的 GSoC 2026 提案。他拥有在 CERN 从事 Spark 和 Ozone 集成工作的相关经验，并已提前研究了相关技术文档。他希望能与项目导师取得联系并在截止日期前获得反馈。</p>
+            <div class="key-points"><p><strong>@Silas Maughan:</strong> 已提交针对 SPARK-55163 的 GSoC 提案，具备 CERN 的大规模 Spark 集成实战经验。</p>
+<p><strong>@Silas Maughan:</strong> 已完成技术准备（阅读 SPIP、研究 Python 客户端和 RPC 路径），请求导师反馈。</p></div>
+            <p class="conclusion">提案已提交，下一步等待导师反馈及建立联系。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/mmnn5bcbzdd89l775tt0qv5coc947n2y">Backport SPARK-53759 fix (Python 3.12+ Windows crash) to branch-4.1, 4.0, 3.5</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Antonio Blanco 提议将导致 Windows 上 Python 3.12+ 崩溃的关键 Bug (SPARK-53759) 回溯移植至分支 4.1、4.0 和 3.5。鉴于主分支的修复涉及大规模重构，作者建议采用仅添加 `flush()` 的极简补丁方案，并已准备好 branch-4.1 的修复代码供审查。</p>
+            <div class="key-points"><p><strong>@Antonio Blanco:</strong> SPARK-53759 是严重 Bug，导致 PySpark 在 Windows + Python 3.12+ 环境下因 Socket 缓冲区未刷新而崩溃。</p>
+<p><strong>@Antonio Blanco:</strong> 主分支的修复涉及 14 个文件的重构，不适合直接移植，建议使用极简补丁（在关闭前添加 flush()）。</p>
+<p><strong>@Antonio Blanco:</strong> Branch-3.5 LTS 即将结束支持，若需移植需尽快行动。</p></div>
+            <p class="conclusion">作者已准备好极简修复代码，正等待维护者确认是否值得进行回溯移植，以便提交正式 PR。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (0)</h2>
+            
+    <p>本周新建 <strong>0</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周无新建 JIRA。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Spark Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
