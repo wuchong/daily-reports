@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data+AI 全球日报 | 2026-04-07</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Data+AI 全球日报 | 2026-04-07</h1>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="top-changes">
+            <h2>🔥 今日最重要的3个变化</h2>
+            <ol><li><strong>AWS 发布 S3 Files，对象存储迈入文件系统时代</strong> — AWS 正式推出 S3 Files，将 S3 存储桶作为文件系统访问，大幅简化传统应用迁移和 AI 训练数据访问，可能重塑对象存储使用范式。</li><li><strong>中国三大云厂商 AI 算力价格集体上涨约 30%</strong> — 腾讯云、阿里云、百度智能云在 10 天内接连上调 AI 算力产品价格，反映供需失衡和供应链成本压力，预示 AI 算力进入卖方市场。</li><li><strong>AWS 中东数据中心遭无人机袭击，地缘政治风险冲击云基础设施</strong> — 伊朗战争波及 AWS 阿联酋数据中心，云服务商的地缘政治风险首次以物理攻击形式显现，企业多云和灾备策略需重新评估。</li></ol>
+            <p class="judgment"><strong>总判断：</strong>今日行业信号呈现「基础设施演进」与「地缘风险显现」双重主题。AWS S3 Files 和 MongoDB Vector Search 代表存储与数据库层面向 AI 工作负载的深度适配，而中东数据中心遇袭则敲响了云基础设施物理安全的警钟。中国 AI 算力涨价潮表明供需关系正在发生根本性转变。</p>
+        </section>
+
+        <section class="top-signals">
+            <h2>📡 重要信号</h2>
+            
+    <article class="news-item">
+        <h3>AWS 正式发布 S3 Files，对象存储可作文件系统访问</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/aws/launching-s3-files-making-s3-buckets-accessible-as-file-systems/">AWS Blog</a> | <a href="https://aws.amazon.com/about-aws/whats-new/2026/04/amazon-s3-files/">AWS What's New</a></p>
+        <p class="date">2026-04-07</p>
+        <p class="summary">AWS 宣布推出 Amazon S3 Files，这是一项新功能，可将任何 AWS 计算资源与 S3 存储桶无缝连接为文件系统。该功能消除了传统文件协议与对象存储之间的鸿沟，使传统应用无需修改即可直接使用 S3，同时为 AI/ML 训练数据访问提供更低延迟的接口。</p>
+        <div class="impact">📊 数据平台影响：S3 Files 可能改变数据湖架构设计，简化传统 ETL 流程，并加速 AI 训练数据加载。对 Snowflake、Databricks 等依赖 S3 的平台是利好，但对文件存储类产品（如 FSx）可能形成竞争。</div>
+    </article>
+    <article class="news-item">
+        <h3>AWS 中东数据中心遭无人机袭击，云基础设施首遇战火波及</h3>
+        <p class="sources">📌 <a href="https://puck.news/iran-is-targeting-americas-ai-infrastructure/">Puck News</a> | <a href="https://www.techbuzz.ai/articles/aws-data-centers-hit-by-drone-strikes-in-middle-east-war-zone">TechBuzz</a></p>
+        <p class="date">2026-04-07</p>
+        <p class="summary">伊朗战争期间，AWS 位于阿联酋的两个数据中心遭伊朗无人机袭击，这是云服务商基础设施首次在军事冲突中受到直接物理攻击。AWS 云负责人 Matt Garman 表示公司正在全天候应对可用性问题。事件暴露了云基础设施的地缘政治脆弱性。</p>
+        <div class="impact">📊 数据平台影响：企业需重新审视多云策略和跨区域灾备方案，中东地区的数据主权和基础设施安全将成为选型关键考量。可能加速边缘计算和分布式云架构投资。</div>
+    </article>
+    <article class="news-item">
+        <h3>中国三大云厂商 AI 算力价格 10 天内集体上涨约 30%</h3>
+        <p class="sources">📌 <a href="https://finance.sina.cn/stock/jdts/2026-04-07/detail-inhtsrra2169057.d.html">新浪财经</a></p>
+        <p class="date">2026-04-07</p>
+        <p class="summary">腾讯云、阿里云和百度智能云在 3 月接连上调 AI 算力产品价格，十天涨幅约 30%。同济大学教授分析称，涨价从产业链上游芯片传导至云服务，反映 AI 算力需求爆发与供应链紧张的双重压力。同期火山引擎豆包大模型日均 Token 使用量突破 120 万亿，较三个月前翻倍。</p>
+        <div class="impact">📊 数据平台影响：AI 算力成本上升将推动企业优化模型训练效率、采用更经济的推理方案，并加速国产 AI 芯片替代。数据平台需提供更精细的成本管理和资源调度能力。</div>
+    </article>
+        </section>
+
+        <section class="product-tech">
+            <h2>💻 产品与技术</h2>
+            
+    <article class="news-item">
+        <h3>ClickHouse 26.3 LTS 发布：异步插入默认开启</h3>
+        <p class="sources">📌 <a href="https://clickhouse.com/blog/clickhouse-release-26-03">ClickHouse Blog</a> | <a href="https://x.com/ClickHouseDB/status/2041561673895493761">Twitter/X</a></p>
+        <p class="date">2026-04-07</p>
+        <p class="summary">ClickHouse 发布 26.3 LTS 版本，包含 27 个新功能、40 项性能优化和 202 个 bug 修复。最显著变化是异步插入（Async Inserts）默认开启，大幅提升高并发写入场景性能。该版本还增强了 ClickHouse 函数过滤安全性。</p>
+        <div class="impact">📊 数据平台影响：异步插入默认开启降低了实时分析场景的写入延迟，使 ClickHouse 在可观测性和实时数仓场景更具竞争力，可能加速对传统 OLAP 数据库的替代。</div>
+    </article>
+    <article class="news-item">
+        <h3>MongoDB Atlas 推出 Vector Search Flat Indexes 与预测性自动扩展</h3>
+        <p class="sources">📌 <a href="https://www.mongodb.com/company/blog/product-release-announcements/improved-multitenancy-support-in-vector-search-introducing-flat-indexes">MongoDB Blog</a> | <a href="https://www.mongodb.com/company/blog/engineering/mongodb-predictive-auto-scaling-an-experiment">MongoDB Engineering</a></p>
+        <p class="date">2026-04-07</p>
+        <p class="summary">MongoDB Atlas 宣布两项重要更新：Flat Indexes for Vector Search 提供增强的多租户向量搜索支持；预测性自动扩展（Predictive Auto-Scaling）实验功能可预测负载峰值，提前调整资源。两项功能均针对 AI 应用场景优化。</p>
+        <div class="impact">📊 数据平台影响：MongoDB 在向量搜索和弹性扩展上的持续投入，使其在 AI 应用后端数据库竞争中更具优势，对 Pinecone、Weaviate 等专用向量数据库形成压力。</div>
+    </article>
+    <article class="news-item">
+        <h3>AWS 推出 Sustainability Console 碳足迹追踪服务</h3>
+        <p class="sources">📌 <a href="https://www.esgtoday.com/aws-launches-solution-enabling-users-to-track-carbon-footprint-of-cloud-usage/">ESG Today</a></p>
+        <p class="date">2026-04-07</p>
+        <p class="summary">AWS 发布 AWS Sustainability Console，使用户能够追踪云使用产生的碳足迹。该服务响应了日益增长的 ESG 合规需求，帮助企业量化云基础设施的环境影响。</p>
+        <div class="impact">📊 数据平台影响：ESG 数据管理将成为数据平台新需求，碳足迹追踪数据可能纳入企业数据治理范畴，推动可持续数据架构设计。</div>
+    </article>
+    <article class="news-item">
+        <h3>dbt 曝出 CVE-2026-39382 命令注入漏洞</h3>
+        <p class="sources">📌 <a href="https://feedly.com/cve/CVE-2026-39382">Feedly CVE</a></p>
+        <p class="date">2026-04-07</p>
+        <p class="summary">安全研究人员披露 dbt 可重用工作流中存在命令注入漏洞（CVE-2026-39382），影响 .github/workflows/open-issue-in-repo.yml 文件。该漏洞可能被利用执行任意命令。</p>
+        <div class="impact">📊 数据平台影响：数据工程团队需立即检查 dbt 工作流配置，该漏洞凸显了数据管道供应链安全的重要性，可能推动数据工具安全审计流程加强。</div>
+    </article>
+        </section>
+
+        <section class="people-views">
+            <h2>👤 人物与观点</h2>
+            
+    <article class="news-item">
+        <h3>DBOS 与 Databricks 达成技术合作，提升 Agentic AI 可靠性</h3>
+        <p class="sources">📌 <a href="https://www.prnewswire.com/news-releases/dbos-inc-announces-technology-partnership-with-databricks-to-increase-agentic-ai-reliability-and-trust-302735341.html">PR Newswire</a> | <a href="https://aithority.com/machine-learning/dbos-inc-announces-technology-partnership-with-databricks-to-increase-agentic-ai-reliability-and-trust/">AI Thority</a></p>
+        <p class="date">2026-04-07</p>
+        <p class="summary">DBOS 宣布与 Databricks 建立技术合作伙伴关系，旨在提高 Agentic AI 的可靠性和可信度。DBOS 提供的操作系统级工作流编排能力将与 Databricks 数据智能平台深度集成，解决 AI Agent 执行的可观测性和容错问题。</p>
+        <div class="impact">📊 数据平台影响：Agentic AI 可靠性成为数据平台新战场，Databricks 通过合作补强 Agent 编排能力，与 Snowflake 在 AI Agent 领域的竞争加剧。</div>
+    </article>
+    <article class="news-item">
+        <h3>Nutanix 与 MongoDB 宣布认证集成，简化企业数据库运维</h3>
+        <p class="sources">📌 <a href="https://www.moomoo.com/news/post/67989267/nutanix-database-platform-bolsters-mongodb-support-with-new-certified-integration">Globe Newswire</a> | <a href="https://www.stocktitan.net/news/NTNX/nutanix-database-platform-bolsters-mongo-db-support-with-new-ndnu4dmq113k.html">Stock Titan</a></p>
+        <p class="date">2026-04-07</p>
+        <p class="summary">Nutanix Database Service (NDB) 2.10 与 MongoDB Ops Manager 实现认证集成，于 2026 年 4 月 7 日正式可用。该集成简化了 MongoDB 在企业环境中的部署、管理和恢复，支持完整的数据库生命周期管理。</p>
+        <div class="impact">📊 数据平台影响：Nutanix 通过集成 MongoDB 扩展数据库管理能力，在超融合基础设施+数据库管理赛道与公有云数据库服务形成差异化竞争。</div>
+    </article>
+    <article class="news-item">
+        <h3>Bigeye、Coginiti 加入 Snowflake 领导的 Open Semantic Interchange 倡议</h3>
+        <p class="sources">📌 <a href="https://www.cincinnati.com/press-release/story/54807/bigeye-joins-snowflake-led-open-semantic-interchange-to-power-data-and-ai-interoperability/">Cincinnati.com</a> | <a href="https://www.freep.com/press-release/story/175650/coginiti-joins-snowflake-industry-leaders-to-advance-data-ai-interoperability-through-the-open-semantic-interchange/">Detroit Free Press</a></p>
+        <p class="date">2026-04-07</p>
+        <p class="summary">数据可观测性公司 Bigeye 和语义建模公司 Coginiti 宣布加入 Snowflake 主导的 Open Semantic Interchange 倡议，推动开放、供应商中立的语义标准，实现数据和 AI 的互操作性。该倡议旨在解决语义层碎片化问题。</p>
+        <div class="impact">📊 数据平台影响：语义层互操作性成为数据平台新焦点，Snowflake 通过联盟构建生态护城河，对抗 dbt Labs 等语义层竞争者。</div>
+    </article>
+    <article class="news-item">
+        <h3>MakeMyTrip 借助 Databricks Real-Time Mode 实现毫秒级个性化推荐</h3>
+        <p class="sources">📌 <a href="https://www.databricks.com/blog/how-makemytrip-achieved-millisecond-personalization-scale-databricks">Databricks Blog</a></p>
+        <p class="date">2026-04-07</p>
+        <p class="summary">印度在线旅游平台 MakeMyTrip 披露使用 Databricks Real-Time Mode 实现亚 50 毫秒旅行推荐，点击率提升 7%。该案例展示了实时数据平台在电商个性化场景的价值。</p>
+        <div class="impact">📊 数据平台影响：实时分析能力成为数据平台差异化关键，Databricks Real-Time Mode 展示了在毫秒级响应场景的技术优势。</div>
+    </article>
+        </section>
+
+        <section class="analyst-insights">
+            <h2>📊 分析师洞察</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="watchlist">
+            <h2>👀 观察列表</h2>
+            
+    <article class="watchlist-item">
+        <h3>Snowflake 集体诉讼进展</h3>
+        <span class="status">持续跟踪</span>
+        <p class="reason">多家律所宣布对 Snowflake 发起证券欺诈集体诉讼，涉及投资损失索赔，需关注对公司股价和业务的长期影响。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>法院是否批准集体诉讼资格、主要原告任命结果</p>
+    </article>
+    <article class="watchlist-item">
+        <h3>AWS 中东基础设施恢复进度</h3>
+        <span class="status">待观察</span>
+        <p class="reason">AWS 中东数据中心遭无人机袭击是云基础设施首次在军事冲突中受损，恢复进度和客户影响程度将影响多云策略制定。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>AWS 官方服务恢复公告、客户迁移方案披露</p>
+    </article>
+    <article class="watchlist-item">
+        <h3>中国 AI 算力价格走势</h3>
+        <span class="status">持续跟踪</span>
+        <p class="reason">三大云厂商集体涨价 30% 可能是 AI 算力进入卖方市场的信号，后续是否继续涨价、海外云厂商是否跟进值得关注。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>Q2 财报中 AI 算力收入和利润率变化</p>
+    </article>
+        </section>
+
+        <section class="stock-analysis">
+            <h2>📈 股票分析</h2>
+            <p class="disclaimer">⚠️ 以下内容仅供参考，不构成任何投资建议。投资有风险，入市需谨慎。</p>
+            
+    <article class="stock-item">
+        <div class="stock-header">
+            <span class="ticker">SNOW</span>
+            <span class="company">Snowflake</span>
+            <span class="signal signal-neutral">⚪ 中性</span>
+        </div>
+        <p class="stock-summary">今日消息面喜忧参半：正面包括获得 ISO 22301/27001 认证增强企业客户信任、Open Semantic Interchange 倡议获得新成员支持；负面为多家律所发起证券欺诈集体诉讼。诉讼消息可能短期压制股价，但技术进展和生态扩张是长期利好。</p>
+        <div class="stock-details">
+            <div class="catalysts">
+                <strong>🚀 催化剂</strong>
+                <ul><li>ISO 认证获得企业合规认可</li><li>语义层生态持续扩张</li><li>Open Semantic Interchange 倡议推进</li></ul>
+            </div>
+            <div class="risks">
+                <strong>⚠️ 风险</strong>
+                <ul><li>证券集体诉讼不确定性</li><li>Databricks 竞争压力加大</li><li>AI Agent 领域布局落后</li></ul>
+            </div>
+        </div>
+    </article>
+    <article class="stock-item">
+        <div class="stock-header">
+            <span class="ticker">MDB</span>
+            <span class="company">MongoDB</span>
+            <span class="signal signal-bullish">🟢 看多</span>
+        </div>
+        <p class="stock-summary">MongoDB 今日发布多项重要产品更新：Vector Search Flat Indexes 增强多租户 AI 应用支持、预测性自动扩展提升成本效率、与 Nutanix 认证集成拓展企业渠道。产品创新和生态合作双轮驱动，在 AI 数据库竞争中保持领先。</p>
+        <div class="stock-details">
+            <div class="catalysts">
+                <strong>🚀 催化剂</strong>
+                <ul><li>Vector Search 功能持续增强</li><li>Nutanix 企业渠道合作</li><li>预测性自动扩展降低 TCO</li></ul>
+            </div>
+            <div class="risks">
+                <strong>⚠️ 风险</strong>
+                <ul><li>向量数据库专业竞争者崛起</li><li>云厂商原生数据库竞争</li></ul>
+            </div>
+        </div>
+    </article>
+    <article class="stock-item">
+        <div class="stock-header">
+            <span class="ticker">AMZN</span>
+            <span class="company">Amazon (AWS)</span>
+            <span class="signal signal-neutral">⚪ 中性</span>
+        </div>
+        <p class="stock-summary">AWS 今日发布 S3 Files 重大产品更新，可能改变对象存储使用范式；但中东数据中心遭无人机袭击暴露地缘政治风险。S3 Files 是技术利好，但基础设施安全风险可能影响企业对单一云厂商的依赖度。</p>
+        <div class="stock-details">
+            <div class="catalysts">
+                <strong>🚀 催化剂</strong>
+                <ul><li>S3 Files 简化传统应用迁移</li><li>Sustainability Console 满足 ESG 需求</li><li>Uber 扩展 AWS 基础设施合作</li></ul>
+            </div>
+            <div class="risks">
+                <strong>⚠️ 风险</strong>
+                <ul><li>中东数据中心物理安全风险</li><li>地缘政治影响云基础设施可靠性</li><li>云市场竞争加剧</li></ul>
+            </div>
+        </div>
+    </article>
+        </section>
+
+        <footer>
+            <p>Generated by Data+AI Daily Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
