@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafka 社区周报 | 2026-W14</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Kafka 社区周报 | 2026-W14</h1>
+            <p class="date-range">2026-03-30 ~ 2026-04-05</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (1)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/2ps7zxkzhll3qlgn1okkmm8ot1myzwwr">New Committer: Kirk True</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (8)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/mwm3jr83n0o1qm0bclt3by4fqn9wnhpb">KIP-1283: Clarify KafkaStreams cleanUp semantics to preserve process metadata and state directory lock file</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/c43hmr3cd5f2scobkhgbln0sl8vvjwnf">KIP-1200: Deprecate ClientQuotaCallback#updateClusterMetadata</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/vo7jod8m3m948tn6w57bbmo4tvd2xbm6">KIP-1241: Reduce tiered storage redundancy with delayed upload (Topic-level feature)</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/v493xnm25z8f1vhy0n4755x9jsx74cds">KIP-1291: Extended I/O Metrics Collection</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/lr48dc3gj3ns08nv2ycfm074vd44v43v">KIP-1154: Extending support for Microsecond/Nanosecond Precision for Kafka Connect</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/fd6vd7gwnf8q2qxb7rqz7bhq2cqs40yb">KIP-1162: Redesign ClientQuotaCallback#updateClusterMetadata</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/kj4loxmb0156kxwh599lw6yo9scy0j8k">KIP-1136: Make ConsumerGroupMetadata an interface</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/v23vj4plkg2gpw5wh8gj9t8wp08gwgx4">KIP-1232: Deprecate broker.id config</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/w128mbtcj51gz4b9qs1jkl83yd1qx1zz">KIP-1282: Prevent data loss during partition expansion for dynamically added partitions</a></h3>
+            <p class="meta">12 条回复 · 4 位参与者</p>
+            <p class="summary">讨论围绕 KIP-1282 展开，旨在引入 `by_start_time` 策略以防止分区扩容时的数据丢失。参与者深入探讨了组创建时间的 API 暴露方式、异常定义、协议版本控制及默认值设置等细节。最终作者采纳建议完善了提案，审阅者对更新后的方案表示认可。</p>
+            <div class="key-points"><p><strong>@Chia-Ping Tsai:</strong> 建议通过 DescribeGroupsResponse 暴露组创建时间，并主张通过协议版本升级来区分“Broker 版本过低”和“无创建时间”的错误，以提供更明确的错误信息。</p>
+<p><strong>@Andrew Schofield:</strong> 指出需明确对经典组和 Streams 组的支持情况，提议将新策略设为默认值，并建议优化异常命名和 API 文档描述。</p>
+<p><strong>@黃竣陽:</strong> 采纳了协议版本升级和异常命名的建议，明确了经典组升级场景下的异常处理逻辑，并确认新策略将作为可选功能先在 4.4.0 中引入，暂不更改默认值。</p></div>
+            <p class="conclusion">作者已根据反馈更新 KIP，解决了 API 设计、协议兼容性及异常处理等问题。审阅者对当前方案表示满意，建议若无其他异议可启动投票流程，争取合入 4.4.0 版本。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/x1qn1k5qvcpv3k2brk209zp4w6ndbgjt">KIP-1298: Per-Resource-Type Authorization for LIST_CONFIG_RESOURCES</a></h3>
+            <p class="meta">11 条回复 · 5 位参与者</p>
+            <p class="summary">讨论主要围绕 KIP-1298 修复 LIST_CONFIG_RESOURCES 授权不一致的问题展开，提议将权限要求从 DESCRIBE_CONFIGS 改为 DESCRIBE 以与其他 API 对齐。参与者还讨论了迁移过程中可能出现的静默失败问题，并决定通过增加服务端调试日志和客户端警告信息来缓解。此外，邮件列表中还解决了 KIP 编号冲突的行政问题。</p>
+            <div class="key-points"><p><strong>@Kuan-Po Tseng:</strong> 提议提升 API 版本并使用 DESCRIBE 权限替代 DESCRIBE_CONFIGS，以解决当前授权过严导致结果不完整的问题。</p>
+<p><strong>@Chia-Ping Tsai:</strong> 担心权限变更后旧客户端可能收到空响应且难以调试，建议在特定场景下记录警告信息。</p>
+<p><strong>@Kuan-Po Tseng:</strong> 接受建议，计划在服务端和客户端工具中添加相应的日志和警告提示，帮助用户识别 ACL 配置问题。</p></div>
+            <p class="conclusion">作者将更新 KIP 文档以包含权限变更细节及新增的日志警告机制；KIP 编号冲突已由 Vaquar Khan 修改其提案编号而解决。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/kc87jkgyvf9x7nwmgwrhx6fs6w0tqymj">KIP-1312: Support unregistering controllers</a></h3>
+            <p class="meta">7 条回复 · 3 位参与者</p>
+            <p class="summary">讨论围绕 KIP-1312 展开，旨在支持注销控制器以解决陈旧的控制器注册阻碍功能升级的问题。Kevin Wu 解释了观察者控制器和动态重新配置可能导致陈旧注册的场景，并提出了相应的 CLI 命令方案。Alyssa Huang 就动态重配置的影响及意外注销的处理逻辑进行了提问，最终确认了该 KIP 对于完善集群缩减操作流程的必要性。</p>
+            <div class="key-points"><p><strong>@Kevin Wu:</strong> 陈旧的控制器注册（如已停用的观察者控制器）会阻碍功能升级，提议通过新增 CLI 命令或参数来彻底移除这些注册信息。</p>
+<p><strong>@Alyssa Huang:</strong> 确认了在没有此 KIP 的情况下，动态重配置提供的集群缩减用户体验是不完整的，并询问了意外注销的定义。</p>
+<p><strong>@Kevin Wu:</strong> 澄清“意外注销”是指操作员误操作（如输入错误的 ID），此时控制器应尝试重新注册以恢复服务。</p></div>
+            <p class="conclusion">讨论主要澄清了 KIP 的应用场景和异常处理机制（如防止意外注销），未出现反对意见，作者将根据反馈完善文档措辞。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/8nmybx73f0tmjlb56sdophvoy4yomlx2">KIP-1306: RebalanceHandler: Consumer-Aware Rebalance Callback</a></h3>
+            <p class="meta">4 条回复 · 2 位参与者</p>
+            <p class="summary">KIP-1306 旨在解决 Rebalance 回调中无法安全访问 Consumer 的问题，提议引入受限视图以防止危险操作。讨论重点从创建新接口转向扩展现有的 ConsumerRebalanceListener，并探讨了将订阅与监听器设置解耦的方案。目前双方正在讨论具体的实现机制，包括使用 setter 方法或引入新的拦截器配置模式。</p>
+            <div class="key-points"><p><strong>@Aditya Kousik:</strong> 提议引入 RebalanceHandler 和 RebalanceConsumerView，仅暴露安全操作以防止在回调中误用 poll() 或 close()。</p>
+<p><strong>@Aditya Kousik:</strong> 决定转向扩展现有的 ConsumerRebalanceListener 接口，以降低框架集成难度和内部实现负担。</p>
+<p><strong>@Andrew Schofield:</strong> 建议将订阅操作与监听器设置解耦，废弃 subscribe 中的监听器参数，改用独立的 setConsumerRebalanceListener 方法。</p></div>
+            <p class="conclusion">初步确定将扩展现有接口而非创建全新接口，并倾向于解耦订阅与监听器设置；下一步需解决新旧接口共存策略及命名问题（如是否引入 Interceptor 模式）。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/odpnx9ttbws0fjhfh07vspb5mklv2zq4">KIP-1308: Extend RecordHeader API for Common Value Types</a></h3>
+            <p class="meta">4 条回复 · 3 位参与者</p>
+            <p class="summary">本讨论围绕 KIP-1308 展开，旨在通过添加静态工厂方法和类型化访问器简化 RecordHeader 中常用值类型的处理。讨论中指出 RecordHeader 属于内部 API，提议者采纳建议，转而计划在 Headers 接口中增加重载方法以支持常用类型。目前 KIP 已根据反馈进行了更新。</p>
+            <div class="key-points"><p><strong>@Aditya Kousik:</strong> 提议添加静态工厂方法（如 ofString, ofInt）和类型化访问器，以消除用户手动进行字节编码解码的负担。</p>
+<p><strong>@Mickael Maison:</strong> 指出 RecordHeader 并非公共 API，建议改为在 Headers 接口中添加接受常用类型的 add() 重载方法。</p>
+<p><strong>@Aditya Kousik:</strong> 认同不应打破先例将 RecordHeader 设为公共 API，决定采纳建议并更新 KIP 以包含 Headers 接口的辅助方法。</p></div>
+            <p class="conclusion">提议者已根据社区反馈调整了方案，决定通过扩展 Headers 接口而非暴露 RecordHeader 来实现功能，KIP 文档已相应更新。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/90hh9hczd10v2bljll1wtlgmcsbcgojm">KIP-1262: Enable auto-formatting directories</a></h3>
+            <p class="meta">4 条回复 · 4 位参与者</p>
+            <p class="summary">讨论围绕 KIP-1262 启用目录自动格式化展开，重点探讨了动态仲裁部署中保留格式化要求的必要性及自动格式化的具体实现细节。Jun Rao 要求明确记录格式化仍需执行的场景，Alyssa Huang 则对文档措辞和 Broker 行为提出了改进建议。Kevin Wu 确认了相关设计逻辑，并同意完善文档说明。</p>
+            <div class="key-points"><p><strong>@Jun Rao:</strong> 指出动态部署的特殊性（需写入 VotersRecord），建议在 KIP 中明确记录在哪些情况下仍需进行格式化。</p>
+<p><strong>@Kevin Wu:</strong> 解释保留动态集群格式化要求是为了防止配置错误，并确认 Broker 会阻塞直到获取 clusterId，因此不会发送空 ID 请求。</p>
+<p><strong>@Alyssa Huang:</strong> 建议将“在启动 Kafka 前格式化”的表述改为“手动格式化节点”以消除歧义，并请求补充自动格式化的配置与启动流程摘要。</p></div>
+            <p class="conclusion">初步结论是保留当前设计。下一步行动是 Kevin Wu 将在 KIP 中增加明确章节说明何时仍需格式化，修正相关措辞，并在实施过程中补充相关文档说明。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/fj3w4motgzn9ymkhl4qo8vgxfpdp2gj8">[PR] KAFKA-20049: Publish Hugo base image under Apache namespace [kafka-site]</a></h3>
+            <p class="meta">4 条回复 · 2 位参与者</p>
+            <p class="summary">该 PR 旨在将 Hugo 基础镜像迁移至 Apache 命名空间，讨论重点在于 Makefile 中遗留的 `PROD_IMAGE` 变量。作者指出该变量指向个人 GCP 注册表且未用于 CI 部署，审查者确认项目不应依赖私有制品。</p>
+            <div class="key-points"><p><strong>@Owen-CH-Leung:</strong> `PROD_IMAGE` 指向个人 GCP 注册表，仅用于本地测试目标，未参与 CI 部署流程，建议清理或替换。</p>
+<p><strong>@mimaison:</strong> 项目不应依赖或包含私有制品，若该配置未被使用应直接移除，若需要则应替换为 Apache 官方拥有的资源。</p></div>
+            <p class="conclusion">决定移除或替换依赖私有注册表的 `PROD_IMAGE` 及相关构建目标，以确保符合 Apache 规范。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/knts3zvcmq9qrbl47j7ocxrgnydhw2sj">KIP-1266 Bounding The Number Of RemoteLogMetadata Messages via Compacted RemoteLogMetadata Topic</a></h3>
+            <p class="meta">3 条回复 · 2 位参与者</p>
+            <p class="summary">讨论主要围绕 KIP-1266 中 RemoteLogMetadata Topic 的压缩机制展开，核心争议在于若后续状态事件（如 COPY_SEGMENT_FINISHED）因键相同而覆盖了初始的 COPY_SEGMENT_STARTED 事件，是否会导致元数据丢失从而影响缓存重建。经过探讨，双方确认新的消息格式将包含充足的元数据字段，使得后续事件可独立处理，从而解决了对数据丢失的担忧。</p>
+            <div class="key-points"><p><strong>@Kamal Chandraprakash:</strong> 担心使用相同的键会导致压缩机制覆盖 COPY_SEGMENT_STARTED 事件，进而导致 Broker 重启后因缺少 startOffset 等字段而无法正确重建 RemoteLogMetadataCache。</p>
+<p><strong>@Kamal Chandraprakash:</strong> 建议修改键格式，为 COPY_SEGMENT_STARTED 和其他状态事件设置不同的键标识，以防止关键初始信息被后续事件压缩清理。</p>
+<p><strong>@Lijun Tong:</strong> 指出新的键格式消息（如 DELETE_SEGMENT_STARTED）将包含 endOffset、topicID 等充足元数据，即使初始事件被清理，也能独立支持删除重试等操作，避免产生孤立段。</p></div>
+            <p class="conclusion">初步结论是新的键格式消息携带了充足的上下文信息，使得系统在 COPY_SEGMENT_STARTED 被清理后仍能正确处理后续操作（如删除），因此不需要引入复杂的分离键机制，但可能需要更新 Broker 逻辑以适配新格式。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/z4o5093zqxmc18nzb74vyhvb1hb399v4">KIP-1304 Add consumer metric about paused partitions</a></h3>
+            <p class="meta">3 条回复 · 4 位参与者</p>
+            <p class="summary">本次讨论围绕 KIP-1304 展开，旨在为 Kafka 消费者添加关于暂停分区的监控指标。参与者主要针对指标命名规范、时间单位粒度、指标所属分组以及特定场景下的返回值语义提出了详细建议。</p>
+            <div class="key-points"><p><strong>@Chia-Ping Tsai:</strong> 建议统一指标命名风格，并质疑使用 DEBUG 级别的必要性，指出即便跳过 record() 调用仍会创建指标对象。</p>
+<p><strong>@Aditya Kousik:</strong> 建议命名统一使用复数形式和 paused-* 前缀（如 paused-partitions），时间单位建议用秒而非毫秒，且应归入 consumer-coordinator-metrics 组；同时建议增加速率指标以监控抖动情况。</p>
+<p><strong>@Sahil Devgon:</strong> 建议未暂停分区的时间指标返回 -1 而非 0 以避免歧义，提议使用 duration 命名，并强调需在文档中明确分区重分配时的重置行为。</p></div>
+            <p class="conclusion">讨论目前处于收集反馈阶段，尚未达成最终共识。作者需根据反馈调整命名规范、指标分组位置及返回值逻辑，并补充相关文档说明。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/fyx99lb8on5r8bnroyo1zbs3nqs0q0nc">KIP-1279: Cluster Mirroring</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">讨论主要围绕 KIP-1279 集群镜像功能的设计完善，重点涉及安全控制、错误码定义及 RPC 接口更新。Federico Valeri 根据反馈修订了提案，Andrew Schofield 则深入探讨了 ACL 权限模型与资源定义的优化。双方已就防止权限升级的安全逻辑达成共识，部分架构细节尚需进一步考量。</p>
+            <div class="key-points"><p><strong>@Federico Valeri:</strong> 更新了设计文档，新增了 ClusterMirror 资源类型和 DeleteMirror RPC，并采纳了关于双重资源权限检查的建议以防止权限升级。</p>
+<p><strong>@Andrew Schofield:</strong> 详细梳理了各 RPC 的权限要求，建议涉及双重资源的操作（如向镜像添加主题）需同时校验权限，并提议增加 MIRROR_AUTHORIZATION_FAILED 错误码。</p>
+<p><strong>@Andrew Schofield:</strong> 指出将 mirror.name 作为主题配置略显笨拙，建议将主题列表作为镜像资源的属性，并规范镜像命名规则以优化设计结构。</p></div>
+            <p class="conclusion">双方已就安全控制表和错误码方案达成一致，Federico 表示需要更多时间来评估 Andrew 提出的关于重构镜像资源模型（AS24）的建议。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (51)</h2>
+            
+    <p>本周新建 <strong>51</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周 JIRA 主要集中在将日志与配置相关组件重构迁移至 storage 模块，并持续优化 Kafka Streams 的状态存储与稳定性。此外，还涉及多项配置管理优化、Connect REST API 改进以及 Log4j2 等依赖的升级工作。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Kafka Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
