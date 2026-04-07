@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-04-06</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-04-06</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 5 新 Issues</div>
+            <div class="stat">✅ 2 关闭</div>
+            <div class="stat">✨ 5 新 PRs</div>
+            <div class="stat">🎉 4 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/2999">PR #2999</a> 更新版本至 1.0-SNAPSHOT</li><li>🐛 <a href="https://github.com/apache/fluss/pull/2987">PR #2987</a> 修复 Spark 批量读取 PK 表时主键索引对齐问题</li><li>🐛 <a href="https://github.com/apache/fluss/issues/3011">Issue #3011</a> 报告 replicasOnOffline 死锁问题并提出修复</li><li>✨ <a href="https://github.com/apache/fluss/pull/3007">PR #3007</a> 实现 LogScanner 自适应获取速率控制以降低分区表开销</li><li>📚 <a href="https://github.com/apache/fluss/pull/2730">PR #2730</a> Fluss Rust/Python/C++ 客户端发布博客草稿已合并</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <ul class="critical-list"><li>⚠️ <a href="https://github.com/apache/fluss/issues/3016">Issue #3016</a> 不稳定测试 TableManagerITCase.testSchemaEvolution 需要关注</li><li>⚠️ <a href="https://github.com/apache/fluss/issues/2992">Issue #2992</a> RemoteLogScannerITCase 测试不稳定，可能与零拷贝相关</li></ul>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2730">Issue #2730</a> [blog] Fluss rust / python / c++ client release blog draft</h4>
+            <ul><li><span class="author">@polyzos</span>: 建议今天合并，询问是否与 #2934 分不同天发布</li><li><span class="author">@leekeiabstraction</span>: 建议先发布此博客，下周再发布另一篇以维持关注度</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2992">Issue #2992</a> [test] Unstable test RemoteLogScannerITCase.testScanFromRemoteAndProject</h4>
+            <ul><li><span class="author">@wuchong</span>: </li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2956">Issue #2956</a> [spark] Add union read for lake-enabled log tables</h4>
+            <ul><li><span class="author">@Yohahaha</span>: 提出代码改进建议并询问测试跳过原因</li><li><span class="author">@fresh-borzoni</span>: 感谢审查意见，确认依赖问题已解决</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2998">Issue #2998</a> Fix unreleased buffer in LimitScanResponse and evaluate client-side zero-copy OOM risk</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 关联到 PR #3008 的零拷贝修复</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3002">Issue #3002</a> [test] chore: fix flaky RemoteLogScannerITCase</h4>
+            <ul><li><span class="author">@wuchong</span>: 报告本地测试失败，提供详细错误日志</li><li><span class="author">@fresh-borzoni</span>: 指出问题与 PR #3008 零拷贝相关，buffer 被覆盖导致数据损坏</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2987">PR #2987</a> [spark][bugfix] Use pk index for comparator align with SortMergeReader</h4>
+            <ul><li><span class="author">@YannByron</span>: 指出需要输入数据的行类型而非仅主键行类型</li><li><span class="author">@Yohahaha</span>: 解释 PK 列不位于开头时 UT 失败的原因，只需 PK 列即可</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2995">PR #2995</a> [client] Support log scanner scan to arrow record batch</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 解释保留 Arrow 依赖的设计原因及 retain() 的必要性</li><li><span class="author">@Copilot</span>: 建议使用 Arrow vector transfer 优化性能，建议 CompletedFetch 保持 package-private</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2972">PR #2972</a> [flink] Implement SupportsWatermarkPushDown for FlinkTableSource</h4>
+            <ul><li><span class="author">@loserwang1024</span>: 担心此 PR 可能破坏之前作业的状态恢复兼容性</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3016">#3016</a> [test] Unstable test TableManagerITCase.testSchemaEvolution <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/issues/3011">#3011</a> [fluss-server] Fix replicasOnOffline deadlock in addFetcherForReplicas <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/3009">#3009</a> [server] Handle corrupt log data after unclean shutdown to prevent  TabletServer startup failure <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/3006">#3006</a> [client] Implement adaptive fetch rate control for LogScanner to reduce overhead on partitioned tables <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/issues/3005">#3005</a> [client][server] Support dynamically modifying table.auto-increment.cache-size via ALTER TABLE <span class="author">@matrixsparse</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3015">#3015</a> [helm] Fix Zookeeper client config path <span class="author">@morazow</span> </li><li><a href="https://github.com/apache/fluss/pull/3013">#3013</a> [lake/lance] Implement Lance LakeSource read path with pushdown and enhanced split semantics <span class="author">@fhan688</span> </li><li><a href="https://github.com/apache/fluss/pull/3012">#3012</a> [fluss-server] Fix replicasOnOffline deadlock with enhanced diagnostics <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/3008">#3008</a> [client] Fix corruption after zero-copy lazy parse ByteBuf <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/3007">#3007</a> [client] Implement adaptive fetch rate control for LogScanner <span class="author">@swuferhong</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3009">#3009</a> [server] Handle corrupt log data after unclean shutdown to prevent  TabletServer startup failure <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/2986">#2986</a> [spark][bug] Batch read PK table failed when use random column as primary key <span class="author">@Yohahaha</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3014">#3014</a> [blog] Fix rust client release blog: save avatars locally and add truncate <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/pull/2999">#2999</a> Update version to 1.0-SNAPSHOT <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/pull/2987">#2987</a> [spark][bugfix] Use pk index for comparator align with SortMergeReader <span class="author">@Yohahaha</span> </li><li><a href="https://github.com/apache/fluss/pull/2730">#2730</a> [blog] Fluss rust / python / c++ client release blog draft <span class="author">@leekeiabstraction</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
