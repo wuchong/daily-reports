@@ -45,12 +45,30 @@ blogs:
   - name: AWS Big Data Blog
     url: https://aws.amazon.com/blogs/big-data/feed/
     type: rss
-  - name: Google Cloud Blog
-    url: https://cloud.google.com/feeds/blog.xml
-    type: rss
   - name: Snowflake Blog
     url: https://www.snowflake.com/blog/feed/
     type: rss
   - name: Confluent Blog
     url: https://www.confluent.io/blog/feed/
+    type: rss
+  - name: Redpanda Blog
+    url: https://www.redpanda.com/blog/rss.xml
+    type: rss
+  - name: S2 Blog
+    url: https://s2.dev/blog/feed.xml
+    type: rss
+  - name: DeltaStream Blog
+    url: https://www.deltastream.io/feed/
+    type: rss
+  - name: ClickHouse Blog
+    url: https://clickhouse.com/rss.xml
+    type: rss
+  - name: StarTree Blog
+    url: https://startree.ai/feed/
+    type: rss
+  - name: Starburst Blog
+    url: https://www.starburst.io/blog/
+    type: web
+  - name: TinyBird
+    url: https://www.tinybird.co/blog/rss.xml
     type: rss

@@ -251,7 +251,19 @@ def main():
     
     all_results = []
     
-    # Search using Serper.dev API
+    # Fetch RSS feeds first (higher priority - blog content is richer)
+    blogs = sources.get('blogs', [])
+    print(f"Fetching {len(blogs)} RSS feeds...")
+    with ThreadPoolExecutor(max_workers=5) as executor:
+        futures = {executor.submit(fetch_rss, blog): blog.get('name', 'unknown') for blog in blogs}
+        for future in as_completed(futures):
+            try:
+                results = future.result()
+                all_results.extend(results)
+            except Exception as e:
+                print(f"Error in RSS future: {e}")
+    
+    # Search using Serper.dev API (lower priority - may duplicate blog entries)
     if api_key:
         queries = []
         for tier in ['tier_1', 'tier_2', 'tier_3', 'conditional']:
@@ -268,18 +280,6 @@ def main():
                     print(f"Error in search future: {e}")
     else:
         print("Warning: SERPER_API_KEY not set, skipping search")
-    
-    # Fetch RSS feeds
-    blogs = sources.get('blogs', [])
-    print(f"Fetching {len(blogs)} RSS feeds...")
-    with ThreadPoolExecutor(max_workers=5) as executor:
-        futures = {executor.submit(fetch_rss, blog): blog.get('name', 'unknown') for blog in blogs}
-        for future in as_completed(futures):
-            try:
-                results = future.result()
-                all_results.extend(results)
-            except Exception as e:
-                print(f"Error in RSS future: {e}")
     
     # Deduplicate
     unique_results = deduplicate(all_results)
