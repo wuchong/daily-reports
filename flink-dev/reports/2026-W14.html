@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flink 社区周报 | 2026-W14</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Flink 社区周报 | 2026-W14</h1>
+            <p class="date-range">2026-03-30 ~ 2026-04-05</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (2)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/vnno3kshmp4to1ngr7hqjrymsynj7134">Apache Auron (Incubating) Flink kafka source is now available</a></li>
+<li><a href="https://lists.apache.org/thread/20m65jqlmscm3c89nhyf29ls739xzvz9">New Apache Flink Committer - Wenjie Xie</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (0)</h2>
+            <p class="empty">本周无投票</p>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/3r9t9fgjj3zz3qlh7gwq1wk102pyzy18">HTTP connector</a></h3>
+            <p class="meta">5 条回复 · 4 位参与者</p>
+            <p class="summary">讨论主要围绕 Flink HTTP connector 的发布策略，核心争议在于是否需要为了兼容 Flink 1.20 而将当前基于 Java 11 的代码移植回 Java 8。David Radley 提出了三种发布方案，Pedro Mázala 主动提出愿意承担 Java 8 移植工作，但 David Anderson 质疑维护双版本的必要性。Ferenc Csaky 建议优先发布基于 Flink 2.2 的版本，后续再根据需求决定是否进行 Java 8 移植。</p>
+            <div class="key-points"><p><strong>@David Radley:</strong> 提出了三种发布方案，倾向于务实方案（Java 11）或仅支持 Flink 2.2，认为需社区投票决定是否值得进行 Java 8 移植。</p>
+<p><strong>@Pedro Mázala:</strong> 主动提出负责 Java 8 移植，认为单一版本更易维护，但被建议暂缓工作直到确定社区需求。</p>
+<p><strong>@Ferenc Csaky:</strong> 建议不应为了发布而发布，目前最直接的方案是基于 Flink 2.2 发布（选项 3），未来如有需求再考虑 Java 8 移植。</p></div>
+            <p class="conclusion">暂无最终定论，但倾向于先发布基于 Flink 2.2 的版本，David Radley 将继续推进 Flink 2.2 版本的工作，同时等待社区确认是否有足够需求支持 Flink 1.20 的 Java 8 移植。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/nm3nsym9mxhdfn0rm10lf8hytm4jy6lx">FLIP-572: Introduce Flink-Kafka Transactions Management Tool</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">本次讨论围绕 FLIP-572 展开，旨在引入 Flink-Kafka 事务管理工具以解决 Flink 进程意外终止时的遗留事务问题。讨论澄清了 Flink 内置关闭逻辑的局限性（无法处理崩溃且无法安全提交），以及为何 Kafka 端超时无法替代该工具的功能。此外，参与者还探讨了工具的实现方式，指出了使用 CALL procedures 面临的技术挑战。</p>
+            <div class="key-points"><p><strong>@Hongshun Wang:</strong> 引入了 `POOLING` 策略列出待处理事务，并考虑使用 Flink CALL procedures 替代 DataStream JAR 方式，但受限于 Kafka catalog 支持难题。</p>
+<p><strong>@Aleksandr Savonin:</strong> 强调 Flink 内置关闭逻辑无法处理 JVM 崩溃场景，且只能中止不能提交，CLI 工具是恢复数据的唯一途径；Kafka 协调器无法代替 Flink 做决策。</p>
+<p><strong>@Shekhar Rajak:</strong> 提出疑问，认为 Kafka 端的 2PC 超时配置（如 session timeout）应能解决锁释放和持久性问题。</p></div>
+            <p class="conclusion">讨论确认了引入独立事务管理工具的必要性，以填补 Flink 崩溃导致无法决策事务状态的空白；关于工具的具体实现路径（如是否支持 Catalog）仍需进一步探索。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/tynmjjb4k0c7owwvm8s2p6mnh6nxmoz6">FLIP-571: Support Dynamically Updating Checkpoint Configuration at Runtime via REST API</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">Jiangang Liu 发起 FLIP-571 讨论，提议通过 REST API 支持运行时动态更新检查点配置（间隔、超时），以解决长周期作业配置不可变带来的运维挑战。讨论中主要关注了大规模作业下的 JM 内存压力风险，并建议扩展支持更多配置参数的动态调整。</p>
+            <div class="key-points"><p><strong>@Jiangang Liu:</strong> 提议新增 REST API 端点以动态更新检查点配置，支持超时立即生效和配置持久化，解决级联故障和资源浪费问题。</p>
+<p><strong>@熊饶饶:</strong> 关注高并发采样下 JobManager 的内存压力，询问是否会导致大规模作业 OOM。</p>
+<p><strong>@zhao_abc_123:</strong> 建议扩展支持 max-concurrent-checkpoints、min-pause 等更多参数的动态调整。</p></div>
+            <p class="conclusion">目前处于提案讨论和收集反馈阶段，尚未形成最终结论。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/mtqwc9h994nbwrkhh913t6z2j2mbp0ko">FLIP-570: Support Runtime Data Sampling for Operators with WebUI Visualization</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">该讨论围绕 FLIP-570 展开，旨在为 Flink 引入原生运行时数据采样功能以便在 WebUI 中可视化中间数据。发起人详细介绍了该方案的低开销设计与安全机制，社区成员则关注大规模作业下的 JM 内存压力问题。作者随后通过具体的内存限制估算与缓存策略回应了相关疑虑。</p>
+            <div class="key-points"><p><strong>@Jiangang Liu:</strong> 提议通过 REST API 按需采样，在 WebUI 中展示算子数据，具有低开销、无需重启作业的特点。</p>
+<p><strong>@熊饶饶:</strong> 担心高并发采样场景下 JM 内存压力过大，可能导致大规模作业发生 OOM。</p>
+<p><strong>@Jiangang Liu:</strong> 设计了多层容量限制（如并发数、记录数上限）和 Guava Cache 过期策略，确保内存占用可控（最坏约 250MB），并支持 JM 故障转移时的状态重置。</p></div>
+            <p class="conclusion">作者已详细解答了关于内存安全的疑虑，并提出若社区需要可进一步增加缓存上限配置项，目前等待社区的进一步反馈。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/1tzrc9p8zhlbn3orrb2bvh1z9l9ql4nm">[FLINK-31942] Looking for review — Conditional Writes in DynamoDB connector</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Tomasz Kaczmarek 提交了一个 PR，旨在为 DynamoDB 连接器添加条件写入支持，涵盖 PutItem、UpdateItem 和 DeleteItem 操作。他请求社区成员协助审核代码，并希望被指派负责该 JIRA 工单。</p>
+            <div class="key-points"><p><strong>@Tomasz Kaczmarek:</strong> 已提交代码实现 DynamoDB 连接器的条件写入功能，请求社区审核并申请认领该 JIRA 工单。</p></div>
+            <p class="conclusion">目前处于等待代码审核和 JIRA 工单指派阶段。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/ny0fmfjp266qg3dn2v5hdv9lz22rnr5l">FLIP-314: Behavioral Expectation of JobStatusChangedListener Instantiation in Application Mode</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论聚焦于 FLIP-314 中 JobStatusChangedListener 在 Application Mode 下被实例化两次的行为是否符合预期。作者指出这导致 OpenLineage 集成因上下文不共享而出现问题，并询问监听器实现是否应设计为无状态。</p>
+            <div class="key-points"><p><strong>@Swapna Marru:</strong> 在 Application Mode 下，JobStatusChangedListener 被 EmbeddedExecutor 和 DefaultExecutionGraphBuilder 分别实例化，产生了两个独立实例。</p>
+<p><strong>@Swapna Marru:</strong> OpenLineage 集成假设存在单一共享实例以传递上下文，当前的双实例行为导致 Instance B 缺少 JobId 上下文。</p>
+<p><strong>@Swapna Marru:</strong> 询问监听器实现是否应设计为无状态，以及是否需自行处理事件乱序（如转换事件早于创建事件）的情况。</p></div>
+            <p class="conclusion">目前尚未得出结论，等待社区对双重实例化意图及监听器设计规范的回复。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/54qv9tg7o1kwlg6f2v1r88pkyk0cynb3">FLIP-XXX: Support Window Stagger in FlinkSQL and introduce KEY_BASED deterministic stagger</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Zihao Chen 发起关于 FLIP-XXX 的讨论，提议在 Flink SQL TVF 滚动窗口中支持 WindowStagger，并引入名为 KEY_BASED 的确定性错峰策略。该提案旨在解决当前 WindowStagger 不支持 SQL 以及现有策略在故障恢复后因非确定性导致结果不一致的问题，从而在降低突发负载的同时保证数据一致性。</p>
+            <div class="key-points"><p><strong>@zihao chen:</strong> 当前 WindowStagger 不支持 Flink SQL TVF，且现有策略（如 RANDOM）具有非确定性，可能导致恢复后窗口分配不一致。</p>
+<p><strong>@zihao chen:</strong> 提议新增 KEY_BASED 策略，通过 Key 计算偏移量以确保恢复前后窗口分配的确定性。</p>
+<p><strong>@zihao chen:</strong> 建议扩展 TUMBLE TVF 语法以支持错峰参数配置。</p></div>
+            <p class="conclusion">讨论已启动，作者正在征求社区对提案设计文档的反馈。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/9xhyovtrs9jk1h0jghj31v2l8mwvshm6">来自王珂的邮件</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">提供的邮件内容为空，仅显示发件人为王珂，无法获取讨论的具体议题和进展。</p>
+            
+            <p class="conclusion">无法生成结论，请补充完整的邮件讨论内容。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/76v0tbjvtnkc1n29v1oytfshdh4h98qm">取消订阅</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">用户张洋向 Flink 社区邮件列表发送了取消订阅的请求。该邮件内容简短，仅表达了退订意愿，未涉及技术讨论。</p>
+            <div class="key-points"><p><strong>@张洋:</strong> 请求取消订阅邮件列表。</p></div>
+            <p class="conclusion">邮件内容仅为行政性质的退订请求，未见后续处理结果或技术结论。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/k7tkkfjth5m9o42mkyw8o98xlqrwnfqt">[SUMMARY] Flink 2.3 release sync (Apr 7)</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">本邮件同步了 Flink 2.3 的发布进度，宣布功能冻结将于 4 月 14 日开始，后续同步会议改为每周举行。目前 master 分支 CI 构建仍存在间歇性失败，且基准测试显示性能倒退，社区已指派专人跟进解决。</p>
+            <div class="key-points"><p><strong>@David Anderson:</strong> 宣布功能冻结日期，指出 CI 不稳定和性能倒退问题，并将跟进发布说明缺失情况。</p>
+<p><strong>@Hao Li:</strong> 负责调查 master 分支 CI 持续失败的根本原因。</p>
+<p><strong>@Yuepeng Pan:</strong> 负责合并待处理的不稳定测试 PR，并清理本次发布的 JIRA 标签。</p></div>
+            <p class="conclusion">已明确分配行动项：Hao Li 调查 CI 故障，Yuepeng Pan 处理测试 PR 和 JIRA 清理，David Anderson 跟进发布说明和性能倒退问题。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (26)</h2>
+            
+    <p>本周新建 <strong>26</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周 JIRA 主要集中在连接器与 CDC 领域的修复与优化，涉及 Oracle、Postgres、MongoDB 等多种连接器的快照、写入及兼容性问题。同时，社区致力于提升系统稳定性与功能扩展，包括修复多个不稳定测试、完善 Flink 2.x 的限流支持以及增强自动扩缩容组件的可扩展性。此外，还包含 SQL 逻辑修正、指标显示修复以及文档更新等常规改进。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Flink Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
