@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-04-09</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-04-09</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 8 新 Issues</div>
+            <div class="stat">✅ 6 关闭</div>
+            <div class="stat">✨ 11 新 PRs</div>
+            <div class="stat">🎉 6 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/2781">PR #2781</a> Coordinator Server 支持协调器 Epoch 保护，修复领导者选举竞态条件，提升 HA 稳定性</li><li>🎉 <a href="https://github.com/apache/fluss/pull/2710">PR #2710</a> 修复 TableChangeWatcher 因 CuratorCache 异步 getData 竞态导致丢失 CreateTableEvent 的问题</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3034">PR #3034</a> Helm Chart 支持 extraVolumes、extraVolumeMounts、initContainers 配置</li><li>🎉 <a href="https://github.com/apache/fluss/pull/2934">PR #2934</a> 添加 Fluss Rust SDK 介绍博客文章</li><li>✨ <a href="https://github.com/apache/fluss/pull/3042">PR #3042</a> Spark 支持为 lake 启用的主键表进行批处理 union read</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <ul class="critical-list"><li>⚠️ <a href="https://github.com/apache/fluss/issues/1018">Issue #1018</a> TableChangeWatcherTest.testTableChanges 不稳定，标记为 priority=critical（已关闭）</li></ul>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2781">Issue #2781</a> [Feature] Coordinator Server Supports coordinator epoch protect</h4>
+            <ul><li><span class="author">@zcoo</span>: 添加了2个测试用例以提升 Coordinator epoch 传播到 TabletServer/Zookeeper 的测试覆盖率</li><li><span class="author">@wuchong</span>: 提交了修复领导者选举竞态条件的 commit，重构 coordinator epoch 为不可变，涉及多个组件的重构</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3040">Issue #3040</a> [test] Unstable test TableChangeWatcherTest.testTableChanges</h4>
+            <ul><li><span class="author">@wuchong</span>: 指出该问题已通过 PR #2710 修复</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/1767">Issue #1767</a> Can the Fluss cluster change the datalake configuration from the cluster level to the table level?</h4>
+            <ul><li><span class="author">@coolderli</span>: 表示这是一个重要功能，公司有不同场景使用不同的 lake table formats，期望通过 fluss 实现单表支持</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3045">Issue #3045</a> [common] Deep copy BinaryString in createDeepFieldGetter to fix use-after-free</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 担心复制 STRING 可能会导致性能下降，建议参考 #3008 的方案</li><li><span class="author">@YannByron</span>: 认为 #3008 的 copyStrings flag 方案更精确，将关闭此 PR 采用该方案</li><li><span class="author">@fresh-borzoni</span>: 指出 #3008 可能是更好的解决方法</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3047">Issue #3047</a> [server] Manage users for sasl/plain authentication via cluster properties.</h4>
+            <ul><li><span class="author">@Copilot</span>: 多次审查指出 API 兼容性破坏、JAAS 配置注入风险、类型转换风险、测试状态泄漏等问题</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3058">Issue #3058</a> chore: fix docs for RustFS AssumeRole</h4>
+            <ul><li><span class="author">@Copilot</span>: 建议统一使用 s3.path-style-access 拼写，并使用有效的 AWS 角色 ARN 示例</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2710">PR #2710</a> [server] Fix TableChangeWatcher missing CreateTableEvent due to CuratorCache async getData race</h4>
+            <ul><li><span class="author">@wuchong</span>: 审查并通过合并</li><li><span class="author">@swuferhong</span>: 表示已处理审查意见</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3034">PR #3034</a> [helm] Add extraVolumes, extraVolumeMounts, initContainers</h4>
+            <ul><li><span class="author">@morazow</span>: 建议使用 Maven Central 链接，并确认 $FLUSS_VERSION$ 是否会在文档站点渲染</li><li><span class="author">@affo</span>: 表示已处理审查意见</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2972">PR #2972</a> [flink] Implement SupportsWatermarkPushDown for FlinkTableSource</h4>
+            <ul><li><span class="author">@LiebingYu</span>: 分析该问题在大多数 Flink 版本不存在，仅在 2.3 及以后版本可能有影响</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3030">PR #3030</a> [server] Implement JBOD Phase 1 Local Multi-Directory Support</h4>
+            <ul><li><span class="author">@Copilot</span>: 审查指出远程日志索引查找返回 -1 的潜在问题、缓存大小语义变化、日志级别建议等</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2740">PR #2740</a> [spark] support map type</h4>
+            <ul><li><span class="author">@YannByron</span>: 指出 CI 失败由已知的 #2992 flaky UT 引起</li><li><span class="author">@beryllw</span>: 建议可能不需要调用 InternalRowUtils.copyArray，并提供了代码链接参考</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3055">#3055</a> [flink] Fix NPE then flink reading in batch mode and "scan.startup.mode" is not "FULL". <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/3052">#3052</a> [client] LogFetchCollector uses immutable fetchOffset for staleness  check, causing cross-poll CompletedFetch to be drained <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/3049">#3049</a> Introduce `netty.server.max-request-size` to limit the request size <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/issues/3048">#3048</a> [lake][iceberg] Iceberg does not support union read for primary key table <span class="author">@Yohahaha</span> </li><li><a href="https://github.com/apache/fluss/issues/3046">#3046</a> Support add users for SASL/Plain authentication <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/issues/3040">#3040</a> [test] Unstable test TableChangeWatcherTest.testTableChanges <span class="author">@app/github-actions</span> </li><li><a href="https://github.com/apache/fluss/issues/3039">#3039</a> [spark] Support delete records for pk table <span class="author">@Yohahaha</span> </li><li><a href="https://github.com/apache/fluss/issues/3038">#3038</a> [docs] Fix website broken anchors <span class="author">@wuchong</span> <span class="labels">good first issue</span></li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3058">#3058</a> chore: fix docs for RustFS AssumeRole <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/3057">#3057</a> [spark] Fix column projection on log/upsert read path <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/3056">#3056</a> [fix] fix: add lakeSource check in batch mode <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/pull/3054">#3054</a> [common] Optimize getNullCounts() to return int[] instead of Long[] <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/3053">#3053</a> Fix stale fetch detection across poll boundaries <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/3050">#3050</a> [server][netty] Introduce netty.server.max-request-size to limit the request size <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/pull/3047">#3047</a> [server] Manage users for sasl/plain authentication via cluster properties. <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/pull/3043">#3043</a> [client] release pending fetch semaphore on discarding <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/pull/3042">#3042</a> [spark] Support batch union read for lake-enabled primary key tables <span class="author">@Yohahaha</span> </li><li><a href="https://github.com/apache/fluss/pull/3041">#3041</a> [spark] support scala 2.13 <span class="author">@YannByron</span> </li><li><a href="https://github.com/apache/fluss/pull/3037">#3037</a> [docs] Add Insert If Not Exists section to Lookup Joins documentation <span class="author">@platinumhamburg</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3040">#3040</a> [test] Unstable test TableChangeWatcherTest.testTableChanges <span class="author">@app/github-actions</span> </li><li><a href="https://github.com/apache/fluss/issues/3033">#3033</a> [helm] Enable the user to set volumes and initContainers for tablet and coordinator <span class="author">@affo</span> </li><li><a href="https://github.com/apache/fluss/issues/2778">#2778</a> [Feature] Support Epoch and ZkEpoch protect for Coordinator leader change <span class="author">@zcoo</span> </li><li><a href="https://github.com/apache/fluss/issues/1152">#1152</a> Perfect the acquisition of coordinatorEpoch and prevent offline coordinator send requests again <span class="author">@swuferhong</span> <span class="labels">component=server</span></li><li><a href="https://github.com/apache/fluss/issues/1018">#1018</a> TableChangeWatcherTest.testTableChanges is not stable <span class="author">@wuchong</span> <span class="labels">good first issue, component=test, priority=critical</span></li><li><a href="https://github.com/apache/fluss/issues/188">#188</a> [Feature] CoordinatorServer Supports High-Available <span class="author">@wuchong</span> <span class="labels">component=server</span></li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3044">#3044</a> [helm] Fix wrong resource name in coordinator sts <span class="author">@morazow</span> </li><li><a href="https://github.com/apache/fluss/pull/3034">#3034</a> [helm] Add extraVolumes, extraVolumeMounts, initContainers <span class="author">@affo</span> </li><li><a href="https://github.com/apache/fluss/pull/3027">#3027</a> [client] Catch the exception for list offsets api. <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/pull/2934">#2934</a> [Blog] Fluss Rust SDK introduction blog <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/2781">#2781</a> [Feature] Coordinator Server Supports coordinator epoch protect <span class="author">@zcoo</span> </li><li><a href="https://github.com/apache/fluss/pull/2710">#2710</a> [server] Fix TableChangeWatcher missing CreateTableEvent due to CuratorCache async getData race <span class="author">@swuferhong</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
