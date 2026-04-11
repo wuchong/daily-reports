@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-04-10</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-04-10</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 2 新 Issues</div>
+            <div class="stat">✅ 3 关闭</div>
+            <div class="stat">✨ 5 新 PRs</div>
+            <div class="stat">🎉 2 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/2900">PR #2900</a> Java API 支持复杂数据类型 (NestedRow/ROW)，包含嵌套行转换器的完整实现</li><li>🎉 <a href="https://github.com/apache/fluss/pull/2728">PR #2728</a> 优化内存管理，批量读取完成后立即释放 VectorSchemaRoot 缓冲区</li><li>🐛 <a href="https://github.com/apache/fluss/issues/1707">Issue #1707</a> 已关闭：Iceberg 批处理模式主键表支持联合读取</li><li>🐛 <a href="https://github.com/apache/fluss/issues/2258">Issue #2258</a> 已关闭：Iceberg 支持分层映射类型</li><li>✨ <a href="https://github.com/apache/fluss/pull/3057">PR #3057</a> 修复 Spark 读取路径上的列投影问题</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2007">Issue #2007</a> Add missing authentication for RPC calls</h4>
+            <ul><li><span class="author">@LiebingYu</span>: 建议将 RPC 分为 External 和 Internal 两类，并参考 FlussAuthorizationITCase 编写测试，同时指出 RPC 列表可能已过时</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2900">Issue #2900</a> [fluss-client] Support Complex Data Types on the Java API (NestedRow/ROW)</h4>
+            <ul><li><span class="author">@XuQianJin-Stars</span>: 感谢详细审查，同意重构 PojoArrayToFlussArray 预编译转换器，处理 Map 泛型类型提取，并将测试移至 FlussTypedClientITCase</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2974">Issue #2974</a> [test] Unstable test RebalanceManagerITCase.testRebalanceWithRemoteLog</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: CI 测试失败：testRebalanceWithRemoteLog 用例出现 AssertionFailedError</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2982">Issue #2982</a> [test] Unstable test CommitRemoteLogManifestITCase.testDeleteOutOfSyncReplicaLogAfterCommit</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: CI 测试失败：testDeleteOutOfSyncReplicaLogAfterCommit 用例出现 AssertionError</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2992">Issue #2992</a> [test] Unstable test RemoteLogScannerITCase.testScanFromRemoteAndProject</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: CI 测试失败：testScanFromRemoteAndProject 用例出现 AssertionFailedError</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2995">Issue #2995</a> [client] Support log scanner scan to arrow record batch</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 待办事项：为 fetch offset 添加 slice record batch 支持</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3041">Issue #3041</a> [spark] support scala 2.13</h4>
+            <ul><li><span class="author">@beryllw</span>: LGTM，感谢贡献！已 cc wuchong 审核</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3042">Issue #3042</a> [spark] Support batch union read for lake-enabled primary key tables</h4>
+            <ul><li><span class="author">@Yohahaha</span>: CI 因已知问题 #2992 失败，请求 @YannByron 帮助审核此 PR</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3045">Issue #3045</a> [common] Deep copy BinaryString in createDeepFieldGetter to fix use-after-free</h4>
+            <ul><li><span class="author">@luoyuxia</span>: STRING 似乎不需要复制，担心复制会影响性能</li><li><span class="author">@fresh-borzoni</span>: 建议采用 #3008 的 copyStrings 方案，更精确地处理 Arrow 和 CHAR 类型</li><li><span class="author">@YannByron</span>: 感谢审查，#3008 对 STRING 复制有更详细解释，同意关闭此 PR 采用更优方案</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3048">Issue #3048</a> [lake][iceberg] Iceberg does not support union read for primary key table</h4>
+            <ul><li><span class="author">@MehulBatra</span>: 当前架构对主键表启用联合读取会导致繁重的 merge-sort join，正通过 Deletion vectors 优化设计</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3057">Issue #3057</a> [spark] Fix column projection on log/upsert read path</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 请求 @luoyuxia @YannByron @Yohahaha 帮助审核</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3058">Issue #3058</a> chore: fix docs for RustFS AssumeRole</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 请求 @luoyuxia @leekeiabstraction 帮助审核，已添加文档链接到 #2989</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2732">PR #2732</a> [common] A custom rounding policy that reduces Arrow's chunk size fm 16MB to 4MB which same as netty arena.</h4>
+            <ul><li><span class="author">@wuchong</span>: 建议检查 RecordAccumulator 和 KvManager 是否也需要更新默认 RootAllocator，并重构为共享静态方法</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2740">PR #2740</a> [spark] support map type</h4>
+            <ul><li><span class="author">@beryllw</span>: 建议检查是否需要调用 InternalRowUtils.copyArray，可能可以避免复制操作</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2802">PR #2802</a> [spark] refine the format when desc table (#2675)</h4>
+            <ul><li><span class="author">@Akash073-hub</span>: 感谢反馈，将添加测试用例验证修复，稍后更新 PR</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2803">PR #2803</a> [client] Netty prefer heap memory</h4>
+            <ul><li><span class="author">@wuchong</span>: 配置项 NETTY_CLIENT_ALLOCATOR_HEAP_BUFFER_FIRST 未被使用，建议从 Configuration 获取 prefer heap 选项而非硬编码</li><li><span class="author">@Copilot</span>: 多处问题：setCumulator 方法不公开需用子类包装；API 签名变更需保留旧方法兼容；缺少 HeapPreferringCumulator 单元测试；删除 DefaultCompletedFetchBufferLifecycleTest 降低覆盖率</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3026">PR #3026</a> [client] Replace Netty PooledByteBufAllocator with bump-pointer ChunkedAllocationManager for Arrow memory allocation.</h4>
+            <ul><li><span class="author">@Copilot</span>: 多处问题：ChunkedFactory.close() 未被调用导致内存泄漏；需要添加 ChunkedAllocationManager 单元测试；parseLimitScanResponse 中 LogRecordReadContext 未关闭；建议将 ChunkedAllocationManager 移至 arrow.memory 包</li><li><span class="author">@wuchong</span>: 建议将类移至 org.apache.fluss.row.arrow.memory 包，添加单元测试，并修复 UNSAFE.allocateMemory(0) 可能导致的内存泄漏问题</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3032">PR #3032</a> [flink] Add Flink filter pushdown integration and documentation</h4>
+            <ul><li><span class="author">@wuchong</span>: 多处审查意见：建议将 FlinkTableSource 构造函数参数改为 TableConfig；需要在 ALTER TABLE 中重新验证 statistics.columns；建议将验证逻辑移至 validateTableDescriptor；测试用例需要修复数据重复问题</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3047">PR #3047</a> [server] Manage users for sasl/plain authentication via cluster properties.</h4>
+            <ul><li><span class="author">@Copilot</span>: 多处问题：公共静态方法签名变更是破坏性 API 变更；JAAS 配置未对用户名密码进行验证和转义；SUBTRACT 操作对带空格项处理不当；NettyServer 强制转换可能导致 ClassCastException；security.sasl.users 存储明文密码应标记为敏感配置</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3057">PR #3057</a> [spark] Fix column projection on log/upsert read path</h4>
+            <ul><li><span class="author">@Yohahaha</span>: 建议将公共方法移至 FlussPartitionReader 类中以提高代码复用性</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3058">PR #3058</a> chore: fix docs for RustFS AssumeRole</h4>
+            <ul><li><span class="author">@Copilot</span>: 文档使用 s3.path.style.access 但其他文档使用 s3.path-style-access，建议统一拼写；示例 ARN arn:aws:iam::0:role/... 不是有效的 AWS ARN 格式，应使用占位符或真实的 12 位账户 ID</li><li><span class="author">@fresh-borzoni</span>: 已处理 Copilot 的审查意见</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3055">#3055</a> [flink] Fix NPE then flink reading in batch mode and "scan.startup.mode" is not "FULL". <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/3052">#3052</a> [client] LogFetchCollector uses immutable fetchOffset for staleness  check, causing cross-poll CompletedFetch to be drained <span class="author">@platinumhamburg</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3058">#3058</a> chore: fix docs for RustFS AssumeRole <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/3057">#3057</a> [spark] Fix column projection on log/upsert read path <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/3056">#3056</a> [fix] fix: add lakeSource check in batch mode <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/pull/3054">#3054</a> [common] Optimize getNullCounts() to return int[] instead of Long[] <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/3053">#3053</a> Fix stale fetch detection across poll boundaries <span class="author">@platinumhamburg</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/2726">#2726</a> Clear VectorSchemaRoot to release buffer as soon as possible after a batch read finined. <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/issues/2258">#2258</a> Support tier map type for iceberg <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/issues/1707">#1707</a> Iceberg support union read for primary key table in batch mode <span class="author">@beryllw</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/2900">#2900</a> [fluss-client] Support Complex Data Types on the Java API (NestedRow/ROW) <span class="author">@XuQianJin-Stars</span> </li><li><a href="https://github.com/apache/fluss/pull/2728">#2728</a> [client] Clear VectorSchemaRoot to release buffer as soon as possible after a batch read finished. <span class="author">@loserwang1024</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
