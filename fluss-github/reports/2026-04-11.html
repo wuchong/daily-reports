@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-04-11</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-04-11</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 0 新 Issues</div>
+            <div class="stat">✅ 6 关闭</div>
+            <div class="stat">✨ 0 新 PRs</div>
+            <div class="stat">🎉 5 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/2900">PR #2900</a> 支持Java API复杂数据类型（NestedRow/ROW），增强客户端类型系统</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3032">PR #3032</a> 添加Flink过滤器下推集成与完整文档</li><li>🐛 <a href="https://github.com/apache/fluss/pull/3053">PR #3053</a> 修复跨poll边界的过期fetch检测问题</li><li>🚀 <a href="https://github.com/apache/fluss/pull/3054">PR #3054</a> 优化getNullCounts()返回int[]替代Long[]，提升性能</li><li>🎉 <a href="https://github.com/apache/fluss/pull/2728">PR #2728</a> 批量读取后及时释放VectorSchemaRoot buffer</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2900">Issue #2900</a> [fluss-client] Support Complex Data Types on the Java API (NestedRow/ROW)</h4>
+            <ul><li><span class="author">@XuQianJin-Stars</span>: 感谢详细评审，将重构PojoArrayToFlussArray预编译转换器、修复类型不安全问题和调整测试位置</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2992">Issue #2992</a> [test] Unstable test RemoteLogScannerITCase.testScanFromRemoteAndProject</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: 报告RemoteLogScannerITCase测试失败，出现AssertionFailedError</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3048">Issue #3048</a> [lake][iceberg] Iceberg does not support union read for primary key table</h4>
+            <ul><li><span class="author">@MehulBatra</span>: 当前架构下主键表union读会触发重型merge-sort join，正通过Deletion vectors优化设计</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3054">Issue #3054</a> [common] Optimize getNullCounts() to return int[] instead of Long[]</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: 感谢修复编译问题，代码已合并</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3032">PR #3032</a> [flink] Add Flink filter pushdown integration and documentation</h4>
+            <ul><li><span class="author">@wuchong</span>: 建议添加验证检查拒绝无效logRecordBatchFilter配置、重构统计列获取逻辑、修复测试数据重复写入问题</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3026">PR #3026</a> [client] Replace Netty PooledByteBufAllocator with ChunkedAllocationManager for Arrow memory allocation</h4>
+            <ul><li><span class="author">@Copilot</span>: 指出ChunkedFactory未关闭导致内存泄漏、需要对齐大小跟踪、添加输入验证和单元测试</li><li><span class="author">@wuchong</span>: 建议移动类到row.arrow.memory包、修复空buffer处理、添加单元测试和JavaDoc改进</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2803">PR #2803</a> [client] Netty prefer heap memory</h4>
+            <ul><li><span class="author">@wuchong</span>: 指出配置项未实际使用、建议从Configuration获取preferHeap而非硬编码、需添加单元测试</li><li><span class="author">@Copilot</span>: 指出API破坏性变更、建议保留旧工厂方法、LengthFieldBasedFrameDecoder子类化方案和注释更新</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3053">PR #3053</a> Fix stale fetch detection across poll boundaries</h4>
+            <ul><li><span class="author">@Copilot</span>: 建议日志同时输出fetchOffset和nextFetchOffset以避免误导，修正测试注释中的bucket引用</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3057">PR #3057</a> [spark] Fix column projection on log/upsert read path</h4>
+            <ul><li><span class="author">@Yohahaha</span>: 建议将公共函数移动到FlussPartitionReader类中</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <p class="empty">暂无</p>
+            <h3>Pull Requests</h3>
+            <p class="empty">暂无</p>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3052">#3052</a> [client] LogFetchCollector uses immutable fetchOffset for staleness  check, causing cross-poll CompletedFetch to be drained <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/3031">#3031</a> [flink] Add Flink filter pushdown integration and documentation <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/3021">#3021</a> Optimize DefaultLogRecordBatchStatistics.getNullCounts() to return  int[] instead of Long[] <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/2726">#2726</a> Clear VectorSchemaRoot to release buffer as soon as possible after a batch read finined. <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/issues/2258">#2258</a> Support tier map type for iceberg <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/issues/1707">#1707</a> Iceberg support union read for primary key table in batch mode <span class="author">@beryllw</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3054">#3054</a> [common] Optimize getNullCounts() to return int[] instead of Long[] <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/3053">#3053</a> Fix stale fetch detection across poll boundaries <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/3032">#3032</a> [flink] Add Flink filter pushdown integration and documentation <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/2900">#2900</a> [fluss-client] Support Complex Data Types on the Java API (NestedRow/ROW) <span class="author">@XuQianJin-Stars</span> </li><li><a href="https://github.com/apache/fluss/pull/2728">#2728</a> [client] Clear VectorSchemaRoot to release buffer as soon as possible after a batch read finished. <span class="author">@loserwang1024</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
