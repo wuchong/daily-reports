@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-04-12</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-04-12</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 5 新 Issues</div>
+            <div class="stat">✅ 6 关闭</div>
+            <div class="stat">✨ 2 新 PRs</div>
+            <div class="stat">🎉 8 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/3054">PR #3054</a> 优化 getNullCounts() 返回 int[] 替代 Long[]，提升性能</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3032">PR #3032</a> 添加 Flink filter pushdown 集成和文档支持</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3053">PR #3053</a> 修复跨 poll 边界的过期 fetch 检测问题</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3050">PR #3050</a> 引入 netty.server.max-request-size 配置限制请求大小</li><li>✨ <a href="https://github.com/apache/fluss/pull/3067">PR #3067</a> 支持 S3 委派的默认 AWS 凭证链，解决 IRSA/IAM 角色使用问题</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <ul class="critical-list"><li>⚠️ <a href="https://github.com/apache/fluss/issues/3063">Issue #3063</a> 不稳定测试 RebalanceManagerITCase.testBuildClusterModel</li><li>⚠️ <a href="https://github.com/apache/fluss/issues/2992">Issue #2992</a> 不稳定测试 RemoteLogScannerITCase.testScanFromRemoteAndProject</li></ul>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2669">Issue #2669</a> [docs] Add Real-Time User Profile quickstart tutorial</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: 指出 Java Faker 的 numberBetween 参数问题，生成的值范围与预期不符</li><li><span class="author">@Prajwal-banakar</span>: 感谢评论，已修复问题并请求再次审阅</li><li><span class="author">@polyzos</span>: 建议 rebase 到 master 分支以修复文档构建失败问题</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3022">Issue #3022</a> [Blog] realtime profiles blog post</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: 建议统一使用 flink-roaringbitmap 仓库作为未来发布的标准基线</li><li><span class="author">@polytos</span>: 说明当前工作量较大，等 Fluss 直接引入功能后再统一标准</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2836">Issue #2836</a> [FLUSS-2686] Add COS filesystem support</h4>
+            <ul><li><span class="author">@XuQianJin-Stars</span>: 已更新 PR，请求审阅者帮忙 review</li><li><span class="author">@leekeiabstraction</span>: 指出配置项名称不一致，并询问 region 配置缺失问题</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3026">Issue #3026</a> [client] Replace Netty PooledByteBufAllocator with bump-pointer ChunkedAllocationManager for Arrow memory allocation.</h4>
+            <ul><li><span class="author">@loserwang1024</span>: 解释选择当前方案的原因：避免 OOM 同时减少内存分配开销</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3067">Issue #3067</a> [filesystem] Support default AWS credential chain for S3 delegation</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 请求审阅者关注这个针对 IRSA 支持的修复方案</li><li><span class="author">@affo</span>: 感谢贡献，将在明天早上进行完整审阅</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3053">PR #3053</a> Fix stale fetch detection across poll boundaries</h4>
+            <ul><li><span class="author">@Copilot</span>: 建议警告日志记录两个 offset 值避免诊断时误导</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2836">PR #2836</a> [FLUSS-2686] Add COS filesystem support</h4>
+            <ul><li><span class="author">@leekeiabstraction</span>: 指出 fs.cosn.endpoint 与 PR 描述不一致，询问正确的配置名称</li><li><span class="author">@leekeiabstraction</span>: 询问为何不在此 PR 中实现 STS 生成 token 功能</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3042">PR #3042</a> [spark] Support batch union read for lake-enabled primary key tables</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 指出 scanner 在构造函数中订阅 log 会导致 PartitionNotExistException</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3068">#3068</a> [client] Add validation for client.scanner.log.max-poll-records and client.connect-timeout config options <span class="author">@Prajwal-banakar</span> </li><li><a href="https://github.com/apache/fluss/issues/3066">#3066</a> [filesystem] S3 credential delegation requires static keys, blocking IRSA/IAM role usage <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/3064">#3064</a> [Feature] Support secondary index on `user_id` / (`user_id`, `order_date`) for detail tables used by Flink SQL <span class="author">@c8679724</span> </li><li><a href="https://github.com/apache/fluss/issues/3063">#3063</a> [test] Unstable test RebalanceManagerITCase.testBuildClusterModel <span class="author">@app/github-actions</span> </li><li><a href="https://github.com/apache/fluss/issues/3061">#3061</a> [flink] CI compilation failure in FlinkTableSourceFilterPushDownTest after #3054 <span class="author">@platinumhamburg</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3067">#3067</a> [filesystem] Support default AWS credential chain for S3 delegation <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/3059">#3059</a> [metrics] Fix pendingRecords metric to return actual row count for primary key tables when lake tiering hasn't started <span class="author">@beryllw</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3061">#3061</a> [flink] CI compilation failure in FlinkTableSourceFilterPushDownTest after #3054 <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/3052">#3052</a> [client] LogFetchCollector uses immutable fetchOffset for staleness  check, causing cross-poll CompletedFetch to be drained <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/3049">#3049</a> Introduce `netty.server.max-request-size` to limit the request size <span class="author">@loserwang1024</span> <span class="labels">version: 0.9.1</span></li><li><a href="https://github.com/apache/fluss/issues/3031">#3031</a> [flink] Add Flink filter pushdown integration and documentation <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/3021">#3021</a> Optimize DefaultLogRecordBatchStatistics.getNullCounts() to return  int[] instead of Long[] <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/2729">#2729</a> Use default chunk size as 4 MB than than 16Mb in arrow's rolling policy. <span class="author">@loserwang1024</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3065">#3065</a> [release-0.9] chore: rustfs assume role fixes and docusaurus fix <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/3060">#3060</a> chore: fix broken main with Long[] -> int[] issue <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/3058">#3058</a> chore: fix docs for RustFS AssumeRole <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/3054">#3054</a> [common] Optimize getNullCounts() to return int[] instead of Long[] <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/3053">#3053</a> Fix stale fetch detection across poll boundaries <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/3050">#3050</a> [server][netty] Introduce netty.server.max-request-size to limit the request size <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/pull/3032">#3032</a> [flink] Add Flink filter pushdown integration and documentation <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/2732">#2732</a> [common] A custom rounding policy that reduces Arrow's chunk size fm 16MB to 4MB which same as netty arena. <span class="author">@loserwang1024</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
