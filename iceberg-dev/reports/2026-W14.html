@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iceberg 社区周报 | 2026-W14</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Iceberg 社区周报 | 2026-W14</h1>
+            <p class="date-range">2026-03-30 ~ 2026-04-05</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (1)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/f5qm6m3fppvxhp9w81mb76zyp2bshvy8">Iceberg Community Meetup Europe - May Berlin</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (2)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/ssots0scjgom4446ltwwx65stcp2f8p2">Spec: Add 404 response for config endpoint</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/68yo1fblf88bqkhvqy1wsyo9o1cn0ly6">[REST-SPEC] Add list and load function endpoints</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (7)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/30shrt4qxr4fgv9cqnndfq879xz738ck">Adding Basic Authentication to the OpenAPI Specification for REST Catalog</a></h3>
+            <p class="meta">4 条回复 · 3 位参与者</p>
+            <p class="summary">Roryqi 提议在 REST Catalog 的 OpenAPI 规范中添加基本认证支持，旨在与现有实现保持一致并降低使用门槛。Alexandre Dutra 和 Steve Loughran 对此提出异议，认为基本认证安全性较弱，作为全局方案可能带来歧义或安全风险。讨论核心在于是否应将这种非强制性但存在隐患的认证方式标准化。</p>
+            <div class="key-points"><p><strong>@roryqi:</strong> 建议将基本认证作为可选的安全方案加入规范，以反映现有实现并降低使用门槛。</p>
+<p><strong>@Alexandre Dutra:</strong> 担忧将其设为全局方案会要求所有端点支持，建议仅在特定端点使用或明确标注为可选，并询问具体使用场景。</p>
+<p><strong>@Steve Loughran:</strong> 强烈反对引入基本认证，指出其存在严重安全缺陷（如无法防御中间人攻击），主张应尽量减少认证机制数量以保证互操作性。</p></div>
+            <p class="conclusion">尚未达成共识。社区主要关注其安全隐患和适用范围，建议作者提供具体的使用场景，若最终决定支持，需明确标注为可选并附带安全警告。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/2pyxpr5zv8b3fdxvj1mxbf5nj61q6qoq">write.parquet.page-version table property</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">讨论主要围绕是否需要为新增的 `write.parquet.page-version` 表属性编写专门的设计文档。Harrison 提议添加该属性以配置 Parquet DataPage 版本，Maximilian 等人认为这是标准选项且遵循现有模式，无需专门文档。Ryan 建议将此类属性添加到实现说明中以推动跨实现的标准化。</p>
+            <div class="key-points"><p><strong>@Harrison Crosse:</strong> 提议添加 `write.parquet.page-version` 属性，并询问作为新的规范级属性是否需要改进提案。</p>
+<p><strong>@Maximilian Michels:</strong> 认为这是标准 Parquet 选项，无需专门的设计文档。</p>
+<p><strong>@Ryan Blue:</strong> 建议将此类属性添加到实现说明中，而不是绑定到特定的 Java API，以推动标准化。</p></div>
+            <p class="conclusion">社区同意添加该属性且无需专门的设计文档，建议通过实现说明来记录并推动标准化。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/ymnmhmhhnx1kwrn4s1gg7gcnmhd4mnkw">Dedicated sync for Iceberg Index Support</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">本次讨论旨在推进 Iceberg 索引支持的设计工作，核心议题包括索引的所有权归属、写入责任划分以及规范定义的详略程度。Péter Váry 和 Steven Wu 分别提出了会议议程建议和具体的标识符与元数据设计方案，计划在 4 月 13 日的会议中深入探讨。</p>
+            <div class="key-points"><p><strong>@Péter Váry:</strong> 建议针对主索引类型采用轻量级规范，并主张仅由索引维护进程负责索引更新，而非写入者。</p>
+<p><strong>@Steven Wu:</strong> 建议使用通用的 CatalogObjectIdentifier 以保持一致性，并提议在表元数据中增加 indexes 数组字段仅存储标识符列表。</p></div>
+            <p class="conclusion">将在 4 月 13 日的会议中重点讨论索引所有权、规范范围以及索引标识符与元数据结构等议题。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/y06yf924bo49kcy1xd71gf2ob0rjt01b">Exploring parallel task execution in Spark readers</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Varun Lakhyani 提议在 Spark 读取器中引入异步执行能力，以解决大量小文件场景下的顺序读取开销问题。他已将其作为 GSoC 2026 提案，并通过基准测试展示了异步模式可将执行时间缩短约 74%。目前讨论集中在验证性能收益及探索更细粒度的并行化实现方案。</p>
+            <div class="key-points"><p><strong>@Varun Lakhyani:</strong> 当前顺序读取模式在处理大量小文件时存在显著开销和 CPU 空闲问题。</p>
+<p><strong>@Varun Lakhyani:</strong> 基准测试显示异步模式能显著提升性能（执行时间减少约 74%），且内存开销相当。</p>
+<p><strong>@Varun Lakhyani:</strong> 建议默认保持顺序模式，仅在特定工作负载下选择开启异步模式。</p></div>
+            <p class="conclusion">初步验证显示异步方案性能提升显著，下一步计划探索更有针对性的异步方法（如仅并行化网络调用）并研究其他项目的实现。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/9tkfxcx9lsx64skmocs3fv8dhgx0syqx"></a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论主要围绕 Iceberg 目录集成中 IDP 不支持 Token Exchange (RFC 8963) 时的替代认证方案。参与者探讨了 Token 透传和代理等变通方法，并分析了其优缺点及安全性影响。</p>
+            <div class="key-points"><p><strong>@Christian Thiel:</strong> 指出 Token 透传比 Token Exchange 更简单且已被 Starburst/StarRocks 支持，但 Trino 尚不支持且存在 Token 泄露风险扩大的隐患；建议 Trino 用户可考虑使用 OPA 进行外部授权。</p>
+<p><strong>@Yufei Gu:</strong> 认为代理（如 Keycloak）是解决 IDP 缺乏 RFC 8693 支持的有效变通方案。</p></div>
+            <p class="conclusion">讨论提出了多种可行的技术路径（Token 透传、代理、OPA 集成），但未达成单一明确结论，建议根据具体引擎和安全需求选择方案。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/t6g652mq1snn326slr3j9hn5b3goo6gl">REST Spec: generic CatalogObjectIdentifier</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Steven Wu 提议在 Iceberg REST 规范中引入通用的 CatalogObjectIdentifier，以解决现有 TableIdentifier 语义不准确且缺乏扩展性的问题。该提议基于 Events、Functions 等多个并发需求，旨在为未来对象类型定义统一模式。Christian Thiel 对此表示支持，建议后续开会讨论。</p>
+            <div class="key-points"><p><strong>@Steven Wu:</strong> 现有的 TableIdentifier 对视图语义不准确且无法扩展，需引入通用标识符以支持函数、索引等新对象类型。</p>
+<p><strong>@Steven Wu:</strong> 多个并发 PR（Events、Functions、Universal load）均表明了对通用标识符的需求，统一模式可避免类型泛滥。</p>
+<p><strong>@Christian Thiel:</strong> 认为各用例汇聚于此是确定表示法的好时机，已在文档中添加想法并期待后续讨论。</p></div>
+            <p class="conclusion">初步达成共识，下一步将在即将召开的同步会议中讨论具体细节。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/c498svln0x18vvm42998b9nm9j6ck5yh">: Java REST client uses form encoding (`+` for space) in URL path segments</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">该讨论指出 Java Iceberg REST 客户端在构建 URL 路径时错误地使用了表单编码（空格变为 `+`），而非 RFC 3986 标准的路径编码（空格应为 `%20`）。这种错误导致包含特殊字符的标识符在跨引擎交互时出现互操作性问题，如 404 错误或数据不一致。建议针对 OAuth 表单和 URL 路径采用不同的编码逻辑以符合规范。</p>
+            <div class="key-points"><p><strong>@Christian Thiel:</strong> 根本原因是 `RESTUtil.encodeString` 混用了不兼容的需求：OAuth2 表单体需要表单编码，而 URL 路径段需要 RFC 3986 编码。</p>
+<p><strong>@Christian Thiel:</strong> 非 Java 引擎（如 DuckDB）正确实现了 RFC 3986，导致 Java 客户端发送的请求在服务端被错误解析，引发互操作性问题。</p>
+<p><strong>@Christian Thiel:</strong> 该问题会导致包含空格或 `+` 号的标识符出现 404 错误、访问错误对象或目录不一致等严重后果。</p></div>
+            <p class="conclusion">初步结论是需要修改 `RESTUtil` 的实现，将 OAuth 表单编码与 URL 路径编码逻辑分离，确保路径段编码遵循 RFC 3986 标准。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (0)</h2>
+            
+    <p>本周新建 <strong>0</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周无新建 JIRA。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Iceberg Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
