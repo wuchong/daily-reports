@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-04-14</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-04-14</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 9 新 Issues</div>
+            <div class="stat">✅ 2 关闭</div>
+            <div class="stat">✨ 8 新 PRs</div>
+            <div class="stat">🎉 5 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/3059">PR #3059</a> 修复主键表 lake tiering 未启动时 pendingRecords 指标返回实际行数</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3057">PR #3057</a> 修复 Spark 读取 log/upsert 路径的列投影问题</li><li>🎉 <a href="https://github.com/apache/fluss/pull/2803">PR #2803</a> Netty 客户端优先使用堆内存解码消息，减少直接内存使用</li><li>✨ <a href="https://github.com/apache/fluss/pull/3082">PR #3082</a> 添加 fluss-microbench 模块：YAML 驱动的性能测试框架</li><li>📚 <a href="https://github.com/apache/fluss/pull/3087">PR #3087</a> 添加贡献者成为 Committer 的文档说明</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <ul class="critical-list"><li>⚠️ <a href="https://github.com/apache/fluss/issues/3085">Issue #3085</a> 远程日志消费因信号量许可无法获取而卡住</li><li>⚠️ <a href="https://github.com/apache/fluss/issues/3084">Issue #3084</a> Flink 日志表消费者抛出越界偏移异常</li><li>⚠️ <a href="https://github.com/apache/fluss/issues/3083">Issue #3083</a> 测试用例 RemoteLogITCase.testRemoteLogTTLWithDynamicLakeToggle 不稳定</li></ul>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3073">Issue #3073</a> add document for how contributors can be granted more rights</h4>
+            <ul><li><span class="author">@matrixsparse</span>: 申请负责此文档编写，将参考 Paimon 的 committer 指南</li><li><span class="author">@luoyuxia</span>: 已分配该 issue 给 matrixsparse</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2007">Issue #2007</a> Add missing authentication for RPC calls</h4>
+            <ul><li><span class="author">@vaibhavk1992</span>: 计划分两阶段实现 RPC 授权：Phase 1 外部 RPC（高优先级），Phase 2 内部 RPC</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3022">Issue #3022</a> [Blog] realtime profiles blog post</h4>
+            <ul><li><span class="author">@polyzos</span>: 关闭此 PR，改为使用 platinumhamburg 的版本</li><li><span class="author">@platinumhamburg</span>: 感谢，将使用自己的版本继续</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3088">Issue #3088</a> [Blog] Column Pruning</h4>
+            <ul><li><span class="author">@polyzos</span>: 将此内容移植到博客，方便用户查找</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3067">PR #3067</a> [filesystem] Support default AWS credential chain for S3 delegation</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 已处理 Copilot 评论，添加 IRSA/实例配置文档和配置示例</li><li><span class="author">@Copilot</span>: 建议验证 accessKey 和 secretKey 同时设置或同时为空，避免配置错误</li><li><span class="author">@morazow</span>: 建议添加只设置单个密钥的测试，并提取 buildHadoopConfiguration 方法</li><li><span class="author">@michaelkoepf</span>: 建议使用 checkArgument 替代 checkNotNull 验证配置参数</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2803">PR #2803</a> [client] Netty client prefer heap memory to cumulate in decoder</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 指出 OOM 时 allocateForFrame 抛异常会导致 in 未释放，建议参考 expandCummulation 模式</li><li><span class="author">@loserwang1024</span>: 已采纳建议修改，并解释服务端 ClientChannelInitializer 使用 netty.client.* 配置</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3026">PR #3026</a> [client] Replace Netty PooledByteBufAllocator with ChunkedAllocationManager</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 发现 ChunkedAllocationManager 存在竞态条件可能导致双重回收和内存损坏</li><li><span class="author">@loserwang1024</span>: 确认只在所有数据读取完毕后才关闭 ChunkedAllocationManager，感谢建议</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3076">PR #3076</a> [lake/tiering] add tiering table pending time and freshness metrics</h4>
+            <ul><li><span class="author">@Copilot</span>: 指出 pendingTime 使用 0L 作为哨兵值可能在时钟为 0 时出问题，建议使用 null 或负值</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3042">PR #3042</a> [spark] Support batch union read for lake-enabled primary key tables</h4>
+            <ul><li><span class="author">@Yohahaha</span>: 建议 nice，等待 review</li><li><span class="author">@Copilot</span>: 指出 lakeSource 未应用 projection 可能导致列顺序错误，以及日志偏移处理逻辑问题</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2997">PR #2997</a> [filesystem][bug] Fix client.fs.* config prefix not stripped</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 已处理所有审查意见，并修复了 Azure 中 flussConfig 应为 hadoopConfig 的 bug</li><li><span class="author">@morazow</span>: 建议更新 Javadoc，扩展测试覆盖 OBS 和 OSS 的配置</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3071">PR #3071</a> [server] Make leader-only rebalance tasks execute sequentially</h4>
+            <ul><li><span class="author">@LiebingYu</span>: 指出顺序迁移后单个 bucket 失败可能阻塞后续迁移，需用户手动处理</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3059">PR #3059</a> [metrics] Fix pendingRecords metric to return actual row count</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 询问 v0.9 之前创建的旧表如何处理</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2786">PR #2786</a> [client] cancel pending log download when closing remote log downloader</h4>
+            <ul><li><span class="author">@loserwang1024</span>: close() 需要阻塞等待所有下载完成，否则会留下孤儿文件导致磁盘堆积</li><li><span class="author">@fresh-borzoni</span>: 指出 cancel(true) 不等待，deleteDirectoryQuietly 会与下载任务竞争</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3077">PR #3077</a> [blog] taobao realtime decisions</h4>
+            <ul><li><span class="author">@wuchong</span>: 指出作者应为 Howie Wang，需使用 GitHub 头像</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3085">#3085</a> Remote log consumption is stuck because the semaphore permit cannot be acquired <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/issues/3084">#3084</a> Flink log table consumer threw an out-of-range offset exception <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/issues/3083">#3083</a> [test] Unstable test RemoteLogITCase.testRemoteLogTTLWithDynamicLakeToggle <span class="author">@app/github-actions</span> </li><li><a href="https://github.com/apache/fluss/issues/3080">#3080</a> Add fluss-microbench module: YAML-driven performance testing  framework <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/3075">#3075</a> [lake/tiering] Add pendingTime and freshness metrics for lake tiering tables <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/issues/3074">#3074</a> add a page for reporting security issue <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/issues/3073">#3073</a> add document for how contributors can be granted more rights such as commit access or decision power is clearly documented <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/issues/3072">#3072</a> Csp_check is warning <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/issues/3070">#3070</a> [server] Leader-only rebalance tasks should wait for tablet server acknowledgment before proceeding to the next migration <span class="author">@swuferhong</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3088">#3088</a> [Blog] Column Pruning <span class="author">@polyzos</span> </li><li><a href="https://github.com/apache/fluss/pull/3087">#3087</a> [ISSUE-3073] Add documentation for how contributors can become committers <span class="author">@matrixsparse</span> </li><li><a href="https://github.com/apache/fluss/pull/3082">#3082</a> Add fluss-microbench module with YAML-driven perf framework and JMH benchmarks <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/3078">#3078</a> [server] Add authorization to databaseExists and tableExists RPC call… <span class="author">@vaibhavk1992</span> </li><li><a href="https://github.com/apache/fluss/pull/3077">#3077</a> [blog] taobao realtime decisions <span class="author">@polyzos</span> </li><li><a href="https://github.com/apache/fluss/pull/3076">#3076</a> [lake/tiering] add tiering table pending time and freshness metrics <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/pull/3071">#3071</a> [server] Make leader-only rebalance tasks execute sequentially <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/pull/3069">#3069</a> [client] Add validation for client.scanner.log.max-poll-records and client.connect-timeout <span class="author">@Prajwal-banakar</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3029">#3029</a> [spark] Column projection broken on log/upsert read path for type-dependent accessors <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/2773">#2773</a> Netty client prefers to use heap memory to decode message to reduce the direct memory use. <span class="author">@loserwang1024</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3086">#3086</a> [website] Hide left sidebar for blog page and improve the fonts <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/pull/3079">#3079</a> [Blog] Realtime UV Dedup <span class="author">@polyzos</span> </li><li><a href="https://github.com/apache/fluss/pull/3059">#3059</a> [metrics] Fix pendingRecords metric to return actual row count for primary key tables when lake tiering hasn't started <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/pull/3057">#3057</a> [spark] Fix column projection on log/upsert read path <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/2803">#2803</a> [client] Netty client prefer heap memory to cumulate in decoder. <span class="author">@loserwang1024</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
