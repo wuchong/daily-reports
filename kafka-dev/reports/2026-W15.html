@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafka 社区周报 | 2026-W15</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Kafka 社区周报 | 2026-W15</h1>
+            <p class="date-range">2026-04-06 ~ 2026-04-12</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (0)</h2>
+            <p class="empty">本周无公告</p>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (6)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/3n1t3rty94djglf5spf46yysgcpbf9cv">KIP-1232: Deprecate broker.id config</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/fn0tskfzhs3pft56qn1rj5pz1p9vwx2f">KIP-1154: Extending support for Microsecond/Nanosecond Precision for Kafka Connect</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/ldfvllfc845gjvmm9sthrxjnp7bm5z32">KIP-1136: Make ConsumerGroupMetadata an interface</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/0z10kzlldwwqctx8p7l42r6o1h4nxo01">KIP-1282: Prevent data loss during partition expansion for dynamically added partitions</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/dko0pykc8wdbwp0mzs2h2jj2zpg9vpty">KIP-1269: Configurable number of batches to retain in broker</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/k9r6kodzxvctqr61fk1ljp5pjcf2cw6l">KIP-1291: Extended I/O Metrics Collection</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/5jw55mshc9worwx1cfddcg3zqdfs5zcj">Apache Kafka 4.3.0 release</a></h3>
+            <p class="meta">15 条回复 · 5 位参与者</p>
+            <p class="summary">Apache Kafka 4.3.0 版本已进入代码冻结阶段，发布经理正将非阻塞问题移至下一版本。讨论主要围绕多个关键 bug 修复、回归问题解决及安全漏洞（CVE）的合入请求展开，社区已批准多项代码回溯和回退操作。</p>
+            <div class="key-points"><p><strong>@Mickael Maison:</strong> 宣布代码冻结，要求新增阻塞问题需通知，并批准了多项修复、回退及 CVE 修复请求。</p>
+<p><strong>@Lianet Magrans:</strong> 发现并修复了一个阻塞级回归问题 (KAFKA-20428)，该问题会导致 consumer.unsubscribe 失败。</p>
+<p><strong>@Matthias J. Sax:</strong> 提议并获准回退 KIP-1071 的未使用配置以避免用户困惑，同时请求合入 KIP-1271 的 JavaDoc 修复。</p></div>
+            <p class="conclusion">发布流程继续推进，阻塞问题已解决，CVE 修复、工具更新及代码回退已获准合入 4.3 分支。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/0f640ngpx30ofn3mzrdzoygzq9qvqh5p">KIP-1282: Prevent data loss during partition expansion for dynamically added partitions</a></h3>
+            <p class="meta">8 条回复 · 4 位参与者</p>
+            <p class="summary">KIP-1282 旨在通过引入新的 `to_start_time` 偏移量重置策略，解决分区扩展时动态新增分区的数据丢失问题。讨论重点涵盖了 Kafka Streams 的集成适配、命令行工具支持以及命名规范的优化。作者已根据反馈更新了 KIP，将策略名称调整为更准确的 `to_start_time` 并完善了相关接口。</p>
+            <div class="key-points"><p><strong>@Lucas Brutschy:</strong> 关注新策略与 Kafka Streams 的交互，建议在 `AutoOffsetReset` 类中添加对应的工厂方法以支持按主题覆盖。</p>
+<p><strong>@Chia-Ping Tsai:</strong> 建议 `kafka-consumer-groups.sh` 工具支持新策略，并认为 KIP 已准备好进入投票阶段。</p>
+<p><strong>@Andrew Schofield:</strong> 建议将 `GROUP-CREATION-TIME` 移至详细输出模式以避免干扰，并提议将策略名从 `by_start_time` 改为 `to_start_time` 以更准确地表达“定位到绝对时间点”的含义。</p></div>
+            <p class="conclusion">作者采纳了所有建议，特别是将策略名称统一修改为 `to_start_time`，Andrew Schofield 最终确认 KIP 内容完善，讨论基本结束，准备推进后续流程。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/7vkpl9k0wxdtm170xbq77o00z52h66yy">KIP-1315: Split Connector Listing and Expanded Views in the Connect REST API</a></h3>
+            <p class="meta">4 条回复 · 3 位参与者</p>
+            <p class="summary">KIP-1315 提议拆分 Connect REST API 中的连接器列表和展开视图，以解决现有 API 因 `expand` 参数导致的响应格式不一致问题。作者根据反馈调整了新端点命名（改为 `connectors-details`）及弃用策略，目前正寻求社区进一步审查。</p>
+            <div class="key-points"><p><strong>@Mickael Maison:</strong> 指出原提议的端点名 `/connectors/expanded` 可能与连接器名称冲突，建议使用 `/connectors-details`；同时建议忽略 `expand` 参数而非返回 HTTP 400，以保持 API 一致性。</p>
+<p><strong>@nileshkumar3:</strong> 采纳了关于命名冲突和错误处理的建议，将端点更新为 `GET /connectors-details`，并调整了弃用逻辑，同时在 KIP 中补充了具体的响应示例。</p>
+<p><strong>@raj kumar:</strong> 支持该提案，并建议更新相关文档以通知客户端关于 `expand` 参数的弃用变更。</p></div>
+            <p class="conclusion">作者已根据反馈修改了 KIP 内容（包括端点命名和弃用逻辑），目前正等待社区进一步审查，后续需落实文档更新。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/10thbsv0hx73v6ckno7pvx02o4z21mz5">[PR] KAFKA-20049: Publish Hugo base image under Apache namespace [kafka-site]</a></h3>
+            <p class="meta">3 条回复 · 3 位参与者</p>
+            <p class="summary">该 PR 旨在将 Hugo 基础镜像发布至 Apache 命名空间下，并清理了 Makefile 中未使用的目标。作者已移除对私有制品库的依赖，变更已获得关键维护者的批准。</p>
+            <div class="key-points"><p><strong>@Owen-CH-Leung:</strong> 移除了 Makefile 中未使用的目标，消除了对私有制品库的依赖。</p>
+<p><strong>@mimaison:</strong> 认为变更看起来没问题，但请求其他专家进行审查。</p>
+<p><strong>@hvishwanath:</strong> 确认变更通过 (LGTM)。</p></div>
+            <p class="conclusion">变更已获批准，作者正在询问是否可以合并该 MR。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/2y96g5fytlc1yt1b26owvm5t681s1hkt">KIP-1306: RebalanceHandler: Consumer-Aware Rebalance Callback</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕 KIP-1306 展开，旨在引入感知 Consumer 的再平衡回调机制。Aditya 最初提议采用类似拦截器的列表模式，但 Andrew 建议通过扩展接口方法签名（增加 ConsumerRebalanceAdapter 参数）并在 Consumer 中新增 setConsumerRebalanceListener 方法来实现。最终 Aditya 采纳了该建议并更新了 KIP，包括弃用原有带监听器参数的 subscribe 方法。</p>
+            <div class="key-points"><p><strong>@Andrew Schofield:</strong> 建议通过增加 ConsumerRebalanceAdapter 参数扩展接口方法，并在 Consumer 中新增 setConsumerRebalanceListener 方法，同时弃用 subscribe 中的监听器参数。</p>
+<p><strong>@Andrew Schofield:</strong> 不建议在此 KIP 中引入拦截器列表机制，因为用户常使用 lambda 表达式实现监听器。</p>
+<p><strong>@Aditya Kousik:</strong> 已根据建议更新 KIP，包括移除 subscribe 中的监听器参数、新增 setConsumerRebalanceListener 方法，并将 Adapter 重命名以反映其支持写操作的特性。</p></div>
+            <p class="conclusion">Aditya 已根据 Andrew 的建议更新了 KIP 文档，确定了通过新增 setter 方法和扩展接口来实现功能的方案，下一步等待进一步审阅。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/m93kbylcxcjstr2cvw8wd7khxpdjzz5t">KIP-1304 Add consumer metric about paused partitions</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕 KIP-1304 展开，旨在为消费者添加关于暂停分区的指标。作者 PoAn Yang 根据社区反馈，对指标命名前缀、日志级别及默认返回值进行了调整和统一。目前讨论已达成初步一致，主要解决了命名歧义和指标分类的问题。</p>
+            <div class="key-points"><p><strong>@PoAn Yang:</strong> 采纳建议统一指标命名前缀为 `paused-partitions`，将分区级指标调整为 INFO 级别，并将未暂停状态的默认值设为 -1。</p>
+<p><strong>@Sahil Devgon:</strong> 指出未暂停状态返回 0 具有歧义，建议返回 -1，并建议指标名称应体现“持续时间”语义以符合命名惯例。</p>
+<p><strong>@Aditya Kousik:</strong> 建议将 `paused-partitions-count` 简化为 `paused-partitions`，以避免用户误以为是窗口化或累积计数。</p></div>
+            <p class="conclusion">作者已确认采纳所有关键建议（包括命名简化、默认值调整等），Aditya 表示整体认可（LGTM），后续将据此更新 KIP 提案。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/2v7zqo9qc34p23drnwobcx5l5bwbxg55">[PR] Bump npm-check-updates from 19.6.6 to 20.0.1 [kafka-site]</a></h3>
+            <p class="meta">2 条回复 · 1 位参与者</p>
+            <p class="summary">Dependabot 提交了 PR #844，建议将 kafka-site 项目的 npm-check-updates 依赖从 19.6.6 升级到 20.0.1 版本。该 PR 随后被自动关闭，原因是已被更新的 PR #845 取代。</p>
+            <div class="key-points"><p><strong>@dependabot[bot]:</strong> 提议升级 npm-check-updates 至 20.0.1 版本，包含自动冷却等新特性。</p>
+<p><strong>@dependabot[bot]:</strong> 关闭 PR #844，并指出该请求已被 PR #845 取代。</p></div>
+            <p class="conclusion">PR #844 已关闭，依赖升级工作将转移至 PR #845 继续进行。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/45lr82yr4cr6k5gfn02g88khl4wqo9ol">[PR] Bump npm-check-updates from 19.6.6 to 20.0.2 [kafka-site]</a></h3>
+            <p class="meta">2 条回复 · 1 位参与者</p>
+            <p class="summary">Dependabot 自动开启了 PR #845，旨在将 kafka-site 项目中的 npm-check-updates 依赖从 19.6.6 升级到 20.0.2。随后，Dependabot 指出该 PR 已被新的 PR #846 取代，并随即关闭了 PR #845。</p>
+            <div class="key-points"><p><strong>@dependabot[bot]:</strong> 提议将 npm-check-updates 依赖从 19.6.6 升级到 20.0.2。</p>
+<p><strong>@dependabot[bot]:</strong> 声明 PR #845 已被 PR #846 取代。</p></div>
+            <p class="conclusion">PR #845 已关闭，后续处理将转移到 PR #846 进行。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/05s08lz59pm6q520zz3sn6mdpxqysodn">KIP-1279: Cluster Mirroring</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论聚焦于 KIP-1279 集群镜像方案中影响数据完整性的关键技术阻碍。Vaquar Khan 指出负 PID 生成和事务索引重建逻辑存在严重缺陷，必须在投票前解决；Jun Rao 则质疑 Leader Epoch 处理机制可能导致消费者停滞，并询问了分层存储和消费者组镜像的细节。</p>
+            <div class="key-points"><p><strong>@vaquar khan:</strong> 负 PID 公式会破坏内部状态管理导致 LSO 错误，必须修正为正数空间；事务索引必须在目标节点本地重建，否则会导致中止消息被误读。</p>
+<p><strong>@Jun Rao:</strong> 当前的 Leader Epoch 处理方式可能导致数据中的 Epoch 大于元数据缓存，引发消费者客户端逻辑混乱甚至停滞。</p>
+<p><strong>@Jun Rao:</strong> 需补充分层存储场景下的数据截断逻辑说明，并明确消费者组镜像的过滤机制（如排除测试组）。</p></div>
+            <p class="conclusion">暂无定论。KIP 作者需先解决 Vaquar Khan 提出的代码级阻碍问题，并澄清 Jun Rao 关于 Leader Epoch 和存储策略的疑问，才能继续推进投票流程。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/tb03jofo57trg7xxko4ob54z8xfgbrpj">[PR] Bump hugo-extended from 0.155.3 to 0.160.0 [kafka-site]</a></h3>
+            <p class="meta">1 条回复 · 1 位参与者</p>
+            <p class="summary">讨论主要关于 kafka-site 项目中 hugo-extended 依赖版本的升级请求（PR #841）。Dependabot 关闭了该 PR，原因是其已被更新的 PR #843 所取代。</p>
+            <div class="key-points"><p><strong>@dependabot[bot]:</strong> 关闭了 PR #841，并指出该 PR 已被 #843 取代。</p></div>
+            <p class="conclusion">PR #841 已关闭，后续版本升级工作将在 PR #843 中进行。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (65)</h2>
+            
+    <p>本周新建 <strong>65</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周 JIRA 主要集中在 Kafka Streams 对 Headers 的处理与传播上，涉及 Header-Aware State Stores 的功能完善、Bug 修复及集成测试。其次，Consumer 与 Group 协调模块也有较多更新，重点解决了异步消费者设计、分配 Epoch 更新及取消订阅逻辑中的问题。此外，还包含 Kafka Connect 的 DLQ 配置优化、Broker 端 Controller Quorum 稳定性修复以及 KIP-1318 (MCP Server) 等新特性的引入。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Kafka Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
