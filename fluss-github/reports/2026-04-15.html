@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-04-15</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-04-15</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 9 新 Issues</div>
+            <div class="stat">✅ 7 关闭</div>
+            <div class="stat">✨ 4 新 PRs</div>
+            <div class="stat">🎉 12 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/3067">PR #3067</a> 支持默认 AWS 凭证链进行 S3 委派，解决 IRSA/IAM 角色使用问题</li><li>🎉 <a href="https://github.com/apache/fluss/pull/2855">PR #2855</a> KV 表恢复期间支持从远程存储下载 CDC 日志段</li><li>🚀 <a href="https://github.com/apache/fluss/pull/3026">PR #3026</a> 使用 bump-pointer ChunkedAllocationManager 替代 Netty PooledByteBufAllocator 优化 Arrow 内存分配</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3076">PR #3076</a> 为 lake tiering 表添加 pendingTime 和 freshness 指标</li><li>🐛 <a href="https://github.com/apache/fluss/pull/2997">PR #2997</a> 修复 client.fs.* 配置前缀未正确传递给文件系统插件的 bug</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <ul class="critical-list"><li>⚠️ <a href="https://github.com/apache/fluss/issues/3085">Issue #3085</a> 远程日志消费因信号量许可无法获取而卡住</li><li>⚠️ <a href="https://github.com/apache/fluss/issues/3084">Issue #3084</a> Flink 日志表消费者抛出偏移量越界异常</li></ul>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3073">Issue #3073</a> add document for how contributors can be granted more rights such as commit access or decision power is clearly documented</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 感谢贡献，已将任务分配给你</li><li><span class="author">@matrixsparse</span>: 感谢！将开始处理并尽快提交 PR</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2836">Issue #2836</a> [FLUSS-2686] Add COS filesystem support</h4>
+            <ul><li><span class="author">@XuQianJin-Stars</span>: 详细回应了 STS 实现、REGION 常量和 Endpoint 一致性三个问题，已更新代码和测试覆盖</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3067">Issue #3067</a> [filesystem] Support default AWS credential chain for S3 delegation</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 添加了 IRSA/实例配置文档示例，建议回port到 0.9 版本以支持 AWS/EKS 部署</li><li><span class="author">@affo</span>: 感谢添加文档说明，已批准，需要 committer 合并</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2997">Issue #2997</a> [filesystem][bug] Fix client.fs.* config prefix not stripped before passing to…</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 请求 reviewer 审阅 PR</li><li><span class="author">@morazow</span>: 建议更新 Javadoc、扩展测试用例覆盖新配置键</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3088">Issue #3088</a> [Blog] Column Pruning</h4>
+            <ul><li><span class="author">@polyzos</span>: 将此内容移植到博客，方便用户查找</li><li><span class="author">@swuferhong</span>: 确认 LGTM</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3085">Issue #3085</a> Remote log consumption is stuck because the semaphore permit cannot be acquired</h4>
+            <ul><li><span class="author">@wguo-talend</span>: 提供了防御性信号量管理方案，确保异常时正确释放许可</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3091">Issue #3091</a> [server] RemoteLogFetcher optimize to async downloading</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 表示可以帮忙优化，之前在 Rust SDK 中做过类似优化</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3098">Issue #3098</a> [helm] Support injecting environment variables and external secrets</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 请求 reviewer 审阅 PR</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2855">PR #2855</a> [kv] Support downloading CDC log segments from remote storage during KV table recovery</h4>
+            <ul><li><span class="author">@wuchong</span>: 建议延迟创建临时目录、移除重复代码、添加测试验证清理逻辑，并追踪异步下载优化</li><li><span class="author">@swuferhong</span>: 添加了单元测试验证陈旧目录在恢复后会被清理</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2997">PR #2997</a> [filesystem][bug] Fix client.fs.* config prefix not stripped before passing to…</h4>
+            <ul><li><span class="author">@morazow</span>: 建议更新 Javadoc、添加测试用例，发现使用 flussConfig 而非 hadoopConfig 的预存 bug</li><li><span class="author">@fresh-borzoni</span>: 修复了预存 bug，添加了测试，内联了 get 调用中的 keys</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3067">PR #3067</a> [filesystem] Support default AWS credential chain for S3 delegation</h4>
+            <ul><li><span class="author">@michaelkoepf</span>: 建议使用 checkArgument 替代 checkNotNull 保持一致性，并验证 region 配置</li><li><span class="author">@fresh-borzoni</span>: 已处理所有 review 评论，添加文档和测试</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3042">PR #3042</a> [spark] Support batch union read for lake-enabled primary key tables</h4>
+            <ul><li><span class="author">@Copilot</span>: 指出投影顺序问题、错误消息语法、Scaladoc 不准确、测试中非分区表等待逻辑问题等多个改进建议</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3076">PR #3076</a> [lake/tiering] add tiering table pending time and freshness metrics</h4>
+            <ul><li><span class="author">@Copilot</span>: 指出 pendingTime 使用 0L 作为哨兵值会在时间戳为 0 时出问题，建议使用 null 或负数哨兵</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2924">PR #2924</a> [server] Allow enabling lakehouse on tables created before cluster-level lakehouse is enabled</h4>
+            <ul><li><span class="author">@wuchong</span>: 建议将 validateTableDescriptor 移到 createTable 之前避免孤立表；改进文档说明配置组合行为</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3097">#3097</a> [helm] Support injecting environment variables and external secrets <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/3096">#3096</a> [server]  Add timeout mechanism for rebalance tasks to prevent indefinite blocking on missing completion events <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/issues/3095">#3095</a> [flink] Skip emitting update events when only non-projected columns are modified in source connector <span class="author">@wuchong</span> <span class="labels">component=connector/flink</span></li><li><a href="https://github.com/apache/fluss/issues/3093">#3093</a> [docs] Fix table cell overflow into sidebar <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/3091">#3091</a> [server] RemoteLogFetcher optimize to async downloading <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/issues/3085">#3085</a> Remote log consumption is stuck because the semaphore permit cannot be acquired <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/issues/3084">#3084</a> Flink log table consumer threw an out-of-range offset exception <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/issues/3083">#3083</a> [test] Unstable test RemoteLogITCase.testRemoteLogTTLWithDynamicLakeToggle <span class="author">@app/github-actions</span> </li><li><a href="https://github.com/apache/fluss/issues/3080">#3080</a> Add fluss-microbench module: YAML-driven performance testing  framework <span class="author">@platinumhamburg</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3098">#3098</a> [helm] Support injecting environment variables and external secrets <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/3088">#3088</a> [Blog] Column Pruning <span class="author">@polyzos</span> </li><li><a href="https://github.com/apache/fluss/pull/3087">#3087</a> [docs] Add documentation for how contributors can become committers <span class="author">@matrixsparse</span> </li><li><a href="https://github.com/apache/fluss/pull/3082">#3082</a> Add fluss-microbench module with YAML-driven perf framework and JMH benchmarks <span class="author">@platinumhamburg</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3093">#3093</a> [docs] Fix table cell overflow into sidebar <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/3075">#3075</a> [lake/tiering] Add pendingTime and freshness metrics for lake tiering tables <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/issues/3066">#3066</a> [filesystem] S3 credential delegation requires static keys, blocking IRSA/IAM role usage <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/3025">#3025</a> Replace Netty PooledByteBufAllocator with bump-pointer ChunkedAllocationManager for Arrow memory allocation <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/issues/2996">#2996</a> [filesystem][bug] client.fs.* config silently ignored by all filesystem plugins <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/2853">#2853</a> [Feature] Support downloading CDC log segments from remote storage during KV table recovery <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/issues/2663">#2663</a> [Umbrella] Improve Direct Memory OOM in client side. <span class="author">@loserwang1024</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3094">#3094</a> [backport][release-0.9][filesystem] Support default AWS credential chain for S3 delegation (… <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/3092">#3092</a> [docs] chore: fix overlapping table and sidebar in docs <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/3090">#3090</a> [release-0.9][backport] Fix OOB in partial update/delete after ADD COLUMN <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/3089">#3089</a> [hotfix[ blog title <span class="author">@polyzos</span> </li><li><a href="https://github.com/apache/fluss/pull/3086">#3086</a> [website] Hide left sidebar for blog page and improve the fonts <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/pull/3079">#3079</a> [Blog] Realtime UV Dedup <span class="author">@polyzos</span> </li><li><a href="https://github.com/apache/fluss/pull/3076">#3076</a> [lake/tiering] add tiering table pending time and freshness metrics <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/pull/3071">#3071</a> [server] Make leader-only rebalance tasks execute sequentially <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/pull/3067">#3067</a> [filesystem] Support default AWS credential chain for S3 delegation <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/3026">#3026</a> [client] Replace Netty PooledByteBufAllocator with bump-pointer ChunkedAllocationManager for Arrow memory allocation. <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/pull/2997">#2997</a> [filesystem][bug] Fix client.fs.* config prefix not stripped before passing to… <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/2855">#2855</a> [kv] Support downloading CDC log segments from remote storage during KV table recovery <span class="author">@swuferhong</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
