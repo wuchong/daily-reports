@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-04-17</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-04-17</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 13 新 Issues</div>
+            <div class="stat">✅ 13 关闭</div>
+            <div class="stat">✨ 9 新 PRs</div>
+            <div class="stat">🎉 20 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/2976">PR #2976</a> 引入 KV Scan RPC 层，支持键值扫描功能</li><li>🎉 <a href="https://github.com/apache/fluss/pull/2740">PR #2740</a> Spark 连接器支持 Map 类型</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3041">PR #3041</a> Spark 支持 Scala 2.13</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3114">PR #3114</a> Helm Chart 支持 Pod 注解、标签和 PodDisruptionBudget</li><li>🐛 <a href="https://github.com/apache/fluss/pull/3102">PR #3102</a> 修复 RecordAccumulator 资源释放导致的负数大小计算异常</li><li>📚 <a href="https://github.com/apache/fluss/pull/3130">PR #3130</a> 将博客内容迁移至独立仓库 apache/fluss-blog</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <ul class="critical-list"><li>⚠️ <a href="https://github.com/apache/fluss/issues/3100">Issue #3100</a> 不稳定测试 IcebergRewriteITCase.testPkTableCompaction</li><li>⚠️ <a href="https://github.com/apache/fluss/issues/3129">Issue #3129</a> 不稳定测试 SparkStreamingTest read: log table</li><li>⚠️ <a href="https://github.com/apache/fluss/issues/3106">Issue #3106</a> TieringSource 在 Coordinator IP 变更时心跳重试失败（good first issue）</li></ul>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3128">Issue #3128</a> [website] Move blog content to a separate repository</h4>
+            <ul><li><span class="author">@wuchong</span>: 咨询 @polyzos @fresh-borzoni 对将博客迁移到独立仓库的看法</li><li><span class="author">@polyzos</span>: 同意方案，长期来看图片积累是个问题，需要考虑额外维护开销</li><li><span class="author">@wuchong</span>: 主要维护开销在于同步 CSS 和格式，更新不频繁，延迟同步不会破坏网站</li><li><span class="author">@fresh-borzoni</span>: 建议将整个网站拆分到独立仓库，网站也会积累二进制资源</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3114">Issue #3114</a> [helm] Add pod annotations, labels, and pod disruption budget support</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 请求 @affo @morazow @polyzos 帮忙审核</li><li><span class="author">@morazow</span>: 建议 PDB 增加 minAvailable/maxUnavailable 互斥校验和空值校验</li><li><span class="author">@fresh-borzoni</span>: 已处理审核意见，重新排序 podLabels 和 selectorLabels</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3102">Issue #3102</a> [client] release the resource of record accumulator only when sender thread is stopped.</h4>
+            <ul><li><span class="author">@loserwang1024</span>: CC @platinumhamburg 查看此修复</li><li><span class="author">@utafrali</span>: 建议移除未使用的 getBufferAllocator()，destroyResources() 添加 Javadoc 和 AtomicBoolean 防护</li><li><span class="author">@loserwang1024</span>: 已处理审核意见，确保 destroyResources() 可安全处理重复调用</li><li><span class="author">@platinumhamburg</span>: 指出 volatile 不保证原子性，建议用 AtomicBoolean.compareAndSet 替代</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3107">Issue #3107</a> Handle coordinator disconnect in TieringSourceEnumerator</h4>
+            <ul><li><span class="author">@Copilot</span>: 建议增加 DisconnectException 测试用例覆盖嵌套异常链场景</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3087">Issue #3087</a> [docs] Add documentation for how contributors can become committers</h4>
+            <ul><li><span class="author">@Copilot</span>: 建议修复标题层级不一致和语法问题，Committer Rights 章节应更名或扩展</li><li><span class="author">@luoyuxia</span>: 建议使用 ### 代替 #### 作为标题级别</li><li><span class="author">@matrixsparse</span>: 已处理审核意见：修复标题层级、语法问题，保持与 Paimon 一致</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3098">Issue #3098</a> [helm] Support injecting environment variables and external secrets</h4>
+            <ul><li><span class="author">@affo</span>: 解释 ASF 不允许外部 action，已转换为本地安装 unittest</li><li><span class="author">@morazow</span>: 理解更改原因，供应链安全问题需要谨慎处理外部 action</li><li><span class="author">@fresh-borzoni</span>: 感谢 @luoyuxia 帮助解决 CI 问题</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3106">Issue #3106</a> TieringSource should fail over when coordinator IP changes and heartbeat retries a stale endpoint</h4>
+            <ul></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3114">PR #3114</a> [helm] Add pod annotations, labels, and pod disruption budget support</h4>
+            <ul><li><span class="author">@morazow</span>: 建议 PDB 校验 minAvailable/maxUnavailable 互斥，确保至少设置一个值</li><li><span class="author">@fresh-borzoni</span>: 处理审核意见，调整 podLabels 顺序防止覆盖 selectorLabels</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3102">PR #3102</a> [client] release the resource of record accumulator only when sender thread is stopped.</h4>
+            <ul><li><span class="author">@utafrali</span>: 建议移除未使用的 getBufferAllocator()，为 destroyResources() 添加 Javadoc 说明生命周期</li><li><span class="author">@platinumhamburg</span>: 指出 volatile 不保证原子性，建议用 AtomicBoolean 防止并发双重调用</li><li><span class="author">@loserwang1024</span>: 已处理建议，确保 destroyResources() 可安全处理意外双重调用</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3069">PR #3069</a> [client] Add validation for client.scanner.log.max-poll-records and client.connect-timeout</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 建议使用 validMinValue/validMinDuration 辅助方法，配置校验应提前到构造函数开头</li><li><span class="author">@Prajwal-banakar</span>: 已处理所有审核意见，添加辅助方法并提前配置校验</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3087">PR #3087</a> [docs] Add documentation for how contributors can become committers</h4>
+            <ul><li><span class="author">@Copilot</span>: 建议修复标题层级、语法错误，Committer Rights 章节内容与标题不符</li><li><span class="author">@luoyuxia</span>: 建议使用 ### 作为标题级别</li><li><span class="author">@matrixsparse</span>: 已处理审核意见，修复标题层级和语法问题</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3042">PR #3042</a> [spark] Support batch union read for lake-enabled primary key tables</h4>
+            <ul><li><span class="author">@Yohahaha</span>: 后续将继续支持 filter pushdown 和细粒度 split 生成等读取优化</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3007">PR #3007</a> [client] Implement adaptive fetch rate control for LogScanner</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 提出空 fetch 是否触发跳过、过滤后空数据误判、日志级别等设计问题</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3107">PR #3107</a> Handle coordinator disconnect in TieringSourceEnumerator</h4>
+            <ul><li><span class="author">@Copilot</span>: 建议增加 DisconnectException 测试用例，覆盖嵌套异常链场景</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3098">PR #3098</a> [helm] Support injecting environment variables and external secrets</h4>
+            <ul><li><span class="author">@morazow</span>: 询问 CI 为何之前没运行检查</li><li><span class="author">@affo</span>: 解释 ASF 不允许外部 action，已转换为本地安装 unittest</li><li><span class="author">@fresh-borzoni</span>: 该 action 不在白名单，感谢 @luoyuxia 协助解决</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3088">PR #3088</a> [Blog] Column Pruning</h4>
+            <ul><li><span class="author">@wuchong</span>: 应使用本地图片而非外部资源，ASF 会阻止外部资源引用</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2924">PR #2924</a> [server] Allow enabling lakehouse on tables created before cluster-level lakehouse is enabled</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 修改后看起来好多了</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2836">PR #2836</a> [FLUSS-2686] Add COS filesystem support</h4>
+            <ul><li><span class="author">@leekeiabstraction</span>: 建议增加集成测试，重命名 hadoop cos version，解释默认值选择原因</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3129">#3129</a> [Test] Unstable test SparkStreamingTest read: log table <span class="author">@wuchong</span> <span class="labels">component=connector/spark</span></li><li><a href="https://github.com/apache/fluss/issues/3128">#3128</a> [website] Move blog content to a separate repository <span class="author">@wuchong</span> <span class="labels">component=website</span></li><li><a href="https://github.com/apache/fluss/issues/3127">#3127</a> [test] Unstable test FlussAdminITCase.testDynamicConfigs <span class="author">@app/github-actions</span> </li><li><a href="https://github.com/apache/fluss/issues/3126">#3126</a> Extend the API to support KvScan <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/issues/3125">#3125</a> Implement Server-Side KvScan <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/issues/3124">#3124</a> Introduce Protobuf definitions for RPC <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/issues/3122">#3122</a> [spark] Make LakeSplit extend Serializable to simplify Spark serialization <span class="author">@YannByron</span> </li><li><a href="https://github.com/apache/fluss/issues/3117">#3117</a> [spark] Support filter pushdown for log tables <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/3115">#3115</a> [helm] Add pod annotations, pod labels, and PodDisruptionBudget support <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/3106">#3106</a> TieringSource should fail over when coordinator IP changes and heartbeat retries a stale endpoint <span class="author">@luoyuxia</span> <span class="labels">good first issue, component=lake/tiering-flink</span></li><li><a href="https://github.com/apache/fluss/issues/3103">#3103</a> Java.lang.NoSuchFieldError: JAVA_9 <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/issues/3101">#3101</a> java.lang.IllegalArgumentException: Accounted size went negative. <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/issues/3100">#3100</a> [test] Unstable test IcebergRewriteITCase.testPkTableCompaction <span class="author">@app/github-actions</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3123">#3123</a> [spark] Make LakeSplit extend Serializable to simplify Spark serialization <span class="author">@YannByron</span> </li><li><a href="https://github.com/apache/fluss/pull/3121">#3121</a> [docs] Fix broken anchors in getting-started.md <span class="author">@matrixsparse</span> </li><li><a href="https://github.com/apache/fluss/pull/3120">#3120</a> [docs] Add security reporting documentation <span class="author">@matrixsparse</span> </li><li><a href="https://github.com/apache/fluss/pull/3116">#3116</a> [spark] Support filter pushdown for log tables <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/3113">#3113</a> [common] Remove MapUtils.newConcurrentMap() to avoid dependencies conflict. <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/pull/3110">#3110</a> Bump org.apache.logging.log4j:log4j-core from 2.17.1 to 2.25.4 <span class="author">@app/dependabot</span> <span class="labels">dependencies, java</span></li><li><a href="https://github.com/apache/fluss/pull/3107">#3107</a> Handle coordinator disconnect in TieringSourceEnumerator <span class="author">@utafrali</span> </li><li><a href="https://github.com/apache/fluss/pull/3102">#3102</a> [client] release the resource of record accumulator only when sender thread is stopped. <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/pull/3099">#3099</a> [WIP][spark] Add spark tiering service <span class="author">@Yohahaha</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3128">#3128</a> [website] Move blog content to a separate repository <span class="author">@wuchong</span> <span class="labels">component=website</span></li><li><a href="https://github.com/apache/fluss/issues/3124">#3124</a> Introduce Protobuf definitions for RPC <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/issues/3115">#3115</a> [helm] Add pod annotations, pod labels, and PodDisruptionBudget support <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/3097">#3097</a> [helm] Support injecting environment variables and external secrets <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/3085">#3085</a> Remote log consumption is stuck because the semaphore permit cannot be acquired <span class="author">@zuston</span> <span class="labels">version: 0.9.1</span></li><li><a href="https://github.com/apache/fluss/issues/3073">#3073</a> add document for how contributors can be granted more rights such as commit access or decision power is clearly documented <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/issues/3049">#3049</a> Introduce `netty.server.max-request-size` to limit the request size <span class="author">@loserwang1024</span> <span class="labels">version: 0.9.1</span></li><li><a href="https://github.com/apache/fluss/issues/2990">#2990</a> [docs] Add documentation for lookup.insert-if-not-exists feature <span class="author">@platinumhamburg</span> <span class="labels">version: 0.9.1</span></li><li><a href="https://github.com/apache/fluss/issues/2988">#2988</a> ArrayIndexOutOfBoundsException in partial updates after ADD COLUMN <span class="author">@fresh-borzoni</span> <span class="labels">version: 0.9.1</span></li><li><a href="https://github.com/apache/fluss/issues/2984">#2984</a> [spark] Batch union read for pk table <span class="author">@Yohahaha</span> </li><li><a href="https://github.com/apache/fluss/issues/2908">#2908</a> Allow enabling lakehouse on tables created before cluster-level lakehouse is enabled <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/issues/2673">#2673</a> [spark] to support map type <span class="author">@YannByron</span> </li><li><a href="https://github.com/apache/fluss/issues/2667">#2667</a> [spark] to support scala2.13 <span class="author">@YannByron</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3130">#3130</a> [website] Move blog content to a separate repository "apache/fluss-blog" <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/pull/3119">#3119</a> [dependencies] Bump org.assertj:assertj-core to 3.27.7 in release-0.9 <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/pull/3118">#3118</a> [dependencies] Bump org.apache.logging.log4j:log4j-1.2-api to 2.25.4 in release-0.9 <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/pull/3114">#3114</a> [helm] Add pod annotations, labels, and pod disruption budget support <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/3112">#3112</a> [dependencies] Bump com.google.protobuf:protobuf-java from 2.5.0 to 3.25.5 <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/pull/3111">#3111</a> [release-0.9] Bump org.apache.kafka:kafka-clients from 3.9.1 to 3.9.2 in /fluss-kafka <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/pull/3109">#3109</a> Bump org.apache.logging.log4j:log4j-1.2-api from 2.17.1 to 2.25.4 <span class="author">@app/dependabot</span> <span class="labels">dependencies, java</span></li><li><a href="https://github.com/apache/fluss/pull/3108">#3108</a> [server][netty] Introduce netty.server.max-request-size to limit the request size (#3050) <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/pull/3105">#3105</a> Bump org.apache.kafka:kafka-clients from 3.9.1 to 3.9.2 in /fluss-kafka <span class="author">@app/dependabot</span> <span class="labels">dependencies, java</span></li><li><a href="https://github.com/apache/fluss/pull/3104">#3104</a> [client] Catch throwable to avoid slient failure on remote file download <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/pull/3098">#3098</a> [helm] Support injecting environment variables and external secrets <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/3087">#3087</a> [docs] Add documentation for how contributors can become committers <span class="author">@matrixsparse</span> </li><li><a href="https://github.com/apache/fluss/pull/3042">#3042</a> [spark] Support batch union read for lake-enabled primary key tables <span class="author">@Yohahaha</span> </li><li><a href="https://github.com/apache/fluss/pull/3041">#3041</a> [spark] support scala 2.13 <span class="author">@YannByron</span> </li><li><a href="https://github.com/apache/fluss/pull/3037">#3037</a> [docs] Add Insert If Not Exists section to Lookup Joins documentation <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/2976">#2976</a> Introduce RPC Layer for KV Scan <span class="author">@polyzos</span> </li><li><a href="https://github.com/apache/fluss/pull/2924">#2924</a> [server] Allow enabling lakehouse on tables created before cluster-level lakehouse is enabled <span class="author">@luoyuxia</span> <span class="labels">priority=critical</span></li><li><a href="https://github.com/apache/fluss/pull/2740">#2740</a> [spark] support map type <span class="author">@YannByron</span> </li><li><a href="https://github.com/apache/fluss/pull/2488">#2488</a> Bump org.assertj:assertj-core from 3.23.1 to 3.27.7 <span class="author">@app/dependabot</span> <span class="labels">dependencies, java</span></li><li><a href="https://github.com/apache/fluss/pull/1775">#1775</a> Bump com.google.protobuf:protobuf-java from 2.5.0 to 3.25.5 in /fluss-filesystems/fluss-fs-hdfs <span class="author">@app/dependabot</span> <span class="labels">dependencies, java</span></li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
