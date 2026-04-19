@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-04-18</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-04-18</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 7 新 Issues</div>
+            <div class="stat">✅ 6 关闭</div>
+            <div class="stat">✨ 4 新 PRs</div>
+            <div class="stat">🎉 6 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/2976">PR #2976</a> 引入 KV Scan 的 RPC 层，支持服务端 KvScan 功能</li><li>🎉 <a href="https://github.com/apache/fluss/pull/2740">PR #2740</a> Spark 连接器支持 Map 类型</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3041">PR #3041</a> Spark 连接器支持 Scala 2.13</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3130">PR #3130</a> 将博客内容迁移至独立仓库 apache/fluss-blog</li><li>🐛 <a href="https://github.com/apache/fluss/pull/2924">PR #2924</a> 修复集群级别 lakehouse 启用前创建的表无法启用 lakehouse 的问题</li><li>🚀 <a href="https://github.com/apache/fluss/pull/3108">PR #3108</a> 引入 netty.server.max-request-size 配置限制请求大小</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <ul class="critical-list"><li>⚠️ <a href="https://github.com/apache/fluss/issues/3129">Issue #3129</a> SparkStreamingTest 测试不稳定，需要关注</li><li>⚠️ <a href="https://github.com/apache/fluss/issues/3127">Issue #3127</a> FlussAdminITCase.testDynamicConfigs 测试不稳定</li><li>⚠️ <a href="https://github.com/apache/fluss/issues/3100">Issue #3100</a> IcebergRewriteITCase.testPkTableCompaction 测试失败</li><li>⚠️ <a href="https://github.com/apache/fluss/issues/2982">Issue #2982</a> CommitRemoteLogManifestITCase 测试不稳定</li></ul>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3128">Issue #3128</a> [website] Move blog content to a separate repository</h4>
+            <ul><li><span class="author">@wuchong</span>: 提议将博客内容迁移至独立仓库，主要维护开销在于 CSS 同步</li><li><span class="author">@polyzos</span>: 同意迁移方案，图片资源长期会是问题，需要考虑额外开销</li><li><span class="author">@fresh-borzoni</span>: 建议将整个网站拆分到独立仓库，而非仅博客内容</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2969">Issue #2969</a> [kv] Fix non-target columns not being nulled during partial update on first insert</h4>
+            <ul><li><span class="author">@binary-signal</span>: 分析发现 FirstRowRowMerger 和 VersionedRowMerger 需要修复空值处理问题</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3049">Issue #3049</a> Introduce `netty.server.max-request-size` to limit the request size</h4>
+            <ul><li><span class="author">@wuchong</span>: 已在 release-0.9 和 main 分支中修复此问题</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3085">Issue #3085</a> Remote log consumption is stuck because the semaphore permit cannot be acquired</h4>
+            <ul><li><span class="author">@zuston</span>: 确认将在下周一提交 PR 处理此问题</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2891">Issue #2891</a> [server] Throttle replica deletion on Coordinator startup to prevent event queue starvation</h4>
+            <ul><li><span class="author">@wattt3</span>: 认领此任务，计划通过 ScheduledExecutorService 实现 ResumeDeletionEvent</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3116">Issue #3116</a> [spark] Support filter pushdown for log tables</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 请求 YannByron 和 luoyuxia 审查此 PR</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3129">Issue #3129</a> [Test] Unstable test SparkStreamingTest read: log table</h4>
+            <ul><li><span class="author">@wuchong</span>: 抄送 Yohahaha 关注此不稳定测试问题</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/1519">Issue #1519</a> Update documentation about the default JDK version to Java11</h4>
+            <ul><li><span class="author">@binary-signal</span>: 网站已更新构建要求为 Maven 3.8.6 和 Java 11，请求关闭此 Issue</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2836">PR #2836</a> [FLUSS-2686] Add COS filesystem support</h4>
+            <ul><li><span class="author">@leekeiabstraction</span>: 询问是否需要为该分支添加集成测试，建议 COS 版本命名更清晰</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3129">#3129</a> [Test] Unstable test SparkStreamingTest read: log table <span class="author">@wuchong</span> <span class="labels">component=connector/spark</span></li><li><a href="https://github.com/apache/fluss/issues/3128">#3128</a> [website] Move blog content to a separate repository <span class="author">@wuchong</span> <span class="labels">component=website</span></li><li><a href="https://github.com/apache/fluss/issues/3127">#3127</a> [test] Unstable test FlussAdminITCase.testDynamicConfigs <span class="author">@app/github-actions</span> </li><li><a href="https://github.com/apache/fluss/issues/3126">#3126</a> Extend the API to support KvScan <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/issues/3125">#3125</a> Implement Server-Side KvScan <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/issues/3124">#3124</a> Introduce Protobuf definitions for RPC <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/issues/3122">#3122</a> [spark] Make LakeSplit extend Serializable to simplify Spark serialization <span class="author">@YannByron</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3133">#3133</a> [flink] Support batch read for tables without datalake enabled <span class="author">@binary-signal</span> </li><li><a href="https://github.com/apache/fluss/pull/3132">#3132</a> [server] Optimize RemoteLogFetcher with async prefetch for recovery <span class="author">@Kaixuan-Duan</span> </li><li><a href="https://github.com/apache/fluss/pull/3131">#3131</a> [server] Resume deletions off startup via scheduled event <span class="author">@wattt3</span> </li><li><a href="https://github.com/apache/fluss/pull/3123">#3123</a> [spark] Make LakeSplit extend Serializable to simplify Spark serialization <span class="author">@YannByron</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3128">#3128</a> [website] Move blog content to a separate repository <span class="author">@wuchong</span> <span class="labels">component=website</span></li><li><a href="https://github.com/apache/fluss/issues/3124">#3124</a> Introduce Protobuf definitions for RPC <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/issues/3049">#3049</a> Introduce `netty.server.max-request-size` to limit the request size <span class="author">@loserwang1024</span> <span class="labels">version: 0.9.1</span></li><li><a href="https://github.com/apache/fluss/issues/2908">#2908</a> Allow enabling lakehouse on tables created before cluster-level lakehouse is enabled <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/issues/2673">#2673</a> [spark] to support map type <span class="author">@YannByron</span> </li><li><a href="https://github.com/apache/fluss/issues/2667">#2667</a> [spark] to support scala2.13 <span class="author">@YannByron</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3130">#3130</a> [website] Move blog content to a separate repository "apache/fluss-blog" <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/pull/3108">#3108</a> [server][netty] Introduce netty.server.max-request-size to limit the request size (#3050) <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/pull/3041">#3041</a> [spark] support scala 2.13 <span class="author">@YannByron</span> </li><li><a href="https://github.com/apache/fluss/pull/2976">#2976</a> Introduce RPC Layer for KV Scan <span class="author">@polyzos</span> </li><li><a href="https://github.com/apache/fluss/pull/2924">#2924</a> [server] Allow enabling lakehouse on tables created before cluster-level lakehouse is enabled <span class="author">@luoyuxia</span> <span class="labels">priority=critical</span></li><li><a href="https://github.com/apache/fluss/pull/2740">#2740</a> [spark] support map type <span class="author">@YannByron</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
