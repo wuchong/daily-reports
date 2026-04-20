@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-04-19</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-04-19</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 3 新 Issues</div>
+            <div class="stat">✅ 3 关闭</div>
+            <div class="stat">✨ 7 新 PRs</div>
+            <div class="stat">🎉 5 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/3135">PR #3135</a> 修复 SortMergeReader 在 changelog 删除时过早终止的问题</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3136">PR #3136</a> 修复远程文件下载时的静默失败问题</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3137">PR #3137</a> 将 SortMergeReader changelog 删除修复回移植到 0.9 分支</li><li>🐛 <a href="https://github.com/apache/fluss/issues/3103">Issue #3103</a> 和 <a href="https://github.com/apache/fluss/issues/3101">Issue #3101</a> 已关闭，修复了 JAVA_9 字段错误和负大小异常</li><li>✨ <a href="https://github.com/apache/fluss/pull/3140">PR #3140</a> 提出 POC：支持多表日志扫描器，优化 I/O 合并</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <ul class="critical-list"><li>⚠️ <a href="https://github.com/apache/fluss/pull/2829">PR #2829</a> 存在 P1 问题：rebalance 逻辑未考虑 standby 副本，可能导致选主错误</li><li>⚠️ <a href="https://github.com/apache/fluss/pull/2829">PR #2829</a> 存在 P2 问题：ISR 扩展时 standby 列表未更新</li><li>⚠️ <a href="https://github.com/apache/fluss/issues/2982">Issue #2982</a> 测试 CommitRemoteLogManifestITCase 不稳定</li></ul>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/1519">Issue #1519</a> Update documentation about the default JDK version to Java11</h4>
+            <ul><li><span class="author">@binary-signal</span>: 指出 Fluss 官网已说明需要 Java 11，建议关闭此 issue</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2891">Issue #2891</a> [server] Throttle replica deletion on Coordinator startup to prevent event queue starvation</h4>
+            <ul><li><span class="author">@wattt3</span>: 认领此 issue，计划通过 ResumeDeletionEvent 和 ScheduledExecutorService 实现</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2969">Issue #2969</a> [kv] Fix non-target columns not being nulled during partial update on first insert</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 建议移除冗余测试方法，复用已有测试逻辑</li><li><span class="author">@binary-signal</span>: 已处理 review 意见并回复</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3085">Issue #3085</a> Remote log consumption is stuck because the semaphore permit cannot be acquired</h4>
+            <ul><li><span class="author">@zuston</span>: 确认将在下周一为 release-0.9 分支提交修复 PR</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3120">Issue #3120</a> [docs] Add security reporting documentation</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 建议采纳 Copilot 的措辞优化建议，使文档更清晰</li><li><span class="author">@matrixsparse</span>: 已根据建议更新文档措辞</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3129">Issue #3129</a> [Test] Unstable test SparkStreamingTest read: log table</h4>
+            <ul><li><span class="author">@Yohahaha</span>: 分析了竞态条件根因，提供了详细的时序图和修复方案</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3135">Issue #3135</a> [client] Fix early termination in SortMergeReader on changelog deletes</h4>
+            <ul><li><span class="author">@Copilot</span>: 建议优化 hasNext() 中的 continue 逻辑以减少每行开销</li><li><span class="author">@beryllw</span>: 确认 PR LGTM</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3140">Issue #3140</a> [POC][client] Support log scanner for multiple tables</h4>
+            <ul><li><span class="author">@wuchong</span>: 建议保持 API 不变，在 LogFetcher 层面共享 I/O，与 writer 侧策略一致</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3142">Issue #3142</a> [spark][doc] Add Spark batch union read</h4>
+            <ul><li><span class="author">@Yohahaha</span>: 请求 @wuchong @YannByron @luoyuxia 帮助 review</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2829">PR #2829</a> [kv] Support elect standby replicas for primary key table</h4>
+            <ul><li><span class="author">@Copilot</span>: 多处代码建议：isStandbyReplica 状态不一致、变量命名优化、反序列化健壮性等</li><li><span class="author">@wuchong</span>: 提出 P1/P2 问题：rebalance 选主错误、standby 列表未更新、代码简化建议</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2836">PR #2836</a> [FLUSS-2686] Add COS filesystem support</h4>
+            <ul><li><span class="author">@XuQianJin-Stars</span>: 添加了 COSWithCredentialsProviderFileSystemBehaviorITCase 测试覆盖</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3030">PR #3030</a> [server] Implement JBOD Phase 1 Local Multi-Directory Support</h4>
+            <ul><li><span class="author">@gyang94</span>: 多处代码改进建议：异常处理、路径规范化、trim 调用优化</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3078">PR #3078</a> [server] Add authorization to databaseExists and tableExists RPC call…</h4>
+            <ul><li><span class="author">@Copilot</span>: 建议使用 isAuthorized 替代 try-catch 进行权限检查</li><li><span class="author">@wuchong</span>: 建议先检查权限（fail-fast），使用 isAuthorized 替代异常处理</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3116">PR #3116</a> [spark] Support filter pushdown for log tables</h4>
+            <ul><li><span class="author">@Yohahaha</span>: 建议将测试加入现有测试套件，测试分区表，保持 Scala 风格</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3135">PR #3135</a> [client] Fix early termination in SortMergeReader on changelog deletes</h4>
+            <ul><li><span class="author">@Copilot</span>: 建议优化 hasNext() 中 continue 逻辑以减少开销</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3139">#3139</a> Support log scanner for multiple tables. <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/issues/3138">#3138</a> [Feature]Support managing existing Apache Iceberg tables with Fluss <span class="author">@litiliu</span> </li><li><a href="https://github.com/apache/fluss/issues/3134">#3134</a> [client] SortMergeReader stops after deleted snapshot rows <span class="author">@luoyuxia</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3143">#3143</a> [filesystem] Add support for client delegation tokens <span class="author">@morazow</span> </li><li><a href="https://github.com/apache/fluss/pull/3142">#3142</a> [spark][doc] Add Spark batch union read <span class="author">@Yohahaha</span> </li><li><a href="https://github.com/apache/fluss/pull/3141">#3141</a> [spark] Fix flaky SparkStreamingTest by handling interruption when close streaming execution <span class="author">@Yohahaha</span> </li><li><a href="https://github.com/apache/fluss/pull/3140">#3140</a> [POC][client] Support log scanner for multiple tables <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/pull/3133">#3133</a> [flink] Support batch read for tables without datalake enabled <span class="author">@binary-signal</span> </li><li><a href="https://github.com/apache/fluss/pull/3132">#3132</a> [server] Optimize RemoteLogFetcher with async prefetch for recovery <span class="author">@Kaixuan-Duan</span> </li><li><a href="https://github.com/apache/fluss/pull/3131">#3131</a> [server] Resume deletions off startup via scheduled event <span class="author">@wattt3</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3134">#3134</a> [client] SortMergeReader stops after deleted snapshot rows <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/issues/3103">#3103</a> Java.lang.NoSuchFieldError: JAVA_9 <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/issues/3101">#3101</a> java.lang.IllegalArgumentException: Accounted size went negative. <span class="author">@loserwang1024</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3137">#3137</a> [client] Backport SortMergeReader changelog delete fix to 0.9 <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/pull/3136">#3136</a> [client] Catch throwable to avoid slient failure on remote file download (#3104) <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/pull/3135">#3135</a> [client] Fix early termination in SortMergeReader on changelog deletes <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/pull/3113">#3113</a> [common] Remove MapUtils.newConcurrentMap() to avoid dependencies conflict. <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/pull/3102">#3102</a> [client] release the resource of record accumulator only when sender thread is stopped. <span class="author">@loserwang1024</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
