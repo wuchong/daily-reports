@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-04-22</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-04-22</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 12 新 Issues</div>
+            <div class="stat">✅ 8 关闭</div>
+            <div class="stat">✨ 10 新 PRs</div>
+            <div class="stat">🎉 16 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/3169">PR #3169</a> Flink Lake 表非分区扫描支持过滤器下推优化</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3171">PR #3171</a> Helm Chart 支持 existingSecret 配置 SASL 凭证</li><li>🐛 <a href="https://github.com/apache/fluss/pull/3157">PR #3157</a> 修复 KV 表部分更新时非目标列未置空问题</li><li>📚 <a href="https://github.com/apache/fluss/pull/3150">PR #3150</a> 重新引入 Quickstart Docker 镜像优化开发者体验</li><li>🚀 <a href="https://github.com/apache/fluss/pull/3165">PR #3165</a> S3 委托令牌支持 path-style-access 配置传递</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2683">Issue #2683</a> [docs] Reintroduce the fluss-quickstart-flink Docker image</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 将提议拆分为三个后续问题：恢复 Flink quickstart、移动手动设置到合适位置、规划 Spark quickstart</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3161">Issue #3161</a> [docs] Reintroduce a prebuilt fluss-quickstart-flink image for the main quickstart</h4>
+            <ul><li><span class="author">@matrixsparse</span>: 表示有兴趣贡献，询问是否可以分配此任务</li><li><span class="author">@luoyuxia</span>: 表示自己已经在处理此问题，因为之前是她移除的</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3145">Issue #3145</a> [test] Unstable test RemoteLogDownloaderTest.testPrefetchNum</h4>
+            <ul><li><span class="author">@ankit-khare-2015</span>: 表示愿意解决此问题，询问后续步骤，并在 fork 中测试了构建</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3048">Issue #3048</a> [lake][iceberg] Iceberg does not support union read for primary key table</h4>
+            <ul><li><span class="author">@morazow</span>: 讨论 PK 表 union read 方案，建议预排序写入或引入 deletion vectors</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3063">Issue #3063</a> [test] Unstable test RebalanceManagerITCase.testBuildClusterModel</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: 报告 CI 失败，RebalanceManagerITCase 测试抛出 Bucket leader and isr is empty 异常</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3162">Issue #3162</a> [docs] Move the manual JAR + Docker Compose Flink setup into Engine Flink getting started</h4>
+            <ul><li><span class="author">@binary-signal</span>: 支持提供预打包的 Docker 镜像，配合 Docker Compose 和 sidecar 容器可进一步简化体验</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3163">Issue #3163</a> [docs] Plan a fluss-quickstart-spark image for Spark Quickstart</h4>
+            <ul><li><span class="author">@xi377266</span>: 表示愿意处理此问题</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3140">Issue #3140</a> [POC][client] Support log scanner for multiple tables</h4>
+            <ul><li><span class="author">@loserwang1024</span>: 解释当前方法的问题：阻塞延迟高、多个 LogScanner 实例导致内存开销大</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3132">PR #3132</a> [server] Optimize RemoteLogFetcher with async prefetch for recovery</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 详细审查指出多个问题：资源泄漏、竞态条件、缺少重试机制、预取深度应可配置等</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3169">PR #3169</a> [flink] Push down lake filters for non-partitioned scans</h4>
+            <ul><li><span class="author">@Copilot</span>: 建议用 HashSet 替代 O(n²) 循环查找，并将注释集中到一处避免重复</li><li><span class="author">@beryllw</span>: 表示 LGTM</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3171">PR #3171</a> [helm] Add existingSecret support for SASL credentials</h4>
+            <ul><li><span class="author">@affo</span>: 建议拆分代码块添加注释、询问镜像选择是否可用 busybox</li><li><span class="author">@fresh-borzoni</span>: 确认已解决遗留的设计问题</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3141">PR #3141</a> [spark] Fix flaky SparkStreamingTest by handling interruption when close streaming execution</h4>
+            <ul><li><span class="author">@beryllw</span>: 指出 Thread.interrupt()、空行、fetchLatestOffsets 返回 None 时抛异常等问题</li><li><span class="author">@Yohahaha</span>: 建议重新抛出 InterruptedException 让 Spark streaming 捕获</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3154">PR #3154</a> [helm] scheduling primitives</h4>
+            <ul><li><span class="author">@morazow</span>: 建议使用 <release-name> 占位符避免用户直接取消注释</li><li><span class="author">@fresh-borzoni</span>: 解释修改示例为 app.kubernetes.io/instance 以正确限定 anti-affinity 范围</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3150">PR #3150</a> Reintroduce Quickstart Image</h4>
+            <ul><li><span class="author">@polyzos</span>: 询问是否保持 Flink 1.20 版本</li><li><span class="author">@luoyuxia</span>: 解释 faker connector 不支持 Flink 2.2，暂保持 1.20 版本</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3008">PR #3008</a> [client] Fix corruption after zero-copy lazy parse ByteBuf</h4>
+            <ul><li><span class="author">@Copilot</span>: 指出 API 兼容性问题、建议添加单元测试验证 buffer 生命周期行为、修复 Javadoc 链接</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3030">PR #3030</a> [server] Implement JBOD Phase 1 Local Multi-Directory Support</h4>
+            <ul><li><span class="author">@hanliu0830</span>: 多处代码改进建议：异常处理改为抛出异常、路径需转绝对路径、trim 调用去重等</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3165">PR #3165</a> [s3] Propagate path-style-access config from server to client via delegation token</h4>
+            <ul><li><span class="author">@Copilot</span>: 建议优化代码避免重复 conf.get 调用、建议添加单元测试验证配置传递</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2786">PR #2786</a> [client] cancel pending log download when closing remote log downloader.</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 指出多处资源管理和竞态问题：cancel、shutdownNow、close 时的状态管理</li><li><span class="author">@loserwang1024</span>: 确认已修改回原设计</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3180">#3180</a> Add documentation for contributing a blog post <span class="author">@wuchong</span> <span class="labels">good first issue, component=website</span></li><li><a href="https://github.com/apache/fluss/issues/3179">#3179</a> Add documentation for FIP (Flink Improvement Proposal) contribution guide <span class="author">@wuchong</span> <span class="labels">good first issue, component=website</span></li><li><a href="https://github.com/apache/fluss/issues/3176">#3176</a> PK table messagesIn/bytesIn metrics double-counted due to CDC log <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/issues/3173">#3173</a> [server] Auto partition retention cleanup delayed by DAY partition creation jitter <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/issues/3172">#3172</a> [helm] Add existingSecret support for SASL credentials <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/3170">#3170</a> [tiering] Coordinator Should Push Lake Config to Tiering Service via Heartbeat RPC <span class="author">@Yohahaha</span> </li><li><a href="https://github.com/apache/fluss/issues/3168">#3168</a> [flink] Lake filters shoud be pushed down for non-partitioned scans <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/issues/3161">#3161</a> [docs] Reintroduce a prebuilt fluss-quickstart-flink image for the main quickstart <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/issues/3162">#3162</a> [docs] Move the manual JAR + Docker Compose Flink setup into Engine Flink getting started <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/issues/3163">#3163</a> [docs] Plan a fluss-quickstart-spark image for Spark Quickstart <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/issues/3160">#3160</a> [spark] Improve spark ui more readable when reading fluss <span class="author">@Yohahaha</span> </li><li><a href="https://github.com/apache/fluss/issues/3155">#3155</a> Introduce generic secondary index metadata foundation <span class="author">@platinumhamburg</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3187">#3187</a> [lake] make compaction strategy min_input_files configurable <span class="author">@wattt3</span> </li><li><a href="https://github.com/apache/fluss/pull/3186">#3186</a> [WIP] feat: system table <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/pull/3184">#3184</a> [bp][helm] Support injecting environment variables and external secrets (backport to release-0.9) <span class="author">@morazow</span> </li><li><a href="https://github.com/apache/fluss/pull/3182">#3182</a> [docs] add contribute a blog post guide (#3180) <span class="author">@tmchow</span> </li><li><a href="https://github.com/apache/fluss/pull/3181">#3181</a> [flink] Push down lake filters for non-partitioned scans <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/pull/3177">#3177</a> [server] Remove CDC log metrics from PK table write path to avoid dou… <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/pull/3174">#3174</a> [server] Fix auto partition drop delayed by DAY creation jitter <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/pull/3164">#3164</a> [spark] Exclude slf4j from spark connector shade <span class="author">@Yohahaha</span> </li><li><a href="https://github.com/apache/fluss/pull/3158">#3158</a> [client] Fix race condition in RemoteLogDownloader causing flaky testPrefetchNum <span class="author">@ankit-khare-2015</span> </li><li><a href="https://github.com/apache/fluss/pull/3156">#3156</a> Add generic secondary index metadata <span class="author">@platinumhamburg</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3172">#3172</a> [helm] Add existingSecret support for SASL credentials <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/3168">#3168</a> [flink] Lake filters shoud be pushed down for non-partitioned scans <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/issues/3161">#3161</a> [docs] Reintroduce a prebuilt fluss-quickstart-flink image for the main quickstart <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/issues/3153">#3153</a> [helm] Add pod scheduling primitives (affinity, nodeSelector, tolerations, topologySpreadConstraints) <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/3147">#3147</a> [server] Coordinator metrics not updated after restart when no events arrive <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/issues/3129">#3129</a> [Test] Unstable test SparkStreamingTest read: log table <span class="author">@wuchong</span> <span class="labels">component=connector/spark</span></li><li><a href="https://github.com/apache/fluss/issues/2848">#2848</a> [Feature] Provide built-in Flink SQL functions for RoaringBitmap construction and cardinality query (rbm32_build, rbm64_build, rbm32_cardinality, rbm64_cardinality) <span class="author">@matrixsparse</span> </li><li><a href="https://github.com/apache/fluss/issues/2843">#2843</a> Invalid partial update for PK table <span class="author">@zuston</span> <span class="labels">version: 0.9.1</span></li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3185">#3185</a> [bp][helm] Add pod annotations, labels, and pod disruption budget support (backport to release-0.9) <span class="author">@morazow</span> </li><li><a href="https://github.com/apache/fluss/pull/3183">#3183</a> [helm] Backport helm chart improvements to release-0.9 <span class="author">@morazow</span> </li><li><a href="https://github.com/apache/fluss/pull/3175">#3175</a> [helm] scheduling primitives (#3154) (backport to 0.9) <span class="author">@polyzos</span> </li><li><a href="https://github.com/apache/fluss/pull/3171">#3171</a> [helm] Add existingSecret support for SASL credentials <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/3169">#3169</a> [flink] Push down lake filters for non-partitioned scans <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/pull/3167">#3167</a> [s3] Propagate path-style-access via delegation token <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/pull/3166">#3166</a> [cherry-pick][release-0.9] Reintroduce Quickstart Image (#3150) <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/pull/3165">#3165</a> [s3] Propagate path-style-access config from server to client via delegation token <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/pull/3157">#3157</a> [kv] Fix non-target columns not being nulled during partial update on first insert <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/pull/3154">#3154</a> [helm] scheduling primitives <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/3150">#3150</a> Reintroduce Quickstart Image <span class="author">@polyzos</span> </li><li><a href="https://github.com/apache/fluss/pull/3149">#3149</a> [client] Ensure UPDATE_BEFORE and UPDATE_AFTER are never split across poll batches <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/pull/3148">#3148</a> [server] Fix coordinator metrics not updated when no events arrive <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/pull/3141">#3141</a> [spark] Fix flaky SparkStreamingTest by handling interruption when close streaming execution <span class="author">@Yohahaha</span> </li><li><a href="https://github.com/apache/fluss/pull/3003">#3003</a> Fix buffer leak in LimitBatchScanner <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/2969">#2969</a> [kv] Fix non-target columns not being nulled during partial update on first insert <span class="author">@binary-signal</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
