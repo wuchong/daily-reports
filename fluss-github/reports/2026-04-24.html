@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-04-24</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-04-24</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 8 新 Issues</div>
+            <div class="stat">✅ 5 关闭</div>
+            <div class="stat">✨ 9 新 PRs</div>
+            <div class="stat">🎉 11 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/3116">PR #3116</a> Spark connector 支持 log tables 过滤条件下推优化</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3181">PR #3181</a> Flink 非分区扫描支持 lake 过滤器下推</li><li>🐛 <a href="https://github.com/apache/fluss/pull/3193">PR #3193</a> 修复 Paimon IOManager 泄漏导致 /tmp 磁盘耗尽问题</li><li>✨ <a href="https://github.com/apache/fluss/pull/3152">PR #3152</a> Fluss 网站启用 AI 文档助手功能</li><li>📚 <a href="https://github.com/apache/fluss/pull/2695">PR #2695</a> 添加 Change Data Feed 功能介绍文档</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <ul class="critical-list"><li>⚠️ <a href="https://github.com/apache/fluss/issues/3206">Issue #3206</a> AskAi 功能因隐私策略阻止无法加载，需回滚处理</li><li>⚠️ <a href="https://github.com/apache/fluss/issues/3188">Issue #3188</a> CoordinatorEventManagerTest.testMetricsUpdatedImmediatelyOnStartup 测试不稳定</li></ul>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3177">Issue #3177</a> [server] Remove CDC log metrics from PK table write path to avoid double counting</h4>
+            <ul><li><span class="author">@binary-signal</span>: 解释了 KvBytesIn 和 LogBytesIn 是独立指标，CDC log 确实占用实际资源，不应从监控中隐藏</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3152">Issue #3152</a> [fluss/ai agent] enable ai doc agent on website</h4>
+            <ul><li><span class="author">@MehulBatra</span>: 调整了 Doris 图标可见性，后续将配合隐私团队处理域名白名单</li><li><span class="author">@wuchong</span>: 指出 Ask AI 当前被隐私策略阻止，建议先回滚提交，待隐私团队批准后再添加</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3158">Issue #3158</a> [client] Fix race condition in RemoteLogDownloader causing flaky testPrefetchNum</h4>
+            <ul><li><span class="author">@ankit-khare-2015</span>: 请求合并更改以解决问题</li><li><span class="author">@wuchong</span>: 分析了竞态条件根因，建议将断言修改为检查 permits 在 1-2 之间</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3132">Issue #3132</a> [server] Optimize RemoteLogFetcher with async prefetch for recovery</h4>
+            <ul><li><span class="author">@Kaixuan-Duan</span>: 感谢 review，正在推进测试代码和预取深度优化，参考 fluss-rust 实现</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3084">Issue #3084</a> Flink log table consumer threw an out-of-range offset exception</h4>
+            <ul><li><span class="author">@loserwang1024</span>: 分析 RemoteLogDownloadFuture 只实现了 onComplete 导致异常无法传播，建议添加超时和失败处理</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3179">Issue #3179</a> Add documentation for FIP (Flink Improvement Proposal) contribution guide</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 指出 Confluence 已有完善的 FIP 流程文档，询问是否需要在网站复制完整内容或仅添加链接</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3192">Issue #3192</a> [server] local-cluster.sh starts successfully but processes fail silently when JAVA_HOME is misconfigured</h4>
+            <ul><li><span class="author">@matrixsparse</span>: 主动请缨处理此 issue</li><li><span class="author">@Yohahaha</span>: 感谢并确认分配给 matrixsparse</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3197">Issue #3197</a> [server] Validate Java version >= 11 in config.sh to prevent silent startup failures</h4>
+            <ul><li><span class="author">@matrixsparse</span>: 提交 PR 修复 #3192，在 config.sh 中验证 Java 版本防止静默启动失败</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3207">Issue #3207</a> [flink] Batch query on empty datalake-enabled table should return 0 rows instead of failing with UnsupportedOperationException</h4>
+            <ul><li><span class="author">@matrixsparse</span>: 主动请缨处理此 issue</li><li><span class="author">@binary-signal</span>: 将 issue 分配给 matrixsparse</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3116">PR #3116</a> [spark] Support filter pushdown for log tables</h4>
+            <ul><li><span class="author">@Copilot</span>: 建议处理空 IN 谓词、迁移到 CollectionConverters，指出流式读取未实际应用过滤器的问题</li><li><span class="author">@luoyuxia</span>: 指出非 Arrow 格式（如 compacted）可能直接抛异常的风险</li><li><span class="author">@fresh-borzoni</span>: 已处理评审意见，lake reader 下推作为后续计划</li><li><span class="author">@YannByron</span>: 确认 LGTM</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3123">PR #3123</a> [spark] Make LakeSplit extend Serializable to simplify Spark serialization</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 询问为何删除 serialVersionUID，建议也为 PaimonSplit 添加该字段</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3132">PR #3132</a> [server] Optimize RemoteLogFetcher with async prefetch for recovery</h4>
+            <ul><li><span class="author">@Kaixuan-Duan</span>: 已处理 close() 调用 awaitTermination、关闭迭代器立即停止、预取匹配改用 ID 比较等评审意见</li><li><span class="author">@zuston</span>: cc 相关人员希望提升可读性</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3158">PR #3158</a> [client] Fix race condition in RemoteLogDownloader causing flaky testPrefetchNum</h4>
+            <ul><li><span class="author">@Copilot</span>: 指出 acquire() 前从队列取元素可能违反优先级顺序，建议在获取许可后再取元素</li><li><span class="author">@wuchong</span>: 同意 Copilot 意见，指出 acquire() 在 poll() 前是保证消费顺序的关键设计</li><li><span class="author">@ankit-khare-2015</span>: 询问是否应回滚更改并进一步调查</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3207">#3207</a> [flink] Batch query on empty datalake-enabled table should return 0 rows instead of failing with UnsupportedOperationException <span class="author">@binary-signal</span> </li><li><a href="https://github.com/apache/fluss/issues/3206">#3206</a> [docs] AskAi fails to load on Fluss website <span class="author">@binary-signal</span> </li><li><a href="https://github.com/apache/fluss/issues/3203">#3203</a> [Spark] Add set_cluster_configs and reset_cluster_configs procedures for Spark connector <span class="author">@XuQianJin-Stars</span> </li><li><a href="https://github.com/apache/fluss/issues/3201">#3201</a> [test] fix wrong error message checks in LakeEnabledTableCreateITCase <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/3198">#3198</a> [docs] Titles are duplicated in the Authentication section <span class="author">@zhuyufeng0809</span> </li><li><a href="https://github.com/apache/fluss/issues/3192">#3192</a> [server] local-cluster.sh starts successfully but processes fail silently when JAVA_HOME is misconfigured <span class="author">@Yohahaha</span> </li><li><a href="https://github.com/apache/fluss/issues/3191">#3191</a> Support configurable time partition format for auto-partitioned tables <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/issues/3188">#3188</a> [test] Unstable test CoordinatorEventManagerTest.testMetricsUpdatedImmediatelyOnStartup <span class="author">@app/github-actions</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3208">#3208</a> [flink] Fix batch query on empty datalake-enabled table to return 0 rows instead of failing <span class="author">@matrixsparse</span> </li><li><a href="https://github.com/apache/fluss/pull/3205">#3205</a> [helm] Bump chart version to 0.9.1-incubating <span class="author">@polyzos</span> </li><li><a href="https://github.com/apache/fluss/pull/3204">#3204</a> [FLUSS][Spark] Add set_cluster_configs and reset_cluster_configs procedures <span class="author">@XuQianJin-Stars</span> </li><li><a href="https://github.com/apache/fluss/pull/3200">#3200</a> [server] Support configurable time partition format for auto-partitioned tables <span class="author">@wattt3</span> </li><li><a href="https://github.com/apache/fluss/pull/3199">#3199</a> [docs] Fix duplicate titles in the Authentication section <span class="author">@zhuyufeng0809</span> </li><li><a href="https://github.com/apache/fluss/pull/3197">#3197</a> [server] Validate Java version >= 11 in config.sh to prevent silent startup failures <span class="author">@matrixsparse</span> </li><li><a href="https://github.com/apache/fluss/pull/3196">#3196</a> [spark] Add numRowsRead custom metric and improve Spark UI operator name for FlussScan <span class="author">@Yohahaha</span> </li><li><a href="https://github.com/apache/fluss/pull/3194">#3194</a> [server] make RemoteLogManifest sorted with startOffset <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/pull/3190">#3190</a> [tiering] Fix Paimon IOManager leak in MergeTreeWriter <span class="author">@luoyuxia</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3122">#3122</a> [spark] Make LakeSplit extend Serializable to simplify Spark serialization <span class="author">@YannByron</span> </li><li><a href="https://github.com/apache/fluss/issues/3117">#3117</a> [spark] Support filter pushdown for log tables <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/3072">#3072</a> Csp_check is warning <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/issues/2652">#2652</a> [docs] Update roadmap page to match the 2026 goals <span class="author">@MehulBatra</span> </li><li><a href="https://github.com/apache/fluss/issues/2599">#2599</a> [docs] Add "Change Data Feed" feature introduction for "Primary Key Table" page <span class="author">@wuchong</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3193">#3193</a> [tiering] Fix Paimon IOManager leak in MergeTreeWriter causing /tmp disk exhaustion <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/pull/3189">#3189</a> [bp][release-0.9][helm] Add existingSecret support for SASL credentials (#3171) <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/3184">#3184</a> [bp][helm] Support injecting environment variables and external secrets (backport to release-0.9) <span class="author">@morazow</span> </li><li><a href="https://github.com/apache/fluss/pull/3181">#3181</a> [flink] Push down lake filters for non-partitioned scans <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/pull/3164">#3164</a> [spark] Exclude slf4j from spark connector shade <span class="author">@Yohahaha</span> </li><li><a href="https://github.com/apache/fluss/pull/3152">#3152</a> [fluss/ai agent] enable ai doc agent on website <span class="author">@MehulBatra</span> </li><li><a href="https://github.com/apache/fluss/pull/3142">#3142</a> [spark][doc] Add Spark batch union read <span class="author">@Yohahaha</span> </li><li><a href="https://github.com/apache/fluss/pull/3123">#3123</a> [spark] Make LakeSplit extend Serializable to simplify Spark serialization <span class="author">@YannByron</span> </li><li><a href="https://github.com/apache/fluss/pull/3116">#3116</a> [spark] Support filter pushdown for log tables <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/2696">#2696</a> [docs/website] Update website with roadmap 2026 changes <span class="author">@MehulBatra</span> </li><li><a href="https://github.com/apache/fluss/pull/2695">#2695</a> [doc] Add info for changedatafeed in Log and Pk tables to match the existing industry format <span class="author">@MehulBatra</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
