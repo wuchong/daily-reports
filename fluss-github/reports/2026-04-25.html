@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-04-25</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-04-25</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 4 新 Issues</div>
+            <div class="stat">✅ 2 关闭</div>
+            <div class="stat">✨ 5 新 PRs</div>
+            <div class="stat">🎉 2 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/3116">PR #3116</a> Spark connector 支持 log tables 的过滤器下推功能</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3205">PR #3205</a> Helm chart 版本更新至 0.9.1-incubating</li><li>🐛 <a href="https://github.com/apache/fluss/pull/3208">PR #3208</a> 修复空 datalake 表批量查询返回 UnsupportedOperationException 问题</li><li>✨ <a href="https://github.com/apache/fluss/pull/3200">PR #3200</a> 支持自动分区表的可配置时间分区格式</li><li>📚 <a href="https://github.com/apache/fluss/pull/3209">PR #3209</a> 允许 Fluss 网站加载 Kapa AI Widget 资源</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3207">Issue #3207</a> [flink] Batch query on empty datalake-enabled table should return 0 rows instead of failing with UnsupportedOperationException</h4>
+            <ul><li><span class="author">@matrixsparse</span>: 希望处理此 issue，请求分配给自己</li><li><span class="author">@binary-signal</span>: 将 issue 分配给 matrixsparse</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3188">Issue #3188</a> [test] Unstable test CoordinatorEventManagerTest.testMetricsUpdatedImmediatelyOnStartup</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: 报告测试失败 CoordinatorEventManagerTest.testMetricsUpdatedImmediatelyOnStartup</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2881">Issue #2881</a> [lake/iceberg] Support snapshot expiration for lake tables</h4>
+            <ul><li><span class="author">@vamossagar12</span>: 指出不稳定测试问题，创建了 #3210 进行修复</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3158">Issue #3158</a> [client] Fix race condition in RemoteLogDownloader causing flaky testPrefetchNum</h4>
+            <ul><li><span class="author">@ankit-khare-2015</span>: 询问此 PR 是否将被合并或还有其他待讨论的问题</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3163">Issue #3163</a> [docs] Plan a fluss-quickstart-spark image for Spark Quickstart</h4>
+            <ul><li><span class="author">@xi377266</span>: 希望处理此 issue 并请求分配给自己</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3116">PR #3116</a> [spark] Support filter pushdown for log tables</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 感谢 review，回应评论；lake reader 下推作为后续计划</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3132">PR #3132</a> [server] Optimize RemoteLogFetcher with async prefetch for recovery</h4>
+            <ul><li><span class="author">@Kaixuan-Duan</span>: 回应评论并优化预取深度实现</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2881">PR #2881</a> [lake/iceberg] Support snapshot expiration for lake tables</h4>
+            <ul><li><span class="author">@vamossagar12</span>: 解释快照过期修复方案，优雅处理过期快照避免恢复失败</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2836">PR #2836</a> [FLUSS-2686] Add COS filesystem support</h4>
+            <ul><li><span class="author">@leekeiabstraction</span>: 询问此处是否应为 endpoint suffix</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3200">PR #3200</a> [server] Support configurable time partition format for auto-partitioned tables</h4>
+            <ul><li><span class="author">@wattt3</span>: 请求 review PR</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3205">PR #3205</a> [helm] Bump chart version to 0.9.1-incubating</h4>
+            <ul><li><span class="author">@polyzos</span>: 请求 @wuchong 和 @luoyuxia review</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3210">PR #3210</a> [test]  Fixing flaky test CoordinatorEventManagerTest.testMetricsUpdatedImmediatelyOnStartup</h4>
+            <ul><li><span class="author">@vamossagar12</span>: 请求 @swuferhong 和 @wuchong review 修复不稳定测试的 PR</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2876">PR #2876</a> Fixing issue with row update not working for PK table:</h4>
+            <ul><li><span class="author">@vamossagar12</span>: 请求 @loserwang1024 和 @wuchong review</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3207">#3207</a> [flink] Batch query on empty datalake-enabled table should return 0 rows instead of failing with UnsupportedOperationException <span class="author">@binary-signal</span> </li><li><a href="https://github.com/apache/fluss/issues/3206">#3206</a> [docs] AskAi fails to load on Fluss website <span class="author">@binary-signal</span> </li><li><a href="https://github.com/apache/fluss/issues/3203">#3203</a> [Spark] Add set_cluster_configs and reset_cluster_configs procedures for Spark connector <span class="author">@XuQianJin-Stars</span> </li><li><a href="https://github.com/apache/fluss/issues/3201">#3201</a> [test] fix wrong error message checks in LakeEnabledTableCreateITCase <span class="author">@gyang94</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3210">#3210</a> [test]  Fixing flaky test CoordinatorEventManagerTest.testMetricsUpdatedImmediatelyOnStartup <span class="author">@vamossagar12</span> </li><li><a href="https://github.com/apache/fluss/pull/3209">#3209</a> [website] Allow Kapa AI Widget Resources on Fluss Website <span class="author">@Kaixuan-Duan</span> </li><li><a href="https://github.com/apache/fluss/pull/3208">#3208</a> [flink] Fix batch query on empty datalake-enabled table to return 0 rows instead of failing <span class="author">@matrixsparse</span> </li><li><a href="https://github.com/apache/fluss/pull/3204">#3204</a> [FLUSS][Spark] Add set_cluster_configs and reset_cluster_configs procedures <span class="author">@XuQianJin-Stars</span> </li><li><a href="https://github.com/apache/fluss/pull/3200">#3200</a> [server] Support configurable time partition format for auto-partitioned tables <span class="author">@wattt3</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3201">#3201</a> [test] fix wrong error message checks in LakeEnabledTableCreateITCase <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/3117">#3117</a> [spark] Support filter pushdown for log tables <span class="author">@fresh-borzoni</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3205">#3205</a> [helm] Bump chart version to 0.9.1-incubating <span class="author">@polyzos</span> </li><li><a href="https://github.com/apache/fluss/pull/3116">#3116</a> [spark] Support filter pushdown for log tables <span class="author">@fresh-borzoni</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
