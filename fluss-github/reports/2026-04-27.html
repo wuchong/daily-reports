@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-04-27</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-04-27</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 8 新 Issues</div>
+            <div class="stat">✅ 4 关闭</div>
+            <div class="stat">✨ 6 新 PRs</div>
+            <div class="stat">🎉 5 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/3221">PR #3221</a> 修复 Log 表复杂类型 limit scan 的内存释放问题</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3212">PR #3212</a> 为 Prometheus reporter 添加 UTF-8 字符过滤选项</li><li>🐛 <a href="https://github.com/apache/fluss/pull/3190">PR #3190</a> 修复 Paimon MergeTreeWriter 中的 IOManager 内存泄漏</li><li>🎉 <a href="https://github.com/apache/fluss/pull/2158">PR #2158</a> 修复 toArray() 方法的 ArrayIndexOutOfBoundsException</li><li>✨ <a href="https://github.com/apache/fluss/pull/3226">PR #3226</a> 提交网站重新设计方案文档</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <ul class="critical-list"><li>⚠️ <a href="https://github.com/apache/fluss/issues/3224">Issue #3224</a> Tablet Server 因磁盘空间不足关闭后恢复失败</li><li>⚠️ <a href="https://github.com/apache/fluss/issues/3218">Issue #3218</a> BatchScannerITCase.testKvSnapshotLease 测试不稳定</li></ul>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2158">Issue #2158</a> [common] Fix ArrayIndexOutOfBoundsException in .toArray() methods</h4>
+            <ul><li><span class="author">@polyzos</span>: 确认修复有效，表示 LGTM</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2724">Issue #2724</a> [spark] Empty projection in batch read throws Invalid metadata length with COUNT(*)/COUNT(1)</h4>
+            <ul><li><span class="author">@Kaixuan-Duan</span>: 表示想要认领并处理此 issue</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2966">Issue #2966</a> TieringSourceReader adjust to scan arrow record batch and write arrow record batch to lake</h4>
+            <ul><li><span class="author">@hemanthsavasere</span>: 请求分配此 issue 进行开发工作</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3187">Issue #3187</a> [lake] make compaction strategy min_input_files configurable</h4>
+            <ul><li><span class="author">@wattt3</span>: 请求 MehulBatra 帮助查看此 PR</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3188">Issue #3188</a> [test] Unstable test CoordinatorEventManagerTest.testMetricsUpdatedImmediatelyOnStartup</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: 报告测试失败两次，出现 AssertionFailedError</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3196">Issue #3196</a> [spark] Add numRowsRead custom metric and improve Spark UI operator name for FlussScan</h4>
+            <ul><li><span class="author">@Yohahaha</span>: 请求 luoyuxia 帮忙查看此 PR</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3197">Issue #3197</a> [server] Validate Java version >= 11 in config.sh to prevent silent startup failures</h4>
+            <ul><li><span class="author">@Yohahaha</span>: 感谢修复，建议合并已有的 JDK 版本检测函数</li><li><span class="author">@matrixsparse</span>: 已合并函数为一个参数化版本，请求再次查看</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3208">Issue #3208</a> [flink] Fix batch query on empty datalake-enabled table to return 0 rows instead of failing</h4>
+            <ul><li><span class="author">@binary-signal</span>: 请求其他贡献者帮忙查看此 PR</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3209">Issue #3209</a> [website] Allow Kapa AI Widget Resources on Fluss Website</h4>
+            <ul><li><span class="author">@Kaixuan-Duan</span>: 解释 Google Cloud Run 域名需求及更新 CSP 配置</li><li><span class="author">@polyzos</span>: 询问是否应该先回滚并与安全团队协调</li><li><span class="author">@MehulBatra</span>: 因政策原因无法启用第三方 AI agent，暂时关闭此 PR</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3213">Issue #3213</a> [spark] Umbrella issue for scan optimization</h4>
+            <ul><li><span class="author">@Yohahaha</span>: 在此 issue 中追踪 Spark connector 基础扫描优化工作</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3221">Issue #3221</a> [client] limit scan use DeepFieldGetter to avoid memory release when lazy complex type initialization.</h4>
+            <ul><li><span class="author">@beryllw</span>: 关联 issue #3219，并确认 LGTM</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3204">PR #3204</a> [FLUSS][Spark] Add set_cluster_configs and reset_cluster_configs procedures</h4>
+            <ul><li><span class="author">@Copilot</span>: 建议添加 NULL 元素验证、移除未使用的 import、文档示例添加分号保持一致性</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3212">PR #3212</a> [metrics] Add filter-label-value-characters option for Prometheus reporter</h4>
+            <ul><li><span class="author">@Copilot</span>: 指出 filter 赋值不对称性可能导致重用问题，建议使用类型安全的 ConfigOption setter</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3224">#3224</a> Recovery failure when the tablet server shuts down due to 'No space left on device' <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/issues/3223">#3223</a> Skip bucket recovery for non-existent partitions <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/issues/3219">#3219</a> Limit scan for log table with complex type will thrown exception. <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/issues/3218">#3218</a> [test] Unstable test BatchScannerITCase.testKvSnapshotLease <span class="author">@app/github-actions</span> </li><li><a href="https://github.com/apache/fluss/issues/3215">#3215</a> [spark] Add config to split input partition by input size <span class="author">@Yohahaha</span> </li><li><a href="https://github.com/apache/fluss/issues/3214">#3214</a> predicate pushdown, log table and pk table, union read <span class="author">@Yohahaha</span> </li><li><a href="https://github.com/apache/fluss/issues/3213">#3213</a> [spark] Umbrella issue for scan optimization <span class="author">@Yohahaha</span> </li><li><a href="https://github.com/apache/fluss/issues/3211">#3211</a> Support UTF-8 characters in Prometheus label values <span class="author">@beryllw</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3227">#3227</a> [spark] Fix empty projection causing Invalid metadata length for COUNT(*)/COUNT(1) <span class="author">@Kaixuan-Duan</span> </li><li><a href="https://github.com/apache/fluss/pull/3226">#3226</a> [Docs] Website Redesign <span class="author">@polyzos</span> </li><li><a href="https://github.com/apache/fluss/pull/3225">#3225</a> [server] Skip bucket recovery for non-existent partitions <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/pull/3222">#3222</a> [server] Respect the option of `table.log.ttl` for local segments <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/pull/3217">#3217</a> [website] Publish Apache Fluss 0.9.1-incubating <span class="author">@polyzos</span> </li><li><a href="https://github.com/apache/fluss/pull/3216">#3216</a> Revert "[fluss/ai agent] enable ai doc agent on website (#3152)" <span class="author">@MehulBatra</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3214">#3214</a> predicate pushdown, log table and pk table, union read <span class="author">@Yohahaha</span> </li><li><a href="https://github.com/apache/fluss/issues/3211">#3211</a> Support UTF-8 characters in Prometheus label values <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/issues/3160">#3160</a> [spark] Improve spark ui more readable when reading fluss <span class="author">@Yohahaha</span> </li><li><a href="https://github.com/apache/fluss/issues/2157">#2157</a> [Bug] ArrayIndexOutOfBoundsException when calling toDoubleArray() with arrays larger than a few elements <span class="author">@binary-signal</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3221">#3221</a> [client] limit scan use DeepFieldGetter to avoid memory release when lazy complex type initialization. <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/pull/3212">#3212</a> [metrics] Add filter-label-value-characters option for Prometheus reporter <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/pull/3196">#3196</a> [spark] Add numRowsRead custom metric and improve Spark UI operator name for FlussScan <span class="author">@Yohahaha</span> </li><li><a href="https://github.com/apache/fluss/pull/3190">#3190</a> [tiering] Fix Paimon IOManager leak in MergeTreeWriter <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/pull/2158">#2158</a> [common] Fix ArrayIndexOutOfBoundsException in .toArray() methods <span class="author">@binary-signal</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
