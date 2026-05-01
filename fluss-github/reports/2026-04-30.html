@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-04-30</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-04-30</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 1 新 Issues</div>
+            <div class="stat">✅ 1 关闭</div>
+            <div class="stat">✨ 1 新 PRs</div>
+            <div class="stat">🎉 1 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/2635">PR #2635</a> 文档更新：添加 Lakekeeper catalog 引用参考</li><li>✨ <a href="https://github.com/apache/fluss/issues/3235">Issue #3235</a> 新增 System Tables 的 Umbrella issue</li><li>🐛 <a href="https://github.com/apache/fluss/pull/3208">PR #3208</a> 修复启用 datalake 的空表批量查询失败问题</li><li>🐛 <a href="https://github.com/apache/fluss/pull/3227">PR #3227</a> 修复 Spark 批量读取 COUNT(*)/COUNT(1) 空投影导致的元数据错误</li><li>🚀 <a href="https://github.com/apache/fluss/pull/3236">PR #3236</a> 新增 Flink 支持带启动时间戳过滤的 lake 联合读取</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <ul class="critical-list"><li>⚠️ <a href="https://github.com/apache/fluss/issues/3188">Issue #3188</a> 测试不稳定：CoordinatorEventManagerTest.testMetricsUpdatedImmediatelyOnStartup 出现失败</li></ul>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2371">Issue #2371</a> Tiering may stuck for first row merge engine table</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 提醒 zuston 查看此 issue</li><li><span class="author">@zuston</span>: 感谢帮助，请继续处理此 issue</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3188">Issue #3188</a> [test] Unstable test CoordinatorEventManagerTest.testMetricsUpdatedImmediatelyOnStartup</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: 报告测试失败：AssertionFailedError 异常</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3043">Issue #3043</a> [client] release pending fetch semaphore on discarding</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 请求 rebase 并关联 tracking issue，询问是否可以合并</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3233">Issue #3233</a> [server] Support altering table.log.ttl table option</h4>
+            <ul><li><span class="author">@Kaixuan-Duan</span>: 已根据反馈修改，请 luoyuxia 审查</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3236">Issue #3236</a> [flink] union read from lake with startup timestamp filter</h4>
+            <ul><li><span class="author">@binary-signal</span>: 讨论主键表使用起始偏移时间戳的可行性方案</li><li><span class="author">@zuston</span>: 认同方案，计划后续支持该功能</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3230">Issue #3230</a> Streaming union read from the lake and Fluss log table using a specified offset timestamp</h4>
+            <ul><li><span class="author">@matrixsparse</span>: 表示愿意参与此 issue 的开发工作</li><li><span class="author">@zuston</span>: 感谢关注，正在 #3236 PR 上进行开发</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2635">Issue #2635</a> [docs] Add Lakekeeper catalog reference</h4>
+            <ul><li><span class="author">@polyzos</span>: 表示认可，期待更多内容合并</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3210">Issue #3210</a> [Test] Fixing flaky test CoordinatorEventManagerTest.testMetricsUpdatedImmediatelyOnStartup</h4>
+            <ul><li><span class="author">@vamossagar12</span>: 提醒 swuferhong 审查此 PR</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3227">Issue #3227</a> [spark] Fix empty projection causing Invalid metadata length for COUNT(*)/COUNT(1)</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 指出此 PR 可能与 #2725 重复</li><li><span class="author">@Kaixuan-Duan</span>: 道歉表示未注意到已有 PR 指向相同 issue</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2881">Issue #2881</a> [lake/iceberg] Support snapshot expiration for lake tables</h4>
+            <ul><li><span class="author">@vamossagar12</span>: 提醒 leekeiabstraction 审查此 PR</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2876">Issue #2876</a> Fixing issue with row update not working for PK table:</h4>
+            <ul><li><span class="author">@vamossagar12</span>: 提醒 loserwang1024 和 wuchong 审查此 PR</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3208">PR #3208</a> [flink] Fix batch query on empty datalake-enabled table to return 0 rows instead of failing</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 质疑返回空列表的逻辑，建议参考 Spark 的回退方案</li><li><span class="author">@matrixsparse</span>: 已修改为回退到 Fluss-only split 生成，并添加分区验证</li><li><span class="author">@fresh-borzoni</span>: 建议添加日志以便追踪，参考 stream-mode 的做法</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3227">PR #3227</a> [spark] Fix empty projection causing Invalid metadata length for COUNT(*)/COUNT(1)</h4>
+            <ul><li><span class="author">@Yohahaha</span>: 建议验证 Flink connector 中的行为并添加修复</li><li><span class="author">@Kaixuan-Duan</span>: 确认 Flink connector 未受影响，服务端修复是通用的</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3200">PR #3200</a> [server] Support configurable time partition format for auto-partitioned tables</h4>
+            <ul><li><span class="author">@Copilot</span>: 指出 time-format 验证不足，可能产生无效分区值或碰撞</li><li><span class="author">@Copilot</span>: 建议文档补充分区值字符约束，避免用户使用无效格式</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2725">PR #2725</a> [spark] Fix empty projection issue in Spark batch read to avoid Arrow metadata errors with COUNT(*)/COUNT(1)</h4>
+            <ul><li><span class="author">@Copilot</span>: 指出方法注释需要更新以匹配实际支持的 COUNT 下推场景</li><li><span class="author">@Copilot</span>: 建议添加 COUNT(1) 测试用例确保覆盖</li><li><span class="author">@Copilot</span>: 警告测试数据修改可能影响其他测试的断言</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3233">PR #3233</a> [server] Support altering table.log.ttl table option</h4>
+            <ul><li><span class="author">@Copilot</span>: 指出 @VisibleForTesting 注解与生产代码使用不一致</li><li><span class="author">@Copilot</span>: 建议使用非测试 API 替代异常驱动的控制流</li><li><span class="author">@Copilot</span>: 建议降低日志级别避免噪音，并改进消息说明</li><li><span class="author">@Copilot</span>: 建议从配置项获取默认 TTL 避免硬编码</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3235">#3235</a> [Umbrella] Umbrella issue for System Tables <span class="author">@gyang94</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3236">#3236</a> [flink] union read from lake with startup timestamp filter <span class="author">@zuston</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/2611">#2611</a> [Lake/Iceberg] create doc to integrate fluss + Iceberg via flink with Lakekeeper (IRC) <span class="author">@MehulBatra</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/2635">#2635</a> [docs] Add Lakekeeper catalog reference <span class="author">@fresh-borzoni</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
