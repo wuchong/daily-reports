@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-05-01</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-05-01</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 2 新 Issues</div>
+            <div class="stat">✅ 1 关闭</div>
+            <div class="stat">✨ 2 新 PRs</div>
+            <div class="stat">🎉 1 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/2635">PR #2635</a> 添加 Lakekeeper catalog 参考文档，已成功合并</li><li>✨ <a href="https://github.com/apache/fluss/pull/3238">PR #3238</a> Spark lake table 谓词下推优化，提升查询性能</li><li>✨ <a href="https://github.com/apache/fluss/pull/3240">PR #3240</a> Spark 非 lake 表分区过滤下推功能</li><li>🚀 <a href="https://github.com/apache/fluss/pull/3132">PR #3132</a> RemoteLogFetcher 异步预取优化，加速恢复流程</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3213">Issue #3213</a> [spark] Umbrella issue for scan optimization</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 关联了 lake table predicate pushdown 和 partition filter pushdown 相关 Issue</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3230">Issue #3230</a> Streaming union read from the lake and Fluss log table using a specified offset timestamp</h4>
+            <ul><li><span class="author">@zuston</span>: 表示正在 #3236 上处理此功能需求</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3132">PR #3132</a> [server] Optimize RemoteLogFetcher with async prefetch for recovery</h4>
+            <ul><li><span class="author">@Kaixuan-Duan</span>: 回复 Review 意见：优化异步下载重试逻辑、改进线程中断处理、添加中断测试用例</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2635">PR #2635</a> [docs] Add Lakekeeper catalog reference</h4>
+            <ul><li><span class="author">@polyzos</span>: 表示 LGTM，期待更多类似贡献</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2876">PR #2876</a> Fixing issue with row update not working for PK table:</h4>
+            <ul><li><span class="author">@vamossagar12</span>: 催促 @loserwang1024 和 @wuchong 进行 Review</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2881">PR #2881</a> [lake/iceberg] Support snapshot expiration for lake tables</h4>
+            <ul><li><span class="author">@vamossagar12</span>: 请 @leekeiabstraction 有空时帮忙查看</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3210">PR #3210</a> [test] Fixing flaky test CoordinatorEventManagerTest.testMetricsUpdatedImmediatelyOnStartup</h4>
+            <ul><li><span class="author">@vamossagar12</span>: 催促 @swuferhong 查看此 PR</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3236">PR #3236</a> [flink] union read from lake with startup timestamp filter</h4>
+            <ul><li><span class="author">@zuston</span>: 讨论主键表使用起始时间戳的支持计划</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3238">PR #3238</a> [spark] lake table predicate pushdown</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 请求 @Yohahaha 和 @YannByron 进行代码审核</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3240">PR #3240</a> [spark] partition filter pushdown for non-lake log and kv tables</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 请求 @Yohahaha 和 @YannByron 进行代码审核</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3241">#3241</a> [spark] partition filter pushdown for non-lake log and kv tables <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/3239">#3239</a> [spark] lake table predicate pushdown <span class="author">@fresh-borzoni</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3240">#3240</a> [spark] partition filter pushdown for non-lake log and kv tables <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/3238">#3238</a> [spark] lake table predicate pushdown <span class="author">@fresh-borzoni</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/2611">#2611</a> [Lake/Iceberg] create doc to integrate fluss + Iceberg via flink with Lakekeeper (IRC) <span class="author">@MehulBatra</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/2635">#2635</a> [docs] Add Lakekeeper catalog reference <span class="author">@fresh-borzoni</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
