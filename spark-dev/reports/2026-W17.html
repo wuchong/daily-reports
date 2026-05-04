@@ -33,33 +33,40 @@
         <article class="discussion-item">
             <h3><a href="https://lists.apache.org/thread/jgcnblcx1lp7gj72mz02mjqrcsnnzy9b">SPIP: Write schema narrowing for column-level UPDATE in DSv2</a></h3>
             <p class="meta">1 条回复 · 2 位参与者</p>
-            <p class="summary">摘要生成失败</p>
-            
-            
+            <p class="summary">本讨论旨在改进 DSv2 API，允许连接器声明 UPDATE 操作所需的列，以减少写放大并提升宽表性能。Anurag 提交了 SPIP 提案和 PR，Peter Toth 询问了 Merge-on-Read 和 Copy-on-Write 实现差异，Anurag 随后更新文档详细解释了优化器规则处理流程。</p>
+            <div class="key-points"><p><strong>@Anurag Mantripragada:</strong> 提议允许连接器声明更新列，以优化 Iceberg 等宽表的性能并减少写放大。</p>
+<p><strong>@Peter Toth:</strong> 认可模式解析流程，但要求澄清 MOR 和 CoW 实现之间的具体规则差异。</p>
+<p><strong>@Anurag Mantripragada:</strong> 解释 MOR 通过标准优化器流水线处理裁剪，而 CoW 需在分析阶段提前处理，因为优化器规则触发时机不同。</p></div>
+            <p class="conclusion">Anurag 已根据反馈更新了 SPIP 文档以澄清技术细节，讨论目前处于等待进一步审查的阶段。</p>
         </article>
 
         <article class="discussion-item">
             <h3><a href="https://lists.apache.org/thread/x1kg10r2ngjwb9gzldz2jj51f3mv2847">branch-4.2 has been created</a></h3>
             <p class="meta">1 条回复 · 2 位参与者</p>
-            <p class="summary">摘要生成失败</p>
-            
-            
+            <p class="summary">Apache Spark 4.2.0 的发布分支 branch-4.2 已正式创建，标志着项目进入 QA（质量保证）阶段。在此期间，工作重心将转向错误修复、测试、稳定性及文档，原则上不再合并新功能。</p>
+            <div class="key-points"><p><strong>@Huaxin Gao:</strong> 宣布 branch-4.2 创建，QA 期间应专注于 bug 修复、测试和文档，避免合并新功能。</p>
+<p><strong>@Hyukjin Kwon:</strong> 确认消息并补充说明已切出 branch-4.x 分支。</p></div>
+            <p class="conclusion">项目正式进入发布前的质量保证阶段，开发者需停止向该分支提交新特性，专注于稳定性工作。</p>
         </article>
 
         <article class="discussion-item">
             <h3><a href="https://lists.apache.org/thread/yj09tjx15bmxx0g8xm9407qltz0trbt8">[REMINDER] Spark 4.2 branch cut is coming on May 1</a></h3>
             <p class="meta">0 条回复 · 1 位参与者</p>
-            <p class="summary">摘要生成失败</p>
-            
-            
+            <p class="summary">Huaxin Gao 发出提醒，Apache Spark 4.2 的分支切割将于 2026 年 5 月 1 日进行。切割后项目将进入 QA 阶段，重点转向错误修复、测试和稳定性，原则上不再合并新功能。</p>
+            <div class="key-points"><p><strong>@Huaxin Gao:</strong> branch-4.2 将于 2026 年 5 月 1 日创建，标志着 Spark 4.2.0 的代码冻结。</p>
+<p><strong>@Huaxin Gao:</strong> 分支切割后进入 QA 阶段，工作重心转为 Bug 修复、测试、稳定性及文档，通常不再接纳新功能。</p>
+<p><strong>@Huaxin Gao:</strong> 若有需包含在 4.2.0 版本中的功能补丁，请务必在切割前合并或尽快提出。</p></div>
+            <p class="conclusion">开发者需在 5 月 1 日前完成功能补丁的合并工作，以确保其包含在 Spark 4.2.0 版本中。</p>
         </article>
 
         <article class="discussion-item">
             <h3><a href="https://lists.apache.org/thread/qptfzp7x3vz91916xrx1km6fcbzlo0dn">[PSA] branch-4.x cut on 1st May and what do we expect</a></h3>
             <p class="meta">0 条回复 · 1 位参与者</p>
-            <p class="summary">摘要生成失败</p>
-            
-            
+            <p class="summary">Hyukjin Kwon 宣布将于 5 月 1 日切分 branch-4.x 分支，以落实加速 Apache Spark 发布周期的计划。新策略确立了季度小版本、年度大版本及临时维护版本的发布节奏。切分后，依赖变更仅合入 master，新功能和 Bug 修复将合入 branch-4.x。</p>
+            <div class="key-points"><p><strong>@Hyukjin Kwon:</strong> 确立了新的发布节奏：每 3 个月一次季度小版本，每 12 个月一次年度大版本，以及临时的维护版本。</p>
+<p><strong>@Hyukjin Kwon:</strong> 定义了分支策略：branch-4.x 切分后，依赖变更仅针对 master，新功能和 Bug 修复针对 branch-4.x。</p>
+<p><strong>@Hyukjin Kwon:</strong> Bug 修复将继续照常合入其他现有分支（如 branch-3.5, branch-4.1 等）。</p></div>
+            <p class="conclusion">branch-4.x 将于 5 月 1 日正式切分，社区将按照新的发布节奏和分支策略推进后续工作。</p>
         </article>
         </section>
 
