@@ -129,22 +129,21 @@ def fetch_article(url: str, timeout: int = 10) -> dict:
 
 
 def parse_iso_date(date_str: str) -> datetime | None:
-    """Parse ISO format date string."""
+    """Parse ISO format date string. Always returns offset-naive datetime."""
     if not date_str:
         return None
     
-    # Handle various ISO formats
+    # Remove timezone info for simpler parsing (always return naive datetime)
+    clean_date = re.sub(r'[+-]\d{2}:\d{2}$', '', date_str)
+    clean_date = clean_date.replace('Z', '')
+    # Also handle +0800 format (without colon)
+    clean_date = re.sub(r'[+-]\d{4}$', '', clean_date)
+    
     formats = [
-        '%Y-%m-%dT%H:%M:%S%z',
-        '%Y-%m-%dT%H:%M:%SZ',
         '%Y-%m-%dT%H:%M:%S',
         '%Y-%m-%d %H:%M:%S',
         '%Y-%m-%d',
     ]
-    
-    # Remove timezone info for simpler parsing
-    clean_date = re.sub(r'[+-]\d{2}:\d{2}$', '', date_str)
-    clean_date = clean_date.replace('Z', '')
     
     for fmt in formats:
         try:

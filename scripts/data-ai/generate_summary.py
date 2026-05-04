@@ -52,8 +52,34 @@ def compress_news_data(news_data: dict, max_items: int = 100, max_snippet_len: i
     }
 
 
-def generate_summary(client: OpenAI, prompt: str, news_data: dict) -> dict:
-    """Call LLM to generate summary."""
+def try_parse_json(content: str) -> dict | None:
+    """Try to parse JSON from LLM response with cleanup."""
+    # Extract JSON from markdown code blocks
+    if '```json' in content:
+        content = content.split('```json')[1].split('```')[0]
+    elif '```' in content:
+        content = content.split('```')[1].split('```')[0]
+    
+    content = content.strip()
+    
+    try:
+        return json.loads(content)
+    except json.JSONDecodeError:
+        pass
+    
+    # Try fixing common JSON issues: trailing commas
+    import re
+    cleaned = re.sub(r',\s*([}\]])', r'\1', content)
+    try:
+        return json.loads(cleaned)
+    except json.JSONDecodeError:
+        pass
+    
+    return None
+
+
+def generate_summary(client: OpenAI, prompt: str, news_data: dict, max_retries: int = 3) -> dict:
+    """Call LLM to generate summary with retry on JSON parse errors."""
     user_content = f"""以下是今日采集的新闻数据：
 
 ```json
@@ -62,29 +88,35 @@ def generate_summary(client: OpenAI, prompt: str, news_data: dict) -> dict:
 
 请根据 prompt 要求生成 Data+AI 全球日报。只输出 JSON，不要有其他内容。"""
 
-    try:
-        response = client.chat.completions.create(
-            model="glm-5",
-            messages=[
-                {"role": "system", "content": prompt},
-                {"role": "user", "content": user_content}
-            ],
-            max_tokens=8000,
-            temperature=0.3
-        )
-        
-        content = response.choices[0].message.content
-        
-        # Extract JSON from response
-        if '```json' in content:
-            content = content.split('```json')[1].split('```')[0]
-        elif '```' in content:
-            content = content.split('```')[1].split('```')[0]
-        
-        return json.loads(content.strip())
-    except Exception as e:
-        print(f"Error calling LLM API: {e}")
-        raise
+    last_error = None
+    for attempt in range(1, max_retries + 1):
+        try:
+            response = client.chat.completions.create(
+                model="glm-5",
+                messages=[
+                    {"role": "system", "content": prompt},
+                    {"role": "user", "content": user_content}
+                ],
+                max_tokens=8000,
+                temperature=0.3
+            )
+            
+            content = response.choices[0].message.content
+            result = try_parse_json(content)
+            if result is not None:
+                return result
+            
+            last_error = f"Failed to parse JSON from LLM response (attempt {attempt}/{max_retries})"
+            print(f"{last_error}")
+            print(f"Response preview: {content[:200]}...")
+        except json.JSONDecodeError as e:
+            last_error = f"JSON parse error (attempt {attempt}/{max_retries}): {e}"
+            print(last_error)
+        except Exception as e:
+            last_error = f"LLM API error (attempt {attempt}/{max_retries}): {e}"
+            print(last_error)
+    
+    raise RuntimeError(f"Failed after {max_retries} attempts. Last error: {last_error}")
 
 
 def main():
