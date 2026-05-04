@@ -9,9 +9,15 @@ Environment variables:
 
 import json
 import os
+import re
+import time
 from pathlib import Path
 
 from openai import OpenAI
+
+
+MAX_RETRIES = 3
+RETRY_DELAY = 2  # seconds
 
 
 def load_prompt() -> str:
@@ -19,6 +25,61 @@ def load_prompt() -> str:
     prompt_path = Path(__file__).parent.parent.parent / "prompts" / "mailing-list-summarize.md"
     with open(prompt_path, "r", encoding="utf-8") as f:
         return f.read()
+
+
+def try_parse_json(content: str) -> dict | None:
+    """Try to parse JSON from LLM response with cleanup."""
+    # Extract JSON from markdown code blocks
+    if '```json' in content:
+        content = content.split('```json')[1].split('```')[0]
+    elif '```' in content:
+        content = content.split('```')[1].split('```')[0]
+
+    content = content.strip()
+
+    try:
+        return json.loads(content)
+    except json.JSONDecodeError:
+        pass
+
+    # Try fixing common JSON issues: trailing commas
+    cleaned = re.sub(r',\s*([}\]])', r'\1', content)
+    try:
+        return json.loads(cleaned)
+    except json.JSONDecodeError:
+        pass
+
+    return None
+
+
+def call_llm_with_retry(client: OpenAI, prompt: str, default: dict) -> dict:
+    """Call LLM with retry logic and robust JSON parsing."""
+    last_error = None
+    for attempt in range(1, MAX_RETRIES + 1):
+        try:
+            response = client.chat.completions.create(
+                model="glm-5",
+                messages=[{"role": "user", "content": prompt}],
+                response_format={"type": "json_object"},
+                temperature=0.3
+            )
+            content = response.choices[0].message.content
+            result = try_parse_json(content)
+            if result is not None:
+                return result
+
+            last_error = f"Failed to parse JSON (attempt {attempt}/{MAX_RETRIES})"
+            print(f"{last_error}")
+            print(f"Response preview: {content[:200]}...")
+        except Exception as e:
+            last_error = f"LLM API error (attempt {attempt}/{MAX_RETRIES}): {e}"
+            print(last_error)
+
+        if attempt < MAX_RETRIES:
+            time.sleep(RETRY_DELAY * attempt)
+
+    print(f"Failed after {MAX_RETRIES} attempts. Last error: {last_error}")
+    return default
 
 
 def create_client() -> OpenAI:
@@ -65,17 +126,10 @@ def summarize_discussion(client: OpenAI, discussion: dict, project_name: str) ->
 邮件内容:
 {content}"""
 
-    try:
-        response = client.chat.completions.create(
-            model="glm-5",
-            messages=[{"role": "user", "content": prompt}],
-            response_format={"type": "json_object"},
-            temperature=0.3
-        )
-        return json.loads(response.choices[0].message.content)
-    except Exception as e:
-        print(f"Error summarizing discussion '{discussion.get('subject', '')}': {e}")
-        return {"summary": "摘要生成失败", "key_points": [], "conclusion": ""}
+    return call_llm_with_retry(
+        client, prompt,
+        default={"summary": "摘要生成失败", "key_points": [], "conclusion": ""}
+    )
 
 
 def summarize_objection(client: OpenAI, vote: dict, project_name: str) -> str:
@@ -103,18 +157,11 @@ def summarize_objection(client: OpenAI, vote: dict, project_name: str) -> str:
 输出 JSON 格式：
 {{"objection_summary": "xxx 提出 -1，原因是..."}}"""
 
-    try:
-        response = client.chat.completions.create(
-            model="glm-5",
-            messages=[{"role": "user", "content": prompt}],
-            response_format={"type": "json_object"},
-            temperature=0.3
-        )
-        result = json.loads(response.choices[0].message.content)
-        return result.get("objection_summary", "")
-    except Exception as e:
-        print(f"Error summarizing objection for '{vote.get('subject', '')}': {e}")
-        return ""
+    result = call_llm_with_retry(
+        client, prompt,
+        default={"objection_summary": ""}
+    )
+    return result.get("objection_summary", "")
 
 
 def analyze_vote_result(client: OpenAI, vote: dict, project_name: str) -> dict:
@@ -139,21 +186,14 @@ def analyze_vote_result(client: OpenAI, vote: dict, project_name: str) -> dict:
   "reason": "如果未通过，简要说明原因（一句话）；如果通过则留空"
 }}"""
 
-    try:
-        response = client.chat.completions.create(
-            model="glm-5",
-            messages=[{"role": "user", "content": prompt}],
-            response_format={"type": "json_object"},
-            temperature=0.3
-        )
-        result = json.loads(response.choices[0].message.content)
-        return {
-            "status": "passed" if result.get("passed", True) else "failed",
-            "reason": result.get("reason", "")
-        }
-    except Exception as e:
-        print(f"Error analyzing vote result for '{vote.get('subject', '')}': {e}")
-        return {"status": "passed", "reason": ""}
+    result = call_llm_with_retry(
+        client, prompt,
+        default={"passed": True, "reason": ""}
+    )
+    return {
+        "status": "passed" if result.get("passed", True) else "failed",
+        "reason": result.get("reason", "")
+    }
 
 
 def summarize_jira(client: OpenAI, jira_titles: list[str], project_name: str) -> str:
@@ -171,18 +211,11 @@ JIRA 标题列表:
 输出 JSON 格式：
 {{"jira_summary": "本周 JIRA 主要集中在..."}}"""
 
-    try:
-        response = client.chat.completions.create(
-            model="glm-5",
-            messages=[{"role": "user", "content": prompt}],
-            response_format={"type": "json_object"},
-            temperature=0.3
-        )
-        result = json.loads(response.choices[0].message.content)
-        return result.get("jira_summary", "")
-    except Exception as e:
-        print(f"Error summarizing JIRA: {e}")
-        return "JIRA 摘要生成失败"
+    result = call_llm_with_retry(
+        client, prompt,
+        default={"jira_summary": "JIRA 摘要生成失败"}
+    )
+    return result.get("jira_summary", "")
 
 
 def main():
