@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iceberg 社区周报 | 2026-W17</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Iceberg 社区周报 | 2026-W17</h1>
+            <p class="date-range">2026-04-20 ~ 2026-04-26</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (2)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/n7cxb2m51ky35bdogk53sbvtvwplwpqq">Andrei Tserakhau as Committer</a></li>
+<li><a href="https://lists.apache.org/thread/c7rm31gqvkwok790gxy5t7441mfs9yot">Iceberg Community Meetup Europe - June London</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (1)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/24bsb6hllp6kvk3ow7b4gsncp5cjf79o">Release Apache Iceberg Rust 0.9.1 rc.3</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/3p7nrxfv3p1hclfww4hjdtbmfwklgok7">LICENSE updates and unblocking 1.11.</a></h3>
+            <p class="meta">11 条回复 · 10 位参与者</p>
+            <p class="summary">讨论主要围绕阻碍 Iceberg 1.11 和 1.10.2 版本发布的 LICENSE 及依赖问题展开。Ryan Blue 提议暂时将 Kafka Connect 移出发布流程，并移除 OpenAPI runtime Jar 以解决依赖泄漏问题，该方案获得了社区的广泛支持。</p>
+            <div class="key-points"><p><strong>@Ryan Blue:</strong> 建议暂停 Kafka Connect 的发布流程，并从发布中移除 OpenAPI runtime Jar，以解决依赖泄漏和许可证问题。</p>
+<p><strong>@Russell Spitzer:</strong> 支持该提议，认为 Kafka Connect 用户可自行构建，OpenAPI 模块目前无需发布。</p>
+<p><strong>@Steven Wu:</strong> 指出了移除 OpenAPI runtime Jar 的正确 PR 编号应为 #16163。</p></div>
+            <p class="conclusion">社区达成共识，同意通过移除 OpenAPI runtime Jar 并暂缓 Kafka Connect 的发布来解除版本阻塞；后续需修正 Gradle 配置以防止非预期组件的发布。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/5g55jlwf3krh7op5ophs22cpno2v0l8n">Partition tuples in v4</a></h3>
+            <p class="meta">7 条回复 · 5 位参与者</p>
+            <p class="summary">讨论主要围绕 Iceberg v4 中如何处理分区元组以适应新的 manifest 格式和混合分区规范的需求。参与者探讨了从列统计信息恢复分区值或将其统一存储于统计信息中的方案，权衡了实现复杂度与语义一致性。最终建议暂时保留分区元组以保障 equality deletes 的功能，但应在代码中隔离其访问逻辑以便未来移除。</p>
+            <div class="key-points"><p><strong>@Ryan Blue:</strong> 提出利用列统计信息恢复分区值以解决 v4 中混合分区规范的问题，但指出该方案受限于非单调函数和旧数据的统计缺失。</p>
+<p><strong>@Anoop Johnson:</strong> 建议将分区值统一纳入内容统计信息管理，认为只需存储 lower_bound 即可简化规范并减少元数据冗余。</p>
+<p><strong>@Russell Spitzer:</strong> 建议暂时保留分区元组以确保 equality deletes 的正确性，同时隔离 v4 代码中对元组的访问以便未来移除。</p></div>
+            <p class="conclusion">初步结论是暂时保留分区元组，下一步行动是在 v4 规划代码中隔离元组访问逻辑（仅用于 v3 兼容），并致力于扩展统计信息结构以最终替代元组功能。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/1269w5pzoy723sr1c6xxq8jg02zcf3on">Add HashiCorp Vault KMS Support to Apache Iceberg</a></h3>
+            <p class="meta">5 条回复 · 4 位参与者</p>
+            <p class="summary">本次讨论旨在提议在 Apache Iceberg 中增加 HashiCorp Vault KMS 支持，以实现跨引擎的统一加密管理。社区成员对引入外部依赖的安全性表示担忧，建议复用现有的 HTTP 客户端以减少风险。提议者已采纳建议重写代码，移除了额外依赖并继续征求社区意见。</p>
+            <div class="key-points"><p><strong>@Yuya Ebihara:</strong> 提议在 Iceberg 核心库中支持 HashiCorp Vault，以便 Spark、Flink、Trino 等引擎无需重复开发即可互操作加密表。</p>
+<p><strong>@Steve Loughran:</strong> 担心引入新依赖会带来 CVE 安全风险，并指出原有的 Vault Java 驱动库已过时且依赖项陈旧。</p>
+<p><strong>@Romain Manni-Bucau:</strong> 建议复用 Iceberg 现有的 HTTP 客户端（用于 REST catalog）来实现 Vault 集成，避免引入新的依赖库。</p></div>
+            <p class="conclusion">提议者已根据反馈移除了第三方 Vault 客户端库依赖，改用现有 HTTP 客户端重写实现，下一步将继续确认社区是否同意在 Iceberg 仓库中正式支持 Vault。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/7xt922x7wrs3v9z1hmrsgvxrdc8pp5pm">Row-level ingestion and the REST Catalog</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">讨论主要围绕是否应在 REST Catalog 规范中引入行级写入 API 以简化数据写入流程。多数开发者反对将该功能直接纳入规范，认为这会导致 Catalog 职责过重，建议采用轻量级写入器结合细粒度提交提案（Fine-grained commit）作为替代方案。</p>
+            <div class="key-points"><p><strong>@Soundararajan, Gokul:</strong> 提议在 REST Catalog 中增加行级写入端点，以解决当前写入方案缺乏移植性且依赖重型计算引擎的问题。</p>
+<p><strong>@Kevin Liu:</strong> 反对将其纳入规范，认为 REST Spec 应专注于元数据操作，建议通过轻量级写入器配合细粒度提交来解耦。</p>
+<p><strong>@Steven Wu:</strong> 认为 Catalog 应保持文件级粒度，支持通过服务端提交提案来完善写入路径，而非直接处理行数据。</p></div>
+            <p class="conclusion">初步结论是不将行级写入 API 纳入 REST Catalog 规范，社区倾向于推进细粒度提交提案以保持 Catalog 与数据操作的分离。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/xvbypmk0rt9npd1lhn0o14xzojq0stqh">REST Spec: generic CatalogObjectIdentifier</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论旨在解决 Iceberg REST 规范中现有 TableIdentifier 对视图等对象语义不准确的问题，提议引入通用的 CatalogObjectIdentifier。经过对标识符结构（扁平列表 vs 元组模式）的讨论，社区最终达成共识选择了扁平列表方案（Option A）。目前已提交相关规范定义和 Java 实现的 PR 等待审查。</p>
+            <div class="key-points"><p><strong>@Steven Wu:</strong> 提出当前 TableIdentifier 缺乏通用性，并在会议后确认社区已就 Option A（扁平层级列表）达成共识，提交了相关 PR。</p>
+<p><strong>@Yufei Gu:</strong> 倾向于 Option A，但指出其对事件端点的向后兼容性挑战，建议允许新旧表示共存。</p>
+<p><strong>@Christian Thiel:</strong> 支持该提案，认为这是确定标识符表示法的合适时机，并在文档中提供了反馈。</p></div>
+            <p class="conclusion">已确定采用 Option A（扁平列表结构），下一步是审查已提交的规范和实现 PR 以解除相关工作的阻塞。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/q63xxsyj6zy138t5s7lfp8pzd3o9blxt">Validations in REST Fixture</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">Alex Stephen 指出 REST Fixture 缺少对 ID 重复的验证，并提交 PR 建议增强验证力度以帮助捕获下游实现错误。Eduard Tudenhöfner 对此提出疑问，指出 Java 参考实现通常通过 UpdateRequirements 或自动分配 ID 来避免此类问题，需进一步了解 Terraform provider 的具体复现路径。</p>
+            <div class="key-points"><p><strong>@Alex Stephen:</strong> 建议 REST Fixture 应尽可能验证输入（如检查 ID 重复），因为该 Fixture 用于测试所有实现，增强验证可提前发现下游错误。</p>
+<p><strong>@Eduard Tudenhöfner:</strong> 通常验证由 UpdateRequirements 处理，且 Java 实现可能因自动分配 ID 而无法复现该问题，需明确 Terraform provider 的具体操作方式。</p></div>
+            <p class="conclusion">尚无最终结论，下一步需要调查 Terraform provider 如何生成导致问题的请求，以确定验证逻辑的必要性和正确位置。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/ptp6rohhwnwg3pl7w2vth903r1jbpj4n">Iceberg Java 1.11.0 release</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">社区正在推进 Iceberg Java 1.11.0 的发布工作，已解决大部分许可证相关问题。目前仅剩一个关于远程扫描规划错误信息传递的阻塞问题待合并，而 Maximilian 提出的 Flink 依赖更新被视为非阻塞项。</p>
+            <div class="key-points"><p><strong>@Aihua Xu:</strong> 确认许可证问题已全部解决，目前仅剩一个核心阻塞问题（PR #16024）待审查合并，并认为 Flink 依赖更新不构成发布阻塞。</p>
+<p><strong>@Maximilian Michels:</strong> 提出需移除 Flink 的 `flink-metrics-dropwizard` 依赖（Issue #16170），建议社区关注。</p>
+<p><strong>@Steven Wu:</strong> 此前识别出 LICENSE 问题和 Spark 分支删除 Bug 是发布前的两大关键阻塞点。</p></div>
+            <p class="conclusion">许可证问题已解决，下一步将重点审查并合并最后一个关于远程扫描规划错误信息传递的阻塞 PR。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/8ok6gplk6k2qlvdo7ygrjlsbs28bln78">Boston Meetup - Wednesday, May 6, 2026</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Endi Caushi 宣布将于 2026 年 5 月 6 日在波士顿 Starburst 总部举办 Apache Iceberg 聚会。活动将邀请来自 Starburst、Microsoft、Akamai 和 Telmai 的技术专家进行演讲，目前已在 meetup.com 开放报名。</p>
+            <div class="key-points"><p><strong>@Endi Caushi:</strong> 公布了聚会的具体时间（5月6日）、地点（Starburst波士顿办公室）及演讲嘉宾阵容，并提供了 RSVP 链接。</p></div>
+            <p class="conclusion">感兴趣的参与者可通过提供的链接进行 RSVP 报名。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/9qsqngtfbqxhf9c9xvf4nmsnhmzxcgsx">Iceberg Summit 2026 Selection Committee Retrospective Notes</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Iceberg Summit 2026 选拔委员会分享了会议回顾笔记，旨在总结经验教训以优化未来的峰会筹备工作。这些笔记记录了今年的成功做法及待改进之处，供社区参考以便后续规划更早启动。</p>
+            <div class="key-points"><p><strong>@Sung Yun:</strong> 回顾笔记记录了今年的成功经验与待改进领域，旨在帮助未来规划。</p>
+<p><strong>@Sung Yun:</strong> 希望借此让未来的峰会筹备工作启动得更早，并建立在现有良好基础之上。</p>
+<p><strong>@Kevin Liu:</strong> 对 Sung Yun 推动此次回顾工作表示感谢。</p></div>
+            <p class="conclusion">回顾笔记已整理完毕并向社区公开，作为未来峰会规划的参考资料。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/812zf11xfoh78cp60xlrrzsnp25dno7w">Iceberg Variant - Tracking Document & Sync Proposal</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Neelesh Salian 提议并安排了 Iceberg Variant 的月度同步会议，旨在跟踪项目进展。Steve Loughran 和 Qiegang Long 对此表示支持，并进一步讨论了多语言实现状态及边缘情况的技术测试需求。</p>
+            <div class="key-points"><p><strong>@Neelesh Salian:</strong> 建立了每月同步会议机制（首个周四），并提供了会议记录文档以跟踪 Variant 的活跃开发工作。</p>
+<p><strong>@Steve Loughran:</strong> 请求 Rust/Go/C++ 的状态更新，指出 Arrow 实现在排序优化方面领先，并建议关注重复键处理及损坏 Parquet 文件的测试。</p>
+<p><strong>@Qiegang Long:</strong> 支持文档跟踪和同步会议的提议，认为实现 Variant 的全部潜力仍有大量工作要做。</p></div>
+            <p class="conclusion">已确定将于 2026 年 5 月 7 日开始每月同步会议，建议各语言实现团队更新状态，并关注 Steve 提出的技术测试点。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (0)</h2>
+            
+    <p>本周新建 <strong>0</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周无新建 JIRA。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Iceberg Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
