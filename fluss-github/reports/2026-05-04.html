@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-05-04</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-05-04</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 7 新 Issues</div>
+            <div class="stat">✅ 3 关闭</div>
+            <div class="stat">✨ 2 新 PRs</div>
+            <div class="stat">🎉 4 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/2829">PR #2829</a> 支持主键表备副本选举功能合并，增强高可用性</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3078">PR #3078</a> 为 databaseExists 和 tableExists RPC 调用添加授权验证</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3217">PR #3217</a> 发布 Apache Fluss 0.9.1-incubating 版本</li><li>🐛 <a href="https://github.com/apache/fluss/pull/3210">PR #3210</a> 修复不稳定测试 CoordinatorEventManagerTest</li><li>✨ 新增 FIP 贡献指南和博客贡献指南文档</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <ul class="critical-list"><li>⚠️ <a href="https://github.com/apache/fluss/issues/3245">Issue #3245</a> 不稳定测试 CoordinatorEventManagerTest.testMetricsUpdatedImmediatelyOnStartup 需要进一步修复</li></ul>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2829">Issue #2829</a> [kv] Support elect standby replicas for primary key table</h4>
+            <ul><li><span class="author">@wuchong</span>: 已合并该 PR，建议为旧表引入配置选项显式启用备副本，新表可默认启用</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2876">Issue #2876</a> Fixing issue with row update not working for PK table:</h4>
+            <ul><li><span class="author">@polyzos</span>: 请求 rebase 并提出代码建议：consumedRowType 参数冗余、投影假设计算列在末尾、测试缺少断言</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3030">Issue #3030</a> [server] Implement JBOD Phase 1 Local Multi-Directory Support</h4>
+            <ul><li><span class="author">@wuchong</span>: 代码审查发现 InterruptedException 处理可能导致 NPE，应分别处理中断和执行异常</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3078">Issue #3078</a> [server] Add authorization to databaseExists and tableExists RPC call…</h4>
+            <ul><li><span class="author">@vaibhavk1992</span>: 感谢合并，将在周末处理其他 RPC 调用的授权工作</li><li><span class="author">@wuchong</span>: 建议先创建所有子 issue 再分别提交 PR，便于跟踪主 issue #2007 的进度</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3245">Issue #3245</a> [test] Unstable test CoordinatorEventManagerTest.testMetricsUpdatedImmediatelyOnStartup</h4>
+            <ul><li><span class="author">@wuchong</span>: 报告新实例，指出 #3210 的修复未生效，请求 swuferhong 协助排查</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2007">Issue #2007</a> Add missing authentication for RPC calls</h4>
+            <ul><li><span class="author">@vaibhavk1992</span>: 已创建所有子 issue 并关联，但无法将它们转换为子 issue，请求协助</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3030">PR #3030</a> [server] Implement JBOD Phase 1 Local Multi-Directory Support</h4>
+            <ul><li><span class="author">@wuchong</span>: 审查建议：避免重复线程池、重构 loadLogs 方法名、优化 dataDir 获取性能、处理 tryLock 失败情况</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3132">PR #3132</a> [server] Optimize RemoteLogFetcher with async prefetch for recovery</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 建议使用 fetchLogDataBarrier hook、修复取消与完成之间的竞态条件、添加中断状态检查</li><li><span class="author">@Kaixuan-Duan</span>: 已修复：添加中断检查、提取 cleanupCompletedFuture 辅助方法避免内存泄漏</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3151">PR #3151</a> [KV] Kvscan Server Side</h4>
+            <ul><li><span class="author">@wuchong</span>: 发现多个问题：ScannerManager 应不可变、需添加服务端批量大小限制、领导权切换时可能读到过期快照、缺少 volatile 可见性问题、需返回 log_offset</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3251">#3251</a> [server] Add authorization to Remote Log & Tiering RPCs (commitRemoteLogManifest,    notifyRemoteLogOffsets, lakeTieringHeartbeat) <span class="author">@vaibhavk1992</span> </li><li><a href="https://github.com/apache/fluss/issues/3250">#3250</a> [server] Add authorization to Snapshot Management RPCs (commitKvSnapshot,            notifyKvSnapshotOffset, commitLakeTableSnapshot, notifyLakeTableOffset) <span class="author">@vaibhavk1992</span> </li><li><a href="https://github.com/apache/fluss/issues/3249">#3249</a> [server] Add authorization to Replication Control RPCs (notifyLeaderAndIsr,          updateMetadata, stopReplica, adjustIsr) <span class="author">@vaibhavk1992</span> </li><li><a href="https://github.com/apache/fluss/issues/3248">#3248</a> [server] Add authorization to Snapshot Read Operations (getLatestKvSnapshots,        getKvSnapshotMetadata, getLatestLakeSnapshot) <span class="author">@vaibhavk1992</span> </li><li><a href="https://github.com/apache/fluss/issues/3247">#3247</a> [server] Add authorization to Table Metadata Read Operations (getTableSchema,        listPartitionInfos, listOffsets) <span class="author">@vaibhavk1992</span> </li><li><a href="https://github.com/apache/fluss/issues/3246">#3246</a> [server] Add authorization to databaseExists and tableExists RPC call <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/issues/3245">#3245</a> [test] Unstable test CoordinatorEventManagerTest.testMetricsUpdatedImmediatelyOnStartup <span class="author">@app/github-actions</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3244">#3244</a> docs: add FIP contribution guide for substantial proposals <span class="author">@MukundaKatta</span> </li><li><a href="https://github.com/apache/fluss/pull/3243">#3243</a> docs: add blog contribution guide for website contributors <span class="author">@MukundaKatta</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3246">#3246</a> [server] Add authorization to databaseExists and tableExists RPC call <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/issues/3188">#3188</a> [test] Unstable test CoordinatorEventManagerTest.testMetricsUpdatedImmediatelyOnStartup <span class="author">@app/github-actions</span> </li><li><a href="https://github.com/apache/fluss/issues/2828">#2828</a> Support elect standby replicas for primary key table <span class="author">@swuferhong</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3217">#3217</a> [website] Publish Apache Fluss 0.9.1-incubating <span class="author">@polyzos</span> </li><li><a href="https://github.com/apache/fluss/pull/3210">#3210</a> [test]  Fixing flaky test CoordinatorEventManagerTest.testMetricsUpdatedImmediatelyOnStartup <span class="author">@vamossagar12</span> </li><li><a href="https://github.com/apache/fluss/pull/3078">#3078</a> [server] Add authorization to databaseExists and tableExists RPC call… <span class="author">@vaibhavk1992</span> </li><li><a href="https://github.com/apache/fluss/pull/2829">#2829</a> [kv] Support elect standby replicas for primary key table <span class="author">@swuferhong</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
