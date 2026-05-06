@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-05-05</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-05-05</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 11 新 Issues</div>
+            <div class="stat">✅ 4 关闭</div>
+            <div class="stat">✨ 2 新 PRs</div>
+            <div class="stat">🎉 3 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/2829">PR #2829</a> 支持主键表备用副本选举功能合并</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3078">PR #3078</a> 添加 databaseExists 和 tableExists RPC 授权验证</li><li>✨ <a href="https://github.com/apache/fluss/issues/3254">Issue #3254</a> FIP-24: 提议将 Fluss 数据分层存储到 Hudi</li><li>🐛 <a href="https://github.com/apache/fluss/pull/3252">PR #3252</a> 修复不稳定测试 CoordinatorEventManagerTest</li><li>🚀 <a href="https://github.com/apache/fluss/pull/3257">PR #3257</a> 添加备用副本表级配置支持 ALTER TABLE</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <ul class="critical-list"><li>⚠️ <a href="https://github.com/apache/fluss/issues/2941">Issue #2941</a> TabletServer 非正常关闭后因 EOFException 无法重启，建议提高优先级</li></ul>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3254">Issue #3254</a> FIP-24: Support tiering Fluss data to Hudi</h4>
+            <ul><li><span class="author">@fhan688</span>: 创建子任务 #3258 实现 Hudi 模块</li><li><span class="author">@MaheshS08</span>: 希望参与协作学习 Hudi 和 Fluss</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3245">Issue #3245</a> [test] Unstable test CoordinatorEventManagerTest.testMetricsUpdatedImmediatelyOnStartup</h4>
+            <ul><li><span class="author">@wuchong</span>: 指出 #3210 修复未生效，请求查看</li><li><span class="author">@swuferhong</span>: 表示将查看此不稳定测试问题</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2829">Issue #2829</a> [kv] Support elect standby replicas for primary key table</h4>
+            <ul><li><span class="author">@wuchong</span>: 建议为旧表引入配置项保持向后兼容</li><li><span class="author">@swuferhong</span>: 创建关联 issue #3253 跟踪兼容性</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2007">Issue #2007</a> Add missing authentication for RPC calls</h4>
+            <ul><li><span class="author">@vaibhavk1992</span>: 已创建所有子任务，请求帮忙转换格式</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3078">Issue #3078</a> [server] Add authorization to databaseExists and tableExists RPC call…</h4>
+            <ul><li><span class="author">@vaibhavk1992</span>: 感谢修复，计划周末处理其他 RPC 调用</li><li><span class="author">@wuchong</span>: 建议先创建子任务再分别开 PR</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2941">Issue #2941</a> [server] TabletServer fails to restart after unclean shutdown due to EOFException in log recovery</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: K8s 环境常见触发场景，建议提高优先级</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3246">Issue #3246</a> [server] Add authorization to databaseExists and tableExists RPC call</h4>
+            <ul><li><span class="author">@wuchong</span>: 已在 PR #3078 中实现</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3252">Issue #3252</a> [test] Fix flaky CoordinatorEventManagerTest by isolating metric group instance</h4>
+            <ul><li><span class="author">@swuferhong</span>: 请求审阅此热修复</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3237">Issue #3237</a> [lake/iceberg] Remove unused includeColumnStats to reduce memory usage</h4>
+            <ul><li><span class="author">@zuston</span>: 请求 @luoyuxia 帮助审阅</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2972">Issue #2972</a> [flink] Implement SupportsWatermarkPushDown for FlinkTableSource</h4>
+            <ul><li><span class="author">@loserwang1024</span>: 询问合并前是否需要 rebase</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3069">Issue #3069</a> [client] Add validation for client.scanner.log.max-poll-records and client.connect-timeout</h4>
+            <ul><li><span class="author">@Prajwal-banakar</span>: 关联 fluss-rust PR，请求审阅</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3255">Issue #3255</a> [test] Unstable test CoordinatorEventManagerTest.testMetricsUpdatedImmediatelyOnStartup</h4>
+            <ul><li><span class="author">@swuferhong</span>: 已通过 #3252 修复，rebase main 即可</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3132">Issue #3132</a> [server] Optimize RemoteLogFetcher with async prefetch for recovery</h4>
+            <ul><li><span class="author">@Kaixuan-Duan</span>: 感谢审阅，已处理所有评论并 rebase</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3151">Issue #3151</a> [KV] Kvscan Server Side</h4>
+            <ul><li><span class="author">@polyzos</span>: 感谢详细审阅，已处理所有评论</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3030">Issue #3030</a> [server] Implement JBOD Phase 1 Local Multi-Directory Support</h4>
+            <ul><li><span class="author">@wuchong</span>: 发现 InterruptedException 处理会抛 NPE</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3151">PR #3151</a> [KV] Kvscan Server Side</h4>
+            <ul><li><span class="author">@wuchong</span>: 多处改进：ScannerManager 应不可变、线程安全注解、领导权竞态、volatile 修饰符等</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3132">PR #3132</a> [server] Optimize RemoteLogFetcher with async prefetch for recovery</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 建议使用 fetchLogDataBarrier 钩子、修复取消竞态、添加中断检查</li><li><span class="author">@Kaixuan-Duan</span>: 已采纳建议：添加中断检查、提取清理 helper</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3030">PR #3030</a> [server] Implement JBOD Phase 1 Local Multi-Directory Support</h4>
+            <ul><li><span class="author">@wuchong</span>: 建议避免重复线程池、重构命名、处理目录锁定失败、优化 cacheSize 位置</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2942">PR #2942</a> [server] Fix TabletServer fails to restart after unclean shutdown due to EOFException in log recovery</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 指出顺序已反转、建议 Math.min 处理 recoveryPointCheckpoint</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3240">PR #3240</a> [spark] partition filter pushdown for non-lake log and kv tables</h4>
+            <ul><li><span class="author">@Yohahaha</span>: 建议追加分区过滤信息、提取 description 到 FlussScan</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3238">PR #3238</a> [spark] lake table predicate pushdown</h4>
+            <ul><li><span class="author">@Yohahaha</span>: 建议使用 Spark Logging 接口、更新 pushedPredicate</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3258">#3258</a> Introduce fluss-lake-hudi module and HudiLakeStorage <span class="author">@fhan688</span> </li><li><a href="https://github.com/apache/fluss/issues/3255">#3255</a> [test] Unstable test CoordinatorEventManagerTest.testMetricsUpdatedImmediatelyOnStartup <span class="author">@app/github-actions</span> </li><li><a href="https://github.com/apache/fluss/issues/3254">#3254</a> FIP-24: Support tiering Fluss data to Hudi <span class="author">@fhan688</span> </li><li><a href="https://github.com/apache/fluss/issues/3253">#3253</a> [kv] Add table configuration option to control standby replicas for backward compatibility <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/issues/3251">#3251</a> [server] Add authorization to Remote Log & Tiering RPCs (commitRemoteLogManifest,    notifyRemoteLogOffsets, lakeTieringHeartbeat) <span class="author">@vaibhavk1992</span> </li><li><a href="https://github.com/apache/fluss/issues/3250">#3250</a> [server] Add authorization to Snapshot Management RPCs (commitKvSnapshot,            notifyKvSnapshotOffset, commitLakeTableSnapshot, notifyLakeTableOffset) <span class="author">@vaibhavk1992</span> </li><li><a href="https://github.com/apache/fluss/issues/3249">#3249</a> [server] Add authorization to Replication Control RPCs (notifyLeaderAndIsr,          updateMetadata, stopReplica, adjustIsr) <span class="author">@vaibhavk1992</span> </li><li><a href="https://github.com/apache/fluss/issues/3248">#3248</a> [server] Add authorization to Snapshot Read Operations (getLatestKvSnapshots,        getKvSnapshotMetadata, getLatestLakeSnapshot) <span class="author">@vaibhavk1992</span> </li><li><a href="https://github.com/apache/fluss/issues/3247">#3247</a> [server] Add authorization to Table Metadata Read Operations (getTableSchema,        listPartitionInfos, listOffsets) <span class="author">@vaibhavk1992</span> </li><li><a href="https://github.com/apache/fluss/issues/3246">#3246</a> [server] Add authorization to databaseExists and tableExists RPC call <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/issues/3245">#3245</a> [test] Unstable test CoordinatorEventManagerTest.testMetricsUpdatedImmediatelyOnStartup <span class="author">@app/github-actions</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3257">#3257</a> [server] Add table-level config for standby replica with ALTER TABLE support <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/pull/3256">#3256</a> [lake/hudi] Introduce fluss-lake-hudi module and HudiLakeStorage <span class="author">@fhan688</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3255">#3255</a> [test] Unstable test CoordinatorEventManagerTest.testMetricsUpdatedImmediatelyOnStartup <span class="author">@app/github-actions</span> </li><li><a href="https://github.com/apache/fluss/issues/3246">#3246</a> [server] Add authorization to databaseExists and tableExists RPC call <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/issues/3245">#3245</a> [test] Unstable test CoordinatorEventManagerTest.testMetricsUpdatedImmediatelyOnStartup <span class="author">@app/github-actions</span> </li><li><a href="https://github.com/apache/fluss/issues/2828">#2828</a> Support elect standby replicas for primary key table <span class="author">@swuferhong</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3252">#3252</a> [test] Fix flaky CoordinatorEventManagerTest by isolating metric group instance <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/pull/3078">#3078</a> [server] Add authorization to databaseExists and tableExists RPC call… <span class="author">@vaibhavk1992</span> </li><li><a href="https://github.com/apache/fluss/pull/2829">#2829</a> [kv] Support elect standby replicas for primary key table <span class="author">@swuferhong</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
