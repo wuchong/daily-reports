@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafka 社区周报 | 2026-W18</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Kafka 社区周报 | 2026-W18</h1>
+            <p class="date-range">2026-04-27 ~ 2026-05-03</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (1)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/65zrv6w8fk6cl8k720mzqgodt1zxow92">New committer: Sean Quah</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (13)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/kvmkx9hs4o8wffxf2s3jvgm8jgsm0r8b">KIP-1154: Extending support for Microsecond/Nanosecond Precision for Kafka Connect</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/pjm9g48kzsnjpxh0f2fznqpk41do7md0">4.3.0 RC0</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/kkon2hxyvxjntlhr1cvxmoxdmn9lt381">KIP-655: Add deduplication processor in kafka-streams</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/m48n9o7tllz0000xl1kwy7yvlq1k072r">KIP-1220: kafka-broker-api-versions tool support bootstrap controllers</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/tl51bgzcbsswqoh1kh3q70r6v06cjqx1">4.2.1 RC3</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/06qkdj9278h7jzt4glp8rbyzgbt3gvhq">KIP-1313: Client instance ID in all request headers</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/k69v0tp1cjf4zn8f03snkjrt90v2g7n6">KIP-1323: Initialization of share group offsets from a specific offset or a file</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/jxf789v0kdpvsb9wsosghh57odkksxt7">KIP-1304 Add consumer metric about paused partitions</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/6my9x4qxq6kpkht2woyo0fkggfby23fm">KIP-1291: Extended I/O Metrics Collection</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/24x0bsqd0cdhn31ztlvkhdn0rs4l87do">KIP-1319: Align TxnOffsetCommit API with OffsetCommit API</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/rdpjmmqdxzog2m555r2wrncfn40zjf54">KIP-1312: Support unregistering controllers</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/6lz5pkxmpvpqf7jt5v9ns196zhv9zp5x">KIP-1066: Mechanism to cordon brokers and log directories</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/6kswtmbd4g323x3fnp8w4wwt8vfl6xj8">4.3.0 RC1</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/nbkfg9lpqwro36pj9j3mgc49z6x6jkj1">KIP-1312: Support unregistering controllers</a></h3>
+            <p class="meta">7 条回复 · 4 位参与者</p>
+            <p class="summary">讨论主要围绕 KIP-1312 中移除和注销控制器的操作场景及参数设计展开，重点讨论了 --unregister 标志的必要性及其适用场景。作者根据反馈完善了 KIP，增加了保留节点作为观察者的场景说明，并修正了配置和迁移计划中的细节描述。</p>
+            <div class="key-points"><p><strong>@Jun Rao:</strong> 质疑 --unregister 标志的必要性，建议补充“移除投票者但保留其为观察者控制器”的场景以论证保留该标志的价值，并指出了静态仲裁的适用性和文档措辞修正。</p>
+<p><strong>@Kevin Wu:</strong> 解释了移除投票者与注销控制器对节点状态假设的差异，指出显式标志能防止特性升级时的竞态条件，并据此采纳建议更新了 KIP。</p>
+<p><strong>@Paolo Patierno:</strong> 指出在兼容性迁移计划中，应明确说明通过启动新节点来“刷新注册”时，必须使用与原节点相同的节点 ID。</p></div>
+            <p class="conclusion">作者已采纳所有建议并更新了 KIP 文档，包括新增用户体验场景和澄清迁移细节，讨论主要针对细节进行完善。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/gfsg9j062bs0dz1hgpwdq0tbqc6g6o8x">KIP-1324: Support client configuration observability</a></h3>
+            <p class="meta">7 条回复 · 4 位参与者</p>
+            <p class="summary">讨论主要围绕 KIP-1324（支持客户端配置可观测性）展开，重点探讨了功能范围（仅观测还是包含校验/执行）、实现细节及边界情况。作者 Kirk 确认当前版本专注于可观测性，将根据反馈修正命名规范、默认配置列表及敏感配置处理逻辑。</p>
+            <div class="key-points"><p><strong>@Hector Geraldino:</strong> 建议增加配置执行或覆盖能力，或扩展 KIP-714 指标；作者认为执行机制复杂且 KIP-714 适用场景不同，暂不纳入。</p>
+<p><strong>@Andrew Schofield:</strong> 指出文档中存在遗留的“profile”引用，建议简化配置类型处理，并修正共享消费者的默认配置列表。</p>
+<p><strong>@Mickael Maison:</strong> 质疑“Policy”命名的准确性（因为不阻止操作），建议将自定义配置默认视为敏感配置以防止泄露。</p></div>
+            <p class="conclusion">作者确认 KIP 核心目标为可观测性，将移除过时术语，修正异常类命名，并重新评估敏感配置的默认处理方式，配置执行功能留待后续 KIP 讨论。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/qdgzxkxhn03qz2l9ozlnfbf0xmqxb0jz">KIP-1313: Client instance ID in all request headers</a></h3>
+            <p class="meta">5 条回复 · 2 位参与者</p>
+            <p class="summary">讨论主要围绕 KIP-1313（在所有请求头中添加客户端实例 ID）展开。针对 Jun Rao 提出的 clientId 变更会导致旧版 Broker 配额失效的兼容性问题，Andrew 决定移除该部分变更。讨论随后聚焦于 ID 缓存机制及新旧版本交互时的 ID 冲突问题。</p>
+            <div class="key-points"><p><strong>@Apoorv Mittal:</strong> 建议将客户端实例 ID 与 KIP-1082 中的 member ID 统一，因为两者均为客户端生成的 UUID 且生命周期一致。</p>
+<p><strong>@Jun Rao:</strong> 指出原设计中仅在首次请求发送 clientId 会破坏旧版 Broker 的配额功能，并质疑新客户端连接旧 Broker 时 ID 不一致的处理逻辑。</p>
+<p><strong>@Andrew Schofield:</strong> 采纳了统一 ID 的建议，并移除了修改 clientId 行为的提案以规避兼容性风险。</p></div>
+            <p class="conclusion">已解决 clientId 相关的兼容性风险，但需进一步解决新客户端与旧 Broker 交互时可能出现的 ID 冲突问题（JR14）。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/yxhb5zk0531h0jmbh8lc9zntwd39cwys">KIP-892: Transactional Semantics for StateStores</a></h3>
+            <p class="meta">4 条回复 · 2 位参与者</p>
+            <p class="summary">讨论主要围绕 KIP-892 中事务状态存储的缓存机制与线程安全性更新。Nick 提议在启用事务时禁用写缓存以避免“双重缓冲”，虽然这可能影响聚合操作的中间值缓存，但 Bill 认可这是目前的必要权衡。双方已就该方案达成一致，KIP 文档已更新相关说明。</p>
+            <div class="key-points"><p><strong>@Nick Telford:</strong> 提议在启用事务存储时禁用写缓存（仅缓存读取），以避免与事务缓冲区发生双重缓冲问题。</p>
+<p><strong>@Nick Telford:</strong> 指出禁用中间写入缓存可能导致聚合处理器在每次写入时运行，但认为这是可接受的权衡。</p>
+<p><strong>@Bill Bejeck:</strong> 同意关于无法在不双重缓冲的情况下保留中间写入缓存的观点，并强调需明确内存使用与缓存交互的细节。</p></div>
+            <p class="conclusion">Nick 已更新 KIP 文档，增加了关于线程安全和状态存储缓存的说明（包括内存注意事项），等待 Bill 确认是否还有其他问题。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/0odmbod2xh21mwr2gjt65z5qxyh41kf8">KIP-1332: Dynamic memory allocation for the Kafka producer</a></h3>
+            <p class="meta">4 条回复 · 3 位参与者</p>
+            <p class="summary">讨论主要围绕 KIP-1332 展开，提议为 Kafka 生产者引入动态内存分配策略以应对高延迟场景。讨论中修正了 `batch.size` 默认单位的文档错误，并采纳了将原有模式命名为 'static' 的建议。</p>
+            <div class="key-points"><p><strong>@Andrew Schofield:</strong> 指出文档中 `batch.size` 默认值的单位错误（应为 bytes 而非 KiB），并认为该提案对高延迟场景很有帮助。</p>
+<p><strong>@Jaisen Mathai:</strong> 建议将默认配置值的命名从 'legacy' 改为 'static' 或 'fixed'，认为这样更具描述性且更经得起时间考验。</p>
+<p><strong>@Lianet Magrans:</strong> 确认并修正了单位错误，同时采纳了关于配置命名的建议，将当前行为命名为 'static'。</p></div>
+            <p class="conclusion">提案发起人已根据反馈更新了文档，修正了单位错误并将原有模式命名为 'static'，讨论达成初步共识。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/knb83gnwn9p48gt0fd2685l6q67ofs81">KIP-1326: Include broker static configurations in BrokerRegistrationRequest</a></h3>
+            <p class="meta">4 条回复 · 3 位参与者</p>
+            <p class="summary">讨论主要围绕 KIP-1326 展开，该提案建议 Broker 在注册请求中向 Controller 上报部分静态配置。讨论重点解决了配置筛选标准（是否包含验证器）、安全性配置的潜在泄露风险以及版本升级时的兼容性问题。作者针对反馈提出了增加 ControllerReportPolicy 标志等改进方案。</p>
+            <div class="key-points"><p><strong>@Muralidhar Basani:</strong> 质疑仅依据是否有验证器来筛选配置的合理性，指出部分高重要性配置因无验证器被排除；建议增加显式的 opt-in 标志以防止配置因新增验证器而被静默上报。</p>
+<p><strong>@TaiJu Wu:</strong> 坚持筛选标准应为 Controller 是否可执行验证，无验证器的配置上报只会增加元数据开销；为解决安全配置意外泄露风险，提议增加 ControllerReportPolicy 枚举以强制排除特定配置。</p>
+<p><strong>@黃竣陽:</strong> 询问 Controller 是否支持静态配置查询（作者表示暂无计划）；担忧版本升级期间旧版 Broker 未上报配置可能导致 Controller 验证逻辑出错。</p></div>
+            <p class="conclusion">作者已修正 KIP 中的拼写错误，并针对安全配置泄露风险提出了增加 ControllerReportPolicy 的具体方案，同时解释了版本升级机制消除了对部分视图的担忧，讨论正朝着达成共识的方向发展。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/wmt4bo0x6mzbyq9ws5nnkqbc4z19t8nx">KIP-1331: Streams Group Topology Description Plugin</a></h3>
+            <p class="meta">4 条回复 · 3 位参与者</p>
+            <p class="summary">讨论主要围绕 KIP-1331 展开，该提案旨在引入插件机制，使 Broker 能够可选地获取并存储 Streams Group 的拓扑描述。参与者重点讨论了插件对 Broker 稳定性的潜在风险、升级场景下的拓扑可见性以及数据一致性保证。作者已对主要疑虑进行了回复，并提议将部分复杂功能留作后续工作。</p>
+            <div class="key-points"><p><strong>@Sanghyeok An:</strong> 担心插件实现不当可能阻塞心跳或引发请求风暴，建议 Broker 端增加速率限制等独立防护机制以限制影响范围。</p>
+<p><strong>@Alieh Saeedi:</strong> 关注分配拓扑与描述拓扑之间的一致性保证，并询问为何引入独立的 Admin 端 POJO 而非复用 Streams API 对象。</p>
+<p><strong>@Lucas Brutschy:</strong> 回应称倾向于依赖插件的正确实现而非在 Broker 端增加复杂逻辑，并提议将旧版拓扑支持及一致性检测列为后续工作。</p></div>
+            <p class="conclusion">作者计划将“滚动升级时的旧版拓扑可见性”和“客户端一致性检测”加入 KIP 的后续工作（Future Work）章节，并建议对升级前存在的拓扑使用 ZERO_UUID 进行处理。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/743dtgpnm21z862jf67cfzprf61fp7n3">KIP-1322: Add metrics to Kraft that measure the number of fetch timeouts and election timeouts</a></h3>
+            <p class="meta">3 条回复 · 2 位参与者</p>
+            <p class="summary">讨论主要围绕 KIP-1322 在 KRaft 中添加超时指标的设计细节，重点讨论了指标命名结构、数据类型以及节点状态转换时的上报行为。Kevin Wu 建议采用带标签的指标以增强扩展性，并主张指标应准确反映节点当前状态的快照，而非无条件持续上报历史累计值。Tony Tang 接受了这些建议，并决定将状态转换计数指标的建议留待后续讨论。</p>
+            <div class="key-points"><p><strong>@Kevin Wu:</strong> 建议使用带标签的指标（tagged metric）代替独立指标，并认为指标应反映节点当前状态的快照，当底层计时器不存在时应停止上报，但内部计数器可跨状态保留。</p>
+<p><strong>@Tony Tang:</strong> 同意采用带标签的指标方案，并最终认同 Kevin 关于状态转换时指标上报逻辑的建议，即保留内部计数器但仅在相关状态下注册指标。</p>
+<p><strong>@Kevin Wu:</strong> 提议增加 EpochState 状态转换次数的指标，Tony Tang 认为该建议很好但超出了当前 KIP 的范围。</p></div>
+            <p class="conclusion">双方达成一致，将采用带标签的指标结构，并实施“内部计数器跨状态保留，但仅在相关状态下注册/上报指标”的方案。关于状态转换计数的建议将被推迟到后续工作中。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/syyb5qd5fvjqvvpt5kvr4sqogh6nz6wz">KIP-1327 Prevent Hot Data Loss on Partition Expansion for Latest Policy</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">讨论主要针对 KIP-1327 中获取分区年龄信息的 API 选择，David 和 Chia-Ping 建议将其从 Heartbeat API 移至 Metadata API 以保持控制平面职责单一。作者黃竣陽采纳了该建议，更新提案将 PartitionAgeMs 加入 MetadataResponse v14，并调整了消费者在重置偏移量前的元数据获取流程。</p>
+            <div class="key-points"><p><strong>@David Jacot:</strong> 质疑 Heartbeat API 的流程效率，建议将分区年龄信息放入 Metadata API，避免控制平面 API 过载及额外的往返通信。</p>
+<p><strong>@Chia-Ping Tsai:</strong> 支持使用 Metadata API，指出虽然会引入 Broker 间时钟偏差，但在实际配置阈值（分钟/小时级）下影响可忽略。</p>
+<p><strong>@黃竣陽:</strong> 确认已更新 KIP，通过 MetadataResponse v14 返回分区年龄，并利用 ApiVersions 协商处理版本兼容性问题。</p></div>
+            <p class="conclusion">初步结论是改用 Metadata API 传递年龄信息，作者已根据反馈更新了 KIP 文档以解决版本兼容性和配置问题。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/w0dp0kk74wzzjktspjqxd6yczk5g5gtx">KIP-1303: Deprioritize Tiered Storage Followers In Leader Election</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">本次讨论针对 KIP-1303，旨在解决分层存储场景下新启动副本优先当选 Leader 的潜在风险。作者 Thomas 采纳了社区关于排序稳定性和 topic 级配置的建议，并解释了该机制不会引入新的机架倾斜或显著控制面开销。讨论最后聚焦于在大规模故障恢复时可能导致的 Leader 倾斜问题。</p>
+            <div class="key-points"><p><strong>@Thomas Thornton:</strong> 确认排序算法是稳定的，仅对本地数据显著较少的副本降权，已采纳建议添加 topic 级配置，并解释该机制不会导致系统性的机架倾斜或额外开销。</p>
+<p><strong>@Ivan Yurchenko:</strong> 建议明确排序需保持稳定以维持原有优先级顺序，并提议支持 topic 级别的配置覆盖。</p>
+<p><strong>@Manan Gupta:</strong> 担忧在 rack 或 AZ 级别故障恢复时，新启动的副本会被排除在 Leader 选举之外，导致负载集中在剩余故障域。</p></div>
+            <p class="conclusion">KIP 已根据反馈更新以支持稳定排序和 topic 级配置，但关于 rack/AZ 级别 Leader 倾斜的权衡问题仍在讨论中，尚无最终定论。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (33)</h2>
+            
+    <p>本周新建 <strong>33</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周 JIRA 主要集中在 Kafka Streams 的状态管理与稳定性优化，涉及 RocksDB 降级处理、EOS_v2 重复消息修复及状态更新器改进。同时，社区投入大量精力修复多个模块的 Flaky Test，并推进了死信队列（DLQ）配置与实现等新特性。此外，还包含了文档更新、依赖升级及代码重构等常规维护工作。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Kafka Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
