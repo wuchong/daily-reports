@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flink 社区周报 | 2026-W18</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Flink 社区周报 | 2026-W18</h1>
+            <p class="date-range">2026-04-27 ~ 2026-05-03</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (2)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/zqlpmlp5vhlro4topddbmwhs65mfbmlt">Apache Flink 1.20.4 released</a></li>
+<li><a href="https://lists.apache.org/thread/l8qwvyb12c8xkykbrl6do9qg2zldwomr">New Apache Flink PMC Member – David Anderson</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (8)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/8bckco6w3d0slhh9vfmnttb9c4k3w4co">Release 2.2.1, release candidate #2</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/8gcvn8ptl86sokgxsw3vkovvsdr7fxw7">Release 1.20.4, release candidate #1</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/2lfrcbpn9n9jn9ljjpn00mkwdhp6jqfn">Release 2.0.2, release candidate #4</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/4s2xbh20vgdlxcrgzlqczod19w2v668v">Release 2.2.1, release candidate #3</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/jl9w32k5yot877qhm3ddnyb6gd16s9pj">Release 2.1.2, release candidate #1</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/n9ks87c6b973yp5fnmvl6zzqo1k6160w">Release 2.1.2, release candidate #2</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/jcwb8h15vy12tjb2x3mq92v4vb9dkw7c">Apache Flink Kubernetes Operator Release 1.15.0, release candidate #1</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/xp8xnsc2hk04v8onh9r57pot1rc20qnd">FLIP-572: Introduce Flink-Kafka Transactions Management Tool</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/lc5hdqq8ycvcgvjsp4wtg7cbwk2ghkjn">FLIP-577: AI-Native Flink — An Umbrella Proposal for Multimodal Data Processing</a></h3>
+            <p class="meta">12 条回复 · 8 位参与者</p>
+            <p class="summary">讨论主要围绕 FLIP-577 提案，旨在通过引入多模态类型系统、RpcOperator 及增强的 Checkpoint 机制，使 Flink 成为 AI-Native 的数据处理基础设施。虽然部分开发者对提案范围和功能打包方式提出质疑，但核心贡献者澄清了 Flink 定位于 AI 数据基础设施而非 AI 框架，并强调了其在容错和流式处理方面相比 Ray/Daft 的独特优势。</p>
+            <div class="key-points"><p><strong>@Guowei Ma:</strong> 澄清 'AI-Native' 意指原生支持 AI 数据处理中的核心对象（如 Tensor）与执行模式（如推理），而非将 Flink 变为 AI 框架；强调 Flink 相比 Ray/Daft 在容错方面的结构性优势。</p>
+<p><strong>@Martijn Visser:</strong> 担忧该提案将不相关的引擎改进打包，认为 RpcOperator 属于服务编排（应由 K8s 处理），并指出 Flink 功能矩阵已显稀疏，担心进一步恶化开发体验。</p>
+<p><strong>@Zhu Zhu:</strong> 阐述 RpcOperator 的核心价值在于故障隔离与独立扩缩容，解释为何将其内置于 Flink 运行时而非外置给 K8s Operator。</p></div>
+            <p class="conclusion">提案人将在下一版修订中明确层级依赖关系与 API 覆盖范围，并可能拆分 SQL/Table 相关子提案；社区将继续讨论 RpcOperator 的具体实现细节及 Checkpoint 机制的改进方案。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/ckjhnn95co3xsodh9jqzk07bmqcnnj0r">Compress file benchmark regression resolution for Flink 2.3 release</a></h3>
+            <p class="meta">3 条回复 · 4 位参与者</p>
+            <p class="summary">Flink 2.3 发布准备期间发现压缩文件基准测试出现约 10% 的性能回退，经排查是由升级 lz4-java 修复 CVE 引入。社区评估了 ZSTD 或 aircompressor 等替代方案，认为无法有效解决性能问题。最终决定接受该回退，不将其作为发布的阻碍项。</p>
+            <div class="key-points"><p><strong>@Hao Li:</strong> 确认性能回退由 lz4-java 升级修复 CVE 引起，询问是否应将其作为 Flink 2.3 发布的阻碍项。</p>
+<p><strong>@Piotr Nowojski:</strong> 分析认为 AI 提出的替代方案（如切换到 ZSTD 或 aircompressor）无法解决性能问题，建议暂时接受回退。</p>
+<p><strong>@Zakelly Lan:</strong> 同意接受该性能回退。</p></div>
+            <p class="conclusion">社区达成共识，接受因安全修复引入的性能回退，Flink 2.3 发布将继续推进，不因此受阻。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/tt903323lqsjb5gkqvbmswbbklqjmf1w">FLIP-572: Introduce Flink-Kafka Transactions Management Tool</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">讨论主要围绕 FLIP-572（引入 Flink-Kafka 事务管理工具）是否应纳入 Flink 生态系统展开。Ryan 最初质疑其必要性及维护成本，但 Aleksandr 解释了其在处理 Flink 作业停止后数据丢失问题上的独特价值及与 Flink 状态模型的紧密关联。目前讨论已消除主要疑虑，作者准备发起投票。</p>
+            <div class="key-points"><p><strong>@Ryan van Huuksloot:</strong> 质疑该工具是否属于 Flink 生态，认为这可能是 Kafka 的 API 局限，担心增加社区维护负担。</p>
+<p><strong>@Aleksandr Savonin:</strong> 指出该工具解决了 Flink 作业停止后 Kafka 未提交事务数据丢失的问题，且未来与 State Processor API 的集成使其必须属于 Flink。</p>
+<p><strong>@Ryan van Huuksloot:</strong> 认可了关于 Savepoint 操作的解释，但询问为何第一版未包含 State Processor API 集成及依赖打包方式。</p></div>
+            <p class="conclusion">初步达成共识认为该工具对处理 Savepoint 相关事务有价值，下一步将针对实现细节（如依赖管理）进行澄清并启动投票流程。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/y4hbpcwqzvpxg0o35bqmg1wws5vr7p8y">[SUMMARY] Release 2.3 sync, blocked on cross-team testing</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">Flink 2.3 发布目前因部分跨团队测试任务缺乏负责人而受阻，涉及多个关键 FLIP 的测试验证与执行。David Anderson 指出压缩性能回归不会阻塞发布，Azure 运行问题正在调查中。随后 Xiqian YU 主动认领了 FLIP-555 的测试任务。</p>
+            <div class="key-points"><p><strong>@David Anderson:</strong> 发布被跨团队测试阻塞，需为 FLIP-558/565 编写测试说明，并对 FLIP-555/549/487/560 进行测试。</p>
+<p><strong>@David Anderson:</strong> 压缩性能回归不阻塞发布，Azure 夜间运行问题由 Qingsheng Ren 跟进。</p>
+<p><strong>@Xiqian YU:</strong> 认领了 FLIP-555 (Native S3 File System) 的跨团队测试任务。</p></div>
+            <p class="conclusion">发布进度仍受限于测试资源，下一步需继续推进剩余 FLIP 的测试认领及 Azure 问题排查。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/f9zolm679cop596bvvkjxq9fcvt7ty53">FLIP-XXX: Filter-Aware Source Reuse in Table Planner</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">Daniel Rossos 发起 FLIP-XXX 讨论，旨在解决 Table Planner 中因不同 FilterPushDownSpec 导致同一表重复扫描的问题，以优化昂贵数据源的读取效率。目前已有公开草案和内部原型，核心议题在于优化的配置作用域应设定为作业级还是更细粒度。</p>
+            <div class="key-points"><p><strong>@Daniel Rossos:</strong> 指出当前机制导致昂贵数据源（如 BigQuery、JDBC）重复扫描，询问优化配置应采用作业级标志还是细粒度作用域。</p>
+<p><strong>@Hongshun Wang:</strong> 建议采用细粒度作用域（每表或每扫描），并提议新增 SupportReuseFilter 接口来标识 Source 是否支持此能力。</p></div>
+            <p class="conclusion">尚未达成最终决议，但倾向于探索细粒度作用域方案及相应的接口定义，后续将分享原型代码以供参考。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/f7tob44rynnl5m6mocpord6hswbngofd">FLIP-562: Topic integrity checks in Kafka Connector</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论主要针对 FLIP-562（Kafka Connector 主题完整性检查）的更新版本，社区成员在肯定新方向的同时提出了多个技术细节疑问。核心议题集中在状态迁移策略、Topic Pattern 的检查逻辑是否应排除，以及完整性检查与分区发现机制的依赖关系上。</p>
+            <div class="key-points"><p><strong>@Aleksandr Savonin:</strong> 询问从无 Topic ID 的旧检查点恢复时的状态迁移方案，并质疑对模式订阅的排除逻辑，认为即使是模式匹配，已知主题被删除重建也应受到校验。</p>
+<p><strong>@Aleksandr Savonin:</strong> 指出有界源因默认禁用分区发现，可能导致长时间运行的任务无法检测到中途的主题重建，建议允许在此场景下进行周期性检查。</p>
+<p><strong>@Hongshun Wang:</strong> 建议 Topic Pattern 应保持与普通订阅一致的检查行为，且完整性检查不应强依赖于分区发现配置（即使用户设置间隔为 -1，重启时仍应检查）。</p></div>
+            <p class="conclusion">目前尚无明确结论，讨论处于社区提出反馈与澄清问题的阶段，需作者进一步回应关于状态迁移、检查逻辑适用范围及配置依赖等问题。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/of2gqqryy1tvjm1rpv5pbj75gq0lk4fy">Flink Kubernetes Operator 1.15.0 release planning</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">社区讨论了 Flink Kubernetes Operator 1.15.0 的发布计划。Gyula Fóra 提议在 5 月初发布以包含积累的重要修复，并自愿担任发布经理。针对是否等待 Flink 2.3 以确保兼容性的讨论，最终决定按原计划推进，目前已准备好首个候选发布版本。</p>
+            <div class="key-points"><p><strong>@Gyula Fóra:</strong> 提议 5 月初发布以包含重要修复；认为不应为等待 Flink 2.3 而推迟发布，可通过手动测试验证兼容性。</p>
+<p><strong>@Ryan van Huuksloot:</strong> 支持发布，但建议考虑推迟两周以确保与即将发布的 Flink 2.3 兼容。</p></div>
+            <p class="conclusion">决定按原计划推进发布，首个候选发布版本（RC）已准备就绪，无需等待 Flink 2.3 正式发布。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/gvh7y5jojd66q2s70lkooz5nq09tdx9c">Request for help with publishing docker images</a></h3>
+            <p class="meta">1 条回复 · 1 位参与者</p>
+            <p class="summary">Sergey Nuyanzin 在推进 Flink 1.20.4 版本发布时，因 Docker ID 缺乏 apache/flink 仓库权限而请求协助发布镜像。他已提交 INFRA 工单处理权限问题，并在后续邮件中表示问题已成功解决。</p>
+            <div class="key-points"><p><strong>@Sergey Nuyanzin:</strong> 发布 1.20.4 版本需要推送 Docker 镜像，但当前账号无 apache/flink 访问权限。</p>
+<p><strong>@Sergey Nuyanzin:</strong> 已创建 INFRA 工单申请权限，并请求有权限者临时协助。</p>
+<p><strong>@Sergey Nuyanzin:</strong> 最终成功解决了权限或发布问题。</p></div>
+            <p class="conclusion">问题已解决，发布流程障碍已消除。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/vsnhhoyxw8x2r8bwvdsyq4l1vxhry154">FLIP-576 Filesystem-Plugin Observability (flink-s3-fs-native)</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">Samrat Deb 发起 FLIP-576 讨论，旨在解决 Flink 原生 S3 文件系统插件缺乏可观测性的问题，以改善生产环境下的故障排查效率。Roman Khachatryan 对提案表示支持，并就指标设计和技术实现提出了具体建议。讨论目前处于收集反馈和优化提案细节的阶段。</p>
+            <div class="key-points"><p><strong>@Samrat Deb:</strong> 当前 S3 文件系统层缺乏对限流、重试、慢操作及分段上传泄漏等故障信号的可见性，导致排查困难。</p>
+<p><strong>@Roman Khachatryan:</strong> 建议增加文件大小指标和 bulkCopyHelper 指标，并使用标签（label）区分文件系统类型而非硬编码在指标名中。</p>
+<p><strong>@Roman Khachatryan:</strong> 支持默认启用该功能，同意不与检查点关联，并认为推荐方案不会增加每条记录路径的开销。</p></div>
+            <p class="conclusion">社区对提案价值达成初步共识，倾向于默认启用该功能，后续将根据反馈进一步完善指标定义和实现细节。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/3412lc0x5vgfbm8phg50q8qlvlsj616p">Hackathon at Community Over Code Glasgow — is Flink interested?</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">Rich Bowen 邀请 Flink 社区参加将于 2026 年 10 月在 Glasgow 举办的 Community Over Code 黑客马拉松，旨在为贡献者提供协作空间。Ramin Gharib 已回复确认参与，并自愿担任联络人协助协调 Flink 社区相关事宜。</p>
+            <div class="key-points"><p><strong>@Rich Bowen:</strong> 邀请 Flink 社区参与黑客马拉松，要求项目方提供联络人、准备任务列表（如 Bug 修复、文档编写）并进行宣传。</p>
+<p><strong>@Ramin Gharib:</strong> 确认愿意参加活动，并主动承担协调工作，已加入 Slack 频道以便后续跟进。</p></div>
+            <p class="conclusion">Flink 社区已确认参与意向，下一步将由 Ramin Gharib 加入 Slack 频道跟进具体协调工作，并需准备相关任务列表。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (37)</h2>
+            
+    <p>本周新建 <strong>37</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周 JIRA 主要集中在连接器生态的增强与优化，涉及 Redis、Kafka、Kinesis、S3 及 Mongo CDC 等多种连接器的功能改进和问题修复。其次，SQL 引擎与核心运行时方面包含多项改进，如 Calcite 优化器调整、UTF-8 验证函数支持以及 Window TVF 聚合的 Bug 修复。此外，还包括 CI/CD 基础设施升级、Kubernetes 部署死锁修复以及 Triton 模型推理集成等工作。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Flink Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
