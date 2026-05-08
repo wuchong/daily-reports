@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-05-07</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-05-07</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 18 新 Issues</div>
+            <div class="stat">✅ 8 关闭</div>
+            <div class="stat">✨ 6 新 PRs</div>
+            <div class="stat">🎉 9 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/3238">PR #3238</a> 合并 Spark lake table 谓词下推功能</li><li>🎉 <a href="https://github.com/apache/fluss/pull/2972">PR #2972</a> 合并 Flink TableSource Watermark 下推功能</li><li>🐛 <a href="https://github.com/apache/fluss/pull/3208">PR #3208</a> 修复空 datalake 表批查询报错问题</li><li>✨ 用户 fhan688 新增 10+ 个 Hudi 集成相关 Issue (FIP-24)</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <ul class="critical-list"><li>⚠️ <a href="https://github.com/apache/fluss/issues/3270">Issue #3270</a> Flink COUNT(column) 聚合下推导致可空列结果错误</li></ul>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3254">Issue #3254</a> FIP-24: Support tiering Fluss data to Hudi</h4>
+            <ul><li><span class="author">@fhan688</span>: 列出了 Hudi 集成任务的子 Issue 清单</li><li><span class="author">@MaheshS08</span>: 询问是否可以参与 Hudi 集成协作</li><li><span class="author">@fhan688</span>: 解释代码已实现，仅是拆分提交</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3229">Issue #3229</a> [server] Add metrics of log startOffset</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 建议无远程日志时指标返回-1并更新文档</li><li><span class="author">@zuston</span>: 认同建议并采纳修改</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3227">Issue #3227</a> [spark] Fix empty projection causing Invalid metadata length for COUNT(*)/COUNT(1)</h4>
+            <ul><li><span class="author">@beryllw</span>: 建议增加过滤器和分区表测试用例</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3206">Issue #3206</a> [docs] AskAi fails to load on Fluss website</h4>
+            <ul><li><span class="author">@wuchong</span>: 暂时回滚 AI 组件，将申请正式授权</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3238">PR #3238</a> [spark] lake table predicate pushdown</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 建议在日志中打印已接受的谓词</li><li><span class="author">@Yohahaha</span>: 建议调整日志级别</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3260">PR #3260</a> [spark] Add scan.max.records.per.partition config</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 指出 earliest 模式下可能存在 Bug</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2920">PR #2920</a> [lake/tiering] add table dropped handling and nullable write results</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 讨论取消状态的语义及 abort 清理逻辑</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3030">PR #3030</a> [server] Implement JBOD Phase 1 Local Multi-Directory Support</h4>
+            <ul><li><span class="author">@hanliu0830</span>: 修复重复线程池及锁冲突等问题</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3284">#3284</a> Flink Union Read Test of Hudi <span class="author">@fhan688</span> </li><li><a href="https://github.com/apache/fluss/issues/3283">#3283</a> Introduce Hudi Compaction <span class="author">@fhan688</span> </li><li><a href="https://github.com/apache/fluss/issues/3282">#3282</a> Introduce Hudi LakeCommitter <span class="author">@fhan688</span> </li><li><a href="https://github.com/apache/fluss/issues/3280">#3280</a> Introduce Hudi LakeWriter to support tiering table <span class="author">@fhan688</span> </li><li><a href="https://github.com/apache/fluss/issues/3279">#3279</a> Introduce Tag field in TieringSplit <span class="author">@fhan688</span> </li><li><a href="https://github.com/apache/fluss/issues/3278">#3278</a> Hudi source sortedReader and PredicateConverter <span class="author">@fhan688</span> </li><li><a href="https://github.com/apache/fluss/issues/3277">#3277</a> Introduce Hudi source reader <span class="author">@fhan688</span> </li><li><a href="https://github.com/apache/fluss/issues/3276">#3276</a> Introduce Hudi source split planner <span class="author">@fhan688</span> </li><li><a href="https://github.com/apache/fluss/issues/3275">#3275</a> Introduce Hudi LakeCatalog to create table <span class="author">@fhan688</span> </li><li><a href="https://github.com/apache/fluss/issues/3274">#3274</a> Introduce HudiBucketingFunction for bucket strategy <span class="author">@fhan688</span> </li><li><a href="https://github.com/apache/fluss/issues/3273">#3273</a> Trim Flink multi-version CI tests to reduce pipeline time <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/issues/3270">#3270</a> [flink] COUNT(column) aggregate pushdown produces incorrect results for nullable columns <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/issues/3269">#3269</a> Optional channel selection for source split in FlinkSourceEnumerator <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/issues/3267">#3267</a> [ci] Optimize the log prompt of NoticeFileChecker <span class="author">@zhuyufeng0809</span> </li><li><a href="https://github.com/apache/fluss/issues/3265">#3265</a> [flink] Support hint-based watermark configuration for Flink connector <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/issues/3262">#3262</a> [client] Refactor RemoteLogDownloader to use chunked streaming instead of downloading whole segment file <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/issues/3261">#3261</a> Tiering hang due to the BucketOffsetsRetrieverImpl.listOffsets <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/issues/3259">#3259</a> [tiering] Slow manifest compaction during lake commit blocks other tables' tiering progress <span class="author">@beryllw</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3281">#3281</a> [catalog] Preserve exception cause when rethrowing catalog exceptions <span class="author">@XuQianJin-Stars</span> </li><li><a href="https://github.com/apache/fluss/pull/3272">#3272</a> [flink] add split assignment mechanism w/o partitionId <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/pull/3271">#3271</a> [flink] Fix COUNT(column) aggregate pushdown to reject nullable columns <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/pull/3266">#3266</a> [flink] Support hint-based watermark configuration for Flink connector <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/pull/3263">#3263</a> [client] Refactor RemoteLogDownloader to use chunked file append instead of downloading whole log file <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/pull/3260">#3260</a> [spark] Add scan.max.records.per.partition config to split log table input partitions <span class="author">@Yohahaha</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3267">#3267</a> [ci] Optimize the log prompt of NoticeFileChecker <span class="author">@zhuyufeng0809</span> </li><li><a href="https://github.com/apache/fluss/issues/3261">#3261</a> Tiering hang due to the BucketOffsetsRetrieverImpl.listOffsets <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/issues/3239">#3239</a> [spark] lake table predicate pushdown <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/3207">#3207</a> [flink] Batch query on empty datalake-enabled table should return 0 rows instead of failing with UnsupportedOperationException <span class="author">@binary-signal</span> </li><li><a href="https://github.com/apache/fluss/issues/2971">#2971</a> [flink] FlinkTableSource should implement SupportsWatermarkPushDown <span class="author">@LiebingYu</span> </li><li><a href="https://github.com/apache/fluss/issues/2624">#2624</a> Unstable Test: KvTabletSnapshotTargetTest.testAddToSnapshotToStoreFail <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/issues/2497">#2497</a> Support report the number of lake tables to metric <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/issues/2418">#2418</a> Upgrade Fluss cluster cause tiering service stuck <span class="author">@luoyuxia</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3285">#3285</a> Update team <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/3268">#3268</a> [ci] Optimize the log prompt of NoticeFileChecker <span class="author">@zhuyufeng0809</span> </li><li><a href="https://github.com/apache/fluss/pull/3264">#3264</a> [kv] Fix flaky KvTabletSnapshotTargetTest.testAddToSnapshotToStoreFail <span class="author">@Kaixuan-Duan</span> </li><li><a href="https://github.com/apache/fluss/pull/3238">#3238</a> [spark] lake table predicate pushdown <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/3229">#3229</a> [server] Add metrics of log startOffset <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/pull/3216">#3216</a> Revert "[fluss/ai agent] enable ai doc agent on website (#3152)" <span class="author">@MehulBatra</span> </li><li><a href="https://github.com/apache/fluss/pull/3208">#3208</a> [flink] Fix batch query on empty datalake-enabled table to return 0 rows instead of failing <span class="author">@matrixsparse</span> </li><li><a href="https://github.com/apache/fluss/pull/3043">#3043</a> [client] release pending fetch semaphore on discarding <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/pull/2972">#2972</a> [flink] Implement SupportsWatermarkPushDown for FlinkTableSource <span class="author">@LiebingYu</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
