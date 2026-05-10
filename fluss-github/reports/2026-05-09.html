@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-05-09</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-05-09</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 6 新 Issues</div>
+            <div class="stat">✅ 5 关闭</div>
+            <div class="stat">✨ 4 新 PRs</div>
+            <div class="stat">🎉 7 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/3151">PR #3151</a> 实现服务端 KvScan 功能，支持主键表全量扫描</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3030">PR #3030</a> 实现 JBOD 第一阶段：本地多目录支持，支持服务器写入多磁盘</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3240">PR #3240</a> Spark 分区过滤下推，优化非 lake 日志表和 KV 表查询性能</li><li>✨ <a href="https://github.com/apache/fluss/pull/3295">PR #3295</a> 新增 KvScan Java 客户端实现</li><li>🐛 <a href="https://github.com/apache/fluss/issues/3292">Issue #3292</a> 发现分区剪枝 Bug：非字符串分区键范围谓词产生错误结果</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <ul class="critical-list"><li>⚠️ <a href="https://github.com/apache/fluss/issues/3292">Issue #3292</a> Flink/Spark 分区剪枝对非字符串分区键范围谓词产生错误结果，属于正确性问题</li></ul>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/1600">Issue #1600</a> [Umbrella] FIP-17: Support Full KV Scan for Primary Key Tables</h4>
+            <ul><li><span class="author">@wuchong</span>: 询问是否需要客户端和连接器端的实现，建议创建子问题</li><li><span class="author">@polyzos</span>: 已创建 Java、Flink 和 Rust 客户端子问题，目标是 1.0 版本实现</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3287">Issue #3287</a> Batched split assignment to per flink TM reader</h4>
+            <ul><li><span class="author">@zuston</span>: 参考 Paimon 的实现方式处理批量分配</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/145">Issue #145</a> [FIP-33] Fluss server supports writing to multiple disks.</h4>
+            <ul><li><span class="author">@wuchong</span>: 建议创建文档说明如何配置多目录集群</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3218">Issue #3218</a> [test] Unstable test BatchScannerITCase.testKvSnapshotLease</h4>
+            <ul><li><span class="author">@kevin91nl</span>: 推荐使用 Teststep GitHub Action 追踪测试通过率以识别不稳定测试</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2942">Issue #2942</a> [server] Fix TabletServer fails to restart after unclean shutdown due to EOFException in log recovery</h4>
+            <ul><li><span class="author">@wuchong</span>: 同意处理更多类型的异常，感谢发现</li><li><span class="author">@LiebingYu</span>: 解释了 Fluss 与 Kafka 在批处理验证上的核心差异及异常处理方案</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3227">Issue #3227</a> [spark] Fix empty projection causing Invalid metadata length for COUNT(*)/COUNT(1)</h4>
+            <ul><li><span class="author">@Kaixuan-Duan</span>: Spark 连接器实现 COUNT 直接通过 Admin API 获取行数，无需扫描数据</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3151">PR #3151</a> [KV] Kvscan Server Side</h4>
+            <ul><li><span class="author">@wuchong</span>: 建议将 kvScanMaxBatchSizeBytes 移入 ScannerManager，避免无界自旋等待</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3256">PR #3256</a> [lake/hudi] Introduce fluss-lake-hudi module and HudiLakeStorage</h4>
+            <ul><li><span class="author">@fhan688</span>: 介绍 Hudi 相关核心工厂实现和目录依赖设置</li><li><span class="author">@XuQianJin-Stars</span>: 建议 visibility 改为 private，保持一致性；应遵循 Iceberg 模式避免硬依赖污染</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3286">PR #3286</a> [flink] Support kv snapshot lease in tiering service (#2898)</h4>
+            <ul><li><span class="author">@Copilot</span>: 指出 lease 释放时机、异常处理和不可用快照检查等问题</li><li><span class="author">@luoyuxia</span>: 质疑 failover 逻辑变更、lease 释放和状态设计，建议简化实现</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3288">PR #3288</a> [flink] introduce batched splits assignment mechanism</h4>
+            <ul><li><span class="author">@Copilot</span>: 建议参数验证、考虑更安全的默认值，避免日志过大开销</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3240">PR #3240</a> [spark] partition filter pushdown for non-lake log and kv tables</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 发现分区剪枝对非字符串分区键有正确性 Bug，字符串比较导致错误结果</li><li><span class="author">@fresh-borzoni</span>: 计划将修复提升到 fluss-common 层，已创建 issue #3292 跟踪</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3242">PR #3242</a> [client] Fix tiering hang on first_row merge engine empty batches</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 建议简化代码结构、删除过长注释、优化命名</li><li><span class="author">@Kaixuan-Duan</span>: 已采纳建议：删除过长注释、重命名变量、简化代码逻辑</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3208">PR #3208</a> [flink] Fix batch query on empty datalake-enabled table to return 0 rows instead of failing</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 指出主键表批处理回退可能生成混合类型 splits，当前连接器不支持合并</li><li><span class="author">@matrixsparse</span>: 计划提交后续 PR 修复此限制</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3295">PR #3295</a> [Client] Kvscan java client</h4>
+            <ul><li><span class="author">@Copilot</span>: 指出文档与实现不一致：快照边界是逐 bucket 的，非表级一致性视图</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3294">#3294</a> [Rust] Extend the Rust Client to support KvScan <span class="author">@polyzos</span> <span class="labels">component=client</span></li><li><a href="https://github.com/apache/fluss/issues/3293">#3293</a> [Flink] Extend the Flink connector to support KvScan <span class="author">@polyzos</span> </li><li><a href="https://github.com/apache/fluss/issues/3292">#3292</a> [flink][spark] Partition pruning gives wrong results for non-STRING partition keys with range predicates <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/3290">#3290</a> [flink] Avoid creating empty lake writer in TieringSplitReader <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/issues/3289">#3289</a> [FIP-37] Implement RoaringBitmap SQL functions via FlussCatalog <span class="author">@Prajwal-banakar</span> </li><li><a href="https://github.com/apache/fluss/issues/3287">#3287</a> Batched split assignment to per flink TM reader <span class="author">@zuston</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3296">#3296</a> [flink] Fix batch fallback generating mixed split types for primary-key tables <span class="author">@matrixsparse</span> </li><li><a href="https://github.com/apache/fluss/pull/3295">#3295</a> [Client] Kvscan java client <span class="author">@polyzos</span> </li><li><a href="https://github.com/apache/fluss/pull/3288">#3288</a> [flink] introduce batched splits assignment mechanism <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/pull/3286">#3286</a> [flink] Support kv snapshot lease in tiering service (#2898) <span class="author">@XuQianJin-Stars</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3290">#3290</a> [flink] Avoid creating empty lake writer in TieringSplitReader <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/issues/3241">#3241</a> [spark] partition filter pushdown for non-lake log and kv tables <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/3180">#3180</a> Add documentation for contributing a blog post <span class="author">@wuchong</span> <span class="labels">good first issue, component=website</span></li><li><a href="https://github.com/apache/fluss/issues/3125">#3125</a> Implement Server-Side KvScan <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/issues/145">#145</a> [FIP-33] Fluss server supports writing to multiple disks. <span class="author">@XuQianJin-Stars</span> <span class="labels">component=server</span></li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3291">#3291</a> [flink] Avoid creating empty lake writer in TieringSplitReader <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/pull/3281">#3281</a> [catalog] Preserve exception cause when rethrowing catalog exceptions <span class="author">@XuQianJin-Stars</span> </li><li><a href="https://github.com/apache/fluss/pull/3240">#3240</a> [spark] partition filter pushdown for non-lake log and kv tables <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/3237">#3237</a> [lake/iceberg] Enhance IcebergSplitPlanner to only include filter column stats <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/pull/3182">#3182</a> [docs] add contribute a blog post guide (#3180) <span class="author">@tmchow</span> </li><li><a href="https://github.com/apache/fluss/pull/3151">#3151</a> [KV] Kvscan Server Side <span class="author">@polyzos</span> </li><li><a href="https://github.com/apache/fluss/pull/3030">#3030</a> [server] Implement JBOD Phase 1 Local Multi-Directory Support <span class="author">@hanliu0830</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
