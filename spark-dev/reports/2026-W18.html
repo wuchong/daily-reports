@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spark 社区周报 | 2026-W18</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Spark 社区周报 | 2026-W18</h1>
+            <p class="date-range">2026-04-27 ~ 2026-05-03</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (1)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/zczwc69h8jc9d5dpb7kmxztzrnm9kykp">Announcing Apache Spark 4.2.0-preview5</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (1)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/4gk7hqfwsz1s05hj47zyg8dqnqhcsmmr">SPIP: NEAREST BY Top-K Ranking Join</a> <span class="status passed">✅ 已通过</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (9)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/xrcv2pst5dr7mvyvm6cb0x0l2v9ld1d3">How can we afford CI for the new release cadence?</a></h3>
+            <p class="meta">8 条回复 · 6 位参与者</p>
+            <p class="summary">Spark 社区指出 ASF 提供的 CI 资源限额已无法满足新发布节奏下多分支维护的需求，面临严重的资源缺口。讨论主要围绕削减 CI 压力（降低计划任务频率、优化编译去重与测试选择）和扩展外部资源（第三方 CI、自托管 Runner）展开。目前社区已着手降低构建频率并优化编译流程。</p>
+            <div class="key-points"><p><strong>@Tian Gao:</strong> 指出当前 CI 资源已耗尽，新分支将增加 20 万至 50 万分钟缺口，建议通过自托管 Runner 或优化测试来解决，并提醒不要忽视 Java 测试的开销。</p>
+<p><strong>@Hyukjin Kwon:</strong> 建议暂时减少计划构建频率，并参考 Apache Arrow 的做法引入第三方 CI 资源。</p>
+<p><strong>@Ruifeng Zheng:</strong> 提出通过去重编译（如 PySpark 矩阵中的重复 SBT 编译）和智能测试选择（仅针对受影响代码运行测试）来显著节省时间。</p></div>
+            <p class="conclusion">已提交 PR (#55729) 将计划构建频率减半作为短期措施，同时正在推进编译去重 (#55726) 和智能测试选择的优化工作，长期将探索引入外部资源。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/t948bg470kcw6zwjcy9bsq213p5qdjyd">SPIP: Faster queries in local laptop mode for Apache Spark</a></h3>
+            <p class="meta">5 条回复 · 6 位参与者</p>
+            <p class="summary">Daniel Tenedorio 提议一项 SPIP，旨在优化 Spark 在笔记本电脑本地模式下的执行效率，解决小数据集查询延迟高的问题。该提案获得了社区的积极反馈，多位成员表示支持并认为这有助于提升 Spark 在探索性分析场景下的适用性。</p>
+            <div class="key-points"><p><strong>@Daniel Tenedorio:</strong> 指出 Spark 分布式模型对小数据集（如 <100MB）引入了显著开销，提议降低本地模式延迟以改善交互体验。</p>
+<p><strong>@DB Tsai:</strong> 认为该提案能显著加速本地实验开发，使 Spark 同时适用于大数据和小数据探索工作流。</p>
+<p><strong>@Cheng Pan:</strong> 支持提案并在文档中留言，建议 Hadoop 客户端的改进也应纳入考量以提升笔记本运行效率。</p></div>
+            <p class="conclusion">社区反应总体积极，普遍支持该提案方向，下一步将继续完善 SPIP 文档并推进实施细节讨论。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/711z5rcx7pb2wrwm0t41l6ffx21jxyr9">Hackathon at Community Over Code Glasgow — is Spark interested?</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">会议组织者邀请 Spark 社区参加 2026 年 10 月在格拉斯哥举办的黑客马拉松，旨在促进新老贡献者协作解决实际问题。参与项目需提供联络人、任务清单及协助宣传。目前社区成员已积极响应并表示愿意参与。</p>
+            <div class="key-points"><p><strong>@Rich (组织者):</strong> 提议在 Community Over Code Glasgow 期间举办黑客马拉松，要求参与项目提供联络人、任务列表并进行社区宣传。</p>
+<p><strong>@Sruti S:</strong> 明确表示支持并愿意参与。</p>
+<p><strong>@Anand Chinnakannan:</strong> 确认愿意参与。</p></div>
+            <p class="conclusion">社区已初步确认参与意向，后续需确定具体的联络人并准备任务清单。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/2y5rr72q9zg2tfy87pqh2fvcrwt372jw">SPIP: Accelerating Apache Spark Release Cadence</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论主要围绕在加速发布周期的计划下，新功能 PR 应如何处理 master 与 4.x 分支的关系。Yicong Huang 担心手动反向移植的效率并提议自动化，Hyukjin Kwon 则澄清了只需针对 master 提交且需保持分支同步的现有原则。</p>
+            <div class="key-points"><p><strong>@Yicong Huang:</strong> 询问新功能 PR 是否需同时针对 master 和 4.x 分支，建议引入机器人自动反向移植以简化流程并询问资源支持情况。</p>
+<p><strong>@Anish Shrigondekar:</strong> 关注长期开发的大型功能在发布前的 API 状态（如是否保持实验性）以及跨次要版本修改 API 的规则。</p>
+<p><strong>@Hyukjin Kwon:</strong> 指出通常只需针对 master 提交 PR，master 与 4.x 应保持基本一致（4.x 仅冻结依赖且默认禁用新功能），但也认可更好的合并工具。</p></div>
+            <p class="conclusion">初步结论是 PR 仅需针对 master 分支，通过保持分支同步和默认禁用新功能来管理版本差异，同时社区对优化反向移植工具持开放态度。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/xvv4qt9dpnb1kszxdqlxyv9b46749ypo">SPIP: Nano-second timestamps: micros + nanos of micro</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">Max Gekk 提议采用 epochMicros 加 nanosOfMicro 的逻辑拆分方式支持纳秒级时间戳，旨在兼容现有微秒架构并规避纯纳秒表示的范围限制。该方案符合 SQL 标准且迁移风险较低，Wenchen Fan 对此设计表示认可，认为其在不改变值范围的情况下提升了精度。</p>
+            <div class="key-points"><p><strong>@Max Gekk:</strong> 提议使用 epochMicros (Long) + nanosOfMicro (Short) 的逻辑拆分模型，以保留现有微秒逻辑并避免 INT64 纳秒的范围限制。</p>
+<p><strong>@Max Gekk:</strong> 该方案符合 SQL 标准，默认保留微秒行为，降低了迁移风险并允许高效的内部实现。</p>
+<p><strong>@Wenchen Fan:</strong> 认可该设计，指出只需增加 2 个字节存储即可在保持值范围的同时实现更高精度。</p></div>
+            <p class="conclusion">Wenchen Fan 对该设计表示赞同，讨论初步认可了该 SPIP 的方向。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/lvtqrygl6fjq86yfco90zqo5q1o1gt1k">[PSA] branch-4.x cut on 1st May and what do we expect</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论主要围绕 Apache Spark 新的发布周期计划及 branch-4.x 的切割展开。Hyukjin Kwon 宣布将实行季度小版本和年度大版本发布策略，并说明了分支管理规则。Kent Yao 提出了 JIRA 版本映射缺失的问题，Hyukjin Kwon 随即确认版本号为 4.3 并修复了合并脚本。</p>
+            <div class="key-points"><p><strong>@Hyukjin Kwon:</strong> 宣布新的发布计划：实行季度小版本和年度大版本发布，并明确了 branch-4.x 切割后的代码合入规则（新功能进 branch-4.x，依赖变更仅进 master）。</p>
+<p><strong>@Kent Yao:</strong> 发现 JIRA 中缺少 branch-4.x 的目标版本，询问合并脚本应如何设置版本映射。</p>
+<p><strong>@Hyukjin Kwon:</strong> 确认 branch-4.x 对应的 JIRA 版本为 4.3，并已更新合并脚本以修复该问题。</p></div>
+            <p class="conclusion">JIRA 目标版本已确定为 4.3，合并脚本已修复，开发者需拉取最新 master 分支代码以正常工作。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/5bobmt1dc04gjqtypcloxwjqb647rt6c">Reopen the stale PR for SPARK-46912</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Melton Smith 试图重启针对 SPARK-46912（修复 StandAlone 模式环境错误）的已过期 PR。他提供了新的 PR 链接 (#55669) 并请求核心贡献者进行审查和讨论。</p>
+            <div class="key-points"><p><strong>@Melton Smith:</strong> 之前的 PR (#51314) 因时间过久被标记为过期，现决定重启该议题的修复工作。</p>
+<p><strong>@Melton Smith:</strong> 请求核心贡献者审查新的 PR (#55669) 并移除过期标签。</p></div>
+            <p class="conclusion">作者已重新激活该 PR，下一步等待社区核心贡献者进行代码审查。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/3xojq1dhs72gvkxbxj2c2om5odzl16sx">Native PySpark StreamTest framework</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Jerry Peng 提议为 PySpark 引入原生的 StreamTest 测试框架，旨在移植 Scala 版本的声明式测试范式，以解决现有 PySpark 流测试代码冗长、脆弱且开发效率低的问题。该框架将提供新的工具包支持完整的动作词汇（如 AddData、CheckAnswer）及实时模式。目前已提交包含 4 个 PR 的代码堆栈供社区审查。</p>
+            <div class="key-points"><p><strong>@Jerry Peng:</strong> 现有 PySpark 流测试缺乏结构化框架，依赖手写循环和 sleep，导致测试脆弱且开发缓慢。</p>
+<p><strong>@Jerry Peng:</strong> 新框架提供声明式、基于动作的 API（如 StartStream, CheckAnswer），功能对标 Scala 版本，支持低延迟测试。</p>
+<p><strong>@Jerry Peng:</strong> 实现策略保持 JVM 为事实来源，Python 层作为轻量级封装，并已准备好 4 个 PR 供审查。</p></div>
+            <p class="conclusion">提案已发起，下一步行动是邀请社区开发者审查这 4 个 PR 的代码堆栈。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/wrspz03j2cd0b1h465kbdzpvwng383bg">Draft ASF board report for May</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Matei Zaharia 提交了 Apache Spark 五月份向 ASF 董事会汇报的季度报告草案。报告重点指出 Spark 4.2.0 已进入 QA 阶段，列举了近期的版本发布情况，并汇报了多项 SPIP 提案（如 CDC 支持）的通过及社区流程变更。</p>
+            <div class="key-points"><p><strong>@Matei Zaharia:</strong> Spark 4.2.0 目前处于 QA 阶段，近期发布了多个预览版及 Spark Connect Swift Client 等组件。</p>
+<p><strong>@Matei Zaharia:</strong> 社区通过了多项 SPIP，包括扩展 Spark 3.5 LTS 周期、DSV2 增强过滤、CDC 支持及统一 UDF 执行协议。</p>
+<p><strong>@Matei Zaharia:</strong> 社区管理方面采纳了 GitHub Issues 作为实验性追踪工具，并调整了依赖升级策略和 Python 开发工具链。</p></div>
+            <p class="conclusion">社区成员需在下周三截止日期前审阅该草案并提出修改建议。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (0)</h2>
+            
+    <p>本周新建 <strong>0</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周无新建 JIRA。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Spark Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
