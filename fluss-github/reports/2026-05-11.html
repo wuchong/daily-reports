@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-05-11</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-05-11</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 2 新 Issues</div>
+            <div class="stat">✅ 2 关闭</div>
+            <div class="stat">✨ 8 新 PRs</div>
+            <div class="stat">🎉 2 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/2942">PR #2942</a> 修复 TabletServer 非正常关闭后因 EOFException 无法重启的问题</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3199">PR #3199</a> 修复认证章节标题重复的文档问题</li><li>✨ <a href="https://github.com/apache/fluss/pull/3298">PR #3298-3301</a> vaibhavk1992 新增多个 RPC 调用授权检查</li><li>🐛 <a href="https://github.com/apache/fluss/issues/3304">Issue #3304</a> 报告订阅多个分区时 currentFetchEventTimeLag 指标误导问题</li><li>🚀 <a href="https://github.com/apache/fluss/pull/3132">PR #3132</a> RemoteLogFetcher 异步预取优化正在 review 中</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <ul class="critical-list"><li>⚠️ <a href="https://github.com/apache/fluss/issues/3228">Issue #3228</a> 长时间中断后读取流日志表可能出现 OutOfRangeException，zuston 分析了根本原因并提出解决方向</li></ul>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3227">Issue #3227</a> [spark] Fix empty projection causing Invalid metadata length for COUNT(*)/COUNT(1)</h4>
+            <ul><li><span class="author">@Yohahaha</span>: 询问 Fluss 中表统计信息是否总是准确的</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3271">Issue #3271</a> [flink] Fix COUNT(column) aggregate pushdown to reject nullable columns</h4>
+            <ul><li><span class="author">@loserwang1024</span>: 报告测试失败并询问是否是 Flink SQL 的 bug</li><li><span class="author">@beryllw</span>: 确认问题已修复，说明是 Flink Fluss SQL Source 的 bug</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2941">Issue #2941</a> [server] TabletServer fails to restart after unclean shutdown due to EOFException in log recovery</h4>
+            <ul><li><span class="author">@zuston</span>: 表示也遇到过类似问题，感谢修复</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3132">Issue #3132</a> [server] Optimize RemoteLogFetcher with async prefetch for recovery</h4>
+            <ul><li><span class="author">@Kaixuan-Duan</span>: 请求 review 并在 rebase 后更新处理了所有评论</li><li><span class="author">@fresh-borzoni</span>: 请求 rebase 到最新 main 分支</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3228">Issue #3228</a> Possible OutOfRangeException when reading the stream log table after resuming from a long interruption</h4>
+            <ul><li><span class="author">@zuston</span>: 分析了根本原因：Lake start offset 未更新，客户端缺少 lake 读取路径</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3288">Issue #3288</a> [flink] introduce batched splits assignment mechanism</h4>
+            <ul><li><span class="author">@zuston</span>: 根据 AI 评论更新了代码，请求 review</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3297">Issue #3297</a> [Bug] Avoid altering lake catalog for tables that never enabled datalake</h4>
+            <ul><li><span class="author">@MaheshS08</span>: 提出修复方案并请求确认是否可以领取此问题</li><li><span class="author">@luoyuxia</span>: 确认会稍后 review</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2007">Issue #2007</a> Add missing authentication for RPC calls</h4>
+            <ul><li><span class="author">@vaibhavk1992</span>: 提交了所有相关 PR，部分测试失败正在检查</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3302">Issue #3302</a> [Bug] Avoid altering lake catalog for tables that never enabled datalake</h4>
+            <ul><li><span class="author">@MaheshS08</span>: 请求 review 并处理 CI 失败（Spotless 格式化问题）</li><li><span class="author">@luoyuxia</span>: 指出 CI 测试失败</li><li><span class="author">@Prajwal-banakar</span>: 建议运行 mvn spotless:apply 并参考贡献指南</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3306">Issue #3306</a> [server] Fix flaky RebalanceManagerITCase.testBuildClusterModel</h4>
+            <ul><li><span class="author">@Kaixuan-Duan</span>: 指出 CI 失败可能是已知的 flaky test #2974</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3132">PR #3132</a> [server] Optimize RemoteLogFetcher with async prefetch for recovery</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 提出5点代码改进建议：文件删除、清理路径、断言改运行时检查、中断处理、移除冗余重试</li><li><span class="author">@Kaixuan-Duan</span>: 逐条采纳建议并修复：添加 currentLocalFile 追踪、修正目录删除逻辑、改进中断处理等</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3296">PR #3296</a> [flink] Fix batch fallback generating mixed split types for primary-key tables</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 指出会生成没有停止偏移的 log split，导致永不停止</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2839">PR #2839</a> [metric] Support influxdb reporter</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 询问 value 是否用于 tag/label 值，提及 #3211 后不再过滤 tag value</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3226">PR #3226</a> [Docs] Website Redesign</h4>
+            <ul><li><span class="author">@michaelkoepf</span>: 建议统一使用 hot/cold storage 术语，并注意标题格式一致性</li><li><span class="author">@Copilot</span>: 提出多处代码问题：React 导入缺失、ARIA 属性不完整、CSS 选择器错误、移动端导航隐藏等</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3304">#3304</a> [flink] currentFetchEventTimeLag is misleading when subscribing multiple partitions/buckets with uneven lag <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/issues/3297">#3297</a> [Bug] Avoid altering lake catalog for tables that never enabled datalake <span class="author">@luoyuxia</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3306">#3306</a> [server] Fix flaky RebalanceManagerITCase.testBuildClusterModel <span class="author">@Kaixuan-Duan</span> </li><li><a href="https://github.com/apache/fluss/pull/3305">#3305</a> [test] Fix unstable test BatchScannerITCase.testKvSnapshotLease <span class="author">@Kaixuan-Duan</span> </li><li><a href="https://github.com/apache/fluss/pull/3303">#3303</a> [test] Fix flaky FlussAdminITCase.testDynamicConfigs <span class="author">@Kaixuan-Duan</span> </li><li><a href="https://github.com/apache/fluss/pull/3302">#3302</a> [Bug] Avoid altering lake catalog for tables that never enabled datalake <span class="author">@MaheshS08</span> </li><li><a href="https://github.com/apache/fluss/pull/3301">#3301</a> [server] Add authorization to Remote Log & Tiering RPCs <span class="author">@vaibhavk1992</span> </li><li><a href="https://github.com/apache/fluss/pull/3300">#3300</a> [server] Add authorization to Snapshot Management RPCs <span class="author">@vaibhavk1992</span> </li><li><a href="https://github.com/apache/fluss/pull/3299">#3299</a> [server] Add authorization to Replication Control RPCs (notifyLeaderAndIsr, updateMetadata, stopReplica, adjustIsr) <span class="author">@vaibhavk1992</span> </li><li><a href="https://github.com/apache/fluss/pull/3298">#3298</a> [server] Add authorization to listOffsets for TABLE/DESCRIBE operations <span class="author">@vaibhavk1992</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3198">#3198</a> [docs] Titles are duplicated in the Authentication section <span class="author">@zhuyufeng0809</span> </li><li><a href="https://github.com/apache/fluss/issues/2941">#2941</a> [server] TabletServer fails to restart after unclean shutdown due to EOFException in log recovery <span class="author">@LiebingYu</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3199">#3199</a> [docs] Fix duplicate titles in the Authentication section <span class="author">@zhuyufeng0809</span> </li><li><a href="https://github.com/apache/fluss/pull/2942">#2942</a> [server] Fix TabletServer fails to restart after unclean shutdown due to EOFException in log recovery <span class="author">@LiebingYu</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
