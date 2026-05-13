@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-05-12</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-05-12</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 4 新 Issues</div>
+            <div class="stat">✅ 3 关闭</div>
+            <div class="stat">✨ 6 新 PRs</div>
+            <div class="stat">🎉 5 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/3256">PR #3256</a> Introduce fluss-lake-hudi module and HudiLakeStorage，支持 Hudi 湖存储集成</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3288">PR #3288</a> Introduce batched splits assignment mechanism for Flink，优化 Flink 分片分配</li><li>🐛 <a href="https://github.com/apache/fluss/pull/3302">PR #3302</a> Fix bug: Avoid altering lake catalog for tables that never enabled datalake</li><li>📚 <a href="https://github.com/apache/fluss/pull/3199">PR #3199</a> Fix duplicate titles in the Authentication section 文档修复</li><li>✨ <a href="https://github.com/apache/fluss/issues/3307">Issue #3307</a> NPE 问题已被确认为已修复的 issue #2743</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3271">Issue #3271</a> [flink] Fix COUNT(column) aggregate pushdown to reject nullable columns</h4>
+            <ul><li><span class="author">@loserwang1024</span>: 询问是否为 Flink SQL bug，建议提交 Flink JIRA</li><li><span class="author">@beryllw</span>: 确认这是 Flink Fluss SQL Source 的 bug</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3302">Issue #3302</a> [Bug] Avoid altering lake catalog for tables that never enabled datalake</h4>
+            <ul><li><span class="author">@MaheshS08</span>: 请求 luoyuxia 审核此 PR</li><li><span class="author">@luoyuxia</span>: 指出 CI 测试失败</li><li><span class="author">@Prajwal-banakar</span>: 提示 Spotless 格式化问题，建议运行 mvn spotless:apply</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3132">Issue #3132</a> [server] Optimize RemoteLogFetcher with async prefetch for recovery</h4>
+            <ul><li><span class="author">@Kaixuan-Duan</span>: 感谢 review，已处理 5 条评论并 rebase 到最新 main</li><li><span class="author">@fresh-borzoni</span>: 感谢更新，请求其他维护者快速审核</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3306">Issue #3306</a> [server] Fix flaky RebalanceManagerITCase.testBuildClusterModel</h4>
+            <ul><li><span class="author">@Kaixuan-Duan</span>: CI 失败原因是已知的 flaky test #2974</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3256">Issue #3256</a> [lake/hudi] Introduce fluss-lake-hudi module and HudiLakeStorage</h4>
+            <ul><li><span class="author">@XuQianJin-Stars</span>: +1 支持</li><li><span class="author">@luoyuxia</span>: 指出 CI 失败：代码覆盖率未达到 0.70 的最低要求</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3307">Issue #3307</a> Fluss binlog source fails checkpoint/savepoint with NPE in FlinkSourceEnumerator.snapshotState</h4>
+            <ul><li><span class="author">@leonardBang</span>: 此问题已在 #2743 中修复</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2839">Issue #2839</a> [metric] Support influxdb reporter</h4>
+            <ul><li><span class="author">@swuferhong</span>: 请求 luoyuxia 帮忙审核此 PR</li><li><span class="author">@luoyuxia</span>: 稍后进行快速审核</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3222">Issue #3222</a> [server] Respect the option of `table.log.ttl` for local segments</h4>
+            <ul><li><span class="author">@zuston</span>: 请求 swuferhong 帮忙审核</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3308">Issue #3308</a> [client] read fallback to lake when encountering OutOfRange exception</h4>
+            <ul><li><span class="author">@zuston</span>: 请求 luoyuxia 帮忙审核</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3226">PR #3226</a> [Docs] Website Redesign</h4>
+            <ul><li><span class="author">@michaelkoepf</span>: 建议术语统一（cold store vs offline store），标题风格一致性问题</li><li><span class="author">@Copilot</span>: 指出 React import 问题、ARIA 可访问性问题、CSS 选择器问题等</li><li><span class="author">@polyos</span>: 对当前结果满意，请求维护者反馈</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3132">PR #3132</a> [server] Optimize RemoteLogFetcher with async prefetch for recovery</h4>
+            <ul><li><span class="author">@Kaixuan-Duan</span>: 添加 currentLocalFile 追踪已打开的 segment，处理中断时文件删除逻辑</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3263">PR #3263</a> [client] Refactor RemoteLogDownloader to use chunked file append instead of downloading whole log file</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 指出潜在的竞态条件、volatile 使用建议、资源泄漏风险、串行化读取问题等</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3296">PR #3296</a> [flink] Fix batch fallback generating mixed split types for primary-key tables</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 指出会生成没有 stop offset 的 log split，导致无法停止</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2839">PR #2839</a> [metric] Support influxdb reporter</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 询问 value 是否用于 tag/label，提及 #3211 后不再过滤 tag value</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3308">PR #3308</a> [client] read fallback to lake when encountering OutOfRange exception</h4>
+            <ul><li><span class="author">@zuston</span>: 此 PR 合并后将提交优化 planning 的后续 PR</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3260">PR #3260</a> [spark] Add scan.max.records.per.partition config to split log table input partitions</h4>
+            <ul><li><span class="author">@Yohahaha</span>: 解释 startup mode 用于流式场景，批量场景将在后续 PR 重构</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3311">#3311</a> [server] Prevent deletion of default database to avoid catalog open failure <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/3309">#3309</a> Support independent lake partition spec for lakehouse tiering <span class="author">@litiliu</span> </li><li><a href="https://github.com/apache/fluss/issues/3307">#3307</a> Fluss binlog source fails checkpoint/savepoint with NPE in FlinkSourceEnumerator.snapshotState <span class="author">@lgtm4e</span> </li><li><a href="https://github.com/apache/fluss/issues/3304">#3304</a> [flink] currentFetchEventTimeLag is misleading when subscribing multiple partitions/buckets with uneven lag <span class="author">@loserwang1024</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3313">#3313</a> [server] Fix flaky RebalanceManagerITCase.testRebalanceWithRemoteLog <span class="author">@Kaixuan-Duan</span> </li><li><a href="https://github.com/apache/fluss/pull/3312">#3312</a> [server] fix: prevent delete default database <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/pull/3308">#3308</a> [client] read fallback to lake when encountering OutOfRange exception <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/pull/3306">#3306</a> [server] Fix flaky RebalanceManagerITCase.testBuildClusterModel <span class="author">@Kaixuan-Duan</span> </li><li><a href="https://github.com/apache/fluss/pull/3305">#3305</a> [test] Fix unstable test BatchScannerITCase.testKvSnapshotLease <span class="author">@Kaixuan-Duan</span> </li><li><a href="https://github.com/apache/fluss/pull/3303">#3303</a> [test] Fix flaky FlussAdminITCase.testDynamicConfigs <span class="author">@Kaixuan-Duan</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3297">#3297</a> [Bug] Avoid altering lake catalog for tables that never enabled datalake <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/issues/3287">#3287</a> Batched split assignment to per flink TM reader <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/issues/3198">#3198</a> [docs] Titles are duplicated in the Authentication section <span class="author">@zhuyufeng0809</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3310">#3310</a> Update team <span class="author">@LiebingYu</span> </li><li><a href="https://github.com/apache/fluss/pull/3302">#3302</a> [Bug] Avoid altering lake catalog for tables that never enabled datalake <span class="author">@MaheshS08</span> </li><li><a href="https://github.com/apache/fluss/pull/3288">#3288</a> [flink] introduce batched splits assignment mechanism <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/pull/3256">#3256</a> [lake/hudi] Introduce fluss-lake-hudi module and HudiLakeStorage <span class="author">@fhan688</span> </li><li><a href="https://github.com/apache/fluss/pull/3199">#3199</a> [docs] Fix duplicate titles in the Authentication section <span class="author">@zhuyufeng0809</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
