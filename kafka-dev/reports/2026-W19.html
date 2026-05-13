@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafka 社区周报 | 2026-W19</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Kafka 社区周报 | 2026-W19</h1>
+            <p class="date-range">2026-05-04 ~ 2026-05-10</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (0)</h2>
+            <p class="empty">本周无公告</p>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (8)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/1yxlkfrm6lkov5cwg9qz53g51br9jjsc">4.2.1 RC3</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/jm8lb6j62qwzqtrvy4s94zzv9x7325vv">KIP-1276 CIDR-based Host Patterns for ACLs</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/1y01wtpk938pp633ymkqz65t4brsth8r">KIP-1306: Extend ConsumerRebalanceListener with Consumer-aware methods</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/hfssfdbbp9w8njj5h0nr2b9ffo1w6v4w">KIP-1301: Deprecate Yammer-based metrics in `GroupCoordinatorMetrics`</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/zzkfdwyo3qvzbw57t72j5br7zwovn3d8">4.3.0 RC1</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/1621hk9g2my1srb7fsonqgmtj9hhdv33">KIP-1141: Simplifying MetadataQuorumCommand by Leveraging Admin API for Controller Management</a> <span class="status warning">⚠️ 有异议</span><p class="objection-inline">Chia-Ping Tsai 曾建议延长投票时间以获得更多审查（more eyes），特别是考虑到此前曾出现过 -1 票。</p></li>
+<li><a href="https://lists.apache.org/thread/78dx1rv74p0mfzpprvgzjzb29mr77srq">4.2.1 RC4</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/34f2xvmhbw800jsosck5df6x15ofn60q">[kafka-clients]  4.2.1 RC4</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/ts21kmf0061gqo1jxjl27xr9xyzvwd3l">KIP-1313: Client instance ID in all request headers</a></h3>
+            <p class="meta">8 条回复 · 3 位参与者</p>
+            <p class="summary">讨论主要围绕 KIP-1313（在所有请求头中添加客户端实例 ID）与现有 KIP-714 遥测机制的兼容性及 ID 对齐问题展开。Andrew Schofield 更新了提案以简化版本控制并解释对齐逻辑，但 Jun Rao 指出新客户端连接旧 Broker 时可能导致服务端日志与遥测使用 ID 不一致的问题，Andrew 对此提议了强制 ID 匹配的解决方案。</p>
+            <div class="key-points"><p><strong>@Jun Rao:</strong> 指出新客户端连接旧 Broker 时，服务端日志使用的 ID (UUID-H) 与遥测使用的 ID (UUID-B) 可能不一致，导致无法唯一识别客户端；建议增加新旧客户端与 Broker 组合的行为对照表。</p>
+<p><strong>@Chia-Ping Tsai:</strong> 询问若移除 RPC 负载中的重复字段，Broker 应如何处理头部和请求体均无 ClientInstanceId 的边缘情况。</p>
+<p><strong>@Andrew Schofield:</strong> 决定移除遥测 RPC 的新版本以避免协议兼容性噩梦，并提议强制规定若头部包含 ClientInstanceId，请求体中的 ID 必须为零或与头部 ID 一致。</p></div>
+            <p class="conclusion">Andrew 接受了关于 ID 一致性的建议，计划修改 KIP 以强制执行 ID 匹配规则，并将在达成共识后发起新的投票。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/om6tfdd3k6xvv3xt1ckp4olgndvz09mz">Kafka Streams issue</a></h3>
+            <p class="meta">4 条回复 · 3 位参与者</p>
+            <p class="summary">讨论主要围绕 Kafka Streams 消费者在主题空闲约 15 分钟后停止轮询的问题展开。用户怀疑是连接空闲超时导致线程静默死亡，但社区开发者指出连接空闲通常会透明重连，不应导致崩溃。目前建议用户升级版本并排查配置问题，必要时提交 Bug 报告。</p>
+            <div class="key-points"><p><strong>@Aayush Gupta:</strong> 报告 Kafka Streams 在空闲约 15 分钟后停止消费，怀疑是连接空闲超时导致线程进入 ERROR 状态且无异常日志。</p>
+<p><strong>@Swathi Kumar:</strong> 发现客户端配置的 max.poll.interval.ms 仅为 50 秒（远低于默认值），建议调整空闲超时配置并开启详细日志以定位问题。</p>
+<p><strong>@Lucas Brutschy:</strong> 指出 connections.max.idle.ms 不会导致 StreamThread 崩溃（客户端会自动重连），且 3.4.0 版本已停止维护，建议升级。</p></div>
+            <p class="conclusion">初步认为连接空闲设置不是直接原因，建议升级到最新版本；若问题依旧存在，建议提交 Jira 工单。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/2xn838tms1vzwg7wltjg9fg8fk9o0lbt">Kafka 4.2.1 bug-fix release</a></h3>
+            <p class="meta">4 条回复 · 3 位参与者</p>
+            <p class="summary">讨论主要围绕 Kafka 4.2.1 版本发布期间是否纳入 KAFKA-19851 和 KAFKA-20380 的修复展开。José 原计划推迟到 4.2.2，但在 PoAn 同意重新构建 RC 后，决定将这两个修复合入 4.2.1。此外，Dejan 提议的 BouncyCastle 升级未被采纳。</p>
+            <div class="key-points"><p><strong>@José Armando García Sancio:</strong> 最初提议将 KAFKA-19851 和 KAFKA-20380 推迟到 4.2.2，随后将两者 cherry-pick 到 4.2 分支并更新目标版本为 4.2.1。</p>
+<p><strong>@PoAn Yang:</strong> 同意在 José 移植修复后重新发布 RC，并已生成包含这两个修复的新候选版本；同时拒绝了 Dejan 提议的 BouncyCastle 升级。</p>
+<p><strong>@Dejan Stojadinović:</strong> 建议鉴于 4.2.1 包含其他 CVE 修复，应顺带包含 BouncyCastle 版本升级（PR #22194）。</p></div>
+            <p class="conclusion">已生成包含 KAFKA-19851 和 KAFKA-20380 修复的新 RC，BouncyCastle 升级未被纳入 4.2.1 版本。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/1xtlqm05fk3d4d112b40wc2f3sok1h32">KIP-1312: Support unregistering controllers</a></h3>
+            <p class="meta">4 条回复 · 4 位参与者</p>
+            <p class="summary">讨论主要围绕 KIP-1312（支持注销控制器）的实现细节展开，涉及注销正在运行的 voter 的处理逻辑、错误码定义以及是否复用现有的 Broker 注销记录。作者 Kevin Wu 针对社区关于 incarnation ID、错误码命名一致性及记录复用可能引发的歧义等问题进行了详细解答，并据此更新了提案。</p>
+            <div class="key-points"><p><strong>@David Arthur:</strong> 询问注销 voter（无论运行或离线）的具体行为及错误码，建议引入 incarnation ID 以处理控制器重新注册时的潜在副作用。</p>
+<p><strong>@José Armando García Sancio:</strong> 建议重构错误码命名（如改为 NODE_ID_NOT_REGISTERED）以保持一致性，并提议复用 UnregisterBrokerRecord（重命名为 UnregisterNodeRecord）来实现该功能。</p>
+<p><strong>@Kevin Wu:</strong> 解释了控制器注销逻辑（建议先停止 voter），确认已存在 incarnation ID；决定采用独立的 CONTROLLER_ID_NOT_REGISTERED 错误码，并坚持使用独立的注销记录以避免组合节点（combined node）场景下的歧义。</p></div>
+            <p class="conclusion">初步结论是采纳 Jun Rao 和 Kevin Wu 的建议，引入新的 CONTROLLER_ID_NOT_REGISTERED 错误码，并使用独立的注销记录而非复用 Broker 记录，作者已更新 KIP 文档。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/350n72k5d9y3zr4yrm6sssdp5kt7gh0m">KIP-1331: Streams Group Topology Description Plugin</a></h3>
+            <p class="meta">4 条回复 · 5 位参与者</p>
+            <p class="summary">讨论主要围绕 KIP-1331 的设计细节展开，涉及配置命名规范、RPC 模式一致性、错误处理策略及拓扑描述 ID 的必要性。审阅者指出了客户端与服务端结构不对称、插件并发安全及错误重试机制等问题。作者 Lucas 针对反馈进行了澄清，并决定移除 TopologyDescriptionId 以简化并发控制逻辑。</p>
+            <div class="key-points"><p><strong>@Andrew Schofield:</strong> 指出配置名称易引起歧义，建议修改以明确指向插件类；质疑向客户端暴露更新失败错误的必要性；关注 Broker 调用插件时的并发保护机制。</p>
+<p><strong>@Bill Bejeck:</strong> 发现客户端与服务端拓扑描述结构不对称（缺少 predecessors 方法）；建议区分瞬时错误与永久错误，以便客户端对插件失败进行重试。</p>
+<p><strong>@Matthias J. Sax:</strong> 质疑 TopologyDescriptionId 的必要性，建议使用 <groupId, topologyEpoch> 替代 UUID；认为 NodeType 字段是多余的，可通过输入输出主题推断。</p></div>
+            <p class="conclusion">作者采纳了部分建议，决定将配置名改回包含 'plugin'，并移除 TopologyDescriptionId 概念，改用 topologyEpoch 和时间戳进行版本控制；同时确认了错误码的设计意图是为了区分 Broker 故障与插件故障。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/z5qg4xcs4ws8dd600yfdlr4s26kn91vz">KIP-1333: Support log segments larger than 2 GB</a></h3>
+            <p class="meta">3 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕 KIP-1333（支持大于 2GB 的日志分段）展开，重点解决了新旧索引格式（8 字节与 12 字节）的兼容性与识别问题。Muralidhar Basani 提出了关于索引文件读取检测、远程缓存兼容性及配置参数的疑问，Haifeng Chen 详细阐述了基于文件内容的自动检测机制，并承诺完善文档。</p>
+            <div class="key-points"><p><strong>@Muralidhar Basani:</strong> 质疑读取路径如何区分 8 字节和 12 字节索引文件，以及 RemoteIndexCache 是否会误读格式。</p>
+<p><strong>@Muralidhar Basani:</strong> 建议针对大分段场景补充索引大小（如 log.index.size.max.bytes）的默认值或配置指导。</p>
+<p><strong>@Haifeng Chen:</strong> 解释了读取路径将通过文件大小整除性和条目验证自动检测格式，无需文件名后缀。</p></div>
+            <p class="conclusion">作者将更新 KIP 以详细记录索引格式自动检测机制及配置建议，并已提交初始 PR 供审阅。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/9x28hkfqnx8pyosqk2wq3xnwy1q19cqq">KIP-1276: CIDR-based Host Patterns for ACLs</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">讨论主要针对 KIP-1276 提案，旨在支持 ACL 使用 CIDR 格式以减少规则数量。审阅者提出了关于重叠范围匹配逻辑、降级安全性及 IPv4 映射 IPv6 地址处理的疑问，作者对此进行了澄清并更新了提案。</p>
+            <div class="key-points"><p><strong>@Mickael Maison:</strong> 建议 KIP 应侧重 API 和行为变更而非代码细节，询问降级安全性，并建议显式拒绝 IPv4 映射的 IPv6 地址而非忽略。</p>
+<p><strong>@Federico Valeri:</strong> 指出提案需明确重叠 CIDR 范围的匹配优先级（如最长前缀匹配），以避免不可预测的授权结果。</p>
+<p><strong>@Maroš Orsák:</strong> 澄清降级仅在无 CIDR ACL 存在时可行，并表示可增加 IPv4 映射地址校验，但这会增加实现复杂度。</p></div>
+            <p class="conclusion">作者已根据反馈更新了 KIP 中关于降级安全性的描述，下一步将根据社区意见决定是否实施对 IPv4 映射 IPv6 地址的显式校验。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/lbc8rp2ft3tyxfjrr2nkc535hwyxo7f8">Hackathon at Community Over Code Glasgow — is Kafka interested?</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">Rich Bowen 邀请 Kafka 社区参与 Community Over Code Glasgow 2026 大会期间的黑客马拉松，并说明了项目参与所需的联系人、任务清单及推广等要求。Matthias J. Sax 和 Guang Zhao 均回复表示有兴趣出席并协助，社区已初步响应参与意向。</p>
+            <div class="key-points"><p><strong>@Rich Bowen:</strong> 邀请 Kafka 社区参加黑客马拉松试点，需要项目方提供联系人、准备任务清单并进行宣传。</p>
+<p><strong>@Matthias J. Sax:</strong> 确认出席大会，有兴趣提供帮助，前提是工作量适中且时间允许。</p>
+<p><strong>@Zhao, Guang:</strong> 同样有兴趣协助，表示在完成演讲任务之余可以提供支持。</p></div>
+            <p class="conclusion">社区已初步确认参与意向，下一步需落实具体的联系人及任务清单，并通过 ApacheCon Slack 频道进行后续协调。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/0y99b61cn43wslb557f61xwmc9glfvd5">[PR] KAFKA-20541 : Move 42/generated from static/ to content/ [kafka-site]</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">本次讨论围绕 PR #856 展开，旨在将 Kafka 网站的生成文件从 static/ 目录迁移至 content/ 目录。经过讨论，决定保留现有版本结构不变，仅对新版本应用新的目录方案。更新后的方案实现了自动化处理，无需为每次发布手动修改 Hugo 配置。</p>
+            <div class="key-points"><p><strong>@mimaison:</strong> 建议保留现有版本结构不变，仅对新版本采用新方案，并询问能否避免每次发布都需编辑 hugo.yaml。</p>
+<p><strong>@muralibasani:</strong> 确认新代码已调整为仅处理新版本，后续无需修改配置，并添加了排除空文件的配置，且已在本地测试通过。</p></div>
+            <p class="conclusion">双方达成一致，muralibasani 已更新代码以实现自动化版本映射，解决了手动配置维护的问题。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/xrmf6hkjckw88ytm47pl5wb6ts9pxqot">[PR] Bump npm-check-updates from 21.0.3 to 22.1.1 [kafka-site]</a></h3>
+            <p class="meta">2 条回复 · 1 位参与者</p>
+            <p class="summary">Dependabot 提交了 PR #858，旨在将 kafka-site 项目的 npm-check-updates 依赖从 21.0.3 升级至 22.1.1。随后该 PR 被关闭，原因是已被更新的 PR #859 取代。</p>
+            <div class="key-points"><p><strong>@dependabot[bot]:</strong> 提议将 npm-check-updates 从 21.0.3 升级到 22.1.1。</p>
+<p><strong>@dependabot[bot]:</strong> 说明 PR #858 已被 #859 取代，因此关闭当前 PR。</p></div>
+            <p class="conclusion">PR #858 已关闭，后续工作转移至 PR #859。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (41)</h2>
+            
+    <p>本周新建 <strong>41</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周 JIRA 主要集中在核心功能的增强与稳定性修复，包括 Share Groups 死信队列的实现、KRaft 模式下不洁领导者选举问题的修复以及 Kafka Streams 的多项改进。同时，社区还处理了多项代码重构与依赖升级工作（如迁移至 jakarta.annotation），并解决了多个测试不稳定性和性能优化问题。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Kafka Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
