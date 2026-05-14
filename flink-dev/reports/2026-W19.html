@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flink 社区周报 | 2026-W19</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Flink 社区周报 | 2026-W19</h1>
+            <p class="date-range">2026-05-04 ~ 2026-05-10</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (4)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/c5bthmfjpc9yzcn1k3lmzq2gqo91ggf3">New Apache Flink PMC Member – David Anderson</a></li>
+<li><a href="https://lists.apache.org/thread/9ysxg57yj5gcqqq35361kp74hn3b6xns">Apache Flink 1.20.4 released</a></li>
+<li><a href="https://lists.apache.org/thread/hgt52nxvyp5kown5s44682j69pxdffjd">Apache Flink 2.0.2 released</a></li>
+<li><a href="https://lists.apache.org/thread/9mxd6cpb18svmwd0v9ytovvwdlon7tyw">Apache Flink 2.1.2 released</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (8)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/5bxj6hhxdmp9f51xo85l0ptslgzx0zcj">Apache Flink Kubernetes Operator Release 1.15.0, release candidate #1</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/fc81poo40pjz7fl3mszbxf3f0zbcgrn7">Apache Flink Kubernetes Operator Release 1.15.0, release candidate #2</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/cbynxmbqyw3ox39whln0r00o3s950fvb">Release 2.2.1, release candidate #3</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/8zsw82qy70gw82jvdyymmyjyxthboqh9">Release 2.1.2, release candidate #2</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/mfmovhnhg374foz6yb6qg2ttrf505vnm">Release 2.0.2, release candidate #4</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/1269rl2y0j3njjwmdr6wwbj4nvhnbdlq">FLIP-570: Support Runtime Data Sampling for Operators with WebUI Visualization</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/30mdo6hbs6nopg9hv6pnsr9py9g8d2yp">FLIP-572: Introduce Flink-Kafka Transactions Management Tool</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/d7sfdmloxz5fdb94bs5y1pttgp2f8ok9">Release flink-connector-kafka v5.0.0, release candidate #1</a> <span class="status warning">⚠️ 有异议</span><p class="objection-inline">提供的文本中 Yanquan Lv 投了 +1（非约束性），并未提出异议，而是确认校验和、构建及许可证等检查均已通过。</p></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/dq1q0fblqbd40y4xr3dy4vbombhbqosg">FLIP-577: AI-Native Flink — An Umbrella Proposal for Multimodal Data Processing</a></h3>
+            <p class="meta">8 条回复 · 7 位参与者</p>
+            <p class="summary">本次讨论围绕 FLIP-577 展开，旨在推动 Flink 支持 AI 原生的多模态数据处理。社区成员分享了生产环境中的痛点（如 GPU 资源调度、推理并发控制），并一致支持该方向，提案作者据此更新了文档以明确范围、非目标及运行时契约。</p>
+            <div class="key-points"><p><strong>@Yong Fang:</strong> 分享了字节跳动的大规模 PyFlink AI 场景，强调需要原生 Python 计算能力及 CPU/GPU 混合调度支持。</p>
+<p><strong>@熊饶饶:</strong> 指出当前实时推理流水线面临静态并发配置导致资源利用率低或后端崩溃的问题，急需自适应机制。</p>
+<p><strong>@Guowei Ma:</strong> 总结讨论并更新提案，明确了目标工作负载，澄清了非目标（不成为 AI 框架），并强调了构建统一运行时契约的重要性。</p></div>
+            <p class="conclusion">社区对提案方向达成高度共识，提案已根据反馈更新以厘清边界和动机，后续将继续推进具体子提案的讨论。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/ncnmtf37xt5klvjxljsf6ltztbqlm1x1">FLIP-XXX: Support Watermark Definition in SQL Views</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">本次讨论围绕 FLIP-XXX 提案展开，旨在支持在 SQL 视图和计算列中定义 Watermark。提案发起人 FeatZhang 建议引入 APPLY_WATERMARK 关系算子，解决当前 Watermark 仅能在 CREATE TABLE DDL 中定义的限制。讨论获得了社区对解决该痛点的积极反馈，同时也针对算子语义、单调性校验及规划器实现细节进行了深入探讨。</p>
+            <div class="key-points"><p><strong>@FeatZhang:</strong> 核心目标是引入 APPLY_WATERMARK 算子，使 Watermark 定义不再局限于 CREATE TABLE DDL，而是可应用于基表、非物化视图和子查询中的计算列。</p>
+<p><strong>@熊饶饶:</strong> 支持该提案，认为其解决了破坏封装或数据重复的痛点，语法直观且向后兼容，特别适用于 Data Lakehouse 分层架构。</p>
+<p><strong>@Xuyang:</strong> 赞同算子应支持任意位置，但质疑规划器层面的单调性强制校验和 Watermark 覆盖机制，建议与 DataStream API 行为对齐。</p></div>
+            <p class="conclusion">提案方向获得认可，但尚未达成最终共识。下一步需要 FeatZhang 针对 Xuyang 提出的关于单调性校验、规划器覆盖逻辑及表达式评估限制等技术细节进行进一步解答。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/j1k97trh4p9mg53klf12jrp3of64yo81">FLIP-XXX: Support Window Stagger in FlinkSQL and introduce KEY_BASED deterministic stagger</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论主要围绕 FLIP-XXX 提案，旨在为 Flink SQL TVF 滚动窗口引入 WindowStagger 支持，并提出确定性的 KEY_BASED 策略以解决恢复后结果不一致的问题。Feng Jin 质疑该策略是否改变了窗口语义，Zihao Chen 确认其移动了窗口边界，但认为这保留了滚动窗口的核心定义（固定大小、不重叠）。</p>
+            <div class="key-points"><p><strong>@Feng Jin:</strong> 指出 KEY_BASED stagger 会移动窗口边界，导致不同 Key 具有不同的起止时间，这可能改变 SQL TUMBLE 的可观察语义，而不仅仅是负载均衡优化。</p>
+<p><strong>@Zihao Chen:</strong> 确认 WindowStagger 会移动窗口边界，但强调这保留了滚动窗口的核心语义（固定大小、不重叠、每条记录仅属一个窗口），类似于全局偏移量。</p>
+<p><strong>@Zihao Chen:</strong> 引入 KEY_BASED 的核心动机是解决现有 RANDOM/NATURAL 策略在恢复后因不确定性导致的数据归属不一致问题，实现确定性的负载分配。</p></div>
+            <p class="conclusion">提案发起人澄清了 WindowStagger 会改变窗口对齐方式而非仅延迟触发，并论证了该设计符合滚动窗口语义，目前处于对语义合理性进行确认的阶段。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/jblx5omo4xnfkc74kcq319hks6td8j76">FLIP-572: Introduce Flink-Kafka Transactions Management Tool</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论主要围绕 FLIP-572 第一版（V1）的功能范围与打包依赖策略展开。Aleksandr 解释了 V1 优先解决遗留事务问题而暂缓 State Processor API 集成的原因，并说明了 V1 将作为独立的轻量级 uber-jar 发布。Ryan 对此表示认可，讨论已达成共识。</p>
+            <div class="key-points"><p><strong>@Aleksandr Savonin:</strong> V1 采用迭代交付模式，优先解决作业丢失后遗留事务无法恢复的痛点，State Processor API 集成将延后以缩短审查周期。</p>
+<p><strong>@Aleksandr Savonin:</strong> V1 工具将打包为独立的 uber-jar，不依赖 flink-runtime 或 flink-state-processor-api，以保持轻量级。</p>
+<p><strong>@Ryan van Huuksloot:</strong> 认同迭代方向和解释，确认社区对此需求支持度高。</p></div>
+            <p class="conclusion">初步结论是按计划推进 V1 版本，后续 State Processor API 集成将作为独立子模块或变体包发布。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/l57l980g4d0w5d6b34kdmnwxn7d7zws2">[DISSCUSS] FLIP-XXX: Async MongoDB Sink with Error Classification and Shared Connection Pool</a></h3>
+            <p class="meta">1 条回复 · 1 位参与者</p>
+            <p class="summary">FeatZhang 发起关于现代化 MongoDB 连接器 Sink 路径的讨论，旨在解决现有实现缺乏异步限流、错误处理不当及连接资源浪费等问题。提案计划基于 AsyncSinkBase 重构 MongoAsyncSink，引入结构化错误分类、死信队列机制以及 TM 级别的共享 MongoClient 连接池。</p>
+            <div class="key-points"><p><strong>@FeatZhang:</strong> 现有 MongoSink 直接继承 SinkV2，缺乏异步限流和批处理能力，且阻塞式 flush 增加了延迟。</p>
+<p><strong>@FeatZhang:</strong> 当前错误重试策略会无差别重试永久性错误且缺乏死信队列，容易引发惊群效应。</p>
+<p><strong>@FeatZhang:</strong> 各组件实例独立创建 MongoClient 导致连接数激增，急需引入 TM 级别的共享连接池方案。</p></div>
+            <p class="conclusion">已提供 Google 文档链接供详细查阅，正式开启社区讨论。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/g5o2ot68ryj5nho5144g388hdp8mwo5v">Status of the Azure CI → GitHub Actions migration (FLINK-33901)</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">Michele Guerriero 询问 Flink CI 从 Azure DevOps 迁移至 GitHub Actions 的进度，指出核心功能虽已上线但仍有未完成任务且进度滞后。Matthias Pohl 确认迁移工作因 FLIP-396 和运行器问题而停滞，但社区目标仍是最终完全迁移至 GitHub Actions 并停用 Azure CI。</p>
+            <div class="key-points"><p><strong>@Michele Guerriero:</strong> 核心迁移已就绪，但仍有子任务未完成，主动提出协助解决 S3 集成测试等阻碍问题。</p>
+<p><strong>@Matthias Pohl:</strong> 迁移工作因 FLIP-396 和临时运行器问题而停滞，目标仍是完全依赖 GitHub Actions。</p></div>
+            <p class="conclusion">双方确认目标仍为完成迁移并停用 Azure CI，Michele 将接手剩余任务（如 FLINK-34508），Matthias 将提供协助和代码审查。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/by19dnmv7dc6t5s7hk086f6yd5xt1nkf">FLIP-576 Filesystem-Plugin Observability (flink-s3-fs-native)</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论主要围绕 FLIP-576（S3 原生文件系统插件的可观测性）展开，Samrat Deb 回复了 Roman Khachatryan 的评审意见。双方就文件大小指标、批量复制指标的实现方案以及指标命名规范（使用标签而非名称前缀）进行了深入探讨并达成共识。</p>
+            <div class="key-points"><p><strong>@Samrat Deb:</strong> 确认支持暴露文件大小指标，并计划在下一阶段增加批量复制相关的指标（包括文件数直方图、传输字节计数和耗时直方图）。</p>
+<p><strong>@Samrat Deb:</strong> 采纳建议将 's3n' 作为标签而非指标名称的一部分，以提升指标在不同文件系统间的通用性。</p>
+<p><strong>@Roman Khachatryan:</strong> 建议通过标签区分文件系统类型，并指出动态获取标签名在当前方案（Approach D）中收益不大。</p></div>
+            <p class="conclusion">Samrat 将更新 FLIP 文档以纳入文件大小指标和标签命名方案，关于动态获取标签名的建议暂不采纳。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/p6xjlpzt5wgpo1p23nqd5fyhdrppc3fv">[FLINK-30514] Review request for HybridSourceReader bug fix</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Chase 提交了修复 HybridSourceReader 中 source 切换期间方法调用顺序错误的 PR，解决了因 start() 在 addSplits() 之前调用而影响作业稳定性的问题。Leonard Xu 已确认收到请求，并将该 PR 加入待办列表，承诺尽快进行审查。</p>
+            <div class="key-points"><p><strong>@Chase:</strong> 指出 HybridSourceReader 在 source 切换时调用顺序错误（start() 先于 addSplits()），导致恢复期间产生不必要的 split 请求并破坏水位线；修复方案是调整调用顺序，且代码改动小、CI 已通过。</p>
+<p><strong>@Leonard Xu:</strong> 感谢贡献，已将 PR 加入待办列表，将尽快协助审查。</p></div>
+            <p class="conclusion">Leonard Xu 已认领审查任务，下一步将尽快对 PR 进行代码审查。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/ggbdr03fyx9y411vstl9s48djzyqn923">[SUMMARY] Release 2.3 sync, blocked on cross-team testing</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论主要关于 Flink 2.3 发布流程中的跨团队测试进度同步。Yuepeng Pan 确认了多项测试任务的认领情况，指出仍有一项任务待认领，并代表 RMs 询问是否需等待测试完成后再构建 RC0。</p>
+            <div class="key-points"><p><strong>@Yuepeng Pan:</strong> 已将 FLINK-39472 分配给 Xiqian Yu，并同步了另外两项正在进行的测试任务，指出 FLINK-39494 仍无人认领。</p>
+<p><strong>@Yuepeng Pan:</strong> 代表发布经理询问：是否需要等待跨团队测试任务全部完成后，再开始构建 RC0。</p>
+<p><strong>@Xiqian Yu:</strong> 主动请求认领 FLIP-555 (Native S3 File System) 的跨团队测试任务。</p></div>
+            <p class="conclusion">暂无明确结论，等待社区回复关于 RC0 构建时机的决策，同时呼吁志愿者认领剩余的测试任务。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/vmw9vy05lvg5jo3xq43fc12n2ntzgcm3">退订</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">这是一封用户发送的退订请求邮件，发件人希望停止接收 Flink 社区的邮件推送。邮件正文为空，无实质性技术讨论。</p>
+            <div class="key-points"><p><strong>@18889827342@139.com:</strong> 请求退出 Flink 社区邮件列表。</p></div>
+            <p class="conclusion">该邮件属于管理类请求，通常无需社区回复，建议发件人通过邮件页脚的退订链接或向列表管理地址发送退订指令完成操作。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (61)</h2>
+            
+    <p>本周新建 <strong>61</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周 JIRA 重点引入了基于 Sidecar 模式的 GPU 模型推理支持，涵盖资源调度、RPC 实现及 Table/SQL 集成等完整链路。同时，社区修复了包括 Cumulative Window 恢复异常、PostgreSQL CDC 启动性能及 Source 数据丢失在内的多个关键 Bug。此外，还增强了正则表达式函数与物化表 ALTER 语句等 SQL 功能，并进行了多项依赖升级与架构清理。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Flink Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
