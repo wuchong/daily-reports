@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fluss 社区周报 | 2026-W19</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Fluss 社区周报 | 2026-W19</h1>
+            <p class="date-range">2026-05-04 ~ 2026-05-10</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (1)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/gfw3q58s73jdnxltvdr2crzj8cryf2nz">New Apache Fluss Committer: Anton Borisob</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (1)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/zv4vdxdosccbrxclbs9cq17t80o33gm4">FIP-40: Merge apache/fluss-rust into apache/fluss</a> <span class="status passed">✅ 已通过</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (6)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/kc3qpw2ngqm9ylcp1ryc649ybnbkxjyc">Fluss Website Redesign</a></h3>
+            <p class="meta">3 条回复 · 2 位参与者</p>
+            <p class="summary">社区发起了 Fluss 网站改版讨论，Giannis Polyzos 提交了利用 AI 辅助设计的新网站提案，旨在解决现有网站难以传达项目核心价值的问题。Prajwal Banakar 对新设计表示赞赏，但提议将网站移至独立仓库以便维护，Giannis 随后解释了保留在主仓库以保证文档版本一致性和构建流程的理由。</p>
+            <div class="key-points"><p><strong>@Giannis Polyzos:</strong> 利用 AI 工具发起了网站改版提案，以解决用户难以理解 Fluss 核心价值及与 Kafka 对比等问题。</p>
+<p><strong>@Prajwal Banakar:</strong> 建议将网站移至独立仓库以加快迭代速度并减少主仓库噪音。</p>
+<p><strong>@Giannis Polyzos:</strong> 反对分离仓库，指出文档需与功能代码保持原子审查和版本一致性，且分离会破坏现有构建工具链。</p></div>
+            <p class="conclusion">双方就新设计达成一致，Prajwal 接受了关于仓库结构的解释，下一步将推进新网站提案的合并。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/dhscd0tct8lz3p9vdpty3o7l1rw3dr7j">FIP-43: Fluss Multi-Table Subscription API</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">Hongshun Wang 发起 FIP-43 提案，旨在解决现有 LogScanner API 在全库 CDC 场景下仅支持单表订阅及丢失 Schema 信息的问题。Jark Wu 认可提案方向，但建议引入 MultiTable 接口作为统一入口以隔离单表与多表操作，并兼顾未来多表写入需求。双方已就新接口设计方向达成一致，并针对具体实现细节进行了探讨。</p>
+            <div class="key-points"><p><strong>@Hongshun Wang:</strong> 现有 API 存在单表订阅导致资源浪费、无法统一消费，以及日志截断导致 Schema 信息丢失两大缺陷。</p>
+<p><strong>@Jark Wu:</strong> 建议引入 MultiTable 接口作为多表读写入口，隔离单表与多表 API 以便独立演进，同时减少对基础类的改动。</p>
+<p><strong>@Hongshun Wang:</strong> 同意新接口设计，但建议移除预先声明表的 API（withTable），改为支持运行时动态添加表。</p></div>
+            <p class="conclusion">社区一致同意采用引入 MultiTable 接口的设计方案，下一步将根据反馈调整 API 细节（如支持动态添加表）并推进实施。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/2w6prf23gcqmbhz5skbzptxxqp1ygyqx">Fluss support in Gravitino: looking for users with similar needs</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">Xavier Bai 提议将 Fluss 与 Apache Gravitino 集成以统一管理元数据，并已提交初始 PR 征求社区意见。Giannis Polyzos 对此表示支持，认为该集成有助于 RBAC 管理及构建统一的 Lakehouse 治理方案。双方确认了合作意向，将共同推进后续工作。</p>
+            <div class="key-points"><p><strong>@Xavier Bai:</strong> 目标是在 Gravitino 中支持 Fluss 作为 catalog/backend，从而一致地管理 Fluss 相关元数据，并寻求社区协作。</p>
+<p><strong>@Giannis Polyzos:</strong> Gravitino 能帮助 Fluss 用户管理 RBAC 和元数据，结合 Fluss 对多种数据湖格式的分层存储支持，可提供统一的 Lakehouse 治理方案。</p></div>
+            <p class="conclusion">已确认社区存在相关需求，下一步将协作开展集成功能的设计、实现及长期维护工作。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/zps98tx0402t5n73rh6t18tjs2cmd124">FIP-41: Fluss Kubernetes Operator</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论主要围绕 FIP-41 Fluss Kubernetes Operator 的实现细节展开，重点探讨了缩容/下线机制及滚动升级流程中的潜在问题。参与者一致认可总体方向，但指出当前方案在服务器端 API 依赖和 Pod 就绪状态定义上存在不足，需进一步完善。</p>
+            <div class="key-points"><p><strong>@Anton Borisov:</strong> Path A 和 Path B 均需服务器端改动，现有的 Rebalance API 存在 min-ISR 风险及多步操作崩溃恢复问题，建议新增 DecommissionServer API 进行封装。</p>
+<p><strong>@Yunhong Zheng:</strong> 滚动升级不应仅依赖进程启动状态，需将 Pod 就绪定义为“完全恢复”（日志追赶、KV 恢复等），建议使用 Pod readiness gate 机制。</p>
+<p><strong>@Yunhong Zheng:</strong> 升级过程应增加双重门槛：上一节点完全恢复且集群满足稳定性条件（如 min-ISR），以避免在状态恢复期间进行后续重启。</p></div>
+            <p class="conclusion">初步结论是需要完善服务器端 API（如 DecommissionServer）并重新定义 Pod 就绪标准（引入 readiness gate），下一步需针对这些具体实现细节进行补充设计。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/9yptdw33ltr1cnsyq243hr70vvbg763b">Proposal: Add Spark as Tiering Compute Engine</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">本次讨论主要围绕提议将 Spark 添加为 Fluss 数据分层服务的计算引擎展开，旨在利用 Spark 的广泛基础降低用户门槛。Yang Zhang 阐述了 Spark 在适配分层批处理模型及生态完整性方面的优势。Yuxia 认可该提议，但建议精简配置项并通过提取公共模块来优化代码结构。</p>
+            <div class="key-points"><p><strong>@Yang Zhang:</strong> 提议增加 Spark 支持，因其广泛采用且天然适合分层的批处理执行模型，能完善 Fluss 生态。</p>
+<p><strong>@Yuxia:</strong> 建议不要暴露不必要的配置选项，除非有强理由，默认值通常已足够。</p>
+<p><strong>@Yuxia:</strong> 建议将 TieringSplitGenerator 等引擎无关组件提取到共享模块（如 fluss-lake-tiering-common），避免代码重复。</p></div>
+            <p class="conclusion">尚未达成最终决议，下一步需根据反馈精简配置项设计，并重构代码结构以实现跨引擎的逻辑复用。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/9z36p0fg5vv7hh4dcr5yqc5f6krjry3x">Graduate Fluss as TLP</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Yu Li 发起了关于 Fluss 从孵化器毕业成为顶级项目（TLP）的讨论。他列举了社区规模、版本发布频率及生产环境使用情况等数据，表明项目已满足毕业成熟度标准。邮件同时附上了毕业决议草案供社区审阅。</p>
+            <div class="key-points"><p><strong>@Yu Li:</strong> 社区已发展成熟，拥有 20 名 committer 和 120 名贡献者，且来自 8 家以上公司，符合毕业标准。</p>
+<p><strong>@Yu Li:</strong> 项目在孵化期间发布了 5 个版本，被 10 家以上知名实体用于生产环境，展现了良好的稳定性。</p>
+<p><strong>@Yu Li:</strong> 已起草毕业决议，提议建立 Apache Fluss 项目管理委员会（PMC）。</p></div>
+            <p class="conclusion">目前处于讨论发起阶段，下一步需社区成员审阅统计数据与决议草案，并反馈意见或进行投票。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (0)</h2>
+            
+    <p>本周新建 <strong>0</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周无新建 JIRA。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Fluss Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
