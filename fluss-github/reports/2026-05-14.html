@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-05-14</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-05-14</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 5 新 Issues</div>
+            <div class="stat">✅ 2 关闭</div>
+            <div class="stat">✨ 7 新 PRs</div>
+            <div class="stat">🎉 2 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/2839">PR #2839</a> 新增 InfluxDB 指标上报器支持，完善监控生态</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3317">PR #3317</a> Spark lake-batch 回退优化，改用 kv snapshot 提升读取效率</li><li>🐛 <a href="https://github.com/apache/fluss/pull/3322">PR #3322</a> 修复 Flink/Spark 非字符串分区键的分区裁剪 ClassCastException 问题</li><li>✨ <a href="https://github.com/apache/fluss/pull/3316">PR #3316</a> 引入 HudiBucketingFunction 支持 Hudi bucket 策略</li><li>✨ <a href="https://github.com/apache/fluss/issues/3314">Issue #3314</a> 新特性提案：Fluss Tiering 支持 Partition Mark Done</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3304">Issue #3304</a> [flink] currentFetchEventTimeLag is misleading when subscribing multiple partitions/buckets with uneven lag</h4>
+            <ul><li><span class="author">@zuston</span>: 担心方案1对于无数据流入的过期分区会导致永久高延迟警告，可能误导用户</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3222">Issue #3222</a> [server] Respect the option of `table.log.ttl` for local segments</h4>
+            <ul><li><span class="author">@zuston</span>: 友善提醒 luoyuxia 和 swuferhong 进行代码审查</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3260">Issue #3260</a> [spark] Add scan.maxRecordsPerPartition config to split log table input partitions</h4>
+            <ul><li><span class="author">@Yohahaha</span>: 询问其他审查人员是否有更多意见</li><li><span class="author">@fresh-borzoni</span>: 提醒需要更新测试中的配置键以修复测试用例</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3316">Issue #3316</a> [lake/hudi] Introduce HudiBucketingFunction for bucket strategy</h4>
+            <ul><li><span class="author">@fhan688</span>: 请求 XuQianJin-Stars 帮忙审查代码</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3317">Issue #3317</a> [spark] Use kv snapshot in lake-batch fallback</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 请求 Yohahaha、YannByron、luoyuxia 审查，并已处理审查意见</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3322">Issue #3322</a> [flink][spark] Fix partition pruning for non-string partition keys</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 请求审查并已处理审查意见</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2839">PR #2839</a> [metric] Support influxdb reporter</h4>
+            <ul><li><span class="author">@zhuyufeng0809</span>: 确认 InfluxDB Tag Value 规范无需过滤，已完成修改</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3260">PR #3260</a> [spark] Add scan.maxRecordsPerPartition config to split log table input partitions</h4>
+            <ul><li><span class="author">@YannByron</span>: 建议使用 scan.maxRecordsPerPartition 命名更符合 Spark 风格</li><li><span class="author">@fresh-borzoni</span>: 质疑值为 0 时是否会触发 RPC 调用，建议要求值大于 0</li><li><span class="author">@Yohahaha</span>: 发现遗漏修改处并表示感谢提醒</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3296">PR #3296</a> [flink] Fix batch fallback generating mixed split types for primary-key tables</h4>
+            <ul><li><span class="author">@matrixsparse</span>: 已修复使用 stoppingOffsetsInitializer.getBucketOffsets() 传递停止偏移量</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3316">PR #3316</a> [lake/hudi] Introduce HudiBucketingFunction for bucket strategy</h4>
+            <ul><li><span class="author">@Copilot</span>: 指出 HudiKeyEncoder 返回 4 字节哈希会导致主键碰撞问题，建议特殊处理</li><li><span class="author">@fhan688</span>: 感谢审查意见</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3317">PR #3317</a> [spark] Use kv snapshot in lake-batch fallback</h4>
+            <ul><li><span class="author">@Yohahaha</span>: 质疑 fallback 命名是否准确，snapshotId>=0 意为避免读取全量历史日志</li><li><span class="author">@fresh-borzoni</span>: 已处理审查意见，请求 luoyuxia 快速审查</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3322">PR #3322</a> [flink][spark] Fix partition pruning for non-string partition keys</h4>
+            <ul><li><span class="author">@Yohahaha</span>: 建议移除 toInternalRow 直接使用 PartitionUtils.toPartitionRow</li><li><span class="author">@luoyuxia</span>: 解释 DATE 类型在分区裁剪时会导致 LocalDate 与 Integer 比较抛出 ClassCastException</li><li><span class="author">@Copilot</span>: 建议缓存 partitionRowType、增加 TIMESTAMP_LTZ 测试覆盖、优雅处理解析失败</li><li><span class="author">@fresh-borzoni</span>: 感谢发现有趣的问题</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3321">#3321</a> [spark] Partition filter pushdown for lake-enabled tables <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/3320">#3320</a> [spark] Port TreeMap-collapse log buffer to FlussUpsertPartitionReader <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/3318">#3318</a> [spark] Use Fluss kv snapshot in lake-batch fallback <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/3315">#3315</a> Respect the log.* config from the table level options <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/issues/3314">#3314</a> [Feature] Support Partition Mark Done for Fluss Tiering (Paimon Lake) <span class="author">@beryllw</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3326">#3326</a> [INFRA] Set up default rulesets for default and release branches <span class="author">@asf-gitbox-commits</span> </li><li><a href="https://github.com/apache/fluss/pull/3325">#3325</a> [kv] Treat full-schema partial writes as full row for DefaultRowMerger <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/pull/3324">#3324</a> [lake] Order lake snapshot metadata by commit_timestamp <span class="author">@Kaixuan-Duan</span> </li><li><a href="https://github.com/apache/fluss/pull/3323">#3323</a> Bump com.github.tomakehurst:wiremock-jre8 from 2.32.0 to 2.35.1 in /fluss-metrics/fluss-metrics-influxdb <span class="author">@app/dependabot</span> <span class="labels">dependencies, java</span></li><li><a href="https://github.com/apache/fluss/pull/3322">#3322</a> [flink][spark] Fix partition pruning for non-string partition keys <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/3319">#3319</a> [FIP-37] Add bitmap infrastructure: BitmapUtils, RoaringBitmapSerializer, AbstractRbAggFunction <span class="author">@Prajwal-banakar</span> </li><li><a href="https://github.com/apache/fluss/pull/3316">#3316</a> [lake/hudi] Introduce HudiBucketingFunction for bucket strategy <span class="author">@fhan688</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3318">#3318</a> [spark] Use Fluss kv snapshot in lake-batch fallback <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/2838">#2838</a> [metric] Support influxdb reporter <span class="author">@zhuyufeng0809</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3317">#3317</a> [spark] Use kv snapshot in lake-batch fallback <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/2839">#2839</a> [metric] Support influxdb reporter <span class="author">@zhuyufeng0809</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
