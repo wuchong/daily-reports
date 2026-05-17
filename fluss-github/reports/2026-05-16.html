@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-05-16</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-05-16</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 4 新 Issues</div>
+            <div class="stat">✅ 1 关闭</div>
+            <div class="stat">✨ 4 新 PRs</div>
+            <div class="stat">🎉 1 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>📚 <a href="https://github.com/apache/fluss/pull/3334">PR #3334</a> 更新网站 OpenXData Summit 会议信息</li><li>✨ <a href="https://github.com/apache/fluss/issues/3331">Issue #3331</a> 提议增加 Apache DataSketches 聚合支持</li><li>🚀 <a href="https://github.com/apache/fluss/pull/3337">PR #3337</a> 新增 HLL sketch 聚合合并函数</li><li>🐛 <a href="https://github.com/apache/fluss/pull/3328">PR #3328</a> 修复 LookupClient 关闭时条件判断反转问题</li><li>📝 <a href="https://github.com/apache/fluss/pull/3335">PR #3335</a> 优化 ClientSchemaGetter 缓存同步获取的 schema</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <ul class="critical-list"><li>⚠️ <a href="https://github.com/apache/fluss/issues/2906">Issue #2906</a> 测试 AdjustIsrITCase.testIsrShrinkAndExpand 不稳定失败</li><li>⚠️ <a href="https://github.com/apache/fluss/issues/2007">Issue #2007</a> 认证相关功能的 GitHub Actions CI 构建失败</li></ul>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3226">Issue #3226</a> [Docs] Website Redesign</h4>
+            <ul><li><span class="author">@michaelkoepf</span>: 指出页边距不一致、按钮间距问题及搜索栏显示异常</li><li><span class="author">@wuchong</span>: 提出详细UI改进建议，包括深色模式、移动端导航及表格样式等</li><li><span class="author">@polyzos</span>: 已解决所有反馈并更新网站，询问是否存在阻碍性问题</li><li><span class="author">@MehulBatra</span>: 称赞设计，指出网站配色与 Logo 颜色存在不匹配</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2007">Issue #2007</a> Add missing authentication for RPC calls</h4>
+            <ul><li><span class="author">@vaibhavk1992</span>: CI 在等待集群就绪时失败，怀疑是超时或相关 PR 导致</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2906">Issue #2906</a> [test] Unstable test AdjustIsrITCase.testIsrShrinkAndExpand</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: 报告 AdjustIsrITCase.testIsrShrinkAndExpand 测试失败</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3336">Issue #3336</a> [client] Avoid repeated synchronous schema fetches in ClientSchemaGetter</h4>
+            <ul><li><span class="author">@Leondon9</span>: 已提交 PR #3335 以缓存同步获取的 schema</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3333">Issue #3333</a> LanceLakeWriter#close does not clear allFragments</h4>
+            <ul><li><span class="author">@vamossagar12</span>: 请求审查小 PR，后确认非问题并关闭</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3296">Issue #3296</a> [flink] Fix batch fallback generating mixed split types for primary-key tables</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 提交后续问题 #3327 和 #3317</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3319">Issue #3319</a> [FIP-37] Add bitmap infrastructure: BitmapUtils, RoaringBitmapSerializer, AbstractRbAggFunction</h4>
+            <ul><li><span class="author">@Prajwal-banakar</span>: 请求维护者帮助审查 PR</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2876">Issue #2876</a> Fixing issue with row update not working for PK table:</h4>
+            <ul><li><span class="author">@vamossagar12</span>: 已完成修改，请求重新运行 Java 11 测试</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3322">PR #3322</a> [flink][spark] Fix partition pruning for non-string partition keys</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 建议不应跳过回退逻辑；修复 DATE/TIME 裁剪及预存 bug</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3316">PR #3316</a> [lake/hudi] Introduce HudiBucketingFunction for bucket strategy</h4>
+            <ul><li><span class="author">@XuQianJin-Stars</span>: 指出特殊字符处理与非字符串类型可能导致 bucket id 不一致，建议校验</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3336">#3336</a> [client] Avoid repeated synchronous schema fetches in ClientSchemaGetter <span class="author">@Leondon9</span> </li><li><a href="https://github.com/apache/fluss/issues/3332">#3332</a> LanceLakeWriter.close() does not clear allFragments <span class="author">@vamossagar12</span> </li><li><a href="https://github.com/apache/fluss/issues/3331">#3331</a> [Feature] Add Apache DataSketches sketch aggregation support <span class="author">@rahulbsw</span> </li><li><a href="https://github.com/apache/fluss/issues/3327">#3327</a> [flink] Lake-batch fallback should use KV snapshot instead of reading log from earliest <span class="author">@fresh-borzoni</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3337">#3337</a> [server] Add HLL sketch aggregation merge function <span class="author">@rahulbsw</span> </li><li><a href="https://github.com/apache/fluss/pull/3335">#3335</a> [client] Cache synchronously fetched schemas <span class="author">@Leondon9</span> </li><li><a href="https://github.com/apache/fluss/pull/3329">#3329</a> [server] Preserve exception cause when rethrowing exceptions in RpcServiceBase <span class="author">@XuQianJin-Stars</span> </li><li><a href="https://github.com/apache/fluss/pull/3328">#3328</a> [client] Fix inverted awaitTermination condition in LookupClient#close <span class="author">@XuQianJin-Stars</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3332">#3332</a> LanceLakeWriter.close() does not clear allFragments <span class="author">@vamossagar12</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3334">#3334</a> [website] update talks for openxdata summit <span class="author">@MehulBatra</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
