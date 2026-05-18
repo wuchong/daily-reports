@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spark 社区周报 | 2026-W19</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Spark 社区周报 | 2026-W19</h1>
+            <p class="date-range">2026-05-04 ~ 2026-05-10</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (1)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/o02o91p25d2ztdoyxh0l3n5dwywk617y">Apache Spark Kubernetes Operator 0.9.0 Released</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (4)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/oj4ogzqztb5n0wdhob2s6k4dctdzvpmm">Release Apache Spark K8s Operator 0.9.0 (RC1)</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/5nox5f3mj1sjs48gdqhykwcwwx4yypcb">SPIP: Faster queries in local laptop mode for Apache Spark</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/036j2fhgcs1kmshbo3r6pcmqp1ro5kyk">SPIP: Timestamps with nanosecond precision</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/locxv3h4tkbsvcf8t600kyvx16xw6xl3">Release Spark 4.1.2 (RC1)</a> <span class="status warning">⚠️ 有异议</span><p class="objection-inline">Peter Toth 投了 +1 (non-binding)，并未提出异议，而是延长了投票截止时间。</p></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (7)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/2c5fpsz7f2mfwmc4bxy0q9442zl0tcgn">Release Apache Spark 4.1.2</a></h3>
+            <p class="meta">12 条回复 · 12 位参与者</p>
+            <p class="summary">Peter Toth 提议发布 Apache Spark 4.1.2，指出自 4.1.1 版本以来已积累约 100 个未发布的提交，并自愿担任发布经理。该提议获得了社区的广泛支持，多位核心贡献者投票表示赞同。Peter Toth 随后确认收到反馈，准备推进发布流程。</p>
+            <div class="key-points"><p><strong>@Peter Toth:</strong> 提议发布 4.1.2 并自愿担任发布经理，理由是分支上已有约 100 个未发布提交。</p>
+<p><strong>@Dongjoon Hyun:</strong> 支持发布，认为验证这些提交对 Spark 4.1 和 4.2.0 版本都有很大帮助。</p>
+<p><strong>@Hyukjin Kwon / Wenchen Fan 等:</strong> 一致投票 +1，同意启动发布流程。</p></div>
+            <p class="conclusion">社区达成共识，同意发布 Apache Spark 4.1.2，Peter Toth 将作为发布经理负责后续工作。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/pdm6spybm6f566lzzl5tp468jhoqkmfd">SPIP: Nano-second timestamps: micros + nanos of micro</a></h3>
+            <p class="meta">7 条回复 · 4 位参与者</p>
+            <p class="summary">讨论主要围绕 Spark 纳秒时间戳的内部实现方案展开，对比了 Xiaoxuan Li 提出的 INT64 方案与 Max Gekk 提出的复合类型（micros + nanos of micro）方案。核心争议在于性能开销与 SQL 标准合规性（年份范围 0001-9999）之间的权衡，最终讨论倾向于为了满足 SQL 标准而放弃 INT64 方案。</p>
+            <div class="key-points"><p><strong>@Xiaoxuan Li:</strong> 担心复合类型会导致性能下降（内存占用增加、缓存局部性变差），且超出 INT64 范围的数据在输出到 Parquet/Arrow 等主流格式时会遇到兼容性瓶颈。</p>
+<p><strong>@Max Gekk:</strong> 强调必须符合 SQL 标准（年份范围 0001-9999），INT64 无法满足此需求；认为复合方案的性能损耗可控，并反驳了支持皮秒精度的建议，指出 Java 生态限制和额外的内存开销。</p>
+<p><strong>@Wenchen Fan:</strong> 明确指出新类型应遵循 SQL 标准，这实际上排除了 INT64 方案，建议对不兼容的输出格式抛出越界错误或推动社区支持。</p></div>
+            <p class="conclusion">Max Gekk 提议若无异议将启动 SPIP 投票流程。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/ckpv8z0fqw42xkbrskqf3ggsl1yb81c4">Proposal for a Monthly Spark Community Sync</a></h3>
+            <p class="meta">7 条回复 · 5 位参与者</p>
+            <p class="summary">Huaxin Gao 提议设立每月 Spark 社区同步会议以促进实时讨论，Mark Hamstra 起初担忧这不符合 Apache 邮件列表优先的原则。经 Huaxin 澄清邮件列表仍为决策唯一来源且会议纪要将回馈社区后，该提议获得多方支持。</p>
+            <div class="key-points"><p><strong>@Huaxin Gao:</strong> 提议每月同步会议，并澄清邮件列表仍将是社区讨论和决策的事实来源，会议结果将汇总回邮件列表。</p>
+<p><strong>@Mark Hamstra:</strong> 强调 Apache 准则（“如果没发生在邮件列表上，那就是没发生”），要求会议总结必须发回列表且行动需经列表讨论方可接受。</p>
+<p><strong>@Holden Karau:</strong> 支持提议，认为社交层面（社区优于代码）有益，建议轮换会议时间以方便更多人参与。</p></div>
+            <p class="conclusion">社区原则上同意该提案，前提是必须确保邮件列表作为决策的唯一来源。下一步将由发起人设置议程文档并提议具体会议时间。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/gm39wp473t4r40zdoj8kwdrv64zrxc7q">How can we afford CI for the new release cadence?</a></h3>
+            <p class="meta">1 条回复 · 1 位参与者</p>
+            <p class="summary">讨论主要围绕如何应对新发布节奏下的 CI 资源开销问题，特别是针对非活跃分支的 CI 策略。目前 branch-3.5 的 CI 处于损坏状态，社区成员正在积极修复并探讨通过优化测试选择或降低运行频率来缓解压力。</p>
+            <div class="key-points"><p><strong>@Akira Ajisaka:</strong> 正在修复 branch-3.5 的 CI 故障，并赞同降低非活跃分支的 CI 运行频率。</p>
+<p><strong>@Tian Gao:</strong> 指出 Java 测试开销较大，不应仅通过降低覆盖率来解决问题，需探索更智能的 CI 优化方案。</p>
+<p><strong>@Holden Karau:</strong> 认为“更智能的测试选择”是解决 CI 问题的关键手段，尽管实施起来需要投入精力。</p></div>
+            <p class="conclusion">初步达成降低非活跃分支 CI 频率的共识；Akira Ajisaka 正在跟进修复 branch-3.5 的 CI 问题，Tian Gao 将着手处理 CI 优化的易行事项（low hanging fruits）。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/7hycjsh12t6mcq1rhhnsv96wsb3327bt">ClosureCleaner caching for repeated class serialization</a></h3>
+            <p class="meta">1 条回复 · 1 位参与者</p>
+            <p class="summary">用户发现 Spark ML 模型训练过程中，ClosureCleaner 因重复加载和解析相同的类元数据导致性能瓶颈。建议引入有界的 LRU 缓存（如使用 Guava）来优化类分析过程，并提供了测试数据佐证。目前正征求社区意见以决定是否提交 JIRA。</p>
+            <div class="key-points"><p><strong>@Ángel Álvarez Pascua:</strong> 性能分析显示 RDDLossFunction 等类在 ClosureCleaner 中被重复加载和解析数千次，消耗大量运行时间。</p>
+<p><strong>@Ángel Álvarez Pascua:</strong> 建议在 ClosureCleaner 中添加有界、可配置的缓存（如 Guava cache）以复用类元数据。</p>
+<p><strong>@Ángel Álvarez Pascua:</strong> 实施缓存时需注意排除或谨慎处理 lambda 及动态生成的类。</p></div>
+            <p class="conclusion">暂无社区回复，发件人计划在进一步确认后开启 JIRA 工单并提出补丁。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/mm2docmb61nfk2mh2wcd6cmg607scr53">SPIP: Write schema narrowing for column-level UPDATE in DSv2</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">该讨论主要关于 DSv2 中列级 UPDATE 的写入模式缩窄优化方案。Anurag Mantripragada 已根据反馈更新了 PR 和 SPIP 文档，并详细解释了针对 MOR 和 CoW 两种模式在优化器规则处理上的差异及实现策略，目前正寻求进一步反馈以推进投票。</p>
+            <div class="key-points"><p><strong>@Anurag Mantripragada:</strong> 已根据初步反馈清理了 PR 和 SPIP 文档，呼吁社区在投票前审查具体方案。</p>
+<p><strong>@Anurag Mantripragada:</strong> 对于 MOR (WriteDelta) 模式，方案利用 ColumnPruning 和 V2ScanRelationPushDown 自然实现了列裁剪。</p>
+<p><strong>@Anurag Mantripragada:</strong> 对于 CoW (ReplaceData) 模式，由于优化规则执行顺序较早，需在分析阶段手动缩窄 DataSourceV2Relation 的输出。</p></div>
+            <p class="conclusion">已明确 MOR 和 CoW 的技术实现差异，下一步等待社区反馈并准备发起投票。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/o7dn2jpyo2zpr2gdfs00vwjcsb92xbty">Pinning PySpark dependencies?</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论主要关注如何应对日益增长的软件供应链攻击，特别是关于 PySpark 依赖项的固定问题。参与者探讨了是否需要锁定依赖版本，或者仅发布构建时的版本信息以供审计。目前倾向于在不影响常规使用的前提下，提供更透明的依赖版本信息。</p>
+            <div class="key-points"><p><strong>@Holden Karau:</strong> 建议暂不锁定依赖，但应在 CI 过程中发布构建所用的包版本。</p>
+<p><strong>@Devin Petersohn:</strong> 建议提供带有上限依赖的安装目标（如 `pyspark[deps-upper-bounded]`），在不影响常规使用的情况下提供保护。</p>
+<p><strong>@Cheng Pan:</strong> 支持发布测试环境的依赖版本信息，参考 Java/Scala 的现有做法，确保用户知晓测试所用的确切版本。</p></div>
+            <p class="conclusion">初步倾向于发布测试时的依赖版本信息（如 pip freeze 输出），而非直接锁定依赖，具体实施细节待定。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (0)</h2>
+            
+    <p>本周新建 <strong>0</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周无新建 JIRA。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Spark Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
