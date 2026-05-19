@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iceberg 社区周报 | 2026-W20</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Iceberg 社区周报 | 2026-W20</h1>
+            <p class="date-range">2026-05-11 ~ 2026-05-17</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (1)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/cmkw3v3w55x1lttwx5ypy1tzch0868yb">Iceberg Community Meetup Europe - Amsterdam June</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (7)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/c64wnxlcwrm7p9nob50d6pjkfwvd1y4b">Release Apache Iceberg 1.11.0 RC1</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/zoc2cggcnyn75o948167yymhgy04jb1z">Proposal to update working in spec for Geospatial type CRS. parameter</a> <span class="status warning">⚠️ 有异议</span><p class="objection-inline">本次投票中无异议，邮件明确指出没有 -1 或 +0 票，提案已顺利通过。</p></li>
+<li><a href="https://lists.apache.org/thread/xyzlndcp4x7zq6xydpcbp192ov9p2skz">OpenAPI: Add CatalogObjectIdentifier schema</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/o5rmmlqvyl6my1p5mr6jxxo8cs0lvyo1">Release Apache Iceberg 1.10.2 RC1</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/x5x9fzq3j1wybx3fc5orbc5c2mnxmbzp">Release Apache Iceberg 1.11.0 RC4</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/v3bq8snhtdwmj20v4s6kv5byg18cv84t">Spec: Addition of Content Stats representation to v4</a> <span class="status warning">⚠️ 有异议</span><p class="objection-inline">Russell Spitzer 投了 +1，表示赞成该提案，因此并未提出异议。</p></li>
+<li><a href="https://lists.apache.org/thread/yvf1ywkwwdw3f28b7xskqt2y0hsmtv2l">[Go] Release Apache Iceberg Go v0.6.0 RC0</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/vrt3oytl3dwo34wr07tkf73r0kkx0b1h">Docs: Are duplicated results in search on iceberg.apache.org a bug or a feature?</a></h3>
+            <p class="meta">12 条回复 · 6 位参与者</p>
+            <p class="summary">讨论主要针对 Iceberg 官网搜索功能因索引了所有历史版本文档而导致结果重复的问题。社区成员探讨了添加版本选择器或仅索引最新版本等解决方案，最终决定采用 `mkdocs-exclude-search` 插件排除旧版本来快速修复。该修复已合并上线，后续将讨论默认文档版本应指向 "Nightly" 还是 "Latest"。</p>
+            <div class="key-points"><p><strong>@Max Konstantinov:</strong> 提出问题并验证了使用 `mkdocs-exclude-search` 插件排除旧版本索引的可行性，认为这是比重构站点更快的解决方案。</p>
+<p><strong>@Russell Spitzer:</strong> 建议在搜索中增加版本下拉菜单，以实现按版本范围搜索，提供更好的用户体验。</p>
+<p><strong>@Kevin Liu:</strong> 支持快速修复方案，指出长期可迁移至 `mike`，并在修复上线后提出了关于 "Nightly" 与 "Latest" 默认设置的后续优化建议。</p></div>
+            <p class="conclusion">初步修复（PR #16368）已合并，移除了旧版本的搜索索引。后续行动包括修复剩余的重复结果（PR #16371），以及讨论是否将默认文档和搜索索引从 "Nightly" 切换为 "Latest"。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/cjhkljfxmjm47lqrx2d71k97z3cfbtzk">row timestamp proposal</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕 Iceberg V4 表的行时间戳提案展开，社区已达成共识将工作拆分为单调快照时间戳和行时间戳继承两部分。目前第一部分的 PR 已提交，第二部分计划在 V4 元数据树基本完成后进行，同时也明确了列级更新场景下的时间戳处理逻辑。</p>
+            <div class="key-points"><p><strong>@Steven Wu:</strong> 提出将提案拆分为两部分实施，已提交单调快照时间戳的 PR，并解释了列级更新时时间戳应反映最新快照状态。</p>
+<p><strong>@Micah Kornfield:</strong> 提醒需关注行时间戳与列级更新功能之间的交互影响。</p>
+<p><strong>@Anton Okolnychyi:</strong> 支持该计划，并确认了表升级时现有行的处理方式。</p></div>
+            <p class="conclusion">方案已定，下一步将推进单调快照时间戳的 PR 合并，并在 V4 元数据树就绪后实施行时间戳继承。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/29c43gjmpopq31hd2mqtrsr3p8bmrf42">Efficient column updates in Iceberg</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论核心在于 Iceberg 列更新应采用密集还是稀疏文件表示。Gabor 解释了选择密集表示以简化写入逻辑，Marco 则通过数据指出密集表示在大文件下性能优异但在小文件下存在性能回退风险。</p>
+            <div class="key-points"><p><strong>@Gábor Kaszab:</strong> 选择密集表示是为了避免稀疏表示在写入路径合并更新时的复杂性，且性能仍优于现有 MoR。</p>
+<p><strong>@Marco Kroll:</strong> 基准测试显示密集表示在文件大于 16MB 时性能显著优于 CoW，但在小文件场景下性能反而下降。</p>
+<p><strong>@Marco Kroll:</strong> 指出规范需适应不同文件大小（如小文件回退到 CoW），并提出了 DV 共存排序和行数统计不变量等集成挑战。</p></div>
+            <p class="conclusion">建议针对特定文件大小范围进行下一轮基准测试以确定性能拐点，并考虑在规范中支持针对小文件的回退机制。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/q60ymn6rq1qzs102zj0vm0fnqjjv0knw">Adding unregister table endpoint to REST spec</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">Ryan Blue 提议在 REST 规范中新增 `unregister` 端点，旨在从目录中移除表但不删除底层数据，以支持跨目录迁移。该提议解决了现有 DROP 操作会自动清理文件以及无法安全处理并发操作的问题，目前已在社区开启 PR 征求意见。</p>
+            <div class="key-points"><p><strong>@Ryan Blue:</strong> 现有的 DROP 端点会触发文件清理且不支持并发安全，因此需要独立的 `unregister` 端点来仅移除元数据引用并返回最新状态。</p>
+<p><strong>@Russell Spitzer:</strong> 支持该提议，认为这补全了目录间“可移植性”的关键功能。</p></div>
+            <p class="conclusion">若无异议，作者计划本周内发起投票线程。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/n7mvy2cvx7f5zsvhnvnddnpscyt7mv4n">Benchmark for compaction - rewrite data files</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Varun Lakhyani 实现了针对压缩操作（重写数据文件）的基准测试，并在 PR 中分享了 S3 与本地文件系统的对比结果。该测试在 MacBook Pro M4 上进行，覆盖了不同文件数量的场景，作者请求社区对实现方法和结果提供反馈。</p>
+            <div class="key-points"><p><strong>@Varun Lakhyani:</strong> 实现了压缩基准测试，配置包括 JMH、200 万行数据及不同文件分区，对比了 S3 和本地文件系统的性能差异。</p></div>
+            <p class="conclusion">已提交 PR #16219，目前主要等待社区对基准测试方法和潜在改进点的反馈。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/5g6wpfdy0glphqcgjdol179dzfd9bn5l">First-class Tag concept in Iceberg REST Catalog</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论主要关注如何将新提出的“First-class Tag”概念与现有的“Labels”工作进行整合，以避免产生两套并行的附件机制。Andrei 建议采用分层架构，将 Labels 作为通用的键值对附件原语，而将 Tags 视为构建在 Labels 之上的治理模型。</p>
+            <div class="key-points"><p><strong>@Andrei Tserakhau:</strong> Labels 和 Tags 工作存在重叠，应合并而非并行开发；建议将 Labels 定义为通用附件机制，Tags 定义为上层的治理模型。</p>
+<p><strong>@Andrei Tserakhau:</strong> 需要统一术语，例如 EJ 提案中的 Governed/Standard 与 Labels CRUD 工作中的 catalog-managed/client-writable。</p>
+<p><strong>@Andrei Tserakhau:</strong> Tag 定义中的“允许值”特性可以解决 Yufei 在讨论中提出的互操作性问题。</p></div>
+            <p class="conclusion">建议在 Labels 工作的基础上构建 Tag 实体，并提议通过文档更新或会议同步来对齐双方的设计。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/66q2941q43rbsp3113nsz9ngm5t9gdqo">Leveraging Iceberg sort order metadata for read and compaction optimizations in Spark</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">本次讨论主要介绍了两个旨在利用 Iceberg 排序元数据优化 Spark 读取和压缩的 PR。第一个 PR 通过实现 SupportsReportOrdering API 消除冗余排序，第二个 PR 引入 K-way merge 策略实现无 shuffle 的保序压缩。两者结合确立了“一次排序、低成本维护”的模式，经大规模测试验证能显著降低资源消耗。</p>
+            <div class="key-points"><p><strong>@Anurag Mantripragada:</strong> PR #14948 实现了感知排序的读取，通过向 Spark 报告有序性来消除 joins 和 order-by 等操作中的冗余排序阶段。</p>
+<p><strong>@Anurag Mantripragada:</strong> PR #16305 提供了 K-way merge 压缩策略，能在 O(n log k) 复杂度下无 shuffle 地合并已排序文件，维护成本远低于重新排序。</p>
+<p><strong>@Anurag Mantripragada:</strong> 这两个 PR 是互补的，读取优化依赖有序文件，而保序压缩能低成本维持这种状态，已在生产环境验证了资源节省效果。</p></div>
+            <p class="conclusion">作者请求社区专家对这两个 PR 进行评审，特别是关于 API 层面的设计反馈。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/qqmvd8cndj3216bjvhpt5coz2ym0q4ns">v4 - Improved column statistics</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Eduard Tudenhöfner 推进了 Iceberg V4 规范中关于改进列统计信息的提案，目前正针对 Content Stats Spec 进行迭代更新。最新的提案修改包括移除未使用的 `column_size`、新增变长类型的统计指标以及修正预留 ID 空间。作者希望社区确认后对设计提案进行投票，以便开始合并代码。</p>
+            <div class="key-points"><p><strong>@Eduard Tudenhöfner:</strong> 移除了 `column_size`，因为早期版本中未使用。</p>
+<p><strong>@Eduard Tudenhöfner:</strong> 新增了 `avg_value_size` 和 `max_value_size` 用于统计变长类型（如 string/binary）的大小。</p>
+<p><strong>@Eduard Tudenhöfner:</strong> 建议对设计提案进行投票，以便推进代码合并及后续并行工作。</p></div>
+            <p class="conclusion">若社区无异议，下一步将对设计提案进行投票，并推进首批代码的合并。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/bov1tfo4t22g4gpvqbtck19rdctyfvxz">Flink: Equality delete to DV conversion</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论主要围绕 Flink 中将 Equality Delete 转换为 Deletion Vectors (DV) 的功能实现及其对表格式版本的支持展开。Max 提交的 PR 目前仅支持 V3 表，而 Qian 和 Steven 表达了对 V2 表兼容性的需求。Max 指出支持 V2 原则上可行但存在效率折衷，Qian 则表示愿意协助开发 V2 的支持路径。</p>
+            <div class="key-points"><p><strong>@Maximilian Michels:</strong> 当前实现仅限于 V3 表，支持 V2 并不困难，但在存储和查找效率上会有折衷。</p>
+<p><strong>@Qian Su:</strong> 组织内部大量使用 V2 表且迁移耗时，因此 V2 兼容路径非常有价值，并愿意为此贡献代码。</p>
+<p><strong>@Steven Wu:</strong> 该提案有助于移除 Equality Delete，并能验证索引方案在流式 CDC/Upsert 写入中的扩展性。</p></div>
+            <p class="conclusion">初步结论是当前 PR 将维持对 V3 表的支持。下一步 Max 将更新 PR 描述以明确 V3 限制，Qian 计划在 V3 基础代码落地后跟进开发 V2 的支持。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/vkn21zvbcg9vxt2prysp15f269l0s9h0">CORE: Adding support for repartitioning old partition spec data files</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Mukund Thakur 提议增加对旧分区规约数据文件进行重分区的支持，以解决现有重写工具因文件大小合规而跳过旧规约文件的问题。他提交了 PR #16190，并指出使用 `rewrite-all` 结合过滤器的现有方案在任务中断重跑时存在重复处理文件的缺陷。</p>
+            <div class="key-points"><p><strong>@Mukund Thakur:</strong> 当前重写机制会跳过已满足大小要求的文件，导致旧分区规约的数据无法更新到新规约。</p>
+<p><strong>@Mukund Thakur:</strong> 使用 `rewrite-all=true` 配合过滤器的变通方案在作业失败重试时效率低下，会重复处理已扫描的文件。</p></div>
+            <p class="conclusion">讨论处于初始提案阶段，作者请求社区审查 PR #16190 以引入新功能来解决这一问题。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (0)</h2>
+            
+    <p>本周新建 <strong>0</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周无新建 JIRA。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Iceberg Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
