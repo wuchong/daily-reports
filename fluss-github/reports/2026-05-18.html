@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-05-18</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-05-18</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 9 新 Issues</div>
+            <div class="stat">✅ 1 关闭</div>
+            <div class="stat">✨ 6 新 PRs</div>
+            <div class="stat">🎉 3 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/3226">PR #3226</a> Website Redesign 已合并，改进了文档网站设计</li><li>🐛 <a href="https://github.com/apache/fluss/pull/3271">PR #3271</a> 修复了 COUNT(column) 聚合下推在可空列上的错误结果问题</li><li>✨ <a href="https://github.com/apache/fluss/pull/3350">PR #3350</a> 新增对 Flink offset lag 的支持</li><li>✨ <a href="https://github.com/apache/fluss/pull/3346">PR #3346</a> 实现了 Spark DSv2 的 SupportsPushDownLimit 接口</li><li>🚀 <a href="https://github.com/apache/fluss/pull/3340">PR #3340</a> 为 TabletServer 添加了磁盘使用率写保护机制</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3319">Issue #3319</a> [FIP-37] Add bitmap infrastructure: BitmapUtils, RoaringBitmapSerializer, AbstractRbAggFunction</h4>
+            <ul><li><span class="author">@polyzos</span>: 审查代码并提出了异常处理、注释及序列化逻辑的改进建议</li><li><span class="author">@Prajwal-banakar</span>: 已根据审查意见修复代码风格、异常处理及测试覆盖</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3299">Issue #3299</a> [server] Add authorization to Replication Control RPCs (notifyLeaderAndIsr, updateMetadata, stopReplica, adjustIsr)</h4>
+            <ul><li><span class="author">@wuchong</span>: 分析了测试失败根因，指出新增校验存在安全风险，建议限制 RPC 仅为内部会话</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3304">Issue #3304</a> [flink] currentFetchEventTimeLag is misleading when subscribing multiple partitions/buckets with uneven lag</h4>
+            <ul><li><span class="author">@zuston</span>: 建议设计类似 Kafka 的机制来追踪 bucket 级别的 endOffset 并计算 lag</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3340">Issue #3340</a> [server] Add disk-usage write protection to TabletServer</h4>
+            <ul><li><span class="author">@swuferhong</span>: 讨论了磁盘保护策略，认为 Writer-side fencing 是最小充分响应</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2982">Issue #2982</a> [test] Unstable test CommitRemoteLogManifestITCase.testDeleteOutOfSyncReplicaLogAfterCommit</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: 报告了 CI 测试失败信息</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3227">Issue #3227</a> [spark] Fix empty projection causing Invalid metadata length for COUNT(*)/COUNT(1)</h4>
+            <ul><li><span class="author">@beryllw</span>: 讨论了 Fluss 中表统计信息的准确性假设及实现依据</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3226">Issue #3226</a> [Docs] Website Redesign</h4>
+            <ul><li><span class="author">@wuchong</span>: 推送了代码风格和显示问题的修复提交</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3226">PR #3226</a> [Docs] Website Redesign</h4>
+            <ul><li><span class="author">@wuchong</span>: 建议修正 Delta Join 图表的箭头方向与描述，并修复图片显示问题</li><li><span class="author">@fresh-borzoni</span>: 建议标记计划中的引擎以避免混淆，并提出了多处文案改进建议</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3316">PR #3316</a> [lake/hudi] Introduce HudiBucketingFunction for bucket strategy</h4>
+            <ul><li><span class="author">@fhan688</span>: 详细解释了 Hudi KeyEncoder 的实现对齐逻辑及测试覆盖情况</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3319">PR #3319</a> [FIP-37] Add bitmap infrastructure: BitmapUtils, RoaringBitmapSerializer, AbstractRbAggFunction</h4>
+            <ul><li><span class="author">@polyzos</span>: 提出了关于异常类型、注释准确性、序列化优化及测试覆盖的改进建议</li><li><span class="author">@Prajwal-banakar</span>: 已根据建议修复代码，优化了序列化逻辑并添加了测试</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3353">#3353</a> [server] Support altering table.auto-partition.enabled <span class="author">@fhan688</span> </li><li><a href="https://github.com/apache/fluss/issues/3351">#3351</a> [server] Support altering table.auto-partition.num-precreate <span class="author">@fhan688</span> </li><li><a href="https://github.com/apache/fluss/issues/3349">#3349</a> add support of offset lag <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/issues/3348">#3348</a> [rebalance] Support rate‑limiting‑like effect by controlling number of partitions rebalanced at one time <span class="author">@fhan688</span> </li><li><a href="https://github.com/apache/fluss/issues/3344">#3344</a> [spark] Implement SupportsRuntimeV2Filtering <span class="author">@Yohahaha</span> </li><li><a href="https://github.com/apache/fluss/issues/3343">#3343</a> [spark] Implement SupportsReportPartitioning <span class="author">@Yohahaha</span> </li><li><a href="https://github.com/apache/fluss/issues/3342">#3342</a> [spark] Implement SupportsPushDownLimit <span class="author">@Yohahaha</span> </li><li><a href="https://github.com/apache/fluss/issues/3341">#3341</a> [spark] Umbrella issue to track spark dsv2 interface <span class="author">@Yohahaha</span> </li><li><a href="https://github.com/apache/fluss/issues/3338">#3338</a> [server] Add disk-usage write protection to TabletServer <span class="author">@swuferhong</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3352">#3352</a> [docs] remove the unused maputils rule <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/pull/3350">#3350</a> [flink] support offset lag <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/pull/3347">#3347</a> [docs]:Add Flink CDC integration doc under Flink  <span class="author">@ThorneANN</span> </li><li><a href="https://github.com/apache/fluss/pull/3346">#3346</a> [spark] Implement SupportsPushDownLimit DSv2 interface <span class="author">@Yohahaha</span> </li><li><a href="https://github.com/apache/fluss/pull/3340">#3340</a> [server] Add disk-usage write protection to TabletServer <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/pull/3339">#3339</a> [docs] Clarify auto partition retention alter support <span class="author">@luoyuxia</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3270">#3270</a> [flink] COUNT(column) aggregate pushdown produces incorrect results for nullable columns <span class="author">@beryllw</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3345">#3345</a> [hotfix] logo disappears from landing page when in dark mode <span class="author">@polyzos</span> </li><li><a href="https://github.com/apache/fluss/pull/3271">#3271</a> [flink] Fix COUNT(column) aggregate pushdown to reject nullable columns <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/pull/3226">#3226</a> [Docs] Website Redesign <span class="author">@polyzos</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
