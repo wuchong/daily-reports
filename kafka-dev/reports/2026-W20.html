@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafka 社区周报 | 2026-W20</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Kafka 社区周报 | 2026-W20</h1>
+            <p class="date-range">2026-05-11 ~ 2026-05-17</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (1)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/6d7ypf5zjhv7hzzlvbd5lp4kqkw5shlt">New committer: Sean Quah</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (13)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/zk5sn2wyoz2462cx26s1643zpnmfgwfg">: KIP-1071: Streams Rebalance Protocol</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/47r6wvnpt4lgc84626v5r19450r12j30">4.3.0 RC1</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/7z91hbr09hv3q80cl38sqrr46r1mojh7">4.2.1 RC4</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/bzkwxckrsczzyoxnmv1l67zyzoctbqp1">KIP-1312: Support unregistering controllers</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/hw5tvwfp996z6r9czomb0x1h2t02gww5">KIP-1301: Deprecate Yammer-based metrics in `GroupCoordinatorMetrics`</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/5jmrxcbjx9vh2vwgo0w863w5h7j42ntf">4.3.0 RC2</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/00tpj9zjcn16fbqb2ookhrrq3vc4b36p">KIP-1323: Initialization of share group offsets from a specific offset or a file</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/55o1889nrc8yh5glpgsk117xywyfht81">KIP-1325: Add restore.buffered.records.per.partition to cap Kafka Streams state-restore memory</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/ogwvnzznc8jgotqd30wfoohb8q8mr98x">4.2.1 RC5</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/dgs3t9xmmldof5mmhwp21rpl3mfvpfw1">KIP-1327 Prevent Hot Data Loss on Partition Expansion for Latest Policy</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/zx1qy1m2s4j7klcmzpyzhb8kmqfx7whg">KIP-1306: Extend ConsumerRebalanceListener with Consumer-aware methods</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/0x6v0t7l3jlkypqzfgttvcm9ntp6l8ww">KIP-1191: Dead-letter queues for share groups</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/5280h24g205vn69dxr44lc15dt3ncrvz">KIP-1299 Use key range in ProducerPerformance</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/c75dqoqz4rh85c1h0tfpwv1d7g4h4n3b">[PR] MINOR: Add blog post for 4.3.0 [kafka-site]</a></h3>
+            <p class="meta">10 条回复 · 3 位参与者</p>
+            <p class="summary">本次讨论主要围绕 Apache Kafka 4.3.0 版本发布公告博客文章的 PR 审查展开。审查人员指出了文中关于 KIP 数量的统计错误，作者已确认并修正了该问题。</p>
+            <div class="key-points"><p><strong>@mjsax:</strong> 指出博客草稿中声称有 26 个 KIP，但发布计划 Wiki 页面上显示为 25 个。</p>
+<p><strong>@mimaison:</strong> 确认 KIP 数量确实为 25 个，并已修正草稿中的错误。</p></div>
+            <p class="conclusion">作者已根据反馈修正了 KIP 数量，PR 正处于内容完善阶段，等待最终合并。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/4ldvvn1h6317v4bg0ls7xl2svkcml5fq">4.4.0 Release Manager</a></h3>
+            <p class="meta">8 条回复 · 9 位参与者</p>
+            <p class="summary">社区讨论并确认了 Kafka 4.4.0 版本的发布经理人选，Omnia Ibrahim 自荐并获得广泛支持。Omnia 汇报了当前 JIRA 票据状态及关键 KIP 进展，多位成员随后提议将 KIP-1332、1327、1325 等纳入发布计划。</p>
+            <div class="key-points"><p><strong>@Omnia Ibrahim:</strong> 确认担任发布经理，统计了 66 个已解决和 43 个未解决的 JIRA 票据，并梳理了 KIP-1191、892 等关键提案的状态。</p>
+<p><strong>@Lianet Magrans:</strong> 支持 Omnia 担任发布经理，并计划将 KIP-1332（生产者动态内存分配）纳入 4.4.0 版本。</p>
+<p><strong>@Muralidhar Basani 等:</strong> 投票支持 Omnia，并提议将 KIP-1325（Streams 配置）、KIP-1327（防止数据丢失）等新特性加入版本规划。</p></div>
+            <p class="conclusion">初步确认由 Omnia Ibrahim 担任 4.4.0 版本发布经理，后续将推进 JIRA 票据处理及评估社区提议纳入的新 KIP。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/xvv48woy77t7k7no2ngbwb4x4qxbmr4y">KIP-1327 Prevent Hot Data Loss on Partition Expansion for Latest Policy</a></h3>
+            <p class="meta">7 条回复 · 3 位参与者</p>
+            <p class="summary">讨论主要针对 KIP-1327 提出的防止分区扩容时数据丢失的配置方案进行优化。Jun Rao 建议将仅针对 latest 策略的配置扩展为通用的 auto.offset.reset.new.partitions，以覆盖 by_duration 等场景。最终作者采纳建议，更新 KIP 为通过 max.age 区分新旧分区并使用独立内部配置处理新分区重置。</p>
+            <div class="key-points"><p><strong>@Jun Rao:</strong> 指出原提案配置仅适用于 latest 策略显得局限，建议新增 auto.offset.reset.new.partitions 配置，因为 by_duration 等策略同样面临数据丢失风险。</p>
+<p><strong>@Chia-Ping Tsai:</strong> 提出应将 auto.offset.reset.new.partitions 设为默认值为 earliest 的内部配置，既能解决数据丢失问题，又为未来扩展留有余地。</p>
+<p><strong>@黃竣陽:</strong> 根据讨论更新了 KIP 设计，解耦了新旧分区的重置策略，并确认当 Broker 不支持新特性时，Consumer 将在 poll() 方法中抛出 UnsupportedVersionException。</p></div>
+            <p class="conclusion">初步结论是采纳新设计方案，引入 auto.offset.reset.max.age.ms 判定分区热度，并新增内部配置 auto.offset.reset.new.partitions（默认 earliest）专门处理新分区的位移重置。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/hmfct91h29k1bfhdp9bskjgtpsgtvhd9">KIP-1313: Client instance ID in all request headers</a></h3>
+            <p class="meta">5 条回复 · 4 位参与者</p>
+            <p class="summary">讨论主要围绕 KIP-1313 在请求头中添加客户端实例 ID 的提案，重点探讨了 Kafka Streams 等场景下“逻辑客户端”与“物理客户端”ID 的区分问题。Andrew 建议将逻辑客户端的概念推迟到后续 KIP 中处理，同时针对 GetTelemetrySubscriptions 请求中 UUID 的一致性及零值处理达成了技术共识。</p>
+            <div class="key-points"><p><strong>@Matthias J. Sax:</strong> 指出 Kafka Streams 作为逻辑客户端复用物理连接，导致同一实例使用多个 ID，建议为其分配独立的逻辑 clientInstanceId 以便关联指标和配置。</p>
+<p><strong>@Andrew Schofield:</strong> 认为逻辑客户端概念应作为后续 KIP 而非当前 KIP 的一部分，并修改了提案以确保请求头与请求体中的 ClientInstanceId 保持一致。</p>
+<p><strong>@Jun Rao:</strong> 提出协议层面的疑问，询问服务端如何区分旧版本客户端缺失 ID 和新客户端显式设置零 UUID 的情况。</p></div>
+            <p class="conclusion">初步结论是将逻辑客户端 ID 的支持延后至单独的 KIP；当前 KIP 已明确请求头与请求体中 ID 必须一致，且将缺失 ID 与显式零 UUID 视为语义等价。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/kw2hhgnkootn338762tv8nrgkbj54kpk">KIP-1279: Cluster Mirroring</a></h3>
+            <p class="meta">5 条回复 · 3 位参与者</p>
+            <p class="summary">讨论主要围绕 KIP-1279（集群镜像）的 API 命名重构、Leader Epoch 不变性保证及 ACL 同步策略展开。作者根据反馈更新了相关文档与配置名称，并确认了架构漏洞的修复方案。审阅者对改进表示认可，仅提出了少量关于命名一致性的最终修正建议。</p>
+            <div class="key-points"><p><strong>@Federico Valeri:</strong> 引入 Leader Epoch 不变性（DLE>=SLE）防止消费者死循环，并明确 ACL 同步机制会擦除目标端独有的 ACL 配置。</p>
+<p><strong>@Rajini Sivaram:</strong> 建议将脚本和实体类型命名统一为 `cluster-mirrors` 以保持一致性，并区分内部状态主题与镜像主题的配置前缀。</p>
+<p><strong>@Vaquar Khan:</strong> 确认 KIP 已成功修复 PID 映射错误、事务索引重建及内存溢出（OOM）等关键架构漏洞。</p></div>
+            <p class="conclusion">各方已就核心架构和命名规范达成一致，作者完成了最后的修正（如将 entity-type 改为 cluster-mirrors），KIP 整体已趋于完善。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/rjvtw0c5stdyh5l2dzts6y9krw0og679">KIP-1324: Support client configuration observability</a></h3>
+            <p class="meta">4 条回复 · 2 位参与者</p>
+            <p class="summary">讨论主要围绕 KIP-1324 的实现细节展开，涉及 Kafka Connect 和 Streams 的适用范围、敏感配置的安全处理以及默认配置列表的界定。参与者对 Connect 是否应区别于普通客户端、如何防止敏感信息泄露以及如何关联嵌入式客户端 ID 等问题进行了深入探讨。</p>
+            <div class="key-points"><p><strong>@Matthias J. Sax:</strong> 质疑 Kafka Connect 是否应包含在向 Broker 推送配置的范围内，建议 Connect 可能更适合在内部直接进行监控；同时询问 Kafka Streams 具体如何实现配置推送机制。</p>
+<p><strong>@Muralidhar Basani:</strong> 担心允许列表可能意外包含敏感的自定义键（如认证令牌），建议增加拒绝列表作为安全覆盖机制。</p>
+<p><strong>@Andrew Schofield:</strong> 建议为 Admin Client 定义默认配置，并引入复合客户端 ID（compoundClientId）以关联顶层客户端（如 Streams）与其底层客户端。</p></div>
+            <p class="conclusion">作者 Kirk True 计划在下一版 KIP 中重点解决客户端 ID 关联问题，确认将添加 Admin Client 的默认配置，并维持目前不支持通配符的决定。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/c867q97q1fkhqhph5wzk06jz0bvhgrq2">KIP-1163: Diskless Core</a></h3>
+            <p class="meta">4 条回复 · 5 位参与者</p>
+            <p class="summary">讨论主要围绕 KIP-1163 中无盘主题的元数据管理架构展开，核心争议在于是否复用现有的 RLMM 还是构建独立组件。Jun Rao 等人指出 RLMM 不适合高频小文件写入，主张为无盘主题设计独立的元数据系统。Viktor Somogyi-Vass 则倾向于利用分层存储框架实现兼容性，但 Jun 指出混合模型会增加事务和元数据管理的复杂性。</p>
+            <div class="key-points"><p><strong>@Jun Rao:</strong> 现有 RLMM 设计不支持无盘模式所需的高频小段滚动，建议保留 RLMM 仅用于经典主题，为无盘主题开发独立的高效元数据组件。</p>
+<p><strong>@Viktor Somogyi-Vass:</strong> 倾向于通过本地日志缓存桥接无盘与分层存储（方案 A），以实现功能兼容和动态切换，并建议通过快照等方式优化 RLMM。</p>
+<p><strong>@Greg Harris:</strong> 建议在 WAL 段合并后将其移动到分层存储，以统一存储层并支持无盘模式的动态启用与禁用。</p></div>
+            <p class="conclusion">目前尚未达成最终共识，主要分歧在于架构路径（独立组件 vs. 改进现有框架）。下一步需重点解决混合模型下的元数据一致性、事务处理复杂性以及成本优化问题。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/c56883w8qvph429q4gf7k43co5v5nkhc">KIP-1312: Support unregistering controllers</a></h3>
+            <p class="meta">4 条回复 · 3 位参与者</p>
+            <p class="summary">讨论围绕 KIP-1312（支持注销控制器）的实现细节展开，重点解决了错误码定义、记录类型区分以及对 Leader Controller 注销行为的限制。社区决定引入新的错误码和独立的注销记录以解决组合节点模式下的区分难题，并明确了禁止 Leader Controller 注销自身的处理逻辑。</p>
+            <div class="key-points"><p><strong>@José Armando García Sancio:</strong> 确认引入新的 `CONTROLER_ID_NOT_REGISTERED` 错误码和独立的注销记录，以解决组合节点中 Broker 和 Controller 共享 ID 导致的回放歧义问题。</p>
+<p><strong>@Luke Chen:</strong> 关注注销活跃投票者（尤其是 Leader Controller）的风险，建议在注销前进行验证以避免破坏仲裁。</p>
+<p><strong>@Kevin Wu:</strong> 解释了重新注册用于意外恢复的场景，并提议禁止 Leader Controller 注销自身，返回 `INVALID_REQUEST` 错误以避免泄露 KRaft 内部状态。</p></div>
+            <p class="conclusion">KIP 已更新，采纳了新增错误码、独立注销记录以及拒绝 Leader Controller 自我注销（返回 `INVALID_REQUEST`）的建议。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/dhzdxkzyycc5z34xdt5tc4kg38bw7j43">KIP-1322: Add metrics to Kraft that measure the number of fetch timeouts and election timeouts</a></h3>
+            <p class="meta">4 条回复 · 2 位参与者</p>
+            <p class="summary">讨论主要围绕 KIP-1322 中新增指标的注册时机和计数逻辑展开。Kevin 指出基于状态注册可能导致指标不可见，建议始终报告指标。双方最终达成一致，确定将始终报告指标，并仅在计时器从未过期转为过期时增加计数器。</p>
+            <div class="key-points"><p><strong>@Kevin Wu:</strong> 建议始终报告指标，因为基于状态注册会导致指标在短暂状态下不可见，影响可观测性；计数逻辑应仅在计时器状态从“未过期”变为“过期”时触发。</p>
+<p><strong>@Tony Tang:</strong> 同意始终报告指标，因为选举相关的状态持续时间短，若按需注册操作员可能永远看不到指标；同意计数逻辑并计划更新 KIP。</p></div>
+            <p class="conclusion">达成一致：始终报告指标，且计数器仅在 poll 期间发生“未过期 -> 过期”转换时增加。Tony 将更新 KIP 文档。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/ltqolddqbb0cfktxftn0x6nxvodj3wqr">[PR] Add Sean Quah to committers.json [kafka-site]</a></h3>
+            <p class="meta">4 条回复 · 2 位参与者</p>
+            <p class="summary">该讨论主要关于将 Sean Quah 添加到 Kafka 提交者名单的 PR 提案。该 PR 已由作者合并，且更改已成功部署至 Kafka 官方网站。</p>
+            <div class="key-points"><p><strong>@squah-confluent:</strong> 提交了添加自己为提交者的 PR，并在合并后对社区表示感谢。</p>
+<p><strong>@chia7712:</strong> 确认已将 PR 部署至网站，并欢迎新加入的提交者。</p></div>
+            <p class="conclusion">PR 已合并，Kafka 官网提交者列表已更新，流程结束。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (74)</h2>
+            
+    <p>本周新建 <strong>74</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周 JIRA 重点推出了 KafkaProducer 动态内存分配的新特性，并优化了 Kafka Streams 的状态恢复内存管理。社区还集中解决了一批历史遗留的低编号 JIRA，同时修复了 KRaft 迁移回滚、Connect 启动异常等关键 Bug。此外，多项测试抖动问题和文档错误也得到了及时修复。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Kafka Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
