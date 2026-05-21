@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flink 社区周报 | 2026-W20</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Flink 社区周报 | 2026-W20</h1>
+            <p class="date-range">2026-05-11 ~ 2026-05-17</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (2)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/h2wdy5xczzf3m6hfd7ctkxkdhfxvlbtx">New Apache Flink PMC Member – David Anderson</a></li>
+<li><a href="https://lists.apache.org/thread/5ctp4nw7ocsp8836633g72ooxombv3vy">Apache Flink 2.2.1 released</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (5)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/bwd91nbcyflbhvhrm33qg7tjksl6b03w">Release flink-connector-pulsar v4.2.0, release candidate #1</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/pwfql3c8r5ljwd8j88yxw5gchcb6kmgq">FLIP-576 Filesystem-Plugin Observability (flink-s3-fs-native)</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/6fom7y17cd4syd89gmp1o81hgv3srv17">Release flink-connector-kafka v5.0.0, release candidate #1</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/b5lwco67lrr1w853w28rg96x35bwsmb6">FLIP-572: Introduce Flink-Kafka Transactions Management Tool</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/6gdpqx7znwgq8rvlz629bzrwtw7lrdg2">Apache Flink Kubernetes Operator Release 1.15.0, release candidate #2</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/hn3560y2t9j10gc2omzwnkbr15qfd66m">FLIP-XXX: Support Pluggable Storage Backend for HistoryServer</a></h3>
+            <p class="meta">3 条回复 · 3 位参与者</p>
+            <p class="summary">讨论主要围绕 FLIP-XXX 提议，即为 HistoryServer 引入可插拔存储后端（如 RocksDB）以解决大量小文件问题。参与者重点探讨了 ArchiveStorage 接口设计的类型一致性与内存风险，以及 RocksDB 的部署与清理策略。作者已对相关疑虑进行了澄清。</p>
+            <div class="key-points"><p><strong>@Fan Deng:</strong> 质疑接口中 get 与 put 的类型不对称性，并担忧 getByPrefix 返回 List 可能引发 OOM，建议改用 Iterator。</p>
+<p><strong>@Zihao Chen:</strong> 解释设计意图是写入侧统一为 String，读取侧支持 File 流式传输；同时指出 getByPrefix 处理的是小对象，内存风险可控。</p>
+<p><strong>@Zuo Wei:</strong> 询问 RocksDB 的部署模式（是否多实例共享）以及历史数据的清理策略。</p></div>
+            <p class="conclusion">作者澄清了 RocksDB 采用单实例本地部署不共享的策略，且清理策略主要沿用现有机制，后续将推进投票。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/dynz11cqmn454dolxvomwc193qhz36lg">FLIP-XXX: Support Watermark Definition in SQL Views</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">本次讨论针对 FLIP-XXX（在 SQL 视图中支持 Watermark 定义）进行了最后的细节确认。FeatZhang 根据 Xuyang 的反馈，明确了 APPLY_WATERMARK 在流水线不同位置的语义及其与 DataStream API 的一致性，并修正了关于单调性校验的说明。双方达成一致后，提案已趋于稳定，准备发起投票。</p>
+            <div class="key-points"><p><strong>@FeatZhang:</strong> 将增加新章节定义 APPLY_WATERMARK 在不同位置的语义，确保其心智模型与 DataStream API 一致。</p>
+<p><strong>@FeatZhang:</strong> 修正关于单调性校验的说明，确认规划器层面不强制检查单调性，而是遵循运行时契约。</p>
+<p><strong>@Xuyang:</strong> 对修订后的提案无疑问，支持提案继续推进。</p></div>
+            <p class="conclusion">FLIP 提案已稳定，若无其他异议，将在 3 天后启动投票流程。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/lpx325d8gb7mtbwm98yk8hd6sxsflnjs">FLIP-XXX: Support Window Stagger in FlinkSQL and introduce KEY_BASED deterministic stagger</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">讨论主要围绕 FLIP-XXX 提案，即在 Flink SQL 中支持 Window Stagger 并引入 KEY_BASED 策略以缓解下游数据突发问题。提案者 Zihao Chen 阐明该特性保留了滚动窗口语义且主要针对 Keyed 流，而 Martijn Visser 则质疑其混淆了物理与逻辑语义，建议改用 PTF 方案。</p>
+            <div class="key-points"><p><strong>@Zihao Chen:</strong> KEY_BASED stagger 改变了窗口边界对齐策略但保留了滚动窗口核心语义；该功能专为 Keyed 流设计，非 Keyed 流因并行度为 1 无需此功能。</p>
+<p><strong>@Martijn Visser:</strong> 担忧提案将物理优化混入逻辑语义，且 KEY_BASED 改变了结果集，建议使用 PTF（管道表函数）让用户显式控制边界分配。</p>
+<p><strong>@魏祚:</strong> 肯定了提案的生产价值，并询问了非 Keyed 流场景下的兼容性和确定性窗口分配问题。</p></div>
+            <p class="conclusion">讨论暂未达成最终共识，Martijn Visser 提出了关于语义混合的架构设计担忧，后续需进一步探讨是否采用 PTF 或其他方案。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/lkz2dnjxo5n8mf6jmgb1b5omzstphsrs">Java 25 Support</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">用户因 Flink 缺乏 Java 25 支持而受阻，发邮件询问是否能在 2.4 版本中纳入该支持。社区确认目前缺乏相关开发活动，主要技术阻碍在于 JDK 24+ 移除了 Security Manager，导致需要升级 Hadoop 及相关依赖并修改 Flink 内部代码。</p>
+            <div class="key-points"><p><strong>@Daniel Burrell:</strong> Flink 是阻碍其代码库升级 Java 25 的唯一依赖，希望社区能将支持目标定在 2.4 版本，避免重演过去版本滞后的情况。</p>
+<p><strong>@Martijn Visser:</strong> 目前开发邮件列表中未见相关活动，也没有相关 FLIP，怀疑目前是否有人在积极处理此事，需要具备专业知识的社区成员协助。</p>
+<p><strong>@Sergey Nuyanzin:</strong> 主要技术阻碍是 JDK 24/25 移除了 Security Manager，导致 Hadoop 兼容性问题；部分模块（不依赖 Hadoop）配合最新的 flink-shaded 已可运行，但需解决依赖升级和 FlinkSecurityManager 的重构问题。</p></div>
+            <p class="conclusion">目前尚无明确的开发计划或 FLIP，下一步需要解决 Security Manager 移除带来的 Hadoop 依赖升级和 Flink 内部代码适配问题，且需要社区贡献者提供帮助。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/hhb7hb1tjns5lwth1xlbyrnhwl1lj7xs">FLIP-576 Filesystem-Plugin Observability (flink-s3-fs-native)</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">本讨论主要关于 FLIP-576 提案，旨在为 flink-s3-fs-native 引入可观测性支持，以解决当前 S3 文件系统层缺乏故障排查指标（如限流、重试、慢操作）的问题。Samrat Deb 发起了该提案，Gabor Somogyi 对此表示支持并提出了具体的改进建议，双方就指标实现细节进行了交流。</p>
+            <div class="key-points"><p><strong>@Samrat Deb:</strong> 指出当前 S3 与 Flink 之间的可观测性不足，难以诊断生产环境中的限流、重试及上传泄露等问题，FLIP-576 旨在解决此痛点。</p>
+<p><strong>@Gabor Somogyi:</strong> 认可该提案的价值，但建议补充关于指标如何帮助定位问题的具体说明或示例，并询问是否能够增加 IOPS 测量功能。</p>
+<p><strong>@Samrat Deb:</strong> 确认将补充相关说明和示例，并表示新功能基于 AWS SDK v2 MetricsGroup，支持用户配置及添加 IOPS 等新指标。</p></div>
+            <p class="conclusion">提案获得初步认可，下一步行动是 Samrat Deb 将在文档中增加指标解释示例，并确认支持 IOPS 监控功能。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/9n23onzlzphyyb67s3r8wmvqvqclg0s0">FLIP-577: AI-Native Flink — An Umbrella Proposal for Multimodal Data Processing</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">本次讨论主要针对 FLIP-577 提案，旨在通过引入多模态数据类型和优化运行时能力，使 Flink 成为 AI 原生数据流骨干。参与者一致支持该方向，认为其准确聚焦于引擎级能力建设，填补了 AI 场景下数据处理和推理优化的空白。提案人表示若无异议，将于周四启动投票流程。</p>
+            <div class="key-points"><p><strong>@Jiangang Liu:</strong> 支持提案聚焦于引擎级能力（如运行时契约、GPU 管理、对象引用），而非将 Flink 转变为 AI 框架，这有助于解决用户拼接碎片化抽象的问题。</p>
+<p><strong>@Lincoln Lee:</strong> 从 SQL 生态角度出发，支持引入 Tensor、Image 等一等公民类型及对象引用机制，这将解决大负载优化问题并满足用户对稳定性的需求。</p></div>
+            <p class="conclusion">若无进一步意见，将于周四开始对该提案进行投票。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/d5kosdxhjjw3c33nlp8rpm365kfg9mf0">[NOTICE] Removal of Apache Flink 1.13.0-1.13.5 from PyPI</a></h3>
+            <p class="meta">1 条回复 · 1 位参与者</p>
+            <p class="summary">由于 PyPI 存储空间不足且扩容处理缓慢，导致 Apache Flink 2.2.1 和 2.3 的发布受阻。社区计划移除 PyPI 上下载量极低的早期版本（1.13.0-1.13.5）以释放空间，同时保留 1.13.6 版本。</p>
+            <div class="key-points"><p><strong>@Sergey Nuyanzin:</strong> PyPI 的存储空间限制已阻塞了 2.2.1 版本的发布，且申请增加配量的处理耗时较长。</p>
+<p><strong>@Sergey Nuyanzin:</strong> 根据下载指标，早期版本（1.13.0-1.13.5）的下载量远低于新版本，移除它们对用户影响较小。</p>
+<p><strong>@Sergey Nuyanzin:</strong> 移除旧版本将直接解除 2.2.1 和 2.3 版本的发布阻塞。</p></div>
+            <p class="conclusion">决定从 PyPI 移除 Apache Flink 1.13.0-1.13.5 版本的构件，以解决存储空间问题并恢复新版本的发布流程。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/9xyjnkq4wxnmkbprskqrghyohqx85dpm">FLIP-579: LATERAL SNAPSHOT Join</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">Fabian Hueske 发起了关于 FLIP-579 的讨论，提议引入一种新的 LATERAL SNAPSHOT Join，旨在解决现有 Temporal Joins 在事件时间和处理时间模式下的局限性。该方案通过支持构建端初始化、移除对 Watermark 和主键的强制要求，来优化流数据扩充场景。Gustavo de Morais 对此表示强烈支持，认为这是社区期待已久的功能。</p>
+            <div class="key-points"><p><strong>@Fabian Hueske:</strong> 指出现有 Temporal Joins 存在依赖频繁 Watermark 更新、构建端需要主键等限制，提议新的处理时间算子来解决这些问题并引入 SNAPSHOT 函数语法。</p>
+<p><strong>@Gustavo de Morais:</strong> 对该功能表示强烈支持 (+1)，认为这填补了长期缺失的功能，并有助于消除现有的硬性限制。</p></div>
+            <p class="conclusion">提案已获得初步支持，目前处于征求社区反馈阶段。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/yyn90ds3dkj15osncp2ydvz6yr803qp4">FLIP-XXX: Expose per downstream target numRecordsOut metric</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">Dennis-Mircea Ciupitu 提议将任务级别的 numRecordsOut 指标按下游目标顶点进行细分，以便 Kubernetes 自动扩缩容器能准确获取每条边的吞吐量，而非通过聚合数据猜测。该提案为纯增量修改，不影响现有聚合指标，作者已提供设计文档和草稿 PR 并寻求社区关键成员的审阅。</p>
+            <div class="key-points"><p><strong>@Dennis-Mircea Ciupitu:</strong> 提议公开每个下游目标的 numRecordsOut 指标，解决自动扩缩容器无法准确判断单边吞吐量的问题，且保持原有聚合指标不变。</p></div>
+            <p class="conclusion">目前处于等待被提及的社区成员（如 Marton Balassi, Maximilian Michels 等）对设计文档和实现进行审阅的阶段。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/nl56rj0058dxdywf864mpkn3bbchmk6b">FLIP-XXX: Introduce Lazy Loading for HistoryServer</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">Zihao Chen 发起 FLIP 提议为 HistoryServer 引入延迟加载机制，旨在解决大量归档作业导致的启动缓慢和可见性延迟问题。该方案计划采用按需获取模式并保持向后兼容。Zuo Wei 对此表示支持，作者将推进后续实现。</p>
+            <div class="key-points"><p><strong>@Zihao Chen:</strong> 提议引入延迟加载模式以解决 HistoryServer 启动慢和作业可见性延迟问题，且保持向后兼容（默认为 EAGER 模式）。</p>
+<p><strong>@Zuo Wei:</strong> 确认当前急切加载模式确实导致启动缓慢，认为延迟加载能有效缓解该问题并表示支持。</p></div>
+            <p class="conclusion">提案获得认可，Zihao Chen 将着手推进具体的代码实现工作。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (40)</h2>
+            
+    <p>本周新建 <strong>40</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周 JIRA 主要集中在连接器生态的维护与修复，涉及 Kafka、Pulsar、Paimon、Elasticsearch 及 CDC 等组件的 Bug 修复与版本更新。同时，核心引擎与 SQL 层面解决了一系列稳定性问题，包括 Checkpoint、Kubernetes HA 及查询规划相关的缺陷。此外，还包含了依赖库升级以解决 CVE 漏洞以及相关的文档改进工作。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Flink Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
