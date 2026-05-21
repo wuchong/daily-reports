@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-05-20</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-05-20</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 1 新 Issues</div>
+            <div class="stat">✅ 1 关闭</div>
+            <div class="stat">✨ 2 新 PRs</div>
+            <div class="stat">🎉 1 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/3352">PR #3352</a> 移除未使用的 MapUtils 规则，文档清理</li><li>🐛 <a href="https://github.com/apache/fluss/issues/2879">Issue #2879</a> 已关闭：binlog source 在多 log split 交错更新时可能失败的问题</li><li>✨ <a href="https://github.com/apache/fluss/issues/3354">Issue #3354</a> 新问题：避免 log-only source 恢复后初始化 lake snapshot splits</li><li>🚀 <a href="https://github.com/apache/fluss/pull/3356">PR #3356</a> 新 PR：将 lake reader 纳入 source 指标并修正最大时间戳滞后语义</li><li>🔧 <a href="https://github.com/apache/fluss/pull/3355">PR #3355</a> 新 PR：保留 log-only source 恢复模式</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <ul class="critical-list"><li>⚠️ <a href="https://github.com/apache/fluss/issues/2982">Issue #2982</a> 不稳定测试：CommitRemoteLogManifestITCase 测试失败</li></ul>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3131">Issue #3131</a> [server] Resume deletions off startup via scheduled event</h4>
+            <ul><li><span class="author">@wattt3</span>: 请求 Review 并在后续感谢审查，表示已处理评论意见</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2836">Issue #2836</a> [FLUSS-2686] Add COS filesystem support</h4>
+            <ul><li><span class="author">@simonsssu</span>: 表示已进行手动测试</li><li><span class="author">@luoyuxia</span>: 详细审查 COS 实现，提出 5 个问题：STS token 作用域过宽、SDK 重复依赖、文档类名/环境变量错误、token 有效期不一致、尾部空格</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2879">Issue #2879</a> $binlog source may fail on interleaved updates from multiple log splits</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 通过 PR #3149 关闭此问题</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2982">Issue #2982</a> [test] Unstable test CommitRemoteLogManifestITCase.testDeleteOutOfSyncReplicaLogAfterCommit</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: 报告测试失败：testDeleteOutOfSyncReplicaLogAfterCommit 出现 AssertionError</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2593">Issue #2593</a> [lake/iceberg] Support ADD COLUMN schema evolution for Iceberg lake catalog</h4>
+            <ul><li><span class="author">@polygos</span>: 表示会尝试用 Co-Pilot 审查，下周亲自查看，感谢贡献</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3355">Issue #3355</a> [flink] Preserve log-only source restore mode</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 请求帮助审查，后回复已处理评论意见</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3356">Issue #3356</a> [flink] Include lake reader in source metrics and correct max timestamp lag semantics</h4>
+            <ul><li><span class="author">@zuston</span>: 通知相关人员进行审查</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3355">PR #3355</a> [flink] Preserve log-only source restore mode</h4>
+            <ul><li><span class="author">@loserwang1024</span>: 讨论 enumerator 创建逻辑：状态less重启与有状态恢复时 lake splits 的生成时机</li><li><span class="author">@luoyuxia</span>: 重构修复方案：使用 checkpointTriggeredBefore 标志，并将 lake split 初始化改为同步调用</li><li><span class="author">@fresh-borzoni</span>: 建议将 null 状态标准化逻辑放在 restoreEnumerator() 而非 generateHybridLakeFlussSplits()</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3131">PR #3131</a> [server] Resume deletions off startup via scheduled event</h4>
+            <ul><li><span class="author">@LiebingYu</span>: 提出多处修改建议：5秒间隔过于激进建议改为6小时、需要优雅关闭、保留部分代码</li><li><span class="author">@wattt3</span>: 已改用 ExecutorUtils.gracefulShutdown() 实现优雅关闭</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3174">PR #3174</a> [server] Throttle auto-partition drop to protect coordinator queue</h4>
+            <ul><li><span class="author">@Copilot</span>: 自动审查提出多个问题：删除分区计数不准确、HashMap 迭代顺序不确定导致不公平、跨线程读取未同步、配置键引用错误、预算单位不匹配等</li><li><span class="author">@platinumhamburg</span>: 询问 dropBudgetThisRound 变量及新增变量的必要性</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2593">PR #2593</a> [lake/iceberg] Support ADD COLUMN schema evolution for Iceberg lake catalog</h4>
+            <ul><li><span class="author">@Copilot</span>: 自动审查指出字段 ID 从 0 开始可能与现有 schema 冲突；异常消息措辞需改进</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3354">#3354</a> [flink] Avoid initializing lake snapshot splits after log-only source restore <span class="author">@luoyuxia</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3356">#3356</a> [flink] Include lake reader in source metrics and correct max timestamp lag semantics <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/pull/3355">#3355</a> [flink] Preserve log-only source restore mode <span class="author">@luoyuxia</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/2879">#2879</a> $binlog source may fail on interleaved updates from multiple log splits <span class="author">@luoyuxia</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3352">#3352</a> [docs] remove the unused maputils rule <span class="author">@zuston</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
