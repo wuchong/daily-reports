@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fluss 社区周报 | 2026-W20</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Fluss 社区周报 | 2026-W20</h1>
+            <p class="date-range">2026-05-11 ~ 2026-05-17</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (3)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/24lnb077949odyj9p17hf2ch7gqtrxsn">New Apache Fluss (incubating) committer: Cheng Zhou</a></li>
+<li><a href="https://lists.apache.org/thread/72og4h3hgtk9fgr92kvsn9ct0j741jb8">Apache Fluss Website Redesign is Live</a></li>
+<li><a href="https://lists.apache.org/thread/ndg5sxrp6cfpch25gt2n3c47p6ycnhp3">Fluss Website Redesign</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (2)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/pf606zthz0xztl8cjzow50dx77c0217f">Graduate Apache Fluss (incubating) as a TLP - Community</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/x4bgwp7phtck4cj0zh6qxpcdt71xk9oh">Release Apache Paimon Rust 0.2.0 (RC1)</a> <span class="status warning">⚠️ 有异议</span><p class="objection-inline">yuxia 请求忽略该投票邮件，原因是误将其发到了错误的频道。</p></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (7)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/22rvwf4bbfzqfr7lpw2p1cbpg5yhrx0j">Graduate Fluss as TLP</a></h3>
+            <p class="meta">16 条回复 · 17 位参与者</p>
+            <p class="summary">Yu Li 发起关于 Fluss 从孵化器毕业成为顶级项目（TLP）的讨论，列举了社区规模、发布频率和生产应用等成熟度指标。社区成员积极响应，多位 PMC 成员投出约束性赞成票，一致认为项目已具备独立运作能力。讨论中无反对意见，大家普遍认可社区在治理、合规及多元化方面取得的进展。</p>
+            <div class="key-points"><p><strong>@Yu Li:</strong> 统计了社区现状（20 位提交者、120 位贡献者、5 次发布等），认为已满足毕业标准并提交了决议草案。</p>
+<p><strong>@Leonard Xu:</strong> 指出项目在合规与治理方面基础扎实，毕业将提升项目信誉并促进生态合作。</p>
+<p><strong>@Mehul Batra:</strong> 强调社区建立的导师制和透明治理文化，认为毕业是扩大采用的重要里程碑。</p></div>
+            <p class="conclusion">社区对毕业提案达成高度共识，所有参与者均投出赞成票（含多位 binding vote），下一步将推进毕业决议的正式通过。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/prwfcp5ym9c7h9z9jbmnt6ox168tv2gg">FIP-43: Fluss Multi-Table Subscription API</a></h3>
+            <p class="meta">5 条回复 · 3 位参与者</p>
+            <p class="summary">讨论主要围绕 FIP-43（Fluss 多表订阅 API）的设计展开，核心变更是将表注册机制改为动态订阅，并新增了多表写入接口。经过对命名规范和 Schema ID 强制校验的讨论与修改，方案已获基本认可。后续需完善历史 Schema 处理及范围界定等细节，即可启动投票。</p>
+            <div class="key-points"><p><strong>@Hongshun Wang:</strong> 提议将表注册改为在首次订阅时动态进行，并增加多表写入功能；决定移除可选 Schema ID 行为，强制要求写入时指定 Schema ID 以确保数据安全。</p>
+<p><strong>@Jark Wu:</strong> 建议重命名相关类以保持一致性，认为当前设计整体可行，支持在解决遗留细节后启动投票流程。</p>
+<p><strong>@Anton Borisov:</strong> 支持当前设计，但建议明确写入历史 Schema ID 的行为、清晰界定第一阶段的功能范围，并说明跨表获取的公平性保证。</p></div>
+            <p class="conclusion">初步结论是采纳动态订阅及强制 Schema ID 的设计方案。下一步行动是针对 Anton 提出的历史 Schema 处理、第一阶段范围界定等问题补充文档说明，若无异议则启动投票。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/0zl7jg5nrmmw3vck920vwdwjfq905p45">Proposal: Add Spark as Tiering Compute Engine</a></h3>
+            <p class="meta">3 条回复 · 4 位参与者</p>
+            <p class="summary">本次讨论主要关于提议将 Spark 作为 Fluss 数据分层服务的计算引擎，以扩展生态支持。社区成员普遍支持该提议，并建议优化代码结构，将通用分层逻辑提取到共享模块以便复用。发起人 Yang Zhang 计划分两阶段实施，首先提取公共代码，随后添加 Spark 功能。</p>
+            <div class="key-points"><p><strong>@Junbo Wang:</strong> 建议先将通用分层代码（如 TieringSplitGenerator 等）提取到共享模块作为单独 PR，以简化主 PR 的审查工作。</p>
+<p><strong>@Yuxia:</strong> 建议不要暴露不必要的配置项，并推荐将引擎无关的组件提取到共享模块（如 fluss-client）以避免重复逻辑。</p>
+<p><strong>@Yang Zhang:</strong> 采纳了重构建议，计划分两阶段实施（先提取公共代码，后添加 Spark 功能），同时坚持保留配置灵活性以适应不同部署场景。</p></div>
+            <p class="conclusion">社区达成初步共识，同意采纳代码重构建议，后续将按两阶段计划实施，并在解决相关意见后推进投票流程。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/9b7kdhn1vp4s3tpxgt9m6nggsysy9gpg">FIP-36: Support Variant Type and Shredding</a></h3>
+            <p class="meta">3 条回复 · 3 位参与者</p>
+            <p class="summary">本次讨论主要围绕 FIP-36（支持 Variant 类型和 Shredding）的设计方案展开，重点解决了 API 易用性、协议层下推实现及性能预期等问题。作者已根据反馈更新设计，统一了投影 API，明确了协议兼容性方案，并补充了关于性能差异的说明。</p>
+            <div class="key-points"><p><strong>@Jark Wu:</strong> 建议将 Variant 字段投影统一到 .project() API 中以简化用户接口，避免使用反射而采用适配器模式，并需明确类型不匹配时的读取行为。</p>
+<p><strong>@Hongshun Wang:</strong> 关注协议层下推的具体实现与向后兼容性，指出 Shredded 和非 Shredded 数据间可能存在显著的性能“断崖效应”，并担忧低吞吐量场景下的 Shredding 激活延迟。</p>
+<p><strong>@Yunhong Zheng:</strong> 确认采纳 API 统一和适配器模式建议，在协议中新增可选字段以兼容旧客户端，明确记录了性能差异，并调整了 v1 版本的功能范围（如移除表属性配置）。</p></div>
+            <p class="conclusion">设计文档已完成更新，解决了 API 复杂度、协议兼容性和性能文档缺失等关键问题；下一步将继续完善用户可控性功能及更多存储系统的集成。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/q1kkgzqrlyykbs30fhcr4bcz6vyc5n8w">FIP-38: Global Secondary Index</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">本次讨论围绕 FIP-38 提案展开，旨在为 Fluss 引入原生全局二级索引以支持非主键列的高效查询。Yang Wang 提出了“索引即表”的设计方案，Jark Wu 随后进行了详细评审，指出了多项关键设计反馈。</p>
+            <div class="key-points"><p><strong>@Yang Wang:</strong> 现有主键表无法高效支持非主键查找，提议采用“索引即表”设计实现全局二级索引。</p>
+<p><strong>@Jark Wu:</strong> 重点指出复制模式应重新考虑推送模式，且 TTL 清理机制需覆盖非自动分区表，这两点可能涉及重大架构重构。</p>
+<p><strong>@Jark Wu:</strong> 建议索引表采用 WAL 日志模式而非 Arrow 格式，并需完善可见性语义及动态索引管理。</p></div>
+            <p class="conclusion">Jark Wu 已将详细反馈整理至 Google Doc，下一步等待 Yang Wang 对关键设计问题（特别是推送模式和 TTL 清理）的回应。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/hc32x13q9godcflbsnqyvf91sbtnt1ww">FIP-28: Support Write and Lookup for Expired Partitions in Paimon Lake Tables</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Yuxia 发起 FIP-28 提案，旨在解决启用 Paimon 分层存储的自动分区表中，过期分区无法处理迟到数据写入及点查失效的问题。提案建议引入 __historical__ 分区捕获迟到写入，并通过服务端 Lake 查询回退机制确保数据可见性，同时保证实时与历史路径的性能隔离。目前已有 POC 实现供社区参考。</p>
+            <div class="key-points"><p><strong>@yuxia:</strong> 当前过期分区存在写入和查询缺口，导致迟到数据被拒绝且查询为空，与批处理读取体验不一致。</p>
+<p><strong>@yuxia:</strong> 提议引入 __historical__ 分区处理迟到写入，并支持服务端 Lake 查询回退以正确返回过期数据。</p>
+<p><strong>@yuxia:</strong> 已提供 POC 实现，并设计了实时与历史路径的性能隔离机制。</p></div>
+            <p class="conclusion">提案已发起，POC 代码已提交，目前处于征求社区反馈与讨论阶段。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/306s7zbjrgsk2xvb0hwkq6q77f5gsphr">Draft design: Support upgrading existing Iceberg tables to Fluss tables</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Liting Liu 提交了一份设计草案，旨在支持将现有 Iceberg 表升级转换为 Fluss 表。该方案主要复用 Paimon 的设计架构，根据 Iceberg 格式版本和标识符字段制定了差异化的表类型映射规则。目前作者正在征求社区关于映射逻辑合理性及实现细节的反馈。</p>
+            <div class="key-points"><p><strong>@Liting Liu:</strong> 提出基于 Iceberg 格式版本和标识符字段的表类型映射规则：v1 或无标识符的 v2 表映射为 Fluss 日志表，有标识符的 v2 表映射为主键表。</p>
+<p><strong>@Liting Liu:</strong> 设计上尽量复用 Paimon 的现有流程（如引导流程、分区模型等），Iceberg 特有部分主要集中在元数据提取和读取器处理。</p>
+<p><strong>@Liting Liu:</strong> 请求社区重点审查表类型映射的合理性、删除处理的边界以及是否有遗漏的 Iceberg 特有场景。</p></div>
+            <p class="conclusion">目前处于设计草案征集意见阶段，等待社区对文档进行审查和反馈。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (0)</h2>
+            
+    <p>本周新建 <strong>0</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周无新建 JIRA。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Fluss Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
