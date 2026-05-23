@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-05-22</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-05-22</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 2 新 Issues</div>
+            <div class="stat">✅ 0 关闭</div>
+            <div class="stat">✨ 4 新 PRs</div>
+            <div class="stat">🎉 4 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/3316">PR #3316</a> 合并：为 bucket 策略引入 HudiBucketingFunction</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3364">PR #3364</a> 合并：Spark 插件可使用 catalog 配置覆盖默认表属性</li><li>🐛 <a href="https://github.com/apache/fluss/pull/3296">PR #3296</a> 合并：修复主键表批处理 fallback 生成混合 split 类型的问题</li><li>🐛 <a href="https://github.com/apache/fluss/pull/3359">PR #3359</a> 新增：修复 StopReplicaRequest 发送失败导致表删除卡住的问题</li><li>📚 <a href="https://github.com/apache/fluss/pull/2836">PR #2836</a> 收到详细 Review，涉及 STS token 作用域、COS SDK 重复依赖等问题</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2836">Issue #2836</a> [FLUSS-2686] Add COS filesystem support</h4>
+            <ul><li><span class="author">@XuQianJin-Stars</span>: 提出 5 点 Review 意见：STS token 作用域过宽、COS SDK 变体重复、文档中 provider 类名和 env var 错误、token 有效期文档与代码不一致、trailing whitespace</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3299">Issue #3299</a> [server] Add authorization to Replication Control RPCs (notifyLeaderAndIsr, updateMetadata, stopReplica, adjustIsr)</h4>
+            <ul><li><span class="author">@vaibhavk1992</span>: 询问本地测试通过但 GitHub CI 失败的原因，以及本地运行测试是否需要特殊配置</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3316">Issue #3316</a> [lake/hudi] Introduce HudiBucketingFunction for bucket strategy</h4>
+            <ul><li><span class="author">@XuQianJin-Stars</span>: +1 表示认可</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3359">Issue #3359</a> [server] Fix table deletion stuck when StopReplicaRequest send fails</h4>
+            <ul><li><span class="author">@lilei1128</span>: 表明此 PR 将关闭 Issue #3357</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3361">Issue #3361</a> [server] Allow table-level overrides for log segment/index/flush options</h4>
+            <ul><li><span class="author">@zuston</span>: 已提交 PR #3358 来实现此功能，请求帮忙 Review</li><li><span class="author">@lilei1128</span>: 感谢提交，将关闭自己的 PR</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3364">Issue #3364</a> [spark] Allow specific plugin impl can use catalog config to overwrite default table prop</h4>
+            <ul><li><span class="author">@Yohahaha</span>: 请求 @YannByron @luoyuxia 帮忙 Review</li><li><span class="author">@luoyuxia</span>: 整体 LGTM，建议关注 Copilot 的评论</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3358">PR #3358</a> [server] Respect log.* options for table</h4>
+            <ul><li><span class="author">@zuston</span>: 建议将选项验证逻辑移入选项定义本身，并请求 @wuchong Review</li><li><span class="author">@lilei1128</span>: 询问是否也支持 log.index.file-size 配置</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3364">PR #3364</a> [spark] Allow specific plugin impl can use catalog config to overwrite default table prop</h4>
+            <ul><li><span class="author">@Copilot</span>: 指出 SPARK_CATALOG_PREFIX 应为 spark.sql.catalog.，建议添加 UT 验证 catalog 配置优先级</li><li><span class="author">@Yohahaha</span>: 解释已在 FlussTable 中提取 spark catalog prefix，评论 LGTM</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3362">#3362</a> clearup useless fluss partition info in writer metadata cache <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/issues/3357">#3357</a> [server] Table deletion stuck permanently when StopReplica request fails <span class="author">@gyang94</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3365">#3365</a> Bump org.apache.flink:flink-table-runtime from 1.20.3 to 1.20.4 in /fluss-flink/fluss-flink-common <span class="author">@app/dependabot</span> <span class="labels">dependencies, java</span></li><li><a href="https://github.com/apache/fluss/pull/3360">#3360</a> feat: shell tool <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/pull/3359">#3359</a> [server] Fix table deletion stuck when StopReplicaRequest send fails <span class="author">@lilei1128</span> </li><li><a href="https://github.com/apache/fluss/pull/3358">#3358</a> [server] Respect log.* options for table <span class="author">@zuston</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <p class="empty">暂无</p>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3364">#3364</a> [spark] Allow specific plugin impl can use catalog config to overwrite default table prop <span class="author">@Yohahaha</span> </li><li><a href="https://github.com/apache/fluss/pull/3363">#3363</a> Update team <span class="author">@zcoo</span> </li><li><a href="https://github.com/apache/fluss/pull/3316">#3316</a> [lake/hudi] Introduce HudiBucketingFunction for bucket strategy <span class="author">@fhan688</span> </li><li><a href="https://github.com/apache/fluss/pull/3296">#3296</a> [flink] Fix batch fallback generating mixed split types for primary-key tables <span class="author">@matrixsparse</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
