@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iceberg 社区周报 | 2026-W21</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Iceberg 社区周报 | 2026-W21</h1>
+            <p class="date-range">2026-05-18 ~ 2026-05-24</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (2)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/ldczvlskldz8qr7tfflxjdh95rkf892n">Apache Iceberg release 1.10.2</a></li>
+<li><a href="https://lists.apache.org/thread/j9lon3dkfot54lxoc6mljz1bo22vxwt8">Apache Iceberg release 1.11.0</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (7)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/3kff75b59tz3h1h0nsf0jcrdz98f3wzm">Release Apache Iceberg 1.11.0 RC4</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/vs126f4dflm7858rl0cckjmsrh7jzkmy">[Go] Release Apache Iceberg Go v0.6.0 RC0</a> <span class="status warning">⚠️ 有异议</span><p class="objection-inline">Tobias 提出 -1，原因是某次提交写入了一个已弃用的字段，导致 pyiceberg 拒绝读取生成的清单文件，造成了兼容性回归。</p></li>
+<li><a href="https://lists.apache.org/thread/r1jgfj34mbyohvggqdq4gxbpt419rvt5">Spec: Addition of Content Stats representation to v4</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/dqlgo3rmz1tnshx0bgk2cv4qm1h06k2n">Spec: Addition of Relative Paths to v4</a> <span class="status warning">⚠️ 有异议</span><p class="objection-inline">提供的邮件回复中未包含异议内容，Amogh Jahagirdar 和 Ryan Blue 均投了 +1 赞成票。</p></li>
+<li><a href="https://lists.apache.org/thread/vy9fqyopp9c149oy40brdhb10grpq32g">Add unregister endpoint to the REST spec</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/xz3dd9ltso3xw05k5l86fqrroddj9892">[Go] Release Apache Iceberg Go v0.6.0 RC1</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/sgtobp6b3w9b3t4xdzo2xfgrsz960yxv">[Go] Release Apache Iceberg Go v0.6.0 RC2</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/qqw5oog5swmswxqqmp693vz1rw132xb6">Spec ambiguity: Avro schema for `day` partition transform fields in manifests</a></h3>
+            <p class="meta">12 条回复 · 6 位参与者</p>
+            <p class="summary">讨论主要围绕 Iceberg 规范中 `day` 分区转换结果类型的定义模糊问题：规范定义为 `int`，但主流实现（Java、Python、Rust）实际写入的是 Avro logical `date` 类型。经过讨论，社区达成共识，决定修改规范以匹配主流实现的 `date` 类型，并利用 Avro 规范特性确保读取端的兼容性。</p>
+            <div class="key-points"><p><strong>@Kevin Liu:</strong> 指出规范与实现存在不一致，Java/Python/Rust 写入 `date` 而 Go 写入 `int`，建议规范应与主流实现保持一致。</p>
+<p><strong>@Andrei Tserakhau:</strong> 提议写入端应输出 `date` 类型，读取端必须兼容两种格式，并提交 PR 以澄清规范文本，区分逻辑类型与 Avro 编码。</p>
+<p><strong>@Ryan Blue:</strong> 指出 Avro 规范要求读取端忽略不支持的逻辑类型注解，因此读取端兼容 `int` 和 `date` 是 Avro 原生支持的特性。</p></div>
+            <p class="conclusion">初步结论是将规范中 `day` 转换的结果类型改为 `date` 以匹配主流实现，同时添加历史背景说明；下一步行动是推进 PR #16446 的合并，并更新 Go 实现以对齐该行为。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/wlto1z6h41n8gwrf1gl0qtlo5t0l7yo3">Adding unregister table endpoint to REST spec</a></h3>
+            <p class="meta">10 条回复 · 10 位参与者</p>
+            <p class="summary">Ryan Blue 提议在 REST 规范中新增 `unregister` 端点，旨在解决现有 `drop` 操作无法安全处理并发写入且可能误删文件的问题，以支持跨 Catalog 的表迁移。讨论中社区成员普遍支持该提议，并明确了其与 `dropTable` 在数据保留行为上的关键区别。</p>
+            <div class="key-points"><p><strong>@Ryan Blue:</strong> 现有 `drop` 端点在并发操作下不安全，且多数 REST Catalog 会自动清理文件，新端点需返回元数据位置以确保状态一致性。</p>
+<p><strong>@Ajantha Bhat:</strong> 支持该提议，认为返回元数据位置能保证迁移的原子性，并建议补充 `unregister-view` 端点以保持功能完整性。</p>
+<p><strong>@Daniel Weeks:</strong> 澄清了 `purgeRequested=false` 仅允许延迟清理而不保证保留数据，`unregister` 则明确用于解除目录对数据的管理。</p></div>
+            <p class="conclusion">社区对该提案反响积极，Ryan Blue 计划若无重大异议将于本周启动投票流程。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/jbh1gbrso5h6l4by9rh9poy2cjjtb8j0">Column Update File Representation</a></h3>
+            <p class="meta">8 条回复 · 6 位参与者</p>
+            <p class="summary">讨论核心在于当存在删除向量（DVs）时，列更新文件应如何表示行：是采用“位置对齐”（选项1，填充NULL）还是“应用删除”（选项2，仅存存活行）。目前讨论倾向于选项1，因为它能实现零拷贝拼接且跨引擎兼容性更好，但需要解决统计信息偏差和存储开销问题。</p>
+            <div class="key-points"><p><strong>@Gang Wu:</strong> 支持选项1，认为其更符合未来的列族功能设计，允许基于隐式行对齐的零拷贝拼接。</p>
+<p><strong>@Gábor Kaszab:</strong> 测量显示存储开销不是决定性因素，建议无论选哪种都保留 `_pos` 列以便调试，且 NULL 填充带来的开销可接受。</p>
+<p><strong>@Andrei Tserakhau:</strong> 分享 Delta 社区经验，他们选择了选项1以避免复杂的向量化对齐，并强调需在规范中明确统计信息（如 null_count）的修正规则。</p></div>
+            <p class="conclusion">初步结论倾向于采用选项1（位置对齐），下一步需在规范中明确统计信息的修正方式，并解决 Rust 实现中的行组对齐问题。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/vn4gglocg2g40p69mfrrh86qzkn1rr4b">Core: Add OpenTelemetry MetricsReporter</a></h3>
+            <p class="meta">8 条回复 · 7 位参与者</p>
+            <p class="summary">Noritaka Sekiyama 提议在 Iceberg Core 中增加基于 OpenTelemetry 的 MetricsReporter，以便将指标导出到各类后端，社区对此表示支持。讨论重点在于依赖管理（采用 compileOnly）和通过移除 snapshot.id 等无界属性来规避指标基数风险。作者已根据反馈更新了 PR，移除了高基数属性并补充了相关文档。</p>
+            <div class="key-points"><p><strong>@Noritaka Sekiyama:</strong> 提议将 opentelemetry-api 设为 compileOnly 依赖，由宿主应用提供 SDK，以避免运行时依赖泄漏。</p>
+<p><strong>@vaquar khan:</strong> 指出 snapshot.id 作为指标属性会导致无界基数问题，建议移除或设为可选以防止后端状态爆炸。</p>
+<p><strong>@Grant Nicholas:</strong> 建议考虑基于 Span 的实现方案，以更好地处理高基数属性（如 table_name）带来的成本问题。</p></div>
+            <p class="conclusion">社区达成初步共识，支持引入该功能。作者已修复基数问题并完善文档，PR 正等待最终审查。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/9gorr3b1c18f8yk2fys16knjmnrbkjff">Iceberg Consumption of ASF Shared GitHub-hosted Runners</a></h3>
+            <p class="meta">6 条回复 · 5 位参与者</p>
+            <p class="summary">ASF 基础设施团队通知 Iceberg 社区其 GitHub Actions 资源消耗过高，要求在两周内优化构建流程，否则将限制使用。社区已采取行动，如移除 Spark 3.4 以降低约 25% 的成本，并正在讨论减少测试参数组合及跳过草稿 PR 的 CI 检查等进一步优化方案。</p>
+            <div class="key-points"><p><strong>@Robert Thomson:</strong> Iceberg 项目位列资源消耗前五，需在 6 月 8 日前优化构建，否则将面临资源限制。</p>
+<p><strong>@Steven Wu:</strong> 已合并移除 Spark 3.4 的 PR（节省约 25% 成本），并建议通过减少测试参数组合（如 Hadoop catalog）来进一步优化。</p>
+<p><strong>@Junwang Zhao:</strong> 建议跳过草稿 PR 的 CI 检查以节省资源，并提交了演示 PR，同时也指出了该方案的利弊权衡。</p></div>
+            <p class="conclusion">社区已着手优化，下一步将继续评估减少测试参数组合的方案，并讨论是否全面实施跳过草稿 PR 的 CI 检查，同时需持续监控资源使用情况以确保符合 ASF 要求。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/qq04pz07frmrg8v3110d6l32ndg2x6q2">Adding X-Iceberg-Client-Capabilities header to REST spec</a></h3>
+            <p class="meta">3 条回复 · 4 位参与者</p>
+            <p class="summary">讨论主要围绕是否在 REST 规范中引入 `X-Iceberg-Client-Capabilities` 标头以支持客户端能力宣告。Prashant 提议使用单一通用标头，但部分开发者倾向于按端点使用特定标头，同时社区还探讨了能力值的版本控制与兼容性问题。目前尚未达成最终共识，计划在下次同步会议上继续讨论。</p>
+            <div class="key-points"><p><strong>@Prashant Singh:</strong> 提议使用单一通用标头，并认为通过规范客户端“遇错即关”的行为，无需对能力值进行显式版本控制即可实现向前兼容。</p>
+<p><strong>@Sung Yun:</strong> 支持引入能力标头，但建议定义版本控制模型（如 `read-restrictions.v1`），以防旧客户端无法安全处理演进中的能力值。</p>
+<p><strong>@Daniel Weeks:</strong> 反对在每次请求中发送所有能力的单一标头模式，主张沿用现有模式，针对特定端点使用特定标头以简化配置管理。</p></div>
+            <p class="conclusion">社区尚未就标头形式（单一通用 vs. 特定标头）达成定论，Prashant 将在 5 月 26 日的同步会议上进一步讨论以寻求共识。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/4zm5jhwp42z10pfz2sths7q59r9dlf8l">Specifying the encryption key metadata formats for cross-implementation interop</a></h3>
+            <p class="meta">3 条回复 · 3 位参与者</p>
+            <p class="summary">Alexander Bailey 提议将 Iceberg 表加密中未记录的密钥元数据格式（如 StandardKeyMetadata 和 encryption-keys 列表逻辑）标准化，以解决跨语言实现（如 Rust 和 Python）的互操作性问题。该提议获得了社区支持，作者已提交 PR 以更新规范文档。</p>
+            <div class="key-points"><p><strong>@Alexander Bailey:</strong> 指出当前规范将关键加密格式标记为“实现特定”，迫使开发者对 Java 实现进行逆向工程，提议标准化 StandardKeyMetadata 和 encryption-keys 列表逻辑。</p>
+<p><strong>@Yufei Gu:</strong> 支持该提议，认为当前状态在“符合规范”和“跨实现兼容”之间造成了实际差距。</p>
+<p><strong>@Szita Ádám:</strong> 同意需要更严格的规范定义，并表示将审查相关 PR。</p></div>
+            <p class="conclusion">社区达成共识，已提交 PR (#16527) 等待审查和合并。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/rvp2wh1m91h5lvz5zvxqp96f7pdxrzqr">[Confluent Hub] Your Kafka connector iceberg-iceberg-kafka-connect version 1.11.0 has been accepted</a></h3>
+            <p class="meta">3 条回复 · 3 位参与者</p>
+            <p class="summary">Iceberg Kafka connector 1.11.0 版本因许可证文档未修复，在被 Confluent Hub 接受后因合规问题被紧急撤下。Ryan Blue 指出该 artifact 存在已知错误，Robin Moffatt 承认误判了许可证限制范围并执行了移除操作。目前该版本已下架，社区计划修复相关许可证问题。</p>
+            <div class="key-points"><p><strong>@Ryan Blue:</strong> 指出许可证文档尚未修复，artifact 存在已知错误，必须尽快从 Confluent Hub 移除。</p>
+<p><strong>@Robin Moffatt:</strong> 承认误解了许可证阻碍因素的适用范围（以为仅限 Apache 发布流程），并确认已将版本下架。</p>
+<p><strong>@Kevin Liu:</strong> 建议既然 1.11 版本已发布，应着手修复 kafka-connect 的 LICENSE/NOTICE 问题。</p></div>
+            <p class="conclusion">1.11.0 版本已成功从 Confluent Hub 移除，下一步行动是修复相关的许可证文档问题。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/lzc0ls4zbtj8bhv5r1s8n3qk0v7qhfsr">Deprecating Spark 3.4</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">讨论主要关于 Apache Iceberg 社区对 Spark 3.4 支持的弃用与移除进程。Kevin Liu 宣布移除 PR 已合并，确认 Spark 3.4 在 Iceberg 1.11.0 发布后正式终止生命周期（EOL），并建议用户迁移至更高版本。此前双方已就“先发布包含该版本的最终版本，后移除代码”的标准化流程达成共识。</p>
+            <div class="key-points"><p><strong>@Kevin Liu:</strong> 提议并执行了 Spark 3.4 的移除计划，指出社区无义务保证旧版本的功能对等，且 1.11.x 分支仅为发布产物而非主动维护。</p>
+<p><strong>@Manu Zhang:</strong> 建议将弃用流程文档化（标记弃用 -> 发布版本 -> 移除支持 -> 更新文档），并对“EOL”的定义提出讨论，认为分支维护期间仍算支持。</p></div>
+            <p class="conclusion">Spark 3.4 支持代码已从主分支移除，Iceberg 1.11.0 是最后一个支持 Spark 3.4 的版本，官方文档已更新为 End of Life 状态。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/7jryw9dfvc02s411twn4o7s5gjrybfxg">Column Update metadata representation</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">讨论主要围绕 Column Update 功能的元数据表示展开，重点探讨了 ColumnFile 的跟踪信息结构。参与者已就基本字段达成一致，并针对序列号的处理和状态跟踪字段进行了深入讨论，最终 Gábor 提出了包含 ColumnFileTracking 的更新方案。</p>
+            <div class="key-points"><p><strong>@Gábor Kaszab:</strong> 提出了 ColumnFile 的基本字段，并建议增加状态跟踪（如 ADDED, DELETED），同时探讨了是否需要在列文件级别存储序列号。</p>
+<p><strong>@Steven Wu:</strong> 建议不应改变现有 file_sequence_number 的语义，而是引入新字段 latest_column_file_sequence_number 来记录最新序列号。</p>
+<p><strong>@Gábor Kaszab:</strong> 认同 Steven 的建议，并进一步提出了包含 status、snapshot_id 等字段的 ColumnFileTracking 结构设计。</p></div>
+            <p class="conclusion">初步确定引入新字段 latest_column_file_sequence_number 而非复用旧字段，并提出了具体的元数据结构草案，等待社区进一步反馈。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (0)</h2>
+            
+    <p>本周新建 <strong>0</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周无新建 JIRA。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Iceberg Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
