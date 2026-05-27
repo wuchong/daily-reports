@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafka 社区周报 | 2026-W21</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Kafka 社区周报 | 2026-W21</h1>
+            <p class="date-range">2026-05-18 ~ 2026-05-24</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (1)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/6260nnyy3vfoltkrvbvgv42513t6sx5r">Apache Kafka 4.3.0</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (12)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/mk2pgqhn2j4bth1s5n2wnh0vnx7d6hr5">KIP-1299 Use key range in ProducerPerformance</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/y5m2p9572sv7x2odc8b4yqzk7yr1z786">[kafka-clients]  4.2.1 RC5</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/yrmg9wwh2py6s8xn6fcf9y4jnydqkcc8">[RESULTS]  Release Kafka version 4.3.0</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/y8s390qs3nv8h2kdsobv986b9jly6rfy">4.2.1 RC5</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/qqnshy1by3mrknpxk564hl8pwc0171md">KIP-1315: Split Connector Listing and Expanded Views in the Connect REST API</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/vxd1c9mvvl0nkmnvk3ph0hqk90t0gbzt">KIP-1325: Add restore.buffered.records.per.partition to cap Kafka Streams state-restore memory</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/hn7svrvkwg7g6cv9b9ny1pq6h7f4b92h">KIP-1335: Bounded concurrency for partition reassignment via kafka-reassign-partitions.sh</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/fpf1jqgol5g41go85wlyqdtoxc44xx0g">KIP-1327 Prevent Hot Data Loss on Partition Expansion for Latest Policy</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/c7xp6k70ypr2gqpn1rvrc47xycl1wzqb">KIP-1323: Initialization of share group offsets from a specific offset or a file</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/c5nqzg1hn5swmmxs0zhnn9j0y588v7sb">KIP-1276 CIDR-based Host Patterns for ACLs</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/673v5br70w9t9tk96jx7j6c9w9wyo86w">KIP-1306: Extend ConsumerRebalanceListener with Consumer-aware methods</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/gjm677sv5fy1m4y0v8bgjwrowg9m21kw">KIP-1289: Support Transactional Acknowledgments for Share Groups</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/27dyzyomw89c65ck7wfc66s9hovjhytl">4.4.0 Release Manager</a></h3>
+            <p class="meta">7 条回复 · 4 位参与者</p>
+            <p class="summary">Omnia Ibrahim 自愿担任 Kafka 4.4.0 的发布经理并提出了初始发布计划。社区成员对此表示支持并提议纳入多个 KIP，随后针对时间表的关键节点间隔进行了讨论与调整。最终确定了 KIP 冻结、功能冻结和代码冻结的具体日期。</p>
+            <div class="key-points"><p><strong>@Omnia Ibrahim:</strong> 提出了初始发布计划，并根据反馈最终确定了修订后的时间表（KIP 冻结 6 月 15 日，功能冻结 7 月 6 日，代码冻结 7 月 27 日）。</p>
+<p><strong>@Bill Bejeck:</strong> 建议调整功能冻结日期，以保持功能冻结与代码冻结之间约 3 周的间隔，与 4.3 版本保持一致。</p>
+<p><strong>@Lianet Magrans:</strong> 建议延长 KIP 冻结与功能冻结之间的间隔，并将发布目标定在 9 月中旬，以维持 4 个月的发布周期。</p></div>
+            <p class="conclusion">发布计划已更新，KIP 冻结定于 6 月 15 日，功能冻结定于 7 月 6 日，代码冻结定于 7 月 27 日，预计发布时间不早于 9 月 14 日。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/14lv43b7pjf50hhkctqv585wpofh4kbj">KIP-1299 Use key range in ProducerPerformance</a></h3>
+            <p class="meta">5 条回复 · 3 位参与者</p>
+            <p class="summary">KIP-1299 旨在为 kafka-producer-perf-test 工具引入键分布支持，以模拟真实场景下的键负载。讨论主要围绕随机种子的设定、range 与 random 模式的行为差异及其实际用例展开，作者已根据反馈修正了关于热点分区的描述并完善了动机说明。</p>
+            <div class="key-points"><p><strong>@Chia-Ping Tsai:</strong> 建议明确随机种子的初始化逻辑，并提议在动机中补充该功能对压缩主题（compacted topics）测试的支持。</p>
+<p><strong>@PoAn Yang:</strong> 质疑 range 模式下 --random-seed 参数的有效性，并指出 SplittableRandom 的均匀分布特性无法模拟热点分区场景。</p>
+<p><strong>@黃竣陽:</strong> 确认 range 模式是确定性算法不受种子影响，澄清随机模式主要引入突发性而非热点分区，并承诺更新文档移除误导性示例。</p></div>
+            <p class="conclusion">作者已采纳社区建议，更新了 KIP 以包含 --random-seed 参数，移除了关于热点分区的错误声明，并补充了压缩主题测试作为动机之一。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/d5onztlv32n7pcvqztz9xlcv5m11kybw">[PR] MINOR: Add 4.3.0 to Downloads page [kafka-site]</a></h3>
+            <p class="meta">4 条回复 · 2 位参与者</p>
+            <p class="summary">mimaison 提交 PR 将 Kafka 4.3.0 版本添加至官网下载页面。jlprat 建议将旧版 3.9.x 移至存档，mimaison 认为因 3.9.2 发布不久，决定先合并此 PR 以发布 4.3.0 公告，稍后再处理 3.9 的存档事宜。</p>
+            <div class="key-points"><p><strong>@jlprat:</strong> 建议在发布 4.3.0 后将 3.9.x 版本移至存档。</p>
+<p><strong>@mimaison:</strong> 认为 3.9.2 版本较新，决定先合并 PR 以发布 4.3.0 公告，稍后再决定是否存档 3.9。</p></div>
+            <p class="conclusion">PR #864 已合并，4.3.0 已添加至下载页面；关于 3.9.x 是否存档的问题留待后续讨论决定。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/27fd0m9n1zk5spgrxs1zkhlspjpf11gk">KIP-1304 Add consumer metric about paused partitions</a></h3>
+            <p class="meta">3 条回复 · 2 位参与者</p>
+            <p class="summary">本次讨论围绕 KIP-1304 展开，旨在为 Kafka 消费者添加关于暂停分区的指标。讨论重点涵盖了时间戳处理的实现细节、追踪最长暂停时长的指标需求以及指标命名的单复数规范。</p>
+            <div class="key-points"><p><strong>@Chia-Ping Tsai:</strong> 询问时间戳重置逻辑是否属于公开接口，建议增加追踪最长暂停时长的指标，并指出指标命名应考虑单复数形式的一致性。</p>
+<p><strong>@PoAn Yang:</strong> 确认时间戳逻辑为实现细节，采纳了增加最大时长指标的建议，并同意将指标名称改为单数形式以符合现有命名规范。</p></div>
+            <p class="conclusion">提案已根据反馈更新：移除了时间戳相关的实现细节描述，新增了 paused-partitions-duration-seconds-max 指标，并将相关指标名称修正为单数形式。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/0nw58s5rhr628mlb8rpy0v14jfl3fxo3">KIP-1343: Allow opt-in leader-only acknowledgement in DeleteRecords</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">讨论主要围绕 KIP-1343 展开，提议在 DeleteRecords 中引入“仅 Leader 确认”选项以支持异步 RPC。针对 Chia-Ping Tsai 提出的为何不使用“acks”参数的建议，TaiJu Wu 解释了 acks=0 对 DeleteRecords 无意义的原因。TaiJu Wu 计划更新 KIP 文档以补充相关动机说明。</p>
+            <div class="key-points"><p><strong>@TaiJu Wu:</strong> 提议 KIP-1343，旨在允许 DeleteRecords 仅由 Leader 确认，从而启用异步 deleteRecords RPC。</p>
+<p><strong>@Chia-Ping Tsai:</strong> 建议在 RPC 层使用现有的“acks”参数而非“LeaderOnly”，以保持灵活性，Java API 层可保持布尔类型的严格性。</p>
+<p><strong>@TaiJu Wu:</strong> 反驳称 acks=0（即发即弃）对 DeleteRecords 无意义，因为调用者必须获取操作结果（成功/错误及偏移量）才能进行后续决策，这与 Produce 场景不同。</p></div>
+            <p class="conclusion">TaiJu Wu 将更新 KIP 文档，补充关于为何使用“LeaderOnly”而非“acks”的动机说明。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/641mrrvm38gm2b2b0cnn2yg0j70m5zy8">KIP-1323: Initialization of share group offsets from a specific offset or a file</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">讨论主要围绕 KIP-1323 中共享组偏移量初始化的功能细节，重点探讨了 --export 选项的必要性以及 --from-file 和 --to-offset 的具体行为逻辑。作者确认将增加 --export 功能，并明确了工具仅支持单组重置但兼容多组文件过滤，且校验逻辑与现有消费者组工具保持一致。</p>
+            <div class="key-points"><p><strong>@Apoorv Mittal:</strong> 建议为共享组增加 --export 选项，以支持共享组之间的迁移或回滚到消费者组。</p>
+<p><strong>@Lianet Magrans:</strong> 询问 --from-file 是否支持从包含多个组的文件中加载，以及 --to-offset 的错误处理机制。</p>
+<p><strong>@Andrew Schofield:</strong> 确认将添加 --export 选项，并澄清该工具仅支持单组重置，但可从多组文件中按组 ID 过滤，偏移量校验逻辑与 kafka-consumer-groups.sh 一致。</p></div>
+            <p class="conclusion">作者已根据反馈更新 KIP 文档以明确行为细节，审阅者对更新后的方案表示认可（LGTM）。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/ylgkf4ozr1qfmy8m48pcblkdzyzot5yh">Query on AI-Assisted Code Generation Guidelines</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">Aldan 发起关于在项目开发流程中使用 AI 辅助代码生成工具的讨论，询问社区对此的立场、审查要求及合规建议。Mickael Maison 回复称，目前 Kafka 项目尚未制定特定指南，建议直接遵循 Apache 软件基金会的相关法律规范。</p>
+            <div class="key-points"><p><strong>@Aldan Basil Brito:</strong> 询问社区对 AI 辅助代码生成的接受度、审查归属要求及许可安全考量，以确保符合 Apache 标准。</p>
+<p><strong>@Mickael Maison:</strong> 目前 Kafka 项目未制定特定指南，贡献者应遵循 Apache 软件基金会（ASF）的通用指南。</p></div>
+            <p class="conclusion">结论是暂时无需制定项目专属指南，贡献者需参照 ASF 官方的生成式工具法律指南执行。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/747k9svl9vwrwp4zjzzqm1wgodd4wkry">[PR] MINOR: Add 4.3 docs and javadoc [kafka-site]</a></h3>
+            <p class="meta">1 条回复 · 1 位参与者</p>
+            <p class="summary">讨论围绕 PR #853 展开，该 PR 旨在为 Kafka 添加 4.3 版本的文档和 Javadoc。虽然 PR 已合并，但作者发现 staged 网站的默认文档版本仍指向 4.2，且菜单重定向未正确更新。</p>
+            <div class="key-points"><p><strong>@mimaison:</strong> PR #853 已成功合并，目的是添加 4.3 文档。</p>
+<p><strong>@mimaison:</strong> 合并后 staged 网站默认文档仍停留在 4.2，菜单重定向异常，尽管 4.3 文档已存在。</p></div>
+            <p class="conclusion">PR 已合并，但验证发现网站默认版本和菜单重定向存在配置问题，需后续排查修复。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/t7x46hl4ykozrtj641woz3g52cqpwlms">KIP:1295: Dead letter queue support for global store/KTable</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论主要针对 KIP-1295（为全局存储/KTable 提供死信队列支持）在投票前的技术细节审查。Lucas Brutschy 提出了关于 EOS 事务语义、生产者配置冲突、异常处理流程及测试覆盖等关键问题。Arpit Goyal 则请求协助修正 KIP 文档中的讨论链接。</p>
+            <div class="key-points"><p><strong>@Lucas Brutschy:</strong> 质疑 EOS 下全局线程如何处理 DLQ 写入与检查点的事务顺序及隔离性，询问是否采用至少一次语义。</p>
+<p><strong>@Lucas Brutschy:</strong> 指出反序列化失败处理路径存在 ClassCastException 风险，并询问生产者配置（如 transactional.id）如何避免冲突。</p>
+<p><strong>@Arpit Goyal:</strong> 因无权限修改 KIP 页面，请求他人协助更新错误的讨论链接。</p></div>
+            <p class="conclusion">暂无定论，KIP 作者需先解答关于 EOS 兼容性、配置管理及测试计划等技术疑问，并修正文档链接后，方可推进至投票阶段。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/d8bmw07g4n23g6fmc24pgrlggngxd70w">[PR] MINOR: Set 4.3.0 release date in downloads [kafka-site]</a></h3>
+            <p class="meta">1 条回复 · 1 位参与者</p>
+            <p class="summary">mimaison 提交了一个 PR (#865)，旨在更新 Kafka 官网下载页面中 4.3.0 版本的发布日期。该 PR 随后由 mimaison 直接合并，完成了网站信息的更新。</p>
+            <div class="key-points"><p><strong>@mimaison:</strong> 提交 PR #865，提议在下载页面设置 4.3.0 版本的发布日期。</p>
+<p><strong>@mimaison:</strong> 合并了该 PR，确认并完成了此次更新。</p></div>
+            <p class="conclusion">PR 已成功合并，Kafka 官网已更新 4.3.0 版本的发布日期信息。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (26)</h2>
+            
+    <p>本周新建 <strong>26</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周 JIRA 主要涉及代码重构与模块优化，包括将核心组件移至 server 模块及改进配置流程。同时，社区重点推进了 Share Group 与死信队列 (DLQ) 的功能集成及指标完善，并修复了多个不稳定的测试用例及 Streams 相关的内存泄漏问题。此外，还包含了分层存储延迟上传优化和部分文档更新。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Kafka Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
