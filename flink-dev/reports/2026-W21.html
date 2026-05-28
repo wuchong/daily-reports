@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flink 社区周报 | 2026-W21</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Flink 社区周报 | 2026-W21</h1>
+            <p class="date-range">2026-05-18 ~ 2026-05-24</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (2)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/859fnp2os5dsh34q2msg7tkw938x8n7x">New Apache Flink Committer - Gustavo de Morais</a></li>
+<li><a href="https://lists.apache.org/thread/roc22rmgnm8c7mmc8k4r6h35kqz6xkzz">Apache Flink Kubernetes Operator 1.15.0 released</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (6)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/rxv09wbd0rm8jtwlkj4mjptlo5321n30">FLIP-577: AI-Native Flink — An Umbrella Proposal for Multimodal Data Processing</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/l08ckwfj5n7qxqt6kyr3rxl07djpcrs4">Release flink-connector-http v1.0.0, release candidate 2</a> <span class="status warning">⚠️ 有异议</span><p class="objection-inline">Ferenc Csaky 提出异议，原因是每周构建失败，存在未使用的依赖项问题。</p></li>
+<li><a href="https://lists.apache.org/thread/xm8qsk7qdkcdlvdrksboyq35tmg8p1t5">Release flink-connector-pulsar v4.2.0, release candidate #1</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/9osqj04v41h7fc3topw099vy336kxw5j">Apache Flink Kubernetes Operator Release 1.15.0, release candidate #2</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/cx6wf8njdblv0j009ohow6lqv0xkkhg5">FLIP-581: Support Flexible Watermark Assignment via Built-in Function</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/x2cfz4t0ov614vgxbp4gpbbnd2v2jwvf">FLIP-569: Sunset the Stateful Functions (StateFun) Sub-project</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/nv5vvmqwgzjq14fzwb63nos5t3xgq4fz">FLIP-580 AsyncTableFunction supports user-defined timeout handling logic.</a></h3>
+            <p class="meta">6 条回复 · 5 位参与者</p>
+            <p class="summary">Kui Yuan 发起 FLIP-580 讨论，提议为 AsyncTableFunction 增加用户自定义超时处理逻辑，以解决远程推理请求超时导致作业失败的问题。多位参与者支持该提案，认为其解决了 LLM 推理场景下的痛点，Lincoln Lee 和 Alan Sheinberg 则针对重试交互、失败模式及适用范围等技术细节提出了疑问。</p>
+            <div class="key-points"><p><strong>@Kui Yuan:</strong> 提议允许用户在 AsyncTableFunction 中定义自定义超时逻辑（如回退策略），而不是直接抛出异常导致作业失败；并解答了关于重试交互和失败模式的技术问题。</p>
+<p><strong>@Xia Sun:</strong> 支持提案，指出生产环境中批处理 LLM 推理迫切需要自定义超时 UDF，以精确处理长上下文请求超时并避免阻塞下游数据。</p>
+<p><strong>@Lincoln Lee:</strong> 提出了关于重试策略交互、Future 同步完成约束、用户代码失败模式及可变参数匹配等具体技术实现的疑问。</p></div>
+            <p class="conclusion">社区对提案价值已达成共识，Kui Yuan 将根据反馈更新 FLIP 文档以明确技术细节（如重试交互、失败模式），后续需进一步确认是否支持 Correlate Query 代码路径。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/tvlnvg207o3n2sfljonb9zwjcgmx62z3">FLIP-576 Filesystem-Plugin Observability (flink-s3-fs-native)</a></h3>
+            <p class="meta">3 条回复 · 3 位参与者</p>
+            <p class="summary">本次讨论关于 FLIP-576 提案，旨在为 Flink 原生 S3 文件系统增加可观测性指标以解决运维盲区。讨论重点集中在指标默认开启策略的利弊权衡（基数爆炸风险 vs 运维必要性），以及如何通过引入新接口解决 API 初始化时序问题。</p>
+            <div class="key-points"><p><strong>@Aleksandr Iushmanov:</strong> 担心默认开启约 50 个指标会导致时间序列基数激增和数据量过大，建议将指标设为 opt-in（默认关闭）。</p>
+<p><strong>@Gabor Somogyi:</strong> 反对默认关闭指标，认为这违背解决运维盲区的初衷；建议引入独立的 MetricsAware 接口以保持 API 兼容性并解决初始化时序问题。</p>
+<p><strong>@Samrat Deb:</strong> 采纳了 MetricsAware 接口建议，指出原方案存在 MetricRegistry 初始化顺序冲突，决定采用两阶段初始化方案。</p></div>
+            <p class="conclusion">Samrat Deb 决定采纳 MetricsAware 接口方案以修正初始化逻辑，并计划更新 FLIP 文档，增加指标白名单和详细指标开关等配置项以平衡可观测性与系统负载。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/zhfxhy905nk3pkt69qbtos8pkotd85l6">FLIP-578: In-place Table to Materialized Table conversion</a></h3>
+            <p class="meta">3 条回复 · 3 位参与者</p>
+            <p class="summary">本次讨论围绕 FLIP-578 展开，提议支持将常规表原位转换为物化表，以解决现有流程中需重命名、断引用及非原子性操作的痛点。Ramin 详细阐述了通过新语法实现转换的机制及典型应用场景，Arvid 对此表示支持，Kui Yuan 则询问了反向转换的可能性。讨论明确了该功能为单向转换且需显式开启，旨在推动用户向物化表迁移。</p>
+            <div class="key-points"><p><strong>@Ramin Gharib:</strong> 提议通过 CREATE OR ALTER 语法实现原位转换，保留身份和存储；补充了典型用例，并明确反向转换（MT 转 Table）不在范围内，因为需求不对称且已有替代方案。</p>
+<p><strong>@Arvid Heise:</strong> 支持该提案，认为这是定位 MT 替代常规表的一次性单向操作，无需通用转换框架或特殊语法。</p>
+<p><strong>@Kui Yuan:</strong> 询问了该功能的具体使用场景，并建议考虑是否支持从物化表反向转换回常规表。</p></div>
+            <p class="conclusion">提案获得初步支持（+1），针对反向转换等疑问已通过更新 FLIP 文档和限定范围予以解答，后续将继续推进该方案。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/ptrhwv765tfootvt89159bxrlgk0tmvb">FLIP-577: AI-Native Flink — An Umbrella Proposal for Multimodal Data Processing</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">社区讨论了 FLIP-577 提案，旨在使 Flink 成为多模态数据处理的原生 AI 数据流骨干。在收到多位成员的积极反馈后，发起人 Guowei Ma 提议启动投票。Martijn Visser 在完成最终审核后确认其顾虑已消除，同意推进该提案的投票流程。</p>
+            <div class="key-points"><p><strong>@Jiangang Liu:</strong> 大力支持该提案，认为应专注于引擎级能力（如 GPU 管理、检查点）而非构建 AI 框架，赞赏其增量式和向后兼容的方法。</p>
+<p><strong>@Martijn Visser:</strong> 认为修订后的提案明确了非目标且采用了保守默认值，解决了之前的顾虑，同意将此伞形提案视为方向性声明并推进投票。</p>
+<p><strong>@Guowei Ma:</strong> 感谢社区反馈，计划在确认无进一步异议后启动投票，并配合 Martijn 的最终审核时间表。</p></div>
+            <p class="conclusion">Martijn Visser 同意投票继续进行，Guowei Ma 将正式启动 FLIP-577 的投票流程。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/s6t463gollqbt80628pg9gkg34f2ohnm">Slack invitation</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">社区成员请求加入 Flink 的 Slack 工作区。维护者 Leonard Xu 回复提供了社区页面上的自助加入链接，解决了邀请请求问题。</p>
+            <div class="key-points"><p><strong>@Alexis Sarda-Espinosa & Soumitra Kumar:</strong> 请求获取 Flink Slack 的加入邀请。</p>
+<p><strong>@Leonard Xu:</strong> 提供了社区官网链接，指引用户通过该链接自助加入 Slack，无需单独邀请。</p></div>
+            <p class="conclusion">问题已解决，用户可通过官网链接直接加入 Slack 社区。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/jn9t7qjj4wlz98t1ddqxwypcn6g7wrds">Flink Consumption of ASF Shared GitHub-hosted Runners</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">ASF 基础设施团队通知 Flink 社区其 GitHub Actions 使用量位居前五，导致共享资源池过载，要求在两周内降低使用量。社区成员迅速排查发现主要消耗来自 Flink nightly 构建和长期未维护的 Flink-ml 仓库，并提出了具体的优化方案。</p>
+            <div class="key-points"><p><strong>@Robert Thomson:</strong> Flink 项目是 GitHub Actions 资源消耗前五的项目，需在 6 月 8 日前降低使用量，否则将受到限制。</p>
+<p><strong>@Sergey Nuyanzin:</strong> 已关闭部分版本的 nightly 构建，并提议将长期未更新的 Flink-ml 仓库构建频率从每晚改为每月。</p>
+<p><strong>@Robert Metzger:</strong> 同意大幅降低 Flink-ml 相关构建的频率。</p></div>
+            <p class="conclusion">已采取行动关闭部分 nightly 构建，并达成共识将降低 Flink-ml 的构建频率，以满足 ASF 的资源使用要求。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/844pscmoqvn5gmtqw51l98bodgofhb8d">FLIP-579: LATERAL SNAPSHOT Join</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">Fabian Hueske 发起关于 FLIP-579 (LATERAL SNAPSHOT Join) 的讨论，旨在解决现有 Temporal Joins 的局限性（如处理时间被禁用、事件时间限制多）并引入新的 temporal join 操作符。该提议获得了 Gustavo de Morais 和 Timo Walther 的强烈支持，认为这是急需的功能且语义设计合理。Fabian 计划若无更多反馈，将于 6 月 1 日启动投票流程。</p>
+            <div class="key-points"><p><strong>@Fabian Hueske:</strong> 提议引入 LATERAL SNAPSHOT Join 以解决现有 Temporal Joins 的局限性，如处理时间连接被禁用及事件时间连接限制过多的问题。</p>
+<p><strong>@Gustavo de Morais:</strong> 强烈支持该功能，认为这是社区缺失已久的重要特性，有助于消除之前的硬性限制。</p>
+<p><strong>@Timo Walther:</strong> 强烈支持，赞同其与 Watermark 的紧密耦合设计及语法改进（移除 TABLE() 包装），并指出未来需完善自动化 Watermark 机制。</p></div>
+            <p class="conclusion">社区反馈积极，若无异议，将于 6 月 1 日启动投票。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/xnm6s7jmp5kj8js4rmn1fkww07mdmgt3">FLIP-XXX: Introduce Lazy Loading for HistoryServer</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">本次讨论旨在通过 FLIP-XXX 为 HistoryServer 引入懒加载机制，以解决大量归档作业场景下的启动缓慢和可见性延迟问题。经过讨论，提案获得了积极反馈，并澄清了线程数配置及内容独立性等细节，计划近期启动投票。</p>
+            <div class="key-points"><p><strong>@Zihao Chen:</strong> 提议引入懒加载模式，默认保持 EAGER 模式以实现向后兼容。</p>
+<p><strong>@Fan Deng:</strong> 认可该方案解决了生产环境痛点，支持“概要解析后即可见”的设计及双线程池方案。</p></div>
+            <p class="conclusion">提案已获初步共识，若无进一步重大异议，将于下周二启动投票线程。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/8orf45xvpqr05qbnxhgnhkycktrolzlt">FLIP-XXX: Support Window Stagger in FlinkSQL and introduce KEY_BASED deterministic stagger</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">本次讨论主要针对 FLIP-XXX 中 Window Stagger 的实现方案进行了调整。Zihao Chen 撤回了修改现有 TUMBLE 窗口的提议，转而提出引入新的 TVF `STAGGER_TUMBLE` 以明确区分逻辑语义，Feng Jin 对此表示支持。</p>
+            <div class="key-points"><p><strong>@zihao chen:</strong> 撤回修改 TUMBLE 的原提议，认为应引入新的 TVF `STAGGER_TUMBLE` 来处理 Stagger 逻辑，同时推迟 Hints 和 PTF 方案。</p>
+<p><strong>@Feng Jin:</strong> 支持引入新的窗口类型，认为 Stagger 是对数据分区的根本重定义而非单纯的触发机制变更。</p></div>
+            <p class="conclusion">初步结论是放弃修改现有 TUMBLE 语义，确定引入新的 TVF `STAGGER_TUMBLE` 作为后续实现方向。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/wl7dxwpk58ot90j7dgyny3fqq35motom">FLIP-XXX Support ReducingMergeState and AggregatingMergeState backed by Java based associative merge operators</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">本讨论关于 FLIP-XXX 提议利用 Java 关联 merge operators 支持 ReducingMergeState 和 AggregatingMergeState，以优化 RocksDB 写性能。作者 Soumitra 更新提案移除了 set 方法以减少 API 变更，但审核人 Zakelly 对实现方式提出疑问，期望能保持 Flink 侧公共 API 完全不变。</p>
+            <div class="key-points"><p><strong>@Soumitra Kumar:</strong> 移除了 ReducingMergeState.set 方法以最小化公共 API 变更，该方案有助于写密集型工作负载利用 RocksDB 能力。</p>
+<p><strong>@Zakelly Lan:</strong> 支持利用 RocksDB merge operators 的优化方向，但认为应保持 Flink 侧公共 API 不变，建议在实现层封装用户函数。</p>
+<p><strong>@Soumitra Kumar:</strong> 解释了技术实现细节，即通过新增 RocksDBReducingMergeOperator 等类将 Flink 函数转换为 frocksdb 的 merge operator。</p></div>
+            <p class="conclusion">讨论尚未达成最终一致，下一步需作者澄清实现细节，确认是否能满足审核人提出的“无公共 API 变更”的要求。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (71)</h2>
+            
+    <p>本周新建 <strong>71</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周 JIRA 主要集中在 SQL 与 Table API 的优化与修复，涉及查询计划修正、类型强制转换以及 TableDiscoverer SPI 的引入。CDC 连接器方面也有较多更新，包括对 MySQL、Postgres 和 Fluss 的支持增强与血缘功能引入。此外，基础设施方面重点关注 Java 25 的支持、JUnit 5 迁移以及 Kubernetes Operator 的依赖升级。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Flink Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
