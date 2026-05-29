@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-05-28</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-05-28</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 1 新 Issues</div>
+            <div class="stat">✅ 3 关闭</div>
+            <div class="stat">✨ 4 新 PRs</div>
+            <div class="stat">🎉 6 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/3355">PR #3355</a> 修复 Flink log-only source 恢复模式问题，保留恢复状态</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3325">PR #3325</a> 修复 DefaultRowMerger 全 schema 部分写入处理逻辑</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3194">PR #3194</a> 优化 RemoteLogManifest 按 startOffset 排序</li><li>🐛 <a href="https://github.com/apache/fluss/pull/3312">PR #3312</a> 修复防止删除默认数据库导致 catalog 打开失败的问题</li><li>✨ <a href="https://github.com/apache/fluss/pull/3398">PR #3398</a> 新增 bitmap 聚合函数 rb_build_agg, rb_or_agg, rb_and_agg</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <ul class="critical-list"><li>⚠️ <a href="https://github.com/apache/fluss/issues/3394">Issue #3394</a> 测试不稳定问题：DefaultAuthorizerTest 后出现不稳定测试</li></ul>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2917">Issue #2917</a> [server] Add retract support for Aggregation Merge Engine</h4>
+            <ul><li><span class="author">@ThorneANN</span>: 询问该项目是否有进展</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3299">Issue #3299</a> [server] Add authorization to Replication Control RPCs (notifyLeaderAndIsr, updateMetadata, stopReplica, adjustIsr)</h4>
+            <ul><li><span class="author">@vaibhavk1992</span>: 通知 @wuchong 已修复测试用例，请帮忙审查</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3346">Issue #3346</a> [spark] Implement SupportsPushDownLimit DSv2 interface</h4>
+            <ul><li><span class="author">@Yohahaha</span>: 单元测试失败，原因是 #3397 导致的问题</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3350">Issue #3350</a> [flink] support offset lag</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 提醒 @loserwang1024 关注此 PR</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3355">Issue #3355</a> [flink] Preserve log-only source restore mode</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 通知将合并此 PR，如有其他意见可留言</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3395">Issue #3395</a> [lake/hudi] Introduce Hudi LakeCatalog to create table</h4>
+            <ul><li><span class="author">@fhan688</span>: 所有测试已通过，请 @XuQianJin-Stars 帮忙审查</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3325">PR #3325</a> [kv] Treat full-schema partial writes as full row for DefaultRowMerger</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 表示赞同此修改方案</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3350">PR #3350</a> [flink] support offset lag</h4>
+            <ul><li><span class="author">@Copilot</span>: 建议移除 recordLogEndOffset 的更新，使用真实的 high-watermark/listOffsets 结果更新 log end offset，避免低估 recordsLag</li><li><span class="author">@Copilot</span>: 指出 recordsLag() 在未初始化时返回 0 会误导，建议返回 UNINITIALIZED 或暴露明确的未知状态</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3394">#3394</a> [test] Unstable test after DefaultAuthorizerTest <span class="author">@gyang94</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3398">#3398</a> [FIP-37] Add bitmap aggregate functions: rb_build_agg, rb_or_agg, rb_and_agg and register via FlussCatalog <span class="author">@Prajwal-banakar</span> </li><li><a href="https://github.com/apache/fluss/pull/3397">#3397</a> [spark] Split non-partition and partition predicates from pushPredicates to limit pushdown <span class="author">@Yohahaha</span> </li><li><a href="https://github.com/apache/fluss/pull/3396">#3396</a> [lake] Fix DvTableReadableSnapshotRetriever scanning wrong snapshot <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/pull/3395">#3395</a> [lake/hudi] Introduce Hudi LakeCatalog to create table <span class="author">@fhan688</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3354">#3354</a> [flink] Avoid initializing lake snapshot splits after log-only source restore <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/issues/3311">#3311</a> [server] Prevent deletion of default database to avoid catalog open failure <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/2759">#2759</a> [workflow/doc] How to host a community call as a contributor <span class="author">@MehulBatra</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3355">#3355</a> [flink] Preserve log-only source restore mode <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/pull/3325">#3325</a> [kv] Treat full-schema partial writes as full row for DefaultRowMerger <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/pull/3312">#3312</a> [server] fix: prevent delete default database <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/pull/3194">#3194</a> [server] make RemoteLogManifest sorted with startOffset <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/pull/2792">#2792</a> [log] Output the leader server id and related table ids on fetching log failure <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/pull/2760">#2760</a> [workflow/doc] how to host community call steps <span class="author">@MehulBatra</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
