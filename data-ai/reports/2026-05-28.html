@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data+AI 全球日报 | 2026-05-28</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Data+AI 全球日报 | 2026-05-28</h1>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="top-changes">
+            <h2>🔥 今日最重要的3个变化</h2>
+            <ol><li><strong>AWS 重构 OpenSearch Serverless 架构</strong> — 专为 AI Agent 设计，实现 20 倍扩容速度提升与 60% 成本降低，标志着搜索数据库向 Agent 基础设施演进。</li><li><strong>ClickHouse Cloud 发布多阶段分布式查询引擎</strong> — 显著提升大连接和高基数聚合性能，进一步巩固其在实时分析 OLAP 领域的性能壁垒。</li><li><strong>ClickHouse Open House 2026 展示生态野心</strong> — 通过集成 Postgres、Agents 及可观测性工具，试图构建无锁定的实时数据全链路生态。</li></ol>
+            <p class="judgment"><strong>总判断：</strong>今日行业信号强烈指向“数据基础设施的 AI 原生化重构”。AWS 对 OpenSearch 的底层重写不仅是成本优化，更是为了适配 Agent 自动化调用需求；ClickHouse 则在性能与生态边界上双向突围。数据平台正从被动存储查询向主动服务 Agent 的智能底座转型。</p>
+        </section>
+
+        <section class="top-signals">
+            <h2>📡 重要信号</h2>
+            
+    <article class="news-item">
+        <h3>Amazon OpenSearch Serverless 新一代架构发布：专为 Agent 构建而生</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/the-next-generation-of-amazon-opensearch-serverless-built-from-the-ground-up-for-agents/">AWS Big Data Blog</a></p>
+        <p class="date">2026-05-28</p>
+        <p class="summary">AWS 宣布对 Amazon OpenSearch Serverless 进行底层架构重构。新架构专为 AI Agent 场景优化，支持 Scale-to-zero（缩容至零），自动扩容速度提升高达 20 倍，且相比峰值负载配置成本降低 60%。这标志着 OpenSearch 从传统搜索引擎向 AI 时代向量检索与 Agent 记忆存储核心组件的转型。</p>
+        <div class="impact">📊 数据平台影响：此举直接冲击专用向量数据库市场。OpenSearch 作为成熟的开源检索引擎，通过 Serverless 形态降低 Agent 开发门槛，将推动“向量+全文”混合检索成为数据平台标配，迫使 Snowflake/Databricks 等竞品加速强化搜索能力。</div>
+    </article>
+        </section>
+
+        <section class="product-tech">
+            <h2>💻 产品与技术</h2>
+            
+    <article class="news-item">
+        <h3>ClickHouse Cloud 引入多阶段分布式查询执行</h3>
+        <p class="sources">📌 <a href="https://clickhouse.com/blog/multi-stage-distributed-query-execution-clickhouse-cloud">ClickHouse Blog</a></p>
+        <p class="date">2026-05-28</p>
+        <p class="summary">ClickHouse Cloud 发布多阶段分布式查询执行功能，允许单个查询在多个节点间分阶段执行。这一架构升级旨在解决大规模 Join 和高基数聚合的性能瓶颈，无需用户手动优化即可处理更复杂的分析负载。</p>
+        <div class="impact">📊 数据平台影响：解决了 ClickHouse 在复杂 ETL 和宽表关联场景下的短板，使其在实时数仓竞争中更具优势，缩小了与传统 MPP 数据库在复杂查询处理能力上的差距。</div>
+    </article>
+    <article class="news-item">
+        <h3>ClickHouse Open House 2026 Day 1：实时数据生态全景发布</h3>
+        <p class="sources">📌 <a href="https://clickhouse.com/blog/open-house-2026-day-1">ClickHouse Blog</a> | <a href="https://clickhouse.com/blog/open-house-2026-day-1-jp">ClickHouse Blog (JP)</a></p>
+        <p class="date">2026-05-28</p>
+        <p class="summary">ClickHouse 年度大会 Day 1 发布了一系列更新，包括 Postgres 集成、ClickPipes 数据摄入、ClickHouse Agents 以及 Langfuse V4 集成等。大会核心主题是“无锁定的实时数据”，旨在打通从数据摄入、存储到 AI 应用构建的全链路。</p>
+        <div class="impact">📊 数据平台影响：ClickHouse 正试图跳出单一 OLAP 引擎定位，通过 ClickPipes 和 Agents 构建开放的数据生态，对抗 Snowflake 等封闭生态的锁定效应，抢占 AI 可观测性与实时应用数据底座市场。</div>
+    </article>
+        </section>
+
+        <section class="people-views">
+            <h2>👤 人物与观点</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="analyst-insights">
+            <h2>📊 分析师洞察</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="watchlist">
+            <h2>👀 观察列表</h2>
+            
+    <article class="watchlist-item">
+        <h3>数据库“Agent-Native”架构演进</h3>
+        <span class="status">持续跟踪</span>
+        <p class="reason">AWS OpenSearch 明确提出 'Built for Agents'，预示数据库设计范式正从为人交互优化转向为机器/API 自动调用优化。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>观察 Snowflake 与 Databricks 是否跟进推出针对 Agent 自动扩缩容与计费的专项优化功能。</p>
+    </article>
+        </section>
+
+        <section class="stock-analysis">
+            <h2>📈 股票分析</h2>
+            <p class="disclaimer">⚠️ 以下内容仅供参考，不构成任何投资建议。投资有风险，入市需谨慎。</p>
+            
+    <article class="stock-item">
+        <div class="stock-header">
+            <span class="ticker">AMZN</span>
+            <span class="company">Amazon</span>
+            <span class="signal signal-bullish">🟢 看多</span>
+        </div>
+        <p class="stock-summary">OpenSearch Serverless 的架构重构解决了 AI 应用开发中向量检索成本高、弹性差的痛点。作为 AWS AI 服务栈（Bedrock + OpenSearch）的关键一环，此举将增强 AWS 在 GenAI 基础设施领域的粘性。</p>
+        <div class="stock-details">
+            <div class="catalysts">
+                <strong>🚀 催化剂</strong>
+                <ul><li>AI Agent 应用爆发带来的向量存储需求激增</li><li>Serverless 成本降低吸引中小开发者</li></ul>
+            </div>
+            <div class="risks">
+                <strong>⚠️ 风险</strong>
+                <ul><li>专用向量数据库（如 Pinecone, Milvus）的技术反扑</li><li>OpenSearch 开源社区分支的潜在竞争</li></ul>
+            </div>
+        </div>
+    </article>
+        </section>
+
+        <footer>
+            <p>Generated by Data+AI Daily Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
