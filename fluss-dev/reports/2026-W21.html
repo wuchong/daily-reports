@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fluss 社区周报 | 2026-W21</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Fluss 社区周报 | 2026-W21</h1>
+            <p class="date-range">2026-05-18 ~ 2026-05-24</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (0)</h2>
+            <p class="empty">本周无公告</p>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (2)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/03oprd2gjx90ksswwcs1l0502wc63wqy">Graduate Apache Fluss (incubating) as a TLP - Community</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/qx63y46n5v2jxqcpxnb61rx36dqn1k09">FIP-43: Fluss Multi-Table Subscription API</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (6)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/k0c5f59jnlspfbcqo5z97cjwlt039cvz">FIP-43: Fluss Multi-Table Subscription API</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">讨论主要围绕 FIP-43 多表订阅 API 中的 Schema 演进处理、第一阶段范围界定及 Drop+Recreate 场景的安全性展开。双方就写入时是否允许旧 SchemaId 以及如何处理表重建后的缓存失效问题进行了深入探讨，最终作者已根据反馈更新提案。</p>
+            <div class="key-points"><p><strong>@Hongshun Wang:</strong> 提议写入时强制使用最新 schemaId 以避免数据损坏，并确认将部分更新、投影等功能排除在第一阶段范围之外。</p>
+<p><strong>@Anton Borisov:</strong> 建议允许旧 schemaId 写入以保持与现有单表写入器行为一致，并指出 Drop+Recreate 场景下存在缓存未刷新导致使用旧 TableInfo 的风险。</p></div>
+            <p class="conclusion">Hongshun Wang 已根据讨论意见更新了 FIP 文档，Anton Borisov 将协助审查相关 PR。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/jhc2xg80z93hgk6gpbml2qv8y8fgdl88">Community Call - Friday, May 29th</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">Nicholas 发起邀请，定于 5 月 29 日召开 Fluss 社区会议，旨在收集反馈、分享生产见解并确定社区优先事项。Jark Wu 随即回复确认支持，并表示期待与社区成员交流。邮件中明确了各时区的具体会议时间及用于收集议题的协作文档链接。</p>
+            <div class="key-points"><p><strong>@Nicholas:</strong> 邀请社区成员参加会议，鼓励大家分享反馈和生产环境经验，共同制定社区优先事项。</p>
+<p><strong>@Jark Wu:</strong> 感谢组织会议，期待与社区成员见面交流。</p></div>
+            <p class="conclusion">会议已确认安排，参与者需通过提供的协作文档链接添加讨论议题并按时参会。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/m5433lh8q7m156yxpxxqp3fhlydfkkot">FIP-36: Support Variant Type and Shredding</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">本次讨论围绕 FIP-36（支持 Variant 类型和 Shredding）展开，Jark Wu 对提案提出了最终的评审意见。主要涉及列索引定义的调整、类型转换语法的优化以及剪枝逻辑准确性的修正。</p>
+            <div class="key-points"><p><strong>@Jark Wu:</strong> 建议将 `column_index` 字段改为 optional，以便未来引入 `column_id` 实现更稳定的投影下推，避免因列删除导致索引错位。</p>
+<p><strong>@Jark Wu:</strong> 认为类型后缀应为可选，未指定时返回 Variant 类型；同时建议在 FIP 中补充类型转换失败时返回 null 的规则说明。</p>
+<p><strong>@Jark Wu:</strong> 指出当前关于剪枝的描述不准确，不能仅传输 typed_value，必须传输完整缓冲区数据以防数据丢失，建议补充详细的二进制结构图。</p></div>
+            <p class="conclusion">下一步需根据建议修改 FIP 文档：调整字段定义、补充类型转换失败的处理规则、修正剪枝逻辑描述并添加二进制结构图示。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/7v7k1xmbl068bskqrsfrftrpk3w5q2pf">FIP-44: Enhanced LanceDB Integration — Vector Indexes, FTS, and Hybrid Search</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Sagar 发起了 FIP-44 提案，旨在增强 Fluss 与 LanceDB 的集成。该提案计划引入向量索引、全文搜索（FTS）及混合搜索功能，目前正寻求社区审阅。</p>
+            <div class="key-points"><p><strong>@Sagar:</strong> 创建了 FIP-44 提案，建议增强 LanceDB 集成，具体包括向量索引、全文搜索和混合搜索功能。</p></div>
+            <p class="conclusion">提案已创建，下一步等待社区进行审阅。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/ngl30v1zwvl4w44cmwkoydnysl7r1ypq">Log Enrichment via Append Columns</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Keith Lee 提议通过“追加列”机制优化日志富化流程，旨在解决当前架构中因数据双写导致的存储和 I/O 成本倍增问题。该方案允许将富化列直接写回原日志表，并通过水位线机制确保读取数据的完整性，目前已提交 FIP 文档及 POC 代码供社区评审。</p>
+            <div class="key-points"><p><strong>@Keith Lee:</strong> 现有架构将数据写入两个表导致基础列重复存储，造成存储和 I/O 资源浪费。</p>
+<p><strong>@Keith Lee:</strong> 提议引入“追加列”原语，支持将富化列写回原表，实现基础列与富化列的独立存储与读取。</p>
+<p><strong>@Keith Lee:</strong> 系统利用富化水位线（EWM）限制读取进度，确保消费者仅能读取到已完成的完整数据行。</p></div>
+            <p class="conclusion">已发布 FIP-45 提案及 POC 实现，正在征求社区意见。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/558vh2ttor7jb0s12g943ovm1yvgfvt0">FIP-41: Fluss Kubernetes Operator</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论主要围绕 FIP-41 Fluss Kubernetes Operator 提案展开，参与者总体支持该方向，但指出了在集群重平衡、PVC 生命周期及滚动升级安全性方面的不足。建议完善扩缩容流程、ID 分配机制及副本恢复门控逻辑，以奠定良好的 Operator 基础。</p>
+            <div class="key-points"><p><strong>@Giannis Polyzos:</strong> 扩容后需触发重平衡，缩容需先执行排空路径（标记临时下线+重平衡+验证零桶）以防集群不可用。</p>
+<p><strong>@Giannis Polyzos:</strong> 建议由 Operator 负责 ID 分配以避免 PVC 回收导致 ZK 状态损坏，并明确 PVC 不自动删除。</p>
+<p><strong>@Yunhong Zheng:</strong> 滚动升级规范不足，Operator 不仅要在退出时处理 Leader 迁移，还必须在进入时等待副本恢复完成（如日志追上、桶加入 ISR）。</p></div>
+            <p class="conclusion">提案总体获支持，但需针对重平衡触发机制、PVC 生命周期及滚动升级中的副本恢复门控进行完善。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (0)</h2>
+            
+    <p>本周新建 <strong>0</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周无新建 JIRA。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Fluss Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
