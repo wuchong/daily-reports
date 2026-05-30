@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-05-29</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-05-29</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 4 新 Issues</div>
+            <div class="stat">✅ 3 关闭</div>
+            <div class="stat">✨ 5 新 PRs</div>
+            <div class="stat">🎉 5 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/2836">PR #2836</a> 添加腾讯云 COS 文件系统支持，扩展云存储集成能力</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3132">PR #3132</a> 优化 RemoteLogFetcher 异步预取机制，提升恢复性能</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3232">PR #3232</a> 为每个 processor 添加请求队列大小指标，增强可观测性</li><li>🚀 <a href="https://github.com/apache/fluss/pull/3400">PR #3400</a> 实现 Cluster Health API，支持安全滚动升级</li><li>✨ <a href="https://github.com/apache/fluss/pull/3401">PR #3401</a> 提议将 fluss-rust 仓库合并到主仓库</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2881">Issue #2881</a> [lake/iceberg] Support snapshot expiration for lake tables</h4>
+            <ul><li><span class="author">@vamossagar12</span>: 实现 Iceberg 快照过期配置选项，通过提交次数和时间间隔双重阈值控制过期频率</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3232">Issue #3232</a> [server] Add request queue size metric per processor</h4>
+            <ul><li><span class="author">@zuston</span>: 感谢 @fresh-borzoni 的贡献</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3144">Issue #3144</a> Batch reads on ``/`` fail with coordinator NPE instead of a clear unsupported error</h4>
+            <ul><li><span class="author">@QuakeWang</span>: 主动请求分配该任务，表示愿意处理此问题</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3397">Issue #3397</a> [spark] Split non-partition and partition predicates from pushPredicates to limit pushdown</h4>
+            <ul><li><span class="author">@Yohahaha</span>: 请求维护者审查 Spark 相关的谓词下推优化 PR</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3398">Issue #3398</a> [FIP-37] Add bitmap aggregate functions: rb_build_agg, rb_or_agg, rb_and_agg and register via FlussCatalog</h4>
+            <ul><li><span class="author">@Prajwal-banakar</span>: 请求 @polyzos 和 @wuchong 帮助审查位图聚合函数 PR</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3401">Issue #3401</a> [FIP-40] merge fluss-rust</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 请求 @wuchong 和 @luoyuxia 审查 Rust 仓库合并提案</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3403">Issue #3403</a> [flink-action][server][client] add orphan files cleanup action for remote storage</h4>
+            <ul><li><span class="author">@sd4324530</span>: 建议参考 Paimon 实现基于 Flink procedures 的孤立文件清理调用方式</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3242">PR #3242</a> [client] Fix tiering hang on first_row merge engine empty batches</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 提出多项代码改进建议：变量命名优化、测试方法合并、逻辑简化等</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3390">PR #3390</a> [client] Fix stale metadata on readOnlyGateway by adding RetryableGatewayClientProxy</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 详细审查重试机制：建议添加退避策略、共享刷新请求、配置项化等优化</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2747">PR #2747</a> [client] Abort write batch if table id changes.</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 指出锁内调用外部方法的活性问题，建议批量处理过期批次</li><li><span class="author">@loserwang1024</span>: 感谢审查建议，已根据反馈修改代码</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3383">PR #3383</a> [Flink] Kvscan flink integration</h4>
+            <ul><li><span class="author">@binary-signal</span>: 完善文档说明：服务端 KV 扫描配置、有界读取行为、重启扫描机制等</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3407">#3407</a> [rust] Merge fluss-rust repo into fluss <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/3405">#3405</a> [client] Initialize lake comparator when log scan is already finished <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/issues/3403">#3403</a> [flink-action][server][client] add orphan files cleanup action for remote storage <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/3399">#3399</a> [server] Support Cluster Health API for safe rolling upgrades <span class="author">@swuferhong</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3408">#3408</a> [website] Add Security Updates table to security page <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/pull/3404">#3404</a> [flink-action][server][client] add orphan files cleanup action for remote storage <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/3402">#3402</a> [flink] Fail fast on batch virtual log table reads <span class="author">@QuakeWang</span> </li><li><a href="https://github.com/apache/fluss/pull/3401">#3401</a> [FIP-40] merge fluss-rust <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/3400">#3400</a> [server] Add Cluster Health API implementation <span class="author">@swuferhong</span> <span class="labels">priority=blocker</span></li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3405">#3405</a> [client] Initialize lake comparator when log scan is already finished <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/issues/3091">#3091</a> [server] RemoteLogFetcher optimize to async downloading <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/issues/2686">#2686</a> [File system] Add Tencent Cloud COS integration <span class="author">@XuQianJin-Stars</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3406">#3406</a> [client] Initialize lake comparator before merge read <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/pull/3380">#3380</a> org-names for Apache fluss (incubating) team <span class="author">@MehulBatra</span> </li><li><a href="https://github.com/apache/fluss/pull/3232">#3232</a> [server] Add request queue size metric per processor <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/pull/3132">#3132</a> [server] Optimize RemoteLogFetcher with async prefetch for recovery <span class="author">@Kaixuan-Duan</span> </li><li><a href="https://github.com/apache/fluss/pull/2836">#2836</a> [FLUSS-2686] Add COS filesystem support <span class="author">@XuQianJin-Stars</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
