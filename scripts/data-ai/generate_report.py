@@ -106,6 +106,8 @@ def generate_html(summary: dict) -> str:
     """Generate full HTML report."""
     date = summary.get('date', '')
     sections = summary.get('sections', {})
+    if not isinstance(sections, dict):
+        sections = {}
     
     # Render top 3 changes
     top_changes_html = ''.join(

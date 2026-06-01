@@ -142,7 +142,16 @@ def main():
         print("Warning: No news items found, creating empty summary")
         summary = {
             'date': news_data.get('date', ''),
-            'sections': [],
+            'top_3_changes': [],
+            'overall_judgment': '',
+            'sections': {
+                'top_signals': [],
+                'product_tech': [],
+                'people_views': [],
+                'analyst_insights': [],
+                'watchlist': [],
+                'stock_analysis': []
+            },
             'total_items': 0
         }
     else:
