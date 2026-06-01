@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-05-31</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-05-31</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 1 新 Issues</div>
+            <div class="stat">✅ 0 关闭</div>
+            <div class="stat">✨ 2 新 PRs</div>
+            <div class="stat">🎉 1 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/3408">PR #3408</a> 网站安全页面添加安全更新表格，由 Jark Wu 合并</li><li>🐛 <a href="https://github.com/apache/fluss/issues/3410">Issue #3410</a> 测试执行后遗留临时文件问题被报告</li><li>✨ <a href="https://github.com/apache/fluss/pull/3411">PR #3411</a> 修复 FlussClusterExtension 中集群关闭后删除临时目录</li><li>🔧 <a href="https://github.com/apache/fluss/pull/3409">PR #3409</a> 修复 testRebalanceWithRemoteLog 不稳定测试</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/1989">Issue #1989</a> [FileSystem] Mask user secret in the S3DelegationTokenProvider/S3DelegationTokenReceiver</h4>
+            <ul><li><span class="author">@QuakeWang</span>: 询问 @Pikady 是否仍在处理此 issue，若无则希望接手并提交 PR</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2616">Issue #2616</a> [Lake/Iceberg] create doc to integrate fluss + Iceberg via flink with aws glue</h4>
+            <ul><li><span class="author">@qzyu999</span>: 请求将此 issue 重新分配给自己</li><li><span class="author">@leekeiabstraction</span>: 说明 Jared 将贡献 Iceberg 相关功能，自己会在 Glue 方面提供指导</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3409">Issue #3409</a> [test] fix flaky testRebalanceWithRemoteLog</h4>
+            <ul><li><span class="author">@wattt3</span>: 请求 @swuferhong 和 @wuchong 帮忙 review 此 PR</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3242">PR #3242</a> [client] Fix tiering hang on first_row merge engine empty batches</h4>
+            <ul><li><span class="author">@Kaixuan-Duan</span>: 回复 review 意见，已修改过时的 NOTE 注释并移除无用测试</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3388">PR #3388</a> [server]: remove orphan files and directories when tablet starts up</h4>
+            <ul><li><span class="author">@Copilot</span>: 指出 parseTabletDir 移出 try-catch 块导致错误处理语义变化，以及 sweepOrphanTabletDirs 非原子性可能引发部分清理问题</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3395">PR #3395</a> [lake/hudi] Introduce Hudi LakeCatalog to create table</h4>
+            <ul><li><span class="author">@XuQianJin-Stars</span>: 详细审查了 schema 兼容性检查、异常处理、线程安全、Hudi 保留列冲突等多个问题并提出改进建议</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3397">PR #3397</a> [spark] Split non-partition and partition predicates from pushPredicates to limit pushdown</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 建议优化 convert 调用避免重复工作，添加分区查询测试，以及重构父类方法调用逻辑</li><li><span class="author">@Yohahaha</span>: 解释了 filter pushdown 的重构设计，Lake 和 non-lake 路径可独立实现 pushdown 逻辑</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3410">#3410</a> Tests leave temporary files after execution <span class="author">@Dream95</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3411">#3411</a> [test] Delete temp dir after cluster shutdown in FlussClusterExtension <span class="author">@Dream95</span> </li><li><a href="https://github.com/apache/fluss/pull/3409">#3409</a> [test] fix flaky testRebalanceWithRemoteLog <span class="author">@wattt3</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <p class="empty">暂无</p>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3408">#3408</a> [website] Add Security Updates table to security page <span class="author">@wuchong</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
