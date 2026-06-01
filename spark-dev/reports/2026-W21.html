@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spark 社区周报 | 2026-W21</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Spark 社区周报 | 2026-W21</h1>
+            <p class="date-range">2026-05-18 ~ 2026-05-24</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (3)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/coqt4hotvxpngfd1f79fhwc33hyqvd95">New PMC member: Peter Toth</a></li>
+<li><a href="https://lists.apache.org/thread/fyrgzt8zhq34gtdw8wo7zf3so9wdyw98">New Spark Committer: Szehon Ho</a></li>
+<li><a href="https://lists.apache.org/thread/hwk5x16h0r40qz4h1c3qtpklwrtz6nlv">New Spark Committer: Yicong Huang and Tian Gao</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (0)</h2>
+            <p class="empty">本周无投票</p>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (8)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/qs19hmfz78gbmokdpwfb7j06hvhstwdb">Can some one please explain this conduct ?</a></h3>
+            <p class="meta">34 条回复 · 10 位参与者</p>
+            <p class="summary">Asif Shahid 指控其提交的 Spark PR 在原工单仍开启时，被 Committer 另立新工单并“抄袭”修复方案，谴责社区存在不道德的“卡特尔”行为。涉事 Committer Peter Toth 解释称这是在开发其他功能时独立发现并修复的问题，因未检索到现有工单导致重复，并非有意剽窃。其他社区资深成员指出这更多是大型开源项目审核资源有限导致的疏忽，而非阴谋。</p>
+            <div class="key-points"><p><strong>@Asif Shahid:</strong> 指责社区成员通过新工单窃取其 PR 中的测试用例和修复方案，认为这是“卡特尔”成员维护私利的排他行为。</p>
+<p><strong>@Peter Toth:</strong> 否认抄袭，解释称是在处理其他 PR 时独立发现并修复了该 Bug，因疏忽未检查现有工单；并指出 Asif 引用的过往案例中，最终合并的方案与 Asif 的不同。</p>
+<p><strong>@Sean Owen / Tian Gao:</strong> 认为大型开源项目中 PR 被忽视或重复是常见现象，主要原因是审核资源不足和 JIRA 检索困难，建议贡献者通过完善 PR 质量和主动标记 Committer 来获取关注。</p></div>
+            <p class="conclusion">初步结论为沟通误会，系因 JIRA 检索疏忽和审核资源分配不均所致；社区建议贡献者保持专业态度，通过规范的流程推进代码合入，而非采取对抗性指责。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/nf1nty0cp82t7kn9bzdkd231odt1kcgb">[FYI] Spark 4.2.0 RC1 planned for May 20</a></h3>
+            <p class="meta">7 条回复 · 4 位参与者</p>
+            <p class="summary">讨论主要围绕 Spark 4.2.0 RC1 的发布准备展开，涉及 JDBC TABLESAMPLE 修复的紧急合并争议以及 Auto CDC 和 DSv2 事务修复的进度确认。Huaxin Gao 对 Cheng Pan 在节假日期间匆忙合并包含 API 变更的修复提出流程质疑，同时其他贡献者请求纳入关键修复。目前 RC1 将待 DSv2 事务相关 PR 合并后推进。</p>
+            <div class="key-points"><p><strong>@Huaxin Gao:</strong> 计划发布 RC1，但指出 Cheng Pan 在美国节假日期间合并包含 API 变更的修复缺乏足够的审查时间，建议未来给予更充裕的缓冲期。</p>
+<p><strong>@Cheng Pan:</strong> 认为发现的 JDBC 下推问题虽非硬性阻碍但值得修复，因忽略美国节假日导致合并时间仓促，对此表示歉意。</p>
+<p><strong>@Anton Okolnychyi:</strong> 确认 CDC 相关问题已解决，DSv2 事务修复的 PR 已提交，预计本周末或下周初完成合并。</p></div>
+            <p class="conclusion">RC1 将在 DSv2 事务修复（SPARK-56695, SPARK-56995）合并并回溯至 branch-4.2 后发布。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/k66dw2ybh92x53906zbxbrk2tj4l9o7x">Request for Jira permissions to work on SPARK-47017</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">Aleksandr Efimov 请求 Jira 权限并提出了修复 SPARK-47017（改进 History Server 可观测性）的具体计划。Holden Karau 指导了贡献流程，说明无需分配 Jira 任务，只需留言认领即可。Aleksandr 确认理解并表示会在准备好 PR 后进行标记。</p>
+            <div class="key-points"><p><strong>@Aleksandr Efimov:</strong> 计划通过复现问题、追踪指标断点并提交小型 PR 来改进 History Server 中 RDDScanExec 的可观测性。</p>
+<p><strong>@Holden Karau:</strong> 指出社区不将 Jira 问题分配给作者，建议直接在问题下留言认领，并表示愿意审查代码。</p></div>
+            <p class="conclusion">Aleksandr 将在 Jira 上留言认领该问题，并在准备好 PR 后标记 Holden Karau 进行审查。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/0qy81xcn5nfp8dv4x14o99f8vdhc4km3">How can we afford CI for the new release cadence?</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论主要针对 Spark 社区 CI 资源消耗严重超标（35万分钟/周 vs 25万分钟限额）的问题，急需采取措施降低用量。参与者重点探讨了调整分支合并后测试策略，倾向于通过禁用或调整 4.x 分支的测试来快速缓解资源压力。</p>
+            <div class="key-points"><p><strong>@Tian Gao:</strong> 指出 CI 使用量已超标 40%，建议通过减少测试、加速测试或迁移定时任务等方式解决，需在两周内找到快速方案。</p>
+<p><strong>@Ruifeng Zheng:</strong> 建议直接禁用 4.x 分支的每次提交后测试，因为该分支仅为集成分支，RC 会从编号分支切出并保留独立 CI。</p>
+<p><strong>@Jungtaek Lim:</strong> 支持禁用或降低 4.x 分支测试频率，认为 master 和 4.x 分支的测试存在冗余，但也表达了对覆盖率下降的担忧。</p></div>
+            <p class="conclusion">初步达成共识，将禁用或调整 branch-4.x 的 post-merge CI 任务，以快速将资源使用量降至 ASF 限额以下。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/pl610r91sv4g5cnw9rtfw2s7sojv8px0">Native memory cooperation: let BlockManager manage external-engine payloads</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论旨在解决原生执行引擎内存无法作为一等公民参与 Spark 存储内存核算的长期痛点。Chang Chen 提出了让 BlockManager 管理外部引擎负载的机制，但 Kent Yao 指出该方案无法实现宣称的“统一 LRU”，因为原生块无法更新访问顺序，导致其被不公正地优先驱逐。</p>
+            <div class="key-points"><p><strong>@Chang Chen:</strong> 指出原生引擎内存无法参与 Spark 存储内存核算的问题，并提出了让 BlockManager 管理外部引擎负载的具体机制。</p>
+<p><strong>@Kent Yao:</strong> 反驳了提案关于“统一 LRU”的属性，指出由于原生块无法在读取时更新其在 LinkedHashMap 中的位置，会导致其被优先驱逐，而非真正的 LRU。</p>
+<p><strong>@Kent Yao:</strong> 提出解决方案需明确取舍：要么引入 touch API 并承担同步查找的性能开销，要么重新定义并接受原生块的实际驱逐策略。</p></div>
+            <p class="conclusion">目前尚无定论，下一步需要提案作者回应 Kent 提出的技术质疑，即决定是否引入 touch API 及其开销，或修正关于驱逐策略的描述。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/y160qvh6f8hz4mr86pm6vlvj6hm2kggm">Behaviour of operators like Outer Join when using indeterministic joining keys seems to be full of contradictions</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论主要围绕 Asif Shahid 对社区处理关键数据正确性问题（SPARK-51272 和 SPARK-51016）的不满，他认为自己的贡献被低估且功劳未被正确归属。他指出问题根源在于分区器与不确定性属性之间的脱节，并质疑替代方案缺乏可靠的测试用例。目前，他已将针对不确定性 Stage Bug 的 PR 拆分为两个部分以继续推进。</p>
+            <div class="key-points"><p><strong>@Asif Shahid:</strong> 投诉其发现并修复的关键 Bug（SPARK-51272/51016）最初被错误地标记为“无效查询”，且后续修复未给予其应有的功劳。</p>
+<p><strong>@Asif Shahid:</strong> 质疑替代 PR 在合并时缺乏可靠的测试用例（特别是涉及 YARN 和分区器问题的场景）。</p>
+<p><strong>@Asif Shahid:</strong> 强调问题的根本原因是分区器与不确定性属性之间的脱节。</p></div>
+            <p class="conclusion">作者已将针对不确定性 Stage Bug 的 PR 拆分为两个，等待社区进一步反馈。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/590zyw0g84w8g9sy1tck08kytn0twc9s">SPIP: Write schema narrowing for column-level UPDATE in DSv2</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论主要围绕 DSv2 中列级 UPDATE 的写入模式收窄设计展开。作者已根据反馈更新了 SPIP 文档和 PR，并补充了未来支持 MERGE INTO 的设计说明，目前正寻求更多反馈以推进投票。</p>
+            <div class="key-points"><p><strong>@Anurag Mantripragada:</strong> 在 SPIP 中新增章节，说明如何将设计扩展以支持 MERGE INTO 用例。</p>
+<p><strong>@Anurag Mantripragada:</strong> 已更新文档阐明 MOR 与 CoW 的优化器规则排序，确认实现能通过 ColumnPruning 有效传播模式收窄。</p>
+<p><strong>@Anurag Mantripragada:</strong> 请求社区在发起投票前对当前方案提供更多反馈。</p></div>
+            <p class="conclusion">暂无最终结论，下一步行动是收集社区对更新后设计（特别是 MERGE INTO 扩展）的反馈，随后将发起投票。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/hk8oj6nz875xv8fd10t5n7qb0g30sb11">Proposal for a structured sponsorship and AI-assisted onboarding process</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Nimrod Ofek 提议建立结构化的入职与赞助流程，以解决新贡献者入门难和维护者负担重的问题。建议引入 AI 助手进行初步代码审查，并让资深贡献者参与指导新人，从而提升项目的可访问性与可持续性。</p>
+            <div class="key-points"><p><strong>@Nimrod Ofek:</strong> 引入 AI 助手作为“第一审查者”，处理代码风格检查、单元测试验证等基础工作，提供即时反馈。</p>
+<p><strong>@Nimrod Ofek:</strong> 建立社区赞助平衡机制，期望经常提交 PR 的贡献者协助指导新人，分担核心维护者的压力。</p>
+<p><strong>@Nimrod Ofek:</strong> 强调培养社区和审查代码与开发新功能同等重要，有助于构建更强大的审查者队伍。</p></div>
+            <p class="conclusion">目前处于提案征集意见阶段，暂无明确结论，下一步需等待社区对该方案的讨论和反馈。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (0)</h2>
+            
+    <p>本周新建 <strong>0</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周无新建 JIRA。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Spark Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
