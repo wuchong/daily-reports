@@ -15,30 +15,44 @@
 
         <section class="top-changes">
             <h2>🔥 今日最重要的3个变化</h2>
-            <ol><li><strong>Redpanda 携手 NVIDIA 优化 AI 代理流式处理</strong> — Redpanda 与 NVIDIA 合作将流式工作负载引入 Vera CPU，实现 5.5 倍延迟降低，标志着流数据平台正式进入硬件协同优化时代。</li></ol>
-            <p class="judgment"><strong>总判断：</strong>流数据基础设施与 AI 专用硬件的深度融合成为今日核心信号。Redpanda 针对 NVIDIA Vera CPU 的优化表明，数据平台竞争正从单纯的软件架构层面转向软硬结合的垂直整合，旨在为 Agentic AI 提供极致的低延迟保障。</p>
+            <ol><li><strong>AWS 增强 EMR 与 SageMaker 数据血缘集成</strong> — AWS 发布方案实现 EMR Spark 作业血缘自动捕获至 SageMaker Unified Studio，强化 AI 开发治理。</li><li><strong>Tinybird 发布内部增长分析迁移案例</strong> — Tinybird 分享将增长分析栈迁回自家产品的实践，展示实时数据分析平台的成熟度与“吃自己的狗粮”策略。</li></ol>
+            <p class="judgment"><strong>总判断：</strong>今日行业动态聚焦于数据治理与平台自证。AWS 通过深化 EMR 与 SageMaker 的血缘集成，进一步打通数据工程与 AI 开发的治理壁垒；Tinybird 的内部案例则验证了实时分析平台在复杂业务场景下的可行性与性能优势。</p>
         </section>
 
         <section class="top-signals">
             <h2>📡 重要信号</h2>
             
     <article class="news-item">
-        <h3>Redpanda 与 NVIDIA 合作推出面向 Agentic Era 的实时流式方案</h3>
-        <p class="sources">📌 <a href="https://www.redpanda.com/blog/nvidia-ai-ecosystem">Redpanda Blog</a></p>
+        <h3>AWS 实现 EMR Spark 作业血缘捕获至 SageMaker Unified Studio</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/capture-data-lineage-of-amazon-emr-spark-jobs-into-amazon-sagemaker-unified-studio/">AWS Big Data Blog</a></p>
         <p class="date">2026-06-01</p>
-        <p class="summary">Redpanda 宣布与 NVIDIA 建立技术合作，将其流式数据处理平台移植到 NVIDIA Vera CPU 上。该合作旨在解决 AI 代理在关键任务环境中的延迟瓶颈，实测显示可提供 5.5 倍的低延迟表现。这标志着流数据基础设施开始针对特定 AI 硬件架构进行底层优化。</p>
-        <div class="impact">📊 数据平台影响：此举打破了通用 x86 架构在流处理领域的同质化竞争，开启了“软硬结合”的新范式。对于构建实时 AI 应用的企业，这意味着在 NVIDIA 生态内可获得更优的 TCO 和性能表现，可能加速 Kafka 替代方案的选型趋势，并提升对 AI 代理工作负载的支持能力。</div>
+        <p class="summary">AWS 发布技术指南，详细介绍如何利用 OpenLineage 协议，将运行在 Amazon EMR 上的 Spark 作业的数据血缘信息自动捕获并追踪至 Amazon SageMaker Catalog。该方案实现了数据血缘元数据的自动流转，帮助用户在 SageMaker Unified Studio 中直观探索数据关系，解决了 AI 开发过程中数据来源追踪的痛点。</p>
+        <div class="impact">📊 数据平台影响：此举打通了数据工程与 MLOps 的元数据壁垒，提升了数据平台的治理能力。通过标准化血缘采集，AWS 进一步巩固了其“数据+AI”一体化生态，降低用户跨平台管理的复杂度。</div>
     </article>
         </section>
 
         <section class="product-tech">
             <h2>💻 产品与技术</h2>
-            <p class="empty">暂无</p>
+            
+    <article class="news-item">
+        <h3>OpenLineage 在 AWS 数据栈中的集成实践</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/capture-data-lineage-of-amazon-emr-spark-jobs-into-amazon-sagemaker-unified-studio/">AWS Big Data Blog</a></p>
+        <p class="date">2026-06-01</p>
+        <p class="summary">文章展示了具体的分步实施细节，重点在于利用开源标准 OpenLineage 作为传输协议，将 EMR Spark 的执行计划元数据无缝集成到 SageMaker 的数据目录中。这标志着 AWS 对开源数据治理标准的支持力度加大，为构建跨平台的统一数据治理提供了技术底座。</p>
+        <div class="impact">📊 数据平台影响：增强了对开源数据治理标准的兼容性，使得基于 AWS 构建的数据平台具备更强的互操作性，有利于企业构建混合云或多云的数据治理架构。</div>
+    </article>
         </section>
 
         <section class="people-views">
             <h2>👤 人物与观点</h2>
-            <p class="empty">暂无</p>
+            
+    <article class="news-item">
+        <h3>Tinybird 分享：为何我们将增长分析迁回自家平台</h3>
+        <p class="sources">📌 <a href="https://www.tinybird.co/blog/why-we-moved-our-growth-analytics-back-into-tinybird">TinyBird</a></p>
+        <p class="date">2026-06-01</p>
+        <p class="summary">Tinybird 发布深度博客，讲述了其内部增长分析栈“Birdwatcher”从外部工具迁移回 Tinybird 自身平台的过程。文章详细阐述了利用自家实时数据分析产品处理核心业务指标的动机与收益，体现了“吃自己的狗粮”文化，并展示了平台在处理复杂分析负载时的性能与灵活性。</p>
+        <div class="impact">📊 数据平台影响：作为实时数据分析领域的创新公司，Tinybird 的实践为同类产品提供了有力的背书，证明了现代实时数据平台已具备承载核心业务分析的能力，可能加速传统数仓向实时架构的演进。</div>
+    </article>
         </section>
 
         <section class="analyst-insights">
@@ -50,10 +64,10 @@
             <h2>👀 观察列表</h2>
             
     <article class="watchlist-item">
-        <h3>流处理平台的硬件加速化</h3>
-        <span class="status">加速落地</span>
-        <p class="reason">随着 NVIDIA Vera CPU 等专用硬件的普及，数据基础设施软件商（如 Redpanda, Confluent）将更多针对特定芯片进行优化，以争夺 AI 工作负载市场。</p>
-        <p class="milestone"><strong>下一里程碑：</strong>观察 Confluent 或 Apache Kafka 社区是否跟进宣布对 ARM 架构或 NVIDIA 特定硬件的优化支持。</p>
+        <h3>OpenLineage 在云厂商中的采用率</h3>
+        <span class="status">持续跟踪</span>
+        <p class="reason">AWS 此次集成 OpenLineage 是重要信号，若其他云厂商跟进，该标准有望成为数据血缘的事实标准。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>观察 GCP 或 Azure 是否在近期宣布对 OpenLineage 的原生支持。</p>
     </article>
         </section>
 
@@ -63,19 +77,19 @@
             
     <article class="stock-item">
         <div class="stock-header">
-            <span class="ticker">NVDA</span>
-            <span class="company">NVIDIA</span>
+            <span class="ticker">AMZN</span>
+            <span class="company">Amazon</span>
             <span class="signal signal-bullish">🟢 看多</span>
         </div>
-        <p class="stock-summary">Redpanda 的集成为 NVIDIA Vera CPU 在数据中心的应用增加了关键的数据基础设施工作负载，强化了 NVIDIA 不仅是 GPU 厂商，更是全栈 AI 基础设施提供商的定位。</p>
+        <p class="stock-summary">AWS 持续完善数据治理与 AI 开发的集成，通过 EMR 与 SageMaker 的深度打通，增强了平台粘性。此举有助于吸引对数据合规性要求高的大型企业客户，利好 AWS 长期营收增长。</p>
         <div class="stock-details">
             <div class="catalysts">
                 <strong>🚀 催化剂</strong>
-                <ul><li>Vera CPU 生态系统的软件兼容性扩展</li><li>AI 代理对低延迟流式数据的需求激增</li></ul>
+                <ul><li>AI 开发平台治理能力提升</li><li>数据工程与 MLOps 流程整合</li></ul>
             </div>
             <div class="risks">
                 <strong>⚠️ 风险</strong>
-                <ul><li>数据中心 CPU 市场竞争激烈（AMD/Intel）</li><li>软件生态迁移成本</li></ul>
+                <ul><li>云基础设施市场竞争加剧</li><li>企业 AI 支出放缓风险</li></ul>
             </div>
         </div>
     </article>
