@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-06-01</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-06-01</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 2 新 Issues</div>
+            <div class="stat">✅ 3 关闭</div>
+            <div class="stat">✨ 2 新 PRs</div>
+            <div class="stat">🎉 3 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/3346">PR #3346</a> Spark 集成支持 SupportsPushDownLimit DSv2 接口已合并</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3397">PR #3397</a> Spark 谓词下推优化，拆分分区与非分区谓词以支持下推限制</li><li>🐛 <a href="https://github.com/apache/fluss/pull/3313">PR #3313</a> 修复了不稳定的 RebalanceManagerITCase 测试用例</li><li>✨ <a href="https://github.com/apache/fluss/issues/3415">Issue #3415</a> 提出为 Scanner 指标添加 per-scanner 维度的新特性</li><li>🐛 <a href="https://github.com/apache/fluss/issues/3385">Issue #3385</a> 不稳定的测试问题已被机器人自动关闭</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3409">Issue #3409</a> [test] fix flaky testRebalanceWithRemoteLog</h4>
+            <ul><li><span class="author">@Kaixuan-Duan</span>: 指出该问题似乎与 #2974 相同。</li><li><span class="author">@swuferhong</span>: 确认 #3313 已修复该问题，将合并代码，感谢贡献。</li><li><span class="author">@wattt3</span>: 确认未注意到重复问题。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3346">Issue #3346</a> [spark] Implement SupportsPushDownLimit DSv2 interface</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 请求 rebase 后将再次进行审查。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3390">Issue #3390</a> [client] Fix stale metadata on readOnlyGateway by adding RetryableGatewayClientProxy</h4>
+            <ul><li><span class="author">@loserwang1024</span>: 修改了设计：通过 refreshClusterUntilAvailable 循环重建元数据，避免过度工程化。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2747">Issue #2747</a> [client] Abort write batch if table id changes.</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 请求 @wuchong 进行最终检查，若无异议明天将合并。</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3397">PR #3397</a> [spark] Split non-partition and partition predicates from pushPredicates to limit pushdown</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 指出 PK 表读取 KV 快照时 ARROW filters 未应用，导致谓词浪费和误导。</li><li><span class="author">@Yohahaha</span>: 回应称 PK 表谓词返回空集行为符合 Spark 预期。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3388">PR #3388</a> [server]: remove orphan files and directories when tablet starts up</h4>
+            <ul><li><span class="author">@swuferhong</span>: 建议使用 Files.delete 解决 TOCTOU 竞态，并指出分区删除时的孤儿文件清理漏洞。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3404">PR #3404</a> [flink-action][server][client] add orphan files cleanup action for remote storage</h4>
+            <ul><li><span class="author">@Copilot</span>: 指出异常处理丢失堆栈、线程池未关闭泄漏及敏感配置日志风险。</li><li><span class="author">@luoyuxia</span>: 建议完善时区文档、跳过 shared SST 列表优化及设置强制并行度。</li><li><span class="author">@swuferhong</span>: 指出 RPC 存在 partitionId 权限绕过风险，建议增加校验与异常映射。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3395">PR #3395</a> [lake/hudi] Introduce Hudi LakeCatalog to create table</h4>
+            <ul><li><span class="author">@Copilot</span>: 指出 ClassLoader 加载问题、敏感配置日志泄露风险及配置键前缀处理不一致。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3174">PR #3174</a> [server] Add ReplicaCleanupManager to throttle drops in coordinator queue</h4>
+            <ul><li><span class="author">@Copilot</span>: 指出 TableChangeWatcher 缓存无界增长及关闭后仍接受提交的安全隐患。</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3415">#3415</a> Add per-scanner dimension for scanner metrics <span class="author">@charlesdong1991</span> </li><li><a href="https://github.com/apache/fluss/issues/3413">#3413</a> [flink] Preserve tiering offsets for empty-batch buckets <span class="author">@luoyuxia</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3414">#3414</a> [lake] Reset lake filters for each pushdown <span class="author">@QuakeWang</span> </li><li><a href="https://github.com/apache/fluss/pull/3412">#3412</a> [WIP]complete delay fetch <span class="author">@gyang94</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3385">#3385</a> [test] Unstable test RebalanceManagerITCase.testRebalanceWithRemoteLog <span class="author">@app/github-actions</span> </li><li><a href="https://github.com/apache/fluss/issues/3342">#3342</a> [spark] Implement SupportsPushDownLimit <span class="author">@Yohahaha</span> </li><li><a href="https://github.com/apache/fluss/issues/2974">#2974</a> [test] Unstable test RebalanceManagerITCase.testRebalanceWithRemoteLog <span class="author">@app/github-actions</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3397">#3397</a> [spark] Split non-partition and partition predicates from pushPredicates to limit pushdown <span class="author">@Yohahaha</span> </li><li><a href="https://github.com/apache/fluss/pull/3346">#3346</a> [spark] Implement SupportsPushDownLimit DSv2 interface <span class="author">@Yohahaha</span> </li><li><a href="https://github.com/apache/fluss/pull/3313">#3313</a> [server] Fix flaky RebalanceManagerITCase.testRebalanceWithRemoteLog <span class="author">@Kaixuan-Duan</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
