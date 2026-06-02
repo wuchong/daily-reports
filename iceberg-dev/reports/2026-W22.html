@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iceberg 社区周报 | 2026-W22</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Iceberg 社区周报 | 2026-W22</h1>
+            <p class="date-range">2026-05-25 ~ 2026-05-31</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (0)</h2>
+            <p class="empty">本周无公告</p>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (3)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/sj1q3q6l77wmoy2dgtc86qb7g3n6qj7j">[Go] Release Apache Iceberg Go v0.6.0 RC2</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/30voqgmho92o0bnv79qcz1rzlkwh5z39">Add unregister endpoint to the REST spec</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/63xpzdp10nd3wgv43z2phz5o9zwwx818">[REST-SPEC] Add list and load function endpoints</a> <span class="status warning">⚠️ 有异议</span><p class="objection-inline">提供的邮件内容中未出现异议（-1 票），所有回复者均投了赞成票（+1）。</p></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/kd183vz2v2y69v4kwbz5wbjfxvx3gf1f">Flink version support after Iceberg 1.11.0</a></h3>
+            <p class="meta">10 条回复 · 8 位参与者</p>
+            <p class="summary">讨论主要围绕 Iceberg 1.12.0 版本的 Flink 支持矩阵展开，核心议题是保留 Flink 1.20 (LTS) 并确定新增版本（2.2 或 2.3）。社区倾向于采纳“LTS + 两个最新版本”的策略（即 1.20, 2.2, 2.3），但有成员担忧放弃中间版本会增加用户升级难度。</p>
+            <div class="key-points"><p><strong>@Steven Wu:</strong> 提议保留 Flink 1.20 并放弃 2.0 和 2.1，转而支持 2.2 和 2.3，以平衡维护成本与新特性支持。</p>
+<p><strong>@Jacky Lee:</strong> 指出 Flink Connector 社区已跳过 2.1 并主推 2.2，建议 Iceberg 优先支持 2.2 以获得更好的生态兼容性。</p>
+<p><strong>@Yu Guo:</strong> 担忧若直接放弃 Flink 2.1，现有 Flink 2.0 用户升级 Iceberg 时将被迫同时升级 Flink 版本，建议临时支持 4 个版本以平滑过渡。</p></div>
+            <p class="conclusion">初步达成共识保留 Flink 1.20 并优先集成 Flink 2.2；Talat Uyarer 将负责创建 PR 以移除 Flink 2.0 支持并添加 2.2 支持，同时社区将继续讨论是否需要临时支持 4 个版本以解决升级路径问题。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/3vdtx3m4xbcw5htj246yhjt6wrc5rjo8">[C++] Release Apache Iceberg C++ 0.3.0</a></h3>
+            <p class="meta">6 条回复 · 4 位参与者</p>
+            <p class="summary">Junwang Zhao 发起了 Apache Iceberg C++ 0.3.0 的发布讨论，鉴于自上个版本以来已有大量功能合并，建议启动发布流程。Guotao Yu 提议延期 1-2 周以便合并关键的 overwrite 功能，从而完善读写工作流，该建议获得了 Junwang Zhao 和 Gang Wu 的支持。最终决定推迟发布窗口，待 overwrite 支持合并后再进行版本发布。</p>
+            <div class="key-points"><p><strong>@Junwang Zhao:</strong> 提议发布 0.3.0 版本，因为已有 114 个提交和大量新功能落地；同意延期以包含 overwrite 支持。</p>
+<p><strong>@Guotao Yu:</strong> 请求延期 1-2 周以合并 overwrite 功能，认为这对完善读写流程至关重要。</p>
+<p><strong>@Gang Wu:</strong> 支持 Guotao Yu 的提议，认为至少应包含 overwrite 支持。</p></div>
+            <p class="conclusion">社区达成共识，将发布窗口延长 1-2 周，等待 overwrite 支持合并后再正式发布 0.3.0 版本。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/36vxlql61gojbg639c86mnz78n57kvgm">Iceberg Consumption of ASF Shared GitHub-hosted Runners</a></h3>
+            <p class="meta">6 条回复 · 6 位参与者</p>
+            <p class="summary">讨论核心在于降低 Iceberg 项目对 ASF 共享 GitHub Runner 资源的消耗。社区提出了增量构建、精简测试矩阵以及将 CI 负载转移至贡献者 Fork 计算资源等优化方案。目前资源使用量虽未触及硬性上限，但社区已着手通过现有 PR 和新提案进一步降低消耗。</p>
+            <div class="key-points"><p><strong>@Ajantha Bhat:</strong> 建议实施增量 PR 构建，根据文件变更仅运行相关模块的 CI（如 Spark 变更仅跑 Spark CI），并减少 PR 中的 JVM 版本覆盖。</p>
+<p><strong>@Kevin Liu:</strong> 指出当前用量虽低于 ASF 上限但仍需优化，提出了“非必要不运行”、“快速失败”和“精简矩阵”等具体策略，并指出 Spark CI 占用了大部分资源。</p>
+<p><strong>@Prashant Singh:</strong> 提议将 PR CI 运行在贡献者的 Fork 计算资源上而非 ASF 共享池，引用 Spark 社区的成功实践，认为这能从根本上解决资源压力。</p></div>
+            <p class="conclusion">社区倾向于结合矩阵缩减与 Fork 计算转移方案；下一步将推进现有的优化 PR（如限制 CVE 扫描），并重点评估利用 Fork 计算资源的提案（PR #15397）。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/46rc8v2ft6grlqkc2hfpzpvgrzjc5fgd">Column Update File Representation</a></h3>
+            <p class="meta">6 条回复 · 3 位参与者</p>
+            <p class="summary">讨论主要关注如何在列更新文件存在的情况下正确处理等值删除，以解决原始设计中不支持该功能的问题。参与者分析了在旧值上评估删除的效率瓶颈，最终倾向于在写入时将等值删除物化为删除向量（DV），并提出了相应的规范变更建议以优化读取路径。</p>
+            <div class="key-points"><p><strong>@Xiening Dai:</strong> 提出在生成列更新文件时将等值删除转换为 DV 的方案，认为这比扫描旧值更高效，但需要规范变更让新 DV 取代旧删除文件。</p>
+<p><strong>@Gábor Kaszab:</strong> 指出在旧列值上评估删除会破坏列更新的性能优势且导致复杂的文件依赖，建议不要在底层自动转换删除类型以免混淆用户。</p>
+<p><strong>@Amogh Jahagirdar:</strong> 提出将基座文件视为“迷你表”的心智模型，建议强制要求列更新时将等值删除重写为 DV，并配合序列号更新规则。</p></div>
+            <p class="conclusion">初步结论是采用“列更新时将等值删除重写为 DV”的方案，并需要修改 V4 规范（如数据序列号定义），以确保读取时无需加载旧值。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/n36l5pfb8xnl38fwswco2841lo91rh47">Website: Iceberg versioned docs and MkDocs sunset</a></h3>
+            <p class="meta">5 条回复 · 3 位参与者</p>
+            <p class="summary">讨论主要围绕 MkDocs 已被废弃的现状以及是否迁移至 `mike` 以支持版本化文档（如下拉选择器）。参与者一致认为，尽管现状不完美，但迁移成本过高且缺乏强烈需求，因此决定暂时维持现状，仅追踪搜索功能改进的需求。</p>
+            <div class="key-points"><p><strong>@Kevin Liu:</strong> MkDocs 虽已废弃但固定版本仍可用，迁移至 `mike` 成本高且收益不明显，建议维持现有手动部署流程。</p>
+<p><strong>@Max Konstantinov:</strong> 总结认为当前文档状态虽不理想但尚可接受，缺乏足够的动力去投资新引擎或工具。</p>
+<p><strong>@Steven Wu:</strong> 指出当前版本化文档的痛点是搜索功能无法匹配旧版本导航，理想情况应实现导航与搜索协同。</p></div>
+            <p class="conclusion">社区决定暂不进行大规模文档引擎迁移，继续使用现有的 MkDocs 版本和部署流程；同时建议追踪针对旧版本文档的搜索优化需求，视后续反馈决定是否改进。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/hb12b05y2rxv98641dwdvdjh58po0h8r">Reviewer Bandwidth In Iceberg-Rust</a></h3>
+            <p class="meta">5 条回复 · 6 位参与者</p>
+            <p class="summary">Jordan Epstein 发起关于 iceberg-rust 审查资源不足的讨论，指出这导致关键特性缺失和项目被迫分叉。社区成员确认了该瓶颈问题，并探讨了通过引入利益相关方或提拔活跃贡献者来增加审查者的方案，同时强调必须遵守现有的提交者指南和信任标准。</p>
+            <div class="key-points"><p><strong>@Jordan Epstein:</strong> 建议引入主要利益相关方（如 DataFusion、RisingWave 等）的代表作为审查者，以加速实现与 Java 版本的特性对等。</p>
+<p><strong>@Jared Yu:</strong> 建议提名长期稳定贡献的非官方审查者为提交者，以缓解 PyIceberg 和 Rust 等项目的合并阻塞。</p>
+<p><strong>@Gang Wu:</strong> 强调审查者需承担长期维护责任，新审查者必须通过高质量贡献建立信任，不能绕过现有的信任建立流程。</p></div>
+            <p class="conclusion">社区普遍认为需要增加审查带宽，但前提是遵循既定的社区指南和信任机制，目前等待 PMC 或更多维护者的进一步反馈。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/1wf4wjyx2xw91ft11q031wj230ofm9o4">[Confluent Hub] Your Kafka connector iceberg-iceberg-kafka-connect version 1.11.0 has been accepted</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">讨论主要围绕 Iceberg Kafka Connect 1.11.0 版本因 LICENSE/NOTICE 文件合规问题从 Confluent Hub 下架展开。Robin Moffatt 主动提出推动修复工作，但作为非 Java 开发者寻求社区协作，Kevin Liu 和 Manu Zhang 随即提供了具体的修复建议和现有 PR 信息。</p>
+            <div class="key-points"><p><strong>@Robin Moffatt:</strong> 承认因误解许可范围导致发布问题，已协助下架版本并希望能与 Java 开发者结对修复。</p>
+<p><strong>@Manu Zhang:</strong> 指出已有相关的开放 PR 可供参考，并呼吁社区协助审查积压的 Kafka Connect PR。</p>
+<p><strong>@Kevin Liu:</strong> 建议参考 cloud bundles 的处理流程，首先修正 runtime-deps.txt 定义，并表示愿意协作。</p></div>
+            <p class="conclusion">社区计划通过修正依赖定义和许可文件来解决合规问题，Kevin Liu 将协助 Robin Moffatt 推进后续修复工作。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/81hjtpqgz8512grogr2cdrrwlo74szos">PyIceberg 0.12.0</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">社区正在筹备 PyIceberg 0.12.0 版本的发布，Alex Stephen 发起了发布讨论并邀请查看里程碑进度。Kevin Liu 指出 0.11.0 版本存在 wheel 问题，建议跳过补丁版本直接进行次要版本发布，Alex Stephen 对此表示同意。</p>
+            <div class="key-points"><p><strong>@Alex Stephen:</strong> 发起发布流程，同意跳过补丁版本直接进行次要版本发布，以便尽快将已合并的代码推送给用户。</p>
+<p><strong>@Kevin Liu:</strong> 指出 0.11.0 版本中 pyiceberg-core 的 wheel 问题，建议跳过补丁发布改为次要版本发布。</p></div>
+            <p class="conclusion">已确认将进行次要版本发布（0.12.0），下一步将解决里程碑中的剩余问题并完成发布。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/y1r1nwg849oyzw9xgtx9bw9wmbr4n9vv">Core: Add OpenTelemetry MetricsReporter</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">讨论主要围绕为 Iceberg 添加 OpenTelemetry MetricsReporter 展开，重点解决了指标属性基数过高的问题。作者通过提交代码使属性集可配置，并决定推迟基于 Span 的 reporter 实现，因为现有接口在语义上不适合生成 Trace。目前关于依赖管理和模块放置的讨论已达成一致，等待最终代码审查。</p>
+            <div class="key-points"><p><strong>@Noritaka Sekiyama:</strong> 通过新增配置属性允许用户控制指标属性集（默认为 table-name 和 operation），解决了高基数问题；同时提议推迟 Span-based reporter，认为 MetricsReporter 接口不适合回溯生成 Span。</p>
+<p><strong>@Ryan Blue:</strong> 同意使用 `compileOnly` 依赖方式，且不反对将模块放在 iceberg-core 中。</p>
+<p><strong>@Jean-Baptiste Onofré:</strong> 支持先从 Metrics 开始的方案，认为后续增加 Spans 可作为独立步骤考虑，并对文档表示认可。</p></div>
+            <p class="conclusion">已就依赖方式（compileOnly）和模块位置达成共识，决定暂时搁置 Span 追踪功能，下一步将等待 JB 的代码审查并推进 PR #16250。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/qvx6bj330vqr7t5q1x12tc0jsb2v0c3n">Flink SQL procedures support for Iceberg</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">Stepan Stepanishchev 提议在 Iceberg 中增加对 Flink SQL procedures 的支持，旨在通过 Flink CALL 语句简化运维工作流。目前已提交初步 PR 实现了过程发现和执行的基础设施，社区正在讨论其实用性和可维护性。</p>
+            <div class="key-points"><p><strong>@Stepan Stepanishchev:</strong> 提议增加 Flink SQL procedures 支持以简化 Flink SQL 环境下的维护任务，并已提交包含基础实现的 PR。</p>
+<p><strong>@Robin Moffatt:</strong> 认为这对最终用户非常有用，能增加 Iceberg 与 Flink 结合的吸引力。</p></div>
+            <p class="conclusion">讨论已开启并获得初步积极反馈，后续将根据社区讨论结果决定增加更多具体的 procedures。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (0)</h2>
+            
+    <p>本周新建 <strong>0</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周无新建 JIRA。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Iceberg Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
