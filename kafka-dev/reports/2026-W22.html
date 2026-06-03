@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafka 社区周报 | 2026-W22</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Kafka 社区周报 | 2026-W22</h1>
+            <p class="date-range">2026-05-25 ~ 2026-05-31</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (1)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/53257438y1gqb8dwg1td3039cj90vqs7">Apache Kafka 4.2.1</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (12)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/on6l0prfxbr5kgn9mjt3yro3dszvbnyt">KIP-1308: Extend Header API for Common Value Types</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/nt9n728s2bpbqh558f5p6o6xb96g3fdc">KIP-1307: SerDe and Interceptor metrics</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/cgnwjhljovdttyxt7qbtcj9hll08vw3t">KIP-1331: Streams Group Topology Description Plugin</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/tfjlp9jtzqsrd234wdy7fy5zwxwcr24d">KIP-1299 Use key range in ProducerPerformance</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/9q22vl6kwp1w7pcnlmqvw2rh59jy6n4f">KIP-1276 CIDR-based Host Patterns for ACLs</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/qx1y2nvx27h1v1t0zvp9kqolnd3fhxls">KIP-1320: Deprecate Utils, ByteBufferInputStream, and ByteBufferOutputStream and introduce internal replacements</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/qcwffg5frz9t8nsdppnhmhgolo6pp1xj">[RESULTS]  Release Kafka version 4.2.1</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/797l92m3kv8l2xc342fogqrd44qhqd0r">: KIP-1306 Extend ConsumerRebalanceListener with Consumer-aware methods</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/n6k7pw80rplj4r5v38ssq3xrnpmlmq0v">KIP-1327 Prevent Hot Data Loss on Partition Expansion for Latest Policy</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/rbxzl1dxd6ddosr9gg2sjyq7pwrqsjzd">KIP-1326: Include broker static configurations in BrokerRegistrationRequest</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/73kk2kfk4kb6bhdvylof3nofgqprqrfg">KIP-1238: Multipartition for TopologyTestDriver in Kafka Streams</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/4byhcdpy06525n7h18vs3w0jmtcxz64k">KIP-1301: Deprecate Yammer-based metrics in `GroupCoordinatorMetrics`</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/dgmmpxsbp7cm85dw56cn5sz6g3skthch">Tightening time-based releases</a></h3>
+            <p class="meta">8 条回复 · 7 位参与者</p>
+            <p class="summary">讨论旨在收紧 Kafka 基于时间的发布计划，以消除每次发布时繁琐的日期讨论并优化时间安排。社区普遍支持采用固定的发布节奏，特别是特性冻结和代码冻结之间采用“3+2”周的间隔，并提出了基于 ISO 周的具体日期方案以避开主要假期。</p>
+            <div class="key-points"><p><strong>@Matthias J. Sax:</strong> 提议建立固定的发布时间表，并建议使用 ISO 周数（第 9/25/41 周）来确定 KIP 冻结日期，以避开春节和圣诞节等假期。</p>
+<p><strong>@Andrew Schofield / Bill Bejeck / Ismael Juma:</strong> 支持更严格的发布规则，倾向于在 3 月、7 月和 11 月发布，并采用“3+2”冻结时间表（即特性冻结 3 周，代码冻结 2 周）。</p>
+<p><strong>@Chia-Ping Tsai:</strong> 支持 Matthias 的 ISO 周计划，并提议更新 Wiki 以列出未来几年的具体发布日期，以缓解社区对时间安排的焦虑。</p></div>
+            <p class="conclusion">初步达成共识采用“3+2”冻结时间表，并倾向于 Matthias 提出的基于 ISO 周的方案。下一步行动是确认具体日期并由 Chia-Ping Tsai 更新 Wiki。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/l8l6g0ynl4vfomz0wvc7gs0g2xw91vgr">4.4.0 Release Manager</a></h3>
+            <p class="meta">5 条回复 · 5 位参与者</p>
+            <p class="summary">讨论主要围绕 Kafka 4.4.0 版本的发布时间表调整，核心议题是为避免后续 4.5 版本落在假期季，是否应将 4.4 周期延长一个月。Matthias 提议推迟 KIP 冻结日期，Bill 则提出了一个折中的时间调整方案。</p>
+            <div class="key-points"><p><strong>@Matthias J. Sax:</strong> 若维持 4 个月发布周期，4.5 版本将撞上假期，建议将 4.4 周期延长至 5 个月，将 KIP Freeze 推迟至 7 月 15 日。</p>
+<p><strong>@Omnia Ibrahim:</strong> 认同假期发布的风险，支持将发布计划整体推迟至 10 月中旬，并增加一周的 KIP Freeze 时间。</p>
+<p><strong>@Bill Bejeck:</strong> 参考相关讨论，认为 KIP Freeze 从 6 月 15 日直接跳到 7 月 15 日跨度太大，建议折中方案定在 7 月 1 日。</p></div>
+            <p class="conclusion">尚未达成最终共识，Bill 提出了将 KIP Freeze 定于 7 月 1 日的折中建议，下一步需团队确认该时间表并更新发布计划。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/j1ttrqjdjy245bstzzsl53zmjp3cbyjd">KIP-1238: Multipartition for TopologyTestDriver in Kafka Streams</a></h3>
+            <p class="meta">5 条回复 · 4 位参与者</p>
+            <p class="summary">讨论主要围绕 KIP-1238 为 Kafka Streams 的 TopologyTestDriver 引入多分区支持功能的实现细节。参与者确认了采用构建器模式的 API 设计，解决了 null 键路由策略、状态存储访问限制及文档描述矛盾等问题，最终达成一致。</p>
+            <div class="key-points"><p><strong>@Sebastien Viale:</strong> 提议采用构建器模式 API 以明确区分设置与执行阶段，并同意在多分区模式下对 null 键采用轮询路由，同时限制无参数的状态存储访问。</p>
+<p><strong>@Lucas Brutschy:</strong> 建议对 null 键使用轮询路由以更好地模拟生产环境行为，且反对从 TestRecord 的 equals/hashCode 中移除分区字段以避免潜在的测试陷阱。</p>
+<p><strong>@Bill Bejeck:</strong> 支持该 KIP，但指出文档中关于 null 键路由的描述存在前后矛盾，要求修正以保持一致性。</p></div>
+            <p class="conclusion">讨论已达成共识，作者将根据反馈更新 KIP（包括修正文档矛盾和调整 null 键路由逻辑），随后正式发起投票。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/ndfml360gxzbysyvg751nsz5vg1dnnkj">KIP-1313: Client instance ID in all request headers</a></h3>
+            <p class="meta">5 条回复 · 3 位参与者</p>
+            <p class="summary">讨论主要围绕 KIP-1313 中 `clientInstanceId` 在请求头中的处理方式，涉及 UUID 与 memberId 的转换约定及协议版本兼容性问题。鉴于利用可选标记字段进行版本控制的复杂性，提案作者最终决定放弃原方案，转而引入包含该 ID 的请求头 v3 版本。</p>
+            <div class="key-points"><p><strong>@Jun Rao:</strong> 询问 UUID 转换为 memberId (String) 的具体约定，以确保不同客户端实现的兼容性。</p>
+<p><strong>@Matthias J. Sax:</strong> 认为原有的兼容性协议过于复杂，建议通过版本升级来简化，并质疑在请求体中发送 clientInstanceId 的必要性。</p>
+<p><strong>@Andrew Schofield:</strong> 解释了依赖可选标记字段进行版本控制的问题，并据此修改了提案，提出引入请求头 v3 版本。</p></div>
+            <p class="conclusion">KIP 已进行重大修改，引入请求头 v3 版本以解决标记字段带来的复杂性，等待社区进一步审查。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/k2fgjr07dnwmbp4gd6ghod7gymy722lt">KIP-1327 Prevent Hot Data Loss on Partition Expansion for Latest Policy</a></h3>
+            <p class="meta">5 条回复 · 4 位参与者</p>
+            <p class="summary">讨论围绕 KIP-1327 展开，旨在解决分区扩容时可能发生的热数据丢失问题。Jun Rao 质疑该提案的动机是否充分，认为提及的时钟偏斜等风险场景较为罕见；作者随后根据反馈更新了提案，移除了“热/冷”分区术语，并强调了分区扩容是常见运维操作而非边缘情况。</p>
+            <div class="key-points"><p><strong>@Jun Rao:</strong> 质疑 KIP 动机，认为时钟偏斜和网络重试导致的问题是罕见场景，不需要通用解决方案，建议用户使用 ConsumerRebalanceListener 自行处理。</p>
+<p><strong>@Chia-Ping Tsai:</strong> 建议移除“热/冷”分区术语，认为这些术语用于描述分区不自然，用户的核心诉求是不丢失活跃数据。</p>
+<p><strong>@Jian Fu:</strong> 支持该 KIP，指出分区扩容是常见的运维任务而非边缘情况，证明了该优化的必要性。</p></div>
+            <p class="conclusion">作者已根据社区反馈更新了 KIP 文档（包括优化动机说明和移除特定术语），讨论仍在推进中。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/56q1v9hq97jckjws7r2cc2xyt5dv1xpp">KIP-1335: Bounded concurrency for partition reassignment via kafka-reassign-partitions.sh</a></h3>
+            <p class="meta">5 条回复 · 2 位参与者</p>
+            <p class="summary">讨论主要围绕 KIP-1335 中分区重分配的并发限制机制展开，Manan Gupta 详细解释了增量与非增量模式的运作差异及批处理轮询机制。Luke Chen 在确认模式细节后，重点质疑了批处理模式作为长时间运行进程可能阻塞调用方的问题，建议改为非阻塞设计。</p>
+            <div class="key-points"><p><strong>@Manan Gupta:</strong> 解释了非增量模式需等待整批完成，而增量模式保持 N 个活跃任务并动态补充；确认批处理通过轮询集群状态来检测完成情况。</p>
+<p><strong>@Luke Chen:</strong> 建议在 KIP 中补充模式选择指南和示例，并认为默认轮询间隔（500ms）过于激进，建议增加至 1 秒以上。</p>
+<p><strong>@Luke Chen:</strong> 指出批处理模式会导致 AdminClient 长时间运行并阻塞脚本或 Operator，建议返回 Future 列表以支持非阻塞检查。</p></div>
+            <p class="conclusion">Manan 解释了长运行逻辑的必要性（需轮询复制状态），并指出用户仍可使用旧的非阻塞模式（execute + verify），但关于是否应调整默认行为以解决阻塞问题的讨论尚未最终定论。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/o30vf031nsyrcfm9c93y3913qq6pyso8">[PR] MINOR: Fix and add CVE-2026-41115 info [kafka-site]</a></h3>
+            <p class="meta">4 条回复 · 2 位参与者</p>
+            <p class="summary">本次讨论围绕 PR #875 展开，旨在修复并添加 CVE-2026-41115 的安全漏洞信息，该漏洞涉及 CONSUMER_GROUP_DESCRIBE API 中的授权不当问题。经过代码审查与修改，该 PR 已被合并。</p>
+            <div class="key-points"><p><strong>@showuon:</strong> 提交了添加 CVE-2026-41115 信息的 PR，并根据审查反馈进行了更新。</p>
+<p><strong>@mimaison:</strong> 对 cve-list.md 文件中新增的 CVE 内容进行了代码审查。</p></div>
+            <p class="conclusion">PR #875 已成功合并，相关 CVE 信息已更新至 Kafka 官网。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/wgs7hfxns7tdxtnd4rtxw6l5jcjc1gxq">[PR] KAFKA-20335: Sync 4.3 KIP-1271 Streams docs from apache/kafka [kafka-site]</a></h3>
+            <p class="meta">3 条回复 · 2 位参与者</p>
+            <p class="summary">该 PR 旨在将 KIP-1271（支持 Header 的状态存储）的文档从主仓库同步至 Kafka 4.3 网站分支，以补充因代码合并晚于版本发布而缺失的文档内容。主要修改涉及 Processor API、交互式查询和升级指南的相关章节。最终该 PR 已被审核并合并。</p>
+            <div class="key-points"><p><strong>@nileshkumar3:</strong> 提交 PR 以回填 KIP-1271 文档，包括在 State Stores 中使用 Headers 的新特性及相关 API 说明。</p>
+<p><strong>@mjsax:</strong> 审核并合并了该 PR。</p></div>
+            <p class="conclusion">PR 已成功合并，Kafka 4.3 版本网站文档已更新包含 KIP-1271 内容。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/w428jtn3d7bk8n6rdosxn9kmxnc1c5tx">KIP-1299 Use key range in ProducerPerformance</a></h3>
+            <p class="meta">3 条回复 · 3 位参与者</p>
+            <p class="summary">讨论主要围绕 KIP-1299 提议中新增参数的命名规范展开。Andrew Schofield 和 Chia-Ping Tsai 指出原提议的 `--message-key-range` 与现有工具参数风格不一致，建议改为 `--record-key-range`。作者黃竣陽采纳了该建议并已更新 KIP 文档。</p>
+            <div class="key-points"><p><strong>@Andrew Schofield:</strong> 质疑 `--message-key-range` 的命名，指出工具中未使用 `--message` 前缀，倾向于使用 `--record`。</p>
+<p><strong>@Chia-Ping Tsai:</strong> 建议使用 `--record-key-range`，以保持与现有参数命名的一致性。</p>
+<p><strong>@黃竣陽:</strong> 确认收到反馈，并将参数名称更新为 `--record-key-range`。</p></div>
+            <p class="conclusion">社区达成共识，参数名称确定为 `--record-key-range`，作者已完成 KIP 更新。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/8ccx7h0o1on2mvsv2odc6k8gpy8o0h3l">[PR] docs: update 'Testing a Streams Application' example code [kafka-site]</a></h3>
+            <p class="meta">3 条回复 · 2 位参与者</p>
+            <p class="summary">讨论主要关于 Kafka Streams 文档示例代码的更新位置。维护者指出 kafka-site 仓库的内容是从主仓库生成的，因此修改应在 kafka.git 中进行，否则会被覆盖。最终该 PR 被关闭，贡献者准备向正确的仓库提交新 PR。</p>
+            <div class="key-points"><p><strong>@mjsax:</strong> kafka-site 不是文档的源文件，修改会被发布流程覆盖，需在 kafka.git 的 docs/streams/developer-guide/testing.md 处修改。</p>
+<p><strong>@agebhar1:</strong> 询问确认是否应修改主仓库文件并开启新 PR。</p>
+<p><strong>@mjsax:</strong> 确认应向 kafka.git 提交 PR，而非 kafka-site.git。</p></div>
+            <p class="conclusion">当前 PR 已关闭，下一步是向 kafka.git 仓库提交新的 PR 以修复文档。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (48)</h2>
+            
+    <p>本周新建 <strong>48</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周 JIRA 主要集中在 Kafka Streams 领域，重点推进了“Streams Group Topology Description Plugin”特性的实现，涵盖了 RPC 模式、服务端集成及客户端工具等多个方面。同时，社区修复了 Connect 模块的阻塞与超时问题、Group Coordinator 在领导权变更时的错误，以及安全模块的无限循环漏洞。此外，还包含多项代码重构、模块迁移及弃用 API 清理等维护性工作。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Kafka Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
