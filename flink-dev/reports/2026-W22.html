@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flink 社区周报 | 2026-W22</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Flink 社区周报 | 2026-W22</h1>
+            <p class="date-range">2026-05-25 ~ 2026-05-31</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (1)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/cmcgnntbbbdctovlo4oozgkqky8w7fbx">New Apache Flink Committer - Gustavo de Morais</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (15)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/qc8qzxtqdxo78j0cmn8z71p4zy03d2lb">FLIP-577: AI-Native Flink — An Umbrella Proposal for Multimodal Data Processing</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/8xcbkkpqj73f60w4tb19q93g8x44hgy0">FLIP-576 Filesystem-Plugin Observability (flink-s3-fs-native)</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/hdklkpjwlzhd3hztxqyf4b144rk47qor">Release flink-connector-http v1.0.0, release candidate 2</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/xrjpp5fz5zqyz7mc56fgz9y2bjfymfk5">FLIP-581: Support Flexible Watermark Assignment via Built-in Function</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/74376owqnk7gymyznm55t89vl3c39olk">Release flink-connector-kafka v5.0.0, release candidate #1</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/5z5ttnm7vv4vbw12zflbwvfkmh0h4ky8">Release flink-connector-pulsar v4.2.0, release candidate #1</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/zklzrfrv2gfcpr1x9z54ndvzt88j9xn0">FLIP-584: Support Pluggable Storage Backend for HistoryServer</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/mkpdkv5rtstg3ht92s78p7w21z21qcxh">FLIP-578: In-place Table to Materialized Table conversion</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/mvkh03t78835y0tf106y0mp4jhph5b3z">Release flink-connector-http v1.0.0, release candidate #1</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/zkb1w7qz5b1mm54rxjxn29gwofggykdm">FLIP-579: LATERAL SNAPSHOT Join</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/xkbdhv185d9k3j2rzqlzr15wxhbfqkr6">[CANCELLED]  FLIP-579: LATERAL SNAPSHOT Join</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/d4jcs498vxgnq85gd37tf96xbbby9hdb">Release 2.3.0, release candidate #2</a> <span class="status warning">⚠️ 有异议</span><p class="objection-inline">Sergey Nuyanzin 提出 -1，原因是构建使用了 JDK 17 而非要求的 JDK 11；David Anderson 则指出源码分发中存在 JS 文件缺少许可证头的问题。</p></li>
+<li><a href="https://lists.apache.org/thread/sngppknw7rb3fgbdz0synsrsrybtso3k">Release 1.20.5, release candidate #1</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/nv1103fg62dpqdzrn0g086qh57yyp96c">FLIP-586: Composable Parallelism Alignment Modes for Flink Autoscaler</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/m1vmt2hyhfg2yz39r2po1hdfqg17rydp">FLIP-587: Expose per downstream target numRecordsOut metric</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/cz1mfxpkrqolppbywbk9v9w9k0vnbkjl">FLIP-579: LATERAL SNAPSHOT Join</a></h3>
+            <p class="meta">16 条回复 · 8 位参与者</p>
+            <p class="summary">讨论主要围绕 FLIP-579 提出的 LATERAL SNAPSHOT Join 展开，旨在通过两阶段设计解决处理时间 temporal join 的初始化问题。参与者深入探讨了翻转点精确性、宕机恢复后的数据一致性以及 LOAD 阶段的状态缓冲风险等挑战。最终 Fabian 采纳了增加监控指标的建议，社区对整体方案达成共识，准备启动投票流程。</p>
+            <div class="key-points"><p><strong>@Fabian Hueske:</strong> 解释了设计原理，指出缓冲未匹配记录会增加复杂性，且 InputSelectable 在流式处理中存在限制，同意添加算子指标以提升可观测性。</p>
+<p><strong>@Jark Wu & Leonard Xu:</strong> 关注翻转点的非精确性及 LOAD 阶段的状态膨胀风险，建议利用 isBacklog 或背压机制优化，但认可当前方案作为 v1 版本的可行性。</p>
+<p><strong>@Xingcan Cui:</strong> 指出长时间宕机恢复后，数据回放可能因丢失时间顺序而关联到错误的维度快照，建议引入事件时间模式过渡。</p></div>
+            <p class="conclusion">社区基本认可当前提案，Fabian 同意增加算子指标以解决可观测性问题，复杂的优化（如 InputSelectable 或精确翻转点）留待后续版本，计划在完善指标后启动投票。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/m6k1724kdc9zrrym1kpnbsrs8tryxbd1">FLIP-582: Support RpcOperator Service</a></h3>
+            <p class="meta">10 条回复 · 7 位参与者</p>
+            <p class="summary">本次讨论围绕 FLIP-582 提案展开，旨在引入 RpcOperator Service 以解耦 AI 推理等无状态重负载与数据平面，实现独立扩缩容和资源隔离。社区普遍认可该方向，并深入探讨了自动扩缩容策略、故障恢复语义（如重算成本与请求取消）、GPU 资源管理及 API 设计细节。</p>
+            <div class="key-points"><p><strong>@Guowei Ma:</strong> 建议自动扩缩容应作为一等公民，API 设计不应锁定固定并行度，并询问了多作业引用时的服务生命周期问题。</p>
+<p><strong>@Hongshun Wang:</strong> 关注无状态设计带来的故障重算成本，建议在数据平面故障时主动取消进行中的 RPC 请求以节省昂贵资源。</p>
+<p><strong>@Yi Zhang:</strong> 回应称首版将优先支持固定并行度，后续再扩展自动扩缩容；针对大消息问题，建议调整配置或使用数据引用，未来可替换传输层。</p></div>
+            <p class="conclusion">作者确认将在提案中补充异步调用示例和大消息处理说明；自动扩缩容和 GPU 一等资源支持将延后至后续 FLIP 处理；针对故障恢复时的请求取消机制达成了初步共识，后续将完善相关设计细节。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/b4bo3mopctvtvb7hvdfbokpcygv56hkm">FLIP-XXX Support ReducingMergeState and AggregatingMergeState backed by Java based associative merge operators</a></h3>
+            <p class="meta">6 条回复 · 4 位参与者</p>
+            <p class="summary">本次讨论针对 FLIP-XXX 提议，即引入基于 RocksDB 合并算子的 ReducingMergeState 和 AggregatingMergeState 以优化写入性能。讨论重点集中在读后写场景的潜在开销、实际用例动机、API 兼容性及状态迁移路径。提案者澄清了新状态适用于高写入吞吐场景，并计划完善相关文档。</p>
+            <div class="key-points"><p><strong>@Roman Khachatryan:</strong> 担忧读后写场景下的额外 IO 开销，建议评估 MapState 作为排序用例的替代方案，并询问远程压缩的兼容性。</p>
+<p><strong>@Soumitra Kumar:</strong> 确认新状态变量适用于写多读少场景，用户需根据运行时特性自行选择，并将补充用例与 TTL 细节。</p>
+<p><strong>@Yuan Mei:</strong> 强调需要具体的 SQL/DataStream 用例来支撑动机，并关注公共接口变更及端到端的落地方式。</p></div>
+            <p class="conclusion">提案者将在 FLIP 中补充具体的用例说明和 TTL 细节；新状态将作为独立选项供用户选择，而非透明替换现有实现。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/1rsmhfp3jl5n50k6jd4wd7zl64odlcvw">FLIP-580 AsyncTableFunction supports user-defined timeout handling logic.</a></h3>
+            <p class="meta">3 条回复 · 2 位参与者</p>
+            <p class="summary">讨论主要围绕 FLIP-580 展开，旨在为 AsyncTableFunction 增加用户自定义超时处理逻辑的支持。参与者讨论了是否支持 correlate query 路径以及超时处理必须同步完成的限制原因。最终作者确认将更新 FLIP 以覆盖遗漏的代码路径，并计划于 6 月 4 日开启投票。</p>
+            <div class="key-points"><p><strong>@Alan Sheinberg:</strong> 指出 FLIP 遗漏了 correlate query 代码路径，并认为要求超时处理逻辑同步完成是合理的限制。</p>
+<p><strong>@Kui Yuan:</strong> 确认将更新 FLIP 以支持 correlate query，并解释了同步合约能避免框架在重试协调和检查点对齐上的复杂性。</p>
+<p><strong>@Lincoln Lee:</strong> 对提案表示支持，建议在文档中明确“非阻塞”的具体规则并提供示例，暂不涉及 AsyncScalarFunction。</p></div>
+            <p class="conclusion">讨论已达成共识，作者将更新文档以覆盖 correlate query 路径并明确非阻塞规则，计划于 6 月 4 日开启投票。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/52zyxsb08l3x8hc8vq9230nzw9y35oz1">FLIP-578: In-place Table to Materialized Table conversion</a></h3>
+            <p class="meta">3 条回复 · 2 位参与者</p>
+            <p class="summary">FLIP-578 提议支持将现有的常规表（CatalogTable）就地转换为物化表，以解决当前转换过程繁琐且破坏引用的问题。讨论明确了转换需停止作业并处理偏移量，但这属于一次性操作，且反向转换不在范围内。目前社区已无异议，作者已发起投票流程。</p>
+            <div class="key-points"><p><strong>@Ramin Gharib:</strong> 提议通过 `CREATE OR ALTER` 语法实现表类型的原地转换，保留身份和存储，并指出反向转换（MT 转 Table）不在范围内。</p>
+<p><strong>@Kui Yuan:</strong> 确认转换现有表需停止流作业并处理起始偏移量，但这属于一次性操作，支持该提案以平滑迁移。</p>
+<p><strong>@Ramin Gharib:</strong> 确认转换是一次性操作，优势在于转换后 Schema 和查询可通过标准物化表路径统一演进。</p></div>
+            <p class="conclusion">社区对提案达成共识，作者已开启 [VOTE] 投票线程。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/1wy3zgccpy75zc3wtv79c2l2slgs25z6">Move flink-ci-docker under Apache</a></h3>
+            <p class="meta">3 条回复 · 4 位参与者</p>
+            <p class="summary">Sergey Nuyanzin 提议将 flink-ci-docker 迁移至 Apache 组织下，以解决当前仓库权限受限导致的维护瓶颈。该迁移将参考 flink-shaded/connectors 的模式，旨在解除 JDK 25 升级等工作的阻碍。多位社区成员对该提议表示支持，认为有助于提升 CI 基础设施的可维护性。</p>
+            <div class="key-points"><p><strong>@Sergey Nuyanzin:</strong> 当前仓库权限集中在少数人手中阻碍更新，提议迁移至 Apache 以方便提交者维护并支持 JDK 25。</p>
+<p><strong>@Chanhae Oh:</strong> 迁移对 CI 基础设施的可维护性有益，能更方便地协调未来的 JDK 升级和环境变更。</p>
+<p><strong>@Yuepeng Pan:</strong> 支持该提议（+1）。</p></div>
+            <p class="conclusion">社区已达成共识，同意将 flink-ci-docker 迁移至 Apache 组织下。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/d3lmn3b55jdv65qy63l3yjs33xmkm9ok">FLIP-583: Expose JobInfo on Source contexts</a></h3>
+            <p class="meta">3 条回复 · 3 位参与者</p>
+            <p class="summary">本讨论主要关于 FLIP-583 提案，旨在为 Source 上下文（SourceReaderContext 和 SplitEnumeratorContext）暴露 JobInfo，以解决当前获取作业元数据方式脆弱且不可用的问题。参与者对提案方向达成共识，并就 API 稳定性论证和实际应用场景进行了交流。提案发起人已根据反馈更新了文档并创建了后续跟进任务。</p>
+            <div class="key-points"><p><strong>@Aleksandr Savonin:</strong> 提议在 Source 端添加 getJobInfo() 方法以对齐 SinkV2 功能，满足连接器对认证和追踪等元数据的需求；已根据反馈更新了 FLIP 动机部分，并创建了后续 JIRA (FLINK-39827) 以推动 API 落地。</p>
+<p><strong>@Rui Fan:</strong> 支持提案方向，但指出关于 RichSourceReaderContext 稳定性的论据需调整（应关注其仅存在于 reader 端等实际差距），并询问了现有连接器的变通情况及后续采用计划。</p>
+<p><strong>@Yuepeng Pan:</strong> 认为该提案合情合理，表示支持 (+1)。</p></div>
+            <p class="conclusion">初步结论是提案方向正确，已达成共识推进。下一步行动包括根据建议完善 FLIP 文档中的动机描述，以及通过 JIRA FLINK-39827 在各连接器中采纳新接口。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/mq2rsn787yqtgt4scystngfbzrotsclv">FLIP-576 Filesystem-Plugin Observability (flink-s3-fs-native)</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">讨论主要围绕 FLIP-576 中 S3 文件系统插件的指标默认配置策略及 API 设计优化展开。针对默认启用大量指标可能带来的基数问题，社区采纳了 opt-in 机制和白名单配置方案。目前提案已达成共识并进入投票阶段。</p>
+            <div class="key-points"><p><strong>@Aleksandr Iushmanov:</strong> 担心默认启用约 50 个时间序列会导致基数爆炸和数据量激增，建议采用 opt-in 模式。</p>
+<p><strong>@Samrat Deb:</strong> 采纳建议，计划通过配置 s3.metrics.allowlist 和 s3.metrics.detailed.enabled 让用户自主控制指标范围。</p>
+<p><strong>@Gabor Somogyi:</strong> 建议引入独立的 MetricsAware 接口来设置 MetricGroup，以保持 FileSystemFactory 契约的整洁性。</p></div>
+            <p class="conclusion">提案已获得各方认可，Samrat Deb 已发起投票线程。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/bzt91y2gvymbbgr0k6dvph9xk4mrw9ll">FLIP-577: AI-Native Flink — An Umbrella Proposal for Multimodal Data Processing</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论主要围绕 FLIP-577（AI-Native Flink 总括提案）展开，旨在确立多模态数据处理的总体方向和工作负载类别。社区确认该提案主要起方向性指导作用，具体设计细节将在后续子 FLIP 中独立评审。作者 Guowei Ma 表示将基于当前讨论推进投票流程。</p>
+            <div class="key-points"><p><strong>@Guowei Ma:</strong> 确认总括提案旨在对齐社区方向，具体设计需单独评估；同意在子 FLIP 中继续关注功能矩阵问题。</p>
+<p><strong>@Martijn Visser:</strong> 认为提案解决了之前的担忧，支持其作为方向性声明；强调子 FLIP 需独立审查，并继续关注功能矩阵覆盖。</p>
+<p><strong>@Yuan Mei:</strong> 支持该提案，认为多模态处理意义重大；指出架构改进（如 RPC operator）对 Flink 能力扩展具有基础性作用。</p></div>
+            <p class="conclusion">Guowei Ma 将基于现有讨论推进投票流程。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/8xk5k0kz0vf0k2xnfqdjl4zqttp2szdm">FLIP-XXX: Independent Checkpoint Based On Pipeline Region</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">熊饶饶发起了关于 FLIP-XXX（基于 Pipeline Region 的独立检查点）的讨论，旨在解决高并行度作业中因单个 Task 失败导致全局 Checkpoint 中止的问题。提案建议允许部分 Region 失败，通过组合失败 Region 的历史状态与正常 Region 的当前状态来生成逻辑完整的 Checkpoint。目前讨论主要围绕接口语义、状态一致性理论依据及生态组件的兼容性展开。</p>
+            <div class="key-points"><p><strong>@zihao chen:</strong> 担心直接复用 CheckpointListener 可能导致开发者误解，建议扩展接口以携带区域级信息；询问特定 Task 长时间未确认检查点时的状态引用逻辑。</p>
+<p><strong>@熊饶饶:</strong> 指出当前机制导致资源浪费（尤其是 GPU 场景），提出“区域检查点”概念，通过新增 checkpointCoordinatorForRegionFallback 接口保证状态一致性。</p>
+<p><strong>@Gen Luo:</strong> 认为需进一步阐述合并不同 Checkpoint 状态为何能保持逻辑一致性的理论基础；强调需评估 Flink CDC、Paimon 等生态组件中 OperatorCoordinator 的适配情况。</p></div>
+            <p class="conclusion">该方向被认为很有前景，但提案者需进一步澄清 CheckpointListener 的语义处理、状态合并的理论依据，并调研相关生态组件的支持情况。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (46)</h2>
+            
+    <p>本周新建 <strong>46</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周 JIRA 主要集中在连接器的功能增强与问题修复，涉及 Kafka、Kinesis、Elasticsearch 以及 MySQL/Oracle/MongoDB CDC 等多个组件。核心引擎方面引入了 AI-Native Flink (FLIP-577) 总纲，并进行了 Calcite 版本升级、SQL 语义优化及状态管理改进。此外，社区还持续推进 Java 25 兼容性适配、CI 稳定性修复及依赖库版本更新工作。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Flink Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
