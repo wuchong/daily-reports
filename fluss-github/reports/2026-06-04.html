@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-06-04</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-06-04</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 0 新 Issues</div>
+            <div class="stat">✅ 1 关闭</div>
+            <div class="stat">✨ 3 新 PRs</div>
+            <div class="stat">🎉 1 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/2995">PR #2995</a> 已合并：支持 log scanner 扫描为 Arrow record batch（blocker 优先级）</li><li>🐛 <a href="https://github.com/apache/fluss/pull/3431">PR #3431</a> 新开：修复处理表注册变更时的 NPE 问题</li><li>✨ <a href="https://github.com/apache/fluss/pull/3430">PR #3430</a> 新开：TieringSourceReader 适配 Arrow record batch 扫描并写入湖存储</li><li>✨ <a href="https://github.com/apache/fluss/pull/3432">PR #3432</a> 新开：为 datastream 添加 union read 支持</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2995">Issue #2995</a> [client] Support log scanner scan to arrow record batch</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 回复评审意见，因仅影响内部实现且无公共 API 变更，风险较小，准备合并</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3174">Issue #3174</a> [server] Add ReplicaCleanupManager to throttle drops in coordinator queue</h4>
+            <ul><li><span class="author">@swuferhong</span>: 保留 timeout ms 作为配置项，便于测试时缩短超时时间</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3242">Issue #3242</a> [client] Fix tiering hang on first_row merge engine empty batches</h4>
+            <ul><li><span class="author">@Kaixuan-Duan</span>: 已解决合并冲突并回退错误推送的提交，请帮忙查看</li><li><span class="author">@luoyuxia</span>: 抱歉误将提交推送到错误分支，请求回退该提交</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3427">Issue #3427</a> [server] Keep flushedLogOffset monotonic to fix row count after failover</h4>
+            <ul><li><span class="author">@wattt3</span>: 请求 swuferhong 评审，并添加了单元测试</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3430">Issue #3430</a> [lake/paimon] TieringSourceReader adjust to scan arrow record batch and write arrow record batch to lake</h4>
+            <ul><li><span class="author">@beryllw</span>: LGTM，认可实现方案</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3242">PR #3242</a> [client] Fix tiering hang on first_row merge engine empty batches</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 指出误将提交推送到错误分支，请求回退</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3358">PR #3358</a> [server] Respect log.* options for table</h4>
+            <ul><li><span class="author">@Copilot</span>: 指出 isTableStorageConfig 逻辑变更会破坏未知 table.* 键的识别，建议更新 Javadoc</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3429">PR #3429</a> [server] Add per-task timeout for RebalanceManager to prevent indefinite blocking</h4>
+            <ul><li><span class="author">@loserwang1024</span>: 建议 timeoutEvent 使用 FAILED 或 TIMEOUT 状态替代当前方案</li><li><span class="author">@LiebingYu</span>: 建议用 AtomicReference 包装 inflightTask 字段保证线程安全，并增加超时配置项</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3430">PR #3430</a> [lake/paimon] TieringSourceReader adjust to scan arrow record batch and write arrow record batch to lake</h4>
+            <ul><li><span class="author">@Copilot</span>: 指出多处潜在问题：Arrow 内存泄漏风险、lastScannedOffset 读取时机、类型转换安全性</li><li><span class="author">@luoyuxia</span>: 解释 Arrow 扫描层统一返回最新 schema，schema 变更时需重建 helper 实例</li><li><span class="author">@beryllw</span>: 指出异常路径下 Arrow batch 资源泄漏风险，建议用 try-with-resources 包装</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3431">PR #3431</a> [server] Fix NPE when processing table registration change</h4>
+            <ul><li><span class="author">@loserwang1024</span>: 指出 oldTableInfo 不应为空，建议仅保留 UNKNOWN_TABLE_ID 检查</li><li><span class="author">@raoluSmile</span>: 接受建议，移除 oldTableInfo 空检查，保持修复聚焦于 UNKNOWN_TABLE_ID</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <p class="empty">暂无</p>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3432">#3432</a> [flink] Add union read support to datastream <span class="author">@polyzos</span> </li><li><a href="https://github.com/apache/fluss/pull/3431">#3431</a> [server] Fix NPE when processing table registration change <span class="author">@raoluSmile</span> </li><li><a href="https://github.com/apache/fluss/pull/3430">#3430</a> [lake/paimon] TieringSourceReader adjust to scan arrow record batch and write arrow record batch to lake <span class="author">@luoyuxia</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/2965">#2965</a> support log scanner scan data as arrow reacord batch <span class="author">@luoyuxia</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/2995">#2995</a> [client] Support log scanner scan to arrow record batch <span class="author">@luoyuxia</span> <span class="labels">priority=blocker</span></li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
