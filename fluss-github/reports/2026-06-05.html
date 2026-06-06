@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-06-05</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-06-05</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 4 新 Issues</div>
+            <div class="stat">✅ 4 关闭</div>
+            <div class="stat">✨ 3 新 PRs</div>
+            <div class="stat">🎉 3 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/3430">PR #3430</a> TieringSourceReader 支持 Arrow record batch 扫描与写入 lake</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3242">PR #3242</a> 修复 first_row merge engine 空批次导致 tiering 挂起的问题</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3421">PR #3421</a> 在日志中屏蔽 S3 delegation token 访问密钥，提升安全性</li><li>✨ <a href="https://github.com/apache/fluss/issues/3435">Issue #3435</a> 新功能提案：支持 Fluss 表的隐式/隐藏分区</li><li>📚 <a href="https://github.com/apache/fluss/pull/3438">PR #3438</a> 更新 README 文档引擎支持说明</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/1467">Issue #1467</a> [Client/Server] [Security] Dynamic User Creation</h4>
+            <ul><li><span class="author">@polyzos</span>: 关闭此 Issue，相关功能已在 #3047 中实现</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3398">PR #3398</a> [FIP-37] Add bitmap aggregate functions: rb_build_agg, rb_or_agg, rb_and_agg and register via FlussCatalog</h4>
+            <ul><li><span class="author">@polyzos</span>: 建议添加端到端 SQL ITCase 测试，并讨论内置函数注册方案的安全性改进</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3427">PR #3427</a> [server] Keep flushedLogOffset monotonic to fix row count after failover</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: 建议将防护检查移到 kvPreWriteBuffer.flush() 之前</li><li><span class="author">@wattt3</span>: 尝试移动会导致测试失败，倾向于保持现状</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3429">PR #3429</a> [server] Add per-task timeout for RebalanceManager to prevent indefinite blocking</h4>
+            <ul><li><span class="author">@swuferhong</span>: 通过 volatile 发布模式修复顺序脆弱性问题，参数将在后续引入</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3430">PR #3430</a> [lake/paimon] TieringSourceReader adjust to scan arrow record batch and write arrow record batch to lake</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 建议检查 paimon-arrow 提供的 ArrowBundleRecords</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3432">PR #3432</a> [flink] Add union read support to datastream</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 询问过滤器支持，并建议对 setBounded() 进行早期显式检查</li><li><span class="author">@polyzos</span>: 感谢反馈，已更新 PR 解决评论问题</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3439">#3439</a> Add support of column aliasing for PojoConverter <span class="author">@VladBanar</span> </li><li><a href="https://github.com/apache/fluss/issues/3437">#3437</a> [UT] ComponentClassLoaderTest fails when java.io.tmpdir contains dots <span class="author">@litiliu</span> </li><li><a href="https://github.com/apache/fluss/issues/3436">#3436</a> Add Admin API and sys procedure to describe bucket metadata <span class="author">@raoluSmile</span> </li><li><a href="https://github.com/apache/fluss/issues/3435">#3435</a> [Feature] Support implicit/hidden partitions for Fluss tables <span class="author">@litiliu</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3438">#3438</a> [docs] Update README engine support <span class="author">@wangzhigang1999</span> </li><li><a href="https://github.com/apache/fluss/pull/3434">#3434</a> [server] Support altering auto partition num-precreate option <span class="author">@fhan688</span> </li><li><a href="https://github.com/apache/fluss/pull/3433">#3433</a> [flink] Fix limit pushdown for lake union read <span class="author">@QuakeWang</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/2966">#2966</a> TieringSourceReader adjust to scan arrow record batch and write arrow record batch to lake <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/issues/2371">#2371</a> Tiering may stuck for first row merge engine table <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/issues/1989">#1989</a> [FileSystem] Mask user secret in the S3DelegationTokenProvider/S3DelegationTokenReceiver <span class="author">@polyzos</span> <span class="labels">good first issue, component=filesystem</span></li><li><a href="https://github.com/apache/fluss/issues/1467">#1467</a> [Client/Server] [Security] Dynamic User Creation <span class="author">@polyzos</span> <span class="labels">component=client, component=server, security</span></li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3430">#3430</a> [lake/paimon] TieringSourceReader adjust to scan arrow record batch and write arrow record batch to lake <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/pull/3421">#3421</a> [fs] Mask S3 delegation token access keys in logs <span class="author">@QuakeWang</span> </li><li><a href="https://github.com/apache/fluss/pull/3242">#3242</a> [client] Fix tiering hang on first_row merge engine empty batches <span class="author">@Kaixuan-Duan</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
