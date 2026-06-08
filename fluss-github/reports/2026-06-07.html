@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-06-07</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-06-07</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 2 新 Issues</div>
+            <div class="stat">✅ 2 关闭</div>
+            <div class="stat">✨ 3 新 PRs</div>
+            <div class="stat">🎉 2 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/3429">PR #3429</a> 为 RebalanceManager 添加任务超时机制，防止无限阻塞</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3388">PR #3388</a> 修复 TabletServer 启动时清理孤儿文件和目录的问题</li><li>🐛 <a href="https://github.com/apache/fluss/issues/3387">Issue #3387</a> 已修复：TabletServer 重启后遗留孤儿副本目录的问题</li><li>🐛 <a href="https://github.com/apache/fluss/issues/3096">Issue #3096</a> 已修复：rebalance 任务缺少超时机制导致无限阻塞</li><li>✨ <a href="https://github.com/apache/fluss/pull/3447">PR #3447</a> 新增 Typed Writer/Reader 的枚举转换功能</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <ul class="critical-list"><li>⚠️ <a href="https://github.com/apache/fluss/issues/3445">Issue #3445</a> 测试不稳定问题：PaimonTieringITCase.testTiering 需要关注</li></ul>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3398">Issue #3398</a> [FIP-37] Add bitmap aggregate functions: rb_build_agg, rb_or_agg, rb_and_agg and register via FlussCatalog</h4>
+            <ul><li><span class="author">@Prajwal-banakar</span>: 已添加 RbFunctionsCatalogITCase 测试，关于注册设计问题等待其他维护者意见</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3445">Issue #3445</a> [test] Unstable test PaimonTieringITCase.testTiering</h4>
+            <ul><li><span class="author">@zerolbsony</span>: 正在关注该问题，已开始查找原因</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3398">PR #3398</a> [FIP-37] Add bitmap aggregate functions: rb_build_agg, rb_or_agg, rb_and_agg and register via FlussCatalog</h4>
+            <ul><li><span class="author">@Prajwal-banakar</span>: 根据 review 意见修改：使用 Locale.ROOT、添加 retract() 抛出异常、使用 unmodifiableMap 包装</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3446">#3446</a> [client] Add enum conversion functionality for Typed Writer/Reader <span class="author">@VladBanar</span> </li><li><a href="https://github.com/apache/fluss/issues/3445">#3445</a> [test] Unstable test PaimonTieringITCase.testTiering <span class="author">@app/github-actions</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3449">#3449</a> [lake] Stabilize Paimon tiering IT <span class="author">@zerolbsony</span> </li><li><a href="https://github.com/apache/fluss/pull/3448">#3448</a> [metrics] Fix typo in scanner metric name <span class="author">@charlesdong1991</span> </li><li><a href="https://github.com/apache/fluss/pull/3447">#3447</a> [client] Enum conversion functionality for typed writer/reader <span class="author">@VladBanar</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3387">#3387</a> [server] TabletServer leaves orphan replica directories after restart during table/partition deletion <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/3096">#3096</a> [server]  Add timeout mechanism for rebalance tasks to prevent indefinite blocking on missing completion events <span class="author">@swuferhong</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3429">#3429</a> [server] Add per-task timeout for RebalanceManager to prevent indefinite blocking <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/pull/3388">#3388</a> [server]: remove orphan files and directories when tablet starts up <span class="author">@gyang94</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
