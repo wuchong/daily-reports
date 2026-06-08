@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spark 社区周报 | 2026-W22</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Spark 社区周报 | 2026-W22</h1>
+            <p class="date-range">2026-05-25 ~ 2026-05-31</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (0)</h2>
+            <p class="empty">本周无公告</p>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (0)</h2>
+            <p class="empty">本周无投票</p>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (7)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/kfhrtdy0q4cwo62vc23xh0f2z9tv5mfb">Release Apache Spark 4.0.3</a></h3>
+            <p class="meta">9 条回复 · 7 位参与者</p>
+            <p class="summary">Dongjoon Hyun 提议启动 Apache Spark 4.0.3 发布流程，该版本累积了 64 个补丁（含正确性和安全性修复），计划于 2026 年 6 月 8 日左右提交 RC1。Holden Karau 提醒需注意 RC1 时间窗口较紧，其余社区成员均投票支持。Dongjoon 补充说明 4.0.3 并非该分支最终版本，预计 11 月还将发布 4.0.4。</p>
+            <div class="key-points"><p><strong>@Dongjoon Hyun:</strong> 提议发布 v4.0.3 并自荐为发布经理，明确 RC1 时间表，并澄清 4.0.4 才是 4.0.x 分支的 EOL 版本。</p>
+<p><strong>@Holden Karau:</strong> 支持发布提议，但指出距离 RC1 的时间窗口较紧，需确认是否有紧急补丁需移植。</p>
+<p><strong>@Peter Toth, Kent Yao, Max Gekk 等:</strong> 一致投票支持 (+1) 该发布计划。</p></div>
+            <p class="conclusion">社区达成共识，同意启动 Apache Spark 4.0.3 发布流程，下一步将按计划准备 RC1。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/j382to15zgy8mr2pvrtcod9c02zj1org">Replacing Py4J to Spark Connect in PySpark (possibly with RDD API and UI)</a></h3>
+            <p class="meta">8 条回复 · 6 位参与者</p>
+            <p class="summary">Hyukjin Kwon 提议在 PySpark 中用 Spark Connect 替换 Py4J 以提升安全性、性能和调试体验，并已通过原型验证了 RDD API 和 UI 支持的可行性。讨论主要围绕从直接 JVM 访问到协议边界的语义转变、第三方库的动态插件支持以及迁移策略展开。初步共识是保留 Py4J 作为备选方案，并计划在 Spark 4.3.0 中引入该功能进行测试。</p>
+            <div class="key-points"><p><strong>@Hyukjin Kwon:</strong> Py4J 存在安全风险和性能瓶颈，Spark Connect 是更好的替代方案；已验证 Python 端 RDD API 和 UI 支持可行，且将支持插件的动态解析。</p>
+<p><strong>@Ángel Álvarez Pascua:</strong> 支持更整洁的协议边界，但警告这是从“Python 触达 JVM”到“协议描述”的重大语义变更，需关注现有 JVM 依赖型扩展的迁移难题。</p>
+<p><strong>@Dongjoon Hyun:</strong> 建议在 Spark 4.3.0 中通过特性标志引入该功能进行测试，并在后续版本（如 Spark 5）中逐步推进迁移。</p></div>
+            <p class="conclusion">初步结论是方案可行，建议在 Spark 4.3.0 中作为实验性功能（默认关闭）引入，同时保留 Py4J 作为备选以减少破坏性，后续需进一步解决动态插件加载和依赖管理问题。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/cy2wqt9xtt5fh0qwmsfx9ht762cqpqs1">SPIP: OIDC Credential Propagation</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">讨论旨在解决 Spark on K8s 缺乏用户身份传播机制的问题，Kousuke 提议引入新的 CredentialProvider SPI 和 RPC 来支持 OIDC 凭证传播。Parth 建议先采用最小化的 DirectTokenProvider 方案解决非 Kerberos 环境，双方最终确认这两个方案互补且可并行推进。</p>
+            <div class="key-points"><p><strong>@Kousuke Saruta:</strong> 提议引入 CredentialProvider SPI，在 Driver 端将 OIDC 令牌交换为短期凭证并通过新 RPC 分发，确保原始令牌不离开 Driver，以实现用户级授权。</p>
+<p><strong>@Parth Chandra:</strong> 建议优先落地最小化的 DirectTokenProvider 方案 (SPARK-27252)，以最小代码改动解决非 Kerberos 环境下的即时需求，无需引入新管理器或 RPC。</p>
+<p><strong>@Kousuke Saruta:</strong> 认同增量方案可行，指出 Parth 的方案解决 Pod 级身份问题，而自己的方案针对用户级身份传播，两者互不依赖，可并行开发。</p></div>
+            <p class="conclusion">双方达成共识，两个提案互为补充且互不阻塞，可以并行实施。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/8xyh7y3y51wvns5j8yk98wrxnfdcnolj">[FYI] Spark 4.2.0 RC1 planned for May 20</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">Spark 4.2.0 RC1 的发布进度受阻，目前正等待两个 DSv2 事务修复（SPARK-56695 和 SPARK-56995）合并并回移植到 branch-4.2。社区成员已就 Auto CDC 和事务修复方案达成一致，相关 PR 正在审核中，预计近期完成合并。</p>
+            <div class="key-points"><p><strong>@Huaxin Gao:</strong> RC1 的构建依赖于两个 DSv2 事务修复合并并回移植到 branch-4.2 后才会进行。</p>
+<p><strong>@Szehon Ho:</strong> 建议将两个 Auto CDC PR 纳入发布，以修复 SDP day 0 bug 并完善验证逻辑。</p>
+<p><strong>@Anton Okolnychyi:</strong> CDC 相关问题已解决，事务修复 PR 已提交，计划在本周或下周初完成审核与合并。</p></div>
+            <p class="conclusion">待 DSv2 事务修复合并及回移植完成后，将立即启动 RC1 构建。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/clgoov7qlr9bx65d9f9c5mt1qbm04v7h">Community over Code Glasgow 2026 Hackathon - Next Steps</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论主要关于 Community over Code Glasgow 2026 黑客马拉松的筹备进展与后续步骤。目前已有 25 个项目确认参与，主办方呼吁各项目尽快整理任务列表。Rich Bowen 建议各项目在 9 月中旬前完成活动页面搭建，确定导师名单并积极进行宣传。</p>
+            <div class="key-points"><p><strong>@Bowen, Rich:</strong> 目前已有 25 个项目确认参与，部分项目已提供任务列表，距离活动还有四个月。</p>
+<p><strong>@Bowen, Rich:</strong> 各项目需提交 PR 创建黑客马拉松页面，包含协调员、任务列表和资源链接，目标在 9 月中旬前完成。</p>
+<p><strong>@Bowen, Rich:</strong> 建议各项目确定现场导师以帮助参与者，并在社区各渠道传播活动信息。</p></div>
+            <p class="conclusion">下一步行动包括：各项目需提交 PR 创建专属页面（截止 9 月中旬），确定现场导师名单，并在社区内广泛宣传活动以吸引参与者。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/qll2rg9q7y97q1yjtgcybwoodsh2g7to">SPIP: Cloud Credential Refresh and Distribution Without Kerberos</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Parth Chandra 提议改进 Spark 的令牌分发机制，旨在消除非 Kerberos 环境下不必要的 Kerberos 限制。目前即使是像 Kafka 这样不需要 Kerberos 的令牌提供者也被强制通过 Kerberos 验证，给云环境用户带来额外负担；提案建议增加一条无需 Kerberos 关卡的路径，并保持向后兼容。</p>
+            <div class="key-points"><p><strong>@Parth Chandra:</strong> 当前令牌分发机制强制要求 Kerberos，这对云环境（通常无 Kerberos）造成了不必要的设置门槛。</p>
+<p><strong>@Parth Chandra:</strong> 提议允许令牌提供者指示是否需要 Kerberos，从而绕过不必要的验证关卡。</p>
+<p><strong>@Parth Chandra:</strong> 该方案对现有代码改动最小，且完全向后兼容。</p></div>
+            <p class="conclusion">目前处于提案征集意见阶段，作者请求提交者审阅设计文档和 JIRA 并提供反馈。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/4cg5q419722hq1mx310p9pjlskjrbz8b">Seeking Guidance on Spark Contribution (SPARK-56891)</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Spark 社区新成员 Y. Hitesh Reddy 发帖寻求贡献指导，希望开启长期的贡献之旅。他已针对特定用例提交了 JIRA 工单 (SPARK-56891) 及相应的 PR，请求社区提供反馈和支持以推进该工作。</p>
+            <div class="key-points"><p><strong>@Y. Hitesh Reddy:</strong> 作为新人已提交 JIRA 和 PR，希望能获得社区的指导和建议，帮助完成首次贡献。</p></div>
+            <p class="conclusion">目前尚无具体结论，等待社区成员对提交的 PR 和 JIRA 进行审查和反馈。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (0)</h2>
+            
+    <p>本周新建 <strong>0</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周无新建 JIRA。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Spark Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
