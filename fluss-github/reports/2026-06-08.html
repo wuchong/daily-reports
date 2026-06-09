@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-06-08</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-06-08</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 3 新 Issues</div>
+            <div class="stat">✅ 2 关闭</div>
+            <div class="stat">✨ 3 新 PRs</div>
+            <div class="stat">🎉 4 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/3398">PR #3398</a> 合并 Bitmap 聚合函数 (rb_build_agg, rb_or_agg, rb_and_agg)，实现 FIP-37</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3432">PR #3432</a> 合并 Flink DataStream API 的 union read 支持功能</li><li>🐛 <a href="https://github.com/apache/fluss/pull/3427">PR #3427</a> 合并修复 failover 后 row count 错误问题，保持 flushedLogOffset 单调性</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3425">PR #3425</a> 合并限制 SASL JAAS config 仅用于 PlainLoginModule 的安全改进</li><li>✨ <a href="https://github.com/apache/fluss/pull/3456">PR #3456</a> 新增 Hudi source split planner，推进湖仓一体化</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3398">Issue #3398</a> [FIP-37] Add bitmap aggregate functions: rb_build_agg, rb_or_agg, rb_and_agg and register via FlussCatalog</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: 感谢贡献，同意当前实现方式，预期未来新增函数数量有限，当前方案可接受</li><li><span class="author">@polyzos</span>: 推送了一些小改进，CI通过后即可合并，感谢出色的工作</li><li><span class="author">@Prajwal-banakar</span>: 感谢审查和指导，对修改满意，这是一次很棒的学习经历</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3432">Issue #3432</a> [flink] Add union read support to datastream</h4>
+            <ul><li><span class="author">@polyzos</span>: 已开启 #3452 来覆盖 partition pruning 支持的需求</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3435">Issue #3435</a> [Feature] Support implicit/hidden partitions for Fluss tables</h4>
+            <ul><li><span class="author">@litiliu</span>: 分享了设计文档草稿链接，期待反馈和建议</li><li><span class="author">@zerolbsony</span>: 感谢分享文档，稍后会查阅，有问题会联系</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3174">PR #3174</a> [server] Add ReplicaCleanupManager to throttle drops in coordinator queue</h4>
+            <ul><li><span class="author">@wuchong</span>: 建议将 replicaCleanupManager 通过构造函数注入设为 final，避免数据竞争；resumeAction 设计容易破坏并发安全</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3427">PR #3427</a> [server] Keep flushedLogOffset monotonic to fix row count after failover</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: 同意保持当前实现方式不变</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3453">PR #3453</a> [server] Support altering auto partition enabled option</h4>
+            <ul><li><span class="author">@Copilot</span>: 建议将过期任务日志降为 DEBUG；toString() 中的标签命名应与代码库保持一致</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3456">PR #3456</a> [lake/hudi] Introduce Hudi source split planner</h4>
+            <ul><li><span class="author">@Copilot</span>: partition 值提取可能产生大小/顺序不匹配；bucket-aware 默认值可能影响旧表；fileId 解析失败应优雅降级</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3455">#3455</a> [server] complete delayed fetch operations after produce to reduce fetch latency <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/3454">#3454</a> Backpressure on KV Operations Instead of Cluster-Wide Stalling <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/3452">#3452</a> [Flink] Add support for partition pruning to the Datastream API <span class="author">@polyzos</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3456">#3456</a> [lake/hudi] Introduce Hudi source split planner <span class="author">@fhan688</span> </li><li><a href="https://github.com/apache/fluss/pull/3453">#3453</a> [server] Support altering auto partition enabled option <span class="author">@fhan688</span> </li><li><a href="https://github.com/apache/fluss/pull/3450">#3450</a> [test] Fix ComponentClassLoaderTest tmpdir path handling <span class="author">@litiliu</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3422">#3422</a> Restrict the use of client.security.sasl.jaas.config to PlainLoginModule exclusively. <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/issues/3386">#3386</a> [test] Unstable test FlussAdminITCase.testGetTableStatsForPrimaryKeyTableWithFailover <span class="author">@app/github-actions</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3432">#3432</a> [flink] Add union read support to datastream <span class="author">@polyzos</span> </li><li><a href="https://github.com/apache/fluss/pull/3427">#3427</a> [server] Keep flushedLogOffset monotonic to fix row count after failover <span class="author">@wattt3</span> </li><li><a href="https://github.com/apache/fluss/pull/3425">#3425</a> [client] Restrict the use of client.security.sasl.jaas.config to PlainLoginModule exclusively. <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/pull/3398">#3398</a> [FIP-37] Add bitmap aggregate functions: rb_build_agg, rb_or_agg, rb_and_agg and register via FlussCatalog <span class="author">@Prajwal-banakar</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
