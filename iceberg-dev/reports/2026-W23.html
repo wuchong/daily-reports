@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iceberg 社区周报 | 2026-W23</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Iceberg 社区周报 | 2026-W23</h1>
+            <p class="date-range">2026-06-01 ~ 2026-06-07</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (1)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/gc0wbgh7q8yh4hf1ctz7rfmqnyssg2th">Lakehouse Day EU Agenda and Registration is Live!</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (3)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/s1db6z1jlq046l9v9oyxpqjb47bkxm5w">[REST-SPEC] Add list and load function endpoints</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/59bn4jty8jmtbks8td8zfqodkcpro1hw">Add draft bitmap spec to git</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/vo8wfvp4cncggng31c5l6ksh7nnv1bsm">[C++] Release Apache Iceberg C++ 0.3.0 RC0</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/vsxpk5glhf38nnm7yx8llh5p1wn5yc20">Iceberg Summit 2027</a></h3>
+            <p class="meta">13 条回复 · 12 位参与者</p>
+            <p class="summary">Kevin Liu 发起了 2027 年 Iceberg Summit 的筹备讨论，鉴于旧金山场馆预订紧张，建议尽早启动规划并沿用今年的会议形式。社区成员一致同意提前行动，并广泛探讨了包括西雅图、圣何塞、纽约及欧洲城市在内的备选地点，多位成员主动请缨协助筹备。</p>
+            <div class="key-points"><p><strong>@Kevin Liu:</strong> 指出旧金山场馆已大多被预订，建议尽早开始规划，并认为沿用今年的会议结构效果较好。</p>
+<p><strong>@Jean-Baptiste Onofré:</strong> 同意提前规划，提议若旧金山无场地可考虑湾区其他地点或西雅图，并愿意协助处理 ASF 文书工作。</p>
+<p><strong>@Danica Fine:</strong> 建议复制 2026 年的提案文档进行迭代，并提醒西雅图可能存在国际航班较少的问题。</p></div>
+            <p class="conclusion">社区已达成尽早启动筹备的共识，下一步将基于 2026 年的提案文档进行迭代更新，并继续评估和筛选具体的举办地点。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/1yt689xpk435ypcxm6vnr69rmh5zm3p2">Adding X-Iceberg-Client-Capabilities header to REST spec</a></h3>
+            <p class="meta">12 条回复 · 8 位参与者</p>
+            <p class="summary">讨论主要围绕是否在 REST 规范中引入 `X-Iceberg-Client-Capabilities` 标头以支持“读限制”功能。部分开发者认为全局标头会增加复杂性且难以与特定端点行为关联，建议通过引入 `v2 loadTable` 端点来处理前向不兼容的变更。最终讨论倾向于放弃该标头，采用折中方案：在 v1 中允许读限制（由管理员负责信任验证），并在未来的 v2 中强制要求客户端支持。</p>
+            <div class="key-points"><p><strong>@Daniel Weeks:</strong> 反对全局标头带来的复杂性，认为应通过版本化端点（v2）来明确处理行为变更，而非依赖能力协商。</p>
+<p><strong>@Ryan Blue:</strong> 提出引入 v2 端点是处理前向不兼容变更的清晰方式，并建议折中：v1 允许读限制，v2 强制执行。</p>
+<p><strong>@Russell Spitzer:</strong> 指出协议无法强制信任关系，建议在 v1 中直接添加读限制而无需能力标头，v2 工作并行推进。</p></div>
+            <p class="conclusion">初步结论是移除 `X-Iceberg-Client-Capabilities` 标头，在 v1 接口中推进读限制功能（依赖管理员进行信任配置），并在未来的 v2 接口中将其作为强制要求。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/k5pfk4rork0mp2p303pd70q9nx0tsl9w">1.11.1 / 1.10.3 patch releases?</a></h3>
+            <p class="meta">10 条回复 · 10 位参与者</p>
+            <p class="summary">社区讨论了发布 1.11.1 和 1.10.3 补丁版本的必要性，主要涉及 Spark rewrite manifests 过程中 first row IDs 未正确保留的错误修复。讨论重点在于是否应继续将 v3 元数据正确性修复回溯移植到 1.10 版本，社区一致同意应支持仍在使用 1.10 的用户。目前已确定相关修复 PR 并创建了 1.10.3 里程碑。</p>
+            <div class="key-points"><p><strong>@Amogh Jahagirdar:</strong> 提议发布补丁以修复 Spark rewrite manifests 中的 first row IDs 错误，并主张将 v3 正确性修复回溯移植到 1.10，因为许多用户仍在使用该版本。</p>
+<p><strong>@Daniel Weeks:</strong> 支持发布，建议 1.10 的回溯移植范围应保持狭窄，以便于发布和维护。</p>
+<p><strong>@Kevin Liu:</strong> 建议在 1.11.x 版本中修复 iceberg-rest-fixture docker 镜像问题。</p></div>
+            <p class="conclusion">社区一致同意发布 1.11.1 和 1.10.3 补丁版本，并已创建 1.10.3 里程碑。下一步将包含 Spark rewrite manifests 修复、DV 更改的加密元数据保留修复以及 1.11.x 的 docker 镜像修复。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/g7n98spfc83wrc4f9xrt66gzhrbgz5ph">Relative paths and location resolution</a></h3>
+            <p class="meta">4 条回复 · 3 位参与者</p>
+            <p class="summary">讨论聚焦于 Samuel 提出的跨多区域表复制场景，探讨如何利用相对路径结合 sequence ID 实现动态路径解析。社区指出当前设计仅支持单一表位置前缀，建议将复杂的复制状态管理与核心路径解析逻辑解耦，利用现有工具（如 rewrite_table_path）处理。</p>
+            <div class="key-points"><p><strong>@Daniel Weeks:</strong> 相对路径解析依赖于 Catalog 提供的单一表位置，路径构建由 LocationProvider 负责，设计初衷支持 DR 但未涵盖多前缀实时路由。</p>
+<p><strong>@Samuel Pacheco Cantu:</strong> 提出基于 commit_id 和位图的跨区域部分复制方案，希望 FileIO 层能根据元数据（如 sequence ID）动态解析路径，而非仅依赖静态位置。</p>
+<p><strong>@Yufei Gu:</strong> 认为复制状态跟踪是独立于路径解析的问题，建议保持核心解析层简单，通过外部工具或 rewrite_table_path 机制来管理不同区域的快照可用性。</p></div>
+            <p class="conclusion">讨论暂未达成明确的技术方案变更决定，但主流意见倾向于保持核心路径解析的简洁性，将复杂的复制逻辑剥离至外部工具或上层处理。Sam 表示将继续评估维护 ID 映射等变通方案的可行性。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/q329pwcopzc601lq86k4zd12ohxnhdq2">Spark versioning strategy with accelerated Spark releases.</a></h3>
+            <p class="meta">3 条回复 · 2 位参与者</p>
+            <p class="summary">讨论核心在于 Iceberg 如何适应 Spark 加速的发布周期及新的 LTS 策略，重点在于平衡版本覆盖范围与 CI 资源限制。虽然 Spark 主版本内的向后兼容性有助于减少 Jar 包数量，但若 Iceberg 积极采用新 API，仍需维护多个版本。初步倾向于限制支持的 Spark 版本数量以缓解 CI 瓶颈。</p>
+            <div class="key-points"><p><strong>@Szehon Ho:</strong> Spark 主版本内保持向后兼容，理论上一个 Iceberg-Spark jar 可用于未来的 Spark 次版本，但若 Iceberg 使用新 API 则需维护多版本。</p>
+<p><strong>@Anurag Mantripragada:</strong> 鉴于 CI 已成为瓶颈，建议将支持范围限制为一个 LTS 版本加两个次版本。</p>
+<p><strong>@Szehon Ho:</strong> 目前 CI 资源是主要瓶颈，而非代码同步（得益于 AI 辅助），因此需权衡测试覆盖范围与 CI 负载。</p></div>
+            <p class="conclusion">确认了 Spark 的向后兼容性机制，初步达成共识应限制支持的 Spark 版本数量（如 Option 2 或限制为 1 LTS + 2 minors）以解决 CI 瓶颈问题。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/7n2rk76tmz9c9596l7pv0cr91c1kojwm">Global Snapshot Consistency for Iceberg Tables</a></h3>
+            <p class="meta">3 条回复 · 2 位参与者</p>
+            <p class="summary">讨论针对 Iceberg 多表查询缺乏全局快照一致性问题，Xiening Dai 提议增加批量 LoadTables API 以利用 Catalog 后端事务能力实现语句级一致性。Maninder Parmar 指出这与现有的 CSN 提案方向一致，Xiening 回应称两者不矛盾，批量 API 接口可通过 CSN 实现，但他主张针对当前需求采用更简单的方案。</p>
+            <div class="key-points"><p><strong>@Xiening Dai:</strong> 现有的单表 LoadTable API 导致多表查询快照不一致，建议新增批量 LoadTables API，利用 Catalog 后端存储（如 DynamoDB）的事务能力提供全局一致性视图。</p>
+<p><strong>@Maninder Parmar:</strong> 指出 CSN (Catalog Snapshot Number) 提案也能解决原子读取问题，且无需重写存储层的 artifacts，认为该提案与批量加载的思路在目标上是一致的。</p>
+<p><strong>@Xiening Dai:</strong> 认为两种方案不冲突，核心在于定义跨表快照读取接口；对于当前时间点的快照读，直接利用后端存储的 SI 事务比 CSN 方案更简单直接。</p></div>
+            <p class="conclusion">初步结论是两种方案在目标上一致且可互补，Xiening 已在文档中回复具体细节，后续将围绕定义跨表快照读取接口继续推进。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/2r8yl81q54z8p33wqq27pj6wrvhzf8dp">Column Update File Representation</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">讨论核心在于通过提升基文件序列号来解决列更新时的等值删除重写问题。Gábor 提出了具体的写入路径实现建议，但 Xiening Dai 指出此举违反了现有规范中序列号不可变的不变量。针对仅 DV 的场景，讨论提出了多种处理方案并呼吁制定详细的规范变更提案。</p>
+            <div class="key-points"><p><strong>@Gábor Kaszab:</strong> 认为提升基文件序列号是实现等值删除重写的关键缺失环节，并提出了处理尾部删除的两种实现路径。</p>
+<p><strong>@Xiening Dai:</strong> 指出提升序列号会导致文件在不同快照中序列号不同，违反了现有规范中序列号不可变的规定。</p>
+<p><strong>@Xiening Dai:</strong> 针对仅 DV 场景提出了三种序列号处理选项，建议将细节写入规范变更提案以审查读写流程。</p></div>
+            <p class="conclusion">建议将序列号调整及 DV 处理逻辑的具体细节写入规范变更提案，并仔细审查读写工作流。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/ztrygfd46607pns9t2d4hs0x95595cb2">Variant Shredding Policy Across Iceberg Implementations</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">Neelesh Salian 发起讨论，提议制定跨 Iceberg 各实现的 Variant Shredding 统一策略以解决兼容性问题。社区讨论后决定调整方向，优先确定最佳的推理算法，提案将结合测试数据进行完善后再重新提交。</p>
+            <div class="key-points"><p><strong>@Neelesh Salian:</strong> 指出目前各实现（Java, Go, Rust, Python）缺乏统一的 Shredding 策略，提议制定标准化的布局声明和表达方式。</p>
+<p><strong>@Kurtis C. Wright:</strong> 强调需要统一定义 Variant 对象如何被 Shredding 的推理算法，并建议利用高质量的基准测试数据集进行对齐。</p>
+<p><strong>@Neelesh Salian:</strong> 确认将根据反馈调整提案，重点转向寻找最佳推理算法并利用数据进行验证，待成熟后再推进投票。</p></div>
+            <p class="conclusion">提案暂缓投票，下一步将收集数据并测试推理算法，待提案完善后再启动社区投票流程。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/3x1nkzoptvw80q7z2tpmd85yrozn7tz8">Column Update metadata representation</a></h3>
+            <p class="meta">1 条回复 · 1 位参与者</p>
+            <p class="summary">讨论主要围绕 Iceberg V4 列更新元数据的表示方式，重点在于序列号的处理以及基文件与列文件的关系。社区决定通过提升 TrackedFile 的数据序列号来避免引入新字段，并探讨了是否将基文件纳入列文件列表。最终倾向于保持“基文件+列文件”的心智模型，避免因物理表示与概念模型不一致而造成混淆。</p>
+            <div class="key-points"><p><strong>@Gábor Kaszab:</strong> 决定不引入新的序列号字段，而是在添加新列文件时提升 TrackedFile 的数据序列号。</p>
+<p><strong>@Gábor Kaszab:</strong> 探讨了将基文件视为常规列文件以减少元数据冗余，但认为这可能导致物理表示与心智模型脱节。</p>
+<p><strong>@Gábor Kaszab:</strong> 倾向于保留 TrackedFile 级别的基文件字段，而非将其移入列文件列表，以保持概念的清晰性。</p></div>
+            <p class="conclusion">初步结论是维持现有的“基文件+列文件”心智模型，不将基文件信息移入列文件列表。下一步已提交 PR #16285 以实现相关的元数据结构。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/781cyhoq5x7rc1k9074pdcf873bjofog">Efficient CDC Upserts</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">Ankit Kumar 询问关于 Iceberg 高效 CDC Upserts 的讨论结论，重点关注实时查询成本及镜像表问题。Péter Váry 建议关注 Iceberg Secondary Index 提案，指出 Key Lookup Index 可辅助 Upsert 写入，并分享了 Flink 集成该功能的最新进展。</p>
+            <div class="key-points"><p><strong>@Ankit Kumar:</strong> 担忧部分 Catalog 不支持分支功能，且缺乏用于实时场景的逻辑视图。</p>
+<p><strong>@Péter Váry:</strong> 提出 Iceberg Secondary Index 提案，认为 Key Lookup Index 能立即辅助 Upsert 写入。</p>
+<p><strong>@Péter Váry:</strong> 计划将 Flink 迁移至新的索引系统，第一步是添加 ConvertEqualityDeletes 维护任务。</p></div>
+            <p class="conclusion">目前尚无针对原讨论的最终定论，但建议关注 Secondary Index 提案；下一步行动是推进 Flink 2.1 中 ConvertEqualityDeletes 任务的实现（PR #15996）。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (0)</h2>
+            
+    <p>本周新建 <strong>0</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周无新建 JIRA。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Iceberg Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
