@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-06-09</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-06-09</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 4 新 Issues</div>
+            <div class="stat">✅ 2 关闭</div>
+            <div class="stat">✨ 2 新 PRs</div>
+            <div class="stat">🎉 5 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/3260">PR #3260</a> 新增 Spark 配置 scan.maxRecordsPerPartition 以拆分日志表输入分区</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3434">PR #3434</a> 支持修改自动分区预创建数量选项</li><li>🐛 <a href="https://github.com/apache/fluss/pull/3450">PR #3450</a> 修复 ComponentClassLoaderTest 临时目录路径处理问题</li><li>✨ <a href="https://github.com/apache/fluss/issues/3461">Issue #3461</a> 提议支持 Fluss UI 数据库与表管理功能</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3174">Issue #3174</a> [server] Add TableLifecycleThrottler to throttle drops in coordinator queue</h4>
+            <ul><li><span class="author">@swuferhong</span>: 已处理评论，将类重命名为 TableLifecycleThrottler 并引入新事件保证线程安全。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3260">Issue #3260</a> [spark] Add scan.maxRecordsPerPartition config to split log table input partitions</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 创建了关于 Spark 配置命名规范的后续 Issue #3462。</li><li><span class="author">@Yohahaha</span>: 因忙于其他优先事务未及时处理评论，感谢合并。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3383">Issue #3383</a> [Flink] Kvscan flink integration</h4>
+            <ul><li><span class="author">@polyzos</span>: 感谢评论，已处理相关修改。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3358">Issue #3358</a> [server] Respect log.* options for table</h4>
+            <ul><li><span class="author">@zuston</span>: 请求 fresh-borzoni 协助审查此 PR。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3456">Issue #3456</a> [lake/hudi] Introduce Hudi source split planner</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 请求 XuQianJin-Stars 协助审查此 PR。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3434">Issue #3434</a> [server] Support altering auto partition num-precreate option</h4>
+            <ul><li><span class="author">@fhan688</span>: 请求 luoyuxia 协助审查此 PR。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3453">Issue #3453</a> [server] Support altering auto partition enabled option</h4>
+            <ul><li><span class="author">@fhan688</span>: 请求 luoyuxia 协助审查此 PR。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3431">Issue #3431</a> [server] Fix NPE when processing table registration change</h4>
+            <ul><li><span class="author">@raoluSmile</span>: 请求 loserwang1024 协助审查此 PR。</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3174">PR #3174</a> [server] Add TableLifecycleThrottler to throttle drops in coordinator queue</h4>
+            <ul><li><span class="author">@swuferhong</span>: 重构逻辑至 TableLifecycleThrottler，引入 ResumeDropEvent 保证线程安全，移除了可能导致事件队列溢出的早期返回逻辑。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3260">PR #3260</a> [spark] Add scan.maxRecordsPerPartition config to split log table input partitions</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 创建了关于 Spark 配置命名规范的后续 Issue #3462。</li><li><span class="author">@Yohahaha</span>: 因忙于其他优先事务未及时处理评论，感谢合并。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3400">PR #3400</a> [server] Add Cluster Health API implementation</h4>
+            <ul><li><span class="author">@wuchong</span>: 建议移除 grace period 逻辑以避免升级时的死时间，并询问 Coordinator 地址变更的影响。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3420">PR #3420</a> [lake/tiering] Support reporting watermark to Paimon snapshot</h4>
+            <ul><li><span class="author">@Copilot</span>: 指出日志占位符参数顺序错误、接口新增方法破坏兼容性以及注释语法问题。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3424">PR #3424</a> [docs] add docs to integrate Fluss + Iceberg via Flink with AWS Glue and Hive</h4>
+            <ul><li><span class="author">@Copilot</span>: 指出 Glue ARN 模式错误、Iceberg S3 配置说明缺失以及专有名词大小写规范问题。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3458">PR #3458</a> [server] Allow altering datalake auto-compaction before lake enabled</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 质疑为何在 datalake 启用时禁止修改配置，建议移除该限制。</li><li><span class="author">@wzx140</span>: 同意观点，表示没有理由阻止此修改，将更新逻辑移除限制。</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3462">#3462</a> [spark] use CamelCase in spark configs <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/3461">#3461</a> [ui] Support Fluss UI for database and table management <span class="author">@litiliu</span> </li><li><a href="https://github.com/apache/fluss/issues/3460">#3460</a> [test] Unstable test RemoteLogDownloaderTest.testPrefetchNum <span class="author">@app/github-actions</span> </li><li><a href="https://github.com/apache/fluss/issues/3457">#3457</a> Refactor the jittered partition creation logic in AutoPartitionManager to TableLifecycleThrottler <span class="author">@swuferhong</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3459">#3459</a> [client][server] Support adding aggregation columns <span class="author">@wzx140</span> </li><li><a href="https://github.com/apache/fluss/pull/3458">#3458</a> [server] Allow altering datalake auto-compaction before lake enabled <span class="author">@wzx140</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3437">#3437</a> [UT] ComponentClassLoaderTest fails when java.io.tmpdir contains dots <span class="author">@litiliu</span> </li><li><a href="https://github.com/apache/fluss/issues/3215">#3215</a> [spark] Add config to split input partition by input size <span class="author">@Yohahaha</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3450">#3450</a> [test] Fix ComponentClassLoaderTest tmpdir path handling <span class="author">@litiliu</span> </li><li><a href="https://github.com/apache/fluss/pull/3448">#3448</a> [metrics] Fix typo in scanner metric name <span class="author">@charlesdong1991</span> </li><li><a href="https://github.com/apache/fluss/pull/3438">#3438</a> [docs] Update README engine support <span class="author">@wangzhigang1999</span> </li><li><a href="https://github.com/apache/fluss/pull/3434">#3434</a> [server] Support altering auto partition num-precreate option <span class="author">@fhan688</span> </li><li><a href="https://github.com/apache/fluss/pull/3260">#3260</a> [spark] Add scan.maxRecordsPerPartition config to split log table input partitions <span class="author">@Yohahaha</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
