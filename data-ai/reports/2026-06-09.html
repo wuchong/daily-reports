@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data+AI 全球日报 | 2026-06-09</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Data+AI 全球日报 | 2026-06-09</h1>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="top-changes">
+            <h2>🔥 今日最重要的3个变化</h2>
+            <ol><li><strong>AWS 宣布 Apache Spark 4.0 在 EMR 上全面可用</strong> — Spark 4.0 登陆 AWS EMR 全系部署模式，引入 Spark Connect 和 Variant 数据类型，大幅提升数据处理性能与开发体验。</li><li><strong>Apache Iceberg V3 落地 VARIANT 数据类型</strong> — AWS 推动 Iceberg V3 支持 VARIANT 类型，解决数据湖中半结构化数据存储与查询的性能瓶颈。</li><li><strong>AWS 发布 Spark Upgrade Agent 自动化迁移工具</strong> — 新工具助力用户平滑升级 PySpark 至 4.0 版本，降低企业大数据平台技术债务与升级风险。</li></ol>
+            <p class="judgment"><strong>总判断：</strong>总判断：今日行业动态由 AWS 主导，核心围绕 Apache Spark 4.0 生态的全面落地与工具链完善。AWS 通过升级计算引擎、优化表格式支持及提供自动化迁移工具，构建了从存储到计算的完整升级闭环，意在降低企业采用新一代数据技术的门槛，巩固其在云数据基础设施领域的领先地位。</p>
+        </section>
+
+        <section class="top-signals">
+            <h2>📡 重要信号</h2>
+            
+    <article class="news-item">
+        <h3>Apache Spark 4.0 在 Amazon EMR 上全面可用</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/announcing-general-availability-of-apache-spark-4-0-on-amazon-emr/">AWS Big Data Blog</a></p>
+        <p class="date">2026-06-09</p>
+        <p class="summary">AWS 宣布 Apache Spark 4.0 在 Amazon EMR Serverless、EMR on EC2 和 EMR on EKS 上全面可用。此次更新带来了 Spark Connect、Variant 数据类型以及对 Python 支持的显著增强，标志着新一代大数据处理引擎在云端的正式成熟。</p>
+        <div class="impact">📊 数据平台影响：Spark 4.0 的 GA 是数据平台领域的重大里程碑，其原生支持的 Variant 数据类型和改进的 Python API 将显著提升数据工程师处理半结构化数据的效率，推动数据平台向更灵活、高性能方向演进。</div>
+    </article>
+        </section>
+
+        <section class="product-tech">
+            <h2>💻 产品与技术</h2>
+            
+    <article class="news-item">
+        <h3>Apache Iceberg V3 实现 VARIANT 数据类型支持</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/beyond-json-blobs-implementing-the-variant-data-type-in-apache-iceberg-v3/">AWS Big Data Blog</a></p>
+        <p class="date">2026-06-09</p>
+        <p class="summary">AWS 发布技术文章详解如何在 Apache Iceberg V3 中实现 VARIANT 数据类型。该功能超越了传统的 JSON blob 存储，允许用户直接在表结构中高效存储和查询半结构化数据，并提供了 variant_get() 等查询函数。</p>
+        <div class="impact">📊 数据平台影响：VARIANT 类型的引入解决了数据湖中 JSON 数据解析性能差的痛点，减少了 ETL 过程中的数据转换环节，使数据湖仓架构在处理复杂日志和物联网数据时更具优势。</div>
+    </article>
+    <article class="news-item">
+        <h3>Amazon EMR Serverless 支持 Spark Connect</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/announcing-spark-connect-on-amazon-emr-serverless-interactive-pyspark-development-anywhere/">AWS Big Data Blog</a></p>
+        <p class="date">2026-06-09</p>
+        <p class="summary">AWS 宣布 EMR Serverless 支持 Spark Connect，允许开发者在本地 IDE 中构建和调试 PySpark 应用，并在云端无服务器环境中运行。该功能基于 EMR release 7.13 及以上版本，实现了开发与生产环境的解耦。</p>
+        <div class="impact">📊 数据平台影响：Spark Connect 的支持极大地改善了数据开发者的体验，解决了远程调试困难的问题，有助于提升数据应用的开发迭代速度，推动无服务器数据架构的普及。</div>
+    </article>
+    <article class="news-item">
+        <h3>AWS Spark Upgrade Agent 助力 PySpark 4.0 升级</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/upgrade-pyspark-from-spark-3-5-to-spark-4-0-with-aws-spark-upgrade-agent/">AWS Big Data Blog</a></p>
+        <p class="date">2026-06-09</p>
+        <p class="summary">AWS 推出 Spark Upgrade Agent，旨在自动化将 PySpark 应用从 3.5 升级到 4.0 的过程。该工具能在 EMR Serverless 环境中进行迭代验证，自动诊断并修复兼容性问题，降低版本迁移的技术门槛。</p>
+        <div class="impact">📊 数据平台影响：自动化迁移工具填补了技术升级的“最后一公里”，降低了企业维护大数据平台的技术债务，加速了行业对最新数据处理引擎的采纳率。</div>
+    </article>
+    <article class="news-item">
+        <h3>基于 Spark 4.0 构建有状态流应用</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/build-stateful-streaming-applications-with-apache-spark-4-0-on-amazon-emr-serverless/">AWS Big Data Blog</a></p>
+        <p class="date">2026-06-09</p>
+        <p class="summary">文章演示了如何利用 Spark 4.0 的 transformWithState API 在 EMR Serverless 上构建生产级 IoT 设备监控系统。这展示了 Spark 4.0 在有状态流处理方面的增强能力。</p>
+        <div class="impact">📊 数据平台影响：Spark 4.0 对流处理的增强使其在实时数仓和物联网场景中的竞争力提升，为构建复杂的实时数据应用提供了更标准化的解决方案。</div>
+    </article>
+        </section>
+
+        <section class="people-views">
+            <h2>👤 人物与观点</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="analyst-insights">
+            <h2>📊 分析师洞察</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="watchlist">
+            <h2>👀 观察列表</h2>
+            
+    <article class="watchlist-item">
+        <h3>Spark 4.0 企业级采用率</h3>
+        <span class="status">加速推进</span>
+        <p class="reason">AWS 作为云厂商巨头全面支持 Spark 4.0 并提供自动化迁移工具，预计将带动行业快速跟进升级。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>Databricks 及其他主要 Spark 发行版跟进发布相关优化特性</p>
+    </article>
+    <article class="watchlist-item">
+        <h3>Iceberg V3 标准化进程</h3>
+        <span class="status">生态扩展</span>
+        <p class="reason">VARIANT 数据类型的引入显示了 Iceberg 在处理半结构化数据方面的野心，需关注其他引擎（如 Flink, Trino）的兼容性支持。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>Apache Iceberg 社区发布 V3 正式版规范</p>
+    </article>
+        </section>
+
+        <section class="stock-analysis">
+            <h2>📈 股票分析</h2>
+            <p class="disclaimer">⚠️ 以下内容仅供参考，不构成任何投资建议。投资有风险，入市需谨慎。</p>
+            
+    <article class="stock-item">
+        <div class="stock-header">
+            <span class="ticker">AMZN</span>
+            <span class="company">Amazon</span>
+            <span class="signal signal-bullish">🟢 看多</span>
+        </div>
+        <p class="stock-summary">AWS 今日在数据基础设施领域密集发布更新，全面拥抱 Spark 4.0 并深化 Iceberg 集成。这显示了 AWS 在大数据 PaaS 层的持续创新能力，通过降低升级门槛锁定客户并提升粘性。</p>
+        <div class="stock-details">
+            <div class="catalysts">
+                <strong>🚀 催化剂</strong>
+                <ul><li>EMR Serverless 易用性提升吸引新用户</li><li>Spark 4.0 性能优势降低客户计算成本</li><li>数据迁移工具降低流失率</li></ul>
+            </div>
+            <div class="risks">
+                <strong>⚠️ 风险</strong>
+                <ul><li>开源社区竞争（如 Databricks）</li><li>云成本优化导致客户缩减 EMR 集群规模</li></ul>
+            </div>
+        </div>
+    </article>
+        </section>
+
+        <footer>
+            <p>Generated by Data+AI Daily Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
