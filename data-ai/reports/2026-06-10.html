@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data+AI 全球日报 | 2026-06-10</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Data+AI 全球日报 | 2026-06-10</h1>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="top-changes">
+            <h2>🔥 今日最重要的3个变化</h2>
+            <ol><li><strong>ClickHouse 与 Datadog 达成战略合作</strong> — ClickHouse 与 Datadog 建立合作伙伴关系，解决大规模可观测性数据的高保真留存与检索难题，强化分析型数据库在运维监控场景的渗透。</li><li><strong>ClickHouse Cloud 支持 Agent 自动配置</strong> — ClickHouse Cloud 允许 AI Agent 通过 CLI 一键配置数据库服务，标志着数据基础设施开始主动适配 AI 原生开发工作流。</li><li><strong>AWS 推进 S3 Tables 实时化能力</strong> — AWS 发布基于 Debezium 的 CDC 方案，将 Aurora PostgreSQL 数据实时同步至 S3 Tables (Iceberg)，加速数据湖仓架构的实时化落地。</li></ol>
+            <p class="judgment"><strong>总判断：</strong>今日行业信号显示出数据基础设施正向两端快速演进：一端是深度适配 AI Agent 工作流（ClickHouse），另一端是强化实时数据湖仓架构（AWS）。ClickHouse 的双重动作（战略合作与 AI 适配）尤为亮眼，显示出其正积极从单纯的分析引擎向可观测性与 AI 基础设施拓展。</p>
+        </section>
+
+        <section class="top-signals">
+            <h2>📡 重要信号</h2>
+            
+    <article class="news-item">
+        <h3>Datadog 与 ClickHouse 合作推动可观测性数据规模化</h3>
+        <p class="sources">📌 <a href="https://clickhouse.com/blog/datadog-and-clickhouse-partner">ClickHouse Blog</a></p>
+        <p class="date">2026-06-10</p>
+        <p class="summary">ClickHouse 与 Datadog 宣布建立合作伙伴关系，旨在将高保真日志保留能力与大规模搜索体验相结合。该合作解决了工程师在处理海量日志数据时面临的成本与性能权衡问题，使得在保持全量数据 fidelity 的同时实现高效调查成为可能。</p>
+        <div class="impact">📊 数据平台影响：这是分析型数据库（OLAP）侵蚀传统可观测性市场的典型案例。通过集成 Datadog，ClickHouse 进一步验证了其在大规模时序与日志数据处理上的统治力，可能改变企业构建可观测性技术栈的选型逻辑。</div>
+    </article>
+        </section>
+
+        <section class="product-tech">
+            <h2>💻 产品与技术</h2>
+            
+    <article class="news-item">
+        <h3>AI Agents 现可在 ClickHouse Cloud 上自动配置数据库</h3>
+        <p class="sources">📌 <a href="https://clickhouse.com/blog/stripe-projects">ClickHouse Blog</a></p>
+        <p class="date">2026-06-10</p>
+        <p class="summary">ClickHouse Cloud 推出新功能，允许 AI Agents 通过 Stripe CLI 一键配置 ClickHouse 或 Postgres 服务，并直接获取工作凭证，无需人工介入 UI 界面。这极大地简化了自动化工作流和 AI 应用访问数据的门槛。</p>
+        <div class="impact">📊 数据平台影响：这是数据基础设施适配 AI Agent 的重要里程碑。传统数据库依赖人工 UI 配置的模式正在被打破，未来数据平台必须提供对 Agent 友好的 API 和 CLI 接口，以融入 AI 原生应用生态。</div>
+    </article>
+    <article class="news-item">
+        <h3>AWS 实现从 Aurora PostgreSQL 到 S3 Tables 的实时 CDC</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/real-time-cdc-from-aurora-postgresql-to-amazon-s3-tables-using-debezium-and-firehose/">AWS Big Data Blog</a></p>
+        <p class="date">2026-06-10</p>
+        <p class="summary">AWS 展示了如何利用 Debezium 和 Firehose 构建 CDC 管道，将 Aurora PostgreSQL 的变更数据实时同步至 Amazon S3 Tables（基于 Apache Iceberg）。该方案支持行级操作，能够直接生成查询就绪的 Iceberg 表。</p>
+        <div class="impact">📊 数据平台影响：AWS 正在大力降低 Iceberg 表格式的使用门槛。通过原生支持 S3 Tables 的实时写入，AWS 解决了数据湖从“批处理”向“近实时”演进的关键痛点，进一步挤压了第三方数据摄入工具的生存空间。</div>
+    </article>
+    <article class="news-item">
+        <h3>AWS 指导 MWAA 与 Step Functions 工作流编排选型</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/choosing-the-right-workflow-orchestration-service-for-your-use-case-amazon-mwaa-and-aws-step-functions/">AWS Big Data Blog</a></p>
+        <p class="date">2026-06-10</p>
+        <p class="summary">AWS 发布技术指南，深入对比了 Amazon MWAA（托管 Airflow）与 AWS Step Functions 在工作流编排中的差异，帮助开发者根据具体用例需求选择合适的工具。</p>
+        <div class="impact">📊 数据平台影响：工作流编排是数据平台的核心控制面。AWS 明确界定两类工具的边界，有助于用户在“开源生态兼容”与“云原生集成”之间做出取舍，反映了 AWS 对混合编排策略的持续支持。</div>
+    </article>
+        </section>
+
+        <section class="people-views">
+            <h2>👤 人物与观点</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="analyst-insights">
+            <h2>📊 分析师洞察</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="watchlist">
+            <h2>👀 观察列表</h2>
+            
+    <article class="watchlist-item">
+        <h3>AI Agent 对数据库的自主配置与访问</h3>
+        <span class="status">技术萌芽期</span>
+        <p class="reason">ClickHouse 率先支持 Agent 自动配置数据库，可能引发其他数据库厂商跟进，改变数据安全与权限管理的范式。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>观察主要云厂商（AWS/Azure/GCP）是否在 RDS 或数据仓库产品中引入类似的 Agent-first 配置接口。</p>
+    </article>
+        </section>
+
+        <section class="stock-analysis">
+            <h2>📈 股票分析</h2>
+            <p class="disclaimer">⚠️ 以下内容仅供参考，不构成任何投资建议。投资有风险，入市需谨慎。</p>
+            
+    <article class="stock-item">
+        <div class="stock-header">
+            <span class="ticker">DDOG</span>
+            <span class="company">Datadog</span>
+            <span class="signal signal-bullish">🟢 看多</span>
+        </div>
+        <p class="stock-summary">与 ClickHouse 的合作增强了 Datadog 在处理海量日志数据时的成本效益优势，解决了长期留存与查询性能的矛盾，有助于提升高用量客户的粘性。</p>
+        <div class="stock-details">
+            <div class="catalysts">
+                <strong>🚀 催化剂</strong>
+                <ul><li>全保真日志留存解决方案落地</li><li>大客户成本优化需求增加</li></ul>
+            </div>
+            <div class="risks">
+                <strong>⚠️ 风险</strong>
+                <ul><li>开源 ClickHouse 方案可能分流部分自建可观测性平台的客户</li></ul>
+            </div>
+        </div>
+    </article>
+        </section>
+
+        <footer>
+            <p>Generated by Data+AI Daily Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
