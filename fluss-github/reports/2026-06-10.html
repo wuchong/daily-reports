@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-06-10</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-06-10</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 3 新 Issues</div>
+            <div class="stat">✅ 3 关闭</div>
+            <div class="stat">✨ 5 新 PRs</div>
+            <div class="stat">🎉 5 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/3400">PR #3400</a> 实现了 Cluster Health API，支持安全滚动升级 (Blocker)</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3402">PR #3402</a> 修复 Flink 批处理虚拟日志表读取问题，改为快速失败</li><li>🐛 <a href="https://github.com/apache/fluss/issues/3466">Issue #3466</a> 报告分区过期导致 ZooKeeper 风暴的问题</li><li>📚 <a href="https://github.com/apache/fluss/pull/3470">PR #3470</a> 优化网站介绍页图表以支持主题适配</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3460">Issue #3460</a> [test] Unstable test RemoteLogDownloaderTest.testPrefetchNum</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: 报告 RemoteLogDownloaderTest 测试失败的错误日志详情</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3466">Issue #3466</a> [server][client] Partition expiration storms ZooKeeper via repeated GET_METADATA on non-existent partitions until enumerator unsubscribes</h4>
+            <ul><li><span class="author">@loserwang1024</span>: 呼叫 wuchong 关注该分区过期导致 ZooKeeper 压力的问题</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3400">PR #3400</a> [server] Add Cluster Health API implementation</h4>
+            <ul><li><span class="author">@swuferhong</span>: 调整就绪探针配置并确认已处理代码审查意见</li><li><span class="author">@wuchong</span>: 指出线程安全风险、状态清除逻辑及指标监控建议，最终投票通过</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3456">PR #3456</a> [lake/hudi] Introduce Hudi source split planner</h4>
+            <ul><li><span class="author">@XuQianJin-Stars</span>: 提出反序列化安全风险、资源管理及分区处理逻辑等详尽改进建议</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3402">PR #3402</a> [flink] Fail fast on batch virtual log table reads</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 指出 CI 失败并建议运行 spotless:apply 修复格式</li><li><span class="author">@QuakeWang</span>: 确认已运行 spotless:apply 修复代码格式</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3470">PR #3470</a> [website] Use theme-aware diagram on intro page</h4>
+            <ul><li><span class="author">@Prajwal-banakar</span>: 请求审查并承诺后续处理其他图表的主题适配</li><li><span class="author">@polyzos</span>: 投票赞成并讨论后续图表主题适配的工作量</li><li><span class="author">@wuchong</span>: 请求将文档修改反向移植到 release-0.9 分支</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3444">PR #3444</a> [client] Add support of column aliasing for PojoConverter</h4>
+            <ul><li><span class="author">@VladBanar</span>: 请求审查已修复的检查项</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3447">PR #3447</a> [client] Enum conversion functionality for typed writer/reader</h4>
+            <ul><li><span class="author">@VladBanar</span>: 请求审查已修复的检查项</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3466">#3466</a> [server][client] Partition expiration storms ZooKeeper via repeated GET_METADATA on non-existent partitions until enumerator unsubscribes <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/issues/3465">#3465</a> [test] Unstable test FlinkUnionReadPrimaryKeyTableITCase.testUnionReadInStreamMode <span class="author">@app/github-actions</span> </li><li><a href="https://github.com/apache/fluss/issues/3464">#3464</a> [Feature] Add pendingRecordLag metric for lake tiering <span class="author">@luoyuxia</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3471">#3471</a> [spark] use CamelCase in config names <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/3469">#3469</a> [lake/tiering] Add pendingRecordLag metric for lake tiering <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/pull/3468">#3468</a> [client] Propagate write batch failures to flush <span class="author">@raoluSmile</span> </li><li><a href="https://github.com/apache/fluss/pull/3467">#3467</a> [server] add replica fetch timeout metric <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/pull/3463">#3463</a> [server][client] Add cooperative KV backpressure based on RocksDB L0 <span class="author">@platinumhamburg</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3410">#3410</a> Tests leave temporary files after execution <span class="author">@Dream95</span> </li><li><a href="https://github.com/apache/fluss/issues/3399">#3399</a> [server] Support Cluster Health API for safe rolling upgrades <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/issues/3144">#3144</a> Batch reads on ``/`` fail with coordinator NPE instead of a clear unsupported error <span class="author">@luoyuxia</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3470">#3470</a> [website] Use theme-aware diagram on intro page <span class="author">@Prajwal-banakar</span> </li><li><a href="https://github.com/apache/fluss/pull/3458">#3458</a> [server] Allow altering datalake auto-compaction before lake enabled <span class="author">@wzx140</span> </li><li><a href="https://github.com/apache/fluss/pull/3411">#3411</a> [test] Delete temp dir after cluster shutdown in FlussClusterExtension <span class="author">@Dream95</span> </li><li><a href="https://github.com/apache/fluss/pull/3402">#3402</a> [flink] Fail fast on batch virtual log table reads <span class="author">@QuakeWang</span> </li><li><a href="https://github.com/apache/fluss/pull/3400">#3400</a> [server] Add Cluster Health API implementation <span class="author">@swuferhong</span> <span class="labels">priority=blocker</span></li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
