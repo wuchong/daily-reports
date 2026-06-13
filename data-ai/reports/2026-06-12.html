@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data+AI 全球日报 | 2026-06-12</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Data+AI 全球日报 | 2026-06-12</h1>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="top-changes">
+            <h2>🔥 今日最重要的3个变化</h2>
+            <ol><li><strong>AWS Lake Formation 支持直接访问 S3 数据文件</strong> — AWS 增强 Lake Formation 权限管理能力，允许通过凭证分发机制直接访问 S3 数据，简化了数据湖的访问控制架构。</li><li><strong>StarTree 推出 Delta Tables 实现亚秒级分析</strong> — StarTree 发布 StarTree Delta Tables，为 Delta Lake 提供索引层，解决了 Lakehouse 架构中实时查询性能的痛点。</li><li><strong>ClickHouse 开源基准测试工具 ClickCannon</strong> — ClickHouse 开源内部压测工具 ClickCannon，为社区提供了标准化的性能评估手段，有助于用户进行容量规划。</li></ol>
+            <p class="judgment"><strong>总判断：</strong>今日行业动态聚焦于数据湖架构的深化与性能优化。AWS 通过 Lake Formation 细化了权限控制，解决了数据访问的治理难题；StarTree 则致力于消除 Lakehouse 架构中的性能瓶颈，推动实时分析落地。这表明数据平台正从基础架构搭建向精细化运营演进，治理与性能成为新的竞争高地。</p>
+        </section>
+
+        <section class="top-signals">
+            <h2>📡 重要信号</h2>
+            
+    <article class="news-item">
+        <h3>AWS Lake Formation 支持直接访问 S3 数据文件</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/access-amazon-s3-data-files-directly-using-aws-lake-formation-permissions/">AWS Big Data Blog</a></p>
+        <p class="date">2026-06-12</p>
+        <p class="summary">AWS 宣布 EMR release label 7.13 及后续版本支持通过 Lake Formation 权限直接访问 S3 数据文件。该功能通过凭证分发机制，允许 Apache Spark 作业等应用在无需复杂 IAM 策略配置的情况下，安全地读写 Lake Formation 管理的 S3 位置。</p>
+        <div class="impact">📊 数据平台影响：此举统一了数据湖的权限模型，降低了数据访问门槛。企业现在可以更细粒度地控制数据访问，无需在 IAM 和 Lake Formation 之间进行复杂的映射，显著提升了数据治理的效率与安全性。</div>
+    </article>
+    <article class="news-item">
+        <h3>StarTree 发布 Delta Tables：Delta Lake 的亚秒级分析方案</h3>
+        <p class="sources">📌 <a href="https://startree.ai/resources/startree-pinot-delta-lake-announcement/">StarTree Blog</a></p>
+        <p class="date">2026-06-12</p>
+        <p class="summary">StarTree 推出 StarTree Delta Tables，为 Delta Lake 提供丰富的索引层，旨在解决 Lakehouse 架构下 SLA 驱动型工作负载的性能瓶颈。该方案允许用户在数据原址运行亚秒级分析查询，无需传统的数据变通方案。</p>
+        <div class="impact">📊 数据平台影响：填补了开源 Lakehouse 在实时 OLAP 场景下的性能空白。通过将 Apache Pinot 的实时索引能力引入 Delta Lake，StarTree 加速了“湖仓一体”在实时仪表盘等高并发场景下的落地。</div>
+    </article>
+        </section>
+
+        <section class="product-tech">
+            <h2>💻 产品与技术</h2>
+            
+    <article class="news-item">
+        <h3>ClickHouse 开源基准测试工具 ClickCannon</h3>
+        <p class="sources">📌 <a href="https://clickhouse.com/blog/building-clickcannon-a-tool-for-benchmark-clickhouse">ClickHouse Blog</a></p>
+        <p class="date">2026-06-12</p>
+        <p class="summary">ClickHouse 将其内部规模调整工具开源为 ClickCannon。这是一个用于压力测试 ClickHouse 的框架，能够模拟真实数据和用户工作负载，帮助用户和开发者更准确地进行性能评估和容量规划。</p>
+        <div class="impact">📊 数据平台影响：为数据工程师提供了标准化的性能测试利器，解决了基准测试难以模拟真实场景的问题，有助于优化 ClickHouse 集群的资源配置。</div>
+    </article>
+        </section>
+
+        <section class="people-views">
+            <h2>👤 人物与观点</h2>
+            
+    <article class="news-item">
+        <h3>StarTree 观点：Lakehouse 架构下的查询成本效率问题</h3>
+        <p class="sources">📌 <a href="https://startree.ai/resources/lakehouse-query-cost-efficiency/">StarTree Blog</a></p>
+        <p class="date">2026-06-12</p>
+        <p class="summary">StarTree 发文探讨 Lakehouse 的成本效率，指出虽然开放格式解决了存储成本问题，但查询成本正成为新的负担。文章分析了为何需要为查询未使用的数据付费，并提出了优化查询效率以降低总体成本的思路。</p>
+        <div class="impact">📊 数据平台影响：引发了行业对 Lakehouse 经济模型的深层思考，表明随着数据量的增长，计算/查询成本将取代存储成本成为优化的核心焦点。</div>
+    </article>
+    <article class="news-item">
+        <h3>ClickHouse 指南：如何选择实时分析数据库</h3>
+        <p class="sources">📌 <a href="https://clickhouse.com/blog/selecting-a-real-time-analytical-database-jp">ClickHouse Blog</a></p>
+        <p class="date">2026-06-12</p>
+        <p class="summary">ClickHouse 发布文章指导如何选择实时分析数据库，强调真正的实时分析能力不仅仅是查询速度快，更在于能否查询数秒前刚到达的数据。文章详细阐述了选型时需要关注的关键指标。</p>
+        <div class="impact">📊 数据平台影响：为企业在构建实时数据平台时提供了选型参考框架，强调了数据新鲜度与查询延迟在实时分析场景中的同等重要性。</div>
+    </article>
+        </section>
+
+        <section class="analyst-insights">
+            <h2>📊 分析师洞察</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="watchlist">
+            <h2>👀 观察列表</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="stock-analysis">
+            <h2>📈 股票分析</h2>
+            <p class="disclaimer">⚠️ 以下内容仅供参考，不构成任何投资建议。投资有风险，入市需谨慎。</p>
+            
+    <article class="stock-item">
+        <div class="stock-header">
+            <span class="ticker">AMZN</span>
+            <span class="company">Amazon</span>
+            <span class="signal signal-neutral">⚪ 中性</span>
+        </div>
+        <p class="stock-summary">AWS Lake Formation 功能更新增强了其在数据治理领域的吸引力，有助于提升 AWS 数据分析服务的粘性。虽然属于正向产品迭代，但属于常规功能增强，对短期股价影响有限。</p>
+        <div class="stock-details">
+            <div class="catalysts">
+                <strong>🚀 催化剂</strong>
+                <ul><li>AWS 数据治理能力增强</li><li>企业数据上云合规需求增加</li></ul>
+            </div>
+            <div class="risks">
+                <strong>⚠️ 风险</strong>
+                <ul><li>云服务市场竞争加剧</li><li>企业 IT 支出缩减风险</li></ul>
+            </div>
+        </div>
+    </article>
+        </section>
+
+        <footer>
+            <p>Generated by Data+AI Daily Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
