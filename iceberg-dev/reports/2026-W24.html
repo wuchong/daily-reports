@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iceberg 社区周报 | 2026-W24</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Iceberg 社区周报 | 2026-W24</h1>
+            <p class="date-range">2026-06-08 ~ 2026-06-14</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (3)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/1y8qbq0phb8jkq0d2o3nm015hntycw29">Lakehouse Day EU Agenda and Registration is Live!</a></li>
+<li><a href="https://lists.apache.org/thread/7sloq2kbmsvnwb7915dycpy9yb8s0cwy">Iceberg Community Meetup Europe - July Munich</a></li>
+<li><a href="https://lists.apache.org/thread/nx46bfyd7qw0ppmod2yppgvz0gnr90gq">Apache Iceberg C++ Release v0.3.0</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (5)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/cy265h1xl5k1wo2g809st6kghjpvwxg2">Add draft bitmap spec to git</a> <span class="status warning">⚠️ 有异议</span><p class="objection-inline">Ryan Blue 宣布投票通过，共有 13 票赞成且无 -1 反对票，因此不存在异议。</p></li>
+<li><a href="https://lists.apache.org/thread/fkvc8wmzokym5hmtv8gb3w6b9k8fgbp9">[C++] Release Apache Iceberg C++ 0.3.0 RC1</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/x5y5h0yk8vwzgm7r5b78o0tmp442hyky">[C++] Release Apache Iceberg C++ 0.3.0 RC2</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/8b145f8kw1mwy0ggn9jyfj6khbkb70l3">[C++] Release Apache Iceberg C++ 0.3.0 RC3</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/gz432tvboxvno2v7g3l17c8tbtxckxrb">Clarify day partition transform result type as date in the spec</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/dm9j0gzc990fxycpv071z1n5mwf7clj0">Spark versioning strategy with accelerated Spark releases.</a></h3>
+            <p class="meta">3 条回复 · 3 位参与者</p>
+            <p class="summary">讨论主要围绕 Spark 发布加速后 Iceberg 的版本支持策略。由于 Iceberg 使用 Spark 内部 API 导致跨版本兼容性难以保证，且 CI 资源紧张，社区倾向于支持“最后一个 LTS + 两个最新次版本”的策略。目前大家同意先合并 Spark 4.2 支持，随后再投票决定是否移除 Spark 4.0。</p>
+            <div class="key-points"><p><strong>@Cheng Pan:</strong> 对基于 Spark 4.2 编译的 Jar 在更高版本运行持悲观态度，因内部 Catalyst API 无兼容保证；建议先合并 4.2 支持，不阻塞后续开发。</p>
+<p><strong>@Szehon Ho:</strong> 鉴于 CI 挑战和兼容性信心不足，倾向于支持“最后一个 LTS + 两个最新次版本”的方案。</p>
+<p><strong>@Anurag Mantripragada:</strong> 同意先合并 Spark 4.2 支持，并计划在社区同步会议后发起移除 Spark 4.0 的投票。</p></div>
+            <p class="conclusion">初步达成共识，优先合并 Spark 4.2 支持，随后将启动关于移除 Spark 4.0 支持的投票流程。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/csvfnhqgcpdbogb9yo29pdhdkbzdrrlq">Proposal: Parquet footer size in Iceberg metadata</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">Varun Lakhyani 提议优化 Iceberg 小文件（<= 1MB）的读取性能，通过一次性读取整个文件将 GET 请求次数从 3 次减少至 1 次。该方案已在 PR 中实现，并在 JMH 基准测试中取得了约 66% 的性能提升。此外，作者建议参考 arrow-rs 在 parquet-mr 中引入 footer size hint，以寻求更优的实现方式。</p>
+            <div class="key-points"><p><strong>@Varun Lakhyani:</strong> 针对小文件读取，建议将原本分离的 footer 和数据读取合并为一次全文件缓冲读取，大幅减少 GET 请求。</p>
+<p><strong>@Varun Lakhyani:</strong> 初步测试显示该优化效果显著，处理 1000 个文件的时间从 537 秒降至 169 秒。</p>
+<p><strong>@Varun Lakhyani:</strong> 建议在 parquet-mr 层面暴露 footer size hint，以便采用更简洁的实现方式。</p></div>
+            <p class="conclusion">已提交初步实现的 PR #16729，目前正寻求社区对优化方案及 parquet-mr 相关改动的反馈。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/mmqmwboc8l0ccrm1kfb7lpqnyhh77kqb">Combine 3 GET calls for parquet reads - Root Manifest, Datafiles and compaction of small files</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">Varun Lakhyani 提议优化 Iceberg 的 Parquet 读取路径，通过一次性获取整个小文件来消除当前的 3 次 GET 请求（Footer 大小、Footer、数据），以解决 S3 延迟问题。Russell Spitzer 认为这对 Root Manifest 和 V4 延迟优化至关重要，社区正在讨论是采用 Iceberg 优先方案还是改进 Parquet Java API。</p>
+            <div class="key-points"><p><strong>@Varun Lakhyani:</strong> 建议对小文件采用单次 GET 请求获取全量数据，替代现有的串行请求模式（Footer 发现、Footer 获取、数据获取），从而降低延迟。</p>
+<p><strong>@Russell Spitzer:</strong> 认为该优化对减少 V4 延迟和串行请求瓶颈非常关键，倾向于 Iceberg 优先的解决方案，但也建议 Parquet Java 借鉴 Rust/C++ 实现增加新 API。</p>
+<p><strong>@Daniel Weeks:</strong> 认为这是值得投入的 IO 性能优化领域，但需考虑 FileIO 层的加密和指标处理，不应仅局限于 Parquet 视角。</p></div>
+            <p class="conclusion">社区一致认为这是重要的优化方向，下一步将具体评估实现路径（Iceberg 层或 Parquet API 层）及相关的技术细节（如加密支持）。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/931f9s4swxcdcs57kdq6skjd450wb64v">Write-path gap for field-id-bound policy during schema evolution</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">讨论了在模式演变过程中，策略生命周期管理（即“写入路径”）存在的缺口，即当前策略绑定列名而非字段 ID 导致的重定向和原子性问题。Sung Yun 澄清了这是关于策略的创建与更新而非执行，并提出了服务端绑定字段 ID 的解决方案。目前作者已分享详细分析文档供社区审阅。</p>
+            <div class="key-points"><p><strong>@Sung Yun:</strong> 当前策略管理依赖列名，导致列重命名时策略重定向，且策略提交无法与模式变更保持原子性，建议通过服务端绑定字段 ID 来解决。</p>
+<p><strong>@Christian Thiel:</strong> 对提案感兴趣，建议明确名称到字段 ID 的绑定时机，特别是如何处理列的删除与重新添加（drop+re-add）场景。</p>
+<p><strong>@Daniel Weeks:</strong> 最初对写入端策略执行的必要性提出质疑（认为写入者通常拥有最高权限），后理解这是指策略的生命周期管理而非执行。</p></div>
+            <p class="conclusion">已形成初步分析文档，下一步由社区成员审阅文档并提供反馈。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/0tkpgxbgwd7j356g84tlpp2wk3qywbty">1.11.1 / 1.10.3 patch releases?</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">社区讨论了发布 1.11.1 和 1.10.3 补丁版本的提议，旨在修复 V3 元数据正确性问题（如 DV 合并时的加密元数据保留）。Amogh 已创建 1.10.3 里程碑，多位成员投票支持发布，并提议在 1.11.x 中修复 Docker 镜像问题。</p>
+            <div class="key-points"><p><strong>@Amogh Jahagirdar:</strong> 创建了 1.10.3 里程碑，并建议包含修复 DV 更改中加密元数据保留的 PR。</p>
+<p><strong>@Kevin Liu:</strong> 支持发布补丁，并提议在 1.11.x 版本中修复 iceberg-rest-fixture Docker 镜像。</p>
+<p><strong>@Manu Zhang:</strong> 支持发布补丁，但询问是否已创建 1.11.x 分支。</p></div>
+            <p class="conclusion">社区一致同意发布两个补丁版本，下一步需确认 1.11.x 分支状态并完成相关 PR 的审核与合并。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/tgo1hkzzkr6vldmsym4g7l2h4x323jmp">Request for review on pull request #15639</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">Aryash Gupta 跟进 PR #15639 的审查进度，Daniel Weeks 已查看代码但对核心逻辑提出异议。Russell Spitzer 解释邮件因审核机制卡顿导致回复延迟，并非有意忽视。</p>
+            <div class="key-points"><p><strong>@Aryash Gupta:</strong> 请求更新 PR #15639 的状态，该请求已提交数月且指派给 @bryanck 但未获回复。</p>
+<p><strong>@Daniel Weeks:</strong> 质疑 PR 的行为逻辑，认为路由应由正确配置决定，而非在配置错误时进行假设。</p>
+<p><strong>@Russell Spitzer:</strong> 致歉称邮件卡在审核队列中，确认并非故意忽略该讨论。</p></div>
+            <p class="conclusion">PR 因行为逻辑存在争议尚未通过，需进一步讨论配置与路由假设的设计问题。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/7dq28yokkj8cflzxbtr5rk5xghgfpb7o">Iceberg Summit 2027</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">社区正在讨论 Iceberg Summit 2027 的筹备工作，重点在于选址建议及 EMEA 地区的活动推广。Danica Fine 强调，即将在格拉斯哥举办的 Lakehouse Day EU 的成功与否将直接影响未来在 EMEA 举办独立峰会的计划。讨论中成员们提出了包括美国西海岸、东海岸及欧洲多城市在内的多个潜在举办地。</p>
+            <div class="key-points"><p><strong>@Danica Fine:</strong> 呼吁参与 10 月格拉斯哥的 Lakehouse Day EU，其成功将证明 EMEA 地区举办独立 Iceberg Summit 的能力。</p>
+<p><strong>@Viktor Kessler / Andrei Tserakhau:</strong> 建议在欧洲（如巴塞罗那、巴黎、柏林、阿姆斯特丹）举办峰会，以推动 Iceberg 全球化。</p>
+<p><strong>@Neelesh Salian / Bill Zhang / Kurtis Wright:</strong> 提议美国多地作为备选，包括圣克拉拉/圣何塞、纽约市以及西雅图/丹佛/芝加哥等。</p></div>
+            <p class="conclusion">目前尚未确定最终地点，当务之急是社区成员积极注册并参与 Lakehouse Day EU，以展示 EMEA 地区的需求。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/dsc55x2twc3swywczhhgl2qq93ybykj6">REST spec change: passing arbitrary information to request signers</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论主要围绕如何在 REST 规范中将任意信息传递给请求签名者展开。参与者同意采用增量步骤，先定义一个包含基础字段的最小化结构体，而非一次性引入所有复杂特性。目前已在具体字段选择上达成初步一致，并推动了相关代码实现。</p>
+            <div class="key-points"><p><strong>@Sung Yun:</strong> 建议分阶段实施，先采用仅包含 base-uri、endpoint-path 和 properties 的最小化结构体，后续再扩展可选字段。</p>
+<p><strong>@Alexandre Dutra:</strong> 同意最小化方案，但建议同时包含 headers 字段，并暂时排除复杂的“安全原语”直至刷新机制明确。</p>
+<p><strong>@Alexandre Dutra:</strong> 总结了之前的会议共识，包括使用结构体而非属性包，以及通过请求头传递安全原语。</p></div>
+            <p class="conclusion">双方就初始结构体方案达成一致，Alexandre Dutra 已提交 PR #16822 以落实这些变更。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/wx40fxmplrlsmwhyn8dqohm0ppnshgp1">Spec ambiguity: Avro schema for `day` partition transform fields in manifests</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论旨在澄清 Iceberg 规范中 `day` 分区转换字段在 Avro schema 中的类型定义模糊性问题。社区已达成共识，将结果类型从 `int` 更改为 `date`，以匹配主流实现行为并解决兼容性问题。目前正准备发起正式投票以合并规范澄清 PR。</p>
+            <div class="key-points"><p><strong>@Kevin Liu:</strong> 建议保持解释的格式无关性，强调最关键的是将结果类型从 `int` 改为 `date`。</p>
+<p><strong>@Gang Wu:</strong> 确认 iceberg-cpp 也为 day transform 生成 date 类型，支持目前的共识。</p>
+<p><strong>@Andrei Tserakhau:</strong> 总结了共识内容（类型改为 date，历史兼容性遵循 Avro 规范），并指出修改 spec.md 需要正式投票流程。</p></div>
+            <p class="conclusion">下一步将发起正式投票流程，通过后合并 PR #16446 以正式澄清规范。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/9s207npdlb76n458h209dgbgmfcttjz8">Iceberg Consumption of ASF Shared GitHub-hosted Runners</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">ASF 基础设施团队指出 Iceberg 项目仍是 GitHub 托管运行器的最大消耗者，虽然其占用比例略有下降。Yufei Gu 询问资源限制是基于所有仓库还是仅限主仓库，而 Abnob Doss 分享了 Rust 子项目通过修复重复构建显著节省 CI 时间的案例。团队建议参考最佳实践指南以进一步优化工作流。</p>
+            <div class="key-points"><p><strong>@Bob Thomson:</strong> 通报 Iceberg 仍是运行器资源的最大消耗者，提供了优化工作流的最佳实践指南，建议关注耗时最长和最频繁的任务。</p>
+<p><strong>@Yufei Gu:</strong> 询问资源限制是基于所有仓库还是仅限主仓库，建议若整体使用合理可提高单仓配额。</p>
+<p><strong>@Abnob Doss:</strong> 分享了 Rust 子项目的优化案例，通过修复重复构建问题节省了大量 CI 运行时间。</p></div>
+            <p class="conclusion">社区正积极进行 CI 优化（如 Rust 子项目的修复），后续应继续参考最佳实践指南，重点关注耗时最长和执行最频繁的任务（如 Java 构建）。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (0)</h2>
+            
+    <p>本周新建 <strong>0</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周无新建 JIRA。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Iceberg Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
