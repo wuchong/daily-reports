@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-06-20</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-06-20</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 1 新 Issues</div>
+            <div class="stat">✅ 3 关闭</div>
+            <div class="stat">✨ 1 新 PRs</div>
+            <div class="stat">🎉 2 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/3499">PR #3499</a> 引入 Hudi source reader，支持从 Hudi 数据源读取数据</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3442">PR #3442</a> 修复单行查找推送在 lake-only 分区返回空结果的问题</li><li>✨ <a href="https://github.com/apache/fluss/pull/3501">PR #3501</a> 新增 Hudi 谓词下推支持，优化查询性能</li><li>🐛 <a href="https://github.com/apache/fluss/issues/3502">Issue #3502</a> 网站安装因 gitignored lockfiles 不可重现问题被报告</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3483">Issue #3483</a> commitLakeTableSnapshot writes stale snapshot path after dropTable, leaving the tiering pipeline permanently stuck</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 详细分析了 dropTable 后提交 lake snapshot 导致问题的根因，指出 recovery path 可能是问题所在，需要进一步确认场景</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3276">Issue #3276</a> Introduce Hudi source split planner</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 通过 PR #3456 关闭此 issue</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3277">Issue #3277</a> Introduce Hudi source reader</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 通过 PR #3499 关闭此 issue</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3500">Issue #3500</a> [lake] Fix union read duplicating rows for non-String partition columns</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 指出分区工具代码重复问题，建议统一委托给 PartitionUtils，并提出了性能优化和序列化版本问题</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3442">PR #3442</a> [flink] Gate single-row lookup pushdown on partition liveness</h4>
+            <ul><li><span class="author">@Copilot</span>: 指出分区存活检查失败时应降级到扫描路径而非抛异常，测试需确保 job 取消不泄漏</li><li><span class="author">@luoyuxia</span>: 建议简化 lookupCoversAllData 方法的实现代码</li><li><span class="author">@fresh-borzoni</span>: 感谢 review，已修复问题并等待 CI 通过</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3444">PR #3444</a> [client] Add support of column aliasing for PojoConverter</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 指出字段映射冲突时应快速失败，发现文档 typo，建议添加完整的往返测试</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3447">PR #3447</a> [client] Enum conversion functionality for typed writer/reader</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 建议优化枚举常量映射构建方式，指出大写枚举限制问题，建议补充小写和集合测试</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3500">PR #3500</a> [lake] Fix union read duplicating rows for non-String partition columns</h4>
+            <ul><li><span class="author">@Copilot</span>: 指出序列化版本应从 1 升级到 2，反序列化需兼容 VERSION_1，并建议添加 readResolve 确保非空</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3501">PR #3501</a> [lake/hudi] Support predicate pushdown</h4>
+            <ul><li><span class="author">@Copilot</span>: 指出 HudiSortedRecordReader 排序契约问题、FieldReferenceExpression 硬编码索引问题及测试命名问题</li><li><span class="author">@luoyuxia</span>: 建议移除 HudiSortedRecordReader 并询问是否需要将 predicates 传递给 planner 以减少 splits</li><li><span class="author">@fhan688</span>: 同意移除 HudiSortedRecordReader，谓词下推优化将在后续 PR 中处理</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3502">#3502</a> [website]   Non-reproducible website installs from gitignored lockfiles <span class="author">@binary-signal</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3501">#3501</a> [lake/hudi] Support predicate pushdown <span class="author">@fhan688</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3443">#3443</a> [flink] Single-row lookup pushdown returns empty for lake-only (expired) partitions <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/3277">#3277</a> Introduce Hudi source reader <span class="author">@fhan688</span> </li><li><a href="https://github.com/apache/fluss/issues/3276">#3276</a> Introduce Hudi source split planner <span class="author">@fhan688</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3499">#3499</a> [lake/hudi] Introduce Hudi source reader <span class="author">@fhan688</span> </li><li><a href="https://github.com/apache/fluss/pull/3442">#3442</a> [flink] Gate single-row lookup pushdown on partition liveness <span class="author">@fresh-borzoni</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
