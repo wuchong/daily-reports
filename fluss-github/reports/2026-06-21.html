@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-06-21</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-06-21</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 0 新 Issues</div>
+            <div class="stat">✅ 1 关闭</div>
+            <div class="stat">✨ 3 新 PRs</div>
+            <div class="stat">🎉 1 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/3501">PR #3501</a> 合并：支持 Hudi 谓词下推功能</li><li>✨ <a href="https://github.com/apache/fluss/pull/3503">PR #3503</a> 新开：为 tiering splits 引入 tag 字段，正在进行设计讨论</li><li>🐛 <a href="https://github.com/apache/fluss/issues/3278">Issue #3278</a> 关闭：Hudi source sortedReader 和 PredicateConverter 问题已解决</li><li>📚 <a href="https://github.com/apache/fluss/pull/3504">PR #3504</a> 新开：使网站依赖安装可复现</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3278">Issue #3278</a> Hudi source sortedReader and PredicateConverter</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 确认通过 PR #3501 关闭此问题</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3444">Issue #3444</a> [client] Add support of column aliasing for PojoConverter</h4>
+            <ul><li><span class="author">@VladBanar</span>: 感谢 Review，已根据评论意见修改代码</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3447">Issue #3447</a> [client] Enum conversion functionality for typed writer/reader</h4>
+            <ul><li><span class="author">@VladBanar</span>: 感谢 Review，已根据评论意见修改代码</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3483">Issue #3483</a> commitLakeTableSnapshot writes stale snapshot path after dropTable</h4>
+            <ul><li><span class="author">@Jackeyzhe</span>: 建议将本 PR 范围限定为 case (1)：当表 ID 不存在或已排队删除时拒绝 commitLakeTableSnapshot</li><li><span class="author">@binary-signal</span>: 同意范围限定方案，case (2) 作为后续跟进，并澄清了 Lake 表在 dropTable 后的行为细节</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3503">Issue #3503</a> [lake/hudi] Introduce tag field for tiering splits</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 认为 tag 字段设计过于 hacky，建议使用类型化的 splitIndex 替代字符串解析方案</li><li><span class="author">@fhan688</span>: 同意反馈意见，将引入 splitIndex 和 tieringRoundTimestamp 两个字段替代原有 tag 字段设计</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3501">PR #3501</a> [lake/hudi] Support predicate pushdown</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 感谢解释</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3503">PR #3503</a> [lake/hudi] Introduce tag field for tiering splits</h4>
+            <ul><li><span class="author">@Copilot</span>: 指出 skipCurrentRound 标志丢失、tag 未加入 equals/hashCode、currentTimeMillis 可能产生重复 tag 等问题</li><li><span class="author">@luoyuxia</span>: 建议避免版本号升级因为 tiering job 是无状态的，并建议移除无意义的测试</li><li><span class="author">@fhan688</span>: 接受建议，将保持序列化器版本为 0 并移除仅为覆盖率的测试</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3444">PR #3444</a> [client] Add support of column aliasing for PojoConverter</h4>
+            <ul><li><span class="author">@VladBanar</span>: 添加重复检查、修复文档问题、增加负向测试用例</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3447">PR #3447</a> [client] Enum conversion functionality for typed writer/reader</h4>
+            <ul><li><span class="author">@VladBanar</span>: 使用延迟初始化的 map、修复代码问题、增加小写枚举和数组测试</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <p class="empty">暂无</p>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3505">#3505</a> [flink] Preserve offsets for empty tiering buckets <span class="author">@hutiefang76</span> </li><li><a href="https://github.com/apache/fluss/pull/3504">#3504</a> [docs] Make website dependency installs reproducible <span class="author">@hutiefang76</span> </li><li><a href="https://github.com/apache/fluss/pull/3503">#3503</a> [lake/hudi] Introduce tag field for tiering splits <span class="author">@fhan688</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3278">#3278</a> Hudi source sortedReader and PredicateConverter <span class="author">@fhan688</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3501">#3501</a> [lake/hudi] Support predicate pushdown <span class="author">@fhan688</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
