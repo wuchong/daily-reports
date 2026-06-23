@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-06-22</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-06-22</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 0 新 Issues</div>
+            <div class="stat">✅ 1 关闭</div>
+            <div class="stat">✨ 2 新 PRs</div>
+            <div class="stat">🎉 4 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/3507">PR #3507</a> 引入 Hudi lake writer 支持以实现分层存储表</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3444">PR #3444</a> 为 PojoConverter 添加列别名支持</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3506">PR #3506</a> 重构分层存储拆分断言以忽略轮次元数据</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3503">PR #3503</a> 为分层存储拆分引入标签字段</li><li>🛡️ <a href="https://github.com/apache/fluss/pull/3508">PR #3508</a> 排除有漏洞的 jetty-http 依赖 (CVE)</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <ul class="critical-list"><li>⚠️ <a href="https://github.com/apache/fluss/issues/3483">Issue #3483</a> commitLakeTableSnapshot 在 dropTable 后写入过时快照路径，导致分层存储管道永久卡住</li></ul>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3483">Issue #3483</a> commitLakeTableSnapshot writes stale snapshot path after dropTable, leaving the tiering pipeline permanently stuck</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 建议分两个 PR 处理竞争条件，其中一个方案是让 lake committer 检查 table ID。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3465">Issue #3465</a> [test] Unstable test FlinkUnionReadPrimaryKeyTableITCase.testUnionReadInStreamMode</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: 报告测试失败：bucket 未同步，导致 testUnionReadInStreamMode 运行超时。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3447">Issue #3447</a> [client] Enum conversion functionality for typed writer/reader</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 请求 rebase/cherry-pick 解决冲突，并询问 mappedName 变量是否真的需要。</li><li><span class="author">@VladBanar</span>: 同意删除不必要的 mappedName，并已解决合并冲突。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3415">Issue #3415</a> Add per-scanner dimension for scanner metrics</h4>
+            <ul><li><span class="author">@charlesdong1991</span>: 因下周休假，将 Issue 移交给其他人处理。</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3509">PR #3509</a> [lake/hudi] Introduce Hudi LakeCommitter</h4>
+            <ul><li><span class="author">@Copilot</span>: 指出 commit() 忽略了 compaction statuses 可能导致数据丢失，建议快速失败机制。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3507">PR #3507</a> [lake/hudi] Introduce Hudi lake writer support for tiering tables</h4>
+            <ul><li><span class="author">@Copilot</span>: 指出 lastPendingInstant 状态判断风险、validateLength 校验弱点及 RecordWriteBuffer 错误处理问题。</li><li><span class="author">@luoyuxia</span>: 指出未使用的变量、无限等待的超时设置风险以及 CkpMetadata 的序列化问题。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3506">PR #3506</a> [flink] Refactor tiering split assertions to ignore round metadata</h4>
+            <ul><li><span class="author">@Copilot</span>: 建议恢复构造函数中的字段验证逻辑，移除可能导致运行时错误的断言。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3447">PR #3447</a> [client] Enum conversion functionality for typed writer/reader</h4>
+            <ul><li><span class="author">@VladBanar</span>: 增加了往返测试、小写枚举支持和数组测试覆盖。</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <p class="empty">暂无</p>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3509">#3509</a> [lake/hudi] Introduce Hudi LakeCommitter <span class="author">@fhan688</span> </li><li><a href="https://github.com/apache/fluss/pull/3508">#3508</a> [CVE][fs] Exclude vulnerable jetty-http dependency <span class="author">@morazow</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3439">#3439</a> [client] Add support of column aliasing for PojoConverter <span class="author">@VladBanar</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3507">#3507</a> [lake/hudi] Introduce Hudi lake writer support for tiering tables <span class="author">@fhan688</span> </li><li><a href="https://github.com/apache/fluss/pull/3506">#3506</a> [flink] Refactor tiering split assertions to ignore round metadata <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/pull/3503">#3503</a> [lake/hudi] Introduce tag field for tiering splits <span class="author">@fhan688</span> </li><li><a href="https://github.com/apache/fluss/pull/3444">#3444</a> [client] Add support of column aliasing for PojoConverter <span class="author">@VladBanar</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
