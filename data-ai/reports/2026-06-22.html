@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data+AI 全球日报 | 2026-06-22</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Data+AI 全球日报 | 2026-06-22</h1>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="top-changes">
+            <h2>🔥 今日最重要的3个变化</h2>
+            <ol><li><strong>SageMaker Data Agent 打通 Snowflake 数据源</strong> — AWS SageMaker 新增对 Snowflake 的原生 SQL 分析支持，打破云平台数据孤岛，加速跨云 AI 应用开发。</li><li><strong>Redshift Graviton RG 实例性价比获实证</strong> — Tombola 实测数据显示 Graviton RG 实例相比 RA3 具有显著性价比优势，推动数据仓库向 ARM 架构迁移。</li><li><strong>OpenSearch + Bedrock 落地 IT 支持自动化</strong> — Nexthink 利用 OpenSearch 向量搜索与 Bedrock 构建 RAG 应用，验证了 AWS 生成式 AI 技术栈在企业服务场景的可行性。</li></ol>
+            <p class="judgment"><strong>总判断：</strong>今日行业信号显示 AWS 正采取“拥抱异构”策略，通过 SageMaker 集成 Snowflake 降低跨平台数据摩擦，同时在底层算力上通过 Graviton 实例强化成本优势。这表明云厂商正从封闭生态转向更开放的数据互操作性竞争。</p>
+        </section>
+
+        <section class="top-signals">
+            <h2>📡 重要信号</h2>
+            
+    <article class="news-item">
+        <h3>SageMaker Data Agent 支持 Snowflake 数据源</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/detecting-fraud-patterns-across-snowflake-and-aws-using-sagemaker-data-agent/">AWS Big Data Blog</a></p>
+        <p class="date">2026-06-22</p>
+        <p class="summary">Amazon SageMaker Data Agent 发布三项新功能：支持对 Snowflake 数据源的 SQL 分析、物化视图管理和交互式图表。这使得数据科学家可以在 SageMaker Unified Studio 中直接查询和处理 Snowflake 数据，无需繁琐的数据迁移，特别适用于跨云欺诈检测等场景。</p>
+        <div class="impact">📊 数据平台影响：AWS 主动打通竞争对手 Snowflake 的数据通道，标志着云数据平台竞争进入“互操作性”新阶段。这降低了用户在 AWS 上使用 Snowflake 的集成成本，但也可能加剧计算层（SageMaker vs Snowpark）的竞争。</div>
+    </article>
+        </section>
+
+        <section class="product-tech">
+            <h2>💻 产品与技术</h2>
+            
+    <article class="news-item">
+        <h3>Amazon Redshift Graviton RG 实例性能实测</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/why-tombola-chose-graviton-powered-rg-instances-for-amazon-redshift/">AWS Big Data Blog</a></p>
+        <p class="date">2026-06-22</p>
+        <p class="summary">博彩公司 tombola 分享了从 Redshift RA3 迁移至 Graviton 驱动的 RG 实例的基准测试结果。遵循“无证据不更改”原则，实测显示 RG 实例在 S3 Tables 工作负载下提供了更好的性价比，验证了 ARM 架构在云数据仓库场景的成熟度。</p>
+        <div class="impact">📊 数据平台影响：Graviton 处理器正在重塑数据仓库的 TCO（总拥有成本）结构。随着更多企业发布实测数据，基于 ARM 的数据仓库实例将成为降本增效的标准选择，对传统 x86 架构实例构成压力。</div>
+    </article>
+    <article class="news-item">
+        <h3>OpenSearch Service 赋能 IT 支持自动化</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/automating-it-support-with-ai-how-nexthink-uses-opensearch-service-to-power-self-service-issue-resolution/">AWS Big Data Blog</a></p>
+        <p class="date">2026-06-22</p>
+        <p class="summary">Nexthink 展示了如何结合 Amazon OpenSearch Service 的向量搜索能力与 Amazon Bedrock，构建 IT 支持自助解决系统。该架构利用向量检索增强生成（RAG）技术，实现了对技术问题的自动诊断和响应。</p>
+        <div class="impact">📊 数据平台影响：这是一个典型的 RAG 企业级落地案例，证明了 OpenSearch 不仅是一个搜索引擎，更是构建生成式 AI 应用的核心向量数据库组件，提升了 AWS AI 技术栈的实战价值。</div>
+    </article>
+        </section>
+
+        <section class="people-views">
+            <h2>👤 人物与观点</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="analyst-insights">
+            <h2>📊 分析师洞察</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="watchlist">
+            <h2>👀 观察列表</h2>
+            
+    <article class="watchlist-item">
+        <h3>AWS 与 Snowflake 的竞合关系演变</h3>
+        <span class="status">持续观察</span>
+        <p class="reason">SageMaker 集成 Snowflake 数据源可能是一种战术性开放，需观察未来 AWS 是否会限制深度集成功能，或利用此优势将计算任务引流至 AWS 原生服务。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>观察 Snowflake 是否在后续版本中增强对 AWS AI 服务的反向集成，或推出针对性的竞争功能。</p>
+    </article>
+        </section>
+
+        <section class="stock-analysis">
+            <h2>📈 股票分析</h2>
+            <p class="disclaimer">⚠️ 以下内容仅供参考，不构成任何投资建议。投资有风险，入市需谨慎。</p>
+            
+    <article class="stock-item">
+        <div class="stock-header">
+            <span class="ticker">SNOW</span>
+            <span class="company">Snowflake</span>
+            <span class="signal signal-neutral">⚪ 中性</span>
+        </div>
+        <p class="stock-summary">AWS SageMaker 新增对 Snowflake 的原生支持，短期看降低了 AWS 用户使用 Snowflake 的门槛，利好数据存储增长；但长期看，计算层可能面临 AWS AI 服务的分流风险。</p>
+        <div class="stock-details">
+            <div class="catalysts">
+                <strong>🚀 催化剂</strong>
+                <ul><li>跨云数据访问便利性提升</li><li>AWS 生态内曝光度增加</li></ul>
+            </div>
+            <div class="risks">
+                <strong>⚠️ 风险</strong>
+                <ul><li>计算工作负载可能向 AWS SageMaker 转移</li><li>AWS 原生数据仓库 Redshift 的竞争压力持续存在</li></ul>
+            </div>
+        </div>
+    </article>
+        </section>
+
+        <footer>
+            <p>Generated by Data+AI Daily Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
