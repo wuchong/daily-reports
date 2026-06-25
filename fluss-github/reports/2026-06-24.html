@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-06-24</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-06-24</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 0 新 Issues</div>
+            <div class="stat">✅ 1 关闭</div>
+            <div class="stat">✨ 1 新 PRs</div>
+            <div class="stat">🎉 3 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/3518">PR #3518</a> Introduce Hudi compaction in tiering service - significant lakehouse integration enhancement</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3508">PR #3508</a> Exclude vulnerable jetty-http dependency - security fix for CVE</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3447">PR #3447</a> Enum conversion functionality for typed writer/reader</li><li>🐛 <a href="https://github.com/apache/fluss/issues/3446">Issue #3446</a> Closed: Add enum conversion functionality for Typed Writer/Reader</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3483">Issue #3483</a> commitLakeTableSnapshot writes stale snapshot path after dropTable, leaving the tiering pipeline permanently stuck</h4>
+            <ul><li><span class="author">@Jackeyzhe</span>: Updated PR #3494 to scope only to case (1), rejecting commits for non-existent/queued-for-deletion tables with test verification</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3415">Issue #3415</a> Add per-scanner dimension for scanner metrics</h4>
+            <ul><li><span class="author">@Jackeyzhe</span>: Acknowledged and will take on this issue</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3511">Issue #3511</a> [server] Add negative cache for non-existent partition IDs in metadata requests</h4>
+            <ul><li><span class="author">@swuferhong</span>: Confirmed comments addressed in the PR</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3440">Issue #3440</a> [test] Unstable test CommitRemoteLogManifestITCase.testDeleteOutOfSyncReplicaLogAfterCommit</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: Reported test failure in CommitRemoteLogManifestITCase</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3476">Issue #3476</a> [lake/paimon] Support custom Paimon lake table path</h4>
+            <ul><li><span class="author">@luoyuxia</span>: Suggested scoping PR to just database mapping, removing extra changes like Hive test deps</li><li><span class="author">@wzx140</span>: Clarified table-name mapping is higher priority; willing to remove unrelated changes to keep scope manageable</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3441">Issue #3441</a> [test] Stabilize CommitRemoteLogManifestITCase</h4>
+            <ul><li><span class="author">@zerolbsony</span>: Asked if this problem needs to be resolved</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3449">Issue #3449</a> [lake] Stabilize Paimon tiering IT</h4>
+            <ul><li><span class="author">@zerolbsony</span>: Asked if this problem needs to be resolved</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3420">Issue #3420</a> [lake/tiering] Support reporting watermark to Paimon snapshot</h4>
+            <ul><li><span class="author">@luoyuxia</span>: Asked about motivation: whether #3314 partition readiness signal would make this watermark reporting unnecessary</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3518">Issue #3518</a> [lake/hudi] Introduce Hudi compaction in tiering service</h4>
+            <ul><li><span class="author">@luoyuxia</span>: Checked if XuQianJin-Stars has remaining comments</li><li><span class="author">@XuQianJin-Stars</span>: Confirmed no more comments</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3515">Issue #3515</a> [docs] Add Apache Polaris/Iceberg REST catalog quick-start guide</h4>
+            <ul><li><span class="author">@GabrielBBaldez</span>: Added Polaris-Realm note, vended vs static credentials section, and explicit oauth2-server-uri config</li><li><span class="author">@morazow</span>: Suggested removing Hadoop deps section since S3FileIO with vended credentials is the default</li><li><span class="author">@MehulBatra</span>: Pointed out oauth2-server-uri should be set explicitly as implicit fallback is deprecated in Iceberg 1.6.0</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3494">PR #3494</a> [FLUSS-3483][coordinator] Reject lake snapshot commits for dropped tables</h4>
+            <ul><li><span class="author">@Copilot</span>: Identified thread safety issue: V2 commit path reads CoordinatorContext from ioExecutor causing data race</li><li><span class="author">@luoyuxia</span>: Suggested removing redundant test and renaming method to ensureTableNotDeleted for broader use</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3518">PR #3518</a> [lake/hudi] Introduce Hudi compaction in tiering service</h4>
+            <ul><li><span class="author">@Copilot</span>: Flagged snapshot ID ordering issue and nondeterministic compaction commit order from HashMap iteration</li><li><span class="author">@XuQianJin-Stars</span>: Extensive review: identified orphan inflight compactions, wrong-bucket false positives, Fluss snapshot ID issues, constructor 'this' escape, and missing rollback handling</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3447">PR #3447</a> [client] Enum conversion functionality for typed writer/reader</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: Suggested using `instanceof Enum` instead of `getClass().isEnum()` to handle anonymous enum subclasses</li><li><span class="author">@VladBanar</span>: Applied suggested changes to fix enum handling</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3459">PR #3459</a> [client][server] Support adding aggregation columns</h4>
+            <ul><li><span class="author">@luoyuxia</span>: Requested updating table options for new merge columns, fixing null aggFunction printing, and verifying merge with tests</li><li><span class="author">@wzx140</span>: Explained fields.*.agg is Flink SQL representation, not authoritative storage; schema column AggFunction is the source of truth</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3515">PR #3515</a> [docs] Add Apache Polaris/Iceberg REST catalog quick-start guide</h4>
+            <ul><li><span class="author">@morazow</span>: Suggested adding Polaris-Realm header note and clarifying vended credentials vs static keys paths</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3511">PR #3511</a> [server] Add negative cache for non-existent partition IDs in metadata requests</h4>
+            <ul><li><span class="author">@swuferhong</span>: Confirmed changed to guava cache implementation</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2699">PR #2699</a> [docs] Reorganize Streaming Lakehouse documentation to highlight deployment and core features</h4>
+            <ul><li><span class="author">@Copilot</span>: Noted sed replacement writes relative link without .md extension, inconsistent with other docs</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <p class="empty">暂无</p>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3519">#3519</a> [lake] Fix DV readable snapshot scanning and premature snapshot deletion <span class="author">@luoyuxia</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3446">#3446</a> [client] Add enum conversion functionality for Typed Writer/Reader <span class="author">@VladBanar</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3518">#3518</a> [lake/hudi] Introduce Hudi compaction in tiering service <span class="author">@fhan688</span> </li><li><a href="https://github.com/apache/fluss/pull/3508">#3508</a> [CVE][fs] Exclude vulnerable jetty-http dependency <span class="author">@morazow</span> </li><li><a href="https://github.com/apache/fluss/pull/3447">#3447</a> [client] Enum conversion functionality for typed writer/reader <span class="author">@VladBanar</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
