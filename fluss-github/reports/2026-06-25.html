@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-06-25</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-06-25</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 3 新 Issues</div>
+            <div class="stat">✅ 1 关闭</div>
+            <div class="stat">✨ 4 新 PRs</div>
+            <div class="stat">🎉 2 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/3528">PR #3528</a> 和 <a href="https://github.com/apache/fluss/pull/3522">PR #3522</a> 合并，增加了 Hudi Flink union read 的测试基础和集成测试</li><li>🚀 <a href="https://github.com/apache/fluss/pull/3529">PR #3529</a> 优化客户端写入性能，避免非分区表每条记录重建 AutoPartitionStrategy</li><li>✨ <a href="https://github.com/apache/fluss/pull/3521">PR #3521</a> 提交了对 Flink 2.3 的支持，目前正在解决 CI 问题</li><li>📚 <a href="https://github.com/apache/fluss/pull/3515">PR #3515</a> 新增 Apache Polaris/Iceberg REST catalog 快速入门指南，已通过端到端测试验证</li><li>🔒 <a href="https://github.com/apache/fluss/pull/3526">PR #3526</a> 增强安全性，拒绝客户端传递的 S3 凭证选项</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3283">Issue #3283</a> Introduce Hudi Compaction</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 该 Issue 已通过 PR #3518 关闭</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3476">Issue #3476</a> [lake/paimon] Support custom Paimon lake table path</h4>
+            <ul><li><span class="author">@wzx140</span>: 移除了无关修改，缩减了代码量，请求再次审查</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3420">Issue #3420</a> [lake/tiering] Support reporting watermark to Paimon snapshot</h4>
+            <ul><li><span class="author">@Shawn-Hx</span>: 解释 Watermark 是实现基于 PartitionMarkDone 的前置条件</li><li><span class="author">@luoyuxia</span>: 同意 Watermark 必要性，但建议限制 PR 范围避免过度实现</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3521">Issue #3521</a> [flink] add support for flink 2.3</h4>
+            <ul><li><span class="author">@sd4324530</span>: 指出 CI 失败与当前 PR 修改无关</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3486">Issue #3486</a> [security] Redact sensitive config values in startup logs</h4>
+            <ul><li><span class="author">@litiliu</span>: 请求 fresh-borzoni 协助审查代码</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3515">Issue #3515</a> [docs] Add Apache Polaris/Iceberg REST catalog quick-start guide</h4>
+            <ul><li><span class="author">@MehulBatra</span>: 要求确认文档在本地 Docker 环境的端到端可用性</li><li><span class="author">@GabrielBBaldez</span>: 已在 Docker 上验证成功，修复了 S3FileIO 配置问题</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3396">Issue #3396</a> [lake] Fix DvTableReadableSnapshotRetriever scanning wrong snapshot</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 询问 PR #3519 合并后是否还需要此 PR</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3529">Issue #3529</a> [client] Avoid per-record AutoPartitionStrategy construction in WriterClient.doSend in log tables</h4>
+            <ul><li><span class="author">@binary-signal</span>: 请求审查，并解释了缓存策略在分区表上的性能影响</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3424">PR #3424</a> [docs] add docs to integrate Fluss + Iceberg via Flink with AWS Glue and Hive</h4>
+            <ul><li><span class="author">@MehulBatra</span>: 建议图表风格保持专业统一，Mermaid 或 draw.io 均可</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3519">PR #3519</a> [lake] Fix DV readable snapshot scanning and premature snapshot deletion</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 指出旧数据保留逻辑可能导致存储增长，建议优化扫描遍历</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3486">PR #3486</a> [security] Redact sensitive config values in startup logs</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 指出 GCS 密钥未覆盖、动态配置可能泄露敏感信息，建议统一敏感列表</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3529">PR #3529</a> [client] Avoid per-record AutoPartitionStrategy construction in WriterClient.doSend in log tables</h4>
+            <ul><li><span class="author">@morazow</span>: 建议使用 isPartitioned，增加测试和 Javadoc</li><li><span class="author">@fresh-borzoni</span>: 建议仅在创建分区时获取策略，避免引入缓存字段</li><li><span class="author">@binary-signal</span>: 已添加测试和注释，已处理评论</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3527">#3527</a> [client] WriterClient.doSend rebuilds AutoPartitionStrategy per record on non partitioned tables <span class="author">@binary-signal</span> </li><li><a href="https://github.com/apache/fluss/issues/3524">#3524</a> [client][filesystem] Reject client-side S3 credential options <span class="author">@litiliu</span> </li><li><a href="https://github.com/apache/fluss/issues/3520">#3520</a> [flink] support flink 2.3 <span class="author">@sd4324530</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3529">#3529</a> [client] Avoid per-record AutoPartitionStrategy construction in WriterClient.doSend in log tables <span class="author">@binary-signal</span> </li><li><a href="https://github.com/apache/fluss/pull/3526">#3526</a> [client] Reject client-side S3 credential options <span class="author">@litiliu</span> </li><li><a href="https://github.com/apache/fluss/pull/3523">#3523</a> [lake/paimon] Support custom Paimon path <span class="author">@wzx140</span> </li><li><a href="https://github.com/apache/fluss/pull/3521">#3521</a> [flink] add support for flink 2.3 <span class="author">@sd4324530</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3283">#3283</a> Introduce Hudi Compaction <span class="author">@fhan688</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3528">#3528</a> [lake/hudi] Add Hudi Flink union read log table IT <span class="author">@fhan688</span> </li><li><a href="https://github.com/apache/fluss/pull/3522">#3522</a> [lake/hudi] Add Flink union read test base for Hudi <span class="author">@fhan688</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
