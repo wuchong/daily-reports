@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-06-26</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-06-26</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 2 新 Issues</div>
+            <div class="stat">✅ 3 关闭</div>
+            <div class="stat">✨ 2 新 PRs</div>
+            <div class="stat">🎉 2 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/3515">PR #3515</a> 添加 Apache Polaris/Iceberg REST catalog 快速入门指南</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3069">PR #3069</a> 添加客户端 scanner.log.max-poll-records 和 connect-timeout 配置验证</li><li>✨ <a href="https://github.com/apache/fluss/pull/3534">PR #3534</a> 为 scanner 指标添加 per-scanner 维度</li><li>✨ <a href="https://github.com/apache/fluss/pull/3533">PR #3533</a> 添加 KV 预写入缓冲区大小指标</li><li>📚 <a href="https://github.com/apache/fluss/issues/3530">Issue #3530</a> 报告不稳定测试 Flink22TableSourceBatchITCase</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <ul class="critical-list"><li>⚠️ <a href="https://github.com/apache/fluss/issues/3530">Issue #3530</a> 不稳定测试需要关注: Flink22TableSourceBatchITCase.testCountPushDownForLogTable</li></ul>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3069">Issue #3069</a> [client] Add validation for client.scanner.log.max-poll-records and client.connect-timeout</h4>
+            <ul><li><span class="author">@Prajwal-banakar</span>: 请求 @fresh-borzoni 抽时间帮忙审查此 PR</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3486">Issue #3486</a> [security] Redact sensitive config values in startup logs</h4>
+            <ul><li><span class="author">@litiliu</span>: 已推送更新处理敏感键匹配、动态重配置日志脱敏及 token 续期配置白名单</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3526">Issue #3526</a> [client] Reject client-side S3 credential options</h4>
+            <ul><li><span class="author">@litiliu</span>: 关闭此 PR，认为问题主要属于用户配置错误，额外验证并非必要</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3524">Issue #3524</a> [client][filesystem] Reject client-side S3 credential options</h4>
+            <ul><li><span class="author">@litiliu</span>: 关闭此 issue，认为是用户配置错误导致，非正常 Fluss 客户端流程问题</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3515">Issue #3515</a> [docs] Add Apache Polaris/Iceberg REST catalog quick-start guide</h4>
+            <ul><li><span class="author">@MehulBatra</span>: LGTM！感谢贡献者的工作</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2618">Issue #2618</a> [docs] Add Hive Metastore catalog quick-start guide for Iceberg integ…</h4>
+            <ul><li><span class="author">@MehulBatra</span>: 询问是否已在本地 Docker 环境端到端验证 Fluss、Iceberg、Flink tiering 流程</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2907">Issue #2907</a> [client][fix] Deduplicate insertIfNotExists lookups with same key in same batch to prevent deadlock</h4>
+            <ul><li><span class="author">@Prajwal-banakar</span>: 请求 @luoyuxia 帮忙 review</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3486">PR #3486</a> [security] Redact sensitive config values in startup logs</h4>
+            <ul><li><span class="author">@litiliu</span>: 同意统一 S3 凭证检测，但建议在 #3526 或后续 PR 中单独处理以保持 PR 范围聚焦</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3424">PR #3424</a> [docs] add docs to integrate Fluss + Iceberg via Flink with AWS Glue and Hive</h4>
+            <ul><li><span class="author">@qzyu999</span>: 在 ECS Fargate 上完整验证 Glue 集成，发现 tiering snapshot commit 因错误处理问题失败</li><li><span class="author">@fresh-borzoni</span>: 确认应改进错误处理，建议在 server.yaml 配置 s3.aws.credentials.provider 解决凭证链问题</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3532">#3532</a> [server] add the metric of KV preWriteBuffer <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/issues/3530">#3530</a> [test] Unstable test Flink22TableSourceBatchITCase.testCountPushDownForLogTable <span class="author">@app/github-actions</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3534">#3534</a> [FLUSS-3415][client] Add per-scanner dimension for scanner metrics <span class="author">@Jackeyzhe</span> </li><li><a href="https://github.com/apache/fluss/pull/3533">#3533</a> [server] add kv pre-write buffer size metric <span class="author">@zuston</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3524">#3524</a> [client][filesystem] Reject client-side S3 credential options <span class="author">@litiliu</span> </li><li><a href="https://github.com/apache/fluss/issues/3513">#3513</a> [docs] Add Apache Polaris/Iceberg Rest catalog quick-start guide for Fluss-Iceberg integration <span class="author">@MehulBatra</span> <span class="labels">good first issue</span></li><li><a href="https://github.com/apache/fluss/issues/3068">#3068</a> [client] Add validation for client.scanner.log.max-poll-records and client.connect-timeout config options <span class="author">@Prajwal-banakar</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3515">#3515</a> [docs] Add Apache Polaris/Iceberg REST catalog quick-start guide <span class="author">@GabrielBBaldez</span> </li><li><a href="https://github.com/apache/fluss/pull/3069">#3069</a> [client] Add validation for client.scanner.log.max-poll-records and client.connect-timeout <span class="author">@Prajwal-banakar</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
