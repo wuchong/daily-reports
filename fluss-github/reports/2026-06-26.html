@@ -25,13 +25,13 @@
         <section class="highlights">
             <h2>🔥 核心要点</h2>
             <ul>
-                <li>🎉 <a href="https://github.com/apache/fluss/pull/3515">PR #3515</a> 添加 Apache Polaris/Iceberg REST catalog 快速入门指南</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3069">PR #3069</a> 添加客户端 scanner.log.max-poll-records 和 connect-timeout 配置验证</li><li>✨ <a href="https://github.com/apache/fluss/pull/3534">PR #3534</a> 为 scanner 指标添加 per-scanner 维度</li><li>✨ <a href="https://github.com/apache/fluss/pull/3533">PR #3533</a> 添加 KV 预写入缓冲区大小指标</li><li>📚 <a href="https://github.com/apache/fluss/issues/3530">Issue #3530</a> 报告不稳定测试 Flink22TableSourceBatchITCase</li>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/3515">PR #3515</a> 添加 Apache Polaris/Iceberg REST catalog 快速入门指南</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3069">PR #3069</a> 添加 client.scanner.log.max-poll-records 和 client.connect-timeout 配置验证</li><li>✨ <a href="https://github.com/apache/fluss/pull/3533">PR #3533</a> 新增 KV pre-write buffer 大小指标</li><li>🐛 <a href="https://github.com/apache/fluss/issues/3530">Issue #3530</a> Flink22TableSourceBatchITCase 测试不稳定问题分析</li>
             </ul>
         </section>
                 
         <section class="critical">
             <h2>⚠️ 重点关注</h2>
-            <ul class="critical-list"><li>⚠️ <a href="https://github.com/apache/fluss/issues/3530">Issue #3530</a> 不稳定测试需要关注: Flink22TableSourceBatchITCase.testCountPushDownForLogTable</li></ul>
+            <p class="no-issues">✅ 今日无重大问题</p>
         </section>
                 
         <section class="activity">
@@ -39,42 +39,58 @@
             <h3>Issue 讨论</h3>
             
         <div class="activity-item">
-            <h4><a href="https://github.com/apache/fluss/pull/3069">Issue #3069</a> [client] Add validation for client.scanner.log.max-poll-records and client.connect-timeout</h4>
-            <ul><li><span class="author">@Prajwal-banakar</span>: 请求 @fresh-borzoni 抽时间帮忙审查此 PR</li></ul>
-        </div>
-        <div class="activity-item">
-            <h4><a href="https://github.com/apache/fluss/pull/3486">Issue #3486</a> [security] Redact sensitive config values in startup logs</h4>
-            <ul><li><span class="author">@litiliu</span>: 已推送更新处理敏感键匹配、动态重配置日志脱敏及 token 续期配置白名单</li></ul>
-        </div>
-        <div class="activity-item">
-            <h4><a href="https://github.com/apache/fluss/pull/3526">Issue #3526</a> [client] Reject client-side S3 credential options</h4>
-            <ul><li><span class="author">@litiliu</span>: 关闭此 PR，认为问题主要属于用户配置错误，额外验证并非必要</li></ul>
+            <h4><a href="https://github.com/apache/fluss/issues/3530">Issue #3530</a> [test] Unstable test Flink22TableSourceBatchITCase.testCountPushDownForLogTable</h4>
+            <ul><li><span class="author">@fxbing</span>: 分析测试不稳定原因：测试清理与自动分区创建存在竞争，导致重建已删除的 znode，建议修改 ZooKeeper 父节点创建逻辑并跳过陈旧事件</li></ul>
         </div>
         <div class="activity-item">
             <h4><a href="https://github.com/apache/fluss/issues/3524">Issue #3524</a> [client][filesystem] Reject client-side S3 credential options</h4>
-            <ul><li><span class="author">@litiliu</span>: 关闭此 issue，认为是用户配置错误导致，非正常 Fluss 客户端流程问题</li></ul>
+            <ul><li><span class="author">@litiliu</span>: 关闭此 issue，经重新评估这是用户配置错误而非真正问题，用户不应通过 client.fs.* 配置 S3 凭证</li></ul>
         </div>
         <div class="activity-item">
             <h4><a href="https://github.com/apache/fluss/pull/3515">Issue #3515</a> [docs] Add Apache Polaris/Iceberg REST catalog quick-start guide</h4>
-            <ul><li><span class="author">@MehulBatra</span>: LGTM！感谢贡献者的工作</li></ul>
+            <ul><li><span class="author">@MehulBatra</span>: LGTM！感谢你的贡献，继续保持出色的工作！</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3513">Issue #3513</a> [docs] Add Apache Polaris/Iceberg Rest catalog quick-start guide for Fluss-Iceberg integration</h4>
+            <ul></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3069">Issue #3069</a> [client] Add validation for client.scanner.log.max-poll-records and client.connect-timeout</h4>
+            <ul><li><span class="author">@Prajwal-banakar</span>: 请求 @fresh-borzoni 在有时间时帮忙 review，谢谢！</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3068">Issue #3068</a> [client] Add validation for client.scanner.log.max-poll-records and client.connect-timeout config options</h4>
+            <ul></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3486">Issue #3486</a> [security] Redact sensitive config values in startup logs</h4>
+            <ul><li><span class="author">@litiliu</span>: 更新了敏感密钥匹配、复用 hideSensitiveValue 处理动态配置日志、为 token 续期配置添加白名单，S3 统一匹配将作为后续优化</li></ul>
         </div>
         <div class="activity-item">
             <h4><a href="https://github.com/apache/fluss/pull/2618">Issue #2618</a> [docs] Add Hive Metastore catalog quick-start guide for Iceberg integ…</h4>
-            <ul><li><span class="author">@MehulBatra</span>: 询问是否已在本地 Docker 环境端到端验证 Fluss、Iceberg、Flink tiering 流程</li></ul>
+            <ul><li><span class="author">@MehulBatra</span>: 询问是否已在本地 Docker 环境端到端验证 Fluss + Iceberg + Flink tiering 到对象存储的完整流程</li></ul>
         </div>
         <div class="activity-item">
             <h4><a href="https://github.com/apache/fluss/pull/2907">Issue #2907</a> [client][fix] Deduplicate insertIfNotExists lookups with same key in same batch to prevent deadlock</h4>
-            <ul><li><span class="author">@Prajwal-banakar</span>: 请求 @luoyuxia 帮忙 review</li></ul>
+            <ul><li><span class="author">@Prajwal-banakar</span>: 请求 @luoyuxia 帮忙 review 此 PR</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3526">Issue #3526</a> [client] Reject client-side S3 credential options</h4>
+            <ul><li><span class="author">@litiliu</span>: 关闭此 PR，经重新评估这是用户配置错误案例，添加额外验证并非必要</li></ul>
         </div>
             <h3>PR Review</h3>
             
         <div class="activity-item">
             <h4><a href="https://github.com/apache/fluss/pull/3486">PR #3486</a> [security] Redact sensitive config values in startup logs</h4>
-            <ul><li><span class="author">@litiliu</span>: 同意统一 S3 凭证检测，但建议在 #3526 或后续 PR 中单独处理以保持 PR 范围聚焦</li></ul>
+            <ul><li><span class="author">@litiliu</span>: 保持 PR 范围聚焦于通用日志脱敏，S3 凭证检测统一将在 #3526 或后续单独处理</li></ul>
         </div>
         <div class="activity-item">
             <h4><a href="https://github.com/apache/fluss/pull/3424">PR #3424</a> [docs] add docs to integrate Fluss + Iceberg via Flink with AWS Glue and Hive</h4>
-            <ul><li><span class="author">@qzyu999</span>: 在 ECS Fargate 上完整验证 Glue 集成，发现 tiering snapshot commit 因错误处理问题失败</li><li><span class="author">@fresh-borzoni</span>: 确认应改进错误处理，建议在 server.yaml 配置 s3.aws.credentials.provider 解决凭证链问题</li></ul>
+            <ul><li><span class="author">@qzyu999</span>: 在 AWS ECS Fargate 上验证发现 tiering snapshot commit 失败，原因是错误处理掩盖了真实异常，S3 assumed role 凭证链未正确传递给 Hadoop S3A</li><li><span class="author">@fresh-borzoni</span>: 建议在 EKS/IRSA 环境配置 fs.s3a.aws.credentials.provider 使用 WebIdentityTokenCredentialsProvider 等凭证提供者</li><li><span class="author">@qzyu999</span>: 尝试添加 ContainerCredentialsProvider 后仍失败，问题在于错误处理掩盖了 storeLakeTableOffsetsFile 的真实异常</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3529">PR #3529</a> [client] Avoid per-record AutoPartitionStrategy construction in WriterClient.doSend in log tables</h4>
+            <ul><li><span class="author">@binary-signal</span>: 同意建议，将在今天或明天提供修订版本</li></ul>
         </div>
         </section>
                 
