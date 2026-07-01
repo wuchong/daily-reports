@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-06-30</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-06-30</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 1 新 Issues</div>
+            <div class="stat">✅ 0 关闭</div>
+            <div class="stat">✨ 3 新 PRs</div>
+            <div class="stat">🎉 2 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🐛 <a href="https://github.com/apache/fluss/pull/3542">PR #3542</a> 修复 IcebergLakeCommitter 中的监听器泄漏问题</li><li>✨ <a href="https://github.com/apache/fluss/pull/3541">PR #3541</a> 新增 Hudi Flink 联合读取主键表集成测试</li><li>📚 <a href="https://github.com/apache/fluss/pull/3549">PR #3549</a> 添加 Hudi 分层服务文档</li><li>🐛 <a href="https://github.com/apache/fluss/issues/3551">Issue #3551</a> 发现 prepareLakeTableSnapshot 失败时掩盖真实错误的问题</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3492">Issue #3492</a> [FIP-37] Add bitmap scalar functions and register via FlussCatalog</h4>
+            <ul><li><span class="author">@Prajwal-banakar</span>: 请求维护者审核该 PR</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3498">Issue #3498</a> [server] Support limiting rebalance buckets per round</h4>
+            <ul><li><span class="author">@fhan688</span>: 请求 XuQianJin-Stars 协助审核</li><li><span class="author">@luoyuxia</span>: 抄送 swuferhong 参与审核</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3500">Issue #3500</a> [lake] Fix union read duplicating rows for non-String partition columns</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 询问该 PR 的进度</li><li><span class="author">@bryndenZh</span>: 已根据建议更新代码，统一分区值格式化逻辑并优化性能</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3540">Issue #3540</a> [fs] Support AWS S3 credentials provider mode</h4>
+            <ul><li><span class="author">@litiliu</span>: 请求 fresh-borzoni 抽空审核</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3542">Issue #3542</a> [lake/iceberg] Fix listener leak in IcebergLakeCommitter</h4>
+            <ul><li><span class="author">@Guosmilesmile</span>: 感谢 luoyuxia 的审核</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3543">Issue #3543</a> [flink] scan.startup.mode=latest can skip rows written to a new partition before partition discovery</h4>
+            <ul><li><span class="author">@loserwang1024</span>: 表示已修复问题，请求审核</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3548">Issue #3548</a> [flink]Newly discovered partition read from earliest rather than scan.startup.mode</h4>
+            <ul><li><span class="author">@loserwang1024</span>: 抄送相关人员进行审核</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3424">PR #3424</a> [docs] add docs to integrate Fluss + Iceberg via Flink with AWS Glue and Hive</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 讨论 S3 凭证配置问题，计划添加修复并请求在 ECS 上测试</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3431">PR #3431</a> [server] Fix NPE when processing table registration change</h4>
+            <ul><li><span class="author">@raoluSmile</span>: 恢复了保护逻辑并增加了缺失表信息的回归测试</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3542">PR #3542</a> [lake/iceberg] Fix listener leak in IcebergLakeCommitter</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 建议移除简单的测试用例，因为现有测试已覆盖</li><li><span class="author">@Guosmilesmile</span>: 同意移除测试类</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3548">PR #3548</a> [flink]Newly discovered partition read from earliest rather than scan.startup.mode</h4>
+            <ul><li><span class="author">@leonardBang</span>: 指出按 TableBucket 存储可能导致数据丢失，建议用 splitId；指出 V2 状态迁移默认值可能引发问题</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3551">#3551</a> [server] prepareLakeTableSnapshot masks the real error on failure <span class="author">@fresh-borzoni</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3550">#3550</a> [server] Set table_id on prepareLakeTableSnapshot error response <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/3549">#3549</a> [lake/hudi][docs] Add Hudi tiering service documentation <span class="author">@fhan688</span> </li><li><a href="https://github.com/apache/fluss/pull/3548">#3548</a> [flink]Newly discovered partition read from earliest rather than scan.startup.mode <span class="author">@loserwang1024</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <p class="empty">暂无</p>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3542">#3542</a> [lake/iceberg] Fix listener leak in IcebergLakeCommitter <span class="author">@Guosmilesmile</span> </li><li><a href="https://github.com/apache/fluss/pull/3541">#3541</a> [lake/hudi] Add Hudi Flink union read primary key table IT <span class="author">@fhan688</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
