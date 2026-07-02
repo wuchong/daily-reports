@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flink 社区周报 | 2026-W26</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Flink 社区周报 | 2026-W26</h1>
+            <p class="date-range">2026-06-22 ~ 2026-06-28</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (1)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/jgjq86t94ksbffyb1vblk8cwnm5rkhny">Apache Flink 2.3.0 released</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (3)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/oh5wht63vyghhpv96fy9mc8ykz7l6x7y">FLIP-562: Topic integrity checks in Kafka Connector</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/f7g7cs6sw0ryvcytnhty7d6zpqfqwqr5">FLIP-545: Hardening the Event Reporter with an Asynchronous Core</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/5j4r33b1pnknbjfxnxlkzsyyodp4hlrd">FLIP-588: Support per-job delegation tokens</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/f6k3yo5sf8wh68pvlqvylxd22s2yrlvc">flink-connector-jdbc Release Plan Sync - v3.4.0 / v5.0.0 / v6.0.0</a></h3>
+            <p class="meta">7 条回复 · 5 位参与者</p>
+            <p class="summary">讨论主要围绕 flink-connector-jdbc 的发布版本策略展开，发起者原计划为 Flink 1.20、2.1 和 2.2 分别发布 v3.4.0、v5.0.0 和 v6.0.0。Ferenc Csaky 质疑为每个 Flink 次版本发布新大版本的必要性，认为这会增加维护负担且缺乏兼容性依据。经过讨论，团队达成共识，优先进行兼容性测试，若通过则 Flink 2.x 系列将统一发布 v4.1.0。</p>
+            <div class="key-points"><p><strong>@Ferenc Csaky:</strong> 反对为每个 Flink 次版本发布新的连接器大版本，建议除非存在向后不兼容变更，否则 Flink 2.x 系列应统一使用 v4.1.0 以降低维护成本。</p>
+<p><strong>@Yuepeng Pan:</strong> 总结了简化后的发布建议，即 v3.4.0 对应 Flink 1.20.x 系列，v4.1.0 对应 Flink 2.x 系列。</p>
+<p><strong>@Chanhae Oh / Chanbin Oh:</strong> 支持优先进行兼容性测试的建议，主张根据测试结果决定最终是采用 v4.1.0 还是因为兼容性问题升级到 v5.0.0。</p></div>
+            <p class="conclusion">初步结论是优先执行兼容性测试，若未发现向后不兼容问题，Flink 2.x 系列将发布 v4.1.0，而非原计划的 v5.0.0 和 v6.0.0。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/4nrpykxmho2zgkbm0n30gy032vvvz5bn">FLIP-591: Introducing Python DataFrame API in PyFlink</a></h3>
+            <p class="meta">3 条回复 · 4 位参与者</p>
+            <p class="summary">讨论主要围绕 PyFlink DataFrame API 的执行触发与结果消费机制设计展开。参与者就引入 iter_rows、iter_batches 和 take 等增量消费 API 达成共识，并进一步探讨了 API 命名规范及返回类型的优化建议。</p>
+            <div class="key-points"><p><strong>@Zander Matheson:</strong> 建议采用可关闭迭代器模式来处理执行触发，以实现有界性、资源自动清理（关闭即取消作业）和增量结果拉取。</p>
+<p><strong>@Dian Fu:</strong> 提出了具体的 API 形态（iter_rows, iter_batches, take），强调与 Ray/Spark 等生态保持一致，并倾向于使用 take 替代 fetch 作为有界预览 API。</p>
+<p><strong>@Cole Bailey:</strong> 支持 iter 相关 API，但建议优化 take 的返回类型以支持 pandas/arrow 从而改善交互式体验，并提议简化窗口函数调用方式（如 flatten 参数）。</p>
+<p><strong>@Matt Belle:</strong> 建议将 read_custom/write_custom 重命名为 read_generic/write_generic，以明确其用于访问现有连接器而非用户自定义实现，避免语义混淆。</p></div>
+            <p class="conclusion">初步确定了结果消费 API 的核心形态（iter_rows/batches 和 take），后续需进一步讨论 take 返回类型的灵活性以及 read_custom 等接口的命名细节。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/sjt6r7czd8vm8pqmcq95dm5x5nptnc32">FLIP-588: Support per-job delegation tokens</a></h3>
+            <p class="meta">3 条回复 · 2 位参与者</p>
+            <p class="summary">讨论主要围绕 FLIP-588（支持 per-job 委托令牌）的设计细节展开，重点确认了连接器如何通过 JobID 选择令牌以及 Kafka 作为参考实现的可行性。经过对 API 依赖、令牌更新机制及并发问题的澄清与修正，社区最终达成共识并通过了该提案。</p>
+            <div class="key-points"><p><strong>@Aleksandr Savonin:</strong> 连接器通过 JobID 选择令牌，Source 端依赖 FLIP-583 暴露 JobInfo，Sink 端依赖现有 V2 API；引入 DelegationTokenManagerCallback 以更通用的方式处理令牌重新获取。</p>
+<p><strong>@Gabor Somogyi:</strong> 要求在 FLIP 中补充 Kafka 参考实现的细节（如令牌存储和选择逻辑），确认 V2 API 是硬性要求，并强调了正确处理竞态条件和死锁的重要性。</p></div>
+            <p class="conclusion">Gabor 对更新后的 FLIP 设计表示认可并投了赞成票 (+1)。下一步行动是 Aleksandr 将提交 Flink 核心和 Kafka 连接器的 PR，Gabor 将参与核心部分的代码审阅。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/h5fmfnkvd95dc17dcq905402lx9wr95v">FLIP-XXX: Independent Checkpoint Based On Pipeline Region</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">讨论聚焦于 FLIP-XXX 提案中 Regional Checkpoint 机制下的扩缩容与状态重分配逻辑。熊饶饶通过具体示例阐述了状态预合并及引用链追踪机制，而 Roman 对 Union Operator State 的隔离性提出了疑虑。双方同意在 FLIP 文档中详细补充扩缩容场景的边缘情况说明。</p>
+            <div class="key-points"><p><strong>@熊饶饶:</strong> StateAssignmentOperation 仅在恢复时运行一次，状态在 Regional Checkpoint 完成阶段已预合并，refCheckpointId 仅作为清理元数据。</p>
+<p><strong>@熊饶饶:</strong> 通过 P=4→2→1 的扩缩容示例，证明了引用链机制能正确追踪跨检查点的状态合并。</p>
+<p><strong>@Roman Khachatryan:</strong> 指出当前的隔离性论证未覆盖 Union Operator State 场景，扩缩容可能导致时间混合元素被错误洗牌。</p></div>
+            <p class="conclusion">将在 FLIP 文档中增加专门的扩缩容章节，详细讨论状态重分配和 Union State 等边缘情况。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/xhojhcr0pkg7j8dblnt2crrdkkjz76vo">FLIP-599: State Catalog</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">Gyula Fóra 发起 FLIP-599 讨论，提议引入 State Catalog 以通过 SQL 接口自动映射 savepoints/checkpoints，从而提升 Flink 状态的可观测性与分析能力。Han Yin 肯定了提案价值，并就 checkpoint 生命周期管理中的竞态条件及 state backend 兼容性提出了技术疑问。Gyula 回应称目前主要聚焦 savepoints，暂不引入复杂的外部协调机制，后续将完善 state backend 格式的自动检测。</p>
+            <div class="key-points"><p><strong>@Gyula Fóra:</strong> 提议 State Catalog 将状态自动映射为 SQL 表，支持在无原始类依赖的情况下读取 POJO/Avro 等结构化状态。</p>
+<p><strong>@Han Yin:</strong> 担忧 checkpoint 在 SQL 会话期间被清理的竞态条件，询问是否需要“固定”机制以及对增量 checkpoint 的影响。</p>
+<p><strong>@Gyula Fóra:</strong> 回应称当前主要用例为 savepoint，暂不引入外部协调机制，并计划实现从元数据自动检测 state backend 格式。</p></div>
+            <p class="conclusion">提案获得积极反馈，确认了当前阶段主要支持 savepoint 且由用户负责数据保留，下一步将完善 state backend 格式的自动检测功能。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/n70pgg8nyksv4d4hb68g5bsy3op34dwm">FLIP-XXX: GEOGRAPHY type in Flink SQL and Table API</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">讨论主要围绕是否应在 Flink SQL 中引入原生的 GEOGRAPHY 数据类型。提议者 David 解释了 GEOGRAPHY（球面）与 Calcite 现有 GEOMETRY（平面）类型的本质区别，并建议先在 Flink 内部实现以推进进度。然而，Sergey 和 Ramin 担心维护成本和兼容性问题，建议优先在 Calcite 层面实现该类型。</p>
+            <div class="key-points"><p><strong>@David Chaava:</strong> GEOGRAPHY（球面坐标）与 Calcite 的 GEOMETRY（平面坐标）语义不同，不应混用；建议先在 Flink 作为原生逻辑类型引入，以便独立于 Calcite 发布流程快速推进。</p>
+<p><strong>@Sergey Nuyanzin:</strong> 倾向于先在 Calcite 中实现，否则可能导致 Flink 和 Calcite 实现不一致，增加后续升级和维护的复杂度。</p>
+<p><strong>@Ramin Gharib:</strong> 支持 Sergey 的观点，认为若不在 Calcite 先实现，未来若 Calcite 引入类似类型，Flink 将面临维护两套实现的负担。</p></div>
+            <p class="conclusion">目前尚未达成最终共识，主要分歧在于实现路径：是先在 Flink 独立实现以快速落地，还是先贡献给 Calcite 以保证长期维护性和兼容性。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/npjcpx3o73pg7b4p1hg073sqnj49b66j">FLIP-597: [Filesystems] Hadoop-less Flink filesystems</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Aleksandr Iushmanov 发起关于 FLIP-597 的讨论，旨在通过引入基于原生 SDK 的文件系统实现，消除 Flink 对 Hadoop 依赖的维护负担（如依赖冲突和 CVE 风险），最终弃用基于 Hadoop 的变体。该提案建议在 flink-core 中引入通用的云无关 I/O 抽象（如 ObjectStorageInputStream 等），以支持 Azure、GCS 等云服务商。同时，作者提出了关于 RecoverableWriter 抽象、批量复制范围及测试接口设计的三个开放性问题供社区讨论。</p>
+            <div class="key-points"><p><strong>@Aleksandr Iushmanov:</strong> FLIP-597 旨在延续 FLIP-555 的工作，通过原生 SDK 替代 Hadoop 依赖，解决传递依赖冲突、类路径问题和 CVE 暴露等维护难题。</p>
+<p><strong>@Aleksandr Iushmanov:</strong> 提议在 flink-core 中建立通用的云无关 I/O 抽象，包括线程安全的流实现和支持客户端加密等功能的上下文描述符。</p>
+<p><strong>@Aleksandr Iushmanov:</strong> 提出了三个待讨论的开放性问题：是否包含通用的 RecoverableWriter 抽象、PathsCopyingFileSystem 的范围，以及是否引入 ObjectStorageOperations 接口以优化测试。</p></div>
+            <p class="conclusion">目前处于提案征集意见阶段，等待社区对架构设计和开放性问题的反馈。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/hvdc2yjv7w46d0odyyy883hwgc5bm7xt">FLIP-598: [Filesystems] Gen2 Datalake SDK Native FileSystem for Azure</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Aleksandr Iushmanov 发起了关于 FLIP-598 的讨论，提议为 Azure Gen2 Datalake 引入基于原生 SDK 的文件系统实现。该提案旨在摆脱 Hadoop 依赖以减少 CVE 风险，并确保与旧模块的双向状态兼容性以便安全迁移。</p>
+            <div class="key-points"><p><strong>@Aleksandr Iushmanov:</strong> 提议创建基于 Azure Storage File DataLake SDK v12 的新模块 flink-azure-fs-native，以替代基于 Hadoop 的实现。</p>
+<p><strong>@Aleksandr Iushmanov:</strong> 目标是消除 Hadoop 依赖、减少 CVE 暴露，并直接利用云 SDK 的性能改进。</p>
+<p><strong>@Aleksandr Iushmanov:</strong> 新实现将支持认证、读写操作及 RecoverableWriter，并保证与旧模块的双向状态兼容性。</p></div>
+            <p class="conclusion">目前处于公开讨论阶段，作者正在征求社区反馈。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/m5mq8clr4471c1g599qzwkyb231h3cjw">FLIP-590: Introduce Multimodal Data Types: Vector, Tensor, and Image</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论主要围绕 FLIP-590 引入 VECTOR 等多模态数据类型展开，旨在解决现有 ARRAY 类型无法在 Schema 中表达向量语义（如维度和数据类型）的问题。参与者一致认为引入一等公民 VECTOR 类型能简化连接器开发，使其能直接映射下游系统（如 Paimon、Milvus）的原生字段。</p>
+            <div class="key-points"><p><strong>@Yanquan Lv:</strong> 从连接器开发角度强烈支持引入 VECTOR 类型，指出当前使用 ARRAY 无法表达固定维度，导致 Paimon 等连接器需依赖额外配置项来补充 Schema 无法表达的信息。</p>
+<p><strong>@Geng Biao:</strong> 确认该提案旨在解决 Schema 缺失语义的问题，通过 VECTOR('float32', 768) 等形式直接暴露约定，消除连接器对 side options 的依赖。</p></div>
+            <p class="conclusion">初步结论是社区认可 VECTOR 类型的必要性，下一步将致力于通过该类型消除连接器集成中的有损转换和带外选项依赖。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/sl9mfv55p9nc6rkvmyyjwb54221bnyoc">FLIP-XXX Monotonic Counters support</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论核心在于 FLIP-XXX 提议支持单调计数器，以解决后端系统无法区分计数器单调性（导致难以处理溢出或重启）的问题。Efrat 建议弃用从未实际使用的 `Counter.dec` 方法并提供 `UpDownCounter` 替代，从而使 Flink 计数器能正确映射为 Prometheus Counter 而非 Gauge。</p>
+            <div class="key-points"><p><strong>@Efrat Levitan:</strong> 核心目标是区分单调性，帮助后端系统平滑处理整数溢出或重启时的图表数据。</p>
+<p><strong>@Efrat Levitan:</strong> 由于 `Counter.dec` 仅因历史兼容性存在且未被使用，建议将其弃用并改用 `UpDownCounter`。</p>
+<p><strong>@Efrat Levitan:</strong> 该方案能让 Flink 计数器正确映射到 Prometheus Counter，解决当前因潜在递减操作而被映射为 Gauge 的问题。</p></div>
+            <p class="conclusion">Efrat 澄清了 FLIP 的技术动机和 Prometheus 映射逻辑，邀请社区成员查看提案详情并继续讨论。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (58)</h2>
+            
+    <p>本周新建 <strong>58</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周 JIRA 主要涉及将 Calcite 升级至 1.42.0 及相关的 SQL 优化规则调整，同时重点完善了 ProcessTableFunction (PTF) 的测试工具功能。连接器方面修复了 Kafka、JDBC、Elasticsearch 及 CDC 相关的资源泄漏与性能问题，Web Dashboard 也进行了 Angular 等前端依赖的现代化升级。此外，还包括 RocksDB 状态后端、HiveCatalog 以及测试稳定性的多项常规修复。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Flink Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
