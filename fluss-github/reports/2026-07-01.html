@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-07-01</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-07-01</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 1 新 Issues</div>
+            <div class="stat">✅ 1 关闭</div>
+            <div class="stat">✨ 2 新 PRs</div>
+            <div class="stat">🎉 1 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/3550">PR #3550</a> 修复了 prepareLakeTableSnapshot 错误响应中缺失 table_id 的问题</li><li>✨ <a href="https://github.com/apache/fluss/pull/3552">PR #3552</a> 为 Prometheus PushGateway 报告器添加 Basic Auth 支持，兼容 JDK 8+</li><li>🚀 <a href="https://github.com/apache/fluss/pull/3554">PR #3554</a> 将通用 tiering 类从 Flink 模块解耦，为 Spark tiering 服务做准备</li><li>🐛 <a href="https://github.com/apache/fluss/issues/3553">Issue #3553</a> Uber-jars 中存在 Jackson 核心库与 shaded 副本并存泄漏问题</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/275">Issue #275</a> [Improvement] Provide different table.log.tiered.local-segments for latest partitions and old partition.</h4>
+            <ul><li><span class="author">@fxbing</span>: 提出为自动分区表的老分区设置不同的 local-segments 参数的建议方案，以减少本地磁盘占用</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2985">Issue #2985</a> [spark] Add spark tiering service</h4>
+            <ul><li><span class="author">@Yohahaha</span>: PR 将分两阶段进行：先重构 tiering 类到 fluss-client，再实现 Spark tiering 服务</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3470">Issue #3470</a> [website] Use theme-aware diagram on intro page</h4>
+            <ul><li><span class="author">@Prajwal-banakar</span>: 已创建 backport PR #3487 以支持 release-0.9 分支</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3488">Issue #3488</a> Support orphan database files cleanup</h4>
+            <ul><li><span class="author">@wuchong</span>: 引用 PR #3404 的讨论，说明孤儿数据库中的孤儿文件/表的清理方案</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3404">PR #3404</a> [flink-action][server][client] add orphan files cleanup action for remote storage</h4>
+            <ul><li><span class="author">@wuchong</span>: 澄清只需清理孤儿数据库中的孤儿表/文件，而非删除整个孤儿数据库</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3469">PR #3469</a> [lake/tiering] Add pendingRecordLag metric for lake tiering</h4>
+            <ul><li><span class="author">@Copilot</span>: 指出 estimatedPendingStartTimeMs 在 logEndOffset 独立更新时可能无法正确推进的问题</li><li><span class="author">@luoyuxia</span>: 建议简化代码逻辑、重命名变量为 hasPendingLakeTieringRecords，并优化指标描述文案</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3471">PR #3471</a> [spark] use CamelCase in config names</h4>
+            <ul><li><span class="author">@Yohahaha</span>: 建议将配置项命名为 scan.pollTimeout</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3500">PR #3500</a> [lake] Fix union read duplicating rows for non-String partition columns</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 指出 v1 版本反序列化会丢失字符串分区值，违反兼容性契约，建议保留旧逻辑并添加测试</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3548">PR #3548</a> [flink]Newly discovered partition read from earliest rather than scan.startup.mode</h4>
+            <ul><li><span class="author">@loserwang1024</span>: 重构了 unassignedSplits 逻辑，说明设置 false 可保证语义一致性避免恢复时从头读取</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3552">PR #3552</a> [metrics][docs] Support Basic Auth for Prometheus PushGateway reporter</h4>
+            <ul><li><span class="author">@Guosmilesmile</span>: 解释使用 java.util.Base64 替代 Prometheus 内置工厂以确保 JDK 8+ 兼容性</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3553">#3553</a> [fluss-client][ fluss-flink-*] Uber-jars  leak  com.fasterxml.jackson.core  alongside the shaded copy <span class="author">@binary-signal</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3554">#3554</a> [tiering] Decouple common tiering class from flink module <span class="author">@Yohahaha</span> </li><li><a href="https://github.com/apache/fluss/pull/3552">#3552</a> [metrics][docs] Support Basic Auth for Prometheus PushGateway reporter <span class="author">@Guosmilesmile</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3551">#3551</a> [server] prepareLakeTableSnapshot masks the real error on failure <span class="author">@fresh-borzoni</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3550">#3550</a> [server] Set table_id on prepareLakeTableSnapshot error response <span class="author">@fresh-borzoni</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
