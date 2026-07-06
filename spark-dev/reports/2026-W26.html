@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spark 社区周报 | 2026-W26</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Spark 社区周报 | 2026-W26</h1>
+            <p class="date-range">2026-06-22 ~ 2026-06-28</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (0)</h2>
+            <p class="empty">本周无公告</p>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (3)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/gc4mf8snqohh37lcgc0z62ck2ydpp761">Release Spark 4.2.0 (RC4)</a> <span class="status warning">⚠️ 有异议</span><p class="objection-inline">提供的回复中未包含异议，Uroš Bojanić 和 L. C. Hsieh 均投了 +1 票表示支持发布。</p></li>
+<li><a href="https://lists.apache.org/thread/m9os7zm4pm56ghbd2rjpzs7045nbzfs3">SPIP: OIDC Credential Propagation</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/1hlsv0kf3xskdzppbc224jllvmm4rwtn">Release Spark 4.2.0 (RC5)</a> <span class="status warning">⚠️ 有异议</span><p class="objection-inline">提供的文本中未发现异议，Max Gekk 和 Peter Toth 均投了 +1 票表示支持发布。</p></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (5)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/b1g35n6zjwctokxkbjy6zb5ffoqy1wrd">Eliminating startup time in local dev/test loop</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论主要关于通过改进 Spark Connect 来消除本地开发测试循环中的启动时间。Nicholas Chammas 将原本的 `spark connect` CLI 方案扩展为更通用的 `spark` CLI 提案，并准备推进实施，目前正寻求 committer 的支持。</p>
+            <div class="key-points"><p><strong>@Nicholas Chammas:</strong> 提议将 `spark connect` CLI 扩展为更通用的 `spark` CLI。</p>
+<p><strong>@Nicholas Chammas:</strong> 用户应能通过 `.remote(“local”)` 发现现有的 Connect 服务器。</p>
+<p><strong>@Nicholas Chammas:</strong> 已准备好推进方案，但需要 committer 在相关讨论帖中给予支持。</p></div>
+            <p class="conclusion">作者已在新线程中提出扩展后的 CLI 提案，下一步行动是等待 committer 在该线程中发表意见并提供支持。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/8n7h365brwgtcyrb6r4ddhh7h84dml85">CVE-2025-55039: Apache Spark, Apache Spark: RPC encryption defaults to unauthenticated AES-CTR mode, enabling man-in-the-middle ciphertext modification attacks</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论围绕 CVE-2025-55039 漏洞的修复展开，Akira Ajisaka 发现将加密模式切换为 AES/GCM/NoPadding 会导致 Spark on YARN 作业失败，并为此提交了修复 PR。Holden Karau 对这些更改表示不确定，呼吁熟悉 Tink 和该代码路径的开发者协助审核。</p>
+            <div class="key-points"><p><strong>@Akira Ajisaka:</strong> 启用 AES/GCM/NoPadding 缓解措施会导致作业失败，已提交修复 PR 并询问合并流程。</p>
+<p><strong>@Holden Karau:</strong> 对修复 PR 的更改存疑，请求熟悉 Tink 或该代码路径的开发者协助审核。</p></div>
+            <p class="conclusion">暂无明确结论，下一步需要熟悉相关代码路径的开发者审核 PR 以推进合并。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/rpbw52h2wr44300h7bxfdzdmf67m3gng">Spark routing architecture for Iceberg Materialized Views</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Walaa Eldin Moustafa 发起讨论，旨在确定 Iceberg 物化视图 Spark 实现中的“读时路由”架构。邮件详细对比了基于 DSv2 Catalog 和基于 Catalyst Analyzer 两种路由方案的实现机制与权衡，寻求社区对架构决策的建议。</p>
+            <div class="key-points"><p><strong>@Walaa Eldin Moustafa:</strong> 提出 DSv2 Catalog 路由方案，优点是与 Spark 4.2 新 API 契合且逻辑边界清晰，缺点是跨 Catalog 依赖处理复杂。</p>
+<p><strong>@Walaa Eldin Moustafa:</strong> 提出 Catalyst Analyzer 路由方案，通过 Catalyst 规则将新鲜 MV 重写为存储表标识符来实现路由。</p></div>
+            <p class="conclusion">目前尚无定论，正在向 Iceberg 和 Spark 社区征集反馈以确定最终架构方案。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/hq8mmh5yj3l2r0voporr7qlfbpxqbo1r">SPIP: Cloud Credential Refresh and Distribution Without Kerberos</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论主要围绕两个 SPIP（云凭证刷新与 OIDC 凭证传播）是否存在功能冗余展开。Parth Chandra 指出该 SPIP 覆盖了 OIDC 方案无法支持的特定场景（如 Kafka SCRAM、现有 Hadoop 绑定及非 JWT 令牌），论证了其独立存在的必要性。</p>
+            <div class="key-points"><p><strong>@Cheng Pan:</strong> 认为同时实现两个 SPIP 会造成功能冗余，增加系统复杂性和诊断难度，倾向于使用 OIDC 方案。</p>
+<p><strong>@Parth Chandra:</strong> 指出该 SPIP 覆盖了 OIDC 不支持的场景，包括 Kafka SCRAM 委派令牌、现有 S3A/ABFS 绑定以及非 JWT 的专有 IdP 系统。</p>
+<p><strong>@Parth Chandra:</strong> 澄清了技术细节，指出 DirectProviderPath 不受 JDK 变更影响，但现有的 Kerberos 路径需要更新。</p></div>
+            <p class="conclusion">暂无最终定论，Parth Chandra 通过列举 OIDC 方案的功能盲区，反驳了合并提案的观点，建议保留该 SPIP 以支持更多样化的凭证场景。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/d41hrnsosroofkn1ynyxl2jybc6wxkbm">Contributions welcome: TIME(p) and nanosecond TIMESTAMP_NTZ/LTZ(q)</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Max Gekk 发起关于扩展 Spark 日期时间支持的讨论，重点引入纳秒级 TIMESTAMP_NTZ/LTZ 和 TIME(p) 数据类型，旨在实现 ANSI 标准对齐。目前相关子任务积压已整理完毕，包含适合新手的入门任务以及向量化读取等复杂功能，欢迎社区开发者认领贡献。</p>
+            <div class="key-points"><p><strong>@Max Gekk:</strong> 主要工作包括支持纳秒级时间戳（精度 7-9）和 TIME 数据类型（精度 0-9），目标是与现有 DATE/TIMESTAMP 功能对等并符合 ANSI 标准。</p>
+<p><strong>@Max Gekk:</strong> 已准备好一系列独立的子任务，既有适合首次贡献者的“starter”任务，也有涉及流式处理、CBO 估算等较复杂的工作。</p>
+<p><strong>@Max Gekk:</strong> 鼓励开发者通过在 Jira 上评论认领任务并提交 PR 的方式参与贡献。</p></div>
+            <p class="conclusion">感兴趣的开发者可在 Jira 上认领未解决的子任务并提交 PR，Max Gekk 将协助解决开发中的阻碍。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (0)</h2>
+            
+    <p>本周新建 <strong>0</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周无新建 JIRA。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Spark Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
