@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-07-06</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-07-06</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 5 新 Issues</div>
+            <div class="stat">✅ 4 关闭</div>
+            <div class="stat">✨ 7 新 PRs</div>
+            <div class="stat">🎉 6 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/2699">PR #2699</a> 文档重组完成，突出 Streaming Lakehouse 部署和核心功能</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3597">PR #3597</a> 限制每个表分区的最大桶数</li><li>🐛 <a href="https://github.com/apache/fluss/pull/3598">PR #3598</a> 修复 Elixir 集成测试中 NIF 加载失败问题</li><li>✨ <a href="https://github.com/apache/fluss/pull/3596">PR #3596</a> 在 FlinkCatalog 中支持 ALTER MATERIALIZED TABLE 语法</li><li>🚀 <a href="https://github.com/apache/fluss/pull/3567">PR #3567</a> 将默认最大桶数限制设为 20000</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3586">Issue #3586</a> [ci] Elixir client integration unit tests failed</h4>
+            <ul><li><span class="author">@swuferhong</span>: 请求 fresh-borzoni 和 loserwang1024 查看 Rust CI 失败问题，后因新失败用例重新打开此 issue</li><li><span class="author">@beryllw</span>: 定位问题根因为 rustler 版本不匹配：Rust 端已升级到 0.38.0，但 Elixir 端仍锁定 0.37.3</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3540">Issue #3540</a> [fs] Support AWS S3 credentials provider mode</h4>
+            <ul><li><span class="author">@litiliu</span>: 已处理评审意见，添加 S3 凭证提供者文档并重新基于 main 分支</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3562">Issue #3562</a> Fast fail due to the duplicate write results for tiering committer</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 询问为何 enumerator 会为同一表重新分配新一轮，提及遇到类似超时问题</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3569">Issue #3569</a> [tiering] introduce the option of `lake.tiering.io.tmpdir` to avoid disk exhaustion</h4>
+            <ul><li><span class="author">@zuston</span>: @luoyuxia 请查看此 PR</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3512">Issue #3512</a> [docs] Add Apache Gravitino/Iceberg Rest catalog quick-start guide for Fluss-Iceberg integration</h4>
+            <ul><li><span class="author">@MehulBatra</span>: 询问任务进展，表示如有需要可提供帮助</li><li><span class="author">@VladBanar</span>: 表示还有 2 天休假结束，届时将创建 PR，为延迟致歉</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3588">Issue #3588</a> [rust][tests] Add DynamicWriteBatchSizeEstimator integration tests</h4>
+            <ul><li><span class="author">@Prajwal-banakar</span>: 将 PR 从 fluss-rust 仓库迁移过来，已处理评审意见</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3523">Issue #3523</a> [lake/paimon] Support custom Paimon path</h4>
+            <ul><li><span class="author">@wzx140</span>: 根据建议将 paimon.path 校验移至 PaimonLakeCatalog.alterTable 中实现</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3492">Issue #3492</a> [FIP-37] Add bitmap scalar functions and register via FlussCatalog</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: 确认评审通过，邀请 polytos 和 wuchong 再看一眼</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3549">Issue #3549</a> [lake/hudi][docs] Add Hudi tiering service documentation</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 提示需要 rebase 到 main 分支，因为文档已重组</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3233">Issue #3233</a> [server] Support altering table.log.ttl table option</h4>
+            <ul><li><span class="author">@luoyuxia</span>: @swuferhong 请查看此 PR</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3465">Issue #3465</a> [test] Unstable test FlinkUnionReadPrimaryKeyTableITCase.testUnionReadInStreamMode</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: 报告测试失败：bucket 未同步的 AssertionError</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3598">Issue #3598</a> [ci] Cache only elixir deps, not _build, to fix stale NIF load</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: @swuferhong 这个修复应该对你有帮助，请查看</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3140">PR #3140</a> [FIP-43][client] Support log scanner and writer for multiple tables</h4>
+            <ul><li><span class="author">@fxbing</span>: 提出多个代码评审意见：ScanRecords 是否应返回 progress-only 结果、readAsTargetSchema 是否仍需要、是否需要添加每表指标、LogFetcher 清理逻辑等</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3540">PR #3540</a> [fs] Support AWS S3 credentials provider mode</h4>
+            <ul><li><span class="author">@litiliu</span>: 回复评审意见：添加 DynamicTemporaryAWSCredentialsProvider 拒绝检查、保持懒加载解析、使用 Fluss 内部 StringUtils 替代 commons-lang3、添加 IRSA 文档说明</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3222">PR #3222</a> [server] Respect the option of `table.log.ttl` for local segments</h4>
+            <ul><li><span class="author">@gyang94</span>: 建议在 LogTieringTask.run() 开始时冻结时间戳，以便各步骤使用相同时间值</li><li><span class="author">@zuston</span>: 同意建议，表示明天查看</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3539">PR #3539</a> [server] Reject KV leader promotion under disk write lock</h4>
+            <ul><li><span class="author">@swuferhong</span>: 更新重试逻辑复用共享协调器调度器，为后续迁移添加 TODO 标记</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3599">#3599</a> [ci] Elixir integration flaky: fluss_nif.so fails to load <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/3595">#3595</a> Support ALTER MATERIALIZED TABLE ... AS <query> in FlinkCatalog <span class="author">@xuyangzhong</span> </li><li><a href="https://github.com/apache/fluss/issues/3593">#3593</a> Raise disk write-limit ratio in FlussClusterExtension to avoid test flakiness <span class="author">@xuyangzhong</span> </li><li><a href="https://github.com/apache/fluss/issues/3592">#3592</a> Add fluss-flink-2.1-0.9.1.jar <span class="author">@chentjxxx</span> </li><li><a href="https://github.com/apache/fluss/issues/3586">#3586</a> [ci] Elixir client integration unit tests failed <span class="author">@swuferhong</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3601">#3601</a> [lake]Tolerate Iceberg lake table existent if the schema and properties matches <span class="author">@Guosmilesmile</span> </li><li><a href="https://github.com/apache/fluss/pull/3600">#3600</a> [rust] chore: bump Arrow stack to 59 <span class="author">@michaelmitchell-bit</span> </li><li><a href="https://github.com/apache/fluss/pull/3596">#3596</a> [flink] Support ALTER MATERIALIZED TABLE ... AS <query> in FlinkCatalog <span class="author">@xuyangzhong</span> </li><li><a href="https://github.com/apache/fluss/pull/3591">#3591</a> [flink-action][common][server] Support KV shared SST orphan file cleanup <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/3590">#3590</a> [flink] Clean orphan children under unknown databases <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/3589">#3589</a> [flink] Support remove_orphan_files action for Flink 1.18 <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/3588">#3588</a> [rust][tests] Add DynamicWriteBatchSizeEstimator integration tests <span class="author">@Prajwal-banakar</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3599">#3599</a> [ci] Elixir integration flaky: fluss_nif.so fails to load <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/3593">#3593</a> Raise disk write-limit ratio in FlussClusterExtension to avoid test flakiness <span class="author">@xuyangzhong</span> </li><li><a href="https://github.com/apache/fluss/issues/3586">#3586</a> [ci] Elixir client integration unit tests failed <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/issues/2358">#2358</a> [DOC] Restructure documentation to highlight Streaming Lakehouse deployment and core features <span class="author">@luoyuxia</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3598">#3598</a> [ci] Cache only elixir deps, not _build, to fix stale NIF load <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/3597">#3597</a> [server] Limit max bucket num per table partition <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/pull/3594">#3594</a> [test] Raise disk write-limit ratio in FlussClusterExtension to avoid test flakiness <span class="author">@xuyangzhong</span> </li><li><a href="https://github.com/apache/fluss/pull/3587">#3587</a> [rust/elixir] Align rustler version to 0.38.0 in mix.exs and mix.lock <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/pull/3567">#3567</a> [common] Limit default max bucket count to 20000 <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/pull/2699">#2699</a>   [docs] Reorganize Streaming Lakehouse documentation to higlight deployment and core features  <span class="author">@MehulBatra</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
