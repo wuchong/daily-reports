@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flink 社区周报 | 2026-W27</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Flink 社区周报 | 2026-W27</h1>
+            <p class="date-range">2026-06-29 ~ 2026-07-05</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (1)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/or8r8kkhhg3o1px6j8pndz9tqzpw97lb">Apache flink-connector-http v1.0.0 released</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (6)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/vt465wh24q9dnhh4z4x7qg80sdsl5v2p">FLIP-588: Support per-job delegation tokens</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/554fkhwqv8lg3679041fyjtmkvm8fpkg">FLIP-585: Introduce Lazy Loading for HistoryServer</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/m936m36or3zjgccnykn9x32sk6tw2rdx">Release flink-connector-jdbc v4.1.0, release candidate #3</a> <span class="status warning">⚠️ 有异议</span><p class="objection-inline">提供的文本中 Chanhae Oh 投了 +1 (non-binding)，表示赞成发布，因此文中并无异议。</p></li>
+<li><a href="https://lists.apache.org/thread/x5376hodfprfwhjj6vbl7r7m7o6j72rv">Release flink-connector-jdbc v3.4.0, release candidate #2</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/dfx7vdkq9mx7hn0g06spbcybw8jdrvrr">FLIP-600: Independent Checkpoint Based On Pipeline Region</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/szy4cjo80p47ho6bfnf03goflx6mrhdd">Release flink-connector-jdbc v3.4.0, release candidate #3</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/0xzssfjn5ff82m989zjkh2fovzzphjtc">FLIP-599: State Catalog</a></h3>
+            <p class="meta">14 条回复 · 6 位参与者</p>
+            <p class="summary">讨论主要围绕 FLIP-599 State Catalog 的设计范围和实现细节，旨在通过 SQL 查询 Savepoint/Checkpoint 状态。参与者重点讨论了 Non-keyed State 的支持、RowData 字段名的保留机制以及表抽象层级的选择。作者采纳建议，决定扩展支持范围并优化 Schema 推断与表结构设计。</p>
+            <div class="key-points"><p><strong>@Dennis-Mircea Ciupitu:</strong> 询问 Non-keyed State 的排除原因，建议将其纳入范围；关注序列化器透明度与自定义序列化器的兼容问题。</p>
+<p><strong>@Shengkai Fang:</strong> 指出 RowDataSerializer 缺失字段名问题，建议升级快照版本；提出应结合 Operator 级表与扁平化 State 表，并建议表名包含 State Name。</p>
+<p><strong>@Jingsong Li:</strong> 建议区分物理视图与逻辑视图，强调物理视图属于内部实现，需在文档中明确其不稳定性。</p></div>
+            <p class="conclusion">提案获得积极反馈，作者将更新 FLIP 以明确支持 Non-keyed State，修复字段名丢失问题，采用混合表结构，并声明 API 为实验性且物理视图可能变更。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/6qcm91csvfs92c0980ng4m6h9lttmvnv">(Restarted) FLIP-497: Early Fire Support for Flink SQL Interval Join</a></h3>
+            <p class="meta">7 条回复 · 4 位参与者</p>
+            <p class="summary">本讨论重启了 FLIP-497（Flink SQL Interval Join 的 Early Fire 支持），提案已适配最新 master 分支。讨论重点在于 `EARLY_FIRE` Hint 的命名与作用域，为避免未来扩展导致的兼容性问题，最终采纳了增加 `target` 参数的建议。作者将更新文档后发起投票。</p>
+            <div class="key-points"><p><strong>@Weiqing Yang:</strong> 重启 FLIP-497 并适配最新代码库；同意 Xingcan 的建议，在 Hint 中增加 `target` 参数以明确作用范围，防止未来扩展时破坏现有查询行为。</p>
+<p><strong>@Xuyang:</strong> 对比前一版本，整体方案基本无变化，对该提案表示 +1。</p>
+<p><strong>@Xingcan Cui:</strong> 指出全局 Hint 存在向后兼容风险，建议引入 `target` 参数（如 `target='interval_join'`）以确保 API 的确定性和未来扩展性。</p></div>
+            <p class="conclusion">已达成共识，将在 `EARLY_FIRE` Hint 中增加 `target` 参数。下一步行动是作者更新 FLIP 文档并启动投票流程。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/wxh94hhyoy4b164m9q6cxhf8jypkpwdo">FLIP-XXX: Extended JDBC Scan Partitioning Options for Efficient Data Ingestion</a></h3>
+            <p class="meta">6 条回复 · 5 位参与者</p>
+            <p class="summary">该讨论旨在解决 Flink JDBC 连接器在数据倾斜和非数值列场景下分区效率低下的问题，提出了物理 ID 分区和边界查询两种扩展方案。社区对提案方向表示支持，并针对物理 ID 稳定性及边界查询语义的正确性进行了深入探讨，作者已据此更新了设计文档。</p>
+            <div class="key-points"><p><strong>@Chanhae Oh:</strong> 提议引入物理 ID 分区和边界查询机制，前者利用数据库原生元数据自动均衡切分，后者支持用户自定义切分点以处理字符串类型和倾斜数据。</p>
+<p><strong>@Leonard Xu:</strong> 指出物理 ID 分区需考虑数据变更的一致性问题，且边界查询需明确定义分区数量、谓词边界及异常处理等语义细节。</p>
+<p><strong>@Chanhae Oh:</strong> 回应反馈并更新了 FLIP，明确了 Oracle 与 PostgreSQL 物理 ID 的稳定性差异，规定了边界查询的谓词生成规则及分区数量校验逻辑。</p></div>
+            <p class="conclusion">提案已根据社区反馈完善了正确性保证和边界情况处理，下一步将继续推进 FLIP 审查流程。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/rzcmj8j7lr8qjtm7k3plzd295m7b8v0q">FLIP-591: Introducing Python DataFrame API in PyFlink</a></h3>
+            <p class="meta">5 条回复 · 2 位参与者</p>
+            <p class="summary">讨论主要围绕 FLIP-591 PyFlink DataFrame API 的细节优化，涉及窗口函数、连接器命名及数据收集接口的设计。作者采纳了社区建议，更新了 API 命名并引入了 take_batch 接口，目前提案已接近共识，计划于本周四启动投票。</p>
+            <div class="key-points"><p><strong>@Matt Belle:</strong> 建议将 read_custom/write_custom 重命名为 read_generic/write_generic，以明确其用于访问现有连接器而非用户自定义连接器的语义。</p>
+<p><strong>@Cole Bailey:</strong> 支持引入 take_batch API，认为其结合类型提示能提供直观的用户体验，并对当前 API 设计整体表示满意。</p>
+<p><strong>@Dian Fu:</strong> 倾向于保留 with_column 和 with_columns 两个 API 以兼顾便利性，并澄清 map 操作的 return_dtype 非强制，支持类型推断。</p></div>
+            <p class="conclusion">已就 API 设计达成初步共识，Dian Fu 计划于本周四左右启动投票流程。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/dp556pnbctbqnm7gb85nkl5f0g707tg9">FLIP-XXX: Independent Checkpoint Based On Pipeline Region</a></h3>
+            <p class="meta">4 条回复 · 3 位参与者</p>
+            <p class="summary">讨论主要围绕 FLIP 提案中“基于 Pipeline Region 的独立 Checkpoint”在处理 Union State 时的一致性风险展开。Gen Luo 认为混合新旧快照在逻辑上有效，而 Roman Khachatryan 指出这打破了 Flink Checkpoint 的全局原子性假设，可能导致状态不一致。最终双方达成共识，明确了状态必须具备确定性的安全边界，作者已更新文档并计划发起投票。</p>
+            <div class="key-points"><p><strong>@Gen Luo:</strong> 认为 Union State 只是恢复语义不同，将健康区域的较新快照与失败区域的旧快照结合在逻辑上是有效的。</p>
+<p><strong>@Roman Khachatryan:</strong> 指出该提案首次打破了 Checkpoint 的全局原子性，若状态包含跨子任务约定或时间不变量，混合不同逻辑时间点的状态会导致错误，建议明确限制条件。</p>
+<p><strong>@熊饶饶:</strong> 采纳 Roman 的建议，确认功能默认关闭，并在 FLIP 的“限制”章节中明确记录状态安全假设，无需额外的框架层保护。</p></div>
+            <p class="conclusion">已就功能范围、安全假设及接口扩展达成共识并更新 FLIP 文档，若无异议将于下周二启动 [VOTE] 流程。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/obsrtnr5yph334q1b80oxo1r6r56pqxk">退订</a></h3>
+            <p class="meta">4 条回复 · 1 位参与者</p>
+            <p class="summary">用户“林”连续发送多封邮件请求退订邮件列表。该主题不涉及技术讨论，仅为用户操作请求。</p>
+            <div class="key-points"><p><strong>@林:</strong> 请求退订邮件列表</p></div>
+            <p class="conclusion">无实质性讨论结论，建议用户查阅邮件列表页脚的退订指引或联系管理员协助。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/z6jwdsnm32rxzgo802hqj20z6mnvsqfp">Help Needed for JDBC Release v3.4.0</a></h3>
+            <p class="meta">3 条回复 · 3 位参与者</p>
+            <p class="summary">JDBC v3.4.0 发布因 CI 构建失败受阻，原因是 Flink 1.20.0 二进制文件已过期无法下载。社区成员建议将工作流中的 Flink 版本升级至 1.20.5 以修复该问题，并已提交相关 PR 验证通过。</p>
+            <div class="key-points"><p><strong>@Ferenc Csaky:</strong> 指出 Flink 1.20.0 二进制文件因新补丁发布已从镜像移除，建议将工作流升级至 1.20.5。</p>
+<p><strong>@Weiqing Yang:</strong> 确认了修复方案有效（JDK 8/11/17/21 矩阵测试通过），并提交了修复 PR (#203)。</p>
+<p><strong>@Yuepeng Pan:</strong> 确认将合并 PR 并继续推进 v3.4.0 的发布候选 #3。</p></div>
+            <p class="conclusion">问题已定位并修复，Yuepeng Pan 将合并 PR 并推进后续发布流程。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/095nhomo1g44qwyc6kzsom7d6ojjr36b">FLIP-504: Blue/Green Deployments for Flink on Kubernetes - Phase 2 (WIP/Draft PR)</a></h3>
+            <p class="meta">2 条回复 · 1 位参与者</p>
+            <p class="summary">讨论主要围绕 FLIP-504 Phase 2 在 Kubernetes 上的蓝绿部署展开，重点探讨了转换失败时的控制面恢复逻辑及门控机制的限制。Sergio 详细阐述了切换前后不同的故障处理策略，并更新了无代码水位线提取等新功能，提议将“在文档化范围内保证正确性且不静默挂起”作为 Phase 2 的完工标准。</p>
+            <div class="key-points"><p><strong>@Sergio Chong Loo:</strong> 针对转换中断的处理，切换前（未发出数据）允许自动回滚，切换后（可能已发出数据）为避免重复风险应标记为 FAILING 供人工干预。</p>
+<p><strong>@Sergio Chong Loo:</strong> 门控机制在处理多源或空闲源时存在限制，特别是空闲源可能导致数据丢失，这是为了活跃性而牺牲完整性的权衡。</p>
+<p><strong>@Sergio Chong Loo:</strong> 已落地无代码水位线提取功能，并建议将实现门控清除超时机制作为 Phase 2 完工前的必须项。</p></div>
+            <p class="conclusion">初步确定了 Phase 2 的收尾范围和完工标准。下一步将重点实现“门控清除超时”机制，以防止转换过程静默挂起，并通过端到端测试验证无丢失/无重复。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/4h1kqmg7gv3opmfvrzrkpplb41rl39dl">FLIP-XXX Support ReducingMergeState and AggregatingMergeState backed by Java based associative merge operators</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕是否应在 Flink 中支持基于 Java 关联合并算子的 ReducingMergeState 和 AggregatingState 展开。Roman 质疑在存储层利用结合律的效果，认为数据流层的两阶段聚合更能解决扩展性问题；Soumitra 则辩称该提案旨在暴露 RocksDB 现有的高性能异步合并机制，以提供比现有 State 更优的运行时特性。</p>
+            <div class="key-points"><p><strong>@Roman Khachatryan:</strong> 关联操作更适合在数据流层（如两阶段聚合）而非存储层利用，因为存储层合并无法解决单点热键扩展问题，且可能增加读后写场景的开销。</p>
+<p><strong>@Soumitra Kumar:</strong> 该提案旨在将 ListState 底层已使用的 RocksDB 异步合并能力暴露给 Java 用户，允许自定义关联算子，从而减少状态大小并优化特定场景下的读取性能。</p></div>
+            <p class="conclusion">Soumitra 将在近期提供具体的建议和性能测试数据，以证明该方案在特定场景下的优势。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/zdp6o9mwccw5ht1mwj9oqn7qjqg856c1">Apache infrastructure PR wanting to change default rulesets.</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论主要围绕 Apache 基础设施自动提交的关于更改默认分支保护规则集的 PR 展开。David Radley 建议关闭这些自动 PR，因为其分支模式与 Flink 现有命名规范不匹配，且限制了有用的强制推送操作。最终社区决定关闭原有 PR，并由 Harshit Gupta 负责提交符合正确分支模式的新 PR。</p>
+            <div class="key-points"><p><strong>@David Radley:</strong> 指出自动 PR 的分支模式与 Flink 命名规范不符，且不应完全禁止强制推送，建议关闭。</p>
+<p><strong>@Robert Metzger:</strong> 认同分支模式有误，建议关闭当前 PR 并按正确的分支模式重新提交。</p>
+<p><strong>@Harshit Gupta:</strong> 主动认领任务，将负责开启新的 PR。</p></div>
+            <p class="conclusion">已关闭原有的自动 PR，下一步将由 Harshit Gupta 开启包含正确分支模式的新 PR，并由 David Radley 进行审查和合并。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (53)</h2>
+            
+    <p>本周新建 <strong>53</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周 JIRA 主要集中在连接器生态对 Flink 2.x 的适配与版本更新，涉及 Prometheus、AWS、MongoDB 及 JDBC 等组件的兼容性修复。同时包含大量针对核心引擎稳定性的改进，解决了 MySQL CDC、状态管理、Watermark 对齐等模块的运行时错误及测试不稳定性问题。此外，还进行了多项依赖库（如 Log4j、Jackson、JUnit）的升级和 CI/CD 流程优化。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Flink Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
