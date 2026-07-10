@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fluss 社区周报 | 2026-W27</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Fluss 社区周报 | 2026-W27</h1>
+            <p class="date-range">2026-06-29 ~ 2026-07-05</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (2)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/bhklqr85vfmky0vmdh9o9f7ocv93bl7f">The Rust, Python, C++ and Elixir clients are now part of Apache Fluss(Incubating)</a></li>
+<li><a href="https://lists.apache.org/thread/kl9vzgqb6hb80g459o8lgr4q7tcmrjl3">New Apache Fluss Committer: Anton Borisob</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (1)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/hbwggj53g5g9sk2ob2p76wozck0bp9sc">FIP-36: Support Variant Type and Shredding</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (8)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/cf3k0n92o50xhphw0h5yf41sps4pqtm8">fluss-rust next roadmap</a></h3>
+            <p class="meta">8 条回复 · 5 位参与者</p>
+            <p class="summary">讨论主要围绕 fluss-rust 合并入主仓库后的下一阶段路线图展开，重点确定了 DataFusion 集成适配器和 Lake+Log 联合读取为核心功能。参与者一致同意将 Gateway 和认证授权设计作为独立 FIP 处理，并确认了 StarRocks 集成作为联合读取功能的重要落地场景。</p>
+            <div class="key-points"><p><strong>@Junbo Wang:</strong> 提议了初步版本范围，建议包含 FIP-40 合并、DataFusion 适配器和 Paimon-first 的联合读取，将 Gateway 排除在核心版本之外。</p>
+<p><strong>@Anton Borisov:</strong> 总结了社区共识，明确 DataFusion 适配器和联合读取为必选项，谓词下推为可选延伸目标，并建议 Gateway 单独规划 FIP。</p>
+<p><strong>@Leonard Xu:</strong> 建议将路线图拆分为具体的 FIP（联合读取、DataFusion 适配器、Gateway）以便于推进，并请求 Anton 协助总结。</p></div>
+            <p class="conclusion">初步结论是放弃 '0.3.0' 版本命名，转而遵循 Fluss 主版本控制；下一步计划是将路线图拆分为具体的 FIP 提案，并推进 StarRocks 的 C++ 绑定集成工作。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/1qkvn8glng7jzoo5ggfpt9jgc2oyf80x">Apache Community Meetup 3rd July</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">Fluss 社区庆祝毕业投票顺利通过，并就 Rust/Gateway 路线图、1.0 版本关键特性（TLS 与 K8s Operator）及 Vector 类型集成进行了讨论。会议明确了 Rust 组件将逐步集成，TLS 和 K8s Operator 的 FIP 提案已准备进入投票阶段，同时 Vector 类型集成将缩小范围以最小化起步。</p>
+            <div class="key-points"><p><strong>@Mehul Batra:</strong> 总结了会议决策：Rust/Gateway 将作为扩展项集成，K8s Operator 倾向于独立建仓，Vector 集成因技术限制缩小范围。</p>
+<p><strong>@Anton Borisov:</strong> 澄清 Rust 路线图应侧重可复用的客户端/库，Gateway 应作为单独的设计轨道和扩展项，不应混淆。</p>
+<p><strong>@Zhe Wang:</strong> 支持 TLS 和 K8s Operator 的 FIP 进入投票阶段，并赞同缩小 Vector 数据类型的实现范围。</p></div>
+            <p class="conclusion">下一步将启动 TLS 和 K8s Operator 的 FIP 投票，Rust/Gateway 方面将发布设计文档并强化读写路径，K8s Operator 计划在 ASF 毕业流程完成后移至独立的 'Fluss extensions' 组织。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/jfot2co6h4nj3y7ythblmcjqtjtypj83">FIP-47: Introduce Deletion Vectors to accelerate Primary Key Table Union Read over Paimon</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">本讨论主要围绕 FIP-47 展开，旨在通过引入 Deletion Vectors 优化 Paimon 上主键表的 Union Read 性能，以解决当前全量 Sort-Merge 导致的高昂读取成本。提案发起人 yuxia 提供了 PoC 实现，基准测试显示性能提升约 10 倍。社区成员 Leonard Xu 认可整体方向，但针对索引清理机制、系统列污染及兼容性提出了具体改进建议。</p>
+            <div class="key-points"><p><strong>@yuxia:</strong> 提议引入 Deletion Vectors 记录更新或删除的行，通过轻量级位图过滤跳过陈旧行，PoC 测试显示读取性能提升约 10 倍。</p>
+<p><strong>@Leonard Xu:</strong> 指出需明确外部文件删除（如快照过期）时的 RowPosIndex 清理机制，防止产生孤儿条目。</p>
+<p><strong>@Leonard Xu:</strong> 质疑引入 __rowid 列是否会与 FIP-27（移除强制系统列）冲突，并引发 Schema 污染或兼容性问题。</p></div>
+            <p class="conclusion">目前处于提案讨论阶段，暂无最终结论。下一步需 yuxia 针对 Leonard Xu 提出的索引清理、Schema 兼容性及 Merge engine 范围等问题进行澄清或完善设计。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/3p4y7y88d1pqlqw4oldwrnp8s1s7dwdx">Create a public open GitHub org for Fluss ecosystem projects</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Yang Wang 提议创建一个名为 "fluss-extensions" 的中立 GitHub 组织，旨在托管不适合纳入 Apache Fluss 核心发布周期的生态项目。这些项目包括非 JVM 代码（如 DuckDB 扩展）、特定依赖分支（如 RocksDB）或需快速迭代的连接器等，该组织将由志愿者以个人身份维护，明确不隶属于 ASF。</p>
+            <div class="key-points"><p><strong>@Yang Wang:</strong> 核心 Fluss 发布流程无法容纳非 JVM 项目或发布节奏不同的组件，需要独立的组织来托管。</p>
+<p><strong>@Yang Wang:</strong> 治理模式参考 Flink 社区实践，由志愿者维护，项目所有者拥有仓库管理权并承担全部责任。</p></div>
+            <p class="conclusion">目前处于提议发起讨论阶段，尚无明确结论。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/qjo47s2lnk6nlj66clo83nw54r14r7n8">FIP-44: Enhanced LanceDB Integration — Vector Indexes, FTS, and Hybrid Search</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论围绕 FIP-44 增强 LanceDB 集成方案展开，重点涉及向量索引、全文检索及混合搜索功能。Mehul Batra 确认了技术方向，建议第一阶段专注于向量数据类型，并强调了模式定义和量化支持的技术细节。Sagar 则针对 API 参数映射和 FTS 实现路径进行了详细说明。</p>
+            <div class="key-points"><p><strong>@Mehul Batra:</strong> 建议第一阶段仅关注向量数据类型，且需在模式定义时固定维度与元素类型，并从首日起支持多种量化类型以避免破坏性变更。</p>
+<p><strong>@Sagar:</strong> 明确 Fluss 将采用原生 FTS 路径（use_tantivy=False），且 API 中 replace 参数固定为 True 以保证状态机幂等性。</p></div>
+            <p class="conclusion">社区认可当前技术方向，下一步将提交 FIP 以讨论具体发现，并继续推进 POC 的实现。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/zzpvbjlg2c743glxdmm5lgot16hp90tq">FIP-41: Fluss Kubernetes Operator</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">社区正在讨论 FIP-41 提案，旨在开发 Fluss Kubernetes Operator 以弥补现有 Helm chart 在生产运维自动化方面的不足。提案指出当前需手动协调滚动重启、版本升级及缩容等操作，Operator 将解决这些痛点。目前参与者对采用独立代码仓库的方案表示支持。</p>
+            <div class="key-points"><p><strong>@Lorenzo Affetti:</strong> 现有的 Helm chart 仅是模板工具，无法感知运行时状态，难以处理安全重启、升级和缩容等生产运维需求，因此需要引入 Operator 实现自动化。</p>
+<p><strong>@Zhe Wang:</strong> 支持设立独立仓库，参考 Flink kubernetes-operator 的先例，这有助于 Operator 拥有独立的发布周期和问题追踪，便于迭代 K8s API 版本。</p></div>
+            <p class="conclusion">初步达成采用独立代码仓库的共识，下一步将启动投票流程。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/0qtp5sb6f3t4x9th8tz1qy9y5oo67cxq">回复: 回复:  Draft design: Support upgrading existing Iceberg tables to Fluss tables</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">本次讨论主要关于支持将现有 Iceberg 表升级为 Fluss 表的设计草案更新。Liting Liu 根据反馈修改了草案，明确了删除编码验证逻辑、嵌套标识符字段限制及桶映射示例，回应了 Muhammet Orazov 提出的疑问。</p>
+            <div class="key-points"><p><strong>@Liting Liu:</strong> 已移除模糊的删除编码验证，改为在引导阶段由 Iceberg reader 处理；在 Coordinator 端拒绝嵌套标识符字段，仅支持顶层字段；并新增了桶映射的具体示例。</p>
+<p><strong>@Muhammet Orazov:</strong> 询问了删除编码验证发生的具体阶段，确认嵌套标识符字段的处理方式（推测会被拒绝），并建议补充桶配置转换的具体示例。</p></div>
+            <p class="conclusion">设计草案已根据审查意见完成修订，解决了关于删除验证时机、字段嵌套支持和配置示例的问题，后续将继续推进。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/f596h6oo8j9zjjl2mft6qxz52yq83rgr">答复: FIP-47: Introduce Deletion Vectors to accelerate Primary Key Table Union Read over Paimon</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">FIP-47 提议引入删除向量以优化 Paimon 上主键表的 Union Read 性能，旨在解决当前全量排序-合并带来的高昂读取成本。讨论中，社区成员对 RowPosIndex 的清理机制及与 FIP-27 的模式兼容性提出了具体担忧。</p>
+            <div class="key-points"><p><strong>@yuxia:</strong> 当前 Union Read 需全量排序-合并成本过高，提议引入删除向量通过位图过滤跳过过期行以加速读取。</p>
+<p><strong>@Liting Liu:</strong> 担忧外部数据过期（如通过 Amoro）不产生 Fluss changelog，导致 RowPosIndex 中积累无法清理的孤立条目。</p>
+<p><strong>@Liting Liu:</strong> 质疑 DV 设计依赖系统列（__rowid, __bucket）与旨在移除这些列的 FIP-27 之间存在兼容性冲突。</p></div>
+            <p class="conclusion">目前尚无定论，需 FIP 作者进一步阐明如何处理 RowPosIndex 的孤立条目清理以及如何解决与 FIP-27 的模式兼容性问题。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (0)</h2>
+            
+    <p>本周新建 <strong>0</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周无新建 JIRA。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Fluss Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
