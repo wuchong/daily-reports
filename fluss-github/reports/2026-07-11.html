@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-07-11</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-07-11</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 0 新 Issues</div>
+            <div class="stat">✅ 1 关闭</div>
+            <div class="stat">✨ 2 新 PRs</div>
+            <div class="stat">🎉 1 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/3627">PR #3627</a> 修复主键表批量读取存在数据空洞的问题</li><li>🚀 <a href="https://github.com/apache/fluss/pull/3635">PR #3635</a> 新增对 Lakehouse 分层存储分区标记完成的支持</li><li>✨ <a href="https://github.com/apache/fluss/pull/3636">PR #3636</a> 支持 Elixir 复杂数据类型及可空性定义</li><li>🐛 <a href="https://github.com/apache/fluss/issues/3626">Issue #3626</a> Spark 批量读取主键表数据空洞问题已关闭</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3630">Issue #3630</a> [lookup] Support historical partition lookup for lake tables</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 解释服务端查找复用写入基础设施，避免阻塞 Netty 且减少客户端依赖复杂度</li><li><span class="author">@zuston</span>: 同意服务端与客户端方案共存，后续将复用接口实现客户端回退机制</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3621">Issue #3621</a> [kv] Add row TTL support</h4>
+            <ul><li><span class="author">@hiSandog</span>: 询问 TTL 过期边界的判定标准（时间点）及依赖的时钟源</li><li><span class="author">@platinumhamburg</span>: 说明 TTL 为尽力而为机制，基于服务器时钟，不做严格行级可见性过滤</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3614">Issue #3614</a> [server] Add resource-based KV leader replica capacity control</h4>
+            <ul><li><span class="author">@wuchong</span>: 建议重命名为 ReplicaCapacityController，因其职责是准入决策而非生命周期管理</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3615">Issue #3615</a> [test] Unstable test RemoteLogDownloaderTest.testCloseWithInFlightAndPendingDownloads</h4>
+            <ul><li><span class="author">@hutiefang76</span>: 分析测试不稳定因线程执行顺序不确定，计划修复测试逻辑而非增加超时</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3227">Issue #3227</a> [spark] Fix empty projection causing Invalid metadata length for COUNT(*)/COUNT(1)</h4>
+            <ul><li><span class="author">@Kaixuan-Duan</span>: 响应建议将 PR 拆分，移除聚合下推部分，仅保留 Bug 修复</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3424">Issue #3424</a> [docs] add docs to integrate Fluss + Iceberg via Flink with AWS Glue and Hive</h4>
+            <ul><li><span class="author">@qzyu999</span>: 询问因 Jar 包问题是否应更新文档目标版本，并提及 Glue 报错</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3463">PR #3463</a> [server][client] Add cooperative KV backpressure based on RocksDB L0</h4>
+            <ul><li><span class="author">@Copilot</span>: 指出文档描述与实现（节流曲线、默认值）不一致，以及监控指标范围定义错误</li><li><span class="author">@platinumhamburg</span>: 已更新 PR 描述以修复配置不一致问题</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3612">PR #3612</a> [server] Add configurable disk write-limit recover gap</h4>
+            <ul><li><span class="author">@Copilot</span>: 指出 Markdown 语法错误、Javadoc 参数引用错误及配置重载时的校验风险</li><li><span class="author">@wuchong</span>: 建议改用绝对阈值配置以提高易用性</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3621">PR #3621</a> [kv] Add row TTL support</h4>
+            <ul><li><span class="author">@Copilot</span>: 指出实现允许 Event-time TTL 与 Issue 要求第一阶段仅支持 Processing-time 矛盾</li><li><span class="author">@platinumhamburg</span>: 已更新 Issue 以明确 Event-time TTL 的支持状态</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3614">PR #3614</a> [server] Add resource-based KV leader replica capacity control</h4>
+            <ul><li><span class="author">@Copilot</span>: 指出 dropTable 存在竞态条件及配置为零时的除零风险</li><li><span class="author">@wuchong</span>: 建议重命名配置项以明确广播语义，支持设为 0 禁用，并优化类与构造函数设计</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3523">PR #3523</a> [lake/paimon] Support custom Paimon path</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 建议在 SetOption 时对比路径，若新旧路径相同则视为无操作，避免报错</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3558">PR #3558</a> [server] Auto partition day format supporting yyyy-MM-dd</h4>
+            <ul><li><span class="author">@wuchong</span>: 建议通用化时间格式配置项，增加格式校验，并允许禁用分区时保留格式配置</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3424">PR #3424</a> [docs] add docs to integrate Fluss + Iceberg via Flink with AWS Glue and Hive</h4>
+            <ul><li><span class="author">@qzyu999</span>: 验证了 Glue 认证方案，补充了 Mermaid 架构图，并反馈了无关的 Tiering 状态机竞争问题</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <p class="empty">暂无</p>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3636">#3636</a> [elixir] Support complex types (Array/Map/Row) and nullability <span class="author">@nicolazar</span> </li><li><a href="https://github.com/apache/fluss/pull/3635">#3635</a> [lake] Support partition mark-done for lakehouse tiering (processing-… <span class="author">@beryllw</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3626">#3626</a> [Bug] Spark batch read on primary key table returns a data hole (missing newest rows) <span class="author">@beryllw</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3627">#3627</a> [client] Fix data hole in primary key table batch read <span class="author">@beryllw</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
