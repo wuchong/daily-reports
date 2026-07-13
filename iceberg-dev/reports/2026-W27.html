@@ -20,112 +20,108 @@
         </section>
 
         <section class="votes">
-            <h2>🗳️ 投票 (3)</h2>
-            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/021wmhr9m1d2odrsfv0f71ko24y4jhgn">Adopt the expressions spec</a> <span class="status warning">⚠️ 有异议</span><p class="objection-inline">Ryan Blue 宣布投票通过，明确指出没有 -1 票，因此本次投票无异议。</p></li>
-<li><a href="https://lists.apache.org/thread/m35vm2j7z9pdv2o3jtyvd5vls0bko0xj">Release Apache Iceberg Rust 0.10.0 RC2</a> <span class="status warning">⚠️ 有异议</span><p class="objection-inline">Manu Zhang 提出 -1，原因是 ASF 源码发布包与签名的 Git tag 内容不一致，具体表现为 `.github/workflows/bindings_python_ci.yml` 和 `CHANGELOG.md` 两个文件存在差异。</p></li>
-<li><a href="https://lists.apache.org/thread/br8bfgbd68z3tmmzrpkm5fqm4zqsvd4b">Add specific-name to UDF spec</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+            <h2>🗳️ 投票 (2)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/h8ohxh44g1zc32clg3sgxr80xjc4nnr9">Release Apache Iceberg Rust 0.10.0 RC3</a> <span class="status warning">⚠️ 有异议</span><p class="objection-inline">该回复实际为赞成票（+1），并非异议。Rich Bowen 表示已验证文件签名、哈希值以及 LICENSE 和 NOTICE 文件，因此未提出异议。</p></li>
+<li><a href="https://lists.apache.org/thread/lfr1kb253m99dg0mbdzpm6g1k3nbd6fc">[Terraform] Release Apache Iceberg Terraform Provider v0.1.0 RC0</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
         </section>
 
         <section class="discussions">
             <h2>💬 讨论 (10)</h2>
             
         <article class="discussion-item">
-            <h3><a href="https://lists.apache.org/thread/j769l8hcxn0vzq1ly24x5zhdmvsjm2vv">Handling of existing statistics files</a></h3>
-            <p class="meta">8 条回复 · 3 位参与者</p>
-            <p class="summary">讨论主要围绕当多个引擎为同一快照写入统计信息时如何处理现有统计文件，核心争议在于是否应支持每个快照关联多个统计文件以及如何处理未知 blob 类型。参与者分析了当前规范允许列表但实现强制替换的现状，并深入探讨了引入文件“所有权”机制或扩展规范以解决冲突的可行性与复杂性。</p>
-            <div class="key-points"><p><strong>@Tamás Máté:</strong> 认为丢弃未知 blob 比传递更安全，担心多文件会增加规划延迟，主张统计信息应与快照生命周期绑定。</p>
-<p><strong>@Gábor Kaszab:</strong> 指出当前 Java API 强制替换现有统计信息，质疑在规范中定义统计文件“所有权”的复杂性及其对开源引擎的实际收益。</p>
-<p><strong>@dzeri96:</strong> 提议支持每个快照多个统计文件并通过新增字段区分，主张规范应保持开放性以支持专有扩展和未来需求（如二级索引）。</p></div>
-            <p class="conclusion">目前尚未达成明确共识，虽然技术上发现需要修改 Java API 以支持多文件，但在规范层面如何定义统计文件的所有权及区分机制仍有待进一步讨论和征求更广泛的社区意见。</p>
-        </article>
-
-        <article class="discussion-item">
-            <h3><a href="https://lists.apache.org/thread/2k24zwgoz02lm1m97svjp3o428gnqfxc">Reduce CI runner time by running JDK 21 only on main/nightly</a></h3>
-            <p class="meta">6 条回复 · 4 位参与者</p>
-            <p class="summary">讨论旨在通过从 PR 检查中移除 JDK 21 并仅保留 JDK 17（基准版本）来减少 CI 运行器时间，而 JDK 21 测试将仅在 main 分支和 nightly 构建中运行。该提案解决了资源消耗和并行限制问题，社区成员普遍支持，同时也讨论了监控构建失败的机制。</p>
-            <div class="key-points"><p><strong>@Kevin Liu:</strong> 提议从 PR CI 中移除 JDK 21 以将矩阵任务减半，并指出可通过 GitHub UI 和邮件列表监控 main 分支上的构建失败。</p>
-<p><strong>@Ajantha Bhat:</strong> 选择 JDK 17 是因为它是 Java 基准版本，能提供最佳兼容性信号，且并未完全移除 JDK 21 覆盖范围（main 分支和 full-ci 标签仍运行）。</p>
-<p><strong>@Russell Spitzer:</strong> 关注 nightly 构建失败的监控机制，但同意关闭 JDK 21 是合理的权衡，因为 JDK 21 特有的故障很少见。</p></div>
-            <p class="conclusion">社区达成共识支持该提案，PR #16945 将保留几天供最终审查后合并。</p>
-        </article>
-
-        <article class="discussion-item">
-            <h3><a href="https://lists.apache.org/thread/rvd1xwl182s6r01pftognhh53qg4jn92">Cross-implementation conformance testing for Iceberg</a></h3>
-            <p class="meta">3 条回复 · 4 位参与者</p>
-            <p class="summary">讨论围绕 Iceberg 跨实现一致性测试提案展开，参与者普遍支持建立参考物理工件进行对比。讨论重点涵盖了测试方法（如值对比与类型检查的区别）及双向测试结构的设计，以解决规范歧义和实现分歧。目前核心贡献者正在线下完善提案细节，并计划举行社区同步会议。</p>
-            <div class="key-points"><p><strong>@Danny Jones:</strong> 分享了团队在维护操作正确性方面的现有测试工作（如压缩验证、穷举式表布局生成、Rust 元数据验证器），并准备将其开源。</p>
-<p><strong>@Xin Huang:</strong> 支持“对比解码值”的方法，但指出这可能无法捕捉类型层面的分歧（如 int vs long），建议 v1 版本先聚焦于值正确性。</p>
-<p><strong>@Andrei Tserakhau:</strong> 强调测试规则需遵循规范语义，区分需归一化的表示（如 day transform）和需保留物理类型的缺陷（如 equality_ids），并支持采用双向测试结构。</p></div>
-            <p class="conclusion">初步达成共识，支持提案方向及双向测试结构；下一步将由核心小组完善提案细节并组织社区同步会议。</p>
-        </article>
-
-        <article class="discussion-item">
-            <h3><a href="https://lists.apache.org/thread/73tvsbmfnfhsow0nyq2lrblwbmbw00rb">Add `table_properties_log` metadata table to expose table property history</a></h3>
-            <p class="meta">2 条回复 · 3 位参与者</p>
-            <p class="summary">Tomohiro Tanaka 提议新增 `table_properties_log` 元数据表以追踪表属性变更历史，旨在解决当前需手动检查元数据文件的痛点。讨论焦点在于该实现需按需读取历史元数据文件，可能导致扫描成本随保留版本数增加及潜在的错误风险。社区成员建议权衡“引擎端按需读取”与“Catalog 后台物化”两种方案的优劣。</p>
-            <div class="key-points"><p><strong>@Tomohiro Tanaka:</strong> 提议通过读取保留的元数据文件来暴露属性历史，用于审计和调试，且不改变现有规范或写入路径。</p>
-<p><strong>@Tanmay Rauth:</strong> 担忧读取历史文件带来的 I/O 成本（随保留版本线性增长）和文件缺失导致的扫描失败风险，建议考虑是否值得修改规范以避免读取开销。</p>
-<p><strong>@Andrei Tserakhau:</strong> 指出该方案对 REST Catalog 服务端扫描规划的压力，建议考虑由 Catalog 物化属性历史表的替代方案，以避免计划时的同步读取开销。</p></div>
-            <p class="conclusion">尚未达成最终共识，需社区进一步讨论决定是接受元数据表的“按需文件读取”模式，还是转向“Catalog 物化”方案。</p>
-        </article>
-
-        <article class="discussion-item">
-            <h3><a href="https://lists.apache.org/thread/odof6m2npvktwd51cz8qnrxjv95ws4wm">Proposal: File-Level Access Delegation in the Iceberg REST Catalog Spec</a></h3>
+            <h3><a href="https://lists.apache.org/thread/7d4mzx3ft3b0x1kb5g1jk91wkxnm0qf0">Row-delta commits and multi-table transactions in iceberg-rust ? patterns from a CDC producer</a></h3>
             <p class="meta">2 条回复 · 2 位参与者</p>
-            <p class="summary">William Hyun 提议扩展 Iceberg REST Catalog 规范，引入文件级访问委托机制，旨在通过预签名 URL 解决当前表级委托导致的权限过度配置问题。讨论中对比了作用域凭证分发与远程签名等替代方案，分析了 AWS STS 在高频请求和策略大小方面的限制。目前作者正在探索批量远程签名加缓存的 POC 方案，以评估其在细粒度访问场景下的可行性。</p>
-            <div class="key-points"><p><strong>@William Hyun:</strong> 提议使用预签名 URL 实现文件级访问委托，并指出作用域凭证分发在细粒度访问场景下受限于 STS 频率和策略大小，不如预签名 URL 实用。</p>
-<p><strong>@Kevin Liu:</strong> 支持该用例，但指出 Java 实现及子项目在“预签名 URL”支持上可能存在功能缺口，需要后续完善。</p></div>
-            <p class="conclusion">初步结论是作用域凭证分发在特定场景下受限，下一步将进行批量远程签名结合缓存的 POC 验证，以评估其作为预签名 URL 替代方案的可行性。</p>
+            <p class="summary">讨论主要围绕在 iceberg-rust 中实现 RowDelta 提交和多表事务两项功能展开，作者提交了草稿 PR 以支持 Postgres 到 Iceberg 的 CDC 管道。Andrei 基于 iceberg-go 的开发经验提供了深入的代码审查和潜在陷阱提醒，Steve 随后采纳了部分建议并更新了代码。</p>
+            <div class="key-points"><p><strong>@Steve (st...):</strong> 提交了 RowDeltaAction 和多表事务两个 PR，旨在填补 Rust 实现中写入/提交端的空白，并支持原子性地向多表提交行增量。</p>
+<p><strong>@Andrei Tserakhau:</strong> 指出序列号规则是正确性的核心，需确保相等删除仅应用于序列号更小的数据文件；同时警告仅测试位置删除可能会掩盖相等删除读取未实现的隐患。</p>
+<p><strong>@Steve (st...):</strong> 已根据反馈更新代码，包括修复操作类型选择逻辑、增加对无效相等键的校验，并明确了事务状态未知时的处理逻辑。</p></div>
+            <p class="conclusion">Steve 已根据反馈更新了 PR 代码，双方确认了序列号规则已正确实现。下一步 Steve 将参考 Andrei 在 Go 端的实现，重点跟进分区范围的冲突检测和压缩后孤立删除文件的清理逻辑。</p>
         </article>
 
         <article class="discussion-item">
-            <h3><a href="https://lists.apache.org/thread/02m29dg62m2k3xk7tjvkv4vdbrcnzsm0">Write-path gap for field-id-bound policy during schema evolution</a></h3>
-            <p class="meta">1 条回复 · 1 位参与者</p>
-            <p class="summary">讨论主要关注模式演变期间，如何解决新列创建与其安全策略绑定之间存在的时间差（保护空窗期）问题。Sung Yun 指出当前协议不支持原子性的策略绑定，而 Yufei Gu 认为这应作为目录的可选实现特性而非强制要求。经过社区同步会议讨论，明确了后续方向是起草提案，将 Policy 对象确立为 IRC 中的一等公民概念。</p>
-            <div class="key-points"><p><strong>@Sung Yun:</strong> 指出列创建与策略绑定之间存在保护空窗期，建议探讨支持原子性绑定的协议机制。</p>
-<p><strong>@Yufei Gu:</strong> 认为这主要是目录实现层面的考量，不必强制要求，可作为可选能力。</p>
-<p><strong>@Ryan, Dan, Russell 等:</strong> 提出 Policy 对象需先成为 IRC 的一等公民，才能进一步讨论事务语义和原子性。</p></div>
-            <p class="conclusion">讨论虽未完全收敛，但明确了下一步行动：Sung Yun 将起草一份提案，提议在 IRC 中引入一等公民的 Policy 对象，以便社区评估其能否涵盖现有的策略编写模式。</p>
-        </article>
-
-        <article class="discussion-item">
-            <h3><a href="https://lists.apache.org/thread/6qfom12527mwkgohrlf8wmhn1x31rqcy">Declaring row-level bbox covering columns in Iceberg metadata</a></h3>
+            <h3><a href="https://lists.apache.org/thread/4qj3ogom42lt4kf2jzz0y5yfk35z82pb">Vector type support to Iceberg</a></h3>
             <p class="meta">1 条回复 · 2 位参与者</p>
-            <p class="summary">Sunmin Lee 提议在 Iceberg 中引入单独的 bbox 列以支持空间剪枝，并参考 GeoParquet 1.1 标准探讨元数据声明方式。Tanmay Rauth 回复称，虽然该方案作为临时过渡可行，但 Iceberg v3 正致力于原生几何边界支持，建议设计时应考虑与原生机制融合，甚至优先推动原生路径的完善。</p>
-            <div class="key-points"><p><strong>@Sunmin Lee:</strong> 建议通过表属性（如 geo.geom.covering.bbox）声明 bbox 列与几何列的覆盖关系，并遵循 GeoParquet 1.1 语义。</p>
-<p><strong>@Tanmay Rauth:</strong> Iceberg v3 的长期方向是利用原生 geo 边界统计信息进行剪枝，而非依赖额外的侧列。</p>
-<p><strong>@Tanmay Rauth:</strong> 鉴于原生路径尚未完全打通，提议的 bbox 列方案是合理的临时过渡，但应避免成为永久并行约定。</p></div>
-            <p class="conclusion">提议的方案被认可为有效的临时解决方案，但建议贡献者考虑协助推动原生 geo 边界生成与谓词下推功能的实现，以实现长期统一。</p>
+            <p class="summary">讨论旨在为 Iceberg 引入一等公民向量类型，以支持 AI/ML 场景中固定维度的向量嵌入，并配合 Parquet 社区的相关进展。提案建议采用固定维度、数值坐标的密集向量类型（如 float[768]），并明确了与底层文件格式的映射及模式演进方向。</p>
+            <div class="key-points"><p><strong>@Yan Yan:</strong> 建议新增向量类型以解决现有 list<float> 无法约束维度不变量的问题，首选方案是固定维度、元素非空的密集数值向量。</p>
+<p><strong>@Tanmay Rauth:</strong> 赞同保持初始类型范围最小化，建议明确 Parquet 映射规则，包括字段 ID 仅置于外层组、指标统计需符合向量语义而非元素级语义。</p>
+<p><strong>@Tanmay Rauth:</strong> 指出对于不支持向量的历史文件格式（如 Avro/ORC），新增向量列不应导致旧文件失效，但新写入必须使用支持的 Parquet 表示。</p></div>
+            <p class="conclusion">社区对引入向量类型的提案方向表示认可，后续将围绕提案文档中的 Parquet 字段 ID 映射规则、指标统计策略及文件格式兼容性细节进一步完善设计。</p>
         </article>
 
         <article class="discussion-item">
-            <h3><a href="https://lists.apache.org/thread/mhyx8g420qtq3rc57m84xgcnqfl0dp15">Upcoming Iceberg Terraform Provider Release</a></h3>
+            <h3><a href="https://lists.apache.org/thread/294rz6km950ngf7dcc23l6bp7hlm3tcz">Iceberg technical blog posts, and a first attempt</a></h3>
             <p class="meta">1 条回复 · 2 位参与者</p>
-            <p class="summary">讨论主要围绕 Iceberg Terraform Provider 的发布计划及其是否应包含 Polaris 相关资源展开。Alex 最初宣布了新功能并计划发布，但 Daniel 质疑将 Polaris 资源纳入 Iceberg 项目的合理性。最终 Alex 同意移除 Polaris 资源，建议由 Polaris 社区自行维护。</p>
-            <div class="key-points"><p><strong>@Alex Stephen:</strong> 宣布 Iceberg Terraform Provider 新增命名空间和表支持，并包含了 Polaris 社区贡献的 Principal 支持，计划下周发布。</p>
-<p><strong>@Daniel Weeks:</strong> 质疑为何 Polaris 代码包含在 Iceberg 中，认为这会开创难以界定范围的先例，建议由 Polaris 项目自行维护。</p>
-<p><strong>@Alex Stephen:</strong> 接受建议，承认不应破例，决定移除 Polaris 资源，并计划在 Polaris 社区发起讨论以建立其独立的 Provider。</p></div>
-            <p class="conclusion">初步结论是 Polaris 资源不应包含在 Iceberg Terraform Provider 中。下一步行动是 Alex 将提交 PR 移除相关代码，并在 Polaris 开发邮件列表中提议创建 Polaris 自己的 Provider。</p>
+            <p class="summary">社区讨论了在 Iceberg 官方博客中增加技术类文章的计划，Matt Butrovich 提交了首篇关于 DataFusion Comet 和 Iceberg Rust 的文章草稿以征集反馈。该举措旨在补充原有的版本公告内容，展示实际应用案例并吸引开发者参与贡献。</p>
+            <div class="key-points"><p><strong>@Matt Butrovich:</strong> 提交了首篇技术博客 PR，从用户和开发者双视角探讨 DataFusion Comet 与 Iceberg Rust，希望为后续技术分享建立先例。</p>
+<p><strong>@Andrei Tserakhau:</strong> 高度支持此类内容，认为其填补了博客空白，建议保留“用户故事到开发者故事”的结构，并提议将其发展为“Iceberg Beyond the JVM”系列。</p></div>
+            <p class="conclusion">初步确立了技术博客的写作范式，Andrei 计划撰写关于 iceberg-go 的后续篇章，后续将同步协调文章结构以保持风格一致。</p>
         </article>
 
         <article class="discussion-item">
-            <h3><a href="https://lists.apache.org/thread/n7gmlbq1yoz9v43ob4zjn78vhf5rc5rl">[Discussion] Collation Support</a></h3>
-            <p class="meta">1 条回复 · 2 位参与者</p>
-            <p class="summary">讨论主要围绕 Iceberg 排序规则支持中 ICU 版本标记层级（列级 vs 文件级）以及边界值存储形式（原始值 vs 排序键）的设计权衡。Alexander 对不同方案在文件剪枝性能和互操作性方面的影响提出疑问，Andrei 则详细阐述了存储原始值在跨版本兼容性上的优势，并解释了文件级版本标记的设计考量。</p>
-            <div class="key-points"><p><strong>@Alexander Löser:</strong> 列级版本标记能激励引擎统一版本以实现全面剪枝，而文件级标记虽允许版本多样性，但可能导致不同引擎间的剪枝效果“分裂”。</p>
-<p><strong>@Andrei Tserakhau:</strong> 存储原始值优于排序键，因为原始值允许跨版本重新解释和剪枝，而排序键在不同 ICU 版本间不可比较，前者是后者的功能超集。</p>
-<p><strong>@Andrei Tserakhau:</strong> 文件级版本标记主要影响剪枝性能而非正确性，设计上允许引擎读取所有数据，但仅对能处理其版本指标的文件进行剪枝。</p></div>
-            <p class="conclusion">初步讨论倾向于采用存储原始值结合文件级版本标记的方案，以在保证数据可读性的前提下优化跨引擎的剪枝性能。</p>
+            <h3><a href="https://lists.apache.org/thread/j5310o8cn73x95cmhlwrbq32d7fzjd0d">Table and Column Label Metadata in Iceberg REST Catalog</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">本次讨论回顾了 Iceberg REST Catalog 中表与列标签元数据的同步会议进展，指出读取路径的设计已趋于稳定，目前的重点是推动规范 PR 的审查。讨论明确了优先聚焦读取路径、将延迟要求定义为实现指导而非规范要求，并将结构化标签等复杂议题留待后续跟进。</p>
+            <div class="key-points"><p><strong>@Ryan Blue, Daniel Weeks:</strong> 反对在规范中强制规定延迟要求，认为延迟由实现定义，规范应将其作为实现指导而非规范性要求。</p>
+<p><strong>@Andrei Tserakhau:</strong> 建议优先审查读取路径的规范 PR，强调标签当前仅限于 LoadTableResponse 上的扁平化元数据交换，写入路径不应阻塞审查。</p>
+<p><strong>@Prashant Singh:</strong> 提出了结构化标签的需求，认为扁平视图无法满足复杂的标签管理，但这应作为后续独立议题处理。</p></div>
+            <p class="conclusion">初步结论是读取路径的表示形式已定稿（consolidated labels shape），下一步行动是号召社区（特别是 PMC 和 Committer）重点审查规范 PR #15750，同时将结构化标签等议题安排在后续同步会议中讨论。</p>
         </article>
 
         <article class="discussion-item">
-            <h3><a href="https://lists.apache.org/thread/k09hbrtmzvd9tdjcrv5yb9d0wmx7l6nt">QuadTree-inspired physical spatial partitioning for Iceberg</a></h3>
-            <p class="meta">1 条回复 · 1 位参与者</p>
-            <p class="summary">作者提出了一种基于四叉树思想的物理空间分区方案，作为 Iceberg 地理空间支持的替代路径。该方法通过数据布局保持空间局部性，避免了全局排序（如 Hilbert/Z-order）的开销，并支持高效的增量数据摄入。作者已实现外部框架进行验证，性能与空间填充曲线方法相当，现寻求社区反馈。</p>
-            <div class="key-points"><p><strong>@Seyed Muhammad Mahdi Hoseini:</strong> 提议使用受四叉树启发的物理分区代替基于元数据的剪枝或全局排序，以保持空间局部性。</p>
-<p><strong>@Seyed Muhammad Mahdi Hoseini:</strong> 该方案支持自然增量摄入，无需昂贵的全局重排或大规模 Shuffle 操作，适合持续增长的数据集。</p>
-<p><strong>@Seyed Muhammad Mahdi Hoseini:</strong> 实现为独立于 Iceberg 和 Parquet 版本的外部框架，实验显示查询性能与空间填充曲线方法相当。</p></div>
-            <p class="conclusion">作者已分享包含实现、文档和基准测试的 GitHub 仓库，目前处于征求社区意见和反馈的阶段，尚未形成明确的社区决议。</p>
+            <h3><a href="https://lists.apache.org/thread/nznf7tnk9t47kq8dzyw7p9pozq0sxh6z">Handling of existing statistics files</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论主要关于 Iceberg 统计信息文件规范的改进，提议通过增加 'type' 字段来区分文件类型，并探讨了向后兼容性及不同实现（如 Spark 和 PyIceberg）处理未知 Blob 的差异。参与者还讨论了是否应复用现有框架来支持二级索引。</p>
+            <div class="key-points"><p><strong>@dzeri96:</strong> 建议在统计文件元数据中增加 'type' 字段，定义 'iceberg-statistics-v1' 类型，并将 Blob 类型描述移至相应规范处。</p>
+<p><strong>@dzeri96:</strong> 认为旧版读取器可忽略 'type' 字段以保持向后兼容，且赞同 iceberg-spark 忽略未知 Blob 的处理方式。</p>
+<p><strong>@dzeri96:</strong> 认为二级索引应尽量复用现有的 statistics/puffin 文件框架，避免重复造轮子。</p></div>
+            <p class="conclusion">初步结论是建议通过增加元数据字段来优化规范，并倾向于采用 Spark 的容错处理逻辑，但邮件中未明确列出具体的下一步代码实施计划。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/b79nzkto3xzmogtnowwssogms76fn4co">Proposal: File-Level Access Delegation in the Iceberg REST Catalog Spec</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">William Hyun 发起关于 Iceberg REST Catalog 规范中文件级访问委托的讨论，针对预签名 URL 提出了“批量远程签名与缓存”的替代方案。他分析了作用域凭证分发在细粒度文件访问场景下的局限性（如 STS 频率和策略大小限制），并提交了一个 POC 代码以验证新方案的可行性。</p>
+            <div class="key-points"><p><strong>@William Hyun:</strong> 作用域凭证分发适合少量稳定前缀的授权，但在大量特定文件的细粒度访问场景下，受限于 STS 请求频率和策略大小，不够实用。</p>
+<p><strong>@William Hyun:</strong> 远程签名结合缓存机制可以避免为每个文件集创建新的 STS 会话，是预签名 URL 的一个潜在实用替代方案。</p>
+<p><strong>@William Hyun:</strong> 已提交 POC PR 以具体展示远程签名加缓存的实现方式，旨在评估该方案在细粒度访问控制中的实际效果。</p></div>
+            <p class="conclusion">目前处于方案验证阶段，作者已发布 POC PR 供社区评估，欢迎社区提供反馈以决定是否采用该方向。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/ts5frrbm321yw2fmff12smd92wghk5ty">Declaring row-level bbox covering columns in Iceberg metadata</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论主要关于在 Iceberg 元数据中声明行级 bbox 覆盖列的机制，以支持行级空间预过滤。Sunmin Lee 提出利用独立 bbox 列进行行级过滤的需求，Tanmay Rauth 则澄清了 Iceberg 原生技术方向是通过几何列自身的统计信息进行剪枝。</p>
+            <div class="key-points"><p><strong>@Sunmin Lee:</strong> 提出利用显式 bbox 覆盖列进行行级预过滤，以弥补现有文件级分区剪枝的不足，并询问是否有相关历史讨论。</p>
+<p><strong>@Tanmay Rauth:</strong> 指出 Iceberg v3 的原生方向是利用几何列自身的 Bounds 统计信息进行剪枝，而非依赖辅助列，但目前端到端功能尚未完全就绪。</p></div>
+            <p class="conclusion">初步结论是 Iceberg v3 规范倾向于使用几何列原生 Bounds 进行剪枝，但该功能尚在开发中；Sunmin Lee 表示若采用新设计将改用 Field ID 映射，并继续寻求行级过滤方案的指引。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/zrsvgow4d2qm2ox0k4odcx584g9npynh">Reduce CI runner time by running JDK 21 only on main/nightly</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">本次讨论旨在通过仅在主分支和夜间构建中运行 JDK 21 来减少 CI 运行时间。社区成员普遍支持在 PR 阶段移除 JDK 21 测试，相关 PR 已被合并。</p>
+            <div class="key-points"><p><strong>@Kevin Liu:</strong> 已合并移除 PR 中 JDK 21 测试的代码，确保主分支合并时仍会运行 JDK 17 和 21 以发现潜在问题。</p>
+<p><strong>@Russell Spitzer:</strong> 赞同关闭 JDK 21 测试以降低成本，认为仅破坏 JDK 21 而不影响 JDK 17 的可能性极低。</p>
+<p><strong>@Danny Jones:</strong> 建议考虑使用 GitHub Merge Queue 功能，在轻量级测试通过后入队时再运行完整测试。</p></div>
+            <p class="conclusion">已决定并实施在 PR 的 CI 矩阵中移除 JDK 21，仅保留 JDK 17，同时保留主分支的完整测试覆盖。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/3mdjz2ogqdmgzzpsqbxl2gpnh6rk3ng9">Clarify field `id` handling in REST Spec</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论旨在澄清 REST 规范中关于字段 `id` 的处理方式，以解决社区对此行为的疑问并确保表状态的一致性。作者通过 PR 提议明确区分 `CreateTableRequest`（重分配 ID）与 `AddSchemaUpdate`（保留 ID）的不同行为。</p>
+            <div class="key-points"><p><strong>@Sung Yun:</strong> REST 规范需明确服务端如何处理字段 ID，例如 `CreateTableRequest` 会重分配 ID，而 `AddSchemaUpdate` 则保留客户端提供的 ID。</p></div>
+            <p class="conclusion">已提交 PR #17137 供社区审查，旨在通过规范澄清帮助不同实现保持表状态的一致性。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/bvb36z39p04322vtr1j1bgk8gvllf6h7">Updating Read Restrictions (#13879) to adopt the Expressions Spec + IDReference</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论旨在解决 PR #13879（读限制）在投票前的结构性缺陷，即当前表达式引用列名而非字段 ID，可能导致策略在列重命名后失效。Nevin 提议在投票前同步更新该 PR，采用已通过的 Expressions Spec 语法并引入 IDReference，以确保策略与字段 ID 绑定。</p>
+            <div class="key-points"><p><strong>@Prashant:</strong> 指出了 PR #13879 存在的关键缺口：表达式通过名称引用列，导致策略在列重命名或删除时可能失效。</p>
+<p><strong>@Ryan:</strong> 建议将采用新语法和引入 IDReference 结合进行，避免在已弃用的旧结构上增加新变体，这是更整洁的路径。</p>
+<p><strong>@Nevin Zheng:</strong> 计划与 Prashant 合作推进这些规范变更，目标是在 7 月 15 日之前提交初步版本供审查。</p></div>
+            <p class="conclusion">下一步行动是由 Nevin Zheng 与 Prashant 合作，在 7 月 15 日（或更早）前完成规范更新的初稿并提交审查，随后再进行社区投票。</p>
         </article>
         </section>
 
