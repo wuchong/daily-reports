@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-07-13</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-07-13</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 8 新 Issues</div>
+            <div class="stat">✅ 1 关闭</div>
+            <div class="stat">✨ 8 新 PRs</div>
+            <div class="stat">🎉 3 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/3523">PR #3523</a> 支持 Paimon 自定义路径，增强数据湖集成能力</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3612">PR #3612</a> 添加可配置的磁盘写入限制恢复间隔</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3642">PR #3642</a> Rust 端新增 SnapshotId 类型别名优化元数据路径</li><li>🐛 <a href="https://github.com/apache/fluss/issues/3652">Issue #3652</a> 升级后 KV snapshot lease 因元数据过期失败</li><li>✨ <a href="https://github.com/apache/fluss/issues/3653">Issue #3653</a> 提议通过批量 ZK 操作加速受控关闭 Leader 迁移</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <ul class="critical-list"><li>⚠️ <a href="https://github.com/apache/fluss/issues/3648">Issue #3648</a> Coordinator leader 清理在关闭过程中可能被中断</li><li>⚠️ <a href="https://github.com/apache/fluss/issues/3644">Issue #3644</a> Log-table 追加操作忽略声明的 bucket key</li></ul>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3625">Issue #3625</a> [server] Coordinator standby may use stale dynamic configs after failover</h4>
+            <ul><li><span class="author">@loserwang1024</span>: 建议 Follower 接收配置变更通知，确保连接配置即时生效</li><li><span class="author">@fhan688</span>: 倾向于方案二，并已开始基于该方案进行实现</li><li><span class="author">@swuferhong</span>: 同意先确认方案，支持 HA standby 同步应用更新</li><li><span class="author">@fxbing</span>: 表示理解任务分配，愿意协助处理其他问题</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3523">Issue #3523</a> [lake/paimon] Support custom Paimon path</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 提交代码改进可读性，已通过测试和 Checkstyle 验证</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3558">Issue #3558</a> [server] Auto partition day format supporting yyyy-MM-dd</h4>
+            <ul><li><span class="author">@wuchong</span>: 提醒需要更新自动分区文档和配置页面</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3612">Issue #3612</a> [server] Add configurable disk write-limit recover gap</h4>
+            <ul><li><span class="author">@swuferhong</span>: 回复已处理评论，请求再次审查</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3614">Issue #3614</a> [server] Add resource-based KV leader replica capacity control</h4>
+            <ul><li><span class="author">@swuferhong</span>: 回复已处理评论，请求再次审查</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3639">Issue #3639</a> [tiering][iceberg] Validate partition spec before lake tiering</h4>
+            <ul><li><span class="author">@litiliu</span>: 请求 fresh-borzoni 协助审查该 PR</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3431">Issue #3431</a> [server] Fix NPE when processing table registration change</h4>
+            <ul><li><span class="author">@raoluSmile</span>: 请求 loserwang1024 帮忙审查代码</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3642">Issue #3642</a> [rust] Add SnapshotId type alias and use it in snapshot metadata paths</h4>
+            <ul><li><span class="author">@Olawoyin007</span>: 代码已迁移至 monorepo，构建和测试通过，请求审查</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3643">Issue #3643</a> [rust] Hash-distribute log-table appends by declared bucket key</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 请求相关 Committers 进行审查</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3424">PR #3424</a> [docs] add docs to integrate Fluss + Iceberg via Flink with AWS Glue and Hive</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 指出 Iceberg PK 表不支持联合读取，并询问版本号和兼容性细节</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3559">PR #3559</a> [spark] Consolidate scan builders into Append/Upsert with SplitPlanner</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 指出可能在规划时建立连接导致泄露，建议用 checkState 替代 assert</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3623">PR #3623</a> [server] local segment ttl</h4>
+            <ul><li><span class="author">@Copilot</span>: 发现 remoteLogEndOffset 边缘情况可能导致清理失败，建议增强测试鲁棒性</li><li><span class="author">@gyang94</span>: 建议将该边缘情况留待后续 Issue 单独处理</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3636">PR #3636</a> [elixir] Support complex types (Array/Map/Row) and nullability</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 建议增加深层嵌套类型和深度 Null 值的测试用例</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3653">#3653</a> [server] Speed up controlled shutdown leader migration with batch ZooKeeper operations <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/issues/3652">#3652</a> [client] KV snapshot lease operations fail with stale coordinator metadata after upgrade <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/issues/3650">#3650</a> Improve TabletServer shutdown by closing KV tablets concurrently <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/issues/3648">#3648</a> [Bug] Coordinator leader cleanup may be interrupted during shutdown <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/issues/3646">#3646</a> Offload NotifyLeaderAndIsr from RPC worker threads <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/issues/3644">#3644</a> [rust] Log-table appends ignore the declared bucket key <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/3640">#3640</a> [flink] TableNotExistException when listing partitions on $changelog/$binlog virtual tables <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/issues/3638">#3638</a> [tiering][iceberg] Validate partition spec before lake tiering <span class="author">@litiliu</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3654">#3654</a> [server] Batch LeaderAndIsr updates for controlled shutdown <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/pull/3651">#3651</a> [kv] Close KV tablets concurrently during shutdown <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/pull/3649">#3649</a> [server] Wait for coordinator leader cleanup during shutdown <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/pull/3647">#3647</a> [server] Offload NotifyLeaderAndIsr to dedicated single-thread executor <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/pull/3645">#3645</a> [server] Coordinator standby tracks dynamic config changes to avoid s… <span class="author">@fhan688</span> </li><li><a href="https://github.com/apache/fluss/pull/3643">#3643</a> [rust] Hash-distribute log-table appends by declared bucket key <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/3641">#3641</a> [flink] Fix TableNotExistException when listing partitions on  changelog / binlog virtual tables <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/pull/3639">#3639</a> [tiering][iceberg] Validate partition spec before lake tiering <span class="author">@litiliu</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3611">#3611</a> [server] Support dynamic configuration for disk write-limit recover gap <span class="author">@swuferhong</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3642">#3642</a> [rust] Add SnapshotId type alias and use it in snapshot metadata paths <span class="author">@Olawoyin007</span> </li><li><a href="https://github.com/apache/fluss/pull/3612">#3612</a> [server] Add configurable disk write-limit recover gap <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/pull/3523">#3523</a> [lake/paimon] Support custom Paimon path <span class="author">@wzx140</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
