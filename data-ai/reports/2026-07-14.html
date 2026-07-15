@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data+AI 全球日报 | 2026-07-14</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Data+AI 全球日报 | 2026-07-14</h1>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="top-changes">
+            <h2>🔥 今日最重要的3个变化</h2>
+            <ol><li><strong>ClickHouse 披露替代 Databricks 案例，查询延迟降低万倍</strong> — DeFi 交易所 Bullet 从 Databricks 迁移至 ClickHouse Cloud，查询延迟降低 10,000 倍并简化了架构，显示出专用 OLAP 引擎在极致实时分析场景对通用 Lakehouse 的竞争优势。</li><li><strong>Redpanda 实现 Iceberg 全量 CDC 语义</strong> — Redpanda Connect 支持 Iceberg 输出的完整 CDC 语义，使数据湖能实时反映源库当前状态，标志着数据湖架构正从 T+1 批处理向实时流处理加速演进。</li><li><strong>AWS 推出 Redshift 自动化补丁测试方案</strong> — AWS 发布针对 Amazon Redshift 的自动化测试套件，通过标准驱动验证补丁与变更，提升企业级数据仓库的运维稳定性与发布效率。</li></ol>
+            <p class="judgment"><strong>总判断：</strong>今日行业信号强烈指向“实时分析”能力的升级与分化。一方面，ClickHouse 凭借极致性能抢夺 Databricks 等通用平台的市场份额；另一方面，流式数据管道与数据湖的融合（Redpanda + Iceberg）正在消除批处理延迟，推动数据平台向实时化全面转型。</p>
+        </section>
+
+        <section class="top-signals">
+            <h2>📡 重要信号</h2>
+            
+    <article class="news-item">
+        <h3>Bullet 案例：从 Databricks 迁移至 ClickHouse 实现万倍性能提升</h3>
+        <p class="sources">📌 <a href="https://clickhouse.com/blog/bullet-real-time-analytics">ClickHouse Blog</a></p>
+        <p class="date">2026-07-15</p>
+        <p class="summary">DeFi 交易所 Bullet 分享其架构迁移经验，从 Databricks 切换到 ClickHouse Cloud 后，查询延迟从秒级降至亚毫秒级（降低 10,000 倍），并移除了冗余的服务层，在成本相当的情况下实现了真正的实时分析。</p>
+        <div class="impact">📊 数据平台影响：此案例为 OLAP 数据库对抗通用 Lakehouse 提供了强有力的实证。表明在对延迟极度敏感的场景（如金融交易、实时监控），专用引擎仍具有不可替代的优势，可能引发新一轮的技术栈选型调整。</div>
+    </article>
+    <article class="news-item">
+        <h3>Redpanda Connect 支持 Iceberg 全量 CDC 语义</h3>
+        <p class="sources">📌 <a href="https://www.redpanda.com/blog/cdc-semantics-iceberg-redpanda-connect">Redpanda Blog</a></p>
+        <p class="date">2026-07-14</p>
+        <p class="summary">Redpanda 宣布其数据连接工具 Redpanda Connect 现已支持 Apache Iceberg 输出的完整变更数据捕获（CDC）语义。这意味着数据湖不再依赖过时的批处理窗口，而是能实时同步源数据库的当前状态。</p>
+        <div class="impact">📊 数据平台影响：解决了数据湖“时效性差”的长期痛点。通过流式 CDC 直接写入 Iceberg，简化了实时数据管道架构，将进一步挤压传统 ETL 批处理工具的生存空间，加速“流批一体”落地。</div>
+    </article>
+        </section>
+
+        <section class="product-tech">
+            <h2>💻 产品与技术</h2>
+            
+    <article class="news-item">
+        <h3>AWS 发布 Amazon Redshift 补丁自动化测试方案</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/patch-perfect-automating-amazon-redshift-patch-testing/">AWS Big Data Blog</a></p>
+        <p class="date">2026-07-14</p>
+        <p class="summary">AWS 展示了一套自动化测试套件，可在 Redshift 集群补丁、重启或修改后，使用标准驱动针对真实工作负载进行自动验证，作为生产环境发布前的质量门禁。</p>
+        <div class="impact">📊 数据平台影响：降低了企业级数据仓库的运维风险。对于金融、电信等高可用行业，此类自动化运维工具是留在云原生数仓平台的关键考量因素。</div>
+    </article>
+    <article class="news-item">
+        <h3>ClickHouse 发布 Node.js RowBinary 高性能库</h3>
+        <p class="sources">📌 <a href="https://clickhouse.com/blog/clickhouse-rowbinary-library-parser-compiler">ClickHouse Blog</a></p>
+        <p class="date">2026-07-14</p>
+        <p class="summary">ClickHouse 发布了官方 Node.js 库 @clickhouse/rowbinary，支持高效的 RowBinary 格式读写，并创新性地集成了 Agent Skill，方便 AI 编程代理直接调用。</p>
+        <div class="impact">📊 数据平台影响：降低了 Node.js 生态接入 ClickHouse 的门槛，提升了数据摄入效率。引入 Agent Skill 设计显示了 ClickHouse 在开发者体验（DX）上对 AI 辅助编程趋势的快速跟进。</div>
+    </article>
+    <article class="news-item">
+        <h3>ClickHouse 披露 Managed Postgres Huge Pages 优化细节</h3>
+        <p class="sources">📌 <a href="https://clickhouse.com/blog/huge-pages-clickhouse-managed-postgres">ClickHouse Blog</a></p>
+        <p class="date">2026-07-14</p>
+        <p class="summary">文章详细介绍了 ClickHouse Managed Postgres 如何通过 Huge Pages（大页内存）优化，解决高并发连接下的内存页表开销问题，从而避免内存被耗尽并提升读取性能。</p>
+        <div class="impact">📊 数据平台影响：展示了云服务在底层内核级优化的技术深度。对于高并发场景的用户，此类底层性能调优是选择托管服务的重要隐形价值。</div>
+    </article>
+    <article class="news-item">
+        <h3>StarTree 解析 Apache Pinot 云上高可用架构设计</h3>
+        <p class="sources">📌 <a href="https://startree.ai/resources/apache-pinot-for-high-availability/">StarTree Blog</a></p>
+        <p class="date">2026-07-14</p>
+        <p class="summary">StarTree 发布指南，探讨如何在云环境中设计 Apache Pinot 的高可用（HA）架构，强调不仅要有多副本，更要确保副本间故障不相关。</p>
+        <div class="impact">📊 数据平台影响：为实时 OLAP 系统上云提供了架构参考，有助于消除用户对开源实时分析数据库稳定性的顾虑，推动实时分析场景的普及。</div>
+    </article>
+        </section>
+
+        <section class="people-views">
+            <h2>👤 人物与观点</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="analyst-insights">
+            <h2>📊 分析师洞察</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="watchlist">
+            <h2>👀 观察列表</h2>
+            
+    <article class="watchlist-item">
+        <h3>ClickHouse 与 Databricks 实时分析之争</h3>
+        <span class="status">持续跟踪</span>
+        <p class="reason">Bullet 案例展示了惊人的性能差异（10,000x），需观察这是否为个例，以及 Databricks 是否会在后续版本中针对性优化其 SQL 引擎性能。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>下一季度 Databricks 是否发布针对高并发低延迟场景的优化公告或客户反例。</p>
+    </article>
+        </section>
+
+        <section class="stock-analysis">
+            <h2>📈 股票分析</h2>
+            <p class="disclaimer">⚠️ 以下内容仅供参考，不构成任何投资建议。投资有风险，入市需谨慎。</p>
+            
+    <article class="stock-item">
+        <div class="stock-header">
+            <span class="ticker">AMZN</span>
+            <span class="company">Amazon Web Services</span>
+            <span class="signal signal-neutral">⚪ 中性</span>
+        </div>
+        <p class="stock-summary">AWS Redshift 推出的自动化测试工具属于运维侧的防御性更新，旨在提升企业级客户的平台粘性和稳定性信心，短期对营收无显著影响，维持中性判断。</p>
+        <div class="stock-details">
+            <div class="catalysts">
+                <strong>🚀 催化剂</strong>
+                <ul><li>企业级客户续约率提升</li><li>运维成本降低带来的客户满意度提升</li></ul>
+            </div>
+            <div class="risks">
+                <strong>⚠️ 风险</strong>
+                <ul><li>ClickHouse 等新兴 OLAP 云服务在实时分析场景的持续蚕食</li></ul>
+            </div>
+        </div>
+    </article>
+        </section>
+
+        <footer>
+            <p>Generated by Data+AI Daily Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
