@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafka 社区周报 | 2026-W28</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Kafka 社区周报 | 2026-W28</h1>
+            <p class="date-range">2026-07-06 ~ 2026-07-12</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (0)</h2>
+            <p class="empty">本周无公告</p>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (3)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/c7hoyc7jnfrw2583txtl4y7rwdnzmfmo">KIP-1357: Add broker side custom assignors for "streams" groups</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/cjo3555pzzpwtxl9tn3s3hls65y69yk6">KIP-1279: Cluster Mirroring</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/6xjl558t3sfz2qp26mm97lg6f6l5mhoc">KIP-1321: Headers aware StreamPartitioner</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/zrwp0lxvb2sx67rw8459yk2x7vmm6g1d">KIP-1266 Bounding The Number Of RemoteLogMetadata Messages via Compacted RemoteLogMetadata Topic</a></h3>
+            <p class="meta">7 条回复 · 2 位参与者</p>
+            <p class="summary">讨论主要围绕 KIP-1266 中 RemoteLogMetadata Topic 的消息键设计及其对并发控制和清理逻辑的影响展开。Lijun Tong 指出新提案中 segmentId 缺乏持久性且难以追踪失败上传，而 Kamal 提出短键设计有助于降低内存占用。经过权衡，双方就采用包含更多上下文信息的键设计达成一致，并确认了升级路径。</p>
+            <div class="key-points"><p><strong>@Lijun Tong:</strong> 指出基于 segmentId 的键设计缺乏持久性（重试会生成新 ID），导致难以发布墓碑消息清理失败上传，且缺乏调试所需的上下文信息（如 Leader Epoch）。</p>
+<p><strong>@Kamal Chandraprakash:</strong> 主张短键设计（topicId + partition + segmentId）能降低 Compaction 过程中的内存占用，但最终认可了包含 EndOffset 等信息的键设计，并建议通过优化索引和升级脚本来解决相关问题。</p></div>
+            <p class="conclusion">双方就键设计方案达成一致（倾向于包含 TopicIdPartition、EndOffset 等信息），确认了处理失败上传逻辑的正确性。下一步将完善升级路径文档，引入元数据版本控制及迁移脚本，以支持从 Delete 到 Compact 策略的平滑过渡。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/pgbsb8pw6ddf8bl7q8fptzym38g8vvhs">KIP-1349 : Configurable snapshot frequency for share groups</a></h3>
+            <p class="meta">3 条回复 · 2 位参与者</p>
+            <p class="summary">讨论主要围绕 KIP-1349 引入基于字节大小的快照频率控制机制展开，涉及配置注入方式、新旧配置兼容性及度量指标等细节。经过讨论，作者采纳了避免模块循环依赖的建议，并完善了配置优先级逻辑与向后兼容性说明。</p>
+            <div class="key-points"><p><strong>@Muralidhar Basani:</strong> 提议将快照控制机制从基于记录数改为基于字节数（默认 20MB），并详细阐述了配置注入方案及新旧配置的优先级判定逻辑。</p>
+<p><strong>@Sushant Mahajan:</strong> 建议避免在 share-coordinator 中直接依赖 group-coordinator 模块，推荐使用辅助接口解耦；同时询问了配置兼容性、度量指标及压缩对限制的影响。</p>
+<p><strong>@Chia-Ping Tsai:</strong> 建议采用基于字节数的控制方式，并指出修改现有配置下限会破坏兼容性，建议保持 broker 级别下限为 0。</p></div>
+            <p class="conclusion">已达成初步共识，KIP 已更新：移除了对 group-coordinator 的直接依赖，改为在 share-coordinator 中创建辅助接口；确认了配置优先级逻辑（字节配置优先于记录配置）；并同意增加新的度量指标。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/qf2nv4fll4sf41z71sd2cl2n89yrszr6">KIP-1279: Cluster Mirroring</a></h3>
+            <p class="meta">3 条回复 · 3 位参与者</p>
+            <p class="summary">讨论主要围绕 KIP-1279 集群镜像功能的架构细节进行审查。Jun Rao 提出了多项技术疑问，Vaquar Khan 确认了多个架构风险已解决，并最终确认数据安全相关的偏移量校验逻辑已合入设计。</p>
+            <div class="key-points"><p><strong>@Jun Rao:</strong> 针对镜像实现提出多项具体技术问题，包括 Group 状态获取方式、时间戳校验、Leader Epoch 一致性逻辑、配置优先级及状态字段描述等。</p>
+<p><strong>@Vaquar Khan:</strong> 确认了包括 Poison pill 隔离、无限循环防护、PID 重写等在内的 8 项架构问题已解决，并最终确认 VK12 偏移量安全边界逻辑已正确集成。</p>
+<p><strong>@Luke Chen:</strong> 回应了 VK12 的遗漏更新问题，并解释了 VK10 中关于 Group 名称冲突预检的局限性，建议通过 KAFKA-20799 在核心层面解决命名空间问题。</p></div>
+            <p class="conclusion">Vaquar Khan 确认 VK12 数据安全问题已解决，VK10 问题将通过 JIRA KAFKA-20799 单独跟进，Jun Rao 提出的技术问题尚待回复。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/jw9dlo2b6kwwdcc99pjy9pgflm2l8ff3">KIP-1327 Prevent Hot Data Loss on Partition Expansion for Latest Policy</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">讨论主要围绕 KIP-1327 是否应更改默认配置以防止分区扩容时的数据丢失。由于 4.4.0 版本已进入 KIP 冻结期，且考虑到更改默认值可能对大多数用户造成意外影响，社区决定暂时搁置该 KIP，优先完善文档。</p>
+            <div class="key-points"><p><strong>@Jun Rao:</strong> 大多数用户通常不会增加分区数，更改默认配置对他们无益，反而可能引入令人惊讶的行为变更。</p>
+<p><strong>@黃竣陽:</strong> 仅靠文档无法覆盖所有用户，因为数据丢失是静默发生的，更安全的默认值能自动保护用户。</p>
+<p><strong>@Chia-Ping Tsai:</strong> 建议优先更新文档，并在 Community Over Code 活动后根据社区反馈重新审视该 KIP。</p></div>
+            <p class="conclusion">已确认对于 AK 4.4 版本将仅进行文档改进，该 KIP 暂时搁置，待后续社区讨论后再做进一步决定。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/7mksgrdn03oy6kr598rcjcdx9rjdr8n9">[PR] MINOR: Fix broken links on the downloads page [kafka-site]</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">本次讨论主要针对 Kafka 官网下载页面的链接维护问题。提交者修复了失效的 CVE 链接并移除了无法访问的旧版本下载入口，该 PR 随后被维护者合并。</p>
+            <div class="key-points"><p><strong>@majialoong:</strong> 修复了 CVE-2022-34917 的失效链接，并删除了因目标丢失且无法找到官方源而过期的 0.7.0 之前版本的下载链接。</p>
+<p><strong>@mjsax:</strong> 确认了修改内容并合并了该 PR，同时对贡献者表示感谢。</p></div>
+            <p class="conclusion">PR #893 已成功合并，网站下载页面的失效链接问题已解决。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/89sooll02pb2hx2gb6y0dwk7zpv9d4rl">[PR] MINOR: Fix duplicate titles on docs list pages [kafka-site]</a></h3>
+            <p class="meta">2 条回复 · 1 位参与者</p>
+            <p class="summary">该讨论主要针对 Kafka 文档列表页面标题重复显示的问题。贡献者提交了一个 PR，通过清除与 title 重复的 description 前置数据修复了该问题，涉及 1006 个文件的修改。最终因需解决与另一 PR 的冲突，该 PR 被关闭。</p>
+            <div class="key-points"><p><strong>@mingyen066:</strong> 指出文档页面的 description 与 title 相同导致标题重复渲染，提出清除重复 description 的修复方案。</p>
+<p><strong>@mingyen066:</strong> 发现该 PR 与 kafka 仓库的 PR #22605 存在冲突，需要解决。</p></div>
+            <p class="conclusion">该 PR (#894) 已被关闭，后续工作可能需要转移到解决冲突后的版本或合并到相关 PR #22605 中进行。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/5otctnkvtzbf3lxtzl5ckjbngnvnnj82">Not able to assign the jira to myself</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">本次讨论主要关于 Pritam Kumar 请求获得 Jira 工单的自助分配权限。Matthias J. Sax 随后将其添加至贡献者名单，解决了权限问题。</p>
+            <div class="key-points"><p><strong>@pritam kumar:</strong> 发现自己无法将 Jira 工单分配给自己，请求获得修改经办人的权限。</p>
+<p><strong>@Matthias J. Sax:</strong> 确认了用户 ID 并将其加入贡献者列表，授权成功。</p>
+<p><strong>@pritam kumar:</strong> 确认权限已生效，并顺邀社区关注其发起的 KIP-1365 讨论。</p></div>
+            <p class="conclusion">问题已解决，Pritam Kumar 现已拥有 Jira 工单分配权限。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/o058bldfm19k0vqfldfokdy9yp2v7szz">KIP-1164: Diskless Coordinator</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">讨论主要围绕 KIP-1164 中“Diskless Coordinator”的设计细节，特别是关于事务管理（EOS）和 Last Stable Offset (LSO) 的处理范围。Vaquar Khan 指出文档中关于事务处理范围的描述存在矛盾，并质疑 read_committed 路径的实现，但 Greg Harris 回应称相关设计尚未完成，不应基于当前代码库进行评判。</p>
+            <div class="key-points"><p><strong>@vaquar khan:</strong> 指出 KIP-1164 文档存在描述张力：一方面声明事务管理不在范围内，另一方面角色定义和 DisklessCommitFile 又提及了事务状态管理和检查。</p>
+<p><strong>@vaquar khan:</strong> 确认存储泄漏和幂等生产相关的设计问题已解决，但指出 read_committed 消费者所需的 LSO 和中止事务列表在当前设计中缺失。</p>
+<p><strong>@Greg Harris:</strong> 反驳了对当前代码库的检查，指出 EOS 设计尚未定稿且未实现，认为这些基于快照版本的检查是无效的，并呼吁进行人工审查而非依赖 LLM。</p></div>
+            <p class="conclusion">双方在事务语义将推迟到后续 KIP 这一点上达成共识。Vaquar Khan 澄清其意图是指出文档边界不清，并表示愿意在未来该功能启动时提供帮助。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/r2kg2q30w53pncmyor0sofj25n02zso7">KIP-1357: Add broker side custom assignors for "streams" groups</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论主要围绕 KIP-1357 的细节完善展开，包括动态配置验证的位置优化和接口命名修正。Matthias J. Sax 最后提出需要在接口中增加获取 warmup 任务的方法，以确保状态传递的完整性。</p>
+            <div class="key-points"><p><strong>@David Jacot:</strong> 建议将动态配置的验证逻辑统一移至 Broker 端以避免混淆，并指出存在两个同名接口 `MemberAssignmentState` 的笔误。</p>
+<p><strong>@Gabriella Fu:</strong> 回应称配置验证问题将在后续工作中处理，不在本 KIP 中实现，并确认会修正接口命名笔误。</p>
+<p><strong>@Matthias J. Sax:</strong> 指出虽然分配器不返回 warmup 任务，但仍需在 `MemberAssignmentState` 接口中新增 `warmupTasks()` 方法以传递当前状态。</p></div>
+            <p class="conclusion">Gabriella Fu 确认将根据 Matthias 的建议更新 KIP 文档，包括添加 `warmupTasks()` 方法接口，并修正 David 指出的笔误。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/1z5oowgnjyvr15qmygk0tvw849tmr9fo">Request for JIRA contributor permissions - Devansh Srivastava</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">新加入社区的贡献者 Devansh Srivastava 请求获取 JIRA Contributor 权限以便认领新手任务。维护者 Mickael Maison 迅速响应并处理了该请求。此次互动展示了社区对新贡献者的友好支持。</p>
+            <div class="key-points"><p><strong>@Devansh Srivastava:</strong> 已克隆代码仓库并找到新手任务，申请 JIRA Contributor 权限以便将任务分配给自己。</p>
+<p><strong>@Mickael Maison:</strong> 确认已完成权限授予。</p></div>
+            <p class="conclusion">Devansh Srivastava 已成功获得 JIRA Contributor 权限，可以开始进行代码贡献。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (42)</h2>
+            
+    <p>本周新建 <strong>42</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周 JIRA 主要集中在 Kafka Streams 的功能增强与 API 优化，包括推进 KIP-1357（Streams Assignor API 公开化）、实现多种带 Headers 的新查询类型以及修复状态存储相关的缺陷。同时，社区在 Share Group 机制稳定性、安全漏洞修复（如 Jackson CVE）、依赖升级（Log4j）以及 Connect 和 Consumer 的性能改进方面也完成了多项重要工作。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Kafka Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
