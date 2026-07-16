@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flink 社区周报 | 2026-W28</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Flink 社区周报 | 2026-W28</h1>
+            <p class="date-range">2026-07-06 ~ 2026-07-12</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (0)</h2>
+            <p class="empty">本周无公告</p>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (9)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/70jmswh7qpdv9l7wfqtx4nox2kxrgm1q">FLIP-600: Independent Checkpoint Based On Pipeline Region</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/0z6x6b7783mynrf89yhdq60fbckv8021">Release flink-connector-jdbc v3.4.0, release candidate #3</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/l31wxbjkjw1bf2xbp2b65fh4t6jxn229">Release flink-connector-jdbc v4.1.0, release candidate #3</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/dtps7w4hh7b2fc31rtd4cc7l2x0kt4pc">Release flink-connector-jdbc v3.4.0, release candidate #4</a> <span class="status warning">⚠️ 有异议</span><p class="objection-inline">Rich Bowen 提出 +1（非约束性），表示赞成发布，并已验证签名、哈希值以及 LICENSE 和 NOTICE 文件。</p></li>
+<li><a href="https://lists.apache.org/thread/vo0wwtwrr263drnt1m62n0cj6wpr7dh1">Release flink-connector-jdbc v4.1.0, release candidate #4</a> <span class="status warning">⚠️ 有异议</span><p class="objection-inline">该回复并未提出异议，而是投了 +1（非约束性票），表示已验证签名、哈希值以及 LICENSE 和 NOTICE 文件。</p></li>
+<li><a href="https://lists.apache.org/thread/r7kx59md3qqz50ok5hwp2m1ncvl55mx3">FLIP-591: Introducing Python DataFrame API in PyFlink</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/5jd27g3t43x65ozng53rzh4kmvkw5581">FLIP-562: Topic integrity checks in Kafka Connector</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/x903vwrz3ojq34v3dz68pord6mgvs75n">FLIP-599: State Catalog</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/l94cocs2z00c1tkkfmbhm51b87vbsgcp">FLIP-497: Early Fire Support for Flink SQL Interval Join</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (9)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/mt277mn1wvqdj96bjfcw60qrpk029tdm">Breaking change: Make IS JSON / IS NOT JSON return NULL for NULL input</a></h3>
+            <p class="meta">7 条回复 · 5 位参与者</p>
+            <p class="summary">讨论主要关于修复 Flink 中 IS JSON / IS NOT JSON 函数在 NULL 输入下错误返回 FALSE 的问题，提议改为符合 SQL 标准的 NULL 行为。社区一致认为应遵循 SQL 标准并与其他主流引擎保持一致，同意接受此破坏性变更以修复该缺陷。最终该修复已合并至主分支，将随 Flink 2.4.0 版本发布。</p>
+            <div class="key-points"><p><strong>@Fabian Hueske:</strong> 提议修改 IS JSON / IS NOT JSON 的行为以符合 SQL 标准（输入 NULL 时返回 NULL），虽然这是破坏性变更，但能消除 Calcite 升级带来的副作用并保持一致性。</p>
+<p><strong>@Timo Walther:</strong> 支持该变更，认为 NULL 输入导致 NULL 输出是 SQL 的通用逻辑，且该函数使用频率不高，应视为 Bug 尽快修复。</p>
+<p><strong>@dylanhz:</strong> 赞同对齐标准，并指出 IS_DECIMAL、IS_DIGIT 等函数也存在类似问题，建议单独开票处理以保持一致性。</p></div>
+            <p class="conclusion">社区达成共识，Fabian Hueske 已提交并合并了修复代码，该变更将在 Flink 2.4.0 版本中生效；同时 dylanhz 已为其他相关函数创建了新的 Jira 工单 FLINK-40141。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/7m74ko2xckhghs2yh9f8fcsqxtzh28q3">FLIP-599: State Catalog</a></h3>
+            <p class="meta">3 条回复 · 3 位参与者</p>
+            <p class="summary">讨论主要关注 FLIP-599（State Catalog）与 FLIP-527（State Schema Evolution）在 RowDataSerializerSnapshot 设计上的重叠问题。双方达成共识，决定将“字段名称存储”逻辑解耦并独立实施，以同时满足 Catalog 的元数据需求和 Schema Evolution 的安全性要求。</p>
+            <div class="key-points"><p><strong>@Weiqing Yang:</strong> 指出两个 FLIP 存在设计重叠，建议将“持久化名称”的元数据与“允许演进”的信号解耦，避免默认写入名称意外触发迁移逻辑。</p>
+<p><strong>@Gyula Fóra:</strong> 同意解耦方案，建议将名称存储逻辑提取为独立 JIRA 实施，并认为应避免将配置逻辑写入快照，而是在状态恢复时通过作业配置判断。</p>
+<p><strong>@Weiqing Yang:</strong> 赞同独立实施并已创建 JIRA (FLINK-40120)，同意不将配置持久化到快照中，将探索在兼容性检查中传递恢复时配置的最佳方式。</p></div>
+            <p class="conclusion">已达成初步共识，决定将无条件存储字段名称的逻辑作为共享能力独立出来（FLINK-40120），Weiqing 将负责推进。Gyula 计划在无重大异议的情况下于下周启动 FLIP-599 的投票。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/89d3z3bskvobf6mlybm3gc9fl173toyz">State Schema Evolution for RowData</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">Weiqing Yang 重启了关于 RowData 状态 Schema 演进（FLIP-527）的讨论，更新了提案文档并提交了 Draft PR。该提案针对之前的反馈优化了设计，特别是统一了对象级别的迁移接口，目前已获得社区的初步支持。</p>
+            <div class="key-points"><p><strong>@Weiqing Yang:</strong> 提案采用了单一对象级迁移钩子 `migrate`，统一处理值、列表元素和 Map 值的迁移，替代了之前的字节级方案，解决了接口膨胀问题。</p>
+<p><strong>@Shengkai Fang:</strong> 支持该提案。</p>
+<p><strong>@Leonard Xu:</strong> 认为该功能对生产环境中的 SQL 作业（特别是 CDC 和维表场景）非常有价值，肯定了当前“选择加入（opt-in）”设计的合理性与安全性。</p></div>
+            <p class="conclusion">社区对提案持积极态度，下一步将基于 Draft PR 继续完善代码细节，待设计完全收敛后推进实施。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/5njj5gjd8pbfbch3o4zsnl5ovrzwbfwk">(Restarted) FLIP-497: Early Fire Support for Flink SQL Interval Join</a></h3>
+            <p class="meta">1 条回复 · 1 位参与者</p>
+            <p class="summary">讨论主要围绕 FLIP-497 中 Early Fire Hint 的设计，重点在于如何平衡 Hint 名称的通用性与未来扩展时的向后兼容性。最终决定采纳建议，在 Hint 中增加显式的 'target' 参数以明确作用域，防止未来功能扩展时引发现有查询行为的非预期变更。</p>
+            <div class="key-points"><p><strong>@Xingcan Cui:</strong> 指出使用全局 Hint 存在向后兼容风险，若未来支持新算子，旧查询的行为可能会被静默改变，建议引入 'target' 参数明确作用对象。</p>
+<p><strong>@Weiqing Yang:</strong> 认同 Xingcan 的观点，决定采用 `EARLY_FIRE('target'='interval_join', ...)` 的形式，将 `target` 定义为算子类型而非特定 Join 实例，以消除跨算子的歧义。</p></div>
+            <p class="conclusion">Weiqing Yang 已将反馈整合进 FLIP 文档，若无其他异议，计划于下周初发起投票（VOTE）。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/r2ojb2ysj31tobrsj9j9kw7j115o0py7">FLIP-XXX: Extended JDBC Scan Partitioning Options for Efficient Data Ingestion</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕 FLIP-XXX 提案展开，Chanhae Oh 根据反馈更新了关于物理 ID 分区正确性及边界查询行为的提案细节。同时，João Boto 分享了一个相关的 PR 实现，双方探讨了不同 API 层级下分区策略的互补性。</p>
+            <div class="key-points"><p><strong>@Chanhae Oh:</strong> 更新了提案以明确物理 ID 分区的正确性保证（如 Oracle ROWID 稳定但 PostgreSQL ctid 在并发更新下不安全），并放宽了边界查询返回值的数量限制。</p>
+<p><strong>@João Boto:</strong> 分享了一个基于新 SplitEnumerator 的 PR 实现，指出其已在实际使用中取得良好效果，可作为参考。</p>
+<p><strong>@Chanhae Oh:</strong> 认为 João Boto 的 PR（基于数据深度自动检测）与本次 FLIP（基于数据分布或物理位置）是互补关系，两者结合可提供更丰富的摄入选项。</p></div>
+            
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/qk18wc8tvtpoohztwt364h0h36whg296">FLIP-597: [Filesystems] Hadoop-less Flink filesystems</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">本次讨论主要针对 FLIP-597 提案中文件系统接口设计的复杂度与分层问题，以及线程安全实现细节进行了深入探讨。Samrat Deb 基于 GCS 原型实践提出了简化接口层级和优化锁机制的疑问，Aleksandr Iushmanov 对此进行了详细解答。</p>
+            <div class="key-points"><p><strong>@Samrat Deb:</strong> 建议简化接口层级，质疑 ReadContext 等接口是否存在重叠，并指出 GCS 原型中全局加锁影响吞吐量且阻碍并发取消操作。</p>
+<p><strong>@Aleksandr Iushmanov:</strong> 认为现有接口封装虽增加了少量复杂度，但提升了可维护性、对称性和可测试性，将实现放入 flink-core 是为了避免插件依赖膨胀。</p></div>
+            <p class="conclusion">Aleksandr 计划增加架构图以明确分层概念，Samrat 将分享 GCS 基准测试数据以进一步评估线程安全模型。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/l54w40s1cs4znvmdophyyt7wc6z0zqds">Add UDF Metrics</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Weiqing Yang 提议重启关于“添加 UDF Metrics”的讨论（FLIP-485），该提案曾在去年获得初步投票通过。为了解决性能开销问题，提案更新了采样策略，引入了基于计数器的采样机制和配置开关，以确保与当前代码分支兼容并消除最后的顾虑。</p>
+            <div class="key-points"><p><strong>@Weiqing Yang:</strong> 针对性能开销问题，提案不再每次调用都计时，而是采用计数器采样（默认每 100 次采样一次），并结合 Histogram 指标类型。</p>
+<p><strong>@Weiqing Yang:</strong> 通过默认关闭的配置开关和采样间隔设置，提供了两层性能保护机制。</p>
+<p><strong>@Weiqing Yang:</strong> 设计大体保持不变，主要针对之前遗留的性能开销问题进行了实质性优化。</p></div>
+            <p class="conclusion">若无进一步异议，作者将基于更新后的设计发起新一轮投票，以确认最终方案。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/3v21hm2qv4r2bp4j29oj76qvy21c35o4">FLIP-XXX: Add support for GROUP BY <ordinal>, GROUP BY ALL, and ORDER BY ALL</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">本讨论旨在提议为 Flink SQL 引入 GROUP BY <ordinal>、GROUP BY ALL 和 ORDER BY ALL 三项语法改进，以降低用户从其他数据库迁移的门槛。这些功能作为验证时的便利性扩展，不改变现有的流批处理管道，且均通过配置项默认关闭以控制兼容性风险。其中 GROUP BY ALL 和 ORDER BY ALL 的实现依赖于 Calcite 1.43.0 版本的相关更新。</p>
+            <div class="key-points"><p><strong>@Tisya Bhatia:</strong> 提出 GROUP BY <ordinal> 是破坏性变更，需通过配置项控制；GROUP BY ALL 和 ORDER BY ALL 为新增语法，依赖 Calcite 的上游改动。</p>
+<p><strong>@Tisya Bhatia:</strong> 这些特性旨在解决从 Snowflake、DuckDB 等系统迁移时的语法兼容问题，减少查询重写工作。</p>
+<p><strong>@Tisya Bhatia:</strong> 功能实现主要在验证阶段展开为标准分组或排序，不影响底层的 Planning 和 Execution 逻辑。</p></div>
+            <p class="conclusion">FLIP 可以先行讨论和接受，但 GROUP BY ALL 和 ORDER BY ALL 的合并发布需等待 Flink 升级 Calcite 依赖至包含相关改动的版本（目标为 1.43.0）。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/ky7kq96nv1wd7n1od8xytqcbkw44d7mk">FLIP-XXXX: Higher-Order Functions in Flink SQL (TRANSFORM and ARRAY_FILTER)</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">本讨论旨在提议在 Flink SQL 中引入高阶函数（如 TRANSFORM 和 ARRAY_FILTER），以支持 Lambda 表达式作为参数，从而简化集合操作并降低用户迁移成本。该方案计划复用 Calcite 现有的 Lambda 解析基础设施，并引入新的逻辑类型 FUNCTION 作为类型系统基础。</p>
+            <div class="key-points"><p><strong>@Do...:</strong> 引入高阶函数是为了满足用户从其他系统迁移时的需求，避免繁琐的 UNNEST 重写或自定义 UDF 开发。</p>
+<p><strong>@Do...:</strong> 提议新增 FUNCTION 逻辑类型，并实现 ARRAY_FILTER 和 TRANSFORM 两个内置函数。</p>
+<p><strong>@Do...:</strong> 技术上复用 Calcite 已有的 Lambda 基础设施，而非重新发明 Flink 特定的语法，以最小化改动范围。</p></div>
+            <p class="conclusion">该提案处于讨论启动阶段，目前主要是功能介绍和动机说明，尚无明确的反对意见或最终决议。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (55)</h2>
+            
+    <p>本周新建 <strong>55</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周 JIRA 主要集中在连接器生态的增强与维护，包括 Kafka、MySQL CDC、StarRocks 及 OpenSearch 等连接器的功能改进和版本升级。同时，社区还重点关注了 Kubernetes Operator 的优化、Table API 与 SQL 语义的完善，以及多项 CI/CD 稳定性修复和 Web Dashboard 的体验改进。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Flink Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
