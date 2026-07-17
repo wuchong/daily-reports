@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-07-16</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-07-16</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 12 新 Issues</div>
+            <div class="stat">✅ 11 关闭</div>
+            <div class="stat">✨ 8 新 PRs</div>
+            <div class="stat">🎉 15 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/3614">PR #3614</a> 新增基于资源的 KV leader 副本容量控制功能，优化集群资源管理</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3658">PR #3658</a> 支持配置提供器解析配置中的敏感信息，增强安全配置能力</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3639">PR #3639</a> 在 lake tiering 前验证分区规范，防止元数据不一致</li><li>🚀 <a href="https://github.com/apache/fluss/pull/3647">PR #3647</a> 将 NotifyLeaderAndIsr 卸载到专用单线程执行器，优化 RPC 性能</li><li>🐛 <a href="https://github.com/apache/fluss/pull/3661">PR #3661</a> 修复 KV 快照租约操作在元数据刷新后的重试问题</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <ul class="critical-list"><li>⚠️ <a href="https://github.com/apache/fluss/issues/3681">Issue #3681</a> Flink tiering 任务在瞬态错误后永久失败</li><li>⚠️ <a href="https://github.com/apache/fluss/issues/3672">Issue #3672</a> 状态机竞态条件导致首轮 tiering 失败</li></ul>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3670">Issue #3670</a> [flink] Support custom lookup shuffle for Flink lookup join</h4>
+            <ul><li><span class="author">@naivedogger</span>: 表示愿意接手该 issue 的实现工作</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3673">Issue #3673</a> [docs] Document KV leader replica capacity control</h4>
+            <ul><li><span class="author">@MaheshS08</span>: 计划新增文档页面介绍 KV leader 副本容量控制功能</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3623">Issue #3623</a> [server] local segment ttl</h4>
+            <ul><li><span class="author">@swuferhong</span>: 解释了 TTL 与 local-segments 配置的区别和存储优化意义</li><li><span class="author">@zuston</span>: 理解了大数量本地段预留场景下的存储冗余问题</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3675">Issue #3675</a> [flink] Support custom lookup shuffle by bucket for Flink 2.x</h4>
+            <ul><li><span class="author">@naivedogger</span>: 详细解释了 shuffle lookup 的缓存命中率优化原理</li><li><span class="author">@zuston</span>: 感谢关于功能实现的详细解释</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3614">PR #3614</a> [server] Add resource-based KV leader replica capacity control</h4>
+            <ul><li><span class="author">@wuchong</span>: 建议集中管理 KV bucket 计数更新、默认禁用功能并添加文档</li><li><span class="author">@swuferhong</span>: 同意将文档作为后续 PR 处理</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3630">PR #3630</a> [lookup] Support historical partition lookup for lake tables</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 提出历史查找锁竞争、快照刷新、关闭阻塞等问题</li><li><span class="author">@luoyuxia</span>: 解释设计决策：历史查找流量有限，复用共享执行器</li><li><span class="author">@platinumhamburg</span>: 指出时钟偏差和配置变更下的保留边界判断问题</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3658">PR #3658</a> [common] Add config providers to resolve secrets in configuration</h4>
+            <ul><li><span class="author">@morazow</span>: 建议对重复键和路径规范化失败情况进行错误处理</li><li><span class="author">@fresh-borzoni</span>: 说明客户端侧 ConnectionFactory 会解析标记符</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3651">PR #3651</a> [kv] Close KV tablets concurrently during shutdown</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: 指出 shutdown 异常传播会导致不干净关闭和恢复问题</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3649">PR #3649</a> [server] Wait for coordinator leader cleanup during shutdown</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 询问初始化失败后的 leader latch 处理和等待超时问题</li><li><span class="author">@loserwang1024</span>: 添加回归测试文档化当前行为，后续单独处理恢复逻辑</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3639">PR #3639</a> [tiering][iceberg] Validate partition spec before lake tiering</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 建议在 writer 端也保留验证以防止 mid-round 变更</li><li><span class="author">@litiliu</span>: 采纳建议，同时在 enumerator 和 writer 端验证 schema</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3688">#3688</a> [helm] StatefulSets and main services should support annotations <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/3686">#3686</a> [helm] Declarative secrets support for config provider markers <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/3682">#3682</a> [build/filesystem] Align Hadoop dependencies to 3.4.3 <span class="author">@litiliu</span> </li><li><a href="https://github.com/apache/fluss/issues/3681">#3681</a> [tiering] Flink tiering job fails permanently after transient errors <span class="author">@Shawn-Hx</span> </li><li><a href="https://github.com/apache/fluss/issues/3679">#3679</a> [security] Require ALL permission to modify ACLs <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/issues/3676">#3676</a> [server] Add tieredTimestamp metric to expose the raw timestamp of the last successful lake tiering <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/issues/3673">#3673</a> [docs] Document KV leader replica capacity control <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/issues/3672">#3672</a> [tiering] State machine race: first tiering round fails with 'Scheduled to Tiered is not a valid state change' <span class="author">@qzyu999</span> </li><li><a href="https://github.com/apache/fluss/issues/3670">#3670</a> [flink] Support custom lookup shuffle for Flink lookup join. <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/issues/3668">#3668</a> [security] Introduce USAGE privilege for database discovery <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/issues/3666">#3666</a> [test] Unstable test KvReplicaRestoreITCase#testRowCountRecoveryAfterFailover <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/issues/3665">#3665</a> [rust] Stream adapter for the bounded readers <span class="author">@fresh-borzoni</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3687">#3687</a> [helm] Support statefulset and service annotations <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/3685">#3685</a> [common][helm] helm support for config providers <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/3683">#3683</a> [tiering] Use fixed-delay restart strategy for Flink tiering job <span class="author">@Shawn-Hx</span> </li><li><a href="https://github.com/apache/fluss/pull/3680">#3680</a> [security] Require ALL permission to modify ACLs <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/pull/3677">#3677</a> [flink] Flink batch read based on SST merge. <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/pull/3675">#3675</a> [flink] Support custom lookup shuffle by bucket for Flink 2.x <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/pull/3669">#3669</a> [doc] documentation for gravitino integration <span class="author">@VladBanar</span> </li><li><a href="https://github.com/apache/fluss/pull/3664">#3664</a> [rust] Add into_stream() to bounded readers <span class="author">@fresh-borzoni</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3676">#3676</a> [server] Add tieredTimestamp metric to expose the raw timestamp of the last successful lake tiering <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/issues/3668">#3668</a> [security] Introduce USAGE privilege for database discovery <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/issues/3666">#3666</a> [test] Unstable test KvReplicaRestoreITCase#testRowCountRecoveryAfterFailover <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/issues/3659">#3659</a> [common] Support config providers to resolve secrets in configuration <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/3652">#3652</a> [client] KV snapshot lease operations fail with stale coordinator metadata after upgrade <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/issues/3648">#3648</a> [Bug] Coordinator leader cleanup may be interrupted during shutdown <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/issues/3646">#3646</a> Offload NotifyLeaderAndIsr from RPC worker threads <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/issues/3638">#3638</a> [tiering][iceberg] Validate partition spec before lake tiering <span class="author">@litiliu</span> </li><li><a href="https://github.com/apache/fluss/issues/3625">#3625</a> [server] Coordinator standby may use stale dynamic configs after failover <span class="author">@swuferhong</span> <span class="labels">priority=critical</span></li><li><a href="https://github.com/apache/fluss/issues/3613">#3613</a> [server] Add resource-based KV leader replica capacity control <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/issues/3557">#3557</a> [server] Support auto-partition time format like "yyyy-MM-dd" <span class="author">@gyang94</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3684">#3684</a> [hotfix][test] Fix DynamicConfigManager constructor invocation <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/3678">#3678</a> [lake/tiering] Add tieredTimestamp metric exposing the last successful lake tiering time <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/pull/3674">#3674</a> [hotfix][test] Fix AutoPartitionManagerTest constructor invocation <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/pull/3671">#3671</a> [server] skip adding fetchers for followers without a leader <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/pull/3667">#3667</a> [test] Fix unstable test: KvReplicaRestoreITCase#testRowCountRecoveryAfterFailover <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/pull/3661">#3661</a> [client] Retry KV snapshot lease operations after metadata refresh. <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/pull/3658">#3658</a> [common] Add config providers to resolve secrets in configuration <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/3649">#3649</a> [server] Wait for coordinator leader cleanup during shutdown <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/pull/3647">#3647</a> [server] Offload NotifyLeaderAndIsr to dedicated single-thread executor <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/pull/3645">#3645</a> [server] Coordinator standby tracks dynamic config changes to avoid s… <span class="author">@fhan688</span> </li><li><a href="https://github.com/apache/fluss/pull/3639">#3639</a> [tiering][iceberg] Validate partition spec before lake tiering <span class="author">@litiliu</span> </li><li><a href="https://github.com/apache/fluss/pull/3614">#3614</a> [server] Add resource-based KV leader replica capacity control <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/pull/3559">#3559</a> [spark] Consolidate scan builders into Append/Upsert with SplitPlanner <span class="author">@YannByron</span> </li><li><a href="https://github.com/apache/fluss/pull/3558">#3558</a> [server] Auto partition day format supporting yyyy-MM-dd <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/pull/2902">#2902</a> [helm] Refactor validation warning and error checks <span class="author">@morazow</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
