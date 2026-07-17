@@ -15,8 +15,8 @@
 
         <section class="top-changes">
             <h2>🔥 今日最重要的3个变化</h2>
-            <ol><li><strong>AWS 推动 Solr 迁移至 OpenSearch Serverless</strong> — AWS 发布迁移指南，利用 Serverless 特性和原生 AI 能力吸引 Apache Solr 用户迁移，加速搜索市场格局变化。</li><li><strong>Tinybird 补齐 DynamoDB 连接器短板</strong> — Tinybird Forward 发布 DynamoDB 连接器，打通 AWS 原生数据库到实时分析链路，降低 AWS 用户实时数据分析门槛。</li><li><strong>StarTree 重审物化视图架构</strong> — StarTree 发文探讨物化视图的局限与现代替代方案，引发对实时分析架构最佳实践的技术反思。</li></ol>
-            <p class="judgment"><strong>总判断：</strong>今日行业动态集中在云原生数据能力的完善与架构演进。AWS 与 Tinybird 的动作显示，降低迁移成本、打通云原生数据孤岛是当前平台竞争的关键抓手。同时，对经典架构（如物化视图）的反思表明，实时性与运维效率正成为技术选型的核心考量。</p>
+            <ol><li><strong>Tinybird 推进架构升级，Classic 版本进入弃用倒计时</strong> — Tinybird 要求 Free 和 Developer 工作区在 9 月 15 日前迁移至 Forward 架构，加速平台技术栈统一。</li></ol>
+            <p class="judgment"><strong>总判断：</strong>今日行业动态主要集中在实时分析领域的产品迭代。Tinybird 的强制迁移策略显示了 SaaS 厂商在成熟期通过架构升级优化成本与性能的决心，开发者需警惕供应商驱动的技术栈变更风险。</p>
         </section>
 
         <section class="top-signals">
@@ -28,25 +28,11 @@
             <h2>💻 产品与技术</h2>
             
     <article class="news-item">
-        <h3>AWS 发布 Apache Solr 到 OpenSearch Serverless 迁移指南</h3>
-        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/migrate-from-apache-solr-to-amazon-opensearch-serverless/">AWS Big Data Blog</a></p>
-        <p class="date">2026-07-16</p>
-        <p class="summary">AWS 官方博客发布文章，指导用户如何从 Apache Solr 迁移到 Amazon OpenSearch Serverless。文章强调了 OpenSearch Serverless 在运维简便性（无需管理集群）和原生 AI 能力（内置向量搜索与机器学习集成）方面的优势，旨在吸引寻求现代化搜索方案的 Solr 用户。</p>
-        <div class="impact">📊 数据平台影响：此举是 AWS 抢占搜索与向量数据库市场份额的战略动作。通过降低迁移门槛，AWS 试图将传统开源搜索用户转化为其 Serverless 生态的粘性用户，加剧了搜索引擎市场的云原生替代趋势。</div>
-    </article>
-    <article class="news-item">
-        <h3>Tinybird Forward 推出 DynamoDB 连接器</h3>
-        <p class="sources">📌 <a href="https://www.tinybird.co/blog/dynamodb-connector-tinybird-forward">TinyBird</a></p>
-        <p class="date">2026-07-16</p>
-        <p class="summary">实时分析平台 Tinybird 宣布其 Forward 版本现支持 DynamoDB 连接器。用户仅需配置连接文件即可将 DynamoDB 表镜像至 Tinybird，此举填补了 AWS 原生 NoSQL 数据库与 Tinybird 实时分析能力之间的集成空白。</p>
-        <div class="impact">📊 数据平台影响：增强了实时数据平台在 AWS 生态内的互操作性。对于依赖 DynamoDB 的应用开发者，这意味着无需复杂的 ETL 流程即可获得实时 SQL 分析能力，提升了实时分析在云原生架构中的渗透率。</div>
-    </article>
-    <article class="news-item">
-        <h3>StarTree 深度解析物化视图的利弊与现代替代方案</h3>
-        <p class="sources">📌 <a href="https://startree.ai/resources/materialized-views-vs-indexes/">StarTree Blog</a></p>
-        <p class="date">2026-07-16</p>
-        <p class="summary">StarTree 发布技术博客，深入探讨了物化视图这一经典数据库技术的历史与局限性。文章指出虽然物化视图被广泛支持，但在现代实时分析场景下存在维护成本高、更新延迟等问题，并提出了索引等更现代化的替代思路。</p>
-        <div class="impact">📊 数据平台影响：引导开发者重新审视数据预计算架构。在实时 OLAP 场景中，这有助于推动从“批处理物化”向“即时索引计算”的架构范式转移，利好 StarTree 等实时分析引擎的技术推广。</div>
+        <h3>Tinybird 宣布弃用 Classic 版本，免费及开发者工作区需限期迁移</h3>
+        <p class="sources">📌 <a href="https://www.tinybird.co/blog/tinybird-classic-deprecation">TinyBird</a></p>
+        <p class="date">2026-07-17</p>
+        <p class="summary">Tinybird 正式宣布 Free 和 Developer 计划的工作区必须从 Tinybird Classic 迁移到 Tinybird Forward，截止日期为 2026 年 9 月 15 日。官方博客详细说明了迁移后的收益、具体变化以及迁移操作指南。</p>
+        <div class="impact">📊 数据平台影响：此次迁移标志着 Tinybird 正式完成从 Classic 到 Forward 的技术演进。对于用户而言，这意味着必须评估现有管道的兼容性并投入迁移成本；对于平台方，这有助于降低维护旧架构的负担，集中资源优化 Forward 架构的性能与计费模型，是典型的 SaaS 产品生命周期管理动作。</div>
     </article>
         </section>
 
@@ -62,7 +48,13 @@
 
         <section class="watchlist">
             <h2>👀 观察列表</h2>
-            <p class="empty">暂无</p>
+            
+    <article class="watchlist-item">
+        <h3>Tinybird Forward 迁移进展</h3>
+        <span class="status">待观察</span>
+        <p class="reason">架构强制迁移可能导致用户流失或社区反馈反弹，需关注 9 月中旬截止日期前的用户反应。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>2026 年 9 月 15 日迁移截止日</p>
+    </article>
         </section>
 
         <section class="stock-analysis">
