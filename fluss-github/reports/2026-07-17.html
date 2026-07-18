@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-07-17</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-07-17</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 9 新 Issues</div>
+            <div class="stat">✅ 6 关闭</div>
+            <div class="stat">✨ 8 新 PRs</div>
+            <div class="stat">🎉 9 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/3658">PR #3658</a> 添加配置提供器支持，可在配置中解析密钥</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3614">PR #3614</a> 实现基于资源的 KV leader 副本容量控制</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3678">PR #3678</a> 添加 tieredTimestamp 指标暴露最近成功分层时间</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3649">PR #3649</a> 关闭时等待 coordinator leader 清理完成</li><li>🐛 <a href="https://github.com/apache/fluss/issues/3691">Issue #3691</a> Flink SQL 扫描启用 DataLake 的 Fluss 表时因读取旧 Parquet 文件导致 ConnectionClosedException</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <ul class="critical-list"><li>⚠️ <a href="https://github.com/apache/fluss/issues/3691">Issue #3691</a> Flink SQL 扫描启用 DataLake 的 Fluss 表时因读取旧 Parquet 文件导致 ConnectionClosedException</li><li>⚠️ <a href="https://github.com/apache/fluss/issues/3681">Issue #3681</a> Flink tiering 作业在瞬态错误后永久失败</li><li>⚠️ <a href="https://github.com/apache/fluss/issues/3672">Issue #3672</a> 分层状态机竞争：首轮分层因状态变更无效而失败</li><li>⚠️ <a href="https://github.com/apache/fluss/issues/3445">Issue #3445</a> PaimonTieringITCase.testTiering 测试不稳定</li></ul>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3660">Issue #3660</a> [lake] Carry opaque table-level tiering state in lake offsets file and RPC</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 请求帮助审查 API 变更，总结了 RPC proto、持久化模型和客户端 API 的变更</li><li><span class="author">@beryllw</span>: 分析 mark-done 状态可无新 lake commit 变化，提出两种方案：嵌入 offsets 文件或拆分独立表级文件</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3673">Issue #3673</a> [docs] Document KV leader replica capacity control</h4>
+            <ul><li><span class="author">@MaheshS08</span>: 计划在 operations 目录下新增文档，涵盖功能保护、启用配置、容量计算规则和指标</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3675">Issue #3675</a> [flink] Support custom lookup shuffle by bucket for Flink 2.x</h4>
+            <ul><li><span class="author">@naivedogger</span>: 解释 shuffle lookup 优势：同 bucket 行路由同子任务，缓存命中率更高，减少重复缓存</li><li><span class="author">@zuston</span>: 感谢详细解释，表示理解了 lookup shuffle 的设计意图</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2007">Issue #2007</a> Add missing authentication for RPC calls</h4>
+            <ul><li><span class="author">@polyzos</span>: 建议一次处理 1-2 个子问题而非全部，避免频繁 rebase，并询问 PR 链接</li><li><span class="author">@vaibhavk1992</span>: 列出所有相关 PR 链接，表示下次会限制 1-2 个 PR 请求审查</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3677">Issue #3677</a> [flink] Flink batch read based on SST merge.</h4>
+            <ul><li><span class="author">@loserwang1024</span>: CC 相关 reviewer 关注此 SST merge batch read 功能 PR</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3685">Issue #3685</a> [common][helm] helm support for config providers</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 感谢 review，说明 config providers 也适用于客户端侧 ConnectionFactory</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3630">PR #3630</a> [lookup] Support historical partition lookup for lake tables</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 指出文件集不刷新、lookup 共享信号量可能阻塞、表级缓存无全局上限、schema 冻结后无法编码新列</li><li><span class="author">@platinumhamburg</span>: 指出 schema 冻结导致新列返回 null、时钟偏差导致保留判断错误、历史分区创建实际副本不合理</li><li><span class="author">@luoyuxia</span>: 解释历史 lookup 仅在分区过期后触发、初始流量有限可复用共享池、分区创建是路由锚点</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3651">PR #3651</a> [kv] Close KV tablets concurrently during shutdown</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: 指出 try 块内异常跳过后续清理导致非正常关闭，OOM 不被捕获导致关闭卡死</li><li><span class="author">@swuferhong</span>: 表示已处理 review 评论</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3549">PR #3549</a> [lake/hudi][docs] Add Hudi tiering service documentation</h4>
+            <ul><li><span class="author">@XuQianJin-Stars</span>: 指出文档中 format 应为 formats、示例与 prose 键名不一致等语言和配置问题</li><li><span class="author">@luoyuxia</span>: 指出 hive.metastore.uris 无法传到 Hudi 1.1.0 的 HiveConf，需用 hadoop 前缀，并建议添加 Flink JARs</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3683">PR #3683</a> [tiering] Use fixed-delay restart strategy for Flink tiering job</h4>
+            <ul><li><span class="author">@Copilot</span>: 指出 fixed-delay 策略未设置延迟时间，可能导致紧密重启循环</li><li><span class="author">@luoyuxia</span>: 质疑为何选择 fixed-delay 而非 exponential-delay，持久失败时会持续冲击外部系统</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3658">PR #3658</a> [common] Add config providers to resolve secrets in configuration</h4>
+            <ul><li><span class="author">@morazow</span>: 建议异常时应抛出错误而非 fall through，并建议测试无 config providers 时行为</li><li><span class="author">@fresh-borzoni</span>: 感谢 review，说明适用于客户端侧 ConnectionFactory，动态配置不支持 providers</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3660">PR #3660</a> [lake] Carry opaque table-level tiering state in lake offsets file and RPC</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 质疑为何需要 bump version，并简化设计后重新 rebase 到最新 main</li><li><span class="author">@beryllw</span>: 分析 mark-done 状态可无新 commit 变化，提出嵌入 offsets 文件或拆分独立文件两种方案</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3569">PR #3569</a> [tiering] introduce the option of `lake.tiering.io.tmpdir` to avoid disk exhaustion</h4>
+            <ul><li><span class="author">@Copilot</span>: 指出子路径以 / 开头在 Unix 被视为绝对路径，忽略父目录</li><li><span class="author">@luoyuxia</span>: 建议从 lakeTieringConfig 读取选项、TMP_DIRS 含多目录需解析、请求添加用户文档</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3618">PR #3618</a> [docs] Add docs for env.* JVM and process options</h4>
+            <ul><li><span class="author">@Copilot</span>: 指出文档默认值误导，实际脚本无条件注入参数</li><li><span class="author">@luoyuxia</span>: 指出注入顺序与文档不符，-Djava.security.manager=allow 是追加而非前置</li><li><span class="author">@orangeCatDeveloper</span>: 感谢指出脚本行为，在描述中添加说明而非改 Default 列以保持一致性</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3601">PR #3601</a> [lake]Tolerate Iceberg lake table existent if the schema and properties matches</h4>
+            <ul><li><span class="author">@Copilot</span>: 指出 appendDummyDataFile 使用 unpartitioned spec 不兼容 Fluss 表</li><li><span class="author">@luoyuxia</span>: 指出兼容性检查忽略 identifierFieldIds，导致主键语义被破坏</li><li><span class="author">@Guosmilesmile</span>: 接受建议，将添加 identifier fields 比较</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3649">PR #3649</a> [server] Wait for coordinator leader cleanup during shutdown</h4>
+            <ul><li><span class="author">@loserwang1024</span>: 说明 leader 初始化失败时释放 leadership 并重新选举的行为将在后续 PR 处理</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3678">PR #3678</a> [lake/tiering] Add tieredTimestamp metric exposing the last successful lake tiering time</h4>
+            <ul><li><span class="author">@Copilot</span>: 指出指标名与 Issue 不一致，建议文档补充 -1 返回值情况</li><li><span class="author">@luoyuxia</span>: 质疑指标名是否与预期一致</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3606">PR #3606</a> [client] Add log read preference for remote-first fetch</h4>
+            <ul><li><span class="author">@Copilot</span>: 指出 REMOTE_FIRST 偏好远程元数据缺失时硬性失败，本地日志仍能服务请求</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3691">#3691</a> **Flink SQL scan on Fluss table with DataLake enabled reads historical Iceberg files despite `table.log.ttl`, causing `ConnectionClosedException` on old Parquet files** <span class="author">@Ebaharloo</span> </li><li><a href="https://github.com/apache/fluss/issues/3688">#3688</a> [helm] StatefulSets and main services should support annotations <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/3686">#3686</a> [helm] Declarative secrets support for config provider markers <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/3682">#3682</a> [build/filesystem] Align Hadoop dependencies to 3.4.3 <span class="author">@litiliu</span> </li><li><a href="https://github.com/apache/fluss/issues/3681">#3681</a> [tiering] Flink tiering job fails permanently after transient errors <span class="author">@Shawn-Hx</span> </li><li><a href="https://github.com/apache/fluss/issues/3679">#3679</a> [security] Require ALL permission to modify ACLs <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/issues/3676">#3676</a> [server] Add tieredTimestamp metric to expose the raw timestamp of the last successful lake tiering <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/issues/3673">#3673</a> [docs] Document KV leader replica capacity control <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/issues/3672">#3672</a> [tiering] State machine race: first tiering round fails with 'Scheduled to Tiered is not a valid state change' <span class="author">@qzyu999</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3690">#3690</a> [spark] Extend get_cluster_configs procedure output with default value, is_default and description columns <span class="author">@XuQianJin-Stars</span> </li><li><a href="https://github.com/apache/fluss/pull/3689">#3689</a> [spark] Add input argument validation with friendly errors to CALL procedure framework <span class="author">@XuQianJin-Stars</span> </li><li><a href="https://github.com/apache/fluss/pull/3687">#3687</a> [helm] Support statefulset and service annotations <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/3685">#3685</a> [common][helm] helm support for config providers <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/3683">#3683</a> [tiering] Use fixed-delay restart strategy for Flink tiering job <span class="author">@Shawn-Hx</span> </li><li><a href="https://github.com/apache/fluss/pull/3680">#3680</a> [security] Require ALL permission to modify ACLs <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/pull/3677">#3677</a> [flink] Flink batch read based on SST merge. <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/pull/3675">#3675</a> [flink] Support custom lookup shuffle by bucket for Flink 2.x <span class="author">@naivedogger</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3676">#3676</a> [server] Add tieredTimestamp metric to expose the raw timestamp of the last successful lake tiering <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/issues/3659">#3659</a> [common] Support config providers to resolve secrets in configuration <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/3648">#3648</a> [Bug] Coordinator leader cleanup may be interrupted during shutdown <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/issues/3613">#3613</a> [server] Add resource-based KV leader replica capacity control <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/issues/3247">#3247</a> [server] Add authorization to Table Metadata Read Operations (getTableSchema,        listPartitionInfos, listOffsets) <span class="author">@vaibhavk1992</span> </li><li><a href="https://github.com/apache/fluss/issues/2513">#2513</a> Add docs for JAVA_OPTS related vars <span class="author">@zuston</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3684">#3684</a> [hotfix][test] Fix DynamicConfigManager constructor invocation <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/3678">#3678</a> [lake/tiering] Add tieredTimestamp metric exposing the last successful lake tiering time <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/pull/3674">#3674</a> [hotfix][test] Fix AutoPartitionManagerTest constructor invocation <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/pull/3658">#3658</a> [common] Add config providers to resolve secrets in configuration <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/3649">#3649</a> [server] Wait for coordinator leader cleanup during shutdown <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/pull/3618">#3618</a> [docs] Add docs for env.* JVM and process options <span class="author">@orangeCatDeveloper</span> </li><li><a href="https://github.com/apache/fluss/pull/3614">#3614</a> [server] Add resource-based KV leader replica capacity control <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/pull/3298">#3298</a> [server] Add authorization to listOffsets for TABLE/DESCRIBE operations <span class="author">@vaibhavk1992</span> </li><li><a href="https://github.com/apache/fluss/pull/2902">#2902</a> [helm] Refactor validation warning and error checks <span class="author">@morazow</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
