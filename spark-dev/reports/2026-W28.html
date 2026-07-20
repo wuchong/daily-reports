@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spark 社区周报 | 2026-W28</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Spark 社区周报 | 2026-W28</h1>
+            <p class="date-range">2026-07-06 ~ 2026-07-12</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (1)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/4qozg1rdvv2vvltp858sygj31jrpskx5">Apache Spark 4.2.0 released</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (8)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/r4n79z986q78r7mdrbxgrh671rj2or34">Release Spark 4.0.4 (RC1)</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/qh78r69xmmnmvdq7l0lz3jt746dt3h95">Release Spark 3.5.9 (RC1)</a> <span class="status warning">⚠️ 有异议</span><p class="objection-inline">Rich Bowen 和 Akira Ajisaka 提出 -1，原因是 SparkR 和 PySpark 的二进制发布包中缺少 LICENSE 和 NOTICE 文件。</p></li>
+<li><a href="https://lists.apache.org/thread/l360s35t0g8tm11lcq403g0sq0mczhc5">Release Spark 4.2.0 (RC6)</a> <span class="status warning">⚠️ 有异议</span><p class="objection-inline">提供的邮件内容中所有回复均为 +1（赞成），未出现 -1（异议）投票，因此无法简述异议原因。</p></li>
+<li><a href="https://lists.apache.org/thread/1nhrb7k3gmw4r726okmtm4wdhcphnh9o">Release Spark 4.1.3 (RC1)</a> <span class="status warning">⚠️ 有异议</span><p class="objection-inline">提供的回复内容中均为 +1 赞成票，未发现 -1 异议，因此无异议原因。</p></li>
+<li><a href="https://lists.apache.org/thread/tl7g92xygjlnq5l8scq5b549psd6pfgo">SPIP: Cloud Credential Refresh and Distribution Without Kerberos</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/bmqbpo4fp08y009hvgsv7s0kg9qo1c8p">Release Apache Spark 4.2.0 (RC6)</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/xy31fcvz8x6v4pwv3lczfbjyh8843ro1">Release Apache Spark 4.1.3 (RC1)</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/0vdnpt0j9c4ptlhvl117b3w5moqxw8bc">Release Spark 3.5.9</a> <span class="status passed">✅ 已通过</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (4)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/dpbdd3x313yw89fh6tslm3owz120q7js">Backport SPARK-57234 docs page to branch-4.2 and refresh published 4.2 docs?</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论主要关于是否将 SPARK-57234 文档更新回溯移植到已发布的 Spark 4.2 分支并重新发布文档。提议者认为这只是纯文档变更，影响较小，但社区成员对修改已发布版本 artifact 持保留意见。</p>
+            <div class="key-points"><p><strong>@L. C. Hsieh:</strong> 提议将仅涉及文档的变更回溯移植到 branch-4.2 并重新运行文档发布流程，认为这不会改变发布产物本身，影响较低。</p>
+<p><strong>@Holden Karau:</strong> 对修改已发布的 artifact 表示犹豫，建议将其视为 bug 修复，留待 4.2.1 版本发布时处理。</p></div>
+            <p class="conclusion">尚无明确结论。提议者希望立即更新文档，但社区反馈倾向于谨慎，建议推迟到后续版本（4.2.1）进行修复。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/11661c8ho1ohxbqm7mkgckh7j8bnh61m">Spark routing architecture for Iceberg Materialized Views</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论主要关于 Iceberg 物化视图在 Spark 实现中的路由架构决策，即是在 Catalog 层还是通过独立的 Rule 逻辑进行查询路由。社区倾向于先在 Iceberg 层实现基础的替换逻辑，随后逐步让引擎根据其能力增加更复杂的优化决策。</p>
+            <div class="key-points"><p><strong>@Walaa Eldin Moustafa:</strong> 提出了 Spark 实现物化视图时的核心问题：读时路由（read-time routing）应在何处进行，并对比了 DSv2 catalog-based routing 等方案的利弊。</p>
+<p><strong>@Ryan Blue:</strong> 建议首先在 Iceberg 中实现基础检查和简单的“视图替换为表读取”逻辑，这能支持无引擎环境下的 API 使用，并为后续 Spark 集成扩展打下基础。</p></div>
+            <p class="conclusion">初步结论是采用渐进式开发路径：先在 Iceberg 层实现简单路由逻辑，未来再由引擎层逐步增加复杂的优化能力。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/h1x9yjh569x5so12p1fkzpto5s7qllj8">Introduction - New contributor interested in Apache Spark</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">新贡献者 N Harishkumar 发邮件向社区做自我介绍，表示正在学习 Spark 内部机制、PySpark 和流处理等技术，并希望了解贡献流程以开始参与 Spark 的开发工作。</p>
+            <div class="key-points"><p><strong>@N Harishkumar:</strong> 自我介绍为数据平台从业者，目前正在学习 Spark 内部机制、PySpark 和分布式数据处理。</p>
+<p><strong>@N Harishkumar:</strong> 表达了希望了解贡献流程并开始向 Apache Spark 贡献代码的意愿。</p></div>
+            <p class="conclusion">无具体技术结论，这是一封标准的社区新人介绍邮件，期待社区指引。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/lzrnk0hxxqd7ldh1h3rv0k5gdddm3mgx">[CORE] Pluggable SchedulingAlgorithm for the root pool (SPARK-58126)</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">该讨论提议为 Spark 根调度池引入可插拔的 SchedulingAlgorithm 扩展点，通过新增配置项允许用户自定义排序逻辑（如基于优先级或 SLA），且在未配置时保持原有行为不变。提案采用配置文件驱动的实例化方式，以适配托管平台（如 Databricks）用户无法控制 SparkContext 创建的场景。</p>
+            <div class="key-points"><p><strong>@Christian Neuenroth:</strong> 当前调度池的排序算法（FAIR/FIFO）硬编码在代码中，缺乏自定义扩展能力，建议通过配置项 spark.scheduler.rootPool.algorithm.class 支持自定义实现。</p>
+<p><strong>@Christian Neuenroth:</strong> 选择配置驱动而非运行时 Setter 方法，是因为在 Databricks 等托管平台上用户无法创建 SparkContext，配置方式更具普适性且符合 Spark 惯例。</p>
+<p><strong>@Christian Neuenroth:</strong> 该方案是纯增量修改，仅针对根池排序，未来可扩展支持 XML 配置的池级算法，同时需将相关接口标记为 @DeveloperApi。</p></div>
+            <p class="conclusion">提案已提交包含实现和单元测试的 PR（#57257），目前处于征求社区反馈阶段，后续将根据反馈推进该特性。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (0)</h2>
+            
+    <p>本周新建 <strong>0</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周无新建 JIRA。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Spark Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
