@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-07-19</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-07-19</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 3 新 Issues</div>
+            <div class="stat">✅ 5 关闭</div>
+            <div class="stat">✨ 2 新 PRs</div>
+            <div class="stat">🎉 7 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/3696">PR #3696</a> 修复 Rust 1.97 版本 clippy::for_kv_map 警告</li><li>🔒 <a href="https://github.com/apache/fluss/pull/3680">PR #3680</a> 安全性增强：修改 ACLs 现需要 ALL 权限</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3687">PR #3687</a> Helm 支持 StatefulSet 和 Service 注解功能</li><li>🚀 <a href="https://github.com/apache/fluss/pull/3654">PR #3654</a> 批量处理 ZooKeeper 操作，加速受控关闭时的 Leader 迁移</li><li>🚀 <a href="https://github.com/apache/fluss/pull/3651">PR #3651</a> 并发关闭 KV tablets 以提升 TabletServer 关闭速度</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3692">Issue #3692</a> [CI] Extract flink-backward stage from lake to avoid 60min timeout</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 指出此问题类似于 #3273</li><li><span class="author">@Guosmilesmile</span>: 详细说明了测试策略调整：减少旧版 Flink 兼容性测试至 6 个核心 smoke tests</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3673">Issue #3673</a> [docs] Document KV leader replica capacity control</h4>
+            <ul><li><span class="author">@wuchong</span>: 建议创建通用资源保护文档页面，包含数据盘写保护和 KV Leader 容量保护两个部分</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3696">Issue #3696</a> [rust] Fix clippy::for_kv_map warnings in RecordAccumulator</h4>
+            <ul><li><span class="author">@LiebingYu</span>: 请求 @fresh-borzoni 审阅此 PR</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3601">Issue #3601</a> [lake]Tolerate Iceberg lake table existent if the schema and properties matches</h4>
+            <ul><li><span class="author">@Guosmilesmile</span>: CI 因 lake Test 超过 60 分钟超时而失败，已提交 PR #3692 解决</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3630">Issue #3630</a> [lookup] Support historical partition lookup for lake tables</h4>
+            <ul><li><span class="author">@beryllw</span>: 最终确认 LGTM，批准合并</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3630">PR #3630</a> [lookup] Support historical partition lookup for lake tables</h4>
+            <ul><li><span class="author">@beryllw</span>: 建议检查非默认 bucket key 的历史查找键编码是否与 Paimon 编码匹配</li><li><span class="author">@beryllw</span>: 建议添加非默认 bucket key 测试用例以覆盖 CompactedKeyEncoder 路径</li><li><span class="author">@beryllw</span>: 建议在 toHistoricalLookupData 中对重复 originalPartitionName 进行快速失败检测</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3643">PR #3643</a> [rust] Hash-distribute log-table appends by declared bucket key</h4>
+            <ul><li><span class="author">@charlesdong1991</span>: 指出大量行数据时全量 typed-batch 构建效率较低，建议利用 set_row_id 移动游标</li><li><span class="author">@charlesdong1991</span>: 询问首个批次为空时是否会影响后续 keyed appends，建议添加测试验证行为</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3694">PR #3694</a> [rust][tests] Fix flaky test_poll_batches by using retry loop for projection test</h4>
+            <ul><li><span class="author">@charlesdong1991</span>: 建议抽取 poll_until_nonempty 等辅助函数复用测试中的轮询模式</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3569">PR #3569</a> [tiering] introduce the option of `lake.tiering.io.tmpdir` to avoid disk exhaustion</h4>
+            <ul><li><span class="author">@zuston</span>: 建议先合并 PR #3617，然后在此基础上进行修改</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3697">#3697</a> Fix wrong acl document. <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/issues/3695">#3695</a> [rust] clippy::for_kv_map lint failures after Rust 1.97 stable release <span class="author">@LiebingYu</span> </li><li><a href="https://github.com/apache/fluss/issues/3693">#3693</a> [rust][tests] Flaky test_poll_batches for projection test <span class="author">@LiebingYu</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3694">#3694</a> [rust][tests] Fix flaky test_poll_batches by using retry loop for projection test <span class="author">@LiebingYu</span> </li><li><a href="https://github.com/apache/fluss/pull/3692">#3692</a> [CI] Extract flink-backward stage from lake to avoid 60min timeout <span class="author">@Guosmilesmile</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3695">#3695</a> [rust] clippy::for_kv_map lint failures after Rust 1.97 stable release <span class="author">@LiebingYu</span> </li><li><a href="https://github.com/apache/fluss/issues/3688">#3688</a> [helm] StatefulSets and main services should support annotations <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/3679">#3679</a> [security] Require ALL permission to modify ACLs <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/issues/3653">#3653</a> [server] Speed up controlled shutdown leader migration with batch ZooKeeper operations <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/issues/3650">#3650</a> Improve TabletServer shutdown by closing KV tablets concurrently <span class="author">@swuferhong</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3696">#3696</a> [rust] Fix clippy::for_kv_map warnings in RecordAccumulator <span class="author">@LiebingYu</span> </li><li><a href="https://github.com/apache/fluss/pull/3687">#3687</a> [helm] Support statefulset and service annotations <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/3680">#3680</a> [security] Require ALL permission to modify ACLs <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/pull/3654">#3654</a> [server] Batch LeaderAndIsr updates for controlled shutdown <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/pull/3651">#3651</a> [kv] Close KV tablets concurrently during shutdown <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/pull/3601">#3601</a> [lake]Tolerate Iceberg lake table existent if the schema and properties matches <span class="author">@Guosmilesmile</span> </li><li><a href="https://github.com/apache/fluss/pull/3329">#3329</a> [server] Preserve exception cause when rethrowing exceptions in RpcServiceBase <span class="author">@XuQianJin-Stars</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
