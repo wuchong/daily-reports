@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-07-21</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-07-21</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 18 新 Issues</div>
+            <div class="stat">✅ 11 关闭</div>
+            <div class="stat">✨ 12 新 PRs</div>
+            <div class="stat">🎉 17 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/3549">PR #3549</a> 新增 Hudi 数据湖分层服务文档</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3623">PR #3623</a> 支持本地分层日志段基于 TTL 的清理</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3492">PR #3492</a> 实现位图标量函数并通过 FlussCatalog 注册</li><li>🐛 <a href="https://github.com/apache/fluss/pull/3720">PR #3720</a> 修复分层任务中 Lake Writer 资源泄漏</li><li>🚀 <a href="https://github.com/apache/fluss/issues/3721">Issue #3721</a> 发起提升 Flink Connector 生产就绪性的计划</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <ul class="critical-list"><li>⚠️ <a href="https://github.com/apache/fluss/issues/3718">Issue #3718</a> Hadoop 流 seek 操作在 EOF 后无限循环</li><li>⚠️ <a href="https://github.com/apache/fluss/issues/3740">Issue #3740</a> 主键表 Bucket 无法从远程存储缺失快照中重建</li></ul>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3721">Issue #3721</a> [Umbrella][Flink] Improve Fluss Flink Connector production readiness</h4>
+            <ul><li><span class="author">@loserwang1024</span>: 表示将创建具体的子任务</li><li><span class="author">@polyzos</span>: 询问是否已有相关 ticket 列表</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3492">Issue #3492</a> [FIP-37] Add bitmap scalar functions and register via FlussCatalog</h4>
+            <ul><li><span class="author">@polyzos</span>: 询问是否需要文档阻塞合并</li><li><span class="author">@Prajwal-banakar</span>: 建议在现有文档添加章节或新建页面</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3718">Issue #3718</a> [filesystem] HadoopDataInputStream.seek loops forever past EOF</h4>
+            <ul><li><span class="author">@wolfkill</span>: 提交 PR #3738 并分析根本原因</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3711">PR #3711</a> [rust][client] Support comma-separated bootstrap servers</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 建议增加失败转移和日志记录</li><li><span class="author">@slfan1989</span>: 根据建议增加了日志和测试</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3669">PR #3669</a> [doc] documentation for gravitino integration</h4>
+            <ul><li><span class="author">@MehulBatra</span>: 指出文档中关于 S3 凭证类型的混淆</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3641">PR #3641</a> [flink] Fix TableNotExistException when listing partitions on  changelog / binlog virtual tables</h4>
+            <ul><li><span class="author">@MehulBatra</span>: 建议应拒绝虚拟表上的 DDL 操作</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3617">PR #3617</a> [flink] respect flink io tmp multi dirs to fix disk exhaustion</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 指出目录选择策略可能导致磁盘热点</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3744">#3744</a> Rust client should retry bootstrap initialization on retriable errors <span class="author">@slfan1989</span> </li><li><a href="https://github.com/apache/fluss/issues/3740">#3740</a> PK table bucket can't rebuild from the missing snapshot in the remote storage <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/issues/3735">#3735</a> [test] Unstable test FlussAdminITCase.testKvSnapshotLeaseAfterCoordinatorServerRestart <span class="author">@app/github-actions</span> </li><li><a href="https://github.com/apache/fluss/issues/3732">#3732</a> Incorrect remote cache capacity calculation that miss timeIndex size <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/issues/3728">#3728</a> [server] Support TTL-based cleanup for local tiered log segments <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/issues/3727">#3727</a> Support lookup custom shuffle by Fluss bucket based on FLIP-462 <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/issues/3726">#3726</a> [flink] Implement Fluss full-cache lookup join provider <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/issues/3725">#3725</a> [flink] Support batch UPDATE and partial update for primary-key tables <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/issues/3724">#3724</a> [flink] Support batch DELETE for primary-key tables <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/issues/3723">#3723</a> [flink] Support batch scan for $changelog and $binlog virtual tables <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/issues/3722">#3722</a> [flink] Add projection and filter pushdown for virtual log tables <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/issues/3721">#3721</a> [Umbrella][Flink] Improve Fluss Flink Connector production readiness <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/issues/3719">#3719</a> [lake/tiering] Tiering job leaks lake writers on failure and masks the real exception <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/issues/3718">#3718</a> [filesystem] HadoopDataInputStream.seek loops forever past EOF <span class="author">@mattfaltyn</span> </li><li><a href="https://github.com/apache/fluss/issues/3716">#3716</a> [test] Tolerate removed tablet servers in FlussClusterExtension wait helpers <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/3713">#3713</a> [rust] Lost wakeup in LogFetchBuffer::await_not_empty causes empty poll <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/3710">#3710</a> [rust][client] Support comma-separated bootstrap servers <span class="author">@slfan1989</span> </li><li><a href="https://github.com/apache/fluss/issues/3709">#3709</a> [docs] Helm chart statefulset and service annotations are undocumented <span class="author">@fresh-borzoni</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3743">#3743</a> [server] Support DescribeTabletServers API for safe scaling and upgrades <span class="author">@morazow</span> </li><li><a href="https://github.com/apache/fluss/pull/3742">#3742</a> [server] Recognize Hadoop missing snapshot files <span class="author">@wolfkill</span> </li><li><a href="https://github.com/apache/fluss/pull/3739">#3739</a> [FLUSS-3716] Tolerate removed tablet servers in wait helpers <span class="author">@wolfkill</span> </li><li><a href="https://github.com/apache/fluss/pull/3738">#3738</a> [filesystem] avoid zero-skip loop in HadoopDataInputStream <span class="author">@wolfkill</span> </li><li><a href="https://github.com/apache/fluss/pull/3737">#3737</a> [server] release remote log index cache entries on deletion <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/pull/3734">#3734</a> [server] prevent remote log cache size overflow <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/pull/3733">#3733</a> [server] include time index in remote log cache weight <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/pull/3731">#3731</a> [FLUSS-1027] Stabilize KvSnapshotITCase snapshot triggering <span class="author">@wolfkill</span> </li><li><a href="https://github.com/apache/fluss/pull/3729">#3729</a> [docs] Fix Flink docs anchors and Java 8 build note <span class="author">@wolfkill</span> </li><li><a href="https://github.com/apache/fluss/pull/3717">#3717</a> [CI] Split Spark lake tests to reduce pipeline time <span class="author">@litiliu</span> </li><li><a href="https://github.com/apache/fluss/pull/3715">#3715</a> [test] Tolerate removed tablet servers FlussClusterExtension helpers <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/3711">#3711</a> [rust][client] Support comma-separated bootstrap servers <span class="author">@slfan1989</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3728">#3728</a> [server] Support TTL-based cleanup for local tiered log segments <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/issues/3719">#3719</a> [lake/tiering] Tiering job leaks lake writers on failure and masks the real exception <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/issues/3713">#3713</a> [rust] Lost wakeup in LogFetchBuffer::await_not_empty causes empty poll <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/3709">#3709</a> [docs] Helm chart statefulset and service annotations are undocumented <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/3697">#3697</a> Fix wrong acl document. <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/issues/3686">#3686</a> [helm] Declarative secrets support for config provider markers <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/3681">#3681</a> [tiering] Flink tiering job fails permanently after transient errors <span class="author">@Shawn-Hx</span> </li><li><a href="https://github.com/apache/fluss/issues/3673">#3673</a> [docs] Document KV leader replica capacity control <span class="author">@wuchong</span> <span class="labels">priority=critical</span></li><li><a href="https://github.com/apache/fluss/issues/3644">#3644</a> [rust] Log-table appends ignore the declared bucket key <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/3496">#3496</a> [website]Implement Theme-Aware Images for Documentation <span class="author">@Prajwal-banakar</span> </li><li><a href="https://github.com/apache/fluss/issues/275">#275</a> [Improvement] Provide different table.log.tiered.local-segments for latest partitions and old partition. <span class="author">@loserwang1024</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3736">#3736</a> Attached Blog Posts to Docs <span class="author">@polyzos</span> </li><li><a href="https://github.com/apache/fluss/pull/3730">#3730</a> [hotfix][docs] Recommend 8MB for KV leader replica memory protection <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/pull/3720">#3720</a> [lake/tiering] Fix lake writer resource leak in TieringSplitReader close chain <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/pull/3714">#3714</a> [build] Split Flink CI stages by major version <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/pull/3712">#3712</a> [rust] Fix lost wakeup in LogFetchBuffer::await_not_empty <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/3708">#3708</a> [docs] Document statefulset and service annotations in helm chart <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/3707">#3707</a> [doc] Modify ACL Operations and Resources on Protocols. <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/pull/3701">#3701</a> Added documentation for Resource protection <span class="author">@MaheshS08</span> </li><li><a href="https://github.com/apache/fluss/pull/3700">#3700</a> [tiering] Reduce LakeSnapshot log verbosity in TieringSplitGenerator <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/pull/3685">#3685</a> [common][helm] helm support for config providers <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/3683">#3683</a> [tiering] Use exponential delay restart strategy for Flink tiering job <span class="author">@Shawn-Hx</span> </li><li><a href="https://github.com/apache/fluss/pull/3643">#3643</a> [rust] Hash-distribute log-table appends by declared bucket key <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/3624">#3624</a> [docs] Fix misaligned rowspans in Table/Bucket metrics table <span class="author">@orangeCatDeveloper</span> </li><li><a href="https://github.com/apache/fluss/pull/3623">#3623</a> [server] local segment ttl <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/pull/3549">#3549</a> [lake/hudi][docs] Add Hudi tiering service documentation <span class="author">@fhan688</span> </li><li><a href="https://github.com/apache/fluss/pull/3497">#3497</a> [website]add theme-aware images and fix broken links <span class="author">@Prajwal-banakar</span> </li><li><a href="https://github.com/apache/fluss/pull/3492">#3492</a> [FIP-37] Add bitmap scalar functions and register via FlussCatalog <span class="author">@Prajwal-banakar</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
