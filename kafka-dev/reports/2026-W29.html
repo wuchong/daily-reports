@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafka 社区周报 | 2026-W29</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Kafka 社区周报 | 2026-W29</h1>
+            <p class="date-range">2026-07-13 ~ 2026-07-19</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (0)</h2>
+            <p class="empty">本周无公告</p>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (2)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/zt2165trxsx6zgnt0c960t3jy0obtm3y">KIP-1340: Expose Both Mapped Key and Stream Key in Streams-GlobalKTable Joins</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/vjj70hnv7svt6vl0wvz32bprr24bzs31">KIP-1321: Headers aware StreamPartitioner</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/co0lkt9n16yh244t3m0vrs8tfrbnkdjz">KIP-1311: Make Time/Timer public API</a></h3>
+            <p class="meta">9 条回复 · 5 位参与者</p>
+            <p class="summary">讨论围绕 KIP-1311 是否应将 Time/Timer 设为公开 API 展开。起初提议撤销 KIP 并废弃接受 Time 参数的构造函数，但发现这会导致内部代码跨包调用困难。最终社区倾向于采纳 Sean 提出的最小化公开接口方案，以解决访问权限问题。</p>
+            <div class="key-points"><p><strong>@Siddhartha Devineni:</strong> 最初提议撤销 KIP 并废弃相关构造函数，后确认 Metrics 仅传递 Time 对象而不调用其方法，最终认可 Sean 的最小化接口方案是解决跨包访问权限的最优解。</p>
+<p><strong>@Chia-Ping Tsai:</strong> 指出废弃构造函数会导致代码库巨大变更，且指出简单的废弃方案在 5.0 版本将导致跨包创建对象受阻，最终赞同 Sean 的方案。</p>
+<p><strong>@Sean Quah:</strong> 建议避免完全公开 Time，而是创建一个仅暴露 milliseconds() 等必要方法的简单公开接口，内部 Time 接口再继承扩展该方法。</p></div>
+            <p class="conclusion">社区达成初步共识，采纳 Sean 的建议引入一个最小化的公开 Time 接口。Siddhartha Devineni 将负责更新 KIP 以落实该方案。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/jbgvc82hyqh7cskroh2t1p8wmq4vqtl2">KIP-1367: Reserve apiKey values for private use</a></h3>
+            <p class="meta">3 条回复 · 3 位参与者</p>
+            <p class="summary">本讨论围绕 KIP-1367 提议展开，旨在为私有用途预留特定的 apiKey 数值，以解决开发者在原型开发时可能面临的 apiKey 冲突问题。提议者认为这能避免私有实现与官方后续分配的 apiKey 发生冲突，从而简化开发和部署流程，但社区对此需求的必要性存在疑问。</p>
+            <div class="key-points"><p><strong>@Gaurav Narula:</strong> 开发者在原型开发时若选取了即将被官方占用的 apiKey，会导致后续合并或部署时的兼容性冲突，因此建议正式预留高位数值供私有使用。</p>
+<p><strong>@Matthias J. Sax:</strong> 质疑该提议的必要性，指出过去 PR 合并时会动态更新 apiKey，并未出现明显问题，不确定是否存在必须解决的痛点。</p>
+<p><strong>@Chia-Ping Tsai:</strong> 对提议的必要性表示困惑，认为 apiKey 的数据类型（short）属于规范的一部分，不太可能发生破坏性变更。</p></div>
+            <p class="conclusion">讨论尚处于初期阶段，提议者已补充具体应用场景，但主要参与者仍对 KIP 的必要性持保留态度，暂未达成明确结论。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/rk90wnqb9v01mpmdsvgqmkbnlz7th78l">KIP-1279: Cluster Mirroring</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">讨论主要围绕 KIP-1279 集群镜像功能的实现细节展开，Federico Valeri 对 Jun Rao 提出的关于状态管理、配置优先级及时间戳验证等近 30 项反馈进行了详细解答并更新了提案。双方深入探讨了 MirrorMetadataManager 的验证机制、故障转移逻辑及元数据同步流程，以完善设计规范。</p>
+            <div class="key-points"><p><strong>@Jun Rao:</strong> 提出了关于镜像分区状态表链接有效性、状态变更操作的验证主体（Broker 还是 Coordinator）以及元数据管理器运行实例位置等一系列细节问题。</p>
+<p><strong>@Federico Valeri:</strong> 澄清了状态变更操作由 MirrorMetadataManager 进行两步验证，并利用元数据偏移量作为乐观锁来防止并发冲突。</p>
+<p><strong>@Federico Valeri:</strong> 明确了配置逻辑中 exclude（排除）规则优先级高于 include（包含），且镜像记录跳过时间戳验证以保留源端时间戳。</p></div>
+            <p class="conclusion">Federico Valeri 已根据讨论内容更新了 KIP 文档，修复了链接问题并补充了“可扩展性考量”章节，后续将继续处理剩余的未决问题。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/3t01l9sm9ymsq6dqjq5xymh0fmnspyob">KIP-1349 : Configurable snapshot frequency for share groups</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">讨论围绕 KIP-1349（为共享组配置快照频率）展开，主要涉及模块依赖关系的架构优化及性能影响的评估。Muralidhar 更新了 KIP 以解决依赖问题并添加了新指标，Andrew 则对性能测试数据及配置命名规范提出了疑问。目前讨论已进入验证性能影响和确认配置细节的阶段。</p>
+            <div class="key-points"><p><strong>@Sushant Mahajan:</strong> 建议避免 group-coordinator 与 share-coordinator 之间的直接依赖，提议在 share-coordinator 中创建辅助接口，并确认所有评论已被采纳。</p>
+<p><strong>@Muralidhar Basani:</strong> 更新了 KIP 以移除模块依赖，创建了辅助接口，添加了新指标，并提供了性能测试数据，指出新配置下快照频率显著降低可能影响恢复时间。</p>
+<p><strong>@Andrew Schofield:</strong> 询问了性能测试的具体情况以评估潜在的性能悬崖风险，建议配置命名应与现有元数据日志配置保持一致，并提议调整配置重要性等级。</p></div>
+            <p class="conclusion">Sushant 确认其提出的架构问题已解决，Andrew 提出的性能和命名问题正在讨论和验证中，尚待进一步反馈。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/xfbjgtrx5pnmroq2lpnoocf61728gvw2">KIP-1364: Expose Rebalance Cause to RebalanceConsumer and Metrics</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">该讨论围绕 KIP-1364 提议在客户端暴露 Rebalance Cause（重平衡原因）以辅助问题诊断。多位社区成员对该提议在新消费者协议（KIP-848）背景下的可行性和必要性提出质疑，认为应优先考虑服务端指标。</p>
+            <div class="key-points"><p><strong>@Andrew Schofield:</strong> 质疑定义一套连贯的 RebalanceCause 的可行性，指出在新协议下分配是异步的，难以区分“协调器发起”和“订阅变更”等具体原因。</p>
+<p><strong>@Alieh Saeedi:</strong> 要求关联历史 JIRA(KAFKA-12472)，并解释为何该分类问题在 2021 年不可行而在 KIP-848 发布后变得可解。</p>
+<p><strong>@Lianet Magrans:</strong> 认为 KIP-848 已改变重平衡机制，应由协调器驱动，建议将 visibility 改进集中在 Broker 端而非客户端。</p></div>
+            <p class="conclusion">讨论暂无定论，提议者需进一步解释在新协议下如何准确映射 RebalanceCause，以及论证客户端指标相比服务端指标的必要性。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/99dzo89qc82jvnn7t7thxxrlbj16o14h">Any way to delete a single record from a partition?</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">讨论主要探讨了 Kafka 是否支持删除分区中的单条记录。参与者确认现有机制（如 deleteRecords 或日志压缩）无法精确删除单条记录，且直接修改日志开销过大。讨论最终转向寻求通过“加密粉碎”等 GDPR 技巧使记录不可读，以在不破坏日志结构的前提下解决问题。</p>
+            <div class="key-points"><p><strong>@Sri Chaitanya:</strong> 指出 Kafka 现有删除机制仅支持范围删除或基于 Key 的压缩，缺乏删除特定单条记录（如敏感数据）的有效手段。</p>
+<p><strong>@Andrew Schofield:</strong> 确认无法直接删除单条记录，指出修改非活跃段开销大，修改活跃段难度更高，建议参考 GDPR 的处理技巧。</p>
+<p><strong>@Sri Chaitanya:</strong> 认为物理删除方向不可行，对通过加密手段使记录失效的方案更感兴趣，并提议若有足够关注可撰写 KIP。</p></div>
+            <p class="conclusion">初步结论是物理删除单条记录成本过高且技术复杂，下一步将探索通过加密或令牌失效等方式使记录不可读的替代方案。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/o7stfcgcw39lylch6b3v4flo9wq3vygc">KIP-1359: Improve usability of resetting group offsets</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论主要围绕 KIP-1359 中引入新 RPC 的必要性及其命名规范展开。Andrew 解释了为何选择创建新 RPC 而非复用现有接口，并提议将 RPC 重命名为更清晰的 GroupDescribe。Alieh 对此表示认可，讨论达成一致。</p>
+            <div class="key-points"><p><strong>@Andrew Schofield:</strong> 现有的 DescribeGroups RPC 专为 Classic Group 设计，通过版本升级难以解决根本问题，因此提议创建新的 RPC。</p>
+<p><strong>@Andrew Schofield:</strong> 建议将原有的 DescribeGroups 重命名为 ClassicGroupDescribe，新的 RPC 命名为 GroupDescribe，以解决命名“DescribeGroupsGeneric”令人反感的问题。</p>
+<p><strong>@Alieh Saeedi:</strong> 赞同将重置与导出操作解耦的设计，认为这是易用性的提升，并对 Andrew 的解释和更新表示满意。</p></div>
+            <p class="conclusion">Alieh 对所有解释表示认可，Andrew 将在投票通过后创建 JIRA。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/vl5t5mwof05gh1xx38zpps3b0298kbq8">KIP-1265: Public API needs to be explicitly declared</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论主要关注 KIP-1265 中关于受保护方法（protected methods）的文档化问题。Ashwin 指出受保护方法虽未包含在 docsJar 中，但插件开发者可能会在重写方法时引用，建议更新 docsJar 任务以包含这些方法。</p>
+            <div class="key-points"><p><strong>@Ashwin:</strong> 建议将受保护方法纳入 docsJar 任务，以便插件开发者参考，从而提高 API 的清晰度。</p>
+<p><strong>@Chia-Ping Tsai:</strong> 感谢回复，为避免重复讨论，建议后续关于此议题的交流移至 GitHub PR 讨论区继续进行。</p></div>
+            <p class="conclusion">讨论将转移至 GitHub PR 中继续进行，以落实具体的技术细节讨论。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/7fjz97f99hm0nhjoj03wd557wwqwjs80">KIP-1368: Client framework name and version</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">本讨论关于 KIP-1368 提案，旨在引入客户端框架名称和版本信息的传递机制，以便于问题诊断。参与者对该提案解决长期存在的功能缺口表示认可，但就 Broker 对信息的处理方式及协议版本规范提出了疑问。</p>
+            <div class="key-points"><p><strong>@Andrew Schofield:</strong> 提议在客户端连接 Broker 时发送框架（如 Spring）的名称和版本，以辅助问题排查。</p>
+<p><strong>@Alieh Saeedi:</strong> 询问 Broker 接收到的信息如何展示（如 JMX 或日志），并质疑协议版本升级与字段添加方式的兼容性问题。</p></div>
+            <p class="conclusion">目前尚无明确结论，讨论处于初步阶段，作者需回应对 Broker 端数据用途及协议版本规范的疑问。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/pknps5c3mq6px5fsro6rl93z4f2xqgmk">KIP-1355: In-rack traffic observability for clients and brokers</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论围绕 KIP-1355（客户端和 Broker 的机架内流量可观测性）展开，参与者针对新增指标的具体设计提出了补充建议。主要涉及增加 Broker 端的机架对齐流量指标、直接计算跨机架流量，以及完善 Producer 指标层级和错误配置监控。</p>
+            <div class="key-points"><p><strong>@Viktor Somogyi-Vass:</strong> 建议新增 BytesOutRackAlignedPerSec 指标以统计机架对齐流量，并考虑直接计算跨机架流量（CrossRack）以解决命名问题且更符合运维成本关注点。</p>
+<p><strong>@Chia-Ping Tsai:</strong> 建议为 Producer 补充 client-id 级别的指标（目前只有 topic 级别），并增加“unknown-rack-bytes”指标以监控配置错误场景。</p></div>
+            <p class="conclusion">讨论处于提案完善阶段，尚未得出最终结论，下一步将根据反馈决定是否采纳上述指标补充建议。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (37)</h2>
+            
+    <p>本周新建 <strong>37</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周 JIRA 主要集中在 Kafka Streams 的稳定性与功能增强，包括修复状态存储恢复异常、完善 Join 语义及实现新的查询类型。同时，社区还解决了 Broker 启动与测试框架相关的若干缺陷，并针对安全认证、MirrorMaker 及 Connect 插件版本管理提出了新的改进提案。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Kafka Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
