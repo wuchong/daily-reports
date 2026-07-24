@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-07-23</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-07-23</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 8 新 Issues</div>
+            <div class="stat">✅ 9 关闭</div>
+            <div class="stat">✨ 9 新 PRs</div>
+            <div class="stat">🎉 11 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/3606">PR #3606</a> 新增 remote-first fetch 日志读取偏好功能</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3711">PR #3711</a> Rust 客户端支持逗号分隔的 bootstrap servers</li><li>🐛 <a href="https://github.com/apache/fluss/pull/3752">PR #3752</a> 修复 ZK 通知清理并发竞态条件</li><li>🐛 <a href="https://github.com/apache/fluss/pull/3227">PR #3227</a> 修复 Spark COUNT(*)/COUNT(1) 空投影导致的元数据长度异常</li><li>📚 <a href="https://github.com/apache/fluss/pull/3424">PR #3424</a> 新增 Fluss + Iceberg + AWS Glue 集成文档</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <ul class="critical-list"><li>⚠️ <a href="https://github.com/apache/fluss/issues/3761">Issue #3761</a> s3.assumed.role.arn 未正确担任 S3 文件 I/O 角色</li><li>⚠️ <a href="https://github.com/apache/fluss/issues/3757">Issue #3757</a> RPC 解码器在验证字段长度前进行内存分配存在安全隐患</li></ul>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2662">Issue #2662</a> [filesystem] Enhance S3 filesystem with independent credentials provider for token delegation</h4>
+            <ul><li><span class="author">@affo</span>: 计划采用 Flink 的原生 S3 文件系统方案，正在处理中</li><li><span class="author">@michaelkoepf</span>: 可以继续使用当前的 Hadoop FS 实现，迁移到原生 FS 不是阻塞项</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3749">Issue #3749</a> [build] Remove Apache Incubator branding after graduation to TLP</h4>
+            <ul><li><span class="author">@naivedogger</span>: 已快速提交 PR 处理孵化器品牌移除工作</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3140">PR #3140</a> [FIP-43][client] Support log scanner and writer for multiple tables</h4>
+            <ul><li><span class="author">@leonardBang</span>: 指出 schema 边界检查、RPC 回调线程同步、LogScan API 兼容性等多个潜在问题</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3630">PR #3630</a> [lookup] Support historical partition lookup for lake tables</h4>
+            <ul><li><span class="author">@wuchong</span>: 详细评审了权限泄露、线程安全、性能隔离等问题，提出多项改进建议</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3463">PR #3463</a> [server][client] Add cooperative KV backpressure based on RocksDB L0</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 指出 flush 与 checkpoint 存在竞态导致数据不一致，以及潜在的死锁问题</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3737">PR #3737</a> [server] release remote log index cache entries on deletion</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 建议调整 removeAll 与 deleteRemoteLogSegmentFiles 的顺序以避免缓存泄漏</li><li><span class="author">@zuston</span>: 确认这是一个潜在的竞态条件</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3606">PR #3606</a> [client] Add log read preference for remote-first fetch</h4>
+            <ul><li><span class="author">@zuston</span>: 修复了旧测试的竞态问题，确保等待完整 tiering 后再断言</li><li><span class="author">@fresh-borzoni</span>: 感谢耐心和详尽的评审</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3750">PR #3750</a> [build] Remove Apache Incubator branding after graduation to TLP</h4>
+            <ul><li><span class="author">@Copilot</span>: 指出 Cargo.toml 路径和 KEYS 文件下载路径配置错误</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3763">#3763</a> [website] Adapt website and README for Apache top-level project <span class="author">@michaelkoepf</span> </li><li><a href="https://github.com/apache/fluss/issues/3761">#3761</a> [fs] s3.assumed.role.arn doesn't actually assume the role for S3 file I/O <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/3757">#3757</a> [rpc] RPC decoder allocates before validating field length <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/3754">#3754</a> [server] Fix tmp file cleanup in remote log index cache init <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/3753">#3753</a> [Bug] Concurrent ZK notification cleanup throws NoSuchElementException <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/3749">#3749</a> [build] Remove Apache Incubator branding after graduation to TLP <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/issues/3748">#3748</a> [Feature] Support independent TTL configuration for local log segments <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/3747">#3747</a> [test] Unstable test FlussAuthorizationITCase.testDescribeTableOperation <span class="author">@app/github-actions</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3764">#3764</a> [website] Adapt website and README for Apache top-level project <span class="author">@michaelkoepf</span> </li><li><a href="https://github.com/apache/fluss/pull/3762">#3762</a> Bump quinn-proto from 0.11.14 to 0.11.16 in /fluss-rust <span class="author">@app/dependabot</span> <span class="labels">dependencies, rust</span></li><li><a href="https://github.com/apache/fluss/pull/3760">#3760</a> [website/AI] Add consent-gated kapa.ai "Ask AI" widget <span class="author">@MehulBatra</span> </li><li><a href="https://github.com/apache/fluss/pull/3759">#3759</a> [flink] Support projection and filter pushdown for $changelog and $binlog virtual tables <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/pull/3756">#3756</a> [rpc] Bound length-delimited field length against readable bytes <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/3751">#3751</a> [server] add support of `KvPreWriteBuffer` backpressure <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/pull/3750">#3750</a> [build] Remove Apache Incubator branding after graduation to TLP <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/pull/3746">#3746</a> [common] Close input when copy output close fails <span class="author">@wolfkill</span> </li><li><a href="https://github.com/apache/fluss/pull/3745">#3745</a> [docs] Fix website broken links <span class="author">@wolfkill</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3754">#3754</a> [server] Fix tmp file cleanup in remote log index cache init <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/3753">#3753</a> [Bug] Concurrent ZK notification cleanup throws NoSuchElementException <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/3744">#3744</a> Rust client should retry bootstrap initialization on retriable errors <span class="author">@slfan1989</span> </li><li><a href="https://github.com/apache/fluss/issues/3732">#3732</a> Incorrect remote cache capacity calculation that miss timeIndex size <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/issues/3710">#3710</a> [rust][client] Support comma-separated bootstrap servers <span class="author">@slfan1989</span> </li><li><a href="https://github.com/apache/fluss/issues/3704">#3704</a> [test] FlussAuthorizationITCase leaks server tag state <span class="author">@litiliu</span> </li><li><a href="https://github.com/apache/fluss/issues/3607">#3607</a> Introduce log read preference for remote-first tiering reads <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/issues/2724">#2724</a> [spark] Empty projection in batch read throws Invalid metadata length with COUNT(*)/COUNT(1) <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/issues/2616">#2616</a> [Lake/Iceberg] create doc to integrate fluss + Iceberg via flink with aws glue <span class="author">@MehulBatra</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3758">#3758</a> [client][rust] Retry bootstrap initialization on retriable errors <span class="author">@slfan1989</span> </li><li><a href="https://github.com/apache/fluss/pull/3755">#3755</a> [server] Fix tmp file cleanup in remote log index cache init <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/3752">#3752</a> [server] fix zk notification purge race <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/pull/3737">#3737</a> [server] release remote log index cache entries on deletion <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/pull/3734">#3734</a> [server] prevent remote log cache size overflow <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/pull/3733">#3733</a> [server] include time index in remote log cache weight <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/pull/3711">#3711</a> [rust][client] Support comma-separated bootstrap servers <span class="author">@slfan1989</span> </li><li><a href="https://github.com/apache/fluss/pull/3705">#3705</a> [test] Wait for server tag cleanup <span class="author">@litiliu</span> </li><li><a href="https://github.com/apache/fluss/pull/3606">#3606</a> [client] Add log read preference for remote-first fetch <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/pull/3424">#3424</a> [docs] add docs to integrate Fluss + Iceberg via Flink with AWS Glue and Hive <span class="author">@qzyu999</span> </li><li><a href="https://github.com/apache/fluss/pull/3227">#3227</a> [spark] Fix empty projection causing Invalid metadata length for COUNT(*)/COUNT(1) <span class="author">@Kaixuan-Duan</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
