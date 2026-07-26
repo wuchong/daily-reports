@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-07-25</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-07-25</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 5 新 Issues</div>
+            <div class="stat">✅ 2 关闭</div>
+            <div class="stat">✨ 7 新 PRs</div>
+            <div class="stat">🎉 1 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/3764">PR #3764</a> 成功合并，适配 Apache 顶级项目官网与 README</li><li>⚠️ <a href="https://github.com/apache/fluss/pull/3463">PR #3463</a> Review 发现 P0 级 KV 原子性与客户端兼容性问题</li><li>✨ <a href="https://github.com/apache/fluss/issues/3772">Issue #3772</a> 提出 Sender 处理 RPC 失败的新优化方案</li><li>🚀 <a href="https://github.com/apache/fluss/pull/3771">PR #3771</a> 优化 Rust 客户端 Schema 对齐逻辑以支持未来演进</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3771">Issue #3771</a> [client][rust] Align fixed-schema scans by column ID</h4>
+            <ul><li><span class="author">@slfan1989</span>: 解释将 Arrow 对齐方式改为列 ID 以保证读写语义一致性</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3764">Issue #3764</a> [website] Adapt website and README for Apache top-level project</h4>
+            <ul><li><span class="author">@wuchong</span>: 感谢贡献，说明将合并此 PR 并继续跟进源码变更</li><li><span class="author">@fresh-borzoni</span>: 建议迁移独立站点并清理孵化期内容</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3750">Issue #3750</a> [build] Remove Apache Incubator branding after graduation to TLP</h4>
+            <ul><li><span class="author">@michaelkoepf</span>: 致歉并协调移除已完成的变更点</li><li><span class="author">@wuchong</span>: 指出 Helm Chart 版本与镜像 Tag 未更新的问题</li><li><span class="author">@naivedogger</span>: 已根据建议修复版本对齐与 Logo 问题</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3766">Issue #3766</a> [client] Isolate historical lookup in-flight requests</h4>
+            <ul><li><span class="author">@vvvdwbvvv</span>: 请求认领该 Issue 进行开发</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3772">Issue #3772</a> [client] Sender handles a per-table RPC failure using destination-wide write batches</h4>
+            <ul><li><span class="author">@wuchong</span>: 寻求其他维护者的意见与建议</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3764">PR #3764</a> [website] Adapt website and README for Apache top-level project</h4>
+            <ul><li><span class="author">@michaelkoepf</span>: 移除了冗余的 KEYS 文件描述</li><li><span class="author">@wuchong</span>: 询问 Rust 文档站点与主站点的重叠处理方案</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3463">PR #3463</a> [server][client] Add cooperative KV backpressure based on RocksDB L0</h4>
+            <ul><li><span class="author">@wuchong</span>: 指出 P0 兼容性风险与原子性问题，建议重构锁逻辑</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3750">PR #3750</a> [build] Remove Apache Incubator branding after graduation to TLP</h4>
+            <ul><li><span class="author">@wuchong</span>: 建议移除页脚 ASF Logo 并修正 Helm Chart 版本</li><li><span class="author">@naivedogger</span>: 已按要求修复 Logo 和 Chart 版本问题</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3383">PR #3383</a> [Flink] Kvscan flink integration</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 建议增加测试覆盖并修正 Lake snapshot 优先逻辑</li><li><span class="author">@polyzos</span>: 回应评审意见并推送了修改</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3772">#3772</a> [client] Sender handles a per-table RPC failure using destination-wide write batches <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/issues/3770">#3770</a> [Improvement][rust] Align fixed-schema log reads by column ID <span class="author">@slfan1989</span> </li><li><a href="https://github.com/apache/fluss/issues/3768">#3768</a> [Improvement][Rust] Align fixed-schema Arrow reads by stable column ID <span class="author">@slfan1989</span> </li><li><a href="https://github.com/apache/fluss/issues/3766">#3766</a> [client] Isolate historical lookup in-flight requests <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/issues/3765">#3765</a> [client] Preserve lookup query ordering across retries <span class="author">@luoyuxia</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3777">#3777</a> [FIP-37] Add bitmap Phase 2 functions and register via FlussCatalog <span class="author">@Prajwal-banakar</span> </li><li><a href="https://github.com/apache/fluss/pull/3776">#3776</a> [server] Add meta-test to prevent exception cause loss in catch blocks <span class="author">@XuQianJin-Stars</span> </li><li><a href="https://github.com/apache/fluss/pull/3775">#3775</a> [server] Add configurable retry and cleanup for remote log segment uploads <span class="author">@XuQianJin-Stars</span> </li><li><a href="https://github.com/apache/fluss/pull/3774">#3774</a> [client] Introduce dedicated client.lookup.close-timeout config option <span class="author">@XuQianJin-Stars</span> </li><li><a href="https://github.com/apache/fluss/pull/3773">#3773</a> [flink] Add heartbeat and request-table metrics to TieringSourceEnumerator <span class="author">@XuQianJin-Stars</span> </li><li><a href="https://github.com/apache/fluss/pull/3771">#3771</a> [client][rust] Align fixed-schema scans by column ID <span class="author">@slfan1989</span> </li><li><a href="https://github.com/apache/fluss/pull/3767">#3767</a> [test] Fix unstable testKvSnapshotLeaseAfterCoordinatorServerRestart <span class="author">@firasbouzazi</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3768">#3768</a> [Improvement][Rust] Align fixed-schema Arrow reads by stable column ID <span class="author">@slfan1989</span> </li><li><a href="https://github.com/apache/fluss/issues/3763">#3763</a> [website] Adapt website and README for Apache top-level project <span class="author">@michaelkoepf</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3764">#3764</a> [website] Adapt website and README for Apache top-level project <span class="author">@michaelkoepf</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
