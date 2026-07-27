@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-07-26</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-07-26</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 9 新 Issues</div>
+            <div class="stat">✅ 3 关闭</div>
+            <div class="stat">✨ 10 新 PRs</div>
+            <div class="stat">🎉 2 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/3764">PR #3764</a> 网站适配 Apache 顶级项目，更新 README 并移除孵化器品牌</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3760">PR #3760</a> 添加基于用户同意的 kapa.ai "Ask AI" 智能问答小部件</li><li>✨ 多个新 UMBRELLA Issue 开启：Kubernetes Operator (#3787)、TLS 支持 (#3786)、毕业后续任务 (#3783)</li><li>🐛 <a href="https://github.com/apache/fluss/issues/3772">Issue #3772</a> 分析客户端 RPC 失败处理问题，发现集群抖动时高重试负载根因</li><li>📚 <a href="https://github.com/apache/fluss/pull/3777">PR #3777</a> 添加 bitmap Phase 2 函数，修复 XOR 聚合合并正确性问题</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <ul class="critical-list"><li>⚠️ <a href="https://github.com/apache/fluss/pull/3463">PR #3463</a> 中存在多处 P0 级别问题：新增错误码向后不兼容、KV flush 原子性被破坏可能导致快照不一致</li></ul>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3772">Issue #3772</a> [client] Sender handles a per-table RPC failure using destination-wide write batches</h4>
+            <ul><li><span class="author">@wuchong</span>: 询问其他维护者对该问题分析的看法</li><li><span class="author">@luoyuxia</span>: 认可问题分析和解决方案</li><li><span class="author">@platinumhamburg</span>: 认为该问题找到了集群抖动时高重试负载的根因，值得高优先级修复</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3764">Issue #3764</a> [website] Adapt website and README for Apache top-level project</h4>
+            <ul><li><span class="author">@wuchong</span>: 确认 PR 内容，将处理源代码变更的其他 PR</li><li><span class="author">@wuchong</span>: 询问 fluss-rust 网站文档的处理方式</li><li><span class="author">@fresh-borzoni</span>: 计划联系 INFRA 迁移 clients.fluss.apache.org 到 Fluss vhost</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3750">Issue #3750</a> [build] Remove Apache Incubator branding after graduation to TLP</h4>
+            <ul><li><span class="author">@michaelkoepf</span>: 说明已在另一个 PR 中处理了部分变更</li><li><span class="author">@naivedogger</span>: 已 rebase 并移除与 #3764 重叠的变更</li><li><span class="author">@wuchong</span>: 指出 Helm chart 版本和镜像 tag 需要同步更新</li><li><span class="author">@luoyuxia</span>: 指出 CI 失败，需要处理</li><li><span class="author">@naivedogger</span>: 计划在后续 PR 中处理网站相关问题</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3777">Issue #3777</a> [FIP-37] Add bitmap Phase 2 functions and register via FlussCatalog</h4>
+            <ul><li><span class="author">@Prajwal-banakar</span>: 请求重新触发 CI 并 Review</li><li><span class="author">@polyzos</span>: 指出 rb_xor_agg 的 merge() 存在正确性 bug，应使用 XOR 而非 OR 合并</li><li><span class="author">@Prajwal-banakar</span>: 已修复 XOR 聚合合并问题并补充测试用例</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3771">Issue #3771</a> [client][rust] Align fixed-schema scans by column ID</h4>
+            <ul><li><span class="author">@slfan1989</span>: 说明 Arrow fixed-schema 与 KV FixedSchemaDecoder 字段对齐方式不一致，需统一为列 ID</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3751">Issue #3751</a> [server] add support of `KvPreWriteBuffer` backpressure</h4>
+            <ul><li><span class="author">@beryllw</span>: 请求 Review</li><li><span class="author">@luoyuxia</span>: 建议参考 #3463 的背压机制实现</li><li><span class="author">@wuchong</span>: 建议复用 #3463 的客户端协作机制，并基于 RocksDB L0 指标作为另一个背压源</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3766">Issue #3766</a> [client] Isolate historical lookup in-flight requests</h4>
+            <ul><li><span class="author">@vvvdwbvvv</span>: 提出保留全局限制 N 并添加历史查询上限 H 的方案</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2562">Issue #2562</a> [UMBRELLA] Prepare Apache Fluss for Incubating Graduation</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 询问是否可以关闭该 Issue</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3206">Issue #3206</a> [docs] AskAi fails to load on Fluss website</h4>
+            <ul><li><span class="author">@wuchong</span>: 说明该问题已由 #3760 解决</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3629">Issue #3629</a> [common] Fix equals/hashCode contract violation in Schema.PrimaryKey</h4>
+            <ul><li><span class="author">@NestDream</span>: 请求 Review 该修复 Schema.PrimaryKey equals/hashCode 违约的单行 PR</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3761">Issue #3761</a> [fs] s3.assumed.role.arn doesn't actually assume the role for S3 file I/O</h4>
+            <ul><li><span class="author">@qzyu999</span>: 认领该 Issue</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3383">Issue #3383</a> [Flink] Kvscan flink integration</h4>
+            <ul><li><span class="author">@polyzos</span>: 已根据 review 意见更新代码</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3463">PR #3463</a> [server][client] Add cooperative KV backpressure based on RocksDB L0</h4>
+            <ul><li><span class="author">@wuchong</span>: 提出多项 P0 级问题：新增错误码需向后兼容、KV flush 原子性被破坏、ack=1 不应延迟响应等</li><li><span class="author">@wuchong</span>: 建议在 ReplicaManager 填充压力值而非 DelayedWrite，简化逻辑</li><li><span class="author">@wuchong</span>: 要求测试避免使用反射，改用包可见成员</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3476">PR #3476</a> [lake/paimon] Support custom Paimon lake table path</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 询问是否允许只在创建表时设置选项、之后不可修改</li><li><span class="author">@wzx140</span>: 确认该限制满足需求，避免处理复杂数据迁移场景</li><li><span class="author">@luoyuxia</span>: 请求 wuchong Review 公开 API 设计</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3787">#3787</a> [UMBRELLA] Implement Kubernetes Operator <span class="author">@affo</span> </li><li><a href="https://github.com/apache/fluss/issues/3786">#3786</a> [UMBRELLA] Implement TLS support <span class="author">@affo</span> </li><li><a href="https://github.com/apache/fluss/issues/3784">#3784</a> [rust] Update release tooling and documentation for TLP releases <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/issues/3783">#3783</a> [UMBRELLA] Track Apache Fluss post-graduation tasks <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/issues/3782">#3782</a> [rpc] Add authoritative ISR to Fluss metadata and RPC <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/3780">#3780</a> [server] Prevent uncommitted ISR changes from being installed in CoordinatorContext <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/3772">#3772</a> [client] Sender handles a per-table RPC failure using destination-wide write batches <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/issues/3770">#3770</a> [Improvement][rust] Align fixed-schema log reads by column ID <span class="author">@slfan1989</span> </li><li><a href="https://github.com/apache/fluss/issues/3768">#3768</a> [Improvement][Rust] Align fixed-schema Arrow reads by stable column ID <span class="author">@slfan1989</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3785">#3785</a> feat: return isr metadata <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/pull/3781">#3781</a> [server] feat: committed isr boundary <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/pull/3779">#3779</a> [filesystems] Fix S3 assumed role ARN not used for file I/O <span class="author">@qzyu999</span> </li><li><a href="https://github.com/apache/fluss/pull/3778">#3778</a> [server] feat: support table.log.local-ttl <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/pull/3777">#3777</a> [FIP-37] Add bitmap Phase 2 functions and register via FlussCatalog <span class="author">@Prajwal-banakar</span> </li><li><a href="https://github.com/apache/fluss/pull/3776">#3776</a> [server] Add meta-test to prevent exception cause loss in catch blocks <span class="author">@XuQianJin-Stars</span> </li><li><a href="https://github.com/apache/fluss/pull/3775">#3775</a> [server] Add configurable retry and cleanup for remote log segment uploads <span class="author">@XuQianJin-Stars</span> </li><li><a href="https://github.com/apache/fluss/pull/3774">#3774</a> [client] Introduce dedicated client.lookup.close-timeout config option <span class="author">@XuQianJin-Stars</span> </li><li><a href="https://github.com/apache/fluss/pull/3773">#3773</a> [flink] Add heartbeat and request-table metrics to TieringSourceEnumerator <span class="author">@XuQianJin-Stars</span> </li><li><a href="https://github.com/apache/fluss/pull/3771">#3771</a> [client][rust] Align fixed-schema scans by column ID <span class="author">@slfan1989</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3768">#3768</a> [Improvement][Rust] Align fixed-schema Arrow reads by stable column ID <span class="author">@slfan1989</span> </li><li><a href="https://github.com/apache/fluss/issues/3763">#3763</a> [website] Adapt website and README for Apache top-level project <span class="author">@michaelkoepf</span> </li><li><a href="https://github.com/apache/fluss/issues/3206">#3206</a> [docs] AskAi fails to load on Fluss website <span class="author">@binary-signal</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3764">#3764</a> [website] Adapt website and README for Apache top-level project <span class="author">@michaelkoepf</span> </li><li><a href="https://github.com/apache/fluss/pull/3760">#3760</a> [website/AI] Add consent-gated kapa.ai "Ask AI" widget <span class="author">@MehulBatra</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
