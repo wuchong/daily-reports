@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spark 社区周报 | 2026-W29</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Spark 社区周报 | 2026-W29</h1>
+            <p class="date-range">2026-07-13 ~ 2026-07-19</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (2)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/bqgj78q6o86psotdt8dkh0jl9dplbq1j">Apache Spark Connect Swift Client 0.7.0 released</a></li>
+<li><a href="https://lists.apache.org/thread/02525gm3m2wkc23kvp96l4ztvnpgo9ys">Apache Spark K8s Operator 1.0.0 released</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (2)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/8onyz781ffpxosokx6dfzhk0ctwwtmzl">Release Apache Spark Connect Swift Client 0.7.0 (RC1)</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/g8b6fz8pt0pytz756psvvvqvsmn45l2v">Release Apache Spark K8s Operator 1.0.0 (RC1)</a> <span class="status passed">✅ 已通过</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (7)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/9fb0brzql5cwcnoltw0byf2zjw52mmy9">[PSA] Preparing 4.3 branch cut 1st Aug.</a></h3>
+            <p class="meta">3 条回复 · 2 位参与者</p>
+            <p class="summary">本次讨论主要关于 Apache Spark 4.3 版本的分支切割准备与发布计划。作为实行 3 个月发布周期新策略后的首个版本，社区强调要严格遵守时间表以实现可预测的发布，并明确了代码冻结、QA 测试及 RC 候选版本的时间节点。</p>
+            <div class="key-points"><p><strong>@Hyukjin Kwon:</strong> 提醒社区将于 8 月 1 日进行分支切割，强调这是新发布策略下的首个版本，必须避免历史延期问题，确保发布流程的可预测性。</p>
+<p><strong>@Jungtaek Lim:</strong> 作为发布经理，呼吁未完成的项目通过设置开关禁用部分变更以推迟至 4.4 版本，这是实现快速发布周期的关键。</p>
+<p><strong>@Jungtaek Lim:</strong> 公布了具体时间表：8 月 1 日代码冻结与切分支，8 月中旬 QA 测试，8 月下旬发布 RC。</p></div>
+            <p class="conclusion">已确定 Spark 4.3 的发布日程，Jungtaek Lim 将更新版本策略页面以反映该计划，Hyukjin Kwon 对此表示同意。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/cw897hvjqlmrtdo7byr10b86wtls819l">Spark Connect support for the spark-sql CLI (completing SPARK-49194?)</a></h3>
+            <p class="meta">3 条回复 · 2 位参与者</p>
+            <p class="summary">讨论主要关于为 spark-sql CLI 添加 Spark Connect 支持（SPARK-58227），以补全 SPARK-49194 系列工作的最后一块拼图。提议者 Dhruv Pratap 计划通过新建原生 Driver 实现 `spark-sql --remote` 功能，Cheng Pan 则对现有实现方式提出了疑问。</p>
+            <div class="key-points"><p><strong>@Dhruv Pratap:</strong> 提议新增 SparkConnectSQLCLIDriver 以支持原生 `spark-sql --remote`，保持与其他入口点（如 spark-shell）的一致性，且无需依赖 JDBC 或 Hive 组件。</p>
+<p><strong>@Cheng Pan:</strong> 指出 SPARK-54002 已通过 BeeLine 和 JDBC 提供了类似的 SQL CLI 体验，并认为虽然扩展 spark-sql 支持 Connect 的想法合理，但对当前从头构建循环逻辑的实现方式表示担忧。</p></div>
+            <p class="conclusion">Dhruv Pratap 已提交 PR（#57383）供审核，Cheng Pan 建议在 GitHub PR 上继续深入讨论具体的实现细节和架构顾虑。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/n30wg3v5ok6xw99wjlzkohpdcvf2t2mo">Seeking Guidance on Spark Contribution (SPARK-56891)</a></h3>
+            <p class="meta">3 条回复 · 3 位参与者</p>
+            <p class="summary">本次讨论主要涉及两位新贡献者 Hitesh 和 Sergei 寻求对其 PR (SPARK-56891 和 SPARK-49634) 的审核指导。社区资深成员 Uroš 对此表示欢迎，并提供了关于贡献流程和推动审核的具体建议。</p>
+            <div class="key-points"><p><strong>@Y. Hitesh Reddy / Sergei Repnikov:</strong> 作为新贡献者提交了 JIRA 和 PR，但因审核进度缓慢或原报告者 inactive 而寻求社区帮助以推动进展。</p>
+<p><strong>@Uroš Bojanić:</strong> 欢迎新贡献者，指出审核是志愿者驱动的，建议在 PR 上进行技术讨论，并主动联系 Committer 寻求审核。</p>
+<p><strong>@Uroš Bojanić:</strong> 针对 Sergei 的情况指出，原报告者 inactive 不影响贡献，任何人都可以认领 JIRA 并提交 PR，审核基于内容本身。</p></div>
+            <p class="conclusion">Uroš 已对 Sergei 的 PR 进行了初步审核并留言，建议后续直接在 PR 页面继续技术讨论。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/rftog9rxoy2nsyt1f6678cqy1q93yrwd">unsubscribe</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">该邮件讨论主题为“unsubscribe”，表明用户试图通过邮件列表取消订阅。讨论内容极少，仅包含发件人信息，缺乏实质性的技术交流。</p>
+            <div class="key-points"><p><strong>@David Frank:</strong> 发起了一封退订邮件。</p>
+<p><strong>@Xianzhe Ma:</strong> 回复了该邮件（内容未显示）。</p></div>
+            <p class="conclusion">无技术结论，这属于邮件列表的常规管理操作（退订请求）。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/fbndr5k6ddop0jmr7s6lp34pcd5o8j73">Seeking feedback on Process: [SPARK-58126][CORE] Support a pluggable SchedulingAlgorithm via configuration</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">本次讨论是贡献者 Christian Neuenroth 首次提交 SPARK-58126 相关 PR 后，主动询问开发流程是否合规及后续注意事项。社区资深成员 Uroš Bojanić 对其表示欢迎，并提供了关于贡献流程的具体指导建议。</p>
+            <div class="key-points"><p><strong>@Christian Neuenroth:</strong> 作为首次贡献者，提交了支持可插拔 SchedulingAlgorithm 的 PR，希望确认流程是否正确并寻求改进建议。</p>
+<p><strong>@Uroš Bojanić:</strong> 建议将技术讨论保留在 PR 页面以便集中管理，及时回应审查意见，并保持耐心等待志愿者审核。</p>
+<p><strong>@Uroš Bojanić:</strong> 鼓励贡献者主动联系 Core/Scheduler 模块的活跃 Committer 寻求反馈。</p></div>
+            <p class="conclusion">贡献者已收到指引，下一步将按照建议继续跟进 PR 审查流程，并保持耐心等待 Committer 的反馈。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/747jwfmqsryhsbfds93qdzoffmqjob12">Introduction - New contributor interested in Apache Spark</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论主要关于新贡献者 Harish 请求加入 Spark 社区的指引。社区资深成员 Uroš 热情欢迎了新成员，并提供了具体的入门建议。</p>
+            <div class="key-points"><p><strong>@N Harishkumar:</strong> 自我介绍并表达了对 Spark 内部机制、PySpark 及流处理等领域的学习兴趣和贡献意愿。</p>
+<p><strong>@Uroš Bojanić:</strong> 指引新贡献者查阅过往邮件列表以获取贡献指南、JIRA 和 PR 流程等入门资源。</p>
+<p><strong>@Uroš Bojanić:</strong> 建议在确定工作内容后直接创建 JIRA 或 PR，并在相关工单下进行后续讨论。</p></div>
+            <p class="conclusion">新贡献者已获得入门指引，下一步应参考提供的链接了解流程，并寻找合适的任务开启 JIRA 或 PR。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/y8kdklzdjo518nym9yv04c3cdgf81rxj">[SPARK-48290] AQE skew join detection breaks above 2000 shuffle partitions - review request</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论针对 AQE 在 Shuffle 分区数超过 2000 时无法检测倾斜 Join 的问题，指出根本原因在于 MapStatus 压缩机制导致数据被平均化，而非 AQE 本身。提交者通过复现问题验证了调整相关参数可恢复检测，并提交 PR 试图修复默认配置。</p>
+            <div class="key-points"><p><strong>@Vivek Gangavarapu:</strong> 问题根源是当分区数超过 2000 时，MapStatus 切换为高度压缩模式，导致倾斜分区的数据大小被平均化，AQE 无法识别差异。</p>
+<p><strong>@Vivek Gangavarapu:</strong> 现有参数 `accurateBlockSkewedFactor` 可解决此问题，但 Spark 默认关闭了该功能，PR 旨在调整此默认行为。</p></div>
+            <p class="conclusion">已提交 PR 修复该问题，主要方案是启用或调整 `spark.shuffle.accurateBlockSkewedFactor` 参数，以保留倾斜数据块的精确大小信息。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (0)</h2>
+            
+    <p>本周新建 <strong>0</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周无新建 JIRA。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Spark Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
