@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iceberg 社区周报 | 2026-W29</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Iceberg 社区周报 | 2026-W29</h1>
+            <p class="date-range">2026-07-13 ~ 2026-07-19</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (2)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/ohgwhy8x2cw4coons0kb000s0f8lv7jk">Release Apache Iceberg Rust 0.10.0</a></li>
+<li><a href="https://lists.apache.org/thread/13ty49bvlt9ptg466orhqtv3bf3q13x9">Maximilian Michels as new committer</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (3)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/jldd9sf9r0wnrhgwd55mzhh0gt87jc2k">[Terraform] Release Apache Iceberg Terraform provider v0.1.0 RC1</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/do69l2nfm88m024ol34m2pdy0rqomqnz">REST Spec: Labels on the IRC read path</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/njo5bzgf4m126ly74ydz1pfznhz70h38">Align REST OpenAPI expressions with the Iceberg expression specification</a> <span class="status passed">✅ 已通过</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/zqhwkgly7h4c8gnqcf6xfmpvsd8513ww">Deprecate Equality Deletes in Iceberg V4</a></h3>
+            <p class="meta">14 条回复 · 11 位参与者</p>
+            <p class="summary">本次讨论主要关于在 Iceberg V4 中废弃 Equality Deletes（等值删除），社区普遍支持禁止在 V4 表中写入新的等值删除，转而使用 Deletion Vectors (DVs)。参与者认为等值删除将高昂的连接成本推给了读取端，而 DVs 通过一次性解析位置能显著降低后续读取成本，且 Flink 的索引实践已证明替代方案可行。</p>
+            <div class="key-points"><p><strong>@huaxin gao:</strong> 等值删除将成本分摊到每次读取，而 DVs 仅需一次性解析；后台转换和索引机制可确保写入路径的低成本，同时解决 CDC 和行级血缘等阻塞问题。</p>
+<p><strong>@Ryan Blue:</strong> 强烈支持废弃提议，认为这是将维护责任正确转移给写入者的举措；建议 V4 仅禁止写入新的等值删除，现有表升级时可保留旧数据以实现平滑过渡。</p>
+<p><strong>@Daniel Weeks:</strong> 虽然承认等值删除在写入成本上的优势，但认为其互操作性差、维护复杂且统计信息质量低，目前对生态的负面影响已超过其带来的便利。</p></div>
+            <p class="conclusion">初步结论是社区一致同意在 V4 规范中禁止写入新的等值删除，但允许 V3 表升级后保留并读取旧的等值删除文件，无需强制同步重写。下一步将完善 Flink 等引擎的索引与 DV 写入实现，作为替代方案的落地保障。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/o0wsy3jot3vos7zpqop4xk48k0hzf057">Should incremental (append) scan semantics be part of the spec?</a></h3>
+            <p class="meta">3 条回复 · 3 位参与者</p>
+            <p class="summary">讨论主要关于是否应将增量扫描语义（特别是增量追加扫描）纳入 Iceberg 表规范。目前各语言实现均依赖 Java 的参考实现，缺乏正式规范导致约定俗成的规则较为脆弱，且 REST 扫描规划 API 已涉及此功能。</p>
+            <div class="key-points"><p><strong>@Alexander Bailey:</strong> 当前规范对增量扫描定义缺失，导致多语言实现只能盲目跟随 Java 代码，缺乏标准契约，建议参考现有的“时间旅行”读语义进行标准化。</p>
+<p><strong>@Xiening Dai:</strong> 当前的增量扫描 API 仅返回文件集，只支持追加场景；若要支持包含删除和更新的完整快照差异扫描，需要从 API 层面进行更深入的讨论。</p>
+<p><strong>@Ryan Blue:</strong> 社区计划在 v4 版本中加强变更检测的要求，从而在规范层面支持所有类型的增量扫描，不再依赖特定实现的惯例。</p></div>
+            <p class="conclusion">初步结论是社区已意识到该需求，并计划通过 v4 版本的规范更新来解决，支持更全面的增量扫描语义。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/5px7r0103bpxjvtzf9q75jp5klm5mj0q">[PR#16827 Review Request] Hilbert Curve Clustering for rewrite_data_files: Better Data Skipping than Z-order</a></h3>
+            <p class="meta">3 条回复 · 2 位参与者</p>
+            <p class="summary">本次讨论主要关于在 rewrite_data_files 操作中引入 Hilbert 曲线排序策略，作为现有 Z-order 的替代方案以优化多列过滤查询的数据跳过能力。作者通过理论分析和 TPC-H 基准测试证明，Hilbert 曲线在扫描文件数量上比 Z-order 减少约 31%，尽管重写时间略有增加，但整体效果积极。社区反馈积极，认为该方案值得推进。</p>
+            <div class="key-points"><p><strong>@Gianluca Graziadei:</strong> Hilbert 曲线相比 Z-order 能避免空间跳跃，提供更紧密的空间聚类，从而减少查询扫描的文件数量；实现上复用了现有的 Z-order 基础设施，且测试表明扫描文件数减少 31.25%。</p>
+<p><strong>@Tanmay Rauth:</strong> 肯定了复用 Z-order 编码的实现思路，但建议提供端到端的对比数据（如扫描文件数、重写时间），以更直观地展示 Hilbert 在数据跳过方面的实际收益。</p></div>
+            
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/nxqw16p5wt8oorrtsbc28phkosp0g55l">[DISCUSSION] Iceberg Rust / pyiceberg-core 0.10.1</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">由于 pyiceberg-core 0.10.0 版本的发布构件错误地基于主分支构建，已被撤回。社区计划尽快发布无代码变更的 0.10.1 版本，以提供正确的发布构件。</p>
+            <div class="key-points"><p><strong>@Jones, Danny:</strong> 指出 0.10.0 版本构件有误（基于 main 分支而非发布分支），计划发布 0.10.1 进行修正。</p>
+<p><strong>@Kevin Liu:</strong> 确认已在 PyPI 上撤回错误版本，建议使用与 0.10.0 相同的提交哈希启动 0.10.1 发布流程。</p></div>
+            <p class="conclusion">初步决定启动 0.10.1 版本的发布流程，并开启投票线程。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/3vmfx7t322d9skk8qohl7b2t2whjyrsl">Proposal: File-Level Access Delegation in the Iceberg REST Catalog Spec</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论围绕 Iceberg REST Catalog 规范中的文件级访问委托模式展开，重点分析了远程签名与预签名 URL 的可行性。作者指出远程签名在跨云实施中面临 TTL 时效限制和 Azure 原生不支持的双重挑战，相比之下预签名 URL 在三大云服务商中支持更为统一。</p>
+            <div class="key-points"><p><strong>@William Hyun:</strong> AWS 和 GCS 的远程签名存在严格的 15 分钟 TTL 限制，且 Azure 不支持通过 Header 进行远程签名，需依赖不推荐的账户主密钥方案。</p>
+<p><strong>@William Hyun:</strong> 预签名 URL（Pre-signed URLs）在 AWS、GCS 和 Azure 三大云服务商中均得到了原生且统一的支持，是更优的跨云解决方案。</p></div>
+            <p class="conclusion">初步结论倾向于在跨云场景下优先采用预签名 URL 模式，以规避远程签名在 Azure 上的兼容性缺陷及安全风险。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/dn6fpsn9o63d25kk6lgdq97cpcqv4l9s">Column Update metadata representation</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论主要围绕 Column Update 功能中列文件元数据的表示方式展开，重点审议了 ColumnFile 结构的字段扩展以及基础文件与列文件的关系。经过权衡，社区决定扩展元数据字段以适应表属性演变，并明确将基础文件与列文件分开存储。</p>
+            <div class="key-points"><p><strong>@Gábor Kaszab:</strong> 建议扩展 ColumnFile 元数据结构，增加 format_version 等字段，以应对表属性（如 write.format.version）演变带来的兼容性问题。</p>
+<p><strong>@社区共识:</strong> 决定将基础文件与列文件分开处理，因为合并两者会引入不直观的约束和不变量，容易导致设计错误。</p>
+<p><strong>@社区共识:</strong> 分开设计避免了无法填充 base file 的 field_ids 列表、难以识别基础文件以及无法轻易删除基础文件等问题。</p></div>
+            <p class="conclusion">已达成初步结论：扩展 ColumnFile 字段列表，并保持基础文件与列文件分离的设计架构。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/nghythoyr2xyv2ko5qqb0rxswg1lh5sx">Dedicated sync for Iceberg Index Support</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论总结了关于 Iceberg 索引支持会议的关键结论，计划在 v1 版本引入 SCALAR 索引类型枚举，并规定转换函数需保持严格全序排序以支持通用过滤。邮件同时提出了关于哈希索引类型定义、转换函数表示形式以及未来索引类型规划等未决问题。</p>
+            <div class="key-points"><p><strong>@Péter Váry:</strong> 建议 v1 版本引入 SCALAR 索引类型，并要求转换函数保持严格全序排序，以便叶节点文件存储首尾值进行过滤。</p>
+<p><strong>@Péter Váry:</strong> 提出疑问：是否应设立独立的 HASH 索引类型以区分哈希索引与有序索引，以及转换函数应使用枚举还是字符串表示。</p>
+<p><strong>@Péter Váry:</strong> 倾向于在提案中提及 VECTOR 等未来索引类型，认为这有助于解释引入索引类型枚举的合理性。</p></div>
+            <p class="conclusion">初步确定将在 API 中引入索引类型枚举（初期含 SCALAR）及严格全序排序规范，但仍需社区针对哈希索引类型划分、转换函数表示形式等开放性问题进行进一步讨论。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/8rbkjzs59ycq442o1v4bpkzftwkr62ol">Variant Shredding Policy Across Iceberg Implementations</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Neelesh Salian 更新了 Variant Shredding 提案，基于社区反馈完成了推理策略的基准测试，并确定了最终的推理算法。提案已将原本固定的阈值调整为可配置的表属性，以优化跨实现的 Shredding 策略。</p>
+            <div class="key-points"><p><strong>@Neelesh Salian:</strong> 通过基准测试确定了最佳推理算法，并将可调阈值从常量改为表属性。</p>
+<p><strong>@Kurtis:</strong> 肯定了社区在 Variant 类型及实现上达成一致的努力，并强调需对定义 Shredding 方式的推理算法进行对齐。</p></div>
+            <p class="conclusion">提案已完成算法验证与更新，下一步将根据社区审阅反馈推进实施。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/ycvrcb60m5y3hmjw2rfhkmxlcwkqnnnj">Add variant type to the REST catalog spec</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论旨在将 Iceberg 表格式 V3 中已有的 variant 类型添加到 REST Catalog OpenAPI 规范中，以填补规范缺失。作者已提交相关 PR，并计划在代码完善后发起投票流程。</p>
+            <div class="key-points"><p><strong>@Neelesh Salian:</strong> Variant 类型自 V3 起已是 Iceberg 表格式的一部分，但 REST Catalog OpenAPI 规范尚未对其进行建模，需要补充。</p></div>
+            <p class="conclusion">下一步将在 PR 准备就绪后，启动单独的 [VOTE] 投票线程以推进采纳。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/33h4ppbrkmm83no3x6mfxqkv4zdw6ynv">Add a file data type to Iceberg (v4)</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">随着 Parquet FILE 逻辑类型的合并，Nitya Kumar Sharma 提议在 Iceberg 中引入相应的文件数据类型（File Data Type），并提交了一份仅关注类型语义（如序列化、统计信息等）而暂不涉及凭证分发的设计文档。该提案旨在独立于访问控制层推进讨论，以便更快就类型系统达成共识，并明确表示这并非对现有提案的反驳，而是希望与其互补融合。</p>
+            <div class="key-points"><p><strong>@Nitya Kumar Sharma:</strong> 文件类型应定义为一种“命名结构体（named struct）”，包含 uri、offset 等六个固定字段，并遵循 v4 相对路径解析规则。</p>
+<p><strong>@Nitya Kumar Sharma:</strong> 提案仅支持内联和外部 URI 两种形式，暂不采纳 Parquet #585 允许的同文件内自引用形式，以保持类型的简洁性。</p>
+<p><strong>@Nitya Kumar Sharma:</strong> 文档范围刻意聚焦于类型层面的语义，将目录代理的凭证分发机制留待上层处理，以便独立推进类型设计。</p></div>
+            <p class="conclusion">该提案已启动针对文件类型语义的社区讨论，下一步计划是与现有的凭证分发提案进行协作，共同确定最终的技术方向。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (0)</h2>
+            
+    <p>本周新建 <strong>0</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周无新建 JIRA。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Iceberg Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
