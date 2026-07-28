@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-07-27</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-07-27</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 16 新 Issues</div>
+            <div class="stat">✅ 3 关闭</div>
+            <div class="stat">✨ 7 新 PRs</div>
+            <div class="stat">🎉 3 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/3760">PR #3760</a> 为网站添加 AI 问答组件</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3750">PR #3750</a> 移除 Apache Incubator 品牌标识，庆祝毕业为 TLP</li><li>🐛 <a href="https://github.com/apache/fluss/pull/3641">PR #3641</a> 修复 Flink 连接器查询 changelog/binlog 虚拟表时的异常</li><li>✨ 新增 16 个 Issue，其中包含 TLS 支持、Kubernetes Operator 等重要规划</li><li>✨ 新增 7 个 PR，涵盖 KV 快照恢复、ISR 元数据、S3 文件 I/O 等功能开发</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3777">Issue #3777</a> [FIP-37] Add bitmap Phase 2 functions and register via FlussCatalog</h4>
+            <ul><li><span class="author">@polyzos</span>: 指出 rb_xor_agg 存在正确性 Bug，应重写 merge 方法使用 XOR，并建议完善相关测试用例</li><li><span class="author">@Prajwal-banakar</span>: 表示已修复 review 意见，包括重写 merge 方法、修正测试断言并新增多个测试用例</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3772">Issue #3772</a> [client] Sender handles a per-table RPC failure using destination-wide write batches</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 认可该问题的分析与解决方案</li><li><span class="author">@platinumhamburg</span>: 认为该问题定位准确且应高优先级修复，表示愿意尝试修复</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3766">Issue #3766</a> [client] Isolate historical lookup in-flight requests</h4>
+            <ul><li><span class="author">@vvvdwbvvv</span>: 提出保留全局限制 N 并添加历史请求上限 H 的方案，以平衡正常请求吞吐量</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3751">Issue #3751</a> [server] add support of `KvPreWriteBuffer` backpressure</h4>
+            <ul><li><span class="author">@wuchong</span>: 建议复用 #3463 的反压机制，并基于 RocksDB L0 指标与内存使用双重信号进行优化</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3476">Issue #3476</a> [lake/paimon] Support custom Paimon lake table path</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 询问是否可限制选项仅在创建表时设置，并建议补充文档</li><li><span class="author">@wzx140</span>: 确认该方案满足需求，创建后不可修改可避免处理复杂场景</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3677">Issue #3677</a> [flink] Flink batch read based on SST merge.</h4>
+            <ul><li><span class="author">@naivedogger</span>: 指出多处潜在问题，建议抽取公共方法、修复快照迭代器轮询逻辑并更新类文档</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3759">Issue #3759</a> [flink] Support projection and filter pushdown for $changelog and $binlog virtual tables</h4>
+            <ul><li><span class="author">@Copilot</span>: 指出类型不匹配、O(n²) 复杂度以及 predicate 可能被错误下推等代码质量问题</li><li><span class="author">@naivedogger</span>: 已修复 Copilot 指出的代码问题</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3750">PR #3750</a> [build] Remove Apache Incubator branding after graduation to TLP</h4>
+            <ul><li><span class="author">@naivedogger</span>: 表示计划在后续 PR 中处理遗留问题</li><li><span class="author">@luoyuxia</span>: 指出 CI 测试失败，需要关注</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3790">PR #3790</a> [server] fix KV snapshot restoring fallback</h4>
+            <ul><li><span class="author">@zuston</span>: 请求 Reviewer 审查该 PR</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3800">#3800</a> [TLS] Validate TLS config pass-through for the Spark connector <span class="author">@affo</span> </li><li><a href="https://github.com/apache/fluss/issues/3799">#3799</a> [TLS] Add certificate hot-reload and TLS metrics <span class="author">@affo</span> </li><li><a href="https://github.com/apache/fluss/issues/3798">#3798</a> [TLS] Add zero-downtime internal listener migration (optional-SSL) <span class="author">@affo</span> </li><li><a href="https://github.com/apache/fluss/issues/3797">#3797</a> [TLS] Wire TLS encryption into the client Netty pipeline <span class="author">@affo</span> </li><li><a href="https://github.com/apache/fluss/issues/3796">#3796</a> [TLS] Add SSL config parsing and SslContext/SslHandler factory <span class="author">@affo</span> </li><li><a href="https://github.com/apache/fluss/issues/3795">#3795</a> [TLS] Extract SSL principal mapping (SslPrincipalMapper) <span class="author">@affo</span> </li><li><a href="https://github.com/apache/fluss/issues/3794">#3794</a> [TLS] Validate TLS config pass-through for the Flink connector <span class="author">@affo</span> </li><li><a href="https://github.com/apache/fluss/issues/3793">#3793</a> [TLS] Add mTLS authentication (certificate-based FlussPrincipal) <span class="author">@affo</span> </li><li><a href="https://github.com/apache/fluss/issues/3792">#3792</a> [TLS] Wire TLS encryption into the server Netty pipeline <span class="author">@affo</span> </li><li><a href="https://github.com/apache/fluss/issues/3789">#3789</a> [lake/tiering] Support group-aware table assignment for tiering services <span class="author">@litiliu</span> </li><li><a href="https://github.com/apache/fluss/issues/3787">#3787</a> [UMBRELLA] Implement Kubernetes Operator <span class="author">@affo</span> </li><li><a href="https://github.com/apache/fluss/issues/3786">#3786</a> [UMBRELLA] Implement TLS support <span class="author">@affo</span> </li><li><a href="https://github.com/apache/fluss/issues/3784">#3784</a> [rust] Update release tooling and documentation for TLP releases <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/issues/3783">#3783</a> [UMBRELLA] Track Apache Fluss post-graduation tasks <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/issues/3782">#3782</a> [rpc] Add authoritative ISR to Fluss metadata and RPC <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/3780">#3780</a> [server] Prevent uncommitted ISR changes from being installed in CoordinatorContext <span class="author">@gyang94</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3791">#3791</a> [rust] Update release tooling and documentation for TLP releases <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/pull/3790">#3790</a> [server] fix KV snapshot restoring fallback <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/pull/3788">#3788</a> Bump at.yawk.lz4:lz4-java from 1.10.2 to 1.11.1 in /fluss-common <span class="author">@app/dependabot</span> <span class="labels">dependencies, java</span></li><li><a href="https://github.com/apache/fluss/pull/3785">#3785</a> feat: return isr metadata <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/pull/3781">#3781</a> [server] feat: committed isr boundary <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/pull/3779">#3779</a> [filesystems] Fix S3 assumed role ARN not used for file I/O <span class="author">@qzyu999</span> </li><li><a href="https://github.com/apache/fluss/pull/3778">#3778</a> [server] feat: support table.log.local-ttl <span class="author">@gyang94</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3749">#3749</a> [build] Remove Apache Incubator branding after graduation to TLP <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/issues/3640">#3640</a> [flink] TableNotExistException when listing partitions on $changelog/$binlog virtual tables <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/issues/3206">#3206</a> [docs] AskAi fails to load on Fluss website <span class="author">@binary-signal</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3760">#3760</a> [website/AI] Add consent-gated kapa.ai "Ask AI" widget <span class="author">@MehulBatra</span> </li><li><a href="https://github.com/apache/fluss/pull/3750">#3750</a> [build] Remove Apache Incubator branding after graduation to TLP <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/pull/3641">#3641</a> [flink] Fix TableNotExistException when listing partitions on  changelog / binlog virtual tables <span class="author">@naivedogger</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
