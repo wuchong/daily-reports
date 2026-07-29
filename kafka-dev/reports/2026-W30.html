@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafka 社区周报 | 2026-W30</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Kafka 社区周报 | 2026-W30</h1>
+            <p class="date-range">2026-07-20 ~ 2026-07-26</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (0)</h2>
+            <p class="empty">本周无公告</p>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (0)</h2>
+            <p class="empty">本周无投票</p>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/8xd0vh21jv0s37kpobcbpjotngycn60k">[PR] MINOR: Add meshIQ to the Powered By page [kafka-site]</a></h3>
+            <p class="meta">4 条回复 · 2 位参与者</p>
+            <p class="summary">本次讨论是关于在 Kafka 官网的“Powered By”页面添加 meshIQ Logo 和推荐内容的 PR。维护者快速合并了该请求，并讨论了后续的网站部署流程。</p>
+            <div class="key-points"><p><strong>@jbonofre:</strong> 提交了 PR 以添加 meshIQ 的相关信息，并自谦为“传递者”（convoy）。</p>
+<p><strong>@chia7712:</strong> 合并了该 PR，并对 jbonofre 的贡献表示感谢。</p>
+<p><strong>@jbonofre:</strong> 请求维护者手动触发“Build and Deploy site”工作流以更新线上网站。</p></div>
+            <p class="conclusion">PR 已成功合并，下一步需要维护者执行网站构建和部署工作流以使更改在线上生效。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/b1nwtwj05xfxbhw3no88vkc2o0qg98yl">KIP-1368: Client framework name and version</a></h3>
+            <p class="meta">3 条回复 · 2 位参与者</p>
+            <p class="summary">讨论主要围绕 KIP-1368 提议引入客户端框架名称和版本字段展开，旨在解决使用 Spring 等框架封装 Kafka 客户端时的故障诊断难题。参与者重点探讨了该信息的具体用途、协议字段设计方式以及是否应扩展为更通用的元数据键值对方案。</p>
+            <div class="key-points"><p><strong>@Andrew Schofield:</strong> 引入框架名称和版本的主要动机是辅助问题诊断，让运维人员了解客户端是否通过框架（如 Spring）连接，以便理解框架特有的重试等行为；同时避免用户为了区分而篡改原有的 ClientSoftwareName/Version。</p>
+<p><strong>@Alieh Saeedi:</strong> 关注 Broker 对该信息的处理方式（如日志或 JMX），并质疑为何同时使用了协议版本升级和 Tagged fields，建议遵循社区惯例审视设计。</p>
+<p><strong>@Aditya Kousik:</strong> 支持该提案，但建议考虑更通用的 client.metadata 键值对机制以支持 application.name 等更多维度，并指出这些标签对 OpenTelemetry/Datadog 等可观测性工具具有潜在价值。</p></div>
+            <p class="conclusion">Andrew 对配置类位置（CommonClientConfigs）等具体实现问题进行了确认和修正；关于协议字段设计（Tagged fields vs 版本升级）及是否扩展为通用元数据格式，作者表示愿意听取更多意见并遵循社区共识，目前尚未达成最终定论。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/gcsdcyvj24x02nn53b10yk3poh4h6h3j">KIP-1364: Expose Rebalance Cause to RebalanceConsumer and Metrics</a></h3>
+            <p class="meta">2 条回复 · 1 位参与者</p>
+            <p class="summary">讨论主要围绕 KIP-1364 如何在 KIP-848（新 Consumer 协议）背景下有效暴露 Rebalance 原因。作者根据反馈调整了方案，通过心跳响应传递位掩码来区分协调器发起的多种重平衡原因，并同时补充了 Broker 端和 Client 端的指标。</p>
+            <div class="key-points"><p><strong>@Andrew Schofield:</strong> 质疑在消费者组协议下定义 RebalanceCause 的可行性，指出分配是异步的，难以区分“协调器发起”和“订阅变更”等具体原因。</p>
+<p><strong>@Lianet Magrans:</strong> 认为 KIP-848 改变了重平衡格局，建议优先在 Broker 端解决可见性问题，并提醒需考虑 KIP-1274 废弃经典消费者的时间线。</p>
+<p><strong>@Aditya Kousik:</strong> 更新提案以同时覆盖经典和新协议场景，通过心跳响应中的位掩码传递原因，并填补了成员离开/Fencing 时的 Broker 指标缺失。</p></div>
+            <p class="conclusion">作者已根据反馈更新 KIP 以涵盖 Broker 和 Client 指标，并引用了相关 JIRA，暂未提及明确的下一步计划。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/2moq96odc5fvyt56q4so1gqr19v42kz6">Request for code review KIP-1209</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">讨论主要围绕 KIP-1209（为 Kafka Connect 添加控制内部主题创建的配置）的代码审查请求展开。提交者多次跟进请求审查，并修复了合并后的导入问题及之前的审查意见。目前 PR 已解决所有遗留问题，正在等待社区的进一步审查。</p>
+            <div class="key-points"><p><strong>@Anton Liauchuk:</strong> 发起了 KIP-1209 的 PR 审查请求，并修复了之前的审查意见及合并后的导入问题，表示 PR 已准备好接受审查。</p>
+<p><strong>@Chia-Ping Tsai:</strong> 响应了审查请求，帮助触发了 CI 构建。</p></div>
+            <p class="conclusion">PR 已解决所有已知问题并重新触发构建，下一步等待社区完成代码审查。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/v5mbzdk87wc7q0xtn580ts4v4tr2mxm5">KIP-1349 : Configurable snapshot frequency for share groups</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕 KIP-1349（Share Groups 快照频率配置）展开，Muralidhar Basani 提供了性能测试数据以支持新的基于字节数的快照策略。Andrew Schofield 对此表示认可，并建议将组级配置的重要性级别设为 LOW。最终 KIP 已根据反馈更新了性能说明和配置命名。</p>
+            <div class="key-points"><p><strong>@Muralidhar Basani:</strong> 提供了性能测试数据，显示每次更新记录仅约 154 字节，证明新方案（每 20MB 快照）能大幅降低快照频率。</p>
+<p><strong>@Andrew Schofield:</strong> 赞同将性能信息加入 KIP 动机部分，并建议将组级配置的重要性设为 LOW，因为用户极少调整该配置。</p></div>
+            <p class="conclusion">Muralidhar Basani 已根据讨论更新了 KIP，包括添加性能信息、重命名配置形式以及将组级配置重要性调整为 LOW，目前正等待进一步反馈。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/04f78y411yr1kv2z03kf4ovc0dkq9c7r">KIP-1359: Improve usability of resetting group offsets</a></h3>
+            <p class="meta">1 条回复 · 1 位参与者</p>
+            <p class="summary">讨论主要围绕 KIP-1359 提出的重置消费者组位移易用性改进方案展开。参与者 Aditya 基于实际运维经验，提出了多项增强命令行工具功能的具体建议，并指出了文档与实现细节上的潜在问题。</p>
+            <div class="key-points"><p><strong>@Aditya Kousik:</strong> 建议增加命令行参数支持直接从源消费者组复制位移到目标组（--source-group-id --target-group-id），从而省去导出 CSV 中间文件的步骤。</p>
+<p><strong>@Aditya Kousik:</strong> 指出 Admin API 中 alter 操作的行为限制（需无活跃成员）以及 KIP 中引用的 AdminClient 类已过时，应更新为 Admin 接口。</p>
+<p><strong>@Aditya Kousik:</strong> 分享了处理“毒药消息”和版本迁移场景下的痛点，并建议增强脚本功能以列出活跃成员和 Offset 状态，便于排查僵尸进程。</p></div>
+            <p class="conclusion">讨论处于提出建议阶段，作者 Aditya 针对 KIP 的易用性、API 命名及文档完善提出了具体修改意见，尚待 KIP 提议人回应。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/4l1k0s3s5g2rhdy8vjrc7fh2sw2lcr7k">[PR] Add Ksolves to the powered-by page [kafka-site]</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">本次讨论是关于将 Ksolves 添加到 Kafka 官网的 Powered-by 页面的 PR。维护者 mjsax 已经合并了该 PR，完成了页面更新。</p>
+            <div class="key-points"><p><strong>@mjsax:</strong> 合并了 PR #897，批准将 Ksolves 加入列表。</p></div>
+            <p class="conclusion">PR 已成功合并，Ksolves 已被添加到 Powered-by 页面，无需进一步行动。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/f9w2pg69s82thz82ddqdd89k7twlo2r1">KIP-1320: Deprecate org.apache.kafka.common.utils.Utils and introduce an internal replacement</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论主要关于 KIP-1320 提案，计划在 Kafka 4.5 中弃用 `org.apache.kafka.common.utils.Utils` 并在 5.0 移除，同时公布了 75 个待维护者审查的类清单。作者根据反馈调整了目标版本，并明确了外部使用情况仅作为讨论优先级参考，不直接决定弃用。</p>
+            <div class="key-points"><p><strong>@Eric Chang:</strong> 将 KIP 目标发布版本调整为 4.5，提议通过兼容性垫片分阶段弃用 Utils 类（4.5 弃用，5.0 移除）。</p>
+<p><strong>@Chia-Ping:</strong> 建议对 Cache 系列类采用特定策略：弃用 SynchronizedCache 和 LRUCache，并将实现移至 Cache 接口。</p>
+<p><strong>@Eric Chang:</strong> 强调 KIP-1265 仅提供 Private 分类，而 KIP-1320 旨在为确认的类提供包含编译警告和移除时间表的分阶段过渡方案。</p></div>
+            <p class="conclusion">下一步需要维护者针对 Utils 类的过渡时间表、Cache 类的处理策略以及清单中其他类的逐个审查决策提供输入。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/m0m21pz78zy1woynbv0rp0m5d1lw6mo4">KIP-1369: API-Contract Annotations for Nullity/Thread Safety</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">本讨论旨在提议引入 SpotBugs/JSR305 标准注解以解决 Kafka 代码中的空值检查和线程安全问题。提案建议直接采用现有的 CLASS-retained 注解，而非创建自定义注解，以便更好地利用静态分析工具在构建时发现潜在缺陷。</p>
+            <div class="key-points"><p><strong>@Aditya Kousik:</strong> 指出社区自 2019 年以来就有相关需求，通过注解明确空值性和线程安全性能有效避免 PR 中遗漏的检查问题。</p>
+<p><strong>@Aditya Kousik:</strong> 主张使用 SpotBugs/JSR305 标准注解，因为自定义注解难以与现有静态分析工具兼容，标准注解可被开箱即用。</p></div>
+            <p class="conclusion">作者已发布 KIP-1369 供社区审阅，目前处于征集意见和初步讨论阶段。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/yjys0n8g0jlf12m77vv0h0vcc8jwnzq6">Request for JIRA Contributor Permission (KAFKA-20230)</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论主要关于王志洋申请 Apache Kafka 项目的 JIRA 贡献者权限。申请人希望获得权限以便处理新手议题 KAFKA-20230，从而参与社区贡献。这是一个标准的权限申请流程。</p>
+            <div class="key-points"><p><strong>@Wang Zhiyang:</strong> 申请将 JIRA 账号（wangzhiyang）添加至贡献者列表。</p>
+<p><strong>@Wang Zhiyang:</strong> 表达了对 Apache Kafka 项目的贡献意愿，并计划从新手议题 KAFKA-20230 入手。</p></div>
+            <p class="conclusion">等待 Kafka 开发团队审核并批准 JIRA 权限申请。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (54)</h2>
+            
+    <p>本周新建 <strong>54</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周 JIRA 主要集中在 Kafka Streams 和消费者组的稳定性改进，包括修复 StreamThread 异常、优化任务分配逻辑以及解决元数据内存泄漏问题。同时，社区还解决了多个安全漏洞，推进了 Share Group 特性的完善（如死信队列支持），并进行了依赖库升级与测试性能优化。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Kafka Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
