@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flink 社区周报 | 2026-W30</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Flink 社区周报 | 2026-W30</h1>
+            <p class="date-range">2026-07-20 ~ 2026-07-26</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (2)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/shyqfs9oy4l11xomfvmbd14l172ycm6h">Apache flink-connector-jdbc 3.4.0 & 4.1.0 released</a></li>
+<li><a href="https://lists.apache.org/thread/znp2p029mkybh8jvf0k4t9fc2xdlgdf9">Apache Flink Agents 0.3.1 released</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (4)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/0t7plys24ybc614mj69nx9q319jmbrpq">FLIP-527: State Schema Evolution for RowData</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/hm8o79449fnr01tz7s2hskzdow2kjk67">Apache Flink Agents Release 0.3.1, release candidate #1</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/hj1s60zyl67b1j3wq3y4pnbtv4phbpnc">FLIP-602: Extended JDBC Scan Partitioning Options for Efficient Data Ingestion</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/symqpswsohl2s5wmtkcw0jjp1w5dot0n">FLIP-485: Add UDF Metrics</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/zmzxq8o9d4r86995bk3qd0d9941n5xdg">Help Needed for JDBC Release v3.4.0 & v4.1.0</a></h3>
+            <p class="meta">3 条回复 · 2 位参与者</p>
+            <p class="summary">本次讨论主要关于 Flink JDBC Connector v3.4.0 和 v4.1.0 发布流程中需要 PMC 协助完成的后续步骤。Yuepeng Pan 在执行发布登记和 Jira 状态更新时遇到权限问题，请求社区协助，最终在 Ferenc Csaky 和 Leonard Xu 的帮助下顺利完成。</p>
+            <div class="key-points"><p><strong>@Yuepeng Pan:</strong> 发布投票已通过，但在 Jira 标记版本发布状态以及在 Apache Reporter 系统登记发布信息时遇到权限不足的问题，请求 PMC 协助。</p>
+<p><strong>@Ferenc Csaky:</strong> 已协助执行源码发布脚本，并修正了 Jira 版本号的错误，解释了发布脚本仅需 PMC 权限执行且无需重新构建。</p>
+<p><strong>@Leonard Xu:</strong> 响应请求，协助完成了发布信息的登记工作。</p></div>
+            <p class="conclusion">在 PMC 成员的协助下，JDBC Connector v3.4.0 和 v4.1.0 的源码发布、Jira 状态更新及发布信息登记均已解决，发布流程结束。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/s5k7b0p454dh509dzfnhphzyg423ql34">FLIP-XXX: Add support for GROUP BY <ordinal>, GROUP BY ALL, and ORDER BY ALL</a></h3>
+            <p class="meta">3 条回复 · 3 位参与者</p>
+            <p class="summary">本次讨论主要针对 FLIP 提议在 Flink SQL 中增加 GROUP BY <ordinal>、GROUP BY ALL 和 ORDER BY ALL 功能。参与者总体支持该提议，并就 Calcite 依赖升级、默认配置策略及潜在实现细节进行了深入探讨。</p>
+            <div class="key-points"><p><strong>@Timo Walther:</strong> 支持该提案，指出主流 SQL 引擎均已支持此类功能，并建议默认开启位置分组功能。</p>
+<p><strong>@Tisya Bhatia:</strong> 建议分阶段发布位置分组功能（先默认关闭，下个版本再默认开启），并计划通过升级 Calcite 版本来引入相关依赖改动。</p>
+<p><strong>@Sergey Nuyanzin:</strong> 指出 Calcite 实现中 GROUP BY ALL 在处理常量列时可能存在反解析错误，建议在 Flink 中增加视图和物化表的测试用例。</p></div>
+            <p class="conclusion">社区原则上认可该 FLIP，决定先落地无依赖的 GROUP BY <ordinal> 功能，并计划跟进 Calcite 升级；同时需关注 Calcite 层面的实现缺陷并在 Flink 侧补充相关测试。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/7obgo8o9t2c0gw1lghtxb5j81421co40">FLIP-XXXX: Higher-Order Functions in Flink SQL (TRANSFORM and ARRAY_FILTER)</a></h3>
+            <p class="meta">3 条回复 · 3 位参与者</p>
+            <p class="summary">本讨论主要针对 FLIP-XXXX 提案，旨在为 Flink SQL 引入高阶函数（如 TRANSFORM 和 ARRAY_FILTER）及 Lambda 表达式支持，以简化集合操作并降低用户迁移成本。讨论中确认了 Lambda 与现有 UDF 的关系，并补充了针对视图和物化表的测试验证。</p>
+            <div class="key-points"><p><strong>@Gyula Fóra:</strong> 总体支持该提案，并询问 Lambda 函数与现有标量函数/UDF 的关系，特别是能否在 Lambda 位置直接使用布尔型 UDF。</p>
+<p><strong>@Do... (Dominik):</strong> 解释了 Lambda 与 UDF 在概念上不同，Lambda 内部可调用 UDF，但目前不支持将 UDF 名直接作为 Lambda 参数的自动展开，该功能留待后续。</p>
+<p><strong>@Sergey Nuyanzin:</strong> 指出视图和物化表依赖 SQL 重写，建议增加相关测试以确保 Lambda 函数在这些场景下能正确执行。</p></div>
+            <p class="conclusion">提案作者已采纳建议，在本地新增了针对视图和物化表的测试用例且运行通过，后续将继续推进该方案。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/q483jnqppcz8flbmkjjk8ffv2tg0kkp7">Add UDF Metrics</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">本次讨论旨在重启关于“Add UDF Metrics”的 FLIP 提案，提案已与当前 master 分支对齐并通过采样机制解决了性能开销问题。经过重新审视，社区成员对设计草案表示认可并投出赞成票，发起人随即宣布启动新一轮投票流程。</p>
+            <div class="key-points"><p><strong>@Weiqing Yang:</strong> 提案高层设计保持不变，主要改进在于引入采样机制（sample-interval）以解决性能开销问题，并希望确认设计仍符合当前代码库现状。</p>
+<p><strong>@Xuyang:</strong> 支持推进该 FLIP，对提案表示 +1。</p>
+<p><strong>@Yuepeng Pan:</strong> 确认设计草案无误，表示 LGTM 并投出 +1。</p></div>
+            <p class="conclusion">讨论达成共识，发起人 Weiqing Yang 将立即启动新的 [VOTE] 投票线程以推进该提案。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/htjtw7z1brt5l4y5ly5bzlst007glw4f">FLIP-XXX Amazon SQS Source Connector</a></h3>
+            <p class="meta">1 条回复 · 1 位参与者</p>
+            <p class="summary">Wenhao Ji 询问已获批两年的 FLIP-477 (Amazon SQS Source Connector) 是否仍在开发中，并表示愿意接手推进。此前 Saurabh Singh 等人已完成设计讨论与投票，且 Arvid Heise 已确认更新 FLIP 并投下赞成票。</p>
+            <div class="key-points"><p><strong>@Wenhao Ji:</strong> 指出 SQS Sink 已发布，Source Connector 开发曾被推迟，现询问原开发者是否仍在推进，若无人则愿意志愿接手。</p>
+<p><strong>@Arvid Heise:</strong> 确认已更新 FLIP 页面并投下 +1 赞成票。</p>
+<p><strong>@Saurabh Singh:</strong> 感谢社区反馈，确认经讨论后 FLIP 将专注于 AWS SQS 标准队列的实现细节。</p></div>
+            <p class="conclusion">Wenhao Ji 正在联系原提案人 Saurabh 和 Abhi 以确认开发状态，若原开发者已停止工作，Wenhao 计划按照已批准的设计接手实现。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/5t6tbmcyqk2c359c0y7gvmnzvjobpy3b">Flink operator stuck with "Job not found"</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论主要关注 Flink Kubernetes Operator 在 JobManager 提前终止时导致 Job 状态丢失的协调失败问题。发件人指出 Jira 工单 FLINK-39989 长期未获响应，并提出希望在 JobManager 启动时恢复已完成作业的 Job 以解决该问题。</p>
+            <div class="key-points"><p><strong>@Filippo Ghibellini:</strong> 指出当 JobManager 在 Operator 获知作业终止前结束会导致协调失败，建议在 JobManager 启动时恢复已完成作业的状态，并愿意贡献代码。</p>
+<p><strong>@Gyula Fóra:</strong> 建议先在最新版本（1.15）或主分支上复现问题，因为旧版本的问题可能已修复；鼓励发件人自行修复并提交 PR，社区可协助审核。</p></div>
+            <p class="conclusion">初步结论是需确认该问题是否仍存在于最新版本；下一步行动建议发件人在新版本上验证后，若问题依旧则提交 PR 进行修复。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/g2lcx1bn6pqkhnk02p9cktrf57l8v6l8">FLIP-XXX: Extended JDBC Scan Partitioning Options for Efficient Data Ingestion</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">本讨论主要关于 FLIP-XXX（扩展 JDBC Scan 分区选项）的文档迁移与流程推进。Chanhae Oh 已根据反馈更新了提案内容，并将文档成功迁移至 Apache Flink Confluence 维基页面，准备发起社区投票。</p>
+            <div class="key-points"><p><strong>@Leonard Xu:</strong> 对新提案不再有异议，建议将文档迁移至 Confluence 维基以便于社区审查和投票，并协助解决了权限问题。</p>
+<p><strong>@Chanhae Oh:</strong> 已根据建议更新了 FLIP 内容（如补充了 Physical-id 分区的限制说明），并完成了文档迁移工作。</p></div>
+            <p class="conclusion">FLIP 文档已在 Confluence 就绪，作者即将启动投票流程。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/j22lts8zgz9pr23y1rvqwz7xmdkkngfm">FLINK-38023: PR #28161 code review request</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Avi Sanwal 提交了一个 PR (#28161) 用于修复 FLINK-38023 问题，即在使用新 Avro schema 的 GenericRecord 时状态恢复失败的问题。该 PR 已准备就绪，作者请求社区进行代码审查。</p>
+            <div class="key-points"><p><strong>@Avi Sanwal:</strong> 已准备好修复 FLINK-38023（Avro schema 变更导致状态恢复失败）的代码，但因权限问题无法分配 Jira 任务，请求团队审查 PR。</p></div>
+            <p class="conclusion">等待社区成员对 PR #28161 进行代码审查。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/lvbg1ojd9l8pyhthmj7ybyvtnb5kfpvc">FLIP-XXX Monotonic Counters support</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论主要围绕 FLIP-XXX 关于支持单调计数器的提案，参与者普遍认可区分计数器单调性的价值。核心争议点在于实施路径：是直接修改现有的 `Counter` 接口，还是引入新的 `MonotonicCounter` 接口。</p>
+            <div class="key-points"><p><strong>@Efrat Levitan:</strong> 提议通过废弃 `Counter#dec` 方法来声明单调性，并建议提供 `UpDownCounter` 作为替代方案，以解决后端系统无法区分整数溢出与系统重启的问题。</p>
+<p><strong>@Ryan van Huuksloot:</strong> 支持该提案，认为区分计数器是递减还是重置对于提升可观测性是一项很有用的改进。</p>
+<p><strong>@Piotr Nowojski:</strong> 质疑修改现有 `Counter` 接口的可行性，指出仅废弃 `dec` 方法无法立即使其变为单调，需等到方法被完全移除后才能实现，建议考虑引入新接口。</p></div>
+            <p class="conclusion">讨论尚未达成最终结论，需进一步确定是采用废弃旧方法的方式，还是引入新的 `MonotonicCounter` 接口来实现单调计数器支持。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/lp4vmtr0rm31slt9xk7s1jo2wrpgk4kh">running Flink jobs in MiniCluster using the Kubernetes Operator</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论提议在 Flink Kubernetes Operator 中增加对 MiniCluster 的支持，使其能在单个 Pod 中运行低吞吐量且需隔离的作业。提议者已制作 PoC 验证可行性，旨在解决小规模作业运行成本过高的问题，同时保留 Operator 的生命周期管理能力。</p>
+            <div class="key-points"><p><strong>@Dale Lane:</strong> 现有 FlinkDeployment 模式资源开销大，不适合小规模作业，建议利用 MiniCluster 实现单 Pod 运行以降低成本。</p>
+<p><strong>@Dale Lane:</strong> MiniCluster 在 JVM 内整合了 JobManager 和 TaskManager，与分布式集群完全兼容，适合需要隔离的低吞吐量场景。</p>
+<p><strong>@Dale Lane:</strong> 用户目前手动部署 MiniCluster 会失去 Operator 的运维便利，新特性将填补这一空白。</p></div>
+            <p class="conclusion">已创建 PoC 展示技术可行性，当前处于收集社区初步反馈阶段，后续计划根据反馈撰写 FLIP 提案。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (35)</h2>
+            
+    <p>本周新建 <strong>35</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周 JIRA 主要集中在修复 SQL 函数（如 JSON 处理）、状态恢复及 Kubernetes 部署稳定性等关键 Bug。同时，社区积极扩展了 JDBC 连接器功能、Python API 支持以及 YAML Transform 的能力，并推进了依赖升级与 CI 流程优化。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Flink Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
