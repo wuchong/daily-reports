@@ -6,6 +6,12 @@
     <description>Apache Spark dev 邮件列表周报归档</description>
     <language>zh-CN</language>
     <item>
+      <title>Spark 社区周报 - 2026-W30</title>
+      <link>https://wuchong.github.io/daily-reports/spark-dev/reports/2026-W30.html</link>
+      <guid>https://wuchong.github.io/daily-reports/spark-dev/reports/2026-W30.html</guid>
+      <pubDate>2026-W30</pubDate>
+    </item>
+    <item>
       <title>Spark 社区周报 - 2026-W29</title>
       <link>https://wuchong.github.io/daily-reports/spark-dev/reports/2026-W29.html</link>
       <guid>https://wuchong.github.io/daily-reports/spark-dev/reports/2026-W29.html</guid>
@@ -118,12 +124,6 @@
       <link>https://wuchong.github.io/daily-reports/spark-dev/reports/2026-W11.html</link>
       <guid>https://wuchong.github.io/daily-reports/spark-dev/reports/2026-W11.html</guid>
       <pubDate>2026-W11</pubDate>
-    </item>
-    <item>
-      <title>Spark 社区周报 - 2026-W10</title>
-      <link>https://wuchong.github.io/daily-reports/spark-dev/reports/2026-W10.html</link>
-      <guid>https://wuchong.github.io/daily-reports/spark-dev/reports/2026-W10.html</guid>
-      <pubDate>2026-W10</pubDate>
     </item>
   </channel>
 </rss>
