@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-08-03</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-08-03</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 8 新 Issues</div>
+            <div class="stat">✅ 2 关闭</div>
+            <div class="stat">✨ 2 新 PRs</div>
+            <div class="stat">🎉 2 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/3825">PR #3825</a> 修复 Paimon 类重定位导致的状态恢复 ClassNotFoundException 问题</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3828">PR #3828</a> 移除客户端 bucket 级别指标默认暴露，缓解 Flink 作业指标存储压力</li><li>✨ <a href="https://github.com/apache/fluss/pull/3822">PR #3822</a> Remote Manifest V2 功能开发中，引发关于能力协商和 GC 机制的深入讨论</li><li>🐛 <a href="https://github.com/apache/fluss/issues/3830">Issue #3830</a> 报告 table.log.ttl 过期后活动日志段未滚动的问题</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <ul class="critical-list"><li>⚠️ <a href="https://github.com/apache/fluss/issues/3830">Issue #3830</a> 活动日志段在 TTL 过期后未滚动，影响远程保留策略</li></ul>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3818">Issue #3818</a> [rust/python] Writing to datalake-enabled Iceberg tables fails: "KeyEncoder for Iceberg format is not yet implemented"</h4>
+            <ul><li><span class="author">@zuston</span>: 表示内部分支已实现该功能，将提交 PR 到主仓库</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3811">Issue #3811</a> [server] batch fetch latest bucket snapshots to reduce latency</h4>
+            <ul><li><span class="author">@zuston</span>: 请求 luoyuxia 和 loserwang1024 协助审核</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3197">Issue #3197</a> [server] Validate Java version >= 11 in config.sh to prevent silent startup failures</h4>
+            <ul><li><span class="author">@Yohahaha</span>: 请求 luoyuxia 和 beryllw 审核代码</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3822">PR #3822</a> [server] feat: remote manifest v2</h4>
+            <ul><li><span class="author">@Copilot</span>: 指出中断处理逻辑可能吞没中断信号，建议显式处理 InterruptedException</li><li><span class="author">@swuferhong</span>: 建议仅检查存活节点的能力，支持空 Manifest V2 以便 TTL 清理，并指出 GC 逻辑可能误删 V2 段文件</li><li><span class="author">@gyang94</span>: 询问活动段滚动是否应依赖 remoteLogEnabled 配置，建议逻辑解耦</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3825">PR #3825</a> [lake/paimon] Make PaimonSplit state survive Paimon class relocation</h4>
+            <ul><li><span class="author">@Copilot</span>: 指出 ACTUAL_PREFIX 派生方式脆弱，且日志级别可能导致刷屏</li><li><span class="author">@luoyuxia</span>: 发现序列化逻辑对 DataSplit 子类存在重大缺陷，可能导致数据损坏</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3759">PR #3759</a> [flink] Support projection and filter pushdown for $changelog and $binlog virtual tables</h4>
+            <ul><li><span class="author">@loserwang1024</span>: 建议重构 FlinkSource 契约，区分物理扫描行类型与产物行类型</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3790">PR #3790</a> [server] fix KV snapshot restoring fallback</h4>
+            <ul><li><span class="author">@zuston</span>: 建议增加文件存在性检查以防止误删，并调整测试代码结构</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3554">PR #3554</a> [tiering] Decouple common tiering class from flink module</h4>
+            <ul><li><span class="author">@Yohahaha</span>: 修复了未知 splitKind 的快速失败逻辑，防止未来扩展时的静默错误</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3476">PR #3476</a> [lake/paimon] Support custom Paimon lake table path</h4>
+            <ul><li><span class="author">@wzx140</span>: 解释保留 mapping 选项可修改性的原因，并重构 LakeTableFactory 移除冗余逻辑</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3817">PR #3817</a> [flink][client] Close writer immediately on sink failover</h4>
+            <ul><li><span class="author">@loserwang1024</span>: 指出 awaitTermination 返回值处理问题，建议参考 Kafka 实现超时逻辑</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3831">PR #3831</a> [server] Roll expired active segments for remote retention</h4>
+            <ul><li><span class="author">@gyang94</span>: 建议将过期段滚动逻辑解耦，新增专门的方法处理</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3835">#3835</a> [server] Support overlapping remote log segments via manifest V2 to unblock active segment rolling <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/3833">#3833</a> [server] Support time-based log segment rolling (segment.ms) <span class="author">@fxbing</span> </li><li><a href="https://github.com/apache/fluss/issues/3832">#3832</a> [spark] Support custom Paimon lake table paths <span class="author">@wzx140</span> </li><li><a href="https://github.com/apache/fluss/issues/3830">#3830</a> [server] Active log segment is not rolled after table.log.ttl expires <span class="author">@fxbing</span> </li><li><a href="https://github.com/apache/fluss/issues/3829">#3829</a> [security] Support group-based ACL authorization for authenticated identities <span class="author">@litiliu</span> </li><li><a href="https://github.com/apache/fluss/issues/3827">#3827</a> Remove the default exposure of client-side bucket-level metrics to reduce metrics storage pressure for existing Flink jobs. <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/issues/3826">#3826</a> Optimize client bucket-level metrics <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/issues/3824">#3824</a> [lake] Restoring PaimonSplit state fails with ClassNotFoundException when Paimon classes are relocated <span class="author">@beryllw</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3834">#3834</a> [client] feat: remote manifest v2 client <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/pull/3831">#3831</a> [server] Roll expired active segments for remote retention <span class="author">@fxbing</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3827">#3827</a> Remove the default exposure of client-side bucket-level metrics to reduce metrics storage pressure for existing Flink jobs. <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/issues/3824">#3824</a> [lake] Restoring PaimonSplit state fails with ClassNotFoundException when Paimon classes are relocated <span class="author">@beryllw</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3828">#3828</a> [flink] Remove the default exposure of client-side bucket-level metrics to reduce metrics storage pressure for existing Flink jobs. <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/pull/3825">#3825</a> [lake/paimon] Make PaimonSplit state survive Paimon class relocation <span class="author">@beryllw</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
