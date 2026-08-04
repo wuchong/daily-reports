@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data+AI 全球日报 | 2026-08-03</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Data+AI 全球日报 | 2026-08-03</h1>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="top-changes">
+            <h2>🔥 今日最重要的3个变化</h2>
+            <ol><li><strong>AWS 数据平台全面拥抱 AI 运维</strong> — AWS 连发 MSK 和 EMR 智能代理，将 GenAI 深度集成至数据基础设施运维，显著降低 Kafka 和 Spark 的运维门槛。</li><li><strong>Redshift 加速硬件迭代</strong> — AWS 官方引导 DC2 用户迁移至自研 Graviton 架构的 RG 实例，推动用户向支持数据共享和 Zero-ETL 的新架构演进。</li><li><strong>Redshift 补齐企业级容灾短板</strong> — 发布多区域容灾架构指南，提供 Active-Active 等多种方案，增强其在金融等关键行业的竞争力。</li></ol>
+            <p class="judgment"><strong>总判断：</strong>今日行业信号集中在云厂商的“AI for Ops”落地。AWS 连续发布针对 MSK 和 EMR 的智能代理工具，标志着数据平台运维正从“自动化脚本”向“AI 辅助决策”演进。同时，Redshift 的硬件升级与容灾方案完善，显示出其在自研芯片整合与高可用架构上的持续发力，以应对 Snowflake 等竞争对手的压力。</p>
+        </section>
+
+        <section class="top-signals">
+            <h2>📡 重要信号</h2>
+            
+    <article class="news-item">
+        <h3>AWS 发布 MSK 和 EMR 智能代理，加速数据运维 AI 化</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/bigdata/streamline-apachekafkaclusteroperationsandmigrationswithagentskillsforamazonmsk/">AWS Big Data Blog</a> | <a href="https://aws.amazon.com/blogs/bigdata/introducingapachesparktroubleshootingagentforamazonemroneks/">AWS Big Data Blog</a></p>
+        <p class="date">2026-08-03</p>
+        <p class="summary">AWS 针对 Amazon MSK 和 EMR on EKS 发布了基于 AI 的 Agent Skills。MSK Agent 提供集群诊断、成本估算和迁移规划；EMR Agent 集成 MCP 协议，支持 Spark 任务故障排查。这标志着 AWS 正在将生成式 AI 深度集成到数据基础设施的运维流程中，旨在解决大数据组件运维复杂的核心痛点。</p>
+        <div class="impact">📊 数据平台影响：降低 Kafka 和 Spark 的运维门槛，减少人工排查时间，提升 AWS 数据服务的粘性。这预示着数据工程师的角色将从“运维救火”转向“架构优化”，同时也提高了竞品（如 Confluent、Databricks）在易用性层面的竞争门槛。</div>
+    </article>
+    <article class="news-item">
+        <h3>Amazon Redshift 引导 DC2 用户迁移至 Graviton RG 实例</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/bigdata/upgradeamazonredshiftdc2clusterstothenewamazonredshiftrg/">AWS Big Data Blog</a></p>
+        <p class="date">2026-08-03</p>
+        <p class="summary">AWS 官方发布指南，推动 Redshift DC2 集群升级至基于 Graviton 的 RG 实例。RG 实例支持托管存储、数据共享和 Zero-ETL 功能，代表了 Redshift 的未来架构方向。此次升级不仅是硬件更替，更是架构向 RA3 模式的全面转型。</p>
+        <div class="impact">📊 数据平台影响：推动用户向存储计算分离架构迁移，解锁数据共享能力，强化 AWS 数据湖仓一体化优势。对于用户而言，迁移将带来性能提升和成本优化，但也需关注迁移过程中的兼容性测试。</div>
+    </article>
+        </section>
+
+        <section class="product-tech">
+            <h2>💻 产品与技术</h2>
+            
+    <article class="news-item">
+        <h3>Amazon Redshift 发布多区域容灾架构指南</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/bigdata/amazonredshiftmultiregiondisasterrecovery/">AWS Big Data Blog</a></p>
+        <p class="date">2026-08-03</p>
+        <p class="summary">AWS 详细解读了 Redshift 的跨区域容灾策略，涵盖 Active-Passive、Active-Active 及混合模式，为企业级关键数据应用提供高可用架构参考。文章深入探讨了不同模式的架构实现与 RTO/RPO 指标。</p>
+        <div class="impact">📊 数据平台影响：补齐 Redshift 在企业级高可用场景的短板，增强其在金融、电信等关键行业的竞争力，缩小了与 Snowflake 在跨区域容灾能力上的差距。</div>
+    </article>
+        </section>
+
+        <section class="people-views">
+            <h2>👤 人物与观点</h2>
+            
+    <article class="news-item">
+        <h3>TinyBird 解析 ClickHouse OLAP 优化七大误区</h3>
+        <p class="sources">📌 <a href="https://www.tinybird.co/blog/olapmostcommonmistakes">TinyBird</a></p>
+        <p class="date">2026-08-03</p>
+        <p class="summary">TinyBird 分享了从 OLTP 转向 OLAP 过程中 ClickHouse 的常见优化误区，涵盖数据建模、索引使用及查询模式等方面，提供了实战经验总结。</p>
+        <div class="impact">📊 数据平台影响：为实时分析架构选型提供参考，ClickHouse 在高并发写入场景的优化仍是技术难点。此类最佳实践的传播有助于降低用户采用实时数仓的试错成本。</div>
+    </article>
+        </section>
+
+        <section class="analyst-insights">
+            <h2>📊 分析师洞察</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="watchlist">
+            <h2>👀 观察列表</h2>
+            
+    <article class="watchlist-item">
+        <h3>Redshift RG 实例迁移进度</h3>
+        <span class="status">持续跟踪</span>
+        <p class="reason">DC2 到 RG 的迁移涉及架构变更，用户迁移意愿和潜在的性能/成本变化将直接影响 Redshift 的市场留存率。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>观察社区对迁移工具的反馈及 RG 实例的基准性能测试数据。</p>
+    </article>
+        </section>
+
+        <section class="stock-analysis">
+            <h2>📈 股票分析</h2>
+            <p class="disclaimer">⚠️ 以下内容仅供参考，不构成任何投资建议。投资有风险，入市需谨慎。</p>
+            
+    <article class="stock-item">
+        <div class="stock-header">
+            <span class="ticker">AMZN</span>
+            <span class="company">Amazon Web Services</span>
+            <span class="signal signal-bullish">🟢 看多</span>
+        </div>
+        <p class="stock-summary">AWS 连续发布 AI 运维工具，强化数据平台竞争力。通过降低 MSK 和 EMR 的运维复杂度，AWS 正在构建更高的服务壁垒，增加用户粘性。</p>
+        <div class="stock-details">
+            <div class="catalysts">
+                <strong>🚀 催化剂</strong>
+                <ul><li>AI 辅助运维提升客户粘性</li><li>Graviton 迁移带来的成本优化红利</li><li>Redshift 企业级功能完善</li></ul>
+            </div>
+            <div class="risks">
+                <strong>⚠️ 风险</strong>
+                <ul><li>云支出放缓可能影响客户对新实例的迁移意愿</li></ul>
+            </div>
+        </div>
+    </article>
+        </section>
+
+        <footer>
+            <p>Generated by Data+AI Daily Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
