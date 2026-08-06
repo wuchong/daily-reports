@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flink 社区周报 | 2026-W31</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Flink 社区周报 | 2026-W31</h1>
+            <p class="date-range">2026-07-27 ~ 2026-08-02</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (0)</h2>
+            <p class="empty">本周无公告</p>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (2)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/6j0z5b9q7233xn5c4620pc37vkncpycx">FLIP-485: Add UDF Metrics</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/ocb7px39qb4r4txdf632nm45lzojz6yq">FLIP-577: AI-Native Flink — An Umbrella Proposal for Multimodal Data Processing</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/o9j5wt7cmsg4cwykmqtzx2t6f6ly14nb">FLIP-604: Complete VARIANT Primitive Coverage with UUID and Timestamps</a></h3>
+            <p class="meta">5 条回复 · 4 位参与者</p>
+            <p class="summary">本次讨论旨在推进 FLIP-604，通过增加对 TIME、纳秒级时间戳和 UUID 类型的支持来完善 VARIANT 类型。讨论重点集中在 UUID 类型的引入以及 TIME 类型在 SQL 层面精度限制的处理细节上。</p>
+            <div class="key-points"><p><strong>@Ramin Gharib:</strong> 提出 FLIP-604 以填补 VARIANT 类型对 TIME、纳秒时间戳和 UUID 的支持空白，并引入原生 UUID 类型；明确了 TIME 类型在 SQL 中映射为 TIME(3)，亚毫秒值转换将失败而非截断。</p>
+<p><strong>@Timo Walther:</strong> 支持该提案，并询问 TIME 类型的精度处理，确认了 SQL 层受限于 TIME(3) 而 DataStream API 支持更高精度的细节。</p>
+<p><strong>@Mate Czagany:</strong> 指出 VARIANT TIME 转换失败而非截断的做法与 Flink 现有行为不一致，建议为保持一致性应采用截断策略。</p></div>
+            <p class="conclusion">Timo 对解释表示认可（LGTM），Gustavo 表示支持；但 Mate 提出的关于 TIME 类型转换语义一致性问题尚未在邮件中得出最终定论，需进一步讨论或确认。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/sbgzl7nzp8r5ktjnyv8zmht1m8l7vvbs">FLIP-XXX: Flink Kubernetes Operator Autotuning Redesign</a></h3>
+            <p class="meta">4 条回复 · 4 位参与者</p>
+            <p class="summary">本次讨论主要围绕 Flink Kubernetes Operator 中 Autotuning（自动调优）与 Autoscaling（自动扩缩容）的解耦重设计展开。讨论初期存在关于解耦复杂度和功能成熟度的分歧，但最终提议者采纳了渐进式改进的建议，放弃了大规模模块拆分，转而专注于在现有架构内解耦调优决策逻辑。</p>
+            <div class="key-points"><p><strong>@Gyula Fóra:</strong> 反对过早解耦和添加插件接口，认为 Autotuning 尚未成熟，且与 Autoscaling 紧密关联，拆分可能增加维护难度并影响稳定性。</p>
+<p><strong>@Francis Altomare:</strong> 支持解耦，指出对于有大量状态的应用，Rescaling（扩缩容）成本高昂，而 Autotuning 是更安全的优化手段，解耦能让更多任务受益。</p>
+<p><strong>@Dennis-Mircea Ciupitu:</strong> 修正了提案，放弃了模块拆分和公共 API，提出在现有模块内将调优决策与扩缩容决策解耦，以支持固定并行度任务的资源优化。</p></div>
+            <p class="conclusion">初步结论是采取小步快跑的策略，不再进行大规模模块拆分或引入公共 API，而是先在现有框架内实现调优与扩缩容决策逻辑的解耦，以便独立测试和优化。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/vmoqf4dlshbz7y4s93rg7cml16dkhzdp">Kubernetes Operator 1.16.0 release planning</a></h3>
+            <p class="meta">4 条回复 · 5 位参与者</p>
+            <p class="summary">Gyula Fóra 发起 Kubernetes Operator 1.16.0 版本发布计划讨论，提议于8月底发布，并自荐担任发布经理。社区成员一致支持该计划，并积极认领代码审查和漏洞修复任务。</p>
+            <div class="key-points"><p><strong>@Gyula Fóra:</strong> 提议本周收尾待定 PR，下周切出发布分支并发布首个 RC，目标8月底正式发布。</p>
+<p><strong>@Dennis-Mircea Ciupitu:</strong> 赞同发布时间表，并表示将协助审查未完成的 PR 以确保按时合入。</p>
+<p><strong>@P Sinha:</strong> 支持发布计划，承诺本周内完成剩余的 CVE 相关依赖升级。</p></div>
+            <p class="conclusion">社区达成共识，正式启动 1.16.0 发布流程，由 Gyula Fóra 担任发布经理，近期重点在于完成 PR 审查与 CVE 修复。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/r46jtjp6nl21pkn3b44bkh2w9ldzr5z5">FLINK-39566: Checkpoint duration timeline view in the Web UI</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">本次讨论主要关于在 Flink Web UI 的 Checkpoints 页面增加一个“Timeline”视图，以便更直观地诊断慢检查点。该功能仅涉及前端改动，无需修改后端或公共 API，且社区一致认为无需发起 FLIP 流程。</p>
+            <div class="key-points"><p><strong>@P Sinha:</strong> 提议在 Web UI 增加检查点耗时时间线视图，通过堆叠条形图展示各子任务的四个阶段，解决现有表格难以逐行排查慢检查的问题。</p>
+<p><strong>@Yuepeng Pan:</strong> 支持该提议，认为鉴于改动范围较小且简化了工作流，若无异议可直接推进 PR 审查，无需走 FLIP 流程。</p>
+<p><strong>@Ferenc Csaky:</strong> 表示赞同，认为该功能仅是对现有数据的人性化展示，没有必要发起 FLIP，且功能和展示逻辑合理。</p></div>
+            <p class="conclusion">社区达成共识，同意推进 PR 审查进度，并确认该功能无需经过 FLIP 流程。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/r2r3hr5do90zbdj19v4zfdvrm1p5lr5c">running Flink jobs in MiniCluster using the Kubernetes Operator</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">讨论主要关于在 Flink Kubernetes Operator 中支持以单 Pod 模式运行 MiniCluster，旨在为低吞吐量且需隔离的小型作业提供轻量级部署方案。参与者重点探讨了在单 Pod 架构下，针对有状态作业是否应强制开启 HA（高可用）及持久化存储的问题。</p>
+            <div class="key-points"><p><strong>@Dale Lane:</strong> 提出了在 Operator 中支持 MiniCluster 的动机，通过 PoC 展示了可行性，旨在降低小型作业的资源开销并实现快速启动。</p>
+<p><strong>@P Sinha:</strong> 指出单 Pod 模式下任何故障都会导致 JobManager 丢失，风险高于普通部署，建议对有状态作业强制开启 HA 或强烈推荐持久化存储。</p>
+<p><strong>@Dale Lane:</strong> 认同开启 HA 的必要性，但倾向于将其设为可选而非强制，认为用户应自行承担配置临时存储的风险，避免过度限制。</p></div>
+            <p class="conclusion">初步达成共识，HA 配置的具体细节将留待后续 FLIP 提案中详细定义；同时指出需完善文档警示，并优先考虑从 MiniCluster 迁移至完整 FlinkDeployment 的路径设计。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/kf7zvzbgd6lk879p57x5hq0f5jnwjj38">FLIP-XXXX: Higher-Order Functions in Flink SQL (TRANSFORM and ARRAY_FILTER)</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论主要围绕 Flink SQL 中引入 TRANSFORM 和 ARRAY_FILTER 高阶函数的 FLIP 提案展开。提案者 Dominik 汇报了新增的视图和物化表测试进展，并寻求社区对 Planner 集成及后续步骤的反馈。目前测试在本地已全部通过。</p>
+            <div class="key-points"><p><strong>@Dominik:</strong> 已补充针对视图和物化表的测试用例，验证了 expand-and-replan 路径下的正确性，本地测试全部通过。</p>
+<p><strong>@Sergey Nuyanzin:</strong> 指出了提案中可能存在的缺失部分（邮件截断，具体内容未完整显示），Dominik 随后进行了修复。</p>
+<p><strong>@Gustavo de Morais:</strong> 肯定了 Lambda 函数作为 UDF 和 PTF 基础构件的重要性，并询问了 WIP 分支的链接以便审查。</p></div>
+            <p class="conclusion">暂无最终定论。下一步 Dominik 需要公开 WIP 分支链接供社区审查，并等待关于 Planner 集成和 Calcite 处理的进一步反馈。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/jb6hkgk8lvy6324b22hy6o7lbs41x0db">FLINK-39900 - Change in review</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Francis Altomare 发起关于 FLINK-39900 的讨论，旨在推进其提交的 PR（#28373）的审核进度。该 PR 已通过社区评审但尚未获得批准，作者希望能尽快合入该改动以辅助 Flink 工作负载调优。</p>
+            <div class="key-points"><p><strong>@Francis Altomare:</strong> PR #28373 已经过社区评审但尚未获得批准，希望能获得帮助以推进下一步流程。</p>
+<p><strong>@Francis Altomare:</strong> 合入该改动对于 Flink 工作负载的调优非常有帮助。</p></div>
+            <p class="conclusion">邮件请求社区维护者或提交者关注并批准该 PR，以推进其合入。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/lcz3bw2m2o5t7xh34q5yrj0m9jsx7k28">Introducing Cobble-flink: Observable and Consumable State with Disaggregated Storage</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论主要介绍了 Cobble-flink 项目，这是一个集成 Apache Flink 与 Cobble 存储引擎的开源方案，旨在提供统一、可观测且可消费的流处理存储层。项目已发布 0.3.0-1 版本，通过分离存储架构支持状态快速扩缩容，并在性能对比中表现优异。</p>
+            <div class="key-points"><p><strong>@Zakelly Lan:</strong> Cobble-flink 旨在统一流处理存储，使状态更易于观察和消费，并支持分离存储和快速状态扩缩容。</p>
+<p><strong>@Zakelly Lan:</strong> 新发布的 0.3.0-1 版本性能显著提升，在多数场景下优于 RocksDB，未来重点在于打造统一开放的存储层。</p>
+<p><strong>@Salva Alcántara:</strong> 对项目表示赞赏，并表达了尝试和实验该项目的意愿。</p></div>
+            <p class="conclusion">项目已正式发布 0.3.0-1 版本供社区试用，后续开发将聚焦于构建用户友好且统一的存储层。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/q3fnysgkmcd9z7cvb6f12bf9oyprtxqw">Confluence Wiki Access Request - vaquarkhan1</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Vaquar Khan 请求获取 Flink 空间的 Confluence 页面编辑和创建权限，因当前尝试添加页面时遇到权限错误。他需要此权限以开始起草文档或 FLIP 提案。</p>
+            <div class="key-points"><p><strong>@vaquar khan:</strong> 请求开通 Flink Confluence 空间的编辑和创建页面权限，用户名为 vaquarkhan1。</p>
+<p><strong>@vaquar khan:</strong> 目前尝试操作时遇到权限报错，需要权限来起草文档和 FLIP。</p></div>
+            <p class="conclusion">邮件未显示回复，通常需等待社区管理员审批并手动授予相应权限。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/fw2rh5w1volm34vq05mokrmqg68mh7wt">FLINK-38023: PR #28161 code review request</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论主要关于 FLINK-38023 问题（使用新 Avro schema 的 GenericRecord 时状态恢复失败）的修复请求。开发者 Avi Sanwal 提交了 PR #28161 并请求社区进行代码审查。</p>
+            <div class="key-points"><p><strong>@Avi Sanwal:</strong> 已准备好针对 FLINK-38023 问题的修复代码（PR #28161），但因权限问题无法分配 Jira，请求团队审查。</p></div>
+            <p class="conclusion">暂无实质性结论，当前状态为等待社区对 PR 进行代码审查。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (85)</h2>
+            
+    <p>本周新建 <strong>85</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周 JIRA 主要集中在修复 MongoDB CDC 分片计算溢出、Watermark 发送异常及状态恢复失败等核心运行时错误，同时重点完善了 Python PTF API、HTTP Sink 重试机制及 UDF 指标监控等新功能。此外，还涉及多项 SQL 优化、Avro 兼容性改进以及文档和测试用例的补充。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Flink Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
