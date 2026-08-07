@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fluss 社区周报 | 2026-W31</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Fluss 社区周报 | 2026-W31</h1>
+            <p class="date-range">2026-07-27 ~ 2026-08-02</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (1)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/cjdmcfwcl2vxqozwzb2b6t8xkmstv813">New Apache Fluss committer: Yang Wang</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (0)</h2>
+            <p class="empty">本周无投票</p>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (9)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/b6fxjfbbcq61b7kb2ofsoonorg71f5hs">FIP-49: Fluss Gateway REST API</a></h3>
+            <p class="meta">7 条回复 · 5 位参与者</p>
+            <p class="summary">讨论主要围绕 FIP-49 Fluss Gateway REST API 的技术选型、架构设计及授权模式展开。社区重点讨论了为何选择 Rust 而非 Java/Netty、如何隔离查询与写入的资源竞争，以及 Service 与 User 两种模式下的授权边界，目前已完成 PoC 并准备进入投票阶段。</p>
+            <div class="key-points"><p><strong>@Liting Liu:</strong> 质疑为何不使用 Java/Netty 栈，并担心 DataFusion 查询可能耗尽资源影响写入稳定性，建议初期仅提供轻量级查找 API。</p>
+<p><strong>@Junbo Wang:</strong> 解释选择 Rust 是为了实现零拷贝和低延迟，确认初期仅支持轻量级查找，查询将通过独立线程池和内存限制进行隔离。</p>
+<p><strong>@Leonard Xu:</strong> 建议明确 Service 模式（共享服务账户）与 User 模式（需 Act-as 支持）的授权边界，并支持将原生操作与 SQL 路径分离的架构方向。</p></div>
+            <p class="conclusion">社区对提案方向达成共识，确认 FIP-49 将聚焦于基于 fluss-rust 的原生写入和轻量级查找，作者已更新提案并提交 PoC，计划启动投票流程。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/jvobz3y7n8s6t98bpjj7ov4xnvc2637g">FIP-32 Multiprotocol Query Gateway for Apache Fluss</a></h3>
+            <p class="meta">4 条回复 · 3 位参与者</p>
+            <p class="summary">讨论旨在推进 FIP-32（多协议查询网关）纳入 1.0 版本，核心议题是如何界定其范围与架构边界。经过讨论，社区倾向于缩小 FIP-32 的初期范围，并明确其与 FIP-49（REST 网关）的职责分工，以便更快交付。</p>
+            <div class="key-points"><p><strong>@Keith Lee:</strong> 建议明确将认证授权排除在范围外，并缩减初期支持的协议数量（仅保留 ArrowFlight 和 REST），以加快交付速度。</p>
+<p><strong>@Junbo Wang:</strong> 支持缩减范围，指出 Arrow Flight SQL 依赖尚未就绪的 fluss-datafusion，建议初期仅专注于 REST，待依赖成熟后再引入 Flight SQL。</p>
+<p><strong>@David Reger:</strong> 提出架构原则：FIP-49 应专注于原生操作的 REST MVP，而 FIP-32 专注于查询架构，两者应共享底层基础设施以避免实现分裂。</p></div>
+            <p class="conclusion">初步达成共识：FIP-32 将作为多协议 SQL 查询网关的父 FIP，FIP-49 则专注于原生 Fluss 操作的 REST 支持。社区将优先致力于 FIP-49 的实现，以此引领 REST 网关及共享组件的设计。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/xxlq0z6hlhjzr0w29qtxr08fq8q6ckxc">Fluss K8s Operator repository positioning</a></h3>
+            <p class="meta">4 条回复 · 5 位参与者</p>
+            <p class="summary">本次讨论旨在确定 Fluss K8s Operator 新仓库的定位，提议将其作为独立于核心项目的 Apache Fluss 子项目。此举旨在参考 Flink 的做法，使 Operator 拥有独立的发布周期和问题追踪，以提升生产环境下的质量与可信度。</p>
+            <div class="key-points"><p><strong>@Lorenzo Affetti:</strong> 建议将 Operator 设为独立仓库并作为 Apache Fluss 子项目，使其迭代不受核心发布周期限制，并提升基础设施的质量与信任度。</p>
+<p><strong>@Muhammet Orazov / Giannis Polyzos / Michael Koepf / Forward Xu:</strong> 一致赞同（+1）该提议，并感谢 Lorenzo Affetti 推动此事。</p></div>
+            
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/ovpqb59q7w0oj9qbt5d3b8dvvr7svjc4">FIP-48: Introduce a Union Read Kernel for fluss-rust</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">本次讨论围绕 FIP-48（为 fluss-rust 引入 Union Read Kernel）展开，旨在让非 JVM 引擎能够读取 Lake-enabled 表。参与者认可提案方向正确，但就技术细节提出了多项改进建议，作者计划根据反馈修订提案。</p>
+            <div class="key-points"><p><strong>@Anton Borisov:</strong> 建议更新 sort-merge 切换理由以反映内存开销相当但具备有序输出优势，明确 paimon-rust #374 的依赖关系，并将 DV-tables 的可读性说明纳入提案文本。</p>
+<p><strong>@Keith Lee:</strong> 指出需补充超时与重试机制、定义 PK hash overlay 失败时的资源限制（防止 OOM），以及明确对象存储的凭证与安全方案。</p>
+<p><strong>@Jim Hu:</strong> 确认反馈有效，涵盖了一致性、兼容性、资源限制及安全等关键问题，将据此修订 FIP 并发布新版本。</p></div>
+            <p class="conclusion">作者 Jim Hu 将根据 Anton 和 Keith 提出的关于一致性合约、容错机制及安全性等具体建议，对 FIP-48 进行修订，后续将发布更新版本。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/1ds0q2cjvp4nyltpowpm45lvyk47hjkh">FIP-27: Remove Mandatory System Columns From Fluss Lake Tables</a></h3>
+            <p class="meta">1 条回复 · 1 位参与者</p>
+            <p class="summary">Yuxia Luo 提议重新推动 FIP-27，并将范围缩小为仅移除 Fluss Lake Tables 中的强制系统列，不再涉及 PARTITION_TIMESTAMP。讨论澄清了该变更不影响 Lake 访问和 Union reads 行为，并说明了如何通过物理模式识别旧表，作者计划于下周一发起投票。</p>
+            <div class="key-points"><p><strong>@Yuxia Luo:</strong> 缩小 FIP 范围仅聚焦移除强制系统列，Lake reader 和 tiering writer 将同时兼容旧表与新表。</p>
+<p><strong>@Yuxia Luo:</strong> 系统列的移除不会改变 Lake 访问能力或 FULL union-read 的现有行为。</p>
+<p><strong>@Yuxia Luo:</strong> 将通过检查物理 Lake 表 Schema（而非元数据存储）来自动识别是旧表还是新表。</p></div>
+            <p class="conclusion">若无进一步异议，作者将于下周一启动该提案的投票流程。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/8w412cn28256o8gnxcn8j78z9gpk66z3">Creating a "fluss-extensions" GitHub organization for ecosystem projects</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">本次讨论主要关于为生态项目创建 'fluss-extensions' GitHub 组织的命名合规性问题。经与 Apache 品牌副主席沟通，确认第三方可以使用该名称，前提是必须明确标识为非官方集合且不受 ASF 背书。</p>
+            <div class="key-points"><p><strong>@tison:</strong> 与 VP Brand 沟通后确认，只要明确标识为非官方，第三方组织可以使用 'fluss-extensions' 或 'fluss-contrib' 名称。</p>
+<p><strong>@Yang Wang:</strong> 总结了品牌使用的关键要求：需在 README 等显著位置声明非官方、非 ASF 背书及商标归属；项目命名应避免 'Fluss-ABC' 形式，推荐使用 'ABC plugin for Fluss'。</p></div>
+            <p class="conclusion">确认 'fluss-extensions' 名称可用，之前预留的替代名称（如 lakestreams）不再需要。下一步将使用已预留的 'fluss-extensions' 组织，并落实非官方声明和命名规范。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/fgob3kghgpbt5bon1pmqgdpj8lb4lpws">Hackathon task list needed - 10 weeks out</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">Rich Bowen 提醒 Fluss 社区距离 Apache Hackathon 活动仅剩 10 周，但项目尚未提交任务列表，这会影响参与者的报名决策。他敦促社区尽快整理任务清单、提交 PR 并通知邮件列表，以确保参会者了解项目情况。</p>
+            <div class="key-points"><p><strong>@Bowen, Rich:</strong> 项目需尽快编写包含重点领域、适宜新手的 issue 等内容的任务列表，并提交 PR 至指定仓库。</p>
+<p><strong>@Bowen, Rich:</strong> 必须在 dev 和 users 邮件列表中公布此信息，因为现在是潜在参与者决定是否注册的关键时期。</p>
+<p><strong>@Anton Borisov:</strong> 确认收到通知，表示将着手准备任务列表、提交 PR 并在 Fluss 邮件列表中进行公告。</p></div>
+            <p class="conclusion">Fluss 社区已确认将立即行动，准备任务列表、提交 PR 并通知社区，以提升活动参与度。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/8bgy6lc7h04blvmypczjsy2zcmq2s5lz">FIP-XXX: Native S3 FileSystem</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">本次讨论提出了 FIP-XXX 提案，建议开发基于 AWS Java SDK v2 的原生 S3 文件系统插件（`fluss-fs-s3-native`），以移除对 Hadoop 的依赖。该提案旨在解决现有方案面临的 AWS SDK v1 停止支持、依赖包过大及发布周期耦合等问题，并期望获得类似 Flink 改造后的性能提升。</p>
+            <div class="key-points"><p><strong>@Muhammet Orazov:</strong> 现有基于 Hadoop S3AFileSystem 的实现存在安全隐患（SDK v1 停更）、依赖沉重（30 MB）且迭代受制于 Hadoop 版本。</p>
+<p><strong>@Muhammet Orazov:</strong> 新插件将直接基于 AWS SDK v2 构建，不改变现有数据布局或 SPI 接口，参考 Flink FLIP-555 预计能带来约 2 倍的吞吐量提升。</p>
+<p><strong>@Muhammet Orazov:</strong> 请求社区重点关注写入路径（Write path）的实现逻辑及 S3 原生默认配置的设定。</p></div>
+            <p class="conclusion">提案已发布详细设计文档供社区审阅，目前处于收集反馈阶段，重点讨论方向为写入路径实现与默认配置。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/o6115yfbplrg5hhhn5vsmcyhon9xyozy">TLS efforts - organize contributions</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Lorenzo Affetti 团队启动了 Fluss 的 TLS 功能开发，计划将工作拆分为 9 个贡献模块并已提交首个 PR。为避免影响 1.0 版本发布，团队提议创建特性分支来合并代码，并寻求 Committer 进行代码评审。</p>
+            <div class="key-points"><p><strong>@Lorenzo Affetti:</strong> 建议创建 'feat-tls' 基础分支来合并 9 个 PR，待 1.0 发布后再统一合入主干，以避免暴露不完整功能。</p>
+<p><strong>@Lorenzo Affetti:</strong> 倾向于不将部分功能标记为 @Experimental 合入，而是通过分支管理保持代码提交属性的完整性。</p></div>
+            <p class="conclusion">团队正推进后续 8 个贡献模块，目前等待社区 Committer/PMC 响应并协助审核工作。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (0)</h2>
+            
+    <p>本周新建 <strong>0</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周无新建 JIRA。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Fluss Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
