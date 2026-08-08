@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-08-07</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-08-07</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 3 新 Issues</div>
+            <div class="stat">✅ 2 关闭</div>
+            <div class="stat">✨ 7 新 PRs</div>
+            <div class="stat">🎉 3 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/3702">PR #3702</a> 修复 Leader 选举后 ISR 误收缩问题，提升集群稳定性</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3847">PR #3847</a> Rust 客户端新增谓词下推（filter pushdown）支持</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3886">PR #3886</a> 允许覆盖 Lake Tiering 的 remote-first 读取偏好设置</li><li>✨ <a href="https://github.com/apache/fluss/pull/3887">PR #3887</a> Flink 新增混合 Lake Lookup 查询能力</li><li>✨ <a href="https://github.com/apache/fluss/pull/3889">PR #3889</a> 服务端新增基于 Group 的 ACL 授权支持</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <ul class="critical-list"><li>⚠️ <a href="https://github.com/apache/fluss/issues/3892">Issue #3892</a> Lake Tiering 在 pending log 仅包含空 WAL batch 时永远无法推进，可能导致数据分层停滞</li></ul>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3436">Issue #3436</a> Add Admin API and sys procedure to describe bucket metadata</h4>
+            <ul><li><span class="author">@fhan688</span>: 提出分两个 PR 实现：PR1 添加核心 Admin API 和 RPC，PR2 添加 Flink sys.describe_buckets 存储过程</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3849">Issue #3849</a> [rust] Partial update wrongly rejects NOT NULL columns that are explicitly listed in target columns</h4>
+            <ul><li><span class="author">@beryllw</span>: 关闭此 Issue，因服务端也强制执行严格 nullability 规则，仅客户端修复不可行，需先讨论语义变更</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3876">Issue #3876</a> [test] Unstable test Flink118TableSourceBatchITCase.testCountPushDownForLogTable</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: CI 报告测试失败：testCountPushDownForLogTable 超时未获取到预期记录</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3883">PR #3883</a> [spark] Support time-range incremental batch reads</h4>
+            <ul><li><span class="author">@YannByron</span>: 指出三个必须修复的问题：offset 初始化器异常处理、upsert 路径缺少空范围保护、read.optimized 与增量读取冲突导致静默返回空结果</li><li><span class="author">@Yohahaha</span>: 强调这是实际客户需求，请求多位 committer 尽快 review</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3887">PR #3887</a> [flink] add support of hybrid lookup with lake</h4>
+            <ul><li><span class="author">@wuchong</span>: 指出 PR #3630 可能已覆盖此功能，建议确认是否重复</li><li><span class="author">@Copilot</span>: 发现多个问题：rowConverter 反序列化后为 null、分区缓存负条目无过期机制、异步 lookup 中存在阻塞 RPC、synchronized 导致多线程无效</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3890">PR #3890</a> [server] Paimon schema compatibility check is too strict for comments and options when alter table.</h4>
+            <ul><li><span class="author">@loserwang1024</span>: CC @luoyuxia 请求 review</li><li><span class="author">@Copilot</span>: 建议将 partition.legacy-name 纳入兼容性检查，避免忽略该选项导致读写不一致</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3886">PR #3886</a> [lake/tiering][follow] Allow overriding tiering remote-first read preference</h4>
+            <ul><li><span class="author">@beryllw</span>: CC 相关 reviewer 请求关注</li><li><span class="author">@Copilot</span>: 指出不应直接修改调用方传入的 flussConfig 实例，建议复制到 job-local Configuration 避免副作用</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3699">PR #3699</a> [filesystem] Align Hadoop dependencies to 3.4.3</h4>
+            <ul><li><span class="author">@litiliu</span>: 建议使用 DefaultCredentialsProvider 替代环境特定 provider 列表，后决定本 PR 仅做 v1→v2 机械迁移</li><li><span class="author">@qzyu999</span>: 确认 SDK v2 类名替换没问题，DefaultCredentialsProvider 方案需 E2E 验证后再考虑</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3847">PR #3847</a> [rust] Add predicates as part of filter pushdown</h4>
+            <ul><li><span class="author">@charlesdong1991</span>: 建议添加注释说明 PredicateBuilder 对超过20个字面量使用 in、否则用 or 的性能考量；测试无需覆盖所有函数</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3777">PR #3777</a> [FIP-37] Add bitmap Phase 2 functions and register via FlussCatalog</h4>
+            <ul><li><span class="author">@pbanakar</span>: 解释 Flink 1.20 不支持 DataTypes.STRUCTURED 所需 API，保留现有 TypeInformation 模式，已修复核心语义并添加完整测试</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3857">PR #3857</a> [security] Support impersonation via SASL/PLAIN authorization id</h4>
+            <ul><li><span class="author">@litiliu</span>: 建议保留原始 PlainLoginModule 所有选项而非维护前缀白名单，通过 JaasConfig 解析更安全兼容</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3891">PR #3891</a> [common] Add standard principal type constants</h4>
+            <ul><li><span class="author">@litiliu</span>: 请求 @loserwang1024 帮忙 review</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3420">PR #3420</a> [lake/tiering] Support reporting watermark to Paimon snapshot</h4>
+            <ul><li><span class="author">@Shawn-Hx</span>: 解释在 LakeWriter 中计算 watermark 是因为部分 lake 格式不支持上报 watermark，可跳过不必要计算</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3894">#3894</a> [Improvement] Support configurable unclean election for offline bucket recovery <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/issues/3892">#3892</a> Lake tiering never advances for buckets whose pending log contains only empty WAL batches <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/issues/3888">#3888</a> Paimon schema compatibility check is too strict for comments and options <span class="author">@loserwang1024</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3896">#3896</a> [server] Support time-based log segment rolling <span class="author">@fxbing</span> </li><li><a href="https://github.com/apache/fluss/pull/3895">#3895</a> [server] Support unclean election for offline leader recovery <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/pull/3893">#3893</a> [flink] Commit tiered offsets for buckets that finished without data <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/pull/3891">#3891</a> [common] Add standard principal type constants <span class="author">@litiliu</span> </li><li><a href="https://github.com/apache/fluss/pull/3890">#3890</a> [server] Paimon schema compatibility check is too strict for comments and options when alter table. <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/pull/3889">#3889</a> [server] Support group-based ACL authorization <span class="author">@litiliu</span> </li><li><a href="https://github.com/apache/fluss/pull/3887">#3887</a> [flink] add support of hybrid lookup with lake <span class="author">@zuston</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3846">#3846</a> [rust] predicate/proto wiring <span class="author">@leekeiabstraction</span> </li><li><a href="https://github.com/apache/fluss/issues/3698">#3698</a> [server] NotifyLeaderAndIsr may trigger a spurious ISR shrink <span class="author">@fxbing</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3886">#3886</a> [lake/tiering][follow] Allow overriding tiering remote-first read preference <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/pull/3847">#3847</a> [rust] Add predicates as part of filter pushdown <span class="author">@leekeiabstraction</span> </li><li><a href="https://github.com/apache/fluss/pull/3702">#3702</a> [server] Fix spurious ISR shrink after leader election <span class="author">@fxbing</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
