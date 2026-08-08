@@ -45,7 +45,6 @@ cd daily-reports
 
 | Secret | 说明 |
 |--------|------|
-| `OPENAI_BASE_URL` | LLM API 地址（OpenAI 兼容） |
 | `OPENAI_API_KEY` | LLM API Key |
 | `DINGTALK_WEBHOOK` | 钉钉机器人 Webhook URL |
 | `DINGTALK_SECRET` | 钉钉机器人加签密钥 |
@@ -56,9 +55,10 @@ cd daily-reports
 
 | Variable | 说明 | 默认值 |
 |----------|------|--------|
+| `OPENAI_BASE_URL` | LLM API 地址（OpenAI 兼容） | 无（必填） |
 | `OPENAI_MODEL` | 生成摘要时使用的模型名称 | `glm-5` |
 
-未配置该变量时，所有报告会继续使用 `glm-5`。修改变量后，后续定时运行和手动运行都会使用新模型。
+未配置 `OPENAI_MODEL` 时，所有报告会继续使用 `glm-5`。修改变量后，后续定时运行和手动运行都会使用新模型。
 
 ### 4. 启用 GitHub Pages
 

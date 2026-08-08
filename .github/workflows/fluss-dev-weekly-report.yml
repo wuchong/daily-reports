@@ -54,7 +54,7 @@ jobs:
 
       - name: Generate summary with LLM
         env:
-          OPENAI_BASE_URL: ${{ secrets.OPENAI_BASE_URL }}
+          OPENAI_BASE_URL: ${{ vars.OPENAI_BASE_URL }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_MODEL: ${{ vars.OPENAI_MODEL || 'glm-5' }}
         run: python scripts/mailing-list/generate_summary.py
