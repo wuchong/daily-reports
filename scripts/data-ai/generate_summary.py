@@ -92,7 +92,7 @@ def generate_summary(client: OpenAI, prompt: str, news_data: dict, max_retries: 
     for attempt in range(1, max_retries + 1):
         try:
             response = client.chat.completions.create(
-                model="glm-5",
+                model=os.environ.get("OPENAI_MODEL", "glm-5"),
                 messages=[
                     {"role": "system", "content": prompt},
                     {"role": "user", "content": user_content}

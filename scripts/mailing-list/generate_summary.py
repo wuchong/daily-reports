@@ -5,6 +5,7 @@ Environment variables:
 - PROJECT_NAME: Project display name (e.g., Flink, Iceberg, Kafka, Spark)
 - OPENAI_BASE_URL: OpenAI API base URL
 - OPENAI_API_KEY: OpenAI API key
+- OPENAI_MODEL: Model name (defaults to glm-5)
 """
 
 import json
@@ -58,7 +59,7 @@ def call_llm_with_retry(client: OpenAI, prompt: str, default: dict) -> dict:
     for attempt in range(1, MAX_RETRIES + 1):
         try:
             response = client.chat.completions.create(
-                model="glm-5",
+                model=os.environ.get("OPENAI_MODEL", "glm-5"),
                 messages=[{"role": "user", "content": prompt}],
                 response_format={"type": "json_object"},
                 temperature=0.3

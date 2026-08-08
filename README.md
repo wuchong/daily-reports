@@ -50,11 +50,21 @@ cd daily-reports
 | `DINGTALK_WEBHOOK` | 钉钉机器人 Webhook URL |
 | `DINGTALK_SECRET` | 钉钉机器人加签密钥 |
 
-### 3. 启用 GitHub Pages
+### 3. 配置 GitHub Variables
+
+在同一页面切换到 Variables 标签页，添加 Repository variable：
+
+| Variable | 说明 | 默认值 |
+|----------|------|--------|
+| `OPENAI_MODEL` | 生成摘要时使用的模型名称 | `glm-5` |
+
+未配置该变量时，所有报告会继续使用 `glm-5`。修改变量后，后续定时运行和手动运行都会使用新模型。
+
+### 4. 启用 GitHub Pages
 
 Settings → Pages → Source: Deploy from branch → `pages` branch, `/ (root)` folder
 
-### 4. 测试运行
+### 5. 测试运行
 
 ```bash
 # 手动触发日报

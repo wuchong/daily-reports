@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate summary using Claude API."""
+"""Generate summary using an OpenAI-compatible API."""
 
 import json
 import os
@@ -13,7 +13,7 @@ def load_file(path: str) -> str:
         return f.read()
 
 
-def call_claude_api(base_url: str, api_key: str, prompt: str) -> str:
+def call_llm_api(base_url: str, api_key: str, model: str, prompt: str) -> str:
     """Call LLM API (OpenAI-compatible format)."""
     # If base_url ends with version path, use /chat/completions directly
     # Otherwise use /v1/chat/completions
@@ -23,7 +23,7 @@ def call_claude_api(base_url: str, api_key: str, prompt: str) -> str:
         url = f"{base_url.rstrip('/')}/v1/chat/completions"
     
     data = json.dumps({
-        "model": "glm-5",
+        "model": model,
         "max_tokens": 4096,
         "messages": [
             {"role": "user", "content": prompt}
@@ -49,6 +49,7 @@ def call_claude_api(base_url: str, api_key: str, prompt: str) -> str:
 def main():
     base_url = os.environ.get("OPENAI_BASE_URL", "https://api.openai.com")
     api_key = os.environ.get("OPENAI_API_KEY")
+    model = os.environ.get("OPENAI_MODEL", "glm-5")
     
     if not api_key:
         print("Error: OPENAI_API_KEY required")
@@ -61,8 +62,8 @@ def main():
     # Build prompt
     prompt = prompt_template.replace("{{RAW_DATA}}", raw_data)
     
-    print(f"Calling Claude API at {base_url}...")
-    response = call_claude_api(base_url, api_key, prompt)
+    print(f"Calling {model} at {base_url}...")
+    response = call_llm_api(base_url, api_key, model, prompt)
     
     # Extract JSON from response
     try:

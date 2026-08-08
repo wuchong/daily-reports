@@ -40,10 +40,11 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: bash scripts/fluss-github/collect_data.sh ${{ steps.date.outputs.date }}
       
-      - name: Generate summary with Claude
+      - name: Generate summary with LLM
         env:
           OPENAI_BASE_URL: ${{ secrets.OPENAI_BASE_URL }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_MODEL: ${{ vars.OPENAI_MODEL || 'glm-5' }}
         run: python scripts/fluss-github/generate_summary.py
       
       - name: Generate reports
