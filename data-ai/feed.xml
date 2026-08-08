@@ -6,6 +6,12 @@
     <description>Data+AI 领域每日动态归档</description>
     <language>zh-CN</language>
     <item>
+      <title>Data+AI 全球日报 - 2026-08-07</title>
+      <link>https://wuchong.github.io/daily-reports/data-ai/reports/2026-08-07.html</link>
+      <guid>https://wuchong.github.io/daily-reports/data-ai/reports/2026-08-07.html</guid>
+      <pubDate>2026-08-07</pubDate>
+    </item>
+    <item>
       <title>Data+AI 全球日报 - 2026-08-06</title>
       <link>https://wuchong.github.io/daily-reports/data-ai/reports/2026-08-06.html</link>
       <guid>https://wuchong.github.io/daily-reports/data-ai/reports/2026-08-06.html</guid>
@@ -118,12 +124,6 @@
       <link>https://wuchong.github.io/daily-reports/data-ai/reports/2026-07-19.html</link>
       <guid>https://wuchong.github.io/daily-reports/data-ai/reports/2026-07-19.html</guid>
       <pubDate>2026-07-19</pubDate>
-    </item>
-    <item>
-      <title>Data+AI 全球日报 - 2026-07-17</title>
-      <link>https://wuchong.github.io/daily-reports/data-ai/reports/2026-07-17.html</link>
-      <guid>https://wuchong.github.io/daily-reports/data-ai/reports/2026-07-17.html</guid>
-      <pubDate>2026-07-17</pubDate>
     </item>
   </channel>
 </rss>
