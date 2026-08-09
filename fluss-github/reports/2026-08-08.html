@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-08-08</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-08-08</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 9 新 Issues</div>
+            <div class="stat">✅ 1 关闭</div>
+            <div class="stat">✨ 7 新 PRs</div>
+            <div class="stat">🎉 3 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/3777">PR #3777</a> 合并，完成 FIP-37 RoaringBitmap Phase 2 函数注册，相关 <a href="https://github.com/apache/fluss/issues/3289">Issue #3289</a> 已关闭。</li><li>📚 <a href="https://github.com/apache/fluss/pull/3911">PR #3911</a> 将 Streamhouse 重命名为 Lakestream 并补充 Hudi 文档，<a href="https://github.com/apache/fluss/pull/3823">PR #3823</a> 补充 RoaringBitmap SQL 函数文档。</li><li>🐛 <a href="https://github.com/apache/fluss/issues/3901">Issue #3901</a> FlinkCatalog 在不存在数据库下解析内置函数，<a href="https://github.com/apache/fluss/pull/3906">PR #3906</a> 正在修复。</li><li>🐛 <a href="https://github.com/apache/fluss/issues/3909">Issue #3909</a> 空日志批次可能导致 undo recovery 超时，<a href="https://github.com/apache/fluss/pull/3910">PR #3910</a> 跟踪消费进度。</li><li>✨ <a href="https://github.com/apache/fluss/issues/3907">Issue #3907</a> 与 <a href="https://github.com/apache/fluss/pull/3908">PR #3908</a> 支持分区级 bucket 伸缩，<a href="https://github.com/apache/fluss/issues/3902">Issue #3902</a> 等推进 FIP-27。</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <ul class="critical-list"><li>⚠️ <a href="https://github.com/apache/fluss/issues/3901">Issue #3901</a> FlinkCatalog 在数据库不存在时仍解析内置函数，被标记为 priority=critical，需要优先修复。</li></ul>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3289">Issue #3289</a> [FIP-37] Implement RoaringBitmap SQL functions via FlussCatalog</h4>
+            <ul><li><span class="author">@wuchong</span>: 确认 FIP-37 功能和文档已完成并关闭 Issue，同时提到发现新的 #3901 问题。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3901">Issue #3901</a> [Bug] FlinkCatalog resolves built-in functions under nonexistent databases</h4>
+            <ul><li><span class="author">@pbanakar</span>: 确认将修复该 Catalog 问题，并表示正在准备提交 PR。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2411">Issue #2411</a> [Umbrella][FIP-27] Remove Mandatory System Columns From Fluss Lake Tables</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 提醒相关同学关注 FIP-27 湖表系统列移除的汇总 Issue。</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2669">PR #2669</a> [docs] Add Real-Time User Profile quickstart tutorial</h4>
+            <ul><li><span class="author">@pbanakar</span>: 询问应改用原生 bitmap 函数，还是改成独立 quickstart。</li><li><span class="author">@wuchong</span>: 建议更新该 quickstart，以便纳入 1.0 版本。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3699">PR #3699</a> [filesystem] Align Hadoop dependencies to 3.4.3</h4>
+            <ul><li><span class="author">@leekeiabstraction</span>: 建议为 DefaultCredentialsProvider 和手动 E2E 验证创建后续 issue。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3822">PR #3822</a> [server] feat: remote manifest v2</h4>
+            <ul><li><span class="author">@wuchong</span>: 建议重命名删除延迟配置，修正远程日志删除与提交流程，优化段查找并精简 manifest 字段。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3864">PR #3864</a> [server] Manage historical lookup local cache capacity</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: 担心每次请求循环计算效率，建议添加 TODO 后续优化。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3899">PR #3899</a> [rust] Fix log append rejecting NOT NULL columns</h4>
+            <ul><li><span class="author">@charlesdong1991</span>: 请求社区成员协助审查该 Rust NOT NULL 修复。</li><li><span class="author">@leekeiabstraction</span>: 建议补充非空列集成测试，并关注预构建 Arrow 批量写入未校验 schema 的问题。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3900">PR #3900</a> [rust] Encode predicates into their protocol representation</h4>
+            <ul><li><span class="author">@leekeiabstraction</span>: 请求相关同学审查谓词协议编码的 Rust PR。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3906">PR #3906</a> [flink] Validate database existence when resolving catalog functions in FlinkCatalog</h4>
+            <ul><li><span class="author">@wuchong</span>: 建议在数据库不存在时抛出明确 CatalogException，而不是误报函数不存在。</li><li><span class="author">@pbanakar</span>: 已更新函数获取和测试；反馈 functionExists 抛异常影响 CI，建议返回 false。</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3912">#3912</a> [Improvement] Reduce Flink multi-version test execution <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/issues/3909">#3909</a> [Bug] Undo recovery may time out when scanning empty log batches <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/3907">#3907</a> Support per-partition bucket rescale <span class="author">@Kaixuan-Duan</span> </li><li><a href="https://github.com/apache/fluss/issues/3905">#3905</a> [FIP-27] Document clean lake schemas and rolling upgrade requirements <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/issues/3904">#3904</a> [FIP-27] Support clean and legacy Hudi lake table schemas <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/issues/3903">#3903</a> [FIP-27] Support clean and legacy Iceberg lake table schemas <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/issues/3902">#3902</a> [FIP-27] Support clean and legacy Paimon lake table schemas <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/issues/3901">#3901</a> [Bug] FlinkCatalog resolves built-in functions under nonexistent databases <span class="author">@wuchong</span> <span class="labels">priority=critical</span></li><li><a href="https://github.com/apache/fluss/issues/3897">#3897</a> [rust] Log append reject NOT NULL columns <span class="author">@charlesdong1991</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3913">#3913</a> [test] Add multi-version compatibility test selection <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/pull/3910">#3910</a> [flink] Track consumed progress during undo recovery <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/3908">#3908</a> [server][client] Support per-partition bucket count for partitioned tables <span class="author">@Kaixuan-Duan</span> </li><li><a href="https://github.com/apache/fluss/pull/3906">#3906</a> [flink] Validate database existence when resolving catalog functions in FlinkCatalog <span class="author">@pbanakar</span> </li><li><a href="https://github.com/apache/fluss/pull/3900">#3900</a> [rust] Encode predicates into their protocol representation <span class="author">@leekeiabstraction</span> </li><li><a href="https://github.com/apache/fluss/pull/3899">#3899</a> [rust] Fix log append rejecting NOT NULL columns <span class="author">@charlesdong1991</span> </li><li><a href="https://github.com/apache/fluss/pull/3896">#3896</a> [server] Support time-based log segment rolling <span class="author">@fxbing</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3289">#3289</a> [FIP-37] Implement RoaringBitmap SQL functions via FlussCatalog <span class="author">@pbanakar</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3911">#3911</a> [docs] Rename Streamhouse to Lakestream and add Hudi <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/pull/3823">#3823</a> [docs] Add RoaringBitmap SQL functions documentation <span class="author">@pbanakar</span> </li><li><a href="https://github.com/apache/fluss/pull/3777">#3777</a> [FIP-37] Add bitmap Phase 2 functions and register via FlussCatalog <span class="author">@pbanakar</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
