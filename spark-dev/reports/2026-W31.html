@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spark 社区周报 | 2026-W31</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Spark 社区周报 | 2026-W31</h1>
+            <p class="date-range">2026-07-27 ~ 2026-08-02</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (0)</h2>
+            <p class="empty">本周无公告</p>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (1)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/cr0kbnz2mqsoodwyx5m2vy34x2tdg4ft">SPIP: Spark Connect Gateway — Session Affinity, Auth, and Multi-Tenancy for Spark Connect Servers</a> <span class="status passed">✅ 已通过</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (8)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/sxtjsl3pkpmn8jnglwbnl846762hfdcm">[PSA] Preparing 4.3 branch cut 1st Aug.</a></h3>
+            <p class="meta">8 条回复 · 4 位参与者</p>
+            <p class="summary">本次讨论围绕 Apache Spark 4.3.0 发布准备，Jungtaek Lim 作为发布经理推进 branch cut、分支后处理及发布时间安排。branch-4.3 已创建，但随后遇到 branch-4.x/branch-4.3 编译和 CI 问题，需要修复并推进版本号、CI 配置等后续 PR。讨论还涉及是否将 DSv2 column-level UPDATE 相关 PR 纳入 4.3.0。</p>
+            <div class="key-points"><p><strong>@Jungtaek Lim:</strong> branch-4.3 已创建，属于 soft cut；在 RC 开始前可接受代码变更，但应避免合入可能影响一个月左右发布节奏的高风险变更，并尽量在 9 月第 3 周前完成 RC 投票。</p>
+<p><strong>@Cheng Pan:</strong> 已合并 PR #57718，修复 branch-4.x 和 branch-4.3 的编译问题，解除 Jungtaek Lim 后续分支处理工作的阻塞。</p>
+<p><strong>@Anurag Mantripragada:</strong> 请求将 SPARK-58111（DSv2 column-level UPDATE 基础能力）纳入 4.3.0，说明该 PR 自包含且有助于 Iceberg/Delta 等连接器尽早集成；Jungtaek Lim 表示在自包含且 reviewer/committer 同意的前提下可接受。</p></div>
+            <p class="conclusion">branch-4.3 已完成初步切分，后续重点是修复编译/CI 问题、完成 branch-4.x 升级到 4.4.0-SNAPSHOT 及相关基础设施 PR，并控制高风险变更；SPARK-58111 可在自包含且评审通过的情况下纳入 4.3.0，最终由 committer 决定。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/qb71ldsjt9wllvc3jzst4v4zhhsq6tdb">SPIP: Distributed Map Join for Medium-Sized Build Tables</a></h3>
+            <p class="meta">5 条回复 · 2 位参与者</p>
+            <p class="summary">Yu Gan 提出 SPIP：为 Spark 引入分布式 Map Join（DMJ）策略，解决中等规模 build 表（数百 MB 至约 10GB）与超大 probe 表 join 时因退化为 shuffle join 导致 probe 侧 shuffle 成本过高的问题。该功能默认关闭，需通过配置和 SQL hint 双重启用，且已在生产环境稳定运行两个月，可显著降低符合条件的 fact-dimension join 耗时。目前社区正在讨论其 RPC 批处理机制、分片调用粒度及最坏情况下的行为。</p>
+            <div class="key-points"><p><strong>@Yu Gan:</strong> DMJ 将 build 侧哈希分片为可远程查询的内存分片，probe 任务通过带 Bloom filter 预过滤的批量 RPC 查询匹配行，从而避免 probe 侧 shuffle；当前批处理按 shard 粒度而非 executor 粒度，跨 executor 合并调用可作为后续优化。</p>
+<p><strong>@Asif Shahid:</strong> 关注 probe 侧对多个 hash 分区是否会产生 N 次调用，建议按 executor 合并请求；并询问在所有分区键都被所有 probe 节点需要的最坏情况下是否会退化为 broadcast hash join。</p>
+<p><strong>@Yu Gan:</strong> 澄清最坏情况不会退化为 BHJ，因为 DMJ 不在 probe 侧保存完整 build 副本，而是按需拉取匹配行；极端情况下 RPC 拓扑会变成 all-to-all，更像 shuffle 而非 BHJ。</p></div>
+            <p class="conclusion">讨论仍处于 SPIP 意见征集阶段，尚未形成最终结论。下一步是继续收集社区对整体设计和 PR 中具体问题（如 shard 基础设施是否保持 opt-in）的反馈，并可能将按 executor 合并 RPC 批次作为后续优化。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/d4oy1v74vgzohj9c0zo5c8k7dkkt29fq">Documentation nitpicks</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">Nicholas Chammas 提出 Spark 文档中的一些细节问题，包括 AI Agent 指令不应弥补文档缺陷、页面标题应唯一等，并计划提交补丁改进。Xiao Li 和 Hyukjin Kwon 表示支持，并建议同时为开发者和用户提供最佳实践和代码示例。</p>
+            <div class="key-points"><p><strong>@Nicholas Chammas:</strong> AGENTS.md 中的部分指令应迁移到面向人类的主文档中，避免用 Agent 指令弥补文档不足；页面应只有一个 h1 标题。</p>
+<p><strong>@Xiao Li:</strong> 支持改进文档，并建议为 API 和功能提供更多官方示例，以便人类和 AI 都能更好理解和使用。</p>
+<p><strong>@Hyukjin Kwon:</strong> 建议分两条线推进：一条面向开发者的文档最佳实践，另一条面向用户的最佳实践，并考虑通过 SPIP 提案推动。</p></div>
+            <p class="conclusion">社区初步达成共识：应改进主文档而非依赖 Agent 指令，并计划分别针对开发者和用户补充最佳实践与示例；Nicholas 将提交补丁，Hyukjin 后续会分享更多想法。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/5v0dprk82q7x784lsdxx17wpx04s94f1">Questions on Spark 4.3 Release Branching and Dependency Upgrade Contributions</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">Anoopam Sharma 询问 Spark 4.3 的分支策略与发布时间表不一致的问题，并咨询依赖升级（尤其是 CVE 修复）的贡献流程。Hyukjin Kwon 回应称 branch-4.3 即将创建。</p>
+            <div class="key-points"><p><strong>@Anoopam Sharma:</strong> 指出 Spark 4.3 计划于 2026 年 8 月 1 日切出发布分支，但 GitHub 上尚无 branch-4.3，并询问后续分支策略及安全类依赖升级的贡献流程（是否需先开 JIRA、是否需邮件列表讨论、是否可合入功能发布分支）。</p>
+<p><strong>@Hyukjin Kwon:</strong> 简短回复 branch-4.3 将很快被创建。</p></div>
+            <p class="conclusion">初步确认 branch-4.3 尚未创建但即将切出；关于依赖升级贡献流程的问题尚未得到详细答复，等待社区进一步指导。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/lnc4lb3cl5046zvgbp82crgy0n9chn3s">SPIP: Spark Connect Gateway — Session Affinity, Auth, and Multi-Tenancy for Spark Connect Servers</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕 SPIP: Spark Connect Gateway 展开，核心议题是为 Spark Connect Server 提供会话亲和性、认证和多租户能力的通用网关方案。社区认可该动机，并讨论了分层可扩展架构如何支持未来版本感知路由和按用户驱动池等扩展。发起人表示将很快开始投票。</p>
+            <div class="key-points"><p><strong>@Zhou Jiang:</strong> 支持该提案，指出用户目前在运行 Spark Connect Server 时需要大量手动变通方案，通用网关方案具有实际价值。</p>
+<p><strong>@L. C. Hsieh:</strong> 参考实现采用分层接口设计，初始范围保持较小，后续如版本/能力感知路由和按用户驱动池等需求可作为现有层扩展实现，而无需重新设计。</p>
+<p><strong>@Mark Hamstra:</strong> 强调需要规划和实现，但邮件内容被截断，具体观点未完整展示。</p></div>
+            <p class="conclusion">初步结论是提案方向获得支持，架构设计具备扩展空间；下一步是发起人计划很快发起投票。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/30gqls2xwt053k4h3m3ybw0jpx9bqjf7">Hackathon task list needed - 10 weeks out</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">该邮件提醒 Apache 项目社区，距离 Community over Code Glasgow 大会还有 10 周，但多数项目尚未在 Hackathon 页面提交任务清单。组织者要求各项目尽快撰写任务说明、提交 PR，并在 dev@ 和 users@ 邮件列表中宣传，以吸引参与者。</p>
+            <div class="key-points"><p><strong>@Rich Bowen:</strong> 目前 25 个项目中只有 2 个提交了 Hackathon 任务信息，缺少任务清单会影响参与者的选择和出席率。</p>
+<p><strong>@Rich Bowen:</strong> 各项目需撰写 Hackathon 工作内容（如重点领域、适合新手的问题、文档任务等），并通过 PR 提交到 comdev-events-site 仓库。</p>
+<p><strong>@Rich Bowen:</strong> 项目社区应尽早通知 dev@ 和 users@ 邮件列表，因为用户正在此时决定是否注册和安排行程。</p></div>
+            <p class="conclusion">没有硬性截止日期，但建议尽快提交任务清单并通知社区，以提高 Hackathon 的参与度。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/l83q4s3v9xqhc9p4fg7ftzml2mmfmfhd">Clarification requested</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Asif Shahid 在 Spark 社区邮件列表中询问：当一个 Cached Relation 被 CachedManager 移除时，如果同时有查询计划已将其作为 InMemoryRelation 使用，是否会导致 BlockManager 或磁盘上残留未被引用的数据。他希望了解是否存在现有清理机制来处理这些孤儿数据。</p>
+            <div class="key-points"><p><strong>@Asif Shahid:</strong> 提出并发场景下缓存被移除后，正在执行的查询可能重建 buffer，但查询结束后可能遗留孤儿内存数据或磁盘文件，询问是否有清理机制。</p></div>
+            <p class="conclusion">邮件中尚未有明确结论或下一步行动，仅提出了问题并等待社区成员解答。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/l59yz370j4227j0x1374jzyvr6h5wn03">Draft ASF board report for August</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论围绕 Apache Spark 8 月 ASF 董事会季度报告的草稿展开，Matei Zaharia 提交了按新版 ASF 报告向导格式更新的草案，并征求社区建议。报告概述了项目状态、成员变化和活动进展，包括六次软件发布、新增四位 committer 和一位 PMC 成员，以及 Spark 4.3 发布计划与多项已接受的 SPIP。</p>
+            <div class="key-points"><p><strong>@Matei Zaharia:</strong> 报告已改用新版 ASF reporter.apache.org 格式，并强调项目处于高活跃状态，需在下周三前提交董事会。</p>
+<p><strong>@Matei Zaharia:</strong> 过去一个季度新增 4 位 committer 和 1 位 PMC 成员，当前共有 103 位 committer 和 65 位 PMC 成员。</p>
+<p><strong>@Matei Zaharia:</strong> Spark 4.3 作为新的季度发布节奏下的首个功能版本，已切出发布分支，计划 8 月中旬 QA、8 月底发布候选版本。</p></div>
+            <p class="conclusion">报告草稿已形成，暂无需要董事会关注的问题，下一步是社区反馈建议并在下周三前提交最终版本。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (0)</h2>
+            
+    <p>本周新建 <strong>0</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周无新建 JIRA。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Spark Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
