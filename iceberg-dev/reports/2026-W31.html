@@ -15,120 +15,115 @@
         </header>
 
         <section class="announcements">
-            <h2>📢 公告 (2)</h2>
-            <ul><li><a href="https://lists.apache.org/thread/wx7538vfl03n7tcz0wo32q275zhwv42c">Maximilian Michels as new committer</a></li>
-<li><a href="https://lists.apache.org/thread/mxnsnjjkjyhs706db60jqtfnl1xr52wo">Release Apache Iceberg Rust 0.10.1</a></li></ul>
+            <h2>📢 公告 (0)</h2>
+            <p class="empty">本周无公告</p>
         </section>
 
         <section class="votes">
-            <h2>🗳️ 投票 (4)</h2>
-            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/cfn2r79q0b2wcf3scczdw3yxct0gy2ht">Formalize remote signing configuration in the REST spec</a> <span class="status passed">✅ 已通过</span></li>
-<li><a href="https://lists.apache.org/thread/mgtkn0oprblt1tg7m0h3k1jo3lln6mc2">Release Apache Iceberg Rust 0.10.1 RC1</a> <span class="status passed">✅ 已通过</span></li>
-<li><a href="https://lists.apache.org/thread/gkj526shb0y96hdmms73sn3tvsw8mgw9">[REST-SPEC] Add variant type to the REST catalog spec</a> <span class="status warning">⚠️ 有异议</span><p class="objection-inline">该邮件内容仅包含 +1 的赞成票，并未提出异议或 -1 投票。</p></li>
-<li><a href="https://lists.apache.org/thread/2plrmco4k7vvb1jd8ythvjvko6nk6q9w">Add variant type to the REST catalog spec</a> <span class="status passed">✅ 已通过</span></li></ul>
+            <h2>🗳️ 投票 (2)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/5qhn33k5kr0t9g3vvqqxc893bs11jxlc">PyIceberg 0.12.0rc1</a> <span class="status warning">⚠️ 有异议</span><p class="objection-inline">Kevin Liu 提出 -1，原因是有用户报告并经验证存在一个正确性回归问题（issue #3758），因此需要先修复并发布新的 RC。</p></li>
+<li><a href="https://lists.apache.org/thread/rx0tcnqkq0nzj1phwo64ng79pp51hzf9">[SPEC] Add key-id to table and partition statistics and deprecate key-metadata</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
         </section>
 
         <section class="discussions">
             <h2>💬 讨论 (10)</h2>
             
         <article class="discussion-item">
-            <h3><a href="https://lists.apache.org/thread/or2tlng8t6bo8xbcv3o4rbcstofk2wg2">Are you seeing devlist email go to gmail spam?</a></h3>
-            <p class="meta">11 条回复 · 11 位参与者</p>
-            <p class="summary">讨论主要关于 Iceberg 社区开发者邮件被 Gmail 自动标记为垃圾邮件的问题。Kevin Liu 向 ASF 基础设施团队反馈后，实施了 DKIM 改进措施，社区成员正反馈并验证修复效果。</p>
-            <div class="key-points"><p><strong>@Kevin Liu:</strong> 已向 ASF Infra 提交问题并实施了 DKIM 改进，建议用户反馈后续情况，同时提到可设置 Gmail 过滤器作为临时解决方案。</p>
-<p><strong>@Yufei Gu / Gianluca Graziadei:</strong> 确认该问题不仅影响 Iceberg 邮件，还波及其他 ASF 项目邮件列表，并分享了自动转移邮件的脚本工具。</p>
-<p><strong>@Neelesh Salian / Maximilian Michels:</strong> 建议在 Gmail 中为 @apache.org 邮件创建过滤器并勾选“永不发送至垃圾邮件”选项以规避此问题。</p></div>
-            <p class="conclusion">ASF Infra 已进行 DKIM 相关修复，社区成员需观察后续邮件是否仍被误判，并可通过设置 Gmail 过滤器作为临时应对措施。</p>
+            <h3><a href="https://lists.apache.org/thread/v22j0xxzco8rdrkbkhxnqnpy7mfyc0p2">Integrate EagerInputFile into the manifest reader</a></h3>
+            <p class="meta">10 条回复 · 4 位参与者</p>
+            <p class="summary">社区讨论将 EagerInputFile 集成到 manifest 读取路径，核心是通过预取/一次性读取小文件来加速 v4 Parquet manifest 读取，基准测试显示约 25%-55% 的读取延迟降低。讨论焦点在于集成方式：是仅在 manifest/Parquet 读取路径做定向优化，还是将其下沉为通用 FileIO 层能力。</p>
+            <div class="key-points"><p><strong>@Varun Lakhyani:</strong> 提出在 ManifestFiles 读取路径默认启用 EagerInputFile，基准测试显示 Parquet manifest 读取可提升约 25%-55%；Avro 基准结果基本中性，并询问社区倾向全局 FileIO 改造还是先做局部接入。</p>
+<p><strong>@Daniel Weeks:</strong> 建议不要只在 metadata 路径做特殊短路，而应将 eager loading 集成到现有 FileIO 实现中，使任何 InputFile::newStream 都能受益，并通过阈值控制 eager fetch 与标准/vectored IO 的切换。</p>
+<p><strong>@Russell Spitzer:</strong> 认为该优化对 Parquet 更有意义，对 Avro 不一定必要；倾向更保守地先在 Parquet 读取层（如 Parquet.java）接入，避免把文件格式相关的性能优化复杂化到 FileIO 层。</p></div>
+            <p class="conclusion">目前尚未形成最终结论；下一步是继续评估集成层级，可能的方向包括先做 manifest/Parquet 读取路径的保守接入，或推进更通用的 EagerFileIO/FileIO 层 eager loading 实现，并结合基准测试决定默认启用策略。</p>
         </article>
 
         <article class="discussion-item">
-            <h3><a href="https://lists.apache.org/thread/29sl2x4mh1j99d74g230129qq3yqm2rm">Proposal: Use PR title and description for squash commits</a></h3>
-            <p class="meta">9 条回复 · 8 位参与者</p>
-            <p class="summary">Kevin Liu 提议更改 GitHub Squash Merge 设置，使用 PR 标题作为提交标题，以解决当前提交历史不一致的问题。讨论中大家一致支持该提议，但指出 PR 描述（Body）内容过多不适合直接作为提交信息，最终决定仅修改标题设置。</p>
-            <div class="key-points"><p><strong>@Kevin Liu:</strong> 提议将设置从默认使用提交标题改为强制使用 PR 标题，但接受建议保留 PR Body 的原有设置以避免噪音。</p>
-<p><strong>@Daniel Weeks:</strong> 指出 PR 描述（Body）通常包含过多内容（如 HTML 或提及），不适合直接作为 Commit Message。</p>
-<p><strong>@Yufei Gu / Hongyue Zhang:</strong> 支持更改设置，同时强调合并者在合并前仍需人工检查并修正提交信息。</p></div>
-            <p class="conclusion">达成共识：仅将 PR 标题设置改为 `PR_TITLE`（强制使用 PR 标题），PR 描述设置保持不变，Kevin 将联系 ASF Infra 实施此变更。</p>
+            <h3><a href="https://lists.apache.org/thread/zh25o2msbjw3skd577qzsyrcorobcthz">Read Restrictions: overlapping column projections on nested types</a></h3>
+            <p class="meta">8 条回复 · 6 位参与者</p>
+            <p class="summary">讨论围绕 Iceberg Read Restrictions 规范中嵌套类型字段（struct/list/map）上出现重叠列投影时的客户端处理策略展开，核心争议是禁止重叠并在读取端失败关闭（选项 A），还是定义优先级语义允许重叠（选项 B）。多数参与者基于行业实践分歧、安全性和实现复杂性倾向于选项 A，但 Daniel Weeks 对“未来放宽仍向后兼容”的说法提出异议，认为行为兼容性需要谨慎对待。</p>
+            <div class="key-points"><p><strong>@Prashant Singh:</strong> 提出嵌套字段投影重叠的问题，并说明当前规范 PR 倾向于选项 A：禁止同一 ReadRestrictions 中容器字段与其嵌套子字段同时被投影，读取端收到此类响应必须使查询失败。</p>
+<p><strong>@Sung Yun:</strong> 认为业界对嵌套类型策略处理存在明显分歧，不宜仓促定义冲突解决标准；支持选项 A 以先推进 ReadRestrictions，并后续在 8/18 sync 继续讨论新能力引入的成本。</p>
+<p><strong>@Daniel Weeks:</strong> 反对将“未来放宽禁止规则”视为完全向后兼容，强调这会破坏依赖规范校验的旧客户端行为；主张现在就明确语义，避免协议演进留下互操作性问题。</p></div>
+            <p class="conclusion">初步共识偏向选项 A：catalog 不得返回重叠的嵌套列投影，reader 必须 fail closed。后续行动包括在 8/18 sync 上讨论 ReadRestrictions 新能力的兼容性成本，并可能结合行业系统调研进一步确认规范措辞。</p>
         </article>
 
         <article class="discussion-item">
-            <h3><a href="https://lists.apache.org/thread/sk1j4jo6s7ntr880tt7ktdt636nwzt5n">Changing the default append mode for Spark Streaming in Iceberg Java 1.13</a></h3>
-            <p class="meta">8 条回复 · 7 位参与者</p>
-            <p class="summary">讨论主要关于在 Iceberg Java 1.13 版本中，将 Spark Streaming 的默认写入模式从 'fast append' 切换为 'merging append'，以解决因大量小 manifest 文件导致的元数据膨胀和读取性能下降问题。社区成员普遍支持该提议，认为这能改善元数据管理并与其他引擎（如 Flink）保持一致，同时也讨论了切换模式可能带来的延迟抖动风险。</p>
-            <div class="key-points"><p><strong>@Amogh Jahagirdar:</strong> 提议在 1.13 版本中将 Spark Streaming 默认 append 模式改为 merging append，以避免 fast append 产生大量小 manifest 文件，从而减少对激进维护的依赖。</p>
-<p><strong>@Gianluca Graziadei:</strong> 担忧 merging append 可能导致周期性的提交延迟尖峰，建议关注 P99 延迟及集群层面的相关性尖峰问题。</p>
-<p><strong>@Daniel Weeks:</strong> 支持变更，认为无需额外基准测试验证，因为 Flink 和 Kafka Connect 已采用此默认路径且效果良好，且元数据管理更优。</p></div>
-            <p class="conclusion">社区达成共识，将在 Iceberg Java 1.13 版本中默认启用 merging append 模式，同时建议 PyIceberg 也进行相应切换。</p>
+            <h3><a href="https://lists.apache.org/thread/509p763jx8kvy46lo9tqvnyv2d34hqzk">Virtual Community Meetups and Showcases</a></h3>
+            <p class="meta">6 条回复 · 6 位参与者</p>
+            <p class="summary">社区讨论发起类似 Datafusion 的 Apache Iceberg 虚拟 Meetup/Showcase 系列活动，以弥补线下会议的地域限制并增强社区连接。Elizabeth 分享了初步方案文档，提议采用固定议程（社区公告、技术分享、开放讨论）、每月一次且严格禁止营销内容的形式，获得多位成员支持。</p>
+            <div class="key-points"><p><strong>@Scott Haines:</strong> 建议参考 Datafusion 社区通过 GitHub issue 策划虚拟系列活动，并认可 Elizabeth 提出的形式、频率及非营销原则。</p>
+<p><strong>@Elizabeth Garrett Christensen:</strong> 分享了活动筹备笔记，提议每月举办一次，包含 10 分钟社区公告、20-30 分钟技术分享和 15 分钟开放讨论，并强调无营销内容。</p>
+<p><strong>@Kevin Liu:</strong> 支持该计划，强调应保持社区导向、避免营销材料，并建议参考 Iceberg 现有 Meetup 指南推进后续落地。</p></div>
+            <p class="conclusion">社区对虚拟 Meetup 计划达成积极共识，下一步将基于 Elizabeth 的文档和 Iceberg Meetup 指南继续讨论具体组织与落地事宜。</p>
         </article>
 
         <article class="discussion-item">
-            <h3><a href="https://lists.apache.org/thread/22xvhm1r2872qqb4w5m9b253mvrs5t3s">Integrate EagerInputFile into the manifest reader</a></h3>
-            <p class="meta">3 条回复 · 3 位参与者</p>
-            <p class="summary">本次讨论主要关于将 EagerInputFile 集成到 Iceberg v4 Parquet manifest 读取路径中的提案。发起人通过详细的基准测试展示了该改动能带来约 25% 至 55% 的性能提升，并提议默认启用该功能。</p>
-            <div class="key-points"><p><strong>@Varun Lakhyani:</strong> 在 EC2 和 S3 环境下的测试显示，启用 EagerInputFile 可使 manifest 读取性能提升 28.4% 至 42.7%，建议将此功能设为默认开启。</p>
-<p><strong>@Russell Spitzer:</strong> 认为这是一项令人兴奋的改进，建议严肃考虑在下个版本中将其设为默认功能，甚至可以考虑默认永久开启。</p>
-<p><strong>@Kevin Liu:</strong> 对这项对象存储优化工作表示赞赏和兴奋，计划本周内抽出时间审查相关代码。</p></div>
-            <p class="conclusion">社区反馈积极，初步共识倾向于默认启用该优化功能，下一步将等待 Kevin Liu 等开发者的代码审查反馈。</p>
+            <h3><a href="https://lists.apache.org/thread/cvn448s85v2g835dfwxpz2z1j2hczok9">Apache Iceberg 1.12.0 release</a></h3>
+            <p class="meta">6 条回复 · 6 位参与者</p>
+            <p class="summary">Apache Iceberg 1.12.0 发布计划正在推进，目标是恢复 3-4 个月的发布节奏，计划在 2026 年 8 月 26 日或之后切分支/RC。社区成员请求将多个 PR 纳入本次发布，并讨论了 Table Spec V3 默认版本切换及 Flink 2.3 支持等问题。</p>
+            <div class="key-points"><p><strong>@Neelesh Salian:</strong> 作为发布经理，计划 8 月 26 日后切 RC，呼吁社区加快 review 1.12.0 milestone 中的待处理项，特别是 Spark 4.2.0 相关 PR。</p>
+<p><strong>@Steven Wu:</strong> 建议养成定期发布习惯，除关键安全和正确性问题外，不应为等待某些功能而延迟发布，因为下个版本只需 2-3 个月。</p>
+<p><strong>@Cheng Pan:</strong> 询问是否计划在 1.12.0 中将 Spark 创建的 Iceberg 表默认版本从 V2 切换到 V3，以促进 Variant 等新特性采用；Neelesh 回复称 Variant 和 Geo 类型仍有差距，1.12.0 时间线内无法实现，将另开线程跟进。</p></div>
+            <p class="conclusion">发布按计划推进，8 月 26 日后切 RC；Table Spec V3 默认切换不会在 1.12.0 实现，Neelesh 将单独发起跟踪线程；社区成员请求纳入的 PR（如 REST 路径编码修复、Flink 2.3 支持）正在跟进中。</p>
         </article>
 
         <article class="discussion-item">
-            <h3><a href="https://lists.apache.org/thread/m02cmjo9xjyht62d0g5p3ktzr9tsfnw3">Add a file data type to Iceberg (v4)</a></h3>
-            <p class="meta">2 条回复 · 3 位参与者</p>
-            <p class="summary">讨论主要围绕在 Iceberg 中添加 File 数据类型的提案展开。Nitya 提交了一份新提案，旨在聚焦类型层面的语义，但社区倾向于将其与现有的提案合并讨论，以达成共识。</p>
-            <div class="key-points"><p><strong>@Nitya Kumar Sharma:</strong> 随着 Parquet FILE 逻辑类型的合并，提议在 Iceberg 中增加对应的 File 数据类型，并聚焦于类型系统、Schema 演进及统计信息等语义，暂时不涉及目录层的凭证分发。</p>
-<p><strong>@Russell Spitzer:</strong> 指出已存在由 Talat 等人发起的类似提案，建议各方应致力于在这些提案之间达成共识，而不是各自为政。</p>
-<p><strong>@Daniel Weeks:</strong> 同意 Russell 的观点，认为应在原有提案的基础上进行更新和整合，而不是开启一个新的努力方向。</p></div>
-            <p class="conclusion">Nitya 同意等待原提案作者休假归来后，将此新提案与现有的 FileRef 提案进行整合与统一。</p>
+            <h3><a href="https://lists.apache.org/thread/sxfwxovmywmf17fmcwkqlf33r9wcf14f">Support for derived columns in Iceberg.</a></h3>
+            <p class="meta">6 条回复 · 5 位参与者</p>
+            <p class="summary">社区讨论在 Iceberg 规范层面支持派生列（generated/derived columns），以解决跨引擎兼容性、UDF 可移植性和虚拟列等需求。目前尚无正式规范提案，但已有表达式规范、默认值表达式和约束检查等相关工作可作为基础，Prashant 已提交初步设计文档并邀请协作。</p>
+            <div class="key-points"><p><strong>@Andrei Tserakhau:</strong> 目前 Iceberg 没有格式级派生列的活跃工作；建议参考 Delta 的经验教训，避免使用特定引擎 SQL 字符串存储表达式，并应利用已有的表达式规范（Expression spec）及 UDF 引用机制，而非另起炉灶。</p>
+<p><strong>@Daniel Weeks:</strong> 社区已有基于表达式和默认值表达式实现生成列的讨论，鼓励提交正式提案作为现有工作的自然扩展，并表示愿意合作推进。</p>
+<p><strong>@Stefan Grafberger:</strong> 建议在规范中区分确定性、纯非确定性和可复用的非确定性表达式（如 AI embedding），以支持多模态 AI 场景，不应一概禁止非确定性表达式。</p></div>
+            <p class="conclusion">Prashant 已发布初步设计文档（WIP）并创建 GitHub issue #15923，Szehon 补充了术语定义和确定性问题的背景说明；下一步是完善提案文档，对齐表达式规范、UDF 规范和 V4 特性，并继续社区协作讨论。</p>
         </article>
 
         <article class="discussion-item">
-            <h3><a href="https://lists.apache.org/thread/t3fy540pqph5zrzfnwhdv77kgnqdlt2q">Trouble joining iceberg slack</a></h3>
+            <h3><a href="https://lists.apache.org/thread/0rn212r6p70pcldff13ctfmdgh9vtyn9">Proposal: Use PR title and description for squash commits</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">Iceberg 社区讨论将 squash merge 提交的标题设置从 COMMIT_OR_PR_TITLE 改为始终使用 PR 标题，以提升合并后 git log 的可读性。经讨论后决定暂不更改 PR body 设置，仅调整标题设置，并已通过 asf.yaml 配置 PR 推广到所有 Iceberg 仓库。</p>
+            <div class="key-points"><p><strong>@Kevin Liu:</strong> 提议将 squash commit 标题设置改为始终使用 PR 标题，但保留 PR body 设置不变，避免引入过多噪音。</p>
+<p><strong>@Daniel Weeks:</strong> 质疑是否应包含 PR body，认为 PR 描述内容过多不适合作为提交信息，并支持仅修改标题设置。</p>
+<p><strong>@Maximilian Michels:</strong> 支持该提案，并强调无论默认设置如何，每个 committer 在合并时都应确保提交标题和正文准确反映变更内容。</p></div>
+            <p class="conclusion">已完成所有 Iceberg 仓库的配置变更，squash merge 提交标题将始终使用 PR 标题；同时提醒 committer 在合并前检查提交信息的准确性。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/93c86nsm4k4zz3yv86mxrjnzw1blogb0">[Iceberg v4] null_value_count is only for optional field?</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕 Iceberg V4 规范中 null_value_count 仅用于 optional 字段的表述是否合理展开。Xiening Dai 指出，若 required 字段的父级 struct 为 optional，则该字段实际可能为 null，因此不能仅凭 required 标记假设非空。Anoop Johnson 提出应以“有效可空性”（字段自身及所有祖先均为 required 才真正非空）来理解，并认为现有实现已正确处理。</p>
+            <div class="key-points"><p><strong>@Xiening Dai:</strong> required 字段在其父 struct 为 optional 时仍可能为 null，查询引擎不能仅依据 required 标记做优化，应显式记录 null_value_count。</p>
+<p><strong>@Anoop Johnson:</strong> 字段是否真正非空取决于从根到该字段路径上的有效可空性；只有字段本身及所有祖先 struct 均为 required 时才无需记录 null_value_count，现有统计与评估逻辑已依赖显式 null count。</p>
+<p><strong>@Xiening Dai:</strong> 认同有效可空性概念，建议更新规范措辞并移除“optional null_value_count”的注释，写入端应尽可能为嵌套字段记录 null count。</p></div>
+            <p class="conclusion">初步共识是规范中关于 optional 字段与 null_value_count 的表述需要澄清或修改，建议明确“有效可空性”定义，并鼓励写入端无论字段标记为 required 或 optional，都尽可能记录 null_value_count。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/tykd02ffh2c4bncsnt552xk23box8gx8">Equality delete file application scales with O(data rows × applicable delete keys)</a></h3>
             <p class="meta">1 条回复 · 2 位参与者</p>
-            <p class="summary">讨论主要关于社区成员无法通过官网链接加入 Iceberg Slack 频道的问题。维护者确认链接已过期，并提供了新的有效邀请链接。同时，相关人员已提交 PR 以更新官网上的过期链接。</p>
-            <div class="key-points"><p><strong>@Aditya Karleker:</strong> 反馈 Iceberg 官网上的 Slack 邀请链接无法正常使用，请求协助加入。</p>
-<p><strong>@Fokko Driesprong:</strong> 确认链接已失效，提供了新的可用链接，并提交 PR 修复官网上的链接地址。</p>
-<p><strong>@Maximilian Michels:</strong> 确认网站上的 URL 已完成更新，建议用户重试。</p></div>
-            <p class="conclusion">问题已解决，官网 Slack 链接已完成更新（或正在通过 PR 流程），用户可使用新链接正常加入。</p>
+            <p class="summary">讨论围绕 iceberg-rust 中 equality delete file 应用的扩展性问题（Issue 2950）展开。Stephan Berger 基于已有方案重构了一个修复 PR，但因变更量较大（+781/-172）而询问是否可提交；Shawn Chang 建议可先按完整方案提交，必要时再由评审拆分。</p>
+            <div class="key-points"><p><strong>@Stephan Berger:</strong> 指出 equality delete file 应用存在 O(data rows × applicable delete keys) 的扩展性问题，并提交基于 RowFilter/ArrowPredicateFn 的修复方案，同时说明该 PR 未包含两个已获批的相关修复。</p>
+<p><strong>@Shawn Chang:</strong> 认为 CONTRIBUTING.md 对大 PR 的限制是建议性的，若修复确实需要大量代码变更，可先提交完整 PR 展示整体方案，后续视评审意见再拆分。</p></div>
+            <p class="conclusion">Stephan Berger 已按建议提交 PR #2961，并提及另一个关于 position deletes 的 PR #2936；后续将等待评审，必要时可拆分或 rebase 到相关已批准修复之上。</p>
         </article>
 
         <article class="discussion-item">
-            <h3><a href="https://lists.apache.org/thread/04llspg87jro4bfqjhozfzqp48djtn57">Request for Slack Invite / Broken Public Invite Link</a></h3>
+            <h3><a href="https://lists.apache.org/thread/9psvzs9tv7z245wwgcswksnzwbqr6rnr">Dedicated sync for Iceberg Index Support</a></h3>
             <p class="meta">1 条回复 · 2 位参与者</p>
-            <p class="summary">讨论主要关于社区成员报告 Apache Iceberg Slack 社区的公开邀请链接失效的问题。维护者迅速响应，提供了新的有效链接，并提交 PR 更新了网站上的旧链接。</p>
-            <div class="key-points"><p><strong>@Chandra Babu Pundla:</strong> 发现并报告官网上的 Slack 邀请链接已失效，无法加入社区。</p>
-<p><strong>@Fokko Driesprong:</strong> 提供了新的有效邀请链接，并提交 PR 修复了网站上的过期链接。</p>
-<p><strong>@Maximilian Michels:</strong> 确认链接已更新，建议用户重新尝试加入。</p></div>
-            <p class="conclusion">问题已解决，网站上的 Slack 邀请链接已完成更新，用户可使用新链接正常加入。</p>
+            <p class="summary">本次 Iceberg 社区同步会议围绕索引支持的元数据设计与索引排序定义展开，重点讨论了是否保留索引快照历史，以及是否用 transform 函数列表来表达索引键排序。会后 Péter Váry 对基于 transform 函数的方案进行了利弊分析，认为其灵活但可能增加引擎实现复杂度；Flavio Junqueira 则进一步质疑该方案相对现有分区、排序和 min-max 统计信息裁剪的增量价值，并询问引擎如何消费索引。</p>
+            <div class="key-points"><p><strong>@Péter Váry:</strong> 会议同意保留 index snapshot 历史，但不保留其他 index property 历史；如果读取器需要后续可能被修改的信息，应复制到对应 snapshot 中。</p>
+<p><strong>@Dan / Yingyi:</strong> 提出通过 transform 函数列表定义 index_keys，例如按 day(col3)、truncate(col4, 2) 排序，并用原始列值、文件名和行位置解决确定性排序问题。</p>
+<p><strong>@Flavio Junqueira:</strong> 质疑在引擎已能利用分区、排序和列统计信息进行裁剪的情况下，secondary index transform 函数的目标价值，并要求澄清引擎如何消费索引及输入到文件的映射位置。</p></div>
+            <p class="conclusion">初步共识是保留索引快照历史，并将易变信息复制到快照中；但关于是否采用基于 transform 函数的索引排序定义，以及索引对引擎的实际价值和消费方式，仍需进一步澄清和讨论。</p>
         </article>
 
         <article class="discussion-item">
-            <h3><a href="https://lists.apache.org/thread/gt58w0mjn4lbofmd7z2ngns3nbz49nbh">Invite to join Apache Iceberg Slack workspace</a></h3>
+            <h3><a href="https://lists.apache.org/thread/m1cqo8b7qzgxw3j2s7mdfodt9ly364dg">Need a reviewer for PR #17152 please</a></h3>
             <p class="meta">1 条回复 · 2 位参与者</p>
-            <p class="summary">本次讨论主要关于 Apache Iceberg Slack 工作区的邀请链接失效问题。社区成员反馈旧链接强制要求 @apache.org 邮箱，阻碍了新贡献者的加入，维护者随即提供了有效链接并修复了网页。</p>
-            <div class="key-points"><p><strong>@Akshat Gupta:</strong> 发现社区页面 Slack 邀请链接已失效，提示需要 @apache.org 邮箱，阻碍了新贡献者加入。</p>
-<p><strong>@Fokko Driesprong:</strong> 提供了新的有效邀请链接，确认无需特定邮箱，并提交 PR 更新了官网上的过期链接。</p>
-<p><strong>@Kevin Liu:</strong> 确认链接问题已修复，并建议用户再次尝试。</p></div>
-            <p class="conclusion">问题已解决，Fokko 提交的 PR (https://github.com/apache/iceberg/pull/17398) 更新了官网链接，新贡献者现可正常加入 Slack 工作区。</p>
-        </article>
-
-        <article class="discussion-item">
-            <h3><a href="https://lists.apache.org/thread/sp5bymf526vf215p1ojyv2h3f9z8l6oj">[PR#16827 Review Request] Hilbert Curve Clustering for rewrite_data_files: Better Data Skipping than Z-order</a></h3>
-            <p class="meta">1 条回复 · 2 位参与者</p>
-            <p class="summary">本次讨论围绕 Hilbert 曲线聚类在 rewrite_data_files 中的性能对比展开，Gianluca 提供了基准测试报告，显示 Hilbert 在文件扫描数量上优于 Z-order。Tanmay 认为测试结果有力地证明了 Hilbert 的数据跳过能力，并认可了 API 设计的一致性。</p>
-            <div class="key-points"><p><strong>@Tanmay Rauth:</strong> 文件扫描结果（11/98 vs 16/98）是证明 Hilbert 优于 Z-order 的最强有力证据，避免了运行时噪音干扰。</p>
-<p><strong>@Tanmay Rauth:</strong> API 设计与现有的 Z-order 路径保持一致，代码实现复用了现有的字节编码，整体方向合理。</p>
-<p><strong>@Gianluca Graziadei:</strong> 解释了为何未采用扫描字节数作为指标（测试布局下其与文件数成正比，且易引入无关噪音），建议后续单独讨论。</p></div>
-            <p class="conclusion">Tanmay 认为基准测试问题已得到解决，下一步需等待维护者关于公共 API 新增及更广泛引擎支持的意见，并建议听取 Z-order 位交错实现相关开发者的反馈。</p>
-        </article>
-
-        <article class="discussion-item">
-            <h3><a href="https://lists.apache.org/thread/6dczl5fzmfplb1kdl7p82nozf2zlpv04">Spark Shared-source layout for version support</a></h3>
-            <p class="meta">1 条回复 · 2 位参与者</p>
-            <p class="summary">讨论主要探讨了为减少代码维护成本，在 Iceberg Spark 模块中引入类似 Delta Lake 的共享源码布局机制。Anurag 展示了概念验证结果，证明该方案能大幅提高代码复用率，Xin 则基于 Delta 的经验对 shim 层的治理提出了建议。</p>
-            <div class="key-points"><p><strong>@Anurag Mantripragada:</strong> 当前的 Spark 版本支持模式导致每次升级需复制大量代码，维护成本极高；通过 PoC 验证，共享源码布局可实现约 88% 的代码共享，显著降低新增版本的 PR 复杂度。</p>
-<p><strong>@Xin Huang:</strong> 共享源码方案前景良好，但需吸取 Delta Lake 的教训，从初期就重视 shim 层的治理，防止其随时间推移变得臃肿。</p>
-<p><strong>@Xin Huang:</strong> 建议通过引入版本中立的适配器接口、保持业务逻辑与测试套件共享、以及增加 CI 监控等手段，确保 shim 层仅用于 API 适配且长期可控。</p></div>
-            <p class="conclusion">初步结论是该方案在技术上可行且优势明显，下一步需重点解决 Gradle 构建和 Spotless 配置等技术细节，并制定 shim 层治理策略以防止代码腐化。</p>
+            <p class="summary">Rainer Schamm 在 Iceberg 社区邮件列表中请求为 PR #17152（一行代码变更）寻找额外的审批者。Maximilian Michels 回复表示已在 PR 上留言，并认为该变更总体合理。</p>
+            <div class="key-points"><p><strong>@Rainer Schamm:</strong> 请求社区成员为小型 PR #17152 提供额外审批。</p>
+<p><strong>@Maximilian Miches:</strong> 已在 PR 中留下评论，并认为该变更看起来是合理的。</p></div>
+            <p class="conclusion">该 PR 已获得初步正面反馈，下一步是等待更多评论或正式批准。</p>
         </article>
         </section>
 
