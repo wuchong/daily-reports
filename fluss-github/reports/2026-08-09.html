@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-08-09</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-08-09</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 20 新 Issues</div>
+            <div class="stat">✅ 9 关闭</div>
+            <div class="stat">✨ 16 新 PRs</div>
+            <div class="stat">🎉 11 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/3863">PR #3863</a> Flink Sink 支持主键表的批量 DELETE 和 UPDATE 操作</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3822">PR #3822</a> 支持 RemoteLogManifest 处理重叠的远程日志段，解除 active segment rolling 阻塞</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3777">PR #3777</a> FIP-37 完成：RoaringBitmap 第二阶段函数通过 FlussCatalog 注册</li><li>🐛 <a href="https://github.com/apache/fluss/pull/3899">PR #3899</a> 修复 Rust 客户端日志追加时错误拒绝 NOT NULL 列的问题</li><li>✨ <a href="https://github.com/apache/fluss/pull/3759">PR #3759</a> 虚拟表 $changelog 和 $binlog 支持投影和过滤下推优化</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <ul class="critical-list"><li>⚠️ <a href="https://github.com/apache/fluss/issues/3901">Issue #3901</a> FlinkCatalog 在解析内置函数时错误地在不存在的数据库下查找，需紧急修复</li><li>⚠️ <a href="https://github.com/apache/fluss/issues/3938">Issue #3938</a> 需要补充本地日志 TTL 和 active segment rolling 的文档说明</li></ul>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3289">Issue #3289</a> [FIP-37] Implement RoaringBitmap SQL functions via FlussCatalog</h4>
+            <ul><li><span class="author">@wuchong</span>: 确认 FIP-37 所有功能和文档已完成，关闭该 Issue；同时发现 #3901 bug</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3901">Issue #3901</a> [Bug] FlinkCatalog resolves built-in functions under nonexistent databases</h4>
+            <ul><li><span class="author">@pbanakar</span>: 确认将修复该 bug，正在准备 PR</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2411">Issue #2411</a> [Umbrella][FIP-27] Remove Mandatory System Columns From Fluss Lake Tables</h4>
+            <ul><li><span class="author">@luoyuxia</span>: cc fhan688 关注此 Issue</li><li><span class="author">@fhan688</span>: 表示将着手处理此任务</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2669">Issue #2669</a> [docs] Add Real-Time User Profile quickstart tutorial</h4>
+            <ul><li><span class="author">@pbanakar</span>: 询问是否更新为原生 bitmap 函数，或等待 1.0 发布后再升级；提出两个方案供选择</li><li><span class="author">@wuchong</span>: 建议更新 PR 使用原生函数，期望纳入 1.0 发布</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3906">Issue #3906</a> [flink] Validate database existence when resolving catalog functions in FlinkCatalog</h4>
+            <ul><li><span class="author">@pbanakar</span>: 报告 CatalogException 破坏了 Flink 内部探测链导致 CI 失败，建议回退 functionExists；后续发现 getFunction 也需回退</li><li><span class="author">@wuchong</span>: 同意回退 functionExists 的更改；后续确认两者都需回退</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3692">Issue #3692</a> [CI] Reduce the ITCase coverage in Flink to avoid 60min timeout</h4>
+            <ul><li><span class="author">@wuchong</span>: 关闭此 PR，因 #3913 提供了更细粒度的多版本测试机制，避免硬编码类名白名单</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3725">Issue #3725</a> [flink] Support partial update for primary-key tables</h4>
+            <ul><li><span class="author">@loserwang1024</span>: 说明批量更新已支持，部分更新仍等待 FLINK-36735 解决</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3699">Issue #3699</a> [filesystem] Align Hadoop dependencies to 3.4.3</h4>
+            <ul><li><span class="author">@litiliu</span>: 创建 #3916 跟踪 DefaultCredentialsProvider 评估，请求审批</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3891">Issue #3891</a> [common] Add standard principal type constants</h4>
+            <ul><li><span class="author">@litiliu</span>: 关闭 PR，因 GROUP_TYPE 和 ROLE_TYPE 尚无生产消费者，待后续一起引入</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3936">Issue #3936</a> [CI] Move Spark Scala 2.13 tests from PR CI to nightly</h4>
+            <ul><li><span class="author">@wuchong</span>: cc Yohahaha 和 beryllw 征求意见</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3864">Issue #3864</a> [server] Manage historical lookup local cache capacity</h4>
+            <ul><li><span class="author">@wuchong</span>: 要求移除 PR 历史中的 merge commit</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3906">PR #3906</a> [flink] Validate database existence when resolving catalog functions in FlinkCatalog</h4>
+            <ul><li><span class="author">@wuchong</span>: 建议数据库不存在时抛出 CatalogException 并附带明确信息，而非误导为函数不存在</li><li><span class="author">@pbanakar</span>: 按建议更新 getFunction 抛出 CatalogException，并更新单元测试断言</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3920">PR #3920</a> [server] Fix ISR shrink race during leader transition</h4>
+            <ul><li><span class="author">@swuferhong</span>: 指出 leader 验证逻辑不一致、建议用 LOG.error、maybeExpandIsr 有同样竞态、测试依赖 common pool 不稳定</li><li><span class="author">@hanliu0830</span>: 逐一修复：验证 currentLeaderAndIsr.leader()、改用 ERROR 日志、加锁重验证 ISR、使用专用线程池</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3883">PR #3883</a> [spark] Support time-range incremental batch reads</h4>
+            <ul><li><span class="author">@beryllw</span>: 指出 NTZ 类型时区处理不一致（UTC vs 会话时区），空白 start 会静默回退为全表读取</li><li><span class="author">@Yohahaha</span>: 修复 NTZ 使用会话时区解析，空白 start 改为快速失败，新增规划和 e2e 测试</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3870">PR #3870</a> [filesystem] Add JuiceFS filesystem support</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 要求补充客户端配置文档、避免日志泄露凭据、修复 SecurityTokenReceiver 缺失问题</li><li><span class="author">@weizuo93</span>: 确认已按建议修改完成</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3908">PR #3908</a> [server][client] Support per-partition bucket count for partitioned tables</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: 指出 Cluster 构造器参数错误导致丢失 bucketCountByPartition，建议使用七参数构造器；建议用固定 striped lock 替代动态锁</li><li><span class="author">@Copilot</span>: 指出分区元数据等待逻辑竞态、Javadoc 引用错误、Paimon bucket.num 缺少校验、测试注释与实际值不符</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3899">PR #3899</a> [rust] Fix log append rejecting NOT NULL columns</h4>
+            <ul><li><span class="author">@charlesdong1991</span>: 已按 review 意见修复，补充 pb wiring；表示后续会单独处理遗留问题并提 Issue 跟踪</li><li><span class="author">@leekeiabstraction</span>: 确认 review 通过，要求将遗留问题提交 Issue 跟踪</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3913">PR #3913</a> [test] Add multi-version compatibility test selection</h4>
+            <ul><li><span class="author">@Copilot</span>: 指出类级别预检未递归嵌套测试容器、建议添加 @BeforeAll 失败哨兵以覆盖生命周期抑制行为</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3922">PR #3922</a> [server] Ignore lake snapshot refresh failures during leader election</h4>
+            <ul><li><span class="author">@Copilot</span>: 指出 catch-all 会吞掉 InterruptedException 并清除中断状态，建议保留中断标志</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3910">PR #3910</a> [flink] Track consumed progress during undo recovery</h4>
+            <ul><li><span class="author">@Copilot</span>: 指出 Javadoc 内联标签跨行可能破坏渲染，consumed offset 语义描述不清需补充说明</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3939">#3939</a> Support hot update for active segment retention roll <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/issues/3938">#3938</a> [docs] Document local log TTL and active segment rolling <span class="author">@wuchong</span> <span class="labels">priority=critical</span></li><li><a href="https://github.com/apache/fluss/issues/3936">#3936</a> [CI] Move Spark Scala 2.13 tests from PR CI to nightly <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/issues/3933">#3933</a> Lake snapshot completion is not checkpointed before changelog records <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/issues/3931">#3931</a> Streaming hybrid lake reads may skip splits and rescan after recovery <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/issues/3927">#3927</a> maybeShrinkIsr can submit an ISR excluding the leader during a follower-to-leader transition <span class="author">@hanliu0830</span> </li><li><a href="https://github.com/apache/fluss/issues/3926">#3926</a> readiness-check should derive client authentication from the local server configuration <span class="author">@morazow</span> </li><li><a href="https://github.com/apache/fluss/issues/3921">#3921</a> [Tiering] Trigger job failover when coordinator epoch changes <span class="author">@Shawn-Hx</span> </li><li><a href="https://github.com/apache/fluss/issues/3919">#3919</a> [server] Prevent lake snapshot refresh failures from blocking leader election <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/issues/3918">#3918</a> [sever] Prevent partial leader activation when lake snapshot initialization fails <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/issues/3916">#3916</a> [filesystem] Evaluate DefaultCredentialsProvider for S3 authentication <span class="author">@litiliu</span> </li><li><a href="https://github.com/apache/fluss/issues/3914">#3914</a> [Bug] Undo recovery offset reports may be routed across sink subtasks <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/3912">#3912</a> [Improvement] Reduce Flink multi-version test execution <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/issues/3909">#3909</a> [Bug] Undo recovery may time out when scanning empty log batches <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/3907">#3907</a> Support per-partition bucket rescale <span class="author">@Kaixuan-Duan</span> </li><li><a href="https://github.com/apache/fluss/issues/3905">#3905</a> [FIP-27] Document clean lake schemas and rolling upgrade requirements <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/issues/3904">#3904</a> [FIP-27] Support clean and legacy Hudi lake table schemas <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/issues/3903">#3903</a> [FIP-27] Support clean and legacy Iceberg lake table schemas <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/issues/3902">#3902</a> [FIP-27] Support clean and legacy Paimon lake table schemas <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/issues/3901">#3901</a> [Bug] FlinkCatalog resolves built-in functions under nonexistent databases <span class="author">@wuchong</span> <span class="labels">priority=critical</span></li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3940">#3940</a> [server] Support hot update for active segment retention roll <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/pull/3937">#3937</a> [server] Refine remote log manifest overlap handling <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/pull/3935">#3935</a> [rust] ignore missing partitions during scanner metadata updates <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/pull/3934">#3934</a> [rust] add support of iceberg format key encoder <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/pull/3932">#3932</a> [flink] Fix hybrid lake split recovery <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/pull/3930">#3930</a> [flink] Spill cdc log to rocksDB for pk batch read in case of OOM. <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/pull/3928">#3928</a> [common] Extract NO_SNAPSHOT_ID sentinel to fluss-common <span class="author">@Yohahaha</span> </li><li><a href="https://github.com/apache/fluss/pull/3925">#3925</a> [flink] Support batch scan for virtual log tables <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/pull/3923">#3923</a> [tiering] Trigger job failover when coordinator epoch changes <span class="author">@Shawn-Hx</span> </li><li><a href="https://github.com/apache/fluss/pull/3920">#3920</a> [server] Fix ISR shrink race during leader transition <span class="author">@hanliu0830</span> </li><li><a href="https://github.com/apache/fluss/pull/3917">#3917</a> [server] Balance replicas and leaders within each table <span class="author">@fxbing</span> </li><li><a href="https://github.com/apache/fluss/pull/3915">#3915</a> [flink] Route undo offsets by sink subtask <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/3913">#3913</a> [test] Add multi-version compatibility test selection <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/pull/3910">#3910</a> [flink] Track consumed progress during undo recovery <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/3908">#3908</a> [server][client] Support per-partition bucket count for partitioned tables <span class="author">@Kaixuan-Duan</span> </li><li><a href="https://github.com/apache/fluss/pull/3906">#3906</a> [flink] Validate database existence when resolving catalog functions in FlinkCatalog <span class="author">@pbanakar</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3919">#3919</a> [server] Prevent lake snapshot refresh failures from blocking leader election <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/issues/3918">#3918</a> [sever] Prevent partial leader activation when lake snapshot initialization fails <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/issues/3897">#3897</a> [rust] Log append reject NOT NULL columns <span class="author">@charlesdong1991</span> </li><li><a href="https://github.com/apache/fluss/issues/3835">#3835</a> [server] Support overlapping remote log segments via extending manifest to unblock active segment rolling <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/3830">#3830</a> [server] Active log segment is not rolled after table.log.ttl expires <span class="author">@fxbing</span> </li><li><a href="https://github.com/apache/fluss/issues/3724">#3724</a> [flink] Support batch DELETE and Update for primary-key tables <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/issues/3722">#3722</a> [flink] Add projection and filter pushdown for virtual log tables <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/issues/3289">#3289</a> [FIP-37] Implement RoaringBitmap SQL functions via FlussCatalog <span class="author">@pbanakar</span> </li><li><a href="https://github.com/apache/fluss/issues/3273">#3273</a> Trim Flink multi-version CI tests to reduce pipeline time <span class="author">@luoyuxia</span> <span class="labels">priority=critical</span></li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3924">#3924</a> [docs] Add Apache Doris to homepage <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/pull/3922">#3922</a> [server] Ignore lake snapshot refresh failures during leader election <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/pull/3911">#3911</a> [docs] Rename Streamhouse to Lakestream and add Hudi <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/pull/3900">#3900</a> [rust] Encode predicates into their protocol representation <span class="author">@leekeiabstraction</span> </li><li><a href="https://github.com/apache/fluss/pull/3899">#3899</a> [rust] Fix log append rejecting NOT NULL columns <span class="author">@charlesdong1991</span> </li><li><a href="https://github.com/apache/fluss/pull/3863">#3863</a> [flink] Support batch delete and update in flink sink <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/pull/3831">#3831</a> [server] Roll expired active segments for remote retention <span class="author">@fxbing</span> </li><li><a href="https://github.com/apache/fluss/pull/3823">#3823</a> [docs] Add RoaringBitmap SQL functions documentation <span class="author">@pbanakar</span> </li><li><a href="https://github.com/apache/fluss/pull/3822">#3822</a> [server] Support RemoteLogManifest to handle overlap RemoteLogSegments <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/pull/3777">#3777</a> [FIP-37] Add bitmap Phase 2 functions and register via FlussCatalog <span class="author">@pbanakar</span> </li><li><a href="https://github.com/apache/fluss/pull/3759">#3759</a> [flink] Support projection and filter pushdown for $changelog and $binlog virtual tables <span class="author">@naivedogger</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
