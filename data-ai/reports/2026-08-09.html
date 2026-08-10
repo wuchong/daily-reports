@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data+AI 全球日报 | 2026-08-09</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Data+AI 全球日报 | 2026-08-09</h1>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="top-changes">
+            <h2>🔥 今日最重要的3个变化</h2>
+            <ol><li><strong>AWS 将 AI Agent 引入 Kinesis 成本治理</strong> — AWS 推出基于 Amazon Bedrock 的开源 AI 成本优化 Agent，推动流式数据平台从人工容量管理走向自动化 FinOps。</li><li><strong>ClickHouse 强化 ClickStack 可观测性能力</strong> — ClickStack 发布 June + July 升级，增强 trace、Prometheus、仪表盘和告警能力，进一步扩展分析型可观测性栈。</li><li><strong>Epic Games 展示 OpenSearch 大规模游戏分析优化</strong> — Epic Games 通过实例调优、分片重平衡和索引优化提升 Amazon OpenSearch Service 在 Fortnite 分析中的查询性能。</li></ol>
+            <p class="judgment"><strong>总判断：</strong>今日信号集中在云数据平台的工程化与智能化：AWS 用 AI Agent 推进流式数据成本治理，ClickHouse 强化可观测性分析栈，Epic Games 展示 OpenSearch 大规模分析调优实践。整体看，Data+AI 平台竞争正从单一查询性能转向成本效率、可观测性与场景化运维能力的综合比拼。</p>
+        </section>
+
+        <section class="top-signals">
+            <h2>📡 重要信号</h2>
+            
+    <article class="news-item">
+        <h3>AWS 推出面向 Amazon Kinesis Data Streams 的 AI 成本优化 Agent</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/ai-powered-cost-optimization-agent-for-amazon-kinesis-data-streams/">AWS Big Data Blog</a></p>
+        <p class="date">2026-08-09</p>
+        <p class="summary">AWS 发布一个开源的 AI 成本优化 Agent，基于 Amazon Bedrock 构建，可自动分析账户内所有 Amazon Kinesis Data Streams 流，比较三种容量模式下的成本表现，并按计划给出最优模式建议，官方称可帮助节省超过 60% 的流式数据成本。该方案将 AI Agent 直接嵌入实时数据平台运维流程，使 streaming FinOps 从人工测算转向自动化推荐。</p>
+        <div class="impact">📊 数据平台影响：流式数据平台竞争将从吞吐能力扩展到 FinOps 自动化。AWS 通过 AI Agent 降低 Kinesis 成本不确定性，可能提升实时数据管道采用率，并倒逼其他流平台提供智能容量推荐。</div>
+    </article>
+        </section>
+
+        <section class="product-tech">
+            <h2>💻 产品与技术</h2>
+            
+    <article class="news-item">
+        <h3>ClickHouse 发布 ClickStack June + July 升级：强化 Trace、Prometheus 与仪表盘</h3>
+        <p class="sources">📌 <a href="https://clickhouse.com/blog/whats-new-in-clickstack-june-2026">ClickHouse Blog</a></p>
+        <p class="date">2026-08-09</p>
+        <p class="summary">ClickHouse 发布 ClickStack 的 June + July 升级汇总，包括更丰富的 trace 导航、Prometheus 连接、更智能的仪表盘、更低噪声的告警、更快过滤，以及对指数直方图指标的支持。此次更新表明 ClickHouse 正在把高性能分析能力扩展到 metrics、traces 等可观测性场景，试图以统一分析栈承接更大规模遥测数据。</p>
+        <div class="impact">📊 数据平台影响：可观测性数据与分析型数据库正在加速融合。若 ClickStack 能降低 metrics/traces 查询成本，将对专用 APM 和日志平台形成压力，也推动数据平台将遥测数据纳入一等公民。</div>
+    </article>
+    <article class="news-item">
+        <h3>Epic Games 团队调优 Amazon OpenSearch Service 支撑 Fortnite 分析</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/how-a-team-at-epic-games-tuned-amazon-opensearch-service-for-fortnite-analytics/">AWS Big Data Blog</a></p>
+        <p class="date">2026-08-09</p>
+        <p class="summary">AWS 介绍 Epic Games 团队如何为 Fortnite 分析调优 Amazon OpenSearch Service。团队与 AWS 合作完成实例 right-sizing、shard 重新均衡、index mapping 优化，并升级引擎与 Graviton 版本，从而改善查询延迟和吞吐。该案例展示了大规模游戏事件数据在云端搜索与分析平台上的工程优化方法。</p>
+        <div class="impact">📊 数据平台影响：游戏实时分析对索引设计、分片治理和硬件选型要求较高。该案例为高基数事件数据和交互式查询提供参考，也强化了 OpenSearch 在大规模产品分析场景中的云托管价值。</div>
+    </article>
+        </section>
+
+        <section class="people-views">
+            <h2>👤 人物与观点</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="analyst-insights">
+            <h2>📊 分析师洞察</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="watchlist">
+            <h2>👀 观察列表</h2>
+            
+    <article class="watchlist-item">
+        <h3>AWS Kinesis AI 成本优化 Agent 的实际采用与节省效果</h3>
+        <span class="status">待观察</span>
+        <p class="reason">该开源 Agent 宣称可显著降低流式数据成本，但后续仍需验证真实客户案例、权限安全模型和跨账户治理能力。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>AWS 发布客户案例、基准测试结果或与 Cost Explorer/CloudWatch 的更深度集成。</p>
+    </article>
+    <article class="watchlist-item">
+        <h3>ClickStack 可观测性能力的商业化进展</h3>
+        <span class="status">待观察</span>
+        <p class="reason">ClickHouse 正在将 trace、metrics 和 dashboard 能力产品化，需要观察其能否吸引 Datadog、Grafana 等现有用户进行迁移或补充部署。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>ClickStack 发布 GA 功能、企业级权限控制、更多生态集成或公开客户案例。</p>
+    </article>
+        </section>
+
+        <section class="stock-analysis">
+            <h2>📈 股票分析</h2>
+            <p class="disclaimer">⚠️ 以下内容仅供参考，不构成任何投资建议。投资有风险，入市需谨慎。</p>
+            
+    <article class="stock-item">
+        <div class="stock-header">
+            <span class="ticker">AMZN</span>
+            <span class="company">Amazon</span>
+            <span class="signal signal-neutral">⚪ 中性</span>
+        </div>
+        <p class="stock-summary">AWS 两篇技术博客显示其持续强化流式数据成本优化与 OpenSearch 大规模分析能力，有助于提升云数据平台粘性和 AI/数据工程场景覆盖；但均为产品工程更新，短期收入影响有限。本分析仅供参考，不构成投资建议。</p>
+        <div class="stock-details">
+            <div class="catalysts">
+                <strong>🚀 催化剂</strong>
+                <ul><li>Kinesis AI 成本优化 Agent 提升实时数据平台采用率</li><li>OpenSearch 游戏分析案例带动检索与分析工作负载</li><li>Bedrock Agent 与数据平台运维场景结合深化</li></ul>
+            </div>
+            <div class="risks">
+                <strong>⚠️ 风险</strong>
+                <ul><li>成本优化工具可能降低单位数据流收入</li><li>云厂商价格竞争和客户自建开源方案形成替代</li><li>大规模集群优化复杂度可能影响客户体验</li></ul>
+            </div>
+        </div>
+    </article>
+        </section>
+
+        <footer>
+            <p>Generated by Data+AI Daily Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
