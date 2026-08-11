@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafka 社区周报 | 2026-W32</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Kafka 社区周报 | 2026-W32</h1>
+            <p class="date-range">2026-08-03 ~ 2026-08-09</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (0)</h2>
+            <p class="empty">本周无公告</p>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (2)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/mttlkcd9n8zspbm48872yq438ytjwqf0">KIP-1313: Client instance ID in all request headers</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/1x8oo57f0zh6q9j6o19jbog2k2fg8qry">KIP-1357: Add broker side custom assignors for "streams" groups</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/6dl5bstkl5pjdpmzlw4gktpd98l3jj7j">4.4.0 Release Manager</a></h3>
+            <p class="meta">12 条回复 · 5 位参与者</p>
+            <p class="summary">该邮件线程围绕 Kafka 4.4.0 发布管理展开，重点讨论了 4.4 分支切割延迟、KIP 完成状态审查，以及是否继续延后代码冻结或严格按发布计划执行。最终社区决定不再继续放宽时间线，而是回退未完成 KIP 的相关改动，确保 4.4.0 稳定发布。</p>
+            <div class="key-points"><p><strong>@Chia-Ping Tsai:</strong> 已切割 4.4 分支，并要求接近完成的 KIP 尽快 backport；没有合并 PR 的 KIP 已移出 4.4.0。</p>
+<p><strong>@Matthias J. Sax:</strong> 质疑 4.4 分支切割过晚，强调应区分 feature freeze 和 code freeze，之后只应接受 blocker 修复，未完成 KIP 应回退。</p>
+<p><strong>@Mickael Maison:</strong> 认为已远超 feature freeze，4.4.0 已有足够完成内容，应按原计划继续推进发布。</p></div>
+            <p class="conclusion">决定严格执行发布计划：4.4 分支已创建，未完成或部分完成的 KIP（如 KIP-1306、KIP-1332 等）将被回退或移除公共 API；后续仅处理必要的 bug fix 和 blocker，以稳定 4.4.0 发布分支。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/hnqgmjo1hhjj07d1nfdpk7zzh3k5pxwz">KIP-1279: Cluster Mirroring</a></h3>
+            <p class="meta">5 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕 KIP-1279 Cluster Mirroring 的设计细节展开，重点澄清 MirrorMetadataManager 状态缓存来源，并深入辩论是否需要在 Fetch 请求中引入 MirrorLeaderEpoch。双方最终倾向于移除 MirrorLeaderEpoch，通过检测 divergeEpoch 并结合 mirror.support.unclean.leader.election 配置及新增 ULE_LOG_TRUNCATION 状态来处理源/目标集群 unclean leader election 场景。此外还讨论了 API 设计、状态查询 RPC 拆分、错误码和流程描述等细节。</p>
+            <div class="key-points"><p><strong>@Jun Rao:</strong> 认为 MirrorLeaderEpoch 不必要：正常镜像只拉取已提交数据，不会变化；即使发生 unclean leader election，也可通过检测不一致、截断日志并等待副本追上目标 offset 来恢复，因此建议避免新增该字段。</p>
+<p><strong>@Luke Chen:</strong> 接受移除 MirrorLeaderEpoch，并提出实现方案：新增 ULE_LOG_TRUNCATION 状态，在启用 mirror.support.unclean.leader.election 时，检测到源集群 unclean election 导致的日志截断后暂停镜像，等待所有副本追上并降低到预期 LEO，再恢复 MIRRORING。</p>
+<p><strong>@Jun Rao:</strong> 建议优化 API 设计：将镜像分区状态查询与镜像 leader/lag 查询拆分，分别通过 ReadMirrorState 和 ReadClusterMirrorLags 完成，并澄清 DescribeClusterMirrorsRequest、FindCoordinatorRequest、错误码及工具调用流程。</p></div>
+            <p class="conclusion">初步结论是移除 MirrorLeaderEpoch 字段，改用 divergeEpoch 检测加配置开关与新增状态机处理 unclean leader election；下一步需更新 KIP，补充 ULE_LOG_TRUNCATION 流程、lastFetchedEpoch 行为、RPC/错误码一致性，并继续完善 Describe/Start/Stop Mirror 流程描述。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/xf6l7jgpyr22q00xvq28qdlykg82p4dh">KIP-1313: Client instance ID in all request headers</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕 KIP-1313 在请求头中加入 client instance ID 的行为规范展开，重点是如何与 clientId 的处理方式保持一致，包括是否只在首个请求中携带、保留值的校验以及后续请求中字段变更的处理。Andrew 根据 Jun 的反馈多次更新 KIP 描述，但 Jun 仍指出在后续请求中 clientInstanceID 与 clientId 的拒绝策略存在不一致。</p>
+            <div class="key-points"><p><strong>@Jun Rao:</strong> 建议 clientInstanceID 与 clientId 保持一致，仅在首个请求中要求携带，并指出保留值应包含 zero 和 one，同时后续请求的处理策略仍需统一。</p>
+<p><strong>@Andrew Schofield:</strong> 最初认为后续请求省略 clientInstanceID 没有收益，后确认其为 tagged field 可节省 16 字节并同意更新 KIP，同时收紧了关于保留 UUID 和后续请求行为的描述。</p></div>
+            <p class="conclusion">Andrew 已根据反馈更新 KIP，但 Jun 指出 clientInstanceID 与 clientId 在后续请求中的拒绝策略仍存在不一致，需进一步修改 KIP 以统一行为。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/5qrxmk8n91oww9xpnmj478tb07vbk9wr">KIP-1362: Add a rollback-compatible storage format option for KRaft migration</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">本次讨论围绕 KIP-1362 展开，提议为 KRaft 迁移增加一个回滚兼容的存储格式选项（--zk-rollback-compatible），以解决迁移过程中替换节点导致无法回滚到 ZK 模式的问题。参与者认可该提案填补了 3.9 迁移路径中的实际缺口，并讨论了适用范围、误用风险以及是否需要同步支持重新格式化存储等扩展能力。</p>
+            <div class="key-points"><p><strong>@Anton Agestam:</strong> 提议在存储格式化工具中新增 --zk-rollback-compatible 标志，使 KRaft 迁移期间替换节点后仍可安全回滚，并建议先落地该基础修复以便尽快发布。</p>
+<p><strong>@Muralidhar Basani:</strong> 指出该功能仅适用于 3.9.x，因为 4.0+ 已移除 ZK 迁移，建议在 KIP 中明确范围；同时提醒需防范在非迁移集群或迁移完成后误用该标志。</p>
+<p><strong>@Gergely Harmadás:</strong> 认为仅靠新增标志仍可能因运维人员遗漏而触发问题，建议考虑为 kafka-storage 工具增加重新格式化能力以恢复回滚场景。</p></div>
+            <p class="conclusion">Anton 已根据反馈在 KIP 中补充说明该提案仅面向 3.9 分支，并认为现有文档足以指导用户正确使用标志；下一步是优先推进 --zk-rollback-compatible 基础方案落地，暂不纳入更复杂的重新格式化能力。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/gs357qgn2d4f8z3b7zf2f9250gr9xg5x">KIP-1370: Include Instance and Rack IDs in kafka-streams-groups.sh Member Output</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">本次讨论围绕 KIP-1370 展开，提议在 kafka-streams-groups.sh 的成员输出中增加 Streams 组成员的实例 ID 和机架 ID，以便更方便地诊断静态成员和机架感知分配问题。Andrew Schofield 认可该改进的价值，并建议参考 kafka-consumer-groups.sh 的列名与条件展示行为；Sanghyeok An 已根据建议更新 KIP。</p>
+            <div class="key-points"><p><strong>@Sanghyeok An:</strong> 提议在 kafka-streams-groups.sh --describe --members 输出中显示 GROUP-INSTANCE-ID，并在 --verbose 时额外显示 RACK-ID，无需修改 Admin API、协议或命令行选项。</p>
+<p><strong>@Andrew Schofield:</strong> 认为该 KIP 总体合理且有用，建议列名使用 GROUP-INSTANCE-ID，并根据成员是否存在实例 ID 信息条件性展示该列。</p>
+<p><strong>@Sanghyeok An:</strong> 已更新 KIP，采用 GROUP-INSTANCE-ID 列名，并改为至少一个成员有非空实例 ID 时才显示该列，以保持与 kafka-consumer-groups.sh 一致。</p></div>
+            <p class="conclusion">KIP 获得初步认可，作者已根据反馈更新方案；下一步是请社区再次审阅更新后的 KIP。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/fr1rhknwt5k7mfm97453hk17nogc2vjo">KIP-1266 Bounding The Number Of RemoteLogMetadata Messages via Compacted RemoteLogMetadata Topic</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">本次讨论围绕 KIP-1266（通过压缩版 RemoteLogMetadata Topic 限制远程日志元数据消息数量）的设计细节与迁移安全性展开。作者 Lijun Tong 回应了 Luke Chen 提出的日志压缩键值不一致、审计 Topic 概念、键值字段冗余及迁移流程等问题，并承认提案中存在不一致之处已修正。双方核心分歧集中在迁移策略上：Luke 认为不能依赖文档和人工检查来防止数据丢失，而 Lijun 认为 retention 配置风险在当前 Tiered Storage 中已存在，该 KIP 反而旨在长期消除该风险。</p>
+            <div class="key-points"><p><strong>@Luke Chen:</strong> 迁移策略不能依赖文档或人工检查来防止数据丢失，系统必须主动保护用户免受运维错误影响；当前要求用户手动设置 retention.ms 的方式在大规模集群中易错且不可靠，建议参考 KIP-866 和 KIP-848 的迁移设计。</p>
+<p><strong>@Lijun Tong:</strong> 承认提案中关于日志压缩后仅保留最新记录的描述有误并已修正；解释审计 Topic 概念已被移除；说明 endOffset 和 brokerLeaderEpoch 仍需保留在 value 中，因为 RemoteLogManager 当前只能访问 metadata value 而非 record key。</p>
+<p><strong>@Lijun Tong:</strong> 针对迁移风险，指出 retention.ms 配置不当导致数据丢失的风险在当前 Tiered Storage 中已存在，并非本 KIP 引入；该 KIP 完成迁移后反而能通过 compaction 消除该风险，迁移路径是让用户脱离当前风险状态的桥梁。</p></div>
+            <p class="conclusion">目前尚未达成最终结论。Lijun 表示将研究 KIP-866 和 KIP-848 的迁移方案以改进设计，双方同意继续就迁移安全性进行深入讨论。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/wo9s6byb20j9w4g7k3vk74fqtmkcc1ds">KIP-1095 Kafka Canary Isolation</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">KIP-1095 重新发起讨论，聚焦 Kafka 金丝雀隔离的 broker 端分区放置方案，旨在通过保证副本集完全落在指定金丝雀节点内来限制部署影响范围。修订后方案缩小范围、移除 ZooKeeper 相关变更，并将协议变更改为 tagged fields，无需客户端升级。</p>
+            <div class="key-points"><p><strong>@Chen Zhifeng:</strong> 仅指定金丝雀 broker 无法实现真正隔离，因为副本可能跨金丝雀与非金丝雀 broker，导致故障或异常影响扩散，需要放置层面保证完整副本集隔离。</p>
+<p><strong>@Andrew Schofield:</strong> 支持将集群 broker 细分的原则，但建议不要将 pod 概念暴露给 MetadataResponse 和 Node，以免限制未来多租户等对应用透明的集群细分能力。</p>
+<p><strong>@Andrew Schofield:</strong> 认为金丝雀配置同时放在 controller 配置和 kafka-reassign-partitions.sh 参数中不够优雅，建议工具从集群发现配置以保持一致，并考虑用 cell 替代 pod 命名。</p></div>
+            <p class="conclusion">目前处于讨论阶段，尚未形成最终结论；下一步需要根据 Andrew 的反馈评估命名、配置发现机制以及是否向客户端暴露隔离单元概念，并继续推进 KIP 设计细化。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/dx7fddm5pdv1hqs88q0n4jfpjtb84l65">[PR] Bump npm-check-updates from 22.2.9 to 23.0.1 [kafka-site]</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">该邮件讨论的是 kafka-site 仓库中由 dependabot 发起的依赖升级 PR，将 npm-check-updates 从 22.2.9 升级到 23.0.1。PR 主要包含上游依赖更新、工作流安全增强和文档/资源清理等变更，最终由 mimaison 合并。</p>
+            <div class="key-points"><p><strong>@dependabot[bot]:</strong> 提交 PR #901，将 kafka-site 中的 npm-check-updates 依赖从 22.2.9 升级至 23.0.1。</p>
+<p><strong>@mimaison:</strong> 审核并合并了该依赖升级 PR。</p></div>
+            <p class="conclusion">PR #901 已被合并，npm-check-updates 依赖升级完成，无需进一步邮件讨论行动。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/kymjn60j4ont77km1htzpt5m0fzprgmx">[PR] Bump npm-check-updates from 22.2.9 to 23.0.0 [kafka-site]</a></h3>
+            <p class="meta">1 条回复 · 1 位参与者</p>
+            <p class="summary">该讨论涉及 kafka-site 项目中将 npm-check-updates 从 22.2.9 升级至 23.0.0 的 PR。dependabot 机器人指出该 PR 已被 #901 取代，并关闭了此 PR。</p>
+            <div class="key-points"><p><strong>@dependabot[bot]:</strong> PR #899 已被 #901 取代并关闭。</p></div>
+            <p class="conclusion">该 PR 被废弃，后续工作将在 #901 中进行。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/6dxh9412c2dgr15jyf56dg1x93n5w1lf">KIP-1249: Better offset reset for the new consumer group rebalance protocol</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">该讨论围绕 KIP-1249 展开，核心议题是如何为新消费者组再平衡协议提供更好的 offset reset 机制。Matthias 反对当前提议中的 pause/resume RPC，主张设计统一的 ResetOffsetsRPC，并通过心跳响应协调整个重置过程；Levani 表示愿意探索该方向并征求其他参与者意见。</p>
+            <div class="key-points"><p><strong>@Matthias J. Sax:</strong> 建议不采用 pause/resume RPC，而是新增 ResetOffsetsRPC，并在 RPC 中编码所有重置所需信息，由 Group Coordinator 协调整个流程。</p>
+<p><strong>@Matthias J. Sax:</strong> 主张统一支持 consumer、streams 和 share 三类 group，并在重置过程中考虑 Streams 客户端状态存储重置等复杂场景。</p>
+<p><strong>@Levani Kokhreidze:</strong> 对 Matthias 的方向表示开放，愿意进一步探讨，并邀请 David 和 Lucas 提供意见。</p></div>
+            <p class="conclusion">目前尚未形成最终结论，但初步方向倾向于采用基于 ResetOffsetsRPC 和心跳协调的统一重置机制；下一步需要进一步讨论重置进度跟踪、成员变更、失败处理及完成条件等细节。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (52)</h2>
+            
+    <p>本周新建 <strong>52</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周 JIRA 主要集中在 Kafka Streams 与消费者组相关的问题修复与功能增强，包括状态存储、任务分配、指标统计及事务隔离等。同时涉及 KRaft 控制器、Raft 客户端、组协调器及 Share Group 的稳定性与协议规范改进。此外还包括 RPC 协议版本演进、遥测机制、Docker/镜像问题以及多项废弃 API 清理和文档补充。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Kafka Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
