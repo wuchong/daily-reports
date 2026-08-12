@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flink 社区周报 | 2026-W32</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Flink 社区周报 | 2026-W32</h1>
+            <p class="date-range">2026-08-03 ~ 2026-08-09</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (0)</h2>
+            <p class="empty">本周无公告</p>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (1)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/qdmpj1l7yw32hjnq9109ozwxvvx5rywh">FLIP-606: Flink SQL Ergonomics: GROUP BY <ordinal>, GROUP BY ALL, and ORDER BY ALL</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/nm68hp9ok3p0k06qb51qkpdj0sjr3sdg">退订</a></h3>
+            <p class="meta">4 条回复 · 5 位参与者</p>
+            <p class="summary">该邮件讨论主题为“退订”，多位参与者发送了退订请求。邮件内容主要为简短的退订指令，未涉及具体技术议题或深入讨论。</p>
+            <div class="key-points"><p><strong>@黄新儿:</strong> 请求退订邮件列表。</p>
+<p><strong>@Yanko24:</strong> 请求退订邮件列表。</p>
+<p><strong>@xh:</strong> 请求退订邮件列表。</p></div>
+            <p class="conclusion">无初步结论或下一步行动，仅为退订请求。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/69rj25bvkk820pjm1kdxsscfkgxpp801">Long-term recommendation for durable checkpoint storage</a></h3>
+            <p class="meta">3 条回复 · 2 位参与者</p>
+            <p class="summary">Ordencia Wu 询问在多租户 Flink 平台中，S3/对象存储是否会取代 HDFS 成为新部署下更推荐的持久化 checkpoint 存储，尤其关注 flink-s3-fs-native、FLIP-555 及存算分离方向对长期选型的影响。Gabor Somogyi 回应称社区正加大对 S3 的投入，趋势是减少 Hadoop 依赖，但 HDFS 仍会被继续支持，短期内不会被弃用。</p>
+            <div class="key-points"><p><strong>@Ordencia Wu:</strong> 希望社区明确 S3/对象存储与 HDFS 在 durable checkpoint/state 存储上的长期定位，以及是否有架构演进会更偏向对象存储。</p>
+<p><strong>@Gabor Somogyi:</strong> S3 趋势增强，社区投入较多，原生 S3 connector 也体现了去除 Hadoop 依赖的方向，但这不代表 HDFS 支持会近期被移除。</p></div>
+            <p class="conclusion">目前没有明确宣布 S3 将取代 HDFS；两者仍将作为可选存储方案共存，用户需结合自身场景、约束和权衡来选择。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/jp9n72mj3txomm9m908fp95qqn9zy5gp">FLIP-XXXX: Higher-Order Functions in Flink SQL (TRANSFORM and ARRAY_FILTER)</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">社区讨论 Flink SQL 高阶函数 FLIP（TRANSFORM/ARRAY_FILTER），核心进展是提案从 SQL 内置集合函数扩展到 Table/Python API、UDF lambda 参数及 lambda 内引用列，并提供了 WIP 分支。Gustavo 认可该特性的重要性，同时要求关注与 UDF、PTF 及嵌套 lambda 等更广泛场景的完整设计。</p>
+            <div class="key-points"><p><strong>@Dominik:</strong> 与 Michal 扩展了提案和实现，支持 Table & Python API、UDF 的 lambda 参数以及 lambda 表达式中使用列，并分享了 WIP 分支。</p>
+<p><strong>@Gustavo de Morais:</strong> 认为 lambda 函数是重要基础组件，需确保设计完整适配项目各部分，并提出 UDF 作为 lambda 参数、嵌套 lambda 等边界场景。</p>
+<p><strong>@Michal Stutzmann:</strong> 说明 lambda 体内调用 UDF 与任意深度嵌套均受支持，但直接将 UDF 作为 lambda 传入不支持，需写成 x -> my_udf(x)，并在 FLIP 中补充组合示例与测试。</p></div>
+            <p class="conclusion">提案已补充 Public Interfaces/Composition 与 Lambda captures 章节并提供 IT 测试；下一步由 Gustavo 深入评审提案和 WIP 分支，社区继续完善边界场景。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/0smhykr5o22p0jbkxm89dlq9xd6tof42">Introducing Cobble-flink: Observable and Consumable State with Disaggregated Storage</a></h3>
+            <p class="meta">1 条回复 · 1 位参与者</p>
+            <p class="summary">邮件讨论围绕 Zakelly Lan 介绍的 cobble-flink 项目展开，该项目旨在将 Cobble 存储引擎集成到 Flink，提供统一、可观察、可消费且支持存储解耦的状态存储。Zakelly 发布了 Cobble Flink 0.3.0-1，说明其性能在多场景优于 RocksDB，并强调未来重点是统一、开放、易用的 Flink 存储层。</p>
+            <div class="key-points"><p><strong>@Zakelly Lan:</strong> cobble-flink 提供 Flink 统一存储层，覆盖 managed state、source 和 sink，并支持可观察、可消费的状态与解耦存储；0.3.0-1 已发布且性能有提升。</p>
+<p><strong>@Salva Alcántara:</strong> 对项目表示感兴趣并询问是否可试用，同时询问其与 Apache Fluss（最初写成 Flush）的比较。</p>
+<p><strong>@Zakelly Lan:</strong> 认为 Cobble-flink 与 Fluss 定位不同：Fluss 是存储服务，而 Cobble-flink 更偏向 Flink 集成体验，因此不易在等价条件下比较。</p></div>
+            <p class="conclusion">项目已发布可用，社区成员表示将试用；后续计划进一步比较 Cobble-flink 与 Apache Fluss，并继续完善 Flink 统一存储层。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/n2fgovd8npfcf0sgf5ooqso93jky88t0">FIP-49: Fluss Gateway REST API</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕 FIP-49: Fluss Gateway REST API 展开，重点包括 REST 网关的意义、写入路径 PoC 进展以及 act-user-id 在认证授权中的作用。Junbo Wang 已根据反馈更新 FIP 并提供 PoC，计划发起投票。Hongshun Wang 建议补充 act-user-id 与 ACL 权限隔离的示例及 Fluss 服务端认证参数说明。</p>
+            <div class="key-points"><p><strong>@Hongshun Wang:</strong> 支持 REST 网关比 DataFusion 更有意义，因为日志采集管道目前缺乏替代方案；建议补充 act-user-id 与 ACL 结合的示例及 Fluss 服务端安全参数说明。</p>
+<p><strong>@Junbo Wang:</strong> 已基于讨论更新 FIP-49 并完成 REST 写入路径的 PoC，计划次日发起投票；已在 FIP 中补充 act-as 机制与 ACL 映射的详细设计。</p></div>
+            <p class="conclusion">FIP-49 设计已趋于收敛，Junbo 计划发起投票，并已补充 act-user-id 与 ACL 权限映射的设计细节（见 issue #3837）。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/zgj32q8b6mo6tp47hlf4kgmwmnqr38j4">FLIP-605: State catch-up of streaming jobs state using BATCH execution mode</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">该讨论围绕 FLIP-605 展开，提议通过 BATCH 执行模式对流作业进行状态追赶：先以批模式处理历史/积压数据并在结束时生成 savepoint，再恢复到 STREAMING 模式继续运行，以减少长时间回放积压数据的成本。发起方表示已有可工作的早期版本，社区对该方向表示支持并提出了配置、Source 状态衔接和批阶段容错/分片 checkpoint 等问题。</p>
+            <div class="key-points"><p><strong>@Piotr Nowojski:</strong> 提出 FLIP-605：让作业先以 BATCH 模式处理积压数据并生成 savepoint，再恢复到 STREAMING 模式继续运行，适用于 DataStream API 和 Streaming SQL/Table API。</p>
+<p><strong>@Xuyang:</strong> 支持该方案，并询问批阶段生成的标准 savepoint 是否可直接被流阶段恢复，以及是否仍需要在流阶段设置 execution.state-catch-up.mode: BATCH。</p>
+<p><strong>@Xuyang:</strong> 关注 Source 是否支持 bounded-to-unbounded 转换，并建议考虑将历史数据分片/分段执行、每段生成 checkpoint，以降低大批量回溯时的失败重算和磁盘压力。</p></div>
+            <p class="conclusion">目前讨论处于发起和初步评审阶段，社区总体支持该方向；下一步是继续围绕 FLIP 文档讨论配置语义、Source 接口兼容性和批阶段容错/分片策略等细节。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/3qox2929c8txw6h3jbth1llpmckxm8yv">Flink Kubernetes Operator: One-shot statelessRestartNonce</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕为 Flink Kubernetes Operator 增加一次性 stateless 重启/重部署机制展开。Luca 提出新增 statelessRestartNonce（或 statelessRedeployNonce）字段，以避免临时切换 upgradeMode 带来的状态丢失风险。Gyula 认可该需求，但建议用更通用的 redeploy 对象承载 nonce 与状态等一次性部署配置。</p>
+            <div class="key-points"><p><strong>@Luca Castelli:</strong> 当前触发 stateless 重启需临时修改 upgradeMode 并更新 restartNonce，用户可能忘记改回，导致后续升级无状态并带来状态丢失风险，因此提议新增 statelessRestartNonce/statelessRedeployNonce。</p>
+<p><strong>@Gyula Fóra:</strong> 不倾向为重叠操作引入多个独立 nonce，建议设计更通用的 spec.job.redeploy 结构，包含 nonce、state 以及未来可扩展的一次性配置。</p></div>
+            <p class="conclusion">初步共识是需要改进一次性 stateless 重部署体验，但具体字段设计尚未确定；下一步是继续讨论是否采用通用 redeploy 对象方案而非单独新增 stateless nonce 字段。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/ohnos86d1yr3qsmf04kkgpgs71xhx5sh">FLIP-563: Support provided lib archives for YARN application mode</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">该邮件线程围绕 FLIP-563 展开，提议在 Flink YARN Application Mode 中新增 yarn.provided.lib.archives 配置，支持将预上传到 HDFS 的 .tgz/.tar.gz 等归档作为公共归档资源分发，并通过通配符 classpath 加载，以解决现有 yarn.provided.lib.dirs 在多 jar 场景下的 classpath 过长和打包不便问题。目前提案仍处于社区 review 和催促反馈阶段，尚未形成明确共识。</p>
+            <div class="key-points"><p><strong>@Archit Goyal:</strong> 提议新增 yarn.provided.lib.archives，让 Flink 将预上传 HDFS 归档作为 public archive 资源本地化，并为每个归档添加类似 <archiveDir>/* 的通配符 classpath，且默认不改变现有行为。</p>
+<p><strong>@Samrat Deb:</strong> 总体支持提案，认为 YARN PUBLIC ARCHIVE、Flink resource descriptor 和 Java launcher 通配符机制使其可行，但担心扁平通配符无法保留 flink-dist、plugin 隔离、非 jar 资源、user jar 顺序等现有语义。</p>
+<p><strong>@Samrat Deb:</strong> 指出通配符展开的 jar 顺序不确定，可能影响依赖顺序、重复类、SPI、日志绑定及 flink-dist 的特殊排序，并要求说明归档描述如何可靠传递到 AM 和 TaskManager。</p></div>
+            <p class="conclusion">目前尚无最终结论；下一步需要提案作者回应关于 classpath 语义、加载顺序、plugin 隔离以及 AM/TaskManager 资源传播机制的问题，并继续等待社区 review。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/ksc4w9kfr1f2b8nz3koddxfd4jhlccqx">FLIP-XXX Monotonic Counters support</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕 FLIP-595 引入 Monotonic Counters 支持，核心问题是应改造现有 Counter 还是新增 MonotonicCounter 接口。最终倾向于新增 MonotonicCounter 接口用于系统计数器迁移，并将 Counter#dec 标记为可选且废弃。</p>
+            <div class="key-points"><p><strong>@Efrat Levitan:</strong> 提出通过新增 MonotonicCounter 接口解决计数器是否单调不明确的问题，并更新 FLIP-595。</p>
+<p><strong>@Piotr Nowojski:</strong> 支持引入新接口，质疑仅废弃 Counter#dec 并不能立即使现有 Counter 变为单调。</p>
+<p><strong>@Ryan van Huuksloot:</strong> 认可该改进对可观测性的价值，认为区分计数器递减与重置很有意义。</p></div>
+            <p class="conclusion">初步共识是新增 MonotonicCounter 接口，同时废弃 Counter#dec，后续将在下一个主要版本中移除该方法。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/cvcm95b3k44hx4nopxczg5hohqdxl40r">[FLINK-40143] Request for review and assignment</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">邮件讨论围绕 FLINK-40143 展开，核心问题是 Flink Dashboard 中通过 restart-strategy.* 配置的作业重启策略显示不正确。提交者已提交 PR #28736 修复该问题，并说明该问题在 Flink 1.19.1 和 1.20.5 中可复现，master 分支因 FLINK-36249 已不受影响。</p>
+            <div class="key-points"><p><strong>@RL.93 c:</strong> 已提交 PR #28736 修复 Dashboard 中重启策略显示错误的问题，并补充了回归测试，Azure CI 已通过。</p>
+<p><strong>@RL.93 c:</strong> 该修复目标分支为 release-1.20，因为 master 分支在 FLINK-36249 之后已不受影响。</p>
+<p><strong>@RL.93 c:</strong> 请求 committer 审查修复范围与方案，并在合适情况下分配该 issue。</p></div>
+            <p class="conclusion">目前尚无初步结论，下一步是等待 committer 审查 PR #28736 并决定是否分配该 issue。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (40)</h2>
+            
+    <p>本周新建 <strong>40</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周 JIRA 主要集中在 SQL/Table API 功能增强与缺陷修复、状态后端与运行时性能优化，以及连接器与 Kubernetes Operator 生态改进。新增或修复内容涵盖 schema 事件监听、物化表增量更新、多个 MAP/ARRAY 函数、VARIANT 类型集成、DECIMAL/JSON/字符串函数正确性，以及 RocksDB MapState、State TTL、watermark 对齐和 AdaptiveScheduler 稳定性等运行时问题。同时涉及 Kafka、Pulsar、Fluss、Elasticsearch、S3 等连接器的兼容性、配置与资源泄漏修复，以及 CI、文档和 Kubernetes Operator 指标清理等工程化改进。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Flink Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
