@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-08-11</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-08-11</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 14 新 Issues</div>
+            <div class="stat">✅ 15 关闭</div>
+            <div class="stat">✨ 15 新 PRs</div>
+            <div class="stat">🎉 18 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/3864">PR #3864</a> 合并了历史分区查找本地缓存容量管理功能，支持跨表共享 Paimon 磁盘缓存</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3925">PR #3925</a> 合并了 Flink 虚拟日志表（$changelog/$binlog）的批量扫描支持</li><li>🐛 <a href="https://github.com/apache/fluss/pull/3920">PR #3920</a> 修复了 follower-to-leader 转换期间 ISR 收缩竞态条件，避免排除 leader 自身</li><li>🐛 <a href="https://github.com/apache/fluss/pull/3956">PR #3956</a> 修复了远程日志起始偏移量可能暴露已过期物理前缀的问题</li><li>✨ <a href="https://github.com/apache/fluss/pull/3940">PR #3940</a> 支持活跃 segment 保留策略的热更新，无需重启服务</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <ul class="critical-list"><li>⚠️ <a href="https://github.com/apache/fluss/issues/3901">Issue #3901</a> [priority=critical] FlinkCatalog 在不存在的数据库下解析内置函数，已通过 PR #3906 修复并合并</li><li>⚠️ <a href="https://github.com/apache/fluss/pull/3864">PR #3864</a> Review 中发现 P0 问题：历史查找缓存未接入磁盘写保护，磁盘满时仍可能写入缓存文件导致磁盘耗尽</li></ul>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3925">Issue #3925</a> [flink] Support batch scan for virtual log tables</h4>
+            <ul><li><span class="author">@leonardBang</span>: 报告 CI 测试失败，指出 changelog 虚拟表批量读取断言不通过</li><li><span class="author">@leonardBang</span>: 深入分析 Flink 1.18 时区兼容性问题，发现 SupportsFilterPushDown 在非 UTC 环境导致 TIMESTAMP_LTZ 过滤失败，并提出 bounded reader 两个边界问题</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3913">Issue #3913</a> [test] Add multi-version compatibility test selection</h4>
+            <ul><li><span class="author">@wuchong</span>: 展示 CI 优化效果：总测试时间从 89 分钟降至 58 分钟，减少 34.8%</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2669">Issue #2669</a> [docs] Add Real-Time User Profile quickstart tutorial</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: 建议等待 1.0 发布后使用原生 bitmap 函数，避免临时 sum-only 版本后续需要大幅更新</li><li><span class="author">@pbanakar</span>: 询问 FLUSS_DOCKER_VERSION 应使用什么值，并报告本地测试 RoaringBitmap 类加载冲突问题</li><li><span class="author">@platinumhamburg</span>: 指导使用 $FLUSS_DOCKER_VERSION$ 占位符，文档构建会自动替换为合适版本</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3856">Issue #3856</a> [test] Unstable test Flink118TableSourceBatchITCase.testLogTableBatchScanSupportsNonFullStartupMode</h4>
+            <ul><li><span class="author">@vbhanuchander-lang</span>: 深入分析根因：非测试 flake 而是 source bug，split 完成后仍可能被 fetcher 返回导致 IllegalStateException，建议修改 issue 标题并改进 flaky-test bot 报告</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3336">Issue #3336</a> [client] Avoid repeated synchronous schema fetches in ClientSchemaGetter</h4>
+            <ul><li><span class="author">@fxbing</span>: 报告生产环境影响：schema 缓存未命中导致元数据读取放大，ZK 流量和 CDC 延迟显著增加，重启仅为临时缓解</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3961">Issue #3961</a> [rust] Support writing records to multiple tables</h4>
+            <ul><li><span class="author">@damokelis</span>: 完成下游 TKE 端到端验证，覆盖 CDC、重启恢复和 Paimon tiering 全流程</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3962">Issue #3962</a> [rust] Support writing records to multiple tables</h4>
+            <ul><li><span class="author">@damokelis</span>: 详细记录端到端验证结果：MySQL binlog→Rust CDC→MultiTableWriter→Paimon tiering，覆盖增删改、checkpoint 恢复等场景</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3945">Issue #3945</a> [server] Auto partition creation fails with partial rack information</h4>
+            <ul><li><span class="author">@wuchong</span>: 确认已通过 PR #3946 修复，关闭 issue</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3955">Issue #3955</a> [Improvement] Share Paimon historical lookup disk cache across tables</h4>
+            <ul><li><span class="author">@zuston</span>: 表达认领此 issue 的意愿</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3747">Issue #3747</a> [test] Unstable test FlussAuthorizationITCase.testDescribeTableOperation</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: 报告测试失败：UnknownTableOrBucketException，tablet server 元数据缓存未及时更新</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3908">PR #3908</a> [server][client] Support per-partition bucket count for partitioned tables</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: 提出多项关键 review：bucketLayoutEpoch 语义需精确、STALE_METADATA 不应用于元数据未就绪状态、混合 ALTER 需先验证再执行、自动分区删除需加读锁、建议移除 Spark 支持到后续 PR</li><li><span class="author">@platinumhamburg</span>: 深入分析 initialMetadataApplied 标志过于粗粒度，建议引入 TABLET_METADATA_NOT_READY 专用可重试错误，区分元数据未就绪与真正的 bucket 数不匹配</li><li><span class="author">@Kaixuan-Duan</span>: 逐项回应 review：引入 LeaderNotAvailableException、拒绝混合 ALTER、添加 striped lock、回滚 Spark 变更、引入 TABLET_METADATA_NOT_READY(75) 替代全局标志</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3864">PR #3864</a> [server] Manage historical lookup local cache capacity</h4>
+            <ul><li><span class="author">@wuchong</span>: 提出 P0 问题：缓存需接入磁盘写保护；建议移除公开的 per-table ratio 配置改用集群级预算；详细规划 historical 指标组命名；建议简化 removalListener 和避免不必要的 invalidateAll</li><li><span class="author">@luoyuxia</span>: 回应 review：同意统一 operation 标签、移除 BudgetManager 类、保留 MetricGroup 用于同名不同标签的指标注册</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3935">PR #3935</a> [rust] ignore missing partitions during scanner metadata updates</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 指出 Rust 侧缺少分区 ID 验证、批量请求中单个缺失 ID 导致全部失败、建议添加 IT 测试，并深入分析 invalidate 范围过大导致所有分区 leader 被清除的问题</li><li><span class="author">@zuston</span>: 确认问题存在并已修复：添加分区级元数据更新、添加测试、缩小 invalidate 范围到具体分区</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3934">PR #3934</a> [rust] add support of iceberg format key encoder</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 要求添加 append-only 表的 IT 测试，并建议使用 Iceberg Appendix B 的哈希向量验证而非仅对比 Java 代码输出</li><li><span class="author">@zuston</span>: 确认已添加 append IT 和基于 Iceberg 官方哈希向量的验证</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3883">PR #3883</a> [spark] Support time-range incremental batch reads</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 建议支持 DATE 类型参数、指出 adjust 选项文档不一致、建议 fallback 到 session config</li><li><span class="author">@Copilot</span>: 指出 isBeforeRetention 使用 <= 比较可能误判边界情况，建议使用严格小于；指出命名空间解析可能丢失多部分命名空间</li><li><span class="author">@Yohahaha</span>: 已添加 DATE 支持，重新设计 TVF 行为只需 start 和 end 参数</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3941">PR #3941</a> [lake][follow] Support empty commits for Hudi and Lance to persist tiering progress</h4>
+            <ul><li><span class="author">@Copilot</span>: 指出 Hudi 错误消息应使用带前缀的配置键、Lance 测试存在 Arrow 资源泄漏、commitEmptyInstant 可能选择错误的 action type</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3950">PR #3950</a> [rust] Validate append_arrow_batch nullability before enqueue</h4>
+            <ul><li><span class="author">@charlesdong1991</span>: 认为此 API 不应作为公开接口，并指出可能不支持嵌套类型</li><li><span class="author">@leekeiabstraction</span>: 请求添加嵌套类型的测试用例</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3928">PR #3928</a> [common] Extract NO_SNAPSHOT_ID sentinel to fluss-common</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 指出代码中仍有残留的 -1L 硬编码和未统一的 sentinel 检查，建议全面清理</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3875">PR #3875</a> [CI] Wait for table metadata in authorization test</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 建议将等待逻辑提取到 setup() 方法中避免重复代码</li><li><span class="author">@litiliu</span>: 确认已将等待逻辑移至 setup()</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3925">PR #3925</a> [flink] Support batch scan for virtual log tables</h4>
+            <ul><li><span class="author">@Copilot</span>: 指出 collectBatchRows 缺少超时机制可能导致测试无限挂起，建议使用 collectRowsWithTimeout</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3635">PR #3635</a> [lake] Support partition mark-done for lakehouse tiering (processing-time)</h4>
+            <ul><li><span class="author">@Copilot</span>: 指出 MarkDoneState 存储引用而非防御性拷贝、测试使用无效分区名、缺少 time-interval 配置时应 fail fast</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3937">PR #3937</a> [server] Refine remote log manifest overlap handling</h4>
+            <ul><li><span class="author">@gyang94</span>: 指出物理范围可能暴露已过期数据，hidden prefix 不应再次可读，建议区分物理范围和逻辑范围</li><li><span class="author">@wuchong</span>: 确认问题存在，建议在后续 PR 中处理</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3865">PR #3865</a> [security] Make SASL mechanisms extensible</h4>
+            <ul><li><span class="author">@affo</span>: 建议使用 map 结构替代多个 switch 语句，新增认证机制时只需添加 map 条目</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3882">PR #3882</a> [server] remove multi-key partitions from cache correctly</h4>
+            <ul><li><span class="author">@Jackeyzhe</span>: 建议添加覆盖 partitionSet == null 分支的测试</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3971">PR #3971</a> [rust] Wire the scan filter through to the log fetcher</h4>
+            <ul><li><span class="author">@leekeiabstraction</span>: 说明 Fluss 核心 IT 目前测试 0.9.1-incubating，需等待 1.0 RC 才能解除集成测试阻塞</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3972">#3972</a> [flink] Batch Log Table scan fails when some buckets are empty <span class="author">@Gezi-lzq</span> </li><li><a href="https://github.com/apache/fluss/issues/3969">#3969</a> [FIP-49][gateway] Validate Gateway configuration, restrict Fluss client options, and redact secrets <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/issues/3967">#3967</a> [rust] fluss-rs requires a system protoc to build <span class="author">@seokjin0414</span> </li><li><a href="https://github.com/apache/fluss/issues/3966">#3966</a> Expose a human-readable Fluss server version via the client API <span class="author">@affo</span> </li><li><a href="https://github.com/apache/fluss/issues/3965">#3965</a> Add completion timestamp and historical listing to RebalanceProgress <span class="author">@affo</span> </li><li><a href="https://github.com/apache/fluss/issues/3961">#3961</a> [rust] Support writing records to multiple tables <span class="author">@damokelis</span> </li><li><a href="https://github.com/apache/fluss/issues/3959">#3959</a> [rust] Support SASL/PLAIN authorization identity <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/issues/3958">#3958</a> [FIP-49][gateway] Add the Gateway runtime, common HTTP layer, lifecycle, and test infrastructure <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/issues/3957">#3957</a> [Umbrella][FIP-49] Implement the Fluss Gateway REST API <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/issues/3955">#3955</a> [Improvement] Share Paimon historical lookup disk cache across tables <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/issues/3951">#3951</a> [common] DefaultValueRecordBatch and DefaultKvRecordBatch override equals() without hashCode() <span class="author">@vbhanuchander-lang</span> </li><li><a href="https://github.com/apache/fluss/issues/3949">#3949</a> [rust] append_arrow_batch accepts nulls in NOT NULL columns and fails later on scan <span class="author">@charlesdong1991</span> </li><li><a href="https://github.com/apache/fluss/issues/3945">#3945</a> [server] Auto partition creation fails with partial rack information <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/issues/3943">#3943</a> Remote log start offset may expose an expired physical prefix <span class="author">@gyang94</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3971">#3971</a> [rust] Wire the scan filter through to the log fetcher <span class="author">@leekeiabstraction</span> </li><li><a href="https://github.com/apache/fluss/pull/3970">#3970</a> [gateway] Validate configuration and redact secrets <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/pull/3968">#3968</a> [test] Stabilize RemoteLogDownloader prefetch test <span class="author">@void-ptr974</span> </li><li><a href="https://github.com/apache/fluss/pull/3964">#3964</a> [rust] Support cooperative KV backpressure (client side of #3463) <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/pull/3963">#3963</a> [gateway] Add the Gateway runtime, common HTTP layer, lifecycle, and test infrastructure <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/pull/3962">#3962</a> [rust] Support writing records to multiple tables <span class="author">@damokelis</span> </li><li><a href="https://github.com/apache/fluss/pull/3960">#3960</a> [fs] Relocate commons deps in S3/GS fs plugins to fix Spark conflict <span class="author">@Yohahaha</span> </li><li><a href="https://github.com/apache/fluss/pull/3954">#3954</a> [build] Move Spark Scala 2.13 tests to nightly <span class="author">@litiliu</span> </li><li><a href="https://github.com/apache/fluss/pull/3953">#3953</a> [flink] Preserve complete undo recovery baselines <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/3952">#3952</a> [common] Fix equals/hashCode contract in value and kv record batches <span class="author">@vbhanuchander-lang</span> </li><li><a href="https://github.com/apache/fluss/pull/3950">#3950</a> [rust] Validate append_arrow_batch nullability before enqueue <span class="author">@charlesdong1991</span> </li><li><a href="https://github.com/apache/fluss/pull/3948">#3948</a> [FLUSS-3878] Fix unstable TableChangeWatcherTest.testTableRegistrationChange <span class="author">@bharathgunapati</span> </li><li><a href="https://github.com/apache/fluss/pull/3947">#3947</a> [flink] Fix BETWEEN literal extraction in PredicateConverter <span class="author">@WenDing-Y</span> </li><li><a href="https://github.com/apache/fluss/pull/3944">#3944</a> [docs] Document local log TTL and active segment rolling <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/pull/3941">#3941</a> [lake][follow] Support empty commits for Hudi and Lance to persist tiering progress <span class="author">@beryllw</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3945">#3945</a> [server] Auto partition creation fails with partial rack information <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/issues/3943">#3943</a> Remote log start offset may expose an expired physical prefix <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/3939">#3939</a> Support hot update for active segment retention roll <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/issues/3927">#3927</a> maybeShrinkIsr can submit an ISR excluding the leader during a follower-to-leader transition <span class="author">@hanliu0830</span> </li><li><a href="https://github.com/apache/fluss/issues/3914">#3914</a> [Bug] Undo recovery offset reports may be routed across sink subtasks <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/3912">#3912</a> [Improvement] Reduce Flink multi-version test execution <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/issues/3909">#3909</a> [Bug] Undo recovery may time out when scanning empty log batches <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/3901">#3901</a> [Bug] FlinkCatalog resolves built-in functions under nonexistent databases <span class="author">@wuchong</span> <span class="labels">priority=critical</span></li><li><a href="https://github.com/apache/fluss/issues/3892">#3892</a> Lake tiering never advances for buckets whose pending log contains only empty WAL batches <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/issues/3888">#3888</a> Paimon schema compatibility check is too strict for comments and options <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/issues/3862">#3862</a> [FIP-28] Manage historical lookup local cache capacity <span class="author">@luoyuxia</span> <span class="labels">component=server, component=lake, component=lake/paimon, priority=normal</span></li><li><a href="https://github.com/apache/fluss/issues/3747">#3747</a> [test] Unstable test FlussAuthorizationITCase.testDescribeTableOperation <span class="author">@app/github-actions</span> </li><li><a href="https://github.com/apache/fluss/issues/3723">#3723</a> [flink] Support batch scan for $changelog and $binlog virtual tables <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/issues/3512">#3512</a> [docs] Add Apache Gravitino/Iceberg Rest catalog quick-start guide for Fluss-Iceberg integration <span class="author">@MehulBatra</span> <span class="labels">good first issue</span></li><li><a href="https://github.com/apache/fluss/issues/3336">#3336</a> [client] Avoid repeated synchronous schema fetches in ClientSchemaGetter <span class="author">@Leondon9</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/3956">#3956</a> [server] Fix remote log start offset of RemoteLogManifest may expose an expired physical prefix <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/pull/3946">#3946</a> [server] Fall back to rack-unaware assignment for partial rack info <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/pull/3940">#3940</a> [server] Support hot update for active segment retention roll <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/pull/3937">#3937</a> [server] Refine remote log manifest overlap handling <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/pull/3934">#3934</a> [rust] add support of iceberg format key encoder <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/pull/3928">#3928</a> [common] Extract NO_SNAPSHOT_ID sentinel to fluss-common <span class="author">@Yohahaha</span> </li><li><a href="https://github.com/apache/fluss/pull/3925">#3925</a> [flink] Support batch scan for virtual log tables <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/pull/3920">#3920</a> [server] Fix ISR shrink race during leader transition <span class="author">@hanliu0830</span> </li><li><a href="https://github.com/apache/fluss/pull/3915">#3915</a> [flink] Route undo offsets by sink subtask <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/3913">#3913</a> [test] Add multi-version compatibility test selection <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/pull/3910">#3910</a> [flink] Track consumed progress during undo recovery <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/3906">#3906</a> [flink] Validate database existence when resolving catalog functions in FlinkCatalog <span class="author">@pbanakar</span> </li><li><a href="https://github.com/apache/fluss/pull/3893">#3893</a> [flink] Commit tiered offsets for buckets that finished without data <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/pull/3890">#3890</a> [server] Paimon schema compatibility check is too strict for comments and options when alter table. <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/pull/3875">#3875</a> [CI] Wait for table metadata in authorization test <span class="author">@litiliu</span> </li><li><a href="https://github.com/apache/fluss/pull/3864">#3864</a> [server] Manage historical lookup local cache capacity <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/pull/3669">#3669</a> [doc] documentation for gravitino integration <span class="author">@VladBanar</span> </li><li><a href="https://github.com/apache/fluss/pull/3335">#3335</a> [client] Cache synchronously fetched schemas <span class="author">@Leondon9</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
