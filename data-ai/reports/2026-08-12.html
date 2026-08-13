@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data+AI 全球日报 | 2026-08-12</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Data+AI 全球日报 | 2026-08-12</h1>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="top-changes">
+            <h2>🔥 今日最重要的3个变化</h2>
+            <ol><li><strong>AWS 展示 AppFolio 流数据架构升级</strong> — AWS 通过 AppFolio 案例展示 Amazon MSK Express brokers 的自动化流处理能力，降低 Kafka 集群再平衡与容量规划复杂度。</li><li><strong>ClickHouse Grafana 插件更新</strong> — ClickHouse Grafana 插件 4.20 强化日志过滤、变量编辑与 OpenTelemetry 仪表板，提升实时分析可用性。</li><li><strong>ClickStack 与 Hud 打通运行时智能</strong> — ClickStack 与 Hud 通过 trace ID 连接服务级可观测性与函数级运行时取证，为 AI 编码代理提供生产上下文。</li></ol>
+            <p class="judgment"><strong>总判断：</strong>今日行业信号集中在数据基础设施自动化与可观测性为 AI 开发提供生产上下文。云厂商继续以托管流处理降低运维复杂度，ClickHouse 生态通过插件与运行时智能强化实时分析入口，数据平台竞争正从查询性能转向运维自动化、生态集成与 AI 闭环能力。</p>
+        </section>
+
+        <section class="top-signals">
+            <h2>📡 重要信号</h2>
+            
+    <article class="news-item">
+        <h3>AppFolio 采用 Amazon MSK Express brokers 重构数据流架构</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/how-appfolio-transformed-its-data-streaming-architecture-with-amazon-msk-express-brokers/">AWS Big Data Blog</a></p>
+        <p class="date">2026-08-13</p>
+        <p class="summary">AWS 发布 AppFolio 案例，说明其采用 Amazon MSK Express brokers 重构数据流式架构，替代过去耗时数小时的集群再平衡和人工存储容量规划。该架构通过工作负载隔离集群与自动扩展，提升流处理运维效率，并降低实时数据管道的人工干预成本。</p>
+        <div class="impact">📊 数据平台影响：托管 Kafka 服务进一步把流处理运维抽象为自动化能力，推动数据平台向低运维、按负载弹性扩展演进，也会提高实时入湖、事件驱动架构的采用门槛与云厂商绑定。</div>
+    </article>
+        </section>
+
+        <section class="product-tech">
+            <h2>💻 产品与技术</h2>
+            
+    <article class="news-item">
+        <h3>ClickHouse Grafana 插件 4.20 发布</h3>
+        <p class="sources">📌 <a href="https://clickhouse.com/blog/clickhouse-grafana-plugin-4-20">ClickHouse Blog</a></p>
+        <p class="date">2026-08-13</p>
+        <p class="summary">ClickHouse 发布 Grafana 插件 4.20，新增紧凑查询模式、点击过滤日志调查、引导式变量与注释编辑器，以及 OpenTelemetry 仪表板。更新降低 ClickHouse 在 Grafana 中进行日志、指标和链路分析的使用门槛，使运维团队能更快定位异常。</p>
+        <div class="impact">📊 数据平台影响：插件增强 ClickHouse 作为可观测性分析存储的生态兼容性，促进 OTel 数据进入实时分析平台，也可能带动以 Grafana 为入口的日志/链路分析工作负载增长。</div>
+    </article>
+    <article class="news-item">
+        <h3>ClickStack 与 Hud 将运行时智能引入 AI 开发</h3>
+        <p class="sources">📌 <a href="https://clickhouse.com/blog/clickstack-hud-runtime-intelligence">ClickHouse Blog</a></p>
+        <p class="date">2026-08-13</p>
+        <p class="summary">ClickHouse 宣布 ClickStack 与 Hud 打通 trace ID，将服务级可观测性与函数级运行时取证连接。编码代理可在发布前评估高风险变更、部署后捕获回归，并基于真实生产上下文进行修复，推动 AI 开发闭环。</p>
+        <div class="impact">📊 数据平台影响：运行时遥测与生产上下文成为 AI 编码代理的重要数据源，数据平台需要支持高基数 trace、日志和代码级事件关联，为实时可观测性与 AI Ops 融合提供新场景。</div>
+    </article>
+        </section>
+
+        <section class="people-views">
+            <h2>👤 人物与观点</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="analyst-insights">
+            <h2>📊 分析师洞察</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="watchlist">
+            <h2>👀 观察列表</h2>
+            
+    <article class="watchlist-item">
+        <h3>Amazon MSK Express brokers 客户采用与流处理自动化</h3>
+        <span class="status">待观察</span>
+        <p class="reason">AppFolio 案例显示托管 Kafka 自动化价值，但仍需更多企业级生产采用、成本与性能验证，才能判断其是否成为云原生流处理主流形态。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>AWS 是否公布更多 MSK Express brokers 客户案例、定价/容量自动化细节，以及与 Serverless 流处理路线的整合。</p>
+    </article>
+    <article class="watchlist-item">
+        <h3>ClickHouse 可观测性与 AI 编码代理集成</h3>
+        <span class="status">待观察</span>
+        <p class="reason">ClickStack 与 Hud 通过 trace ID 连接运行时智能，若被开发团队广泛采用，将扩大 ClickHouse 在 AI Ops、DevOps 和实时可观测性数据平台中的份额。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>ClickHouse 生态是否出现更多企业级可观测性案例、OpenTelemetry 数据规模增长，以及 AI 编码代理对生产遥测数据的实际使用效果。</p>
+    </article>
+        </section>
+
+        <section class="stock-analysis">
+            <h2>📈 股票分析</h2>
+            <p class="disclaimer">⚠️ 以下内容仅供参考，不构成任何投资建议。投资有风险，入市需谨慎。</p>
+            
+    <article class="stock-item">
+        <div class="stock-header">
+            <span class="ticker">AMZN</span>
+            <span class="company">Amazon</span>
+            <span class="signal signal-neutral">⚪ 中性</span>
+        </div>
+        <p class="stock-summary">AWS 通过 AppFolio 案例展示 MSK Express brokers 的自动化流处理能力，强化托管 Kafka 与实时数据管道差异化。单一案例短期财务影响有限。仅供参考，不构成投资建议。</p>
+        <div class="stock-details">
+            <div class="catalysts">
+                <strong>🚀 催化剂</strong>
+                <ul><li>AWS 公布更多 MSK Express brokers 客户案例</li><li>事件驱动架构与实时数据管道需求增长</li><li>AWS 数据、流处理与 AI 服务交叉销售增强</li></ul>
+            </div>
+            <div class="risks">
+                <strong>⚠️ 风险</strong>
+                <ul><li>云客户支出优化可能压制托管服务增长</li><li>Confluent、自建 Kafka 及其他流处理方案竞争</li><li>托管服务成本与性能平衡不及预期</li></ul>
+            </div>
+        </div>
+    </article>
+    <article class="stock-item">
+        <div class="stock-header">
+            <span class="ticker">APPF</span>
+            <span class="company">AppFolio</span>
+            <span class="signal signal-neutral">⚪ 中性</span>
+        </div>
+        <p class="stock-summary">AppFolio 采用 Amazon MSK Express brokers 优化数据流架构，有望降低实时数据运维成本，但未披露财务影响，短期催化有限。仅供参考，不构成投资建议。</p>
+        <div class="stock-details">
+            <div class="catalysts">
+                <strong>🚀 催化剂</strong>
+                <ul><li>数据平台效率转化为产品指标或客户增长</li><li>后续财报披露 AI/数据投资回报</li><li>实时数据处理能力增强 SaaS 产品竞争力</li></ul>
+            </div>
+            <div class="risks">
+                <strong>⚠️ 风险</strong>
+                <ul><li>云成本上升抵消架构优化收益</li><li>技术迁移效果不及预期</li><li>垂直 SaaS 行业竞争加剧</li></ul>
+            </div>
+        </div>
+    </article>
+        </section>
+
+        <footer>
+            <p>Generated by Data+AI Daily Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
