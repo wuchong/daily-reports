@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data+AI 全球日报 | 2026-08-14</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Data+AI 全球日报 | 2026-08-14</h1>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="top-changes">
+            <h2>🔥 今日最重要的3个变化</h2>
+            <ol><li><strong>AWS 将 OpenSearch 用于 AI Agent 归因分析</strong> — AWS 展示基于 Amazon OpenSearch Service 与 Amazon Bedrock 的 blame graph，用于追踪多 AI agent 协作决策失败时的责任路径，标志云厂商将可观测性从传统日志扩展到 AI 决策链路。</li><li><strong>Autodesk 完成 23 亿文档 OpenSearch 迁移</strong> — Autodesk 将单一索引的 Elasticsearch 域重构为四个多索引 Amazon OpenSearch 域，并使用 Migration Assistant 与智能路由，为超大规模搜索与文档平台迁移提供可参考范式。</li><li><strong>ClickHouse 将 ClickStack 配置纳入 Terraform</strong> — ClickHouse Terraform provider 新增支持 ClickStack，可管理 dashboards、alerts、sources 和 webhooks，推动可观测性配置进入 GitOps 和基础设施即代码流程。</li></ol>
+            <p class="judgment"><strong>总判断：</strong>今日行业信号集中在数据平台的可观测性与工程化：AWS 将 OpenSearch 用于 AI agent 决策失败追踪，ClickHouse 将 ClickStack 配置纳入 Terraform，Autodesk 展示超大规模文档迁移。整体看，数据平台正从查询与存储层扩展为支撑 AI Ops、自动化治理和复杂迁移的核心基础设施。</p>
+        </section>
+
+        <section class="top-signals">
+            <h2>📡 重要信号</h2>
+            
+    <article class="news-item">
+        <h3>AWS 展示基于 OpenSearch 的 AI Agent blame graph</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/trace-cascading-decision-failures-with-a-blame-graph-on-amazon-opensearch-service/">AWS Big Data Blog</a></p>
+        <p class="date">2026-08-14</p>
+        <p class="summary">AWS Big Data Blog 展示如何在 Amazon OpenSearch Service 与 Amazon Bedrock 之上构建 blame graph，用于追踪多个 AI agent 协作决策失败时的责任路径。文章指出标准日志难以判断哪个 agent 造成错误，blame graph 可度量 agent 间影响，并从失败决策反向回溯，为 AI 系统提供更细粒度的可观测性。</p>
+        <div class="impact">📊 数据平台影响：该方案将图关系、trace 和评估数据纳入 OpenSearch，扩展数据平台在 AI Ops 中的角色，推动平台支持 agent 日志、因果分析和责任追踪。</div>
+    </article>
+    <article class="news-item">
+        <h3>Autodesk 23 亿文档迁移至 Amazon OpenSearch Service</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/how-autodesk-migrated-2-3-billion-documents-to-amazon-opensearch-service-using-migration-assistant-and-intelligent-routing/">AWS Big Data Blog</a></p>
+        <p class="date">2026-08-14</p>
+        <p class="summary">AWS 介绍 Autodesk 如何将 23 亿份文档迁移到 Amazon OpenSearch Service。Autodesk 将原本单一索引的 Elasticsearch 7.1.1 域重构为四个多索引 OpenSearch 域，并使用 Migration Assistant 与智能路由层，将查询导向承载相关数据的 shard，以改善规模、性能和成本。</p>
+        <div class="impact">📊 数据平台影响：该案例为超大规模搜索与文档平台提供迁移范式，多索引拆分与智能路由有助于降低热点、提升查询效率，并增强数据平台架构弹性。</div>
+    </article>
+        </section>
+
+        <section class="product-tech">
+            <h2>💻 产品与技术</h2>
+            
+    <article class="news-item">
+        <h3>ClickHouse Terraform provider 支持 ClickStack 可观测配置</h3>
+        <p class="sources">📌 <a href="https://clickhouse.com/blog/clickstack-terraform-provider">ClickHouse Blog</a></p>
+        <p class="date">2026-08-14</p>
+        <p class="summary">ClickHouse 宣布其 Terraform provider 现已支持 ClickStack，可管理 dashboards、alerts、sources 和 webhooks。此举将可观测性配置纳入版本控制，使团队能够以基础设施即代码方式部署、复制和审计 ClickHouse 相关观测配置。</p>
+        <div class="impact">📊 数据平台影响：对数据平台而言，这降低了手工配置错误，便于开发、测试、生产环境一致性，也强化 ClickHouse 在可观测性与分析融合场景中的工程化能力。</div>
+    </article>
+        </section>
+
+        <section class="people-views">
+            <h2>👤 人物与观点</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="analyst-insights">
+            <h2>📊 分析师洞察</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="watchlist">
+            <h2>👀 观察列表</h2>
+            
+    <article class="watchlist-item">
+        <h3>AI Agent 决策可观测性</h3>
+        <span class="status">待观察</span>
+        <p class="reason">AWS 提出基于 OpenSearch 和 Bedrock 的 blame graph，但仍偏工程示例，需观察是否会产品化、模板化或成为 AI agent 平台标准能力。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>OpenSearch 或 Bedrock 是否推出原生 agent tracing、blame 分析模板或托管式 AI 决策审计能力。</p>
+    </article>
+    <article class="watchlist-item">
+        <h3>ClickHouse ClickStack Terraform GitOps</h3>
+        <span class="status">待观察</span>
+        <p class="reason">Terraform 支持可提升 ClickStack 在企业环境中的可复制性和自动化水平，但实际采用规模仍需社区与客户案例验证。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>Terraform provider 后续版本是否扩展更多 ClickStack 资源，并出现生产级 GitOps 部署案例。</p>
+    </article>
+    <article class="watchlist-item">
+        <h3>超大规模 OpenSearch 迁移方法论</h3>
+        <span class="status">待观察</span>
+        <p class="reason">Autodesk 23 亿文档迁移展示了 Migration Assistant 与智能路由组合，可能成为 Elasticsearch 到 OpenSearch 迁移的重要参考架构。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>AWS 是否发布更完整的迁移基准、自动化模板或更多大型企业迁移案例。</p>
+    </article>
+        </section>
+
+        <section class="stock-analysis">
+            <h2>📈 股票分析</h2>
+            <p class="disclaimer">⚠️ 以下内容仅供参考，不构成任何投资建议。投资有风险，入市需谨慎。</p>
+            
+    <article class="stock-item">
+        <div class="stock-header">
+            <span class="ticker">AMZN</span>
+            <span class="company">Amazon.com</span>
+            <span class="signal signal-bullish">🟢 看多</span>
+        </div>
+        <p class="stock-summary">AWS 通过 OpenSearch 与 Bedrock 组合切入 AI agent 可观测性，并以 Autodesk 23 亿文档迁移展示企业级数据平台迁移能力，有助于增强云数据/AI 平台粘性。</p>
+        <div class="stock-details">
+            <div class="catalysts">
+                <strong>🚀 催化剂</strong>
+                <ul><li>AI agent 可观测性需求增长</li><li>大型企业数据迁移案例复制</li><li>OpenSearch 与 Bedrock 集成深化</li></ul>
+            </div>
+            <div class="risks">
+                <strong>⚠️ 风险</strong>
+                <ul><li>Elastic 等搜索平台竞争</li><li>开源替代方案带来的价格压力</li><li>复杂迁移项目交付与运维风险</li></ul>
+            </div>
+        </div>
+    </article>
+    <article class="stock-item">
+        <div class="stock-header">
+            <span class="ticker">ADSK</span>
+            <span class="company">Autodesk</span>
+            <span class="signal signal-neutral">⚪ 中性</span>
+        </div>
+        <p class="stock-summary">Autodesk 作为客户案例展示大规模文档搜索基础设施迁移至 AWS OpenSearch，短期财务影响有限，但可能改善搜索性能、成本和后续 AI 检索能力。</p>
+        <div class="stock-details">
+            <div class="catalysts">
+                <strong>🚀 催化剂</strong>
+                <ul><li>搜索性能改善提升产品体验</li><li>云基础设施成本优化</li><li>AI 文档检索与知识管理应用扩展</li></ul>
+            </div>
+            <div class="risks">
+                <strong>⚠️ 风险</strong>
+                <ul><li>大规模迁移和运维复杂性</li><li>云支出波动</li><li>对 AWS 基础设施依赖增强</li></ul>
+            </div>
+        </div>
+    </article>
+        </section>
+
+        <footer>
+            <p>Generated by Data+AI Daily Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
