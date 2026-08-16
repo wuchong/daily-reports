@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-08-15</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-08-15</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 4 新 Issues</div>
+            <div class="stat">✅ 0 关闭</div>
+            <div class="stat">✨ 4 新 PRs</div>
+            <div class="stat">🎉 0 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>✨ <a href="https://github.com/apache/fluss/issues/4008">Issue #4008</a>、<a href="https://github.com/apache/fluss/issues/4009">Issue #4009</a>、<a href="https://github.com/apache/fluss/issues/4010">Issue #4010</a> 和 <a href="https://github.com/apache/fluss/pull/4011">PR #4011</a> 推进 Rust 客户端 batch statistics 实现、读写 wiring 与 V1 收集。</li><li>✨ <a href="https://github.com/apache/fluss/issues/4005">Issue #4005</a> 和 <a href="https://github.com/apache/fluss/pull/4006">PR #4006</a> 提议暴露主键表 Arrow changelog batches。</li><li>🐛 <a href="https://github.com/apache/fluss/pull/4007">PR #4007</a> 修复 Flink batch log scan 遇到空 buckets 的问题。</li><li>🐛 <a href="https://github.com/apache/fluss/pull/3884">PR #3884</a> 和 <a href="https://github.com/apache/fluss/pull/3981">PR #3981</a> 跟进 shade 打包泄漏与 RoaringBitmap 依赖问题。</li><li>✨ <a href="https://github.com/apache/fluss/pull/4004">PR #4004</a> 探索 Fluss vector datatype POC。</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <ul class="critical-list"><li>⚠️ <a href="https://github.com/apache/fluss/issues/3735">Issue #3735</a> 不稳定测试在 CI 中出现 NetworkException，需关注 coordinator 重启后的快照租约测试。</li></ul>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/1594">Issue #1594</a> Support general DELETE statement on primary key table</h4>
+            <ul><li><span class="author">@Zhuoxi2000</span>: 请求认领，计划通过 applyRowLevelDelete 实现主键表通用 DELETE，并补充测试与文档。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3735">Issue #3735</a> [test] Unstable test FlussAdminITCase.testKvSnapshotLeaseAfterCoordinatorServerRestart</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: CI 报告该测试出现 NetworkException 失败，需要关注 coordinator 重启后的稳定性。</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3751">PR #3751</a> [server] add support of `KvPreWriteBuffer` backpressure</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: 指出内存预留释放、恢复准入、压力闩锁和测试覆盖存在风险，建议按所有权释放并补充场景。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3803">PR #3803</a> [rust] Add LICENSE and NOTICE to the source release</h4>
+            <ul><li><span class="author">@leekeiabstraction</span>: 建议 NOTICE 提及 Kafka/Paimon 源，并在 release 脚本中断言文件非空。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3821">PR #3821</a> [rust] Fix Arrow limit scan across schema evolution</h4>
+            <ul><li><span class="author">@slfan1989</span>: 根据评审更新 schema 构建、显式 schema ID，并补充跨版本投影、limit 和错误处理测试。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3884">PR #3884</a> [FLUSS-3553][build] Fix shaded Jackson classes leaking into uber-jars</h4>
+            <ul><li><span class="author">@Jackeyzhe</span>: 请求 review，说明通过全局 shade 过滤排除未重定位 Jackson MRJ 条目，已验证修复。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3971">PR #3971</a> [rust] Wire the scan filter through to the log fetcher</h4>
+            <ul><li><span class="author">@leekeiabstraction</span>: 承认遗漏 batch statistics，已建 #4008 至 #4010，待后续集成测试再推进。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3981">PR #3981</a> [flink] Fix ClassNotFoundException for RoaringBitmap in shaded Flink connector JAR</h4>
+            <ul><li><span class="author">@Jackeyzhe</span>: 验证 RoaringBitmap 方案可行，建议排除 MRJ versions 目录以保持打包卫生。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3982">PR #3982</a> [lake/paimon] Support clean and legacy Paimon lake table schemas</h4>
+            <ul><li><span class="author">@Copilot</span>: 指出仅凭 __timestamp 判断 legacy 可能误分类并导致写入错误，需要更严格检测。</li><li><span class="author">@luoyuxia</span>: 建议简化 legacy 判断、提取公共方法，并补充兼容、校验与 datalake 场景测试。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4007">PR #4007</a> [flink] Fix batch log scan with empty buckets</h4>
+            <ul><li><span class="author">@Gezi-lzq</span>: 请求 committer 帮忙 review 空 bucket 批量日志扫描修复。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4011">PR #4011</a> [rust] Add V1 batch statistics collection</h4>
+            <ul><li><span class="author">@leekeiabstraction</span>: 请求 review Rust V1 batch statistics 收集 PR。</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4010">#4010</a> [rust] Batch statistics write wiring <span class="author">@leekeiabstraction</span> </li><li><a href="https://github.com/apache/fluss/issues/4009">#4009</a> [rust] Batch statistics read wiring <span class="author">@leekeiabstraction</span> </li><li><a href="https://github.com/apache/fluss/issues/4008">#4008</a> [rust] Batch statistics implementation <span class="author">@leekeiabstraction</span> </li><li><a href="https://github.com/apache/fluss/issues/4005">#4005</a> [client] Expose Arrow changelog batches for primary-key tables <span class="author">@jordepic</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4011">#4011</a> [rust] Add V1 batch statistics collection <span class="author">@leekeiabstraction</span> </li><li><a href="https://github.com/apache/fluss/pull/4007">#4007</a> [flink] Fix batch log scan with empty buckets <span class="author">@Gezi-lzq</span> </li><li><a href="https://github.com/apache/fluss/pull/4006">#4006</a> [client] Expose Arrow changelog batches <span class="author">@jordepic</span> </li><li><a href="https://github.com/apache/fluss/pull/4004">#4004</a> Fluss vector datatype POC <span class="author">@vamossagar12</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <p class="empty">暂无</p>
+            <h3>已合并 PRs</h3>
+            <p class="empty">暂无</p>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
