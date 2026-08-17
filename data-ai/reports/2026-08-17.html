@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data+AI 全球日报 | 2026-08-17</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Data+AI 全球日报 | 2026-08-17</h1>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="top-changes">
+            <h2>🔥 今日最重要的3个变化</h2>
+            <ol><li><strong>AWS 强化 Amazon MQ for RabbitMQ 身份认证体系</strong> — AWS 集中发布 Amazon MQ for RabbitMQ 的认证与授权实践，覆盖 IAM、OAuth 2.0、LDAP、mTLS 等方式，推动消息中间件接入企业统一身份治理。</li><li><strong>MSK Serverless 多账户治理案例出现</strong> — NaranjaX 通过 AWS RAM 与 Route 53 管理 40+ 账户中的 Amazon MSK Serverless 集群，为事件驱动架构的多账户集中治理提供参考。</li><li><strong>OpenSearch OR2 实例带来搜索性能与成本优化</strong> — Zepto 迁移至 Amazon OpenSearch Service OR2 实例后实现亚秒级搜索、索引吞吐提升超过 100%，并降低约 30% 成本。</li></ol>
+            <p class="judgment"><strong>总判断：</strong>今日 Data+AI 信号集中在 AWS 数据基础设施的工程化能力增强，重点是消息系统安全认证、事件流多账户治理和搜索服务性能优化。整体来看，云厂商正在进一步推动数据平台组件向企业级身份治理、事件驱动架构和成本效率优化演进，但暂无重大融资、并购或政策级事件。</p>
+        </section>
+
+        <section class="top-signals">
+            <h2>📡 重要信号</h2>
+            
+    <article class="news-item">
+        <h3>AWS 数据平台工程实践密集更新：消息认证、事件流治理与搜索优化</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/authentication-and-authorization-options-for-amazon-mq-for-rabbitmq/">AWS Big Data Blog</a> | <a href="https://aws.amazon.com/blogs/big-data/naranjax-manages-multiple-amazon-msk-serverless-clusters-in-different-accounts-from-their-idp-using-aws-ram-and-route-53/">AWS Big Data Blog</a> | <a href="https://aws.amazon.com/blogs/big-data/how-zepto-powers-sub-second-search-using-opensearch-service-or2-instances/">AWS Big Data Blog</a></p>
+        <p class="date">2026-08-17</p>
+        <p class="summary">AWS Big Data Blog 同日发布多篇技术文章，覆盖 Amazon MQ for RabbitMQ 的认证授权选项、NaranjaX 基于 AWS RAM 与 Route 53 的多账户 Amazon MSK Serverless 管理实践，以及 Zepto 使用 Amazon OpenSearch Service OR2 实例优化搜索性能与成本。整体信号显示 AWS 正在强化数据平台底层组件在企业身份、安全、多账户治理和性能成本方面的工程能力。</p>
+        <div class="impact">📊 数据平台影响：对数据平台团队而言，这些更新有助于提升事件管道安全接入、跨账户数据流治理和搜索类工作负载性价比，尤其适合多团队、多账户、实时数据链路复杂的组织。</div>
+    </article>
+        </section>
+
+        <section class="product-tech">
+            <h2>💻 产品与技术</h2>
+            
+    <article class="news-item">
+        <h3>AWS 系统梳理 Amazon MQ for RabbitMQ 认证与授权选项</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/authentication-and-authorization-options-for-amazon-mq-for-rabbitmq/">AWS Big Data Blog</a> | <a href="https://aws.amazon.com/blogs/big-data/mutual-tls-and-ssl-certificate-authentication-for-amazon-mq-for-rabbitmq/">AWS Big Data Blog</a> | <a href="https://aws.amazon.com/blogs/big-data/oauth-2-0-ldap-and-http-auth-for-amazon-mq-for-rabbitmq/">AWS Big Data Blog</a> | <a href="https://aws.amazon.com/blogs/big-data/iam-authentication-with-oauth-2-0-for-amazon-mq-for-rabbitmq/">AWS Big Data Blog</a></p>
+        <p class="date">2026-08-17</p>
+        <p class="summary">AWS 发布系列文章，系统介绍 Amazon MQ for RabbitMQ 的认证与授权方式，包括 SSL 证书认证、mTLS 双向验证、OAuth 2.0、LDAP、HTTP 认证后端，以及使用 AWS IAM 作为 OAuth 2.0 提供方的配置方式。该系列帮助企业将 RabbitMQ broker 接入现有身份基础设施，减少静态凭据和本地账号管理负担。</p>
+        <div class="impact">📊 数据平台影响：消息队列是实时数据管道的重要组件，IAM、OAuth、mTLS 等认证方式可提升事件流接入安全性，有利于多租户数据平台、合规审计和统一身份治理。</div>
+    </article>
+    <article class="news-item">
+        <h3>NaranjaX 使用 AWS RAM 与 Route 53 管理多账户 MSK Serverless 集群</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/naranjax-manages-multiple-amazon-msk-serverless-clusters-in-different-accounts-from-their-idp-using-aws-ram-and-route-53/">AWS Big Data Blog</a></p>
+        <p class="date">2026-08-17</p>
+        <p class="summary">NaranjaX 构建了跨账户、多对多的 Amazon MSK Serverless 连接模型，通过 AWS Resource Access Manager 和 Amazon Route 53 Resolver，让 40 多个 AWS 账户中的团队能够从集中式内部开发者平台接入事件驱动架构。该实践降低了 Kafka Serverless 集群在复杂组织中的共享和治理门槛。</p>
+        <div class="impact">📊 数据平台影响：该案例为大型企业多账户数据平台提供了事件流共享模板，有助于统一 Kafka Serverless 接入、DNS 路由和跨账户资源治理，适合平台工程团队参考。</div>
+    </article>
+    <article class="news-item">
+        <h3>Zepto 使用 Amazon OpenSearch Service OR2 实例实现亚秒级搜索</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/how-zepto-powers-sub-second-search-using-opensearch-service-or2-instances/">AWS Big Data Blog</a></p>
+        <p class="date">2026-08-17</p>
+        <p class="summary">印度快速商务平台 Zepto 将 Amazon OpenSearch Service 迁移至 OpenSearch Optimized OR2 实例，在数百家配送中心支撑亚秒级商品搜索。迁移后索引吞吐提升超过 100%，并在相同工作负载下实现约 30% 成本节约。</p>
+        <div class="impact">📊 数据平台影响：OR2 实例展示了搜索、商品索引和实时查询类工作负载的性能成本优化空间，对电商搜索、推荐系统、日志分析和实时运营数据平台具有借鉴意义。</div>
+    </article>
+        </section>
+
+        <section class="people-views">
+            <h2>👤 人物与观点</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="analyst-insights">
+            <h2>📊 分析师洞察</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="watchlist">
+            <h2>👀 观察列表</h2>
+            
+    <article class="watchlist-item">
+        <h3>Amazon MQ for RabbitMQ 企业身份认证采用情况</h3>
+        <span class="status">待观察</span>
+        <p class="reason">AWS 集中发布 RabbitMQ 认证授权最佳实践，显示消息系统正进一步融入企业统一身份体系，但实际采用率仍需观察。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>是否出现更多 IAM/OAuth/mTLS 默认配置模板、CloudFormation 示例或企业客户案例。</p>
+    </article>
+    <article class="watchlist-item">
+        <h3>Amazon MSK Serverless 多账户治理模式成熟度</h3>
+        <span class="status">待观察</span>
+        <p class="reason">NaranjaX 案例展示了跨账户事件流共享能力，但大规模多账户环境下的权限边界、成本分摊和运维复杂度仍需更多验证。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>AWS 是否推出更标准化的 MSK Serverless 多账户治理参考架构或平台工程工具链。</p>
+    </article>
+    <article class="watchlist-item">
+        <h3>Amazon OpenSearch OR2 实例的适用边界</h3>
+        <span class="status">待观察</span>
+        <p class="reason">Zepto 案例显示 OR2 在搜索吞吐和成本方面表现突出，但不同查询模式、数据规模和索引复杂度下的收益仍需更多基准验证。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>更多行业客户或 AWS 官方公布 OR2 实例的可用性扩展与性能基准。</p>
+    </article>
+        </section>
+
+        <section class="stock-analysis">
+            <h2>📈 股票分析</h2>
+            <p class="disclaimer">⚠️ 以下内容仅供参考，不构成任何投资建议。投资有风险，入市需谨慎。</p>
+            
+    <article class="stock-item">
+        <div class="stock-header">
+            <span class="ticker">AMZN</span>
+            <span class="company">Amazon.com</span>
+            <span class="signal signal-neutral">⚪ 中性</span>
+        </div>
+        <p class="stock-summary">AWS 持续强化消息、事件流和搜索数据平台能力，有助于提升云数据服务差异化与企业客户粘性，但今日内容偏技术实践和客户案例，短期对财务表现没有直接催化。仅供参考，不构成投资建议。</p>
+        <div class="stock-details">
+            <div class="catalysts">
+                <strong>🚀 催化剂</strong>
+                <ul><li>AWS 数据与 AI 服务收入增长</li><li>Amazon MSK、OpenSearch、Amazon MQ 企业采用提升</li><li>企业安全合规与统一身份治理需求增加</li></ul>
+            </div>
+            <div class="risks">
+                <strong>⚠️ 风险</strong>
+                <ul><li>云厂商数据平台竞争加剧</li><li>客户转向开源或自建方案</li><li>云支出优化压力影响短期采用节奏</li></ul>
+            </div>
+        </div>
+    </article>
+        </section>
+
+        <footer>
+            <p>Generated by Data+AI Daily Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
