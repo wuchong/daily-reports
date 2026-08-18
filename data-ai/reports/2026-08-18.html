@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data+AI 全球日报 | 2026-08-18</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Data+AI 全球日报 | 2026-08-18</h1>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="top-changes">
+            <h2>🔥 今日最重要的3个变化</h2>
+            <ol><li><strong>AWS 将流数据底座对准 agentic AI</strong> — AWS 提出面向 agentic AI 的实时流数据架构，将流式特征工程、事件驱动 Agent 调用和实时上下文控制整合为统一生产化模式，推动数据平台从离线分析转向事件驱动智能体基础设施。</li><li><strong>Iceberg 多云原地查询落地</strong> — talabat 以 Amazon S3 Tables 承载单份 Apache Iceberg 流数据，并由 Google BigQuery 原地查询，显示开放表格式正在成为跨云数据共享和近实时分析的关键抽象层。</li><li><strong>OpenSearch 直查原始日志</strong> — Amazon OpenSearch Service 通过优化引擎支持 SQL/PPL 直接查询原始日志和 trace，减少索引膨胀与预聚合依赖，可能改变可观测性数据平台的成本与查询架构。</li></ol>
+            <p class="judgment"><strong>总判断：</strong>今日主线是云厂商将数据平台能力向 agentic AI、实时日志分析和多云开放表格式集中。AWS 通过流式架构、MSK 与 OpenSearch 更新强化事件驱动数据底座，而 Iceberg/S3 Tables/BigQuery 组合则降低跨云数据复制壁垒。数据平台竞争重点正从单点查询性能转向为 AI Agent 提供低延迟、可治理、可行动的实时数据供给能力。</p>
+        </section>
+
+        <section class="top-signals">
+            <h2>📡 重要信号</h2>
+            
+    <article class="news-item">
+        <h3>AWS 提出面向 agentic AI 的实时流数据架构</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/powering-agentic-ai-with-real-time-streaming-data-on-aws/">AWS Big Data Blog</a></p>
+        <p class="date">2026-08-18</p>
+        <p class="summary">AWS Big Data Blog 发布面向 agentic AI 的实时流数据架构，提出三种生产化模式：流式特征工程与实时推理、事件驱动 Agent 调用，以及实时上下文/控制。文章强调 Agent 不再只依赖离线训练或批处理上下文，而是持续观察、推理并作用于流式事件。这将 Kinesis、MSK、Lambda、SageMaker/Bedrock 等组件串成统一事件驱动底座。</p>
+        <div class="impact">📊 数据平台影响：实时流管道将从数据仓库前置 ETL 转向 Agent 可直接消费的事件语义层，推动特征存储、事件目录和低延迟治理成为平台标配。</div>
+    </article>
+    <article class="news-item">
+        <h3>talabat 用 Iceberg、S3 Tables 与 BigQuery 构建跨云近实时 lakehouse</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/fresher-insights-faster-decisions-talabats-near-real-time-analytics-across-aws-and-google-cloud/">AWS Big Data Blog</a></p>
+        <p class="date">2026-08-18</p>
+        <p class="summary">中东和北非应用 talabat 在 AWS 与 Google Cloud 之间构建混合多云 lakehouse，将流式数据以单份 Apache Iceberg 表保存在 Amazon S3 Tables，同时让 Google BigQuery 原地查询，避免跨云数据复制和 schema 同步。该案例展示开放表格式正在成为跨云数据共享与近实时分析的统一层。</p>
+        <div class="impact">📊 数据平台影响：开放表格式与对象存储原地查询削弱数据搬迁需求，平台重点转向统一目录、权限、缓存加速和跨云查询治理。</div>
+    </article>
+        </section>
+
+        <section class="product-tech">
+            <h2>💻 产品与技术</h2>
+            
+    <article class="news-item">
+        <h3>Amazon OpenSearch Service 用优化引擎支持 SQL/PPL 查询原始日志</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/querying-raw-log-data-using-sql-and-ppl-with-the-optimized-engine-in-amazon-opensearch-service/">AWS Big Data Blog</a></p>
+        <p class="date">2026-08-18</p>
+        <p class="summary">AWS 展示如何在 Amazon OpenSearch Service 中使用 SQL 与 PPL，通过优化引擎直接查询原始日志和 trace 数据。文章以事故调查为例，说明可直接从原始 spans 回答延迟、错误和依赖问题，减少传统日志管道中的预聚合、索引膨胀和数据复制。</p>
+        <div class="impact">📊 数据平台影响：可观测性分析从“先索引再查询”转向按需查询原始数据，或改变日志存储成本模型，并与 ClickHouse、Snowflake、Datadog 等竞争。</div>
+    </article>
+    <article class="news-item">
+        <h3>Amazon MSK 简化自定义域名配置</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/amazon-msk-simplifies-configuring-custom-domain-names/">AWS Big Data Blog</a></p>
+        <p class="date">2026-08-18</p>
+        <p class="summary">Amazon MSK 支持通过单一配置属性为 provisioned 集群设置自定义域名，并在 ZooKeeper 与 KRaft 模式下保持一致。域名定义一次即可应用到所有 broker，在集群扩缩容时保持连接端点稳定，降低客户端证书、DNS 和运维自动化复杂度。</p>
+        <div class="impact">📊 数据平台影响：Kafka 端点稳定性提升有利于多团队和多环境流数据接入，减少客户端硬编码与迁移摩擦，增强托管流服务粘性。</div>
+    </article>
+    <article class="news-item">
+        <h3>Sony LIV 使用 ClickHouse Cloud 支撑十亿行级直播流分析</h3>
+        <p class="sources">📌 <a href="https://clickhouse.com/blog/sony-liv-real-time-analytics">ClickHouse Blog</a></p>
+        <p class="date">2026-08-18</p>
+        <p class="summary">Sony LIV 将原本分散的批处理、Elasticsearch 和 BigQuery 工作负载整合到 ClickHouse Cloud，用于每日数十亿流媒体事件的亚秒级分析。案例覆盖实时直播分析、用户行为与内容性能等场景，显示列式 OLAP 引擎正在替代多套专用系统，成为高吞吐流式分析的统一服务。</p>
+        <div class="impact">📊 数据平台影响：高并发流式分析向 ClickHouse 等实时 OLAP 集中，可能压缩 Elasticsearch/批处理仓库边界，推动平台按查询延迟与成本重构引擎选型。</div>
+    </article>
+    <article class="news-item">
+        <h3>ClickHouse 解读 PostgreSQL 19 监控新特性</h3>
+        <p class="sources">📌 <a href="https://clickhouse.com/blog/postgres-19-monitoring-whats-new">ClickHouse Blog</a></p>
+        <p class="date">2026-08-18</p>
+        <p class="summary">ClickHouse Blog 分析 PostgreSQL 19 在监控方面的新能力，关注统计视图、等待事件、资源消耗和故障诊断等改进。文章对运行 PostgreSQL 的平台团队有参考价值，也反映 ClickHouse 持续覆盖 PostgreSQL 生态，帮助团队评估迁移、复制和互补分析架构。</p>
+        <div class="impact">📊 数据平台影响：PostgreSQL 可观测性增强有助于事务库与分析库协同排障，也可能提升 CDC/复制链路稳定性，间接影响实时数据平台可靠性。</div>
+    </article>
+        </section>
+
+        <section class="people-views">
+            <h2>👤 人物与观点</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="analyst-insights">
+            <h2>📊 分析师洞察</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="watchlist">
+            <h2>👀 观察列表</h2>
+            
+    <article class="watchlist-item">
+        <h3>Apache Iceberg 多云原地查询</h3>
+        <span class="status">待观察</span>
+        <p class="reason">talabat 案例显示 S3 Tables + BigQuery 可在不复制数据的情况下实现跨云近实时分析，若被更多企业采用，将强化开放表格式作为多云数据底座的地位。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>更多跨云 Iceberg 生产案例、统一权限治理和查询性能基准披露。</p>
+    </article>
+    <article class="watchlist-item">
+        <h3>Agentic AI 实时流架构标准化</h3>
+        <span class="status">待观察</span>
+        <p class="reason">AWS 提出流式特征工程、事件驱动 Agent 调用和实时上下文控制三类模式，但尚未形成行业统一标准，后续可能影响 Agent 数据平台架构设计。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>AWS 是否推出托管 Agent 事件总线、流式上下文存储或官方参考架构。</p>
+    </article>
+    <article class="watchlist-item">
+        <h3>OpenSearch 原始日志查询引擎</h3>
+        <span class="status">待观察</span>
+        <p class="reason">直接查询原始日志和 trace 可能降低索引成本并改变可观测性平台竞争格局，但性能、成本和定价仍需更多生产验证。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>官方性能/价格基准、与 Datadog、Splunk、ClickHouse 日志方案的对比案例。</p>
+    </article>
+    <article class="watchlist-item">
+        <h3>PostgreSQL 19 监控能力演进</h3>
+        <span class="status">待观察</span>
+        <p class="reason">PostgreSQL 监控增强会影响事务数据库可观测性、CDC 复制稳定性以及与实时分析引擎的协同方式。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>PostgreSQL 19 正式发布后的社区采纳情况和监控工具生态适配。</p>
+    </article>
+        </section>
+
+        <section class="stock-analysis">
+            <h2>📈 股票分析</h2>
+            <p class="disclaimer">⚠️ 以下内容仅供参考，不构成任何投资建议。投资有风险，入市需谨慎。</p>
+            
+    <article class="stock-item">
+        <div class="stock-header">
+            <span class="ticker">AMZN</span>
+            <span class="company">Amazon</span>
+            <span class="signal signal-bullish">🟢 看多</span>
+        </div>
+        <p class="stock-summary">AWS 连续发布 agentic AI 流架构、MSK 域名管理和 OpenSearch 日志引擎，叠加 talabat 跨云 Iceberg 案例，强化 AWS 在实时数据底座和 AI Agent 基础设施中的卡位。仅供参考，不构成投资建议。</p>
+        <div class="stock-details">
+            <div class="catalysts">
+                <strong>🚀 催化剂</strong>
+                <ul><li>Bedrock/Agent 相关流式事件消费增长</li><li>S3 Tables/Iceberg 生态扩展</li><li>OpenSearch 日志分析商业化</li></ul>
+            </div>
+            <div class="risks">
+                <strong>⚠️ 风险</strong>
+                <ul><li>Databricks/Snowflake 竞争</li><li>Kafka 开源替代与自托管</li><li>多云策略削弱 AWS 数据重力</li></ul>
+            </div>
+        </div>
+    </article>
+    <article class="stock-item">
+        <div class="stock-header">
+            <span class="ticker">GOOGL</span>
+            <span class="company">Alphabet</span>
+            <span class="signal signal-neutral">⚪ 中性</span>
+        </div>
+        <p class="stock-summary">BigQuery 原地查询 AWS S3 Tables 上的 Iceberg 数据，显示 Google Cloud 以开放格式切入多云分析，有助扩大 BigQuery 使用面；但跨云查询仍受权限、性能和数据治理约束。仅供参考，不构成投资建议。</p>
+        <div class="stock-details">
+            <div class="catalysts">
+                <strong>🚀 催化剂</strong>
+                <ul><li>BigQuery/BigLake 开放表格式案例增加</li><li>跨云查询性能与权限产品化</li><li>AI 分析工作负载增长</li></ul>
+            </div>
+            <div class="risks">
+                <strong>⚠️ 风险</strong>
+                <ul><li>AWS 原生查询与数据重力</li><li>多云治理复杂</li><li>价格竞争</li></ul>
+            </div>
+        </div>
+    </article>
+    <article class="stock-item">
+        <div class="stock-header">
+            <span class="ticker">SONY</span>
+            <span class="company">Sony Group</span>
+            <span class="signal signal-neutral">⚪ 中性</span>
+        </div>
+        <p class="stock-summary">Sony LIV 采用 ClickHouse Cloud 提升实时流媒体分析，有助直播体验、广告与内容运营，但属于技术采购案例，对集团整体财务影响有限。仅供参考，不构成投资建议。</p>
+        <div class="stock-details">
+            <div class="catalysts">
+                <strong>🚀 催化剂</strong>
+                <ul><li>流媒体实时个性化与广告分析</li><li>大型体育赛事直播流量</li></ul>
+            </div>
+            <div class="risks">
+                <strong>⚠️ 风险</strong>
+                <ul><li>内容成本上升</li><li>区域流媒体竞争激烈</li><li>第三方分析服务依赖</li></ul>
+            </div>
+        </div>
+    </article>
+        </section>
+
+        <footer>
+            <p>Generated by Data+AI Daily Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
