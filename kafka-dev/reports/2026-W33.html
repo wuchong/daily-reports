@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafka 社区周报 | 2026-W33</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Kafka 社区周报 | 2026-W33</h1>
+            <p class="date-range">2026-08-10 ~ 2026-08-16</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (1)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/94x5qlshh1g0qsldw5ng85xt8jf143zr">Code freeze for Apache Kafka 4.4.0</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (4)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/l4rnhw5681w1smjrkqwxkfl909r18sfk">KIP-1362: Add a rollback-compatible storage format option for KRaft migration</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/gpm5mvv1dj4m0trzkn6c6jd3tr96po8n">KIP-909: DNS Resolution Fallures Should Not Fail the Client</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/7tn9bzoxmf3xph8qhj5mxmpbl80w2jlp">KIP-1307: SerDe and Interceptor metrics</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/n9xh2pdsdyp1y9v1rqv9n0j6tz1wqbn9">KIP-1308: Extend Header API for Common Value Types</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/mpr1y394tqxgcyps26rpk2kt6przkgrq">4.4.0 Release Manager</a></h3>
+            <p class="meta">13 条回复 · 8 位参与者</p>
+            <p class="summary">本次讨论围绕 Kafka 4.4.0 发布期间的代码冻结与 cherry-pick 策略展开。José 希望将性能优化 KAFKA-16517 合入 4.4，但被 Chia-Ping 以代码冻结未延长且该改动非必要为由拒绝；随后 Matthias、Bill 等人申请将低风险小改动 cherry-pick 到 4.4 分支，并得到 Omnia 和 Chia-Ping 的批准。</p>
+            <div class="key-points"><p><strong>@Chia-Ping Tsai:</strong> 澄清 4.4 分支代码冻结并未延长，目前仅允许回滚不完整的 KIP，性能优化类改动 KAFKA-16517 不应纳入 4.4.0。</p>
+<p><strong>@Matthias J. Sax:</strong> 请求将三个低风险的小型已合并 PR cherry-pick 到 4.4 分支，以避免留到 4.4.1 处理带来的额外管理成本。</p>
+<p><strong>@Andrew Schofield:</strong> 报告了一个阻塞性问题 KAFKA-20939，计划下周初调查修复，必要时将完全回滚 KIP-909。</p></div>
+            <p class="conclusion">KAFKA-16517 被标记为在 4.5.0 修复，不会合入 4.4 分支；多个低风险 cherry-pick 请求获得批准，同时团队需优先处理 KAFKA-20939 阻塞问题。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/htjxnkf6fjt9gkp2yto2hkbx58160m2n">KIP-1279: Cluster Mirroring</a></h3>
+            <p class="meta">9 条回复 · 2 位参与者</p>
+            <p class="summary">本次邮件讨论围绕 KIP-1279 Cluster Mirroring 的设计细节展开，主要涉及 RPC 请求/响应定义、AdminClient 接口、配置命名、指标类型及状态流转等。经过多轮评审与修订，Luke Chen 根据 Jun Rao 的意见持续更新 KIP，最终 Jun Rao 表示认可。</p>
+            <div class="key-points"><p><strong>@Jun Rao:</strong> 指出多处 RPC 和 API 设计不一致或命名不当，如 DescribeClusterMirrors 缺少 topic 过滤、ReadMirrorLags 应更名为 ReadMirrorOffsets、配置前缀 mirror 冗余、指标类型不准确等。</p>
+<p><strong>@Luke Chen:</strong> 根据反馈更新 KIP：简化 AdminClient.startMirrorTopics 仅需 includePatterns，移除 mirror 配置前缀，修正指标类型（如改为 Meter/Rate/SampledStat），并明确 SourceOffset 在未启用 IncludeMirrorOffset 时为 -1。</p>
+<p><strong>@Jun Rao:</strong> 最终确认 KIP 设计合理，表示 'The KIP LGTM now'，表明讨论基本达成一致。</p></div>
+            <p class="conclusion">KIP-1279 经过多轮迭代后获得 Jun Rao 认可（LGTM），核心设计已定稿，可进入下一阶段（如投票或实现）。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/3kx9g40tkqf7p52966vbd063fsv6w51l">KIP-1359: Improve usability of resetting group offsets</a></h3>
+            <p class="meta">5 条回复 · 3 位参与者</p>
+            <p class="summary">讨论围绕 KIP-1359 改进重置组 offset 的易用性展开，重点是如何避免导出/导入 offset 时依赖中间 CSV 文件，并澄清新增 RPC 与命令行行为。Andrew 提出通过管道/stdin 替代中间文件，Aditya 认可该方案；Apoorv 询问 share group 的 --by-duration 行为，Andrew 澄清其与 share.auto.offset.reset 配置无关。</p>
+            <div class="key-points"><p><strong>@Andrew Schofield:</strong> 提出使用管道和 stdin（如 --from-file -）来避免中间 CSV 文件，同时保留跨组类型导出/导入 offset 的能力。</p>
+<p><strong>@Aditya Kousik:</strong> 从 K8s/自助服务场景出发，希望避免落盘 CSV，认可通过管道直接迁移 offset 的方案，并对文档位置提出疑问。</p>
+<p><strong>@Apoorv Mittal:</strong> 询问 kafka-share-groups.sh 中 --by-duration 与 share.auto.offset.reset=by_duration 配置的关系及预期行为。</p></div>
+            <p class="conclusion">初步达成一致：采用管道/stdin 方式替代中间 CSV 文件；确认 --by-duration 是基于当前时间减去 duration 计算 offset，不依赖 share.auto.offset.reset 配置；后续可继续完善 Admin client 相关文档说明。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/8yrnmvb26qgbkb2gz7nok2zr058vcq02">KIP-1266 Bounding The Number Of RemoteLogMetadata Messages via Compacted RemoteLogMetadata Topic</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕 KIP-1266 中内部 __remote_log_metadata 主题在迁移到压缩清理策略时如何避免因 retention 配置不当导致远程存储元数据丢失。Luke Chen 强调该主题是集群级控制平面主题，不应依赖用户手动协调 retention.ms；Lijun Tong 提出迁移期间不要求用户显式修改 retention，而是沿用现有保留策略，让旧的无 key 记录自然老化删除。Luke 进一步要求补充更多边界场景说明，以确保迁移过程完全无数据丢失风险。</p>
+            <div class="key-points"><p><strong>@Luke Chen:</strong> __remote_log_metadata 是共享的内部控制平面主题，不能像普通用户主题一样依赖用户设置 retention.ms，否则在用户调整业务 topic 保留期时可能失去保护并导致远程数据不可读。</p>
+<p><strong>@Lijun Tong:</strong> 提出替代方案：迁移期间不让用户显式设置 __remote_log_metadata 的 retention.ms，继续使用已有保留配置，等遗留无 key 消息按现有策略删除后自然完成迁移。</p>
+<p><strong>@Luke Chen:</strong> 认可迁移目标，但要求详细说明 0->2 升级、短 retention.ms、长期停留在 version 1、version 1 后修改配置、使用 retention.bytes 等边界情况下如何避免数据丢失。</p></div>
+            <p class="conclusion">初步方向是避免在迁移中要求用户手动调整内部主题 retention，但尚未形成最终结论；下一步需要 Lijun 针对 Luke 列出的多个边界场景补充详细迁移和防数据丢失方案。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/760o0m82838orgnjwppjhbxd28tf1qh3">Minor consistency: subscribedTopicNames/regex bypass the DESCRIBE-TOPIC filter in ConsumerGroupDescribe/ShareGroupDescribe</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">Mike Read 指出 ConsumerGroupDescribe 与 ShareGroupDescribe 在授权过滤上存在一致性缺口：响应中的 subscribedTopicNames/subscribedTopicRegex 未经过与分配主题相同的 DESCRIBE-TOPIC 过滤，但强调这不是安全漏洞。David Jacot 和 Andrew Schofield 均认可该观察，但倾向于当前行为可接受，认为订阅名称和正则不一定对应实际存在的主题，且过滤这些字段可能不必要或难以实施。</p>
+            <div class="key-points"><p><strong>@Mike Read:</strong> 发现 describe 处理器仅对分配主题做 DESCRIBE 授权过滤，而订阅主题名和正则未过滤，建议作为防御性一致性改进提交 JIRA/PR。</p>
+<p><strong>@David Jacot:</strong> 确认问题存在，但质疑是否需要修改，认为 API 只是回显成员心跳参数，且对正则进行授权没有清晰方式，需先明确预期行为再决定是否修补。</p>
+<p><strong>@Andrew Schofield:</strong> 同意 David 观点，认为订阅主题名和正则可能不对应实际主题，基于授权检查进行过滤并不必要。</p></div>
+            <p class="conclusion">初步共识是当前行为可能无需修改，建议先提交 JIRA 跟踪讨论，明确 API 响应应返回的内容后再决定是否实施补丁。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/8s8bxgwr86rcw3ph4s7o14pkbqw6lcm1">KIP-924 Code cleanup for streams partitions assignor KAFKA-16873</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">Naveen 询问 KIP-924 相关清理任务 KAFKA-16873 是否有人在做、是否存在阻塞，并计划先弃用再移除 INTERNAL_TASK_ASSIGNOR_CLASS 配置。Matthias 表示没有阻塞，但质疑该清理工作的必要性，因为 KIP-1071 未来会将分配逻辑从客户端迁移到 broker 端，最终可能删除相关客户端代码。</p>
+            <div class="key-points"><p><strong>@Naveen:</strong> 希望推进 KAFKA-16873，计划先弃用 INTERNAL_TASK_ASSIGNOR_CLASS 配置，随后移除，理由是 KIP-924 已提供新的 task assignor。</p>
+<p><strong>@Matthias J. Sax:</strong> 当前没有阻塞，但认为这项工作可能属于重复劳动，因为 KIP-1071 将推动从客户端分配转向 broker 端分配，相关客户端代码未来会被删除。</p>
+<p><strong>@Matthias J. Sax:</strong> KIP-1071 尚未完成且没有明确时间表，旧机制可能要到较晚版本（如 AK 6.0）才会移除，因此是否现在清理需要权衡价值。</p></div>
+            <p class="conclusion">目前没有明确阻塞，但社区倾向于先评估该清理工作的价值；在 KIP-1071 方向下，移除客户端旧配置可能并非紧迫事项。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/3pkwoqrkk2chzv0ytlblrvgw2qwdl7mo">[PR] KAFKA-20737: Add CI guard for archived release links [kafka-site]</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">该邮件围绕 kafka-site 仓库的 PR #902 展开，提议为网站中“Archived Releases”部分新增一个静态 CI 检查器，防止已归档版本的下载链接仍指向活跃的 Apache 分发镜像。该检查器使用 Python 标准库实现，会在 PR 和部署构建前运行，并附带 Make 目标和单元测试。</p>
+            <div class="key-points"><p><strong>@unknowntpo:</strong> 新增检查器拒绝归档版本链接指向 downloads.apache.org、dlcdn.apache.org 等活跃分发地址，但允许 archive.apache.org、Docker Hub、文档和 KEYS 链接。</p>
+<p><strong>@unknowntpo:</strong> 该检查是静态的、仅作用于 Archived Releases 区域，不发起网络请求，以避免外部链接校验不稳定。</p>
+<p><strong>@unknowntpo:</strong> PR 已通过本地 make 测试和检查命令验证，包括 16 个单元测试覆盖边界、允许链接、活跃镜像变体和错误路径。</p></div>
+            <p class="conclusion">目前邮件内容仅显示 PR 已创建并说明变更与验证方式，尚无社区评审结论；下一步是等待 GitHub 上的评审与合并。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/c39whryg878lskltgsn2y423rs5w38vk">[PR] docs: update broken links in books and papers section [kafka-site]</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">karuturi 在 Kafka 社区提交了一个针对 kafka-site 仓库的文档更新 PR（#903），主要修复书籍与论文板块中的失效链接。该 PR 将 Manning Kafka Streams 书籍主页、Jay Kreps 的《The Log》文章以及 Kafka/Samza 分布式数据论文的链接替换为当前可访问的地址。</p>
+            <div class="key-points"><p><strong>@karuturi:</strong> 将 Manning Kafka Streams 书籍主页链接替换为 O'Reilly 官方页面链接。</p>
+<p><strong>@karuturi:</strong> 将 Jay Kreps 的《The Log》文章更新为 LinkedIn 博客上的有效链接。</p>
+<p><strong>@karuturi:</strong> 将《Kafka, Samza and the Unix Philosophy of Distributed Data》论文链接更新为 Martin Kleppmann 提供的持久化 PDF 地址。</p></div>
+            <p class="conclusion">该 PR 已提交，等待社区审阅与合并。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/57cn03wn9z5nq2jcg76cfprnf1r571db">[Please provide `ci-approved` label] Gradle build releated PR's</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Dejan Stojadinović 请求社区成员协助审查三个与 Gradle 构建相关的 PR，其中包括可减少构建时间的优化。这些 PR 涉及 Gradle 任务延迟创建、依赖更新插件改进以及 spotless 插件版本升级。</p>
+            <div class="key-points"><p><strong>@Dejan Stojadinović:</strong> KAFKA-20882 通过使用 Gradle 任务的延迟创建来减少构建时间，值得优先关注</p>
+<p><strong>@Dejan Stojadinović:</strong> KAFKA-20851 将 spotless 插件从 8.4.0 升级到 8.9.0，已进行广泛测试</p>
+<p><strong>@Dejan Stojadinović:</strong> KAFKA-20862 更新 gradle-versions-plugin 以改进 dependencyUpdates 任务的输出结果</p></div>
+            <p class="conclusion">目前尚无明确结论，Dejan 正在请求社区成员对这三个 PR 进行分类审查，下一步是等待社区响应并推进 PR 合并。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/419k43w2gvhstmj36ykxmr4qk3qbdk2y">KIP-1344: Add Transaction Coordinator Metrics for Transaction State Log Appends and Marker Completion</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">KIP-1344 提议为 Kafka 事务协调器新增 broker 端指标，以增强事务完成过程的可观测性，帮助定位事务状态日志写入、事务标记发送及重试等环节的性能瓶颈。Sanghyeok An 在邮件中多次跟进，呼吁社区审阅并反馈该提案。</p>
+            <div class="key-points"><p><strong>@Sanghyeok An:</strong> 提议新增事务状态日志追加延迟与错误、等待标记完成的事务数、可重试的分区级标记失败等指标，以便诊断事务最终完成阶段的瓶颈。</p></div>
+            <p class="conclusion">目前仍处于社区讨论与征求意见阶段，尚未形成明确结论；下一步是等待社区成员对 KIP-1344 提供反馈和建议。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (65)</h2>
+            
+    <p>本周新建 <strong>65</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周 JIRA 主要集中在 Kafka Streams 的稳定性与功能增强，包括状态更新器、任务分配、拓扑暂停及 IQv2 等问题的修复与改进。同时涉及安全漏洞修复（如 lz4 和 logback CVE）、KRaft 证书轮换支持以及依赖升级和测试框架重构等基础设施优化。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Kafka Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
