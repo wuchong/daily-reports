@@ -15,45 +15,24 @@
 
         <section class="top-changes">
             <h2>🔥 今日最重要的3个变化</h2>
-            <ol><li><strong>Shopify 使用 ClickHouse 支撑全球级可观测性</strong> — Shopify 将全球电商可观测性数据统一到 ClickHouse，峰值摄入达每秒 1 亿事件，并实现最高 30 倍查询加速，显示实时 OLAP 正成为大规模平台工程与运营分析的重要底座。</li><li><strong>AWS 强化 Redshift 与 S3 Tables 湖仓集成</strong> — Amazon Redshift 系统表日志可自动写入 Amazon S3 Tables 并以 Apache Iceberg 格式保存，突破 7 天保留限制，增强合规审计、长期留存与跨仓库可观测性能力。</li><li><strong>AWS 推进 SageMaker Unified Studio 成本治理</strong> — AWS 展示通过自定义标签、AWS CUR 与 QuickSight 追踪 SageMaker Unified Studio 项目成本，反映 Data+AI 平台正加速补齐项目级 FinOps 与成本归因能力。</li></ol>
-            <p class="judgment"><strong>总判断：</strong>今日行业信号集中在实时数据平台、湖仓一体与 Data+AI FinOps 三条主线。Shopify 与 ClickHouse 的案例验证了高吞吐可观测性分析的生产价值，AWS 则通过 Redshift、S3 Tables、SageMaker 与 QuickSight 的联动继续强化企业数据平台粘性。整体看，数据平台竞争正从单纯查询性能扩展到合规留存、嵌入式分析和成本治理。</p>
+            <ol><li><strong>ClickHouse 强化 Managed Postgres 资源隔离</strong> — ClickHouse 介绍 Managed Postgres 通过 runtime budgets、cgroup limits 和 disk-full session exemptions 防止辅助进程影响数据库可用性。</li><li><strong>ClickHouse 发布 August 2026 newsletter</strong> — ClickHouse 汇总过去一个月实时数据仓库动态，显示其持续进行生态运营与产品迭代。</li></ol>
+            <p class="judgment"><strong>总判断：</strong>今日 Data+AI 行业信号较弱，主要来自 ClickHouse 生态内容与工程实践。重点不在重大融资或产品发布，而是数据库可用性、资源治理和实时数据仓库生态的持续演进，反映数据平台在 AI 时代更加重视可靠性与运维隔离能力。</p>
         </section>
 
         <section class="top-signals">
             <h2>📡 重要信号</h2>
-            
-    <article class="news-item">
-        <h3>Shopify powers observability for global-scale commerce with ClickHouse</h3>
-        <p class="sources">📌 <a href="https://clickhouse.com/blog/shopify-observability-at-global-scale">ClickHouse Blog</a></p>
-        <p class="date">2026-08-20</p>
-        <p class="summary">Shopify 将全球范围的电商可观测性数据统一到 ClickHouse 上，支撑峰值每秒 1 亿事件摄入，并实现最高 30 倍查询加速。该案例显示，大型电商平台正在将高吞吐日志、指标与事件分析从传统监控栈迁移到高性能实时分析数据库，以支撑全球规模下的故障定位、性能优化和运营洞察。</p>
-        <div class="impact">📊 数据平台影响：可观测性成为实时数据平台的重要负载，ClickHouse 类列式 OLAP 在高吞吐摄入与低延迟查询上的价值被进一步验证。</div>
-    </article>
-    <article class="news-item">
-        <h3>Long-term system tables retention in Amazon Redshift with Amazon S3 Tables</h3>
-        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/long-term-system-tables-retention-in-amazon-redshift-with-amazon-s3-tables/">AWS Big Data Blog</a></p>
-        <p class="date">2026-08-20</p>
-        <p class="summary">AWS 推出 Amazon Redshift 与 Amazon S3 Tables 的系统表集成，可将系统表日志自动以 Apache Iceberg 格式写入 S3 Tables，突破原有 7 天保留限制。企业无需自建 ETL 管道，即可长期保留审计与合规数据，并支持跨仓库可观测性分析。</p>
-        <div class="impact">📊 数据平台影响：Redshift 与 Iceberg/S3 Tables 深度结合，强化湖仓一体架构下的合规留存、审计和元数据分析能力。</div>
-    </article>
+            <p class="empty">暂无</p>
         </section>
 
         <section class="product-tech">
             <h2>💻 产品与技术</h2>
             
     <article class="news-item">
-        <h3>Track SageMaker Unified Studio project costs with custom tags and AWS CUR</h3>
-        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/track-sagemaker-unified-studio-project-costs-with-custom-tags-and-aws-cur/">AWS Big Data Blog</a></p>
-        <p class="date">2026-08-20</p>
-        <p class="summary">AWS Big Data Blog 介绍如何通过自定义标签和 AWS Cost and Usage Report 追踪 Amazon SageMaker Unified Studio 项目成本。该 serverless 方案将 CUR 成本数据与项目标签关联，并在 Amazon QuickSight 中按 CostCenter、Team 或 Environment 可视化，帮助 Data+AI 团队建立更细粒度成本治理。</p>
-        <div class="impact">📊 数据平台影响：Data+AI 平台进入 FinOps 阶段，项目级成本归因将成为企业规模化使用生成式 AI 与数据科学平台的必备能力。</div>
-    </article>
-    <article class="news-item">
-        <h3>How Guideless uses Tinybird to build training people actually finish</h3>
-        <p class="sources">📌 <a href="https://www.tinybird.co/blog/guideless">TinyBird</a></p>
-        <p class="date">2026-08-20</p>
-        <p class="summary">Tinybird 发布客户案例，说明 Guideless 利用 Tinybird 快速上线实时产品分析，而无需单独构建分析后端。该方案帮助 Guideless 节省数周工程开发时间，并将用户参与数据转化为可操作洞察，用于优化培训内容、提升用户完成率。</p>
-        <div class="impact">📊 数据平台影响：嵌入式实时分析正在降低产品团队使用事件数据的门槛，API-first 数据平台可加速从数据采集到产品决策的闭环。</div>
+        <h3>What else runs on your Postgres server, and how do we stop it from taking the database down?</h3>
+        <p class="sources">📌 <a href="https://clickhouse.com/blog/protect-postgres-from-supporting-processes">ClickHouse Blog</a></p>
+        <p class="date">2026-08-21</p>
+        <p class="summary">ClickHouse 发布技术博客，介绍 ClickHouse Managed Postgres 如何通过 runtime budgets、cgroup limits 和 disk-full session exemptions 等机制，防止后台支持进程、维护任务或附属服务消耗过多资源，进而影响 Postgres 主数据库可用性。文章强调在托管数据库环境中，资源隔离、磁盘满载保护和关键会话豁免是保障在线服务稳定的重要工程实践。</p>
+        <div class="impact">📊 数据平台影响：该实践显示托管数据库正从单纯性能优化转向资源治理与故障隔离，有助于提升数据平台中 OLTP/服务化数据库的稳定性，为多租户数据底座提供运维参考。</div>
     </article>
         </section>
 
@@ -61,11 +40,11 @@
             <h2>👤 人物与观点</h2>
             
     <article class="news-item">
-        <h3>POSETTE Talk Recap - Postgres Isn't Slow. Your Storage Is</h3>
-        <p class="sources">📌 <a href="https://clickhouse.com/blog/posette-talk-recap-postgres-isnt-slow-your-storage-is">ClickHouse Blog</a></p>
-        <p class="date">2026-08-20</p>
-        <p class="summary">ClickHouse Blog 回顾 Sai Srirampur 在 POSETTE 2026 的演讲，聚焦 Postgres 存储性能瓶颈。演讲通过本地 NVMe 与 Amazon EBS 基准测试，说明存储延迟和 I/O 配置如何影响 Postgres 生产性能，并给出生产环境设置建议，提醒工程师不要将数据库慢简单归因于 Postgres 本身。</p>
-        <div class="impact">📊 数据平台影响：数据库性能优化重点正从引擎层扩展到存储层，云数据平台选型需综合评估 NVMe、块存储和 I/O 成本。</div>
+        <h3>August 2026 newsletter</h3>
+        <p class="sources">📌 <a href="https://clickhouse.com/blog/202608-newsletter">ClickHouse Blog</a></p>
+        <p class="date">2026-08-21</p>
+        <p class="summary">ClickHouse 发布 August 2026 newsletter，汇总过去一个月实时数据仓库领域的产品、社区与生态动态。该期内容本身未披露单一重大公告，但反映出 ClickHouse 正持续围绕实时分析、数据仓库和用户生态进行内容运营与产品迭代。</p>
+        <div class="impact">📊 数据平台影响：月度动态可作为跟踪实时数据仓库演进方向的窗口，提示数据平台团队持续关注 ClickHouse 在实时分析、生态集成和产品能力上的变化。</div>
     </article>
         </section>
 
@@ -78,65 +57,17 @@
             <h2>👀 观察列表</h2>
             
     <article class="watchlist-item">
-        <h3>Redshift × S3 Tables × Iceberg 湖仓融合</h3>
+        <h3>ClickHouse 实时数据仓库生态月度演进</h3>
         <span class="status">待观察</span>
-        <p class="reason">AWS 将 Redshift 系统表日志直接落到 Iceberg/S3 Tables，可能推动更多仓库把审计、元数据和可观测性数据湖仓化。</p>
-        <p class="milestone"><strong>下一里程碑：</strong>是否扩展到更多 Redshift 系统表、跨区域查询或第三方 Iceberg 目录。</p>
-    </article>
-    <article class="watchlist-item">
-        <h3>ClickHouse 在大规模可观测性场景的采用</h3>
-        <span class="status">待观察</span>
-        <p class="reason">Shopify 案例验证 ClickHouse 支撑每秒 1 亿事件摄入和最高 30 倍查询加速，可能吸引更多电商、SaaS 和平台工程团队采用。</p>
-        <p class="milestone"><strong>下一里程碑：</strong>更多大型客户公布可观测性、日志分析或实时指标场景的生产指标。</p>
-    </article>
-    <article class="watchlist-item">
-        <h3>Data+AI FinOps 成本治理</h3>
-        <span class="status">待观察</span>
-        <p class="reason">AWS 将 SageMaker Unified Studio 项目标签与 CUR/QuickSight 结合，显示云厂商正在补齐 AI 项目级成本归因。</p>
-        <p class="milestone"><strong>下一里程碑：</strong>是否形成标准化成本分配模板、预算告警或跨服务 AI 成本优化产品。</p>
+        <p class="reason">August 2026 newsletter 显示 ClickHouse 正持续汇总实时数据仓库动态，后续可能透露产品功能、社区项目或客户实践变化。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>下一期 ClickHouse newsletter、版本发布或实时数据仓库相关功能公告。</p>
     </article>
         </section>
 
         <section class="stock-analysis">
             <h2>📈 股票分析</h2>
             <p class="disclaimer">⚠️ 以下内容仅供参考，不构成任何投资建议。投资有风险，入市需谨慎。</p>
-            
-    <article class="stock-item">
-        <div class="stock-header">
-            <span class="ticker">SHOP</span>
-            <span class="company">Shopify</span>
-            <span class="signal signal-neutral">⚪ 中性</span>
-        </div>
-        <p class="stock-summary">Shopify 采用 ClickHouse 提升全球可观测性能力，有助于增强平台稳定性、故障定位效率和工程运营能力，但短期对收入和利润的直接催化有限。</p>
-        <div class="stock-details">
-            <div class="catalysts">
-                <strong>🚀 催化剂</strong>
-                <ul><li>全球电商大促期间平台稳定性提升</li><li>可观测性缩短故障恢复时间</li><li>平台工程效率改善</li></ul>
-            </div>
-            <div class="risks">
-                <strong>⚠️ 风险</strong>
-                <ul><li>大规模实时数据平台运维成本上升</li><li>技术栈迁移与系统集成复杂度</li><li>宏观电商需求波动</li></ul>
-            </div>
-        </div>
-    </article>
-    <article class="stock-item">
-        <div class="stock-header">
-            <span class="ticker">AMZN</span>
-            <span class="company">Amazon</span>
-            <span class="signal signal-neutral">⚪ 中性</span>
-        </div>
-        <p class="stock-summary">AWS 强化 Redshift、S3 Tables、SageMaker Unified Studio 与 QuickSight 的联动，进一步覆盖湖仓一体、合规留存和 AI 成本治理场景，有利于提升企业数据平台粘性，但单日新闻对股价影响有限。</p>
-        <div class="stock-details">
-            <div class="catalysts">
-                <strong>🚀 催化剂</strong>
-                <ul><li>Redshift 与 S3 Tables 企业采用扩大</li><li>SageMaker Unified Studio 成本治理需求增长</li><li>Apache Iceberg 生态继续扩展</li></ul>
-            </div>
-            <div class="risks">
-                <strong>⚠️ 风险</strong>
-                <ul><li>企业云支出审查趋严</li><li>Snowflake、Databricks 等竞争加剧</li><li>客户对开放表格式迁移仍持观望态度</li></ul>
-            </div>
-        </div>
-    </article>
+            <p class="empty">暂无相关股票分析</p>
         </section>
 
         <footer>
