@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spark 社区周报 | 2026-W33</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Spark 社区周报 | 2026-W33</h1>
+            <p class="date-range">2026-08-10 ~ 2026-08-16</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (1)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/qhrg115yk5ch16tb1s4blgrp56wwsrp4">Please join me in welcoming Nicholas Chammas as a Spark Committer</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (0)</h2>
+            <p class="empty">本周无投票</p>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (7)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/0yqzbr8pzfnfomqq1zdgzcqltnrc6s1o">New Apache Spark repository for community-contributed Python Data Sources</a></h3>
+            <p class="meta">8 条回复 · 6 位参与者</p>
+            <p class="summary">社区讨论是否建立 Apache 官方实验性仓库 apache/spark-python-datasources，用于托管基于 PySpark Data Source API 的社区贡献数据源。提案强调该仓库独立于 Spark core，采用轻量级社区维护模式，并借鉴以往项目经验以避免维护不可持续的问题。</p>
+            <div class="key-points"><p><strong>@Allison Wang:</strong> 提议建立社区维护的 PySpark 数据源仓库，聚焦公共 Python Data Source API，不纳入 Spark core，并通过严格评审与淘汰机制保障可持续性。</p>
+<p><strong>@Nicholas Chammas:</strong> 提醒社区参考 Spark Packages 等历史项目失效的教训，建议分析其未能持续维护的原因，以避免新项目重蹈覆辙。</p>
+<p><strong>@Uroš Bojanić:</strong> 支持提案但指出应严格限定范围在 Python 数据源，并强调 AI 可降低开发成本，但长期维护、安全审查和测试仍需人工投入。</p></div>
+            <p class="conclusion">社区总体支持建立独立的 PySpark 数据源仓库，初步共识是保持范围聚焦、强化可持续维护机制，后续可进一步讨论仓库治理与贡献流程。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/wyfnsj45s3cn95thrgw4oho74zbcc5vm">SPIP: Add the DECFLOAT data type</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕在 Spark SQL 中新增 DECFLOAT 数据类型（IEEE 754 decimal64/decimal128）的 SPIP 提案展开，旨在填补 DECIMAL 与 DOUBLE 之间的空白。提案支持每值独立指数、十进制运算、Inf/NaN，并通过配置开关进行孵化，同时保持现有行为不变。讨论重点包括实现方式（JNI/libbid vs 纯 Java）以及类型提升时可能的隐式精度损失问题。</p>
+            <div class="key-points"><p><strong>@Uroš Bojanić:</strong> 提出新增 DECFLOAT 类型，支持 IEEE 754 十进制浮点运算，弥补 DECIMAL 精度限制与 DOUBLE 二进制舍入误差之间的不足，并通过配置开关进行孵化。</p>
+<p><strong>@Shrirang Mhalgi:</strong> 质疑使用 JNI/libbid 实现是否经过权衡，担心引入原生依赖会带来平台构建复杂性和崩溃风险；同时指出 DECIMAL 到 DECFLOAT 的隐式类型提升可能导致精度丢失，建议在 ANSI 模式下要求显式 CAST。</p>
+<p><strong>@Uroš Bojanić:</strong> 已根据反馈更新 SPIP 文档，补充了 JNI 与 Java 实现的权衡分析，并收紧了类型提升规则以避免隐式精度损失。</p></div>
+            <p class="conclusion">提案获得积极反馈，主要设计问题已被纳入文档修订；下一步继续征求社区对方案范围与实现细节的意见。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/zl37onhh2y2y9rxvpw38f3srxft0bn4c">Does spark-website need a merge script?</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论 spark-website 仓库是否还需要保留已有 7 年未更新的 merge 脚本。Nicholas Chammas 提议删除该脚本，并将仓库合并方式统一为仅允许 GitHub 的 squash and merge，以获得一致提交历史。</p>
+            <div class="key-points"><p><strong>@Nicholas Chammas:</strong> spark-website 的 merge 脚本长期未更新，且实际合并方式不统一，建议删除脚本并只保留 GitHub squash and merge。</p>
+<p><strong>@Uroš Bojanić:</strong> 支持删除脚本并统一合并方式；统计显示近期提交中 GitHub squash 和脚本合并各占约一半，脚本价值有限。</p></div>
+            <p class="conclusion">初步倾向删除 merge 脚本，并将仓库设置调整为仅允许 squash and merge；Nicholas 将负责处理，并邀请社区在相关 PR 上 review。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/93p977dtnsvyfxzklhgnq9t3hdoqgbqo">Support GROUPS window frames in Spark SQL</a></h3>
+            <p class="meta">1 条回复 · 1 位参与者</p>
+            <p class="summary">Mark Andreev 提议在 Spark SQL 中支持 SQL:2011 标准的 GROUPS 窗口帧，以补齐现有 ROWS/RANGE 无法表达 peer group 边界的能力。Uroš Bojanić 认可该提案范围清晰、实现可行，建议按普通 Jira + PR 推进，无需 SPIP，Python/Pandas 支持可后续跟进。</p>
+            <div class="key-points"><p><strong>@Mark Andreev:</strong> 提议新增 GROUPS 窗口帧，并已准备设计文档；希望确认是否需要 SPIP，以及是否首期包含 Python/Pandas window UDAF 支持。</p>
+<p><strong>@Uroš Bojanić:</strong> 支持该提案，认为这是 Spark 的真实能力缺口且实现范围可控；建议将设计文档附到 Jira，Python 支持可延后，普通 Jira + PR 即可。</p>
+<p><strong>@Uroš Bojanić:</strong> 提醒检查已有 issue（如 SPARK-28648），但认为旧反对理由已过时，且该特性属于 SPARK-27764 子任务，可以新建 Jira 推进。</p></div>
+            <p class="conclusion">初步结论是通过普通 Jira + PR 推进，不走 SPIP；下一步是将设计文档附到 Jira、创建新 issue 并提交 draft PR，Python/Pandas 支持作为后续工作。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/mygsxotv1dtvdg1zxlzbl5j9n22qs5hc">Community over Code Glasgow 2026 Hackathon - Action Needed</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Rich Bowen 通知各项目需在 8 月 22 日前认领 Community over Code Glasgow 2026 Hackathon（10 月 11–14 日）的场地时段，并在 8 月 31 日前发布可供参与者认领的任务清单。未按时提交的项目可能失去场地安排或被移出 Hackathon 页面。</p>
+            <div class="key-points"><p><strong>@Rich Bowen:</strong> 各项目需通过向 comdev-events-site 仓库提交 PR 的方式，在本周内认领 Hackathon 的半天时段，否则无法保证场地。</p>
+<p><strong>@Rich Bowen:</strong> 项目需在 8 月 31 日前按模板发布任务清单（至少 3–5 个适合新手的 issue 或文档任务），否则视为退出。</p>
+<p><strong>@Rich Bowen:</strong> 参与者可通过 Slack #hackathon 频道和 planners@apachecon.com 邮件列表保持沟通。</p></div>
+            <p class="conclusion">下一步行动：各项目须在本周内提交 PR 认领场地时段，并在 8 月底前发布任务清单，以确保继续参与 Hackathon。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/kkydhv2qfw1ssd82goyt7m2gr1rydswy">[Discussion] Horizontally Scaling Spark K8s Operator</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论围绕 Spark K8s Operator 在高并发提交场景下的性能瓶颈及水平扩展方案展开。Prabhu Joseph 提出采用 Leader-Orchestrated Shard Assignment 模型，由主实例分配分片标签，工作实例仅处理对应分片，并询问社区是否有类似实践或更优方案。</p>
+            <div class="key-points"><p><strong>@Prabhu Joseph:</strong> 在 300+ 并发提交下，Spark K8s Operator 成为瓶颈，单次提交约需 20 秒，导致排队延迟超过 10 分钟。</p>
+<p><strong>@Prabhu Joseph:</strong> 已通过分离提交与控制器更新的线程池、改用程序化 spark-submit 直接创建 driver pod 来优化性能。</p>
+<p><strong>@Prabhu Joseph:</strong> 提议采用 Leader 分配分片、Worker 按分片处理、支持心跳检测与动态扩缩容的水平扩展架构。</p></div>
+            <p class="conclusion">目前尚未形成明确结论，发起者正在征求社区对分片策略或替代生产方案的经验与建议。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/66b3kmpf80mgpnq13fccmkolq6hgxjbt">Versioning of Spark Connect Gateway</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论围绕新独立的 Spark Connect Gateway 仓库的版本命名方式展开。L. C. Hsieh 提议沿用 Spark Kubernetes Operator 的先例，采用独立版本号并在 JIRA 中使用带前缀的版本标识。社区成员普遍认可该方案，认为无需再次投票。</p>
+            <div class="key-points"><p><strong>@L. C. Hsieh:</strong> 建议 Spark Connect Gateway 采用独立版本命名，JIRA 版本使用 `connect-gateway-` 前缀（如 `connect-gateway-0.1.0`），并沿用 Spark Kubernetes Operator 的既有先例。</p>
+<p><strong>@Uroš Bojanić:</strong> 支持该版本命名方案，并认同 Dongjoon 的观点，认为无需再进行投票。</p></div>
+            <p class="conclusion">初步决定采用独立版本命名方式（如 `connect-gateway-0.1.0`），并因遵循既有先例而无需额外投票，随后继续推进新仓库的初始化工作。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (0)</h2>
+            
+    <p>本周新建 <strong>0</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周无新建 JIRA。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Spark Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
