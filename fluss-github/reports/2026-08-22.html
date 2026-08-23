@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-08-22</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-08-22</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 4 新 Issues</div>
+            <div class="stat">✅ 2 关闭</div>
+            <div class="stat">✨ 4 新 PRs</div>
+            <div class="stat">🎉 2 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/4011">PR #4011</a> 合并 Rust V1 批统计收集，为日志批读写统计能力奠定基础。</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3545">PR #3545</a> 合并 Paimon 1.4.2 升级，关闭相关版本升级任务。</li><li>✨ <a href="https://github.com/apache/fluss/issues/4067">Issue #4067</a> 提出 FIP-49 Gateway 后端运行时，包含集群注册与发现能力。</li><li>✨ <a href="https://github.com/apache/fluss/issues/4069">Issue #4069</a> 提议 Iceberg 多桶键表支持，<a href="https://github.com/apache/fluss/pull/4070">PR #4070</a> 同步推进实现。</li><li>🐛 <a href="https://github.com/apache/fluss/issues/4072">Issue #4072</a> 发现 fluss-fs-s3 未 shade Jackson 类，<a href="https://github.com/apache/fluss/pull/4073">PR #4073</a> 正在重定位依赖。</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <ul class="critical-list"><li>⚠️ <a href="https://github.com/apache/fluss/issues/4072">Issue #4072</a> fluss-fs-s3 uber-jar 携带 1114 个未重定位 Jackson 类，可能导致下游类路径冲突，需要紧急关注。</li></ul>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3048">Issue #3048</a> [lake][iceberg] Iceberg does not support union read for primary key table</h4>
+            <ul><li><span class="author">@qzyu999</span>: 分析读取排序正确性与写入预排序代价，认为删除向量是长期方案，询问设计文档与过渡方案。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3861">Issue #3861</a> [rust] Support bounded write delivery (delivery timeout)</h4>
+            <ul><li><span class="author">@gstamatakis95</span>: 说明未获得社区反馈，欢迎继续推进或联系协作，并表示愿意提供帮助。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4071">Issue #4071</a> [lake/paimon] Bump Paimon version to 2.0.0</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 邀请 zuston 接手 Paimon 2.0.0 版本升级任务。</li><li><span class="author">@zuston</span>: 确认愿意接手该 Paimon 2.0.0 升级。</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2890">PR #2890</a> [client] Support specifying rack when adding/removing server tags in Admin API</h4>
+            <ul><li><span class="author">@swuferhong</span>: 指出机架成员快照竞态、权限校验缺失、离线节点标签清理和接口实现位置等问题。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3521">PR #3521</a> [flink] add support for flink 2.3</h4>
+            <ul><li><span class="author">@fightBoxing</span>: 报告 Flink 2.3 SinkAdapter 方法签名错误，提供根因、修复、端到端验证和补丁。</li><li><span class="author">@fresh-borzoni</span>: 审查物化表兼容、Delta Join 测试、文档与断言，建议回退旧表字段并完善用例。</li><li><span class="author">@sd4324530</span>: 确认修复 SinkAdapter，回应物化表兼容问题，并按评审意见更新测试和文档。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3621">PR #3621</a> [kv] Add row TTL support</h4>
+            <ul><li><span class="author">@wuchong</span>: 建议保持 KV 协议不变、重命名 TTL 配置、完善格式版本文档，并指出兼容与测试问题。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3874">PR #3874</a> [rust] Check in generated protobuf code and drop protoc requirement</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 要求重新生成 proto，规范生成来源，提交 proto 副本，固定 protoc 并更新文档。</li><li><span class="author">@seokjin0414</span>: 已重生成并清理 protoc 依赖，改为 canonical 生成、提交副本、固定版本和更新文档。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3950">PR #3950</a> [rust] Validate append_arrow_batch nullability before enqueue</h4>
+            <ul><li><span class="author">@charlesdong1991</span>: 确认 Java 支持嵌套类型，补充测试并在 PoC 验证，请求再次审查。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3988">PR #3988</a> [c++] Add bounded RecordBatch log reader APIs</h4>
+            <ul><li><span class="author">@naivedogger</span>: 将排空循环、时间戳解析和范围校验移入 Rust 核心，C++ 侧仅做接线。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4013">PR #4013</a> [server] Fix orphan segments after full truncation</h4>
+            <ul><li><span class="author">@swuferhong</span>: 表示已根据 wuchong 的评审意见完成相关修改。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4019">PR #4019</a> [lake/iceberg] Support clean and legacy Iceberg lake table schemas</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 建议简化桶与分区判断、移除冗余测试，并关注遗留表 fixture、压缩配置和文档说明。</li><li><span class="author">@fhan688</span>: 按建议简化遗留表判断和分区工具，返回 -1 偏移，并移除不匹配的测试用例。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4023">PR #4023</a> [test] Isolate replica test metric groups</h4>
+            <ul><li><span class="author">@Jackeyzhe</span>: 认可修复，建议后续清理 ReplicaFetcherThreadTest 中残留指标组使用。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4068">PR #4068</a> [rust] Add property overlays for rust client Config</h4>
+            <ul><li><span class="author">@beryllw</span>: 提醒相关维护者审查 Rust 客户端配置属性覆盖 PR。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4074">PR #4074</a> [rust] Wire batch statistics into the log batch write and read paths</h4>
+            <ul><li><span class="author">@leekeiabstraction</span>: 请求审查将批统计接入日志批读写路径的 PR。</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4072">#4072</a> [build] fluss-fs-s3 uber-jar bundles 1,114 unshaded jackson classes that can shadow downstream jackson <span class="author">@Jackeyzhe</span> </li><li><a href="https://github.com/apache/fluss/issues/4071">#4071</a> [lake/paimon] Bump Paimon version to 2.0.0 <span class="author">@luoyuxia</span> <span class="labels">component=lake/paimon</span></li><li><a href="https://github.com/apache/fluss/issues/4069">#4069</a> [lake/iceberg] Support multi-bucket-key tables <span class="author">@qzyu999</span> </li><li><a href="https://github.com/apache/fluss/issues/4067">#4067</a> [FIP-49][gateway] Add the Gateway backend runtime with native and testing backends, resilient cluster registry, and cluster discovery <span class="author">@beryllw</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4074">#4074</a> [rust] Wire batch statistics into the log batch write and read paths <span class="author">@leekeiabstraction</span> </li><li><a href="https://github.com/apache/fluss/pull/4073">#4073</a> [build] Relocate shaded jackson and other internal deps in fluss-fs-s3 <span class="author">@Jackeyzhe</span> </li><li><a href="https://github.com/apache/fluss/pull/4070">#4070</a> [lake/iceberg] Support multi-bucket-key and non-string partition keys <span class="author">@qzyu999</span> </li><li><a href="https://github.com/apache/fluss/pull/4068">#4068</a> [rust] Add property overlays for rust client Config <span class="author">@beryllw</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4008">#4008</a> [rust] Batch statistics implementation <span class="author">@leekeiabstraction</span> </li><li><a href="https://github.com/apache/fluss/issues/3544">#3544</a> [lake/paimon] Bump Paimon version to 1.4.2 <span class="author">@sd4324530</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4011">#4011</a> [rust] Add V1 batch statistics collection <span class="author">@leekeiabstraction</span> </li><li><a href="https://github.com/apache/fluss/pull/3545">#3545</a> [lake/paimon] Bump Paimon version to 1.4.2 <span class="author">@sd4324530</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
