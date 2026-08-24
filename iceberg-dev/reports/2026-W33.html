@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iceberg 社区周报 | 2026-W33</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Iceberg 社区周报 | 2026-W33</h1>
+            <p class="date-range">2026-08-10 ~ 2026-08-16</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (1)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/rs2c01z63jk95qxr79kgv4rtwccwrj1t">Apache Iceberg Virtual Meetup Series</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (6)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/y4ggjzfh8s9n80w16j857og3800xd3lv">Deprecate equality deletes in Iceberg V4 (forbid new writes)</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/5lw2s0zs14p8tlmj2mlwdbg46fq7tkxt">Clarify content file uniqueness in the table spec</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/5jm8jpp327w9yn4zznlrlv5165mz4vt3">Create the apache/iceberg-verification repository</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/v978p1foozlhv7srtzbo6sgnhg80d4cf">[SPEC] Add key-id to table and partition statistics and deprecate key-metadata</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/6opyt0do6gfzvczkprb0lfvjp01k9s8c">[REST-SPEC] Add variant type to the REST catalog spec</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/3zq0vpkw5xkp48okq5ocpqft5mnyg03s">PyIceberg 0.12.0rc2</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/2y5vj6vsyd49p4vsnqxj75tgy0jxxfwq">Initial IRC changes needed for Iceberg V4</a></h3>
+            <p class="meta">6 条回复 · 4 位参与者</p>
+            <p class="summary">本次讨论围绕 Iceberg V4 所需的初始 REST Catalog 规范变更展开，重点是如何在引入 V4 元数据变化（如 Snapshot 中 root-manifest/manifest-list 调整、表位置字段放宽等）时保持向后兼容。多数参与者倾向于通过新增版本化的 `v2::loadTable` 端点来承载 V4 表加载，而不是在现有 v1 端点中混入不兼容响应。</p>
+            <div class="key-points"><p><strong>@Daniel Weeks:</strong> 认为更干净的方案是新增 `v2::loadTable` 端点，并要求所有 V4 表必须通过该端点加载；仅 loadTable 需要版本升级，commit 仍可复用现有快照更新机制。</p>
+<p><strong>@Amogh Jahagirdar:</strong> 支持显式 v2 端点方案，认为 V4 变化较大，且未来可能引入 check constraints、default expressions 等更丰富语义，因此新版本 API 能提供更清晰的兼容性边界。</p>
+<p><strong>@Yufei Gu:</strong> 认同 v1 端点不应返回违反既有 schema 的 V4 元数据，建议 v1 `loadTable` 对 V4 表返回明确错误，同时可借 v2 端点收集其他需求，但部分元数据加载等特性是否纳入仍需谨慎。</p></div>
+            <p class="conclusion">初步共识是引入新的 `v2::loadTable` 端点来支持 V4 表，v1 `loadTable` 不应返回 V4 元数据，而应返回明确错误。下一步需要继续明确 V4 还需哪些元数据变更，以及新端点的引入和演进方式。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/821bjvx2jym709yvt56xl6vm733z742t">Apache Iceberg 1.12.0 release</a></h3>
+            <p class="meta">5 条回复 · 5 位参与者</p>
+            <p class="summary">社区围绕 Apache Iceberg 1.12.0 发布范围和时间节点展开讨论，目标是在 8 月 26 日左右切出 RC。讨论重点包括是否纳入 Spark 4.2 支持、REST 远程签名相关变更、Hilbert Curve 聚类、Kafka Connect 数据正确性问题，以及若干必须在 RC 前解决的 blocker。</p>
+            <div class="key-points"><p><strong>@Anton Okolnychyi:</strong> 建议不要在 1.12.0 中发布 Spark 4.2 支持，可先合入 main 分支以便开发，待集成成熟后再随后续 Iceberg 版本发布。</p>
+<p><strong>@Alexandre Dutra:</strong> 要求纳入 #17709，以实现 REST 规范中远程签名配置相关变更，否则会发布一个没有任何语言实现的 spec 变更。</p>
+<p><strong>@Neelesh Salian:</strong> 汇总发布前必须关闭的 blocker、需要决策的 PDWR 移除问题，以及多个正确性修复，并强调 #16543 等 PR 未批准前不应切 RC0。</p></div>
+            <p class="conclusion">初步决定将 Hilbert Curve 聚类和 REST 相关 PR 纳入 1.12.0，Spark 4.2 支持不随本次发布正式推出；下一步需继续推进 #16543、Kafka Connect 修复、PDWR 决策及正确性修复，以便在目标时间切出 RC。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/zbox1xkkz8qd5h3t3dmcm9bkctyxwmrj">[pyiceberg] vended credentials</a></h3>
+            <p class="meta">3 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕 PyIceberg 0.12 版本支持 vended credentials 后，仍缺乏自动刷新机制的问题展开。Aaron 提到已有针对 S3 的 PR（#3751）可实现自动刷新，并表示若该方案被接受，他愿意后续补充 GCS 支持。</p>
+            <div class="key-points"><p><strong>@Aaron Niskode-Dossett:</strong> 指出 0.12 版本虽支持 vended credentials，但缺少自动刷新能力，并推荐一个可扩展至 GCS 的 S3 自动刷新 PR。</p>
+<p><strong>@Alex Stephen:</strong> 已审阅该 PR 并提出反馈意见，希望推动其尽快合入。</p>
+<p><strong>@Aaron Niskode-Dossett:</strong> 澄清自己并非该 PR 作者，但愿意参与深入评审。</p></div>
+            <p class="conclusion">社区初步认可该 S3 自动刷新方案，Alex 已提出评审意见，后续将联系 PR 作者推进修改与合入，Aaron 计划跟进 GCS 支持。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/pk4yqd4llr85lmq3gskbfl9v31sfqpp9">Iceberg Rust: moving the DataFusion integration into a separate repository</a></h3>
+            <p class="meta">3 条回复 · 4 位参与者</p>
+            <p class="summary">Iceberg Rust 社区讨论将 DataFusion 集成（TableProvider）从主仓库迁移到独立仓库，以减少依赖、保持引擎中立并解决维护不足问题。讨论焦点包括 Apache 治理、测试维护位置及社区协作方式。</p>
+            <div class="key-points"><p><strong>@Matt Butrovich:</strong> 提出迁移动机：DataFusion 集成维护不足、Iceberg Rust 需保持引擎中立、下游项目依赖升级受阻。</p>
+<p><strong>@Shawn Chang:</strong> 支持迁移但强调需保留 Apache 治理，担心非 Apache 仓库会影响采用和社区协作，主张双方共同维护。</p>
+<p><strong>@Renjie Liu:</strong> 支持将集成和测试（含 sqllogictest）移至 Apache 子仓库（如 DataFusion 项目下），以简化依赖和版本管理。</p></div>
+            <p class="conclusion">初步共识倾向将 DataFusion 集成迁移至 Apache 治理的独立仓库，下一步计划在本周 Community Sync 会议中进一步讨论。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/3jcdq4w6kvyfjbczddch6hzhbt1qjor0">SF Iceberg meetup in late September</a></h3>
+            <p class="meta">3 条回复 · 3 位参与者</p>
+            <p class="summary">Colby Foss 提议在 9 月底于旧金山举办 Apache Iceberg meetup，并就是否与次周在硅谷的既有活动冲突征询社区意见。PMC 与社区成员建议由主办方自行协调，并提醒活动间隔过近可能分散受众。最终 Colby 决定将活动推迟至 11 月，以避免与 9 月活动竞争。</p>
+            <div class="key-points"><p><strong>@Colby Foss:</strong> 计划在 9 月底于旧金山举办 Iceberg meetup，因与次周硅谷活动时间接近，先向社区和 PMC 征询意见。</p>
+<p><strong>@Russell Spitzer:</strong> PMC 不宜直接介入此类安排，建议与既有活动主办方沟通；个人倾向将 meetup 时间错开。</p>
+<p><strong>@Kevin Liu:</strong> 湾区参与者可能跨城市参加活动，建议与其他主办方协调并确认社区兴趣，同时重申 Iceberg meetup 社区指南。</p></div>
+            <p class="conclusion">Colby 已确认 9 月硅谷活动主办方不反对，但考虑到受众可能重叠，决定将旧金山 meetup 推迟到 11 月，待确定联合主办方和宣传页面后再同步社区。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/9qrcgoq0lmwszqhwr6yx7jd55ohwbt9l">Dedicated sync for Iceberg Finer Grained Read Restrictions</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">本次讨论围绕 Iceberg 细粒度读取限制（Finer Grained Read Restrictions）的专用同步会议展开，重点确认嵌套字段策略是否禁止祖先与后代重叠、是否引入能力协商机制，并评估三个端到端 POC 的实现可行性。会议整体认为方向正确，倾向于禁止策略重叠且不进行能力协商，以确保安全治理的严格性和互操作性。</p>
+            <div class="key-points"><p><strong>@Sung:</strong> 提出禁止在同一个祖先-后代层级上同时下发策略，并指出业界主流系统大多不支持重叠策略，优先级机制会引入额外语义负担。</p>
+<p><strong>@Laurent:</strong> 认为冲突解决应由 catalog 负责，安全与治理场景应允许 catalog 尽可能严格；不支持能力协商，避免客户端降级到弱策略。</p>
+<p><strong>@Russell:</strong> 支持不进行能力协商，指出若客户端可选择不同策略表示，可能引发类似 TLS 降级攻击的安全风险。</p></div>
+            <p class="conclusion">初步结论是禁止嵌套字段策略重叠，不引入能力协商，采用单一策略表示并在不兼容时返回明确错误；后续需确认是否存在禁止重叠无法覆盖的场景，并继续推进 POC 验证。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/50lc1hvj5w56lfy9n8yk03v9p87vk9kn">Sort-key overlap that size-based compaction cannot see (#17489, PR #17504)</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕 Iceberg 中基于大小的压缩无法发现排序键重叠的问题展开，即文件大小健康但排序键存在重叠时，rewrite_data_files 不会触发排序压缩，导致聚簇质量无法改善。Heekyung Kim 提出 PR #17504，新增 compute_sort_order_stats 存储过程和 min-overlap-depth 可选排序策略，用于检测并按重叠深度选择需要重写的文件。</p>
+            <div class="key-points"><p><strong>@heekyung Kim:</strong> 提出通过 compute_sort_order_stats 报告每个分区的排序键重叠深度，并引入 min-overlap-depth 选项，使压缩可以选择重叠严重的文件进行重写，默认行为保持不变。</p>
+<p><strong>@Anurag Mantripragada:</strong> 认可需要更好的排序文件选择标准，表示愿意参与 review 并联系其他相关人员，但质疑用户如何确定 min-overlap-depth 的合理阈值以维持健康的排序状态。</p></div>
+            <p class="conclusion">初步方向获得关注，Anurag 表示将参与 review 并推动讨论，后续需在 PR 中进一步明确 min-overlap-depth 的使用方式和阈值设定方法。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/bv3x30twzfxcsx01l12gblzrkbp38jbo">Dedicated sync for Iceberg Index Support</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">本次讨论围绕 Iceberg 索引支持的设计方案展开，重点确认了索引键定义、表达式函数限制和索引区域文件排序等初步共识。会议因技术原因未录制，但已同步关键结论，后续仍需继续讨论索引键表达式结果是否需要存储到索引区域文件中。</p>
+            <div class="key-points"><p><strong>@Péter Váry:</strong> 提出并总结了索引设计共识：使用 Iceberg 表达式列表定义 index_keys，不限制函数类型，索引区域文件按 index_keys 生成值排序，并倾向使用 included_column_ids 定义索引区域文件内容。</p>
+<p><strong>@Péter Váry:</strong> 指出是否将 index_key 表达式结果存入索引区域文件仍存争议：可能有助于读取优化，但也可能冗余并增加文件大小。</p>
+<p><strong>@Flavio Junqueira:</strong> 质疑该索引提案相对于现有分区裁剪、文件裁剪和 min-max 元数据机制的增量价值，希望明确目标场景。</p></div>
+            <p class="conclusion">已就 index_keys 使用表达式定义、不限制函数、索引区域文件排序等达成初步一致；下一步继续讨论是否存储 index_key 表达式结果，该结论可能影响或重新打开 included_column_ids 相关设计。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/klod1x2v7dlxsp2o7cxp3ftzv75xy7l9">Confluent Connector Vulnerabilities Update</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Confluent Hub 安全扫描发现社区手动构建并上传的 `iceberg-iceberg-kafka-connect` 连接器存在安全漏洞，若不处理将按政策逐步下架。社区正在讨论修复漏洞、完善发布自动化，并认为应先将 dev@ 邮件列表从安全通知中移除。</p>
+            <div class="key-points"><p><strong>@Confluent CCET Team:</strong> 安全扫描标记 `iceberg-iceberg-kafka-connect` 存在漏洞，要求社区确认是否为误报或不可利用，否则将进入移除流程，并每周发送提醒。</p>
+<p><strong>@Kevin Liu:</strong> 该连接器由社区手动构建上传，已有自动化发布讨论但需先修复 license 和 notice 文件；至少应把 dev@ 从这些安全通知中移除，并会联系可能提供帮助的人。</p></div>
+            <p class="conclusion">初步方向是修复许可证/通知文件并推进发布自动化，同时联系相关人员处理安全通知；尚未形成最终漏洞修复结论。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/lsx5j8hh9khgv2onmb2ykr84ywpdorlr">Shared conformance fixtures for Apache Iceberg implementations</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论围绕为 Apache Iceberg 各实现建立共享的测试/验证/一致性 fixtures 仓库展开。社区已就该提案总体表示支持，并召开了同步会议细化实现细节，后续将推进仓库创建和提案更新。</p>
+            <div class="key-points"><p><strong>@Neelesh Salian:</strong> 组织同步会议讨论提案细节，并计划发起创建 conformance 仓库的投票，随后更新提案。</p>
+<p><strong>@Sung Yun:</strong> 确认社区总体支持共享测试/验证仓库的想法，但仍有仓库命名及是否包含写入产物正确性验证机制等细节待讨论。</p>
+<p><strong>@Andrei Tserakhau:</strong> 支持以 read-first corpus 作为 v1 方案，并建议使用更通用的仓库名称以便长期扩展，例如 iceberg-verification。</p></div>
+            <p class="conclusion">下一步将发起创建 conformance 仓库的投票，并根据会议讨论更新提案，同时推进基础设施流程以建立共享仓库。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (0)</h2>
+            
+    <p>本周新建 <strong>0</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周无新建 JIRA。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Iceberg Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
