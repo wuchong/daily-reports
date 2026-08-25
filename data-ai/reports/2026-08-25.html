@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data+AI 全球日报 | 2026-08-25</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Data+AI 全球日报 | 2026-08-25</h1>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="top-changes">
+            <h2>🔥 今日最重要的3个变化</h2>
+            <ol><li><strong>AWS 打通 S3 Tables 与 Google BigQuery 的跨云 Iceberg 分析</strong> — AWS 展示 BigQuery 通过 Glue Iceberg REST Catalog 直接查询 Amazon S3 Tables，并结合 IAM 与 Lake Formation 实现跨云统一治理，减少数据复制。</li><li><strong>Amazon EMR 使用 NVIDIA GPU 将 Spark 提速最高 3.7 倍</strong> — AWS 在 EC2 G7 实例上用 NVIDIA RTX PRO 4500 加速 EMR Spark，显示 GPU 正进入托管大数据分析负载，可能改变性能与成本权衡。</li><li><strong>Redpanda 推出 Shadowing 降低从 Confluent 迁移门槛</strong> — Redpanda Shadowing 可迁移 topic 数据、schema、offsets 和 ACLs，减少流平台切换风险，增强对 Kafka/Confluent 生态的竞争压力。</li></ol>
+            <p class="judgment"><strong>总判断：</strong>今日主线是云厂商与数据公司围绕开放表格式、跨云治理、迁移自动化和高性能分析展开竞争。AWS 通过 S3 Tables、Lake Formation 和 GPU Spark 强化数据湖与计算性能；Redpanda 与 ClickHouse 则通过迁移工具和客户案例争夺现有数据栈。数据平台团队应重点关注 Iceberg 生态、跨云权限治理以及低延迟分析引擎的替代机会。</p>
+        </section>
+
+        <section class="top-signals">
+            <h2>📡 重要信号</h2>
+            
+    <article class="news-item">
+        <h3>AWS 打通 S3 Tables 与 Google BigQuery 的跨云 Iceberg 分析</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/enable-cross-cloud-analytics-with-amazon-s3-tables-and-google-bigquery-part-1-iam-based-access-control/">AWS Big Data Blog</a> | <a href="https://aws.amazon.com/blogs/big-data/enable-cross-cloud-analytics-with-amazon-s3-tables-and-google-bigquery-part-2-access-control-with-lake-formation/">AWS Big Data Blog</a></p>
+        <p class="date">2026-08-25</p>
+        <p class="summary">AWS 发布两篇博客，演示 Google BigQuery 通过 AWS Glue Iceberg REST Catalog 查询 Amazon S3 Tables 中的 Iceberg 表，而无需跨云复制数据。Part 1 展示基于 IAM 的访问控制，Part 2 展示通过 AWS Lake Formation credential vending 提供短期、细粒度凭证，实现跨云统一治理。</p>
+        <div class="impact">📊 数据平台影响：S3 Tables 与 Iceberg REST Catalog 有望成为跨云共享表格式的事实层，减少跨云 ETL 与数据复制。Lake Formation 提供集中权限和短期凭证，提升多云数据湖治理能力。</div>
+    </article>
+    <article class="news-item">
+        <h3>Amazon EMR 用 NVIDIA RTX PRO 4500 加速 Spark，最高提速 3.7 倍</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/gpu-accelerated-apache-spark-with-amazon-emr-and-nvidia-rtx-pro-4500-on-amazon-ec2-g7-instances-runs-up-to-3-7x-faster/">AWS Big Data Blog</a></p>
+        <p class="date">2026-08-25</p>
+        <p class="summary">AWS 称 Amazon EMR on EKS 在 Amazon EC2 G7 实例上使用 NVIDIA RTX PRO 4500 Blackwell GPU 运行 Apache Spark，TPC-DS 基准较同级 CPU 实例最高快 3.7 倍，且无需修改现有 Spark 代码。博客同时提供成本比较和部署入门方式。</p>
+        <div class="impact">📊 数据平台影响：GPU 加速从 AI 训练延伸到托管 Spark 分析，可能改变大数据负载的性能/成本评估。平台团队需结合真实查询、数据倾斜、I/O 瓶颈和 GPU 利用率进行 ROI 验证。</div>
+    </article>
+    <article class="news-item">
+        <h3>Redpanda 推出 Shadowing，降低从 Confluent 迁移门槛</h3>
+        <p class="sources">📌 <a href="https://www.redpanda.com/blog/migrate-confluent-redpanda-shadowing">Redpanda Blog</a></p>
+        <p class="date">2026-08-25</p>
+        <p class="summary">Redpanda 发布 Shadowing 功能，可通过单一链路迁移 Confluent 的 topic 数据、schemas、offsets 和 ACLs，避免“大爆炸式”切换。该功能适用于 Self-Managed、BYOC 和 Dedicated 部署。</p>
+        <div class="impact">📊 数据平台影响：流数据平台迁移风险显著下降，Redpanda 对 Kafka/Confluent 生态的竞争压力增强。企业可更容易进行双跑验证和渐进式切换，但仍需关注兼容性、延迟与运维成本。</div>
+    </article>
+    <article class="news-item">
+        <h3>Suprema Gaming 从 Snowflake 迁移到 ClickHouse Cloud，构建 agent-ready 分析平台</h3>
+        <p class="sources">📌 <a href="https://clickhouse.com/blog/suprema-gaming-agent-ready-platform">ClickHouse Blog</a></p>
+        <p class="date">2026-08-25</p>
+        <p class="summary">ClickHouse 发布客户案例，称 Suprema Gaming 将分析平台从 Snowflake 迁移到 ClickHouse Cloud，以支持公司级 agentic operations。案例强调低延迟分析和为 AI Agent 提供数据访问能力。</p>
+        <div class="impact">📊 数据平台影响：ClickHouse 正以性能和成本优势切入企业分析与 AI Agent 场景，可能分流部分云数仓工作负载。数据平台可评估高并发、低延迟查询是否适合 ClickHouse。</div>
+    </article>
+        </section>
+
+        <section class="product-tech">
+            <h2>💻 产品与技术</h2>
+            
+    <article class="news-item">
+        <h3>Amazon MWAA Serverless 支持 PythonOperator 和 BashOperator</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/pythonoperator-and-bashoperator-now-available-on-amazon-managed-workflows-for-apache-airflow-amazon-mwaa-serverless/">AWS Big Data Blog</a></p>
+        <p class="date">2026-08-25</p>
+        <p class="summary">AWS 宣布 Amazon MWAA Serverless 运行时支持 PythonOperator 和 BashOperator，可直接执行自定义 Python 函数和 shell 脚本，无需额外配置基础设施。文章演示使用 PythonOperator 构建将 CSV 转换为 JSON 的 serverless 数据管道。</p>
+        <div class="impact">📊 数据平台影响：Airflow 编排的 serverless 化能力增强，降低轻量级数据管道运维成本。团队仍需关注依赖打包、密钥管理、网络访问和长任务限制。</div>
+    </article>
+    <article class="news-item">
+        <h3>PostgreSQL 19 新增 WAIT FOR，支持 read-your-writes 一致性</h3>
+        <p class="sources">📌 <a href="https://clickhouse.com/blog/postgresql-19-wait-for-read-your-writes">ClickHouse Blog</a></p>
+        <p class="date">2026-08-25</p>
+        <p class="summary">ClickHouse 博客解读 PostgreSQL 19 的新 WAIT FOR 命令。该命令允许单个读取等待指定 WAL 位置，从而在异步副本上实现 read-your-writes 一致性。</p>
+        <div class="impact">📊 数据平台影响：PostgreSQL 复制架构获得更细粒度一致性控制，有助于需要读取最新写入的应用和数据管道。平台可重新评估副本延迟处理、CDC 校验和读副本路由策略。</div>
+    </article>
+    <article class="news-item">
+        <h3>ClickHouse 发布 ClickGap 自动化 QA 系统</h3>
+        <p class="sources">📌 <a href="https://clickhouse.com/blog/clickgap-autonomous-qa-for-clickhouse">ClickHouse Blog</a></p>
+        <p class="date">2026-08-25</p>
+        <p class="summary">ClickHouse 介绍 ClickGap 自动化 QA 系统，可审查合并的 ClickHouse 变更、执行复现器、排除误报，并将回归问题归因到具体 commit。</p>
+        <div class="impact">📊 数据平台影响：ClickGap 提升 ClickHouse 内核质量与回归定位效率，有利于增强企业生产环境采用信心，也为开源数据库自动化测试提供实践参考。</div>
+    </article>
+        </section>
+
+        <section class="people-views">
+            <h2>👤 人物与观点</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="analyst-insights">
+            <h2>📊 分析师洞察</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="watchlist">
+            <h2>👀 观察列表</h2>
+            
+    <article class="watchlist-item">
+        <h3>S3 Tables + BigQuery 跨云治理成熟度</h3>
+        <span class="status">待观察</span>
+        <p class="reason">IAM 与 Lake Formation credential vending 提供跨云访问方案，但生产环境仍需验证性能、审计、故障隔离和多云权限复杂度。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>更多云引擎接入、企业生产案例或官方最佳实践发布。</p>
+    </article>
+    <article class="watchlist-item">
+        <h3>GPU 加速 Spark 的真实 ROI</h3>
+        <span class="status">待观察</span>
+        <p class="reason">TPC-DS 最高 3.7 倍提升显著，但真实负载、成本、GPU 供应和代码兼容性决定采用价值。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>更多客户基准、成本优化指南和 EMR GPU 实例规模化案例。</p>
+    </article>
+    <article class="watchlist-item">
+        <h3>Redpanda Shadowing 迁移成功率</h3>
+        <span class="status">待观察</span>
+        <p class="reason">自动迁移 topic、schema、offsets 和 ACLs 可降低切换风险，但需验证大规模集群一致性与回滚能力。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>公开客户迁移案例或迁移成功率指标。</p>
+    </article>
+    <article class="watchlist-item">
+        <h3>PostgreSQL 19 WAIT FOR 生态采用</h3>
+        <span class="status">待观察</span>
+        <p class="reason">新命令可能改变读副本一致性设计，但需等待 PostgreSQL 19 正式发布和云托管服务支持。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>PostgreSQL 19 GA 及 AWS RDS/Aurora、GCP Cloud SQL 等托管服务支持。</p>
+    </article>
+    <article class="watchlist-item">
+        <h3>ClickHouse 在 agentic analytics 的扩展</h3>
+        <span class="status">待观察</span>
+        <p class="reason">Suprema Gaming 案例显示 ClickHouse 可支撑 AI Agent 数据访问，但行业可复制性尚待验证。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>更多 Agent、RAG 或实时分析客户案例与架构参考发布。</p>
+    </article>
+        </section>
+
+        <section class="stock-analysis">
+            <h2>📈 股票分析</h2>
+            <p class="disclaimer">⚠️ 以下内容仅供参考，不构成任何投资建议。投资有风险，入市需谨慎。</p>
+            
+    <article class="stock-item">
+        <div class="stock-header">
+            <span class="ticker">AMZN</span>
+            <span class="company">Amazon</span>
+            <span class="signal signal-neutral">⚪ 中性</span>
+        </div>
+        <p class="stock-summary">AWS 连续发布 MWAA Serverless、S3 Tables 跨云访问和 GPU Spark 等数据平台能力，强化数据湖、开放表格式与高性能计算生态。长期利好 AWS 竞争力，但单日发布对股价影响有限。</p>
+        <div class="stock-details">
+            <div class="catalysts">
+                <strong>🚀 催化剂</strong>
+                <ul><li>S3 Tables 与 Iceberg 生态采用扩大</li><li>GPU Spark 客户案例增加</li><li>AWS 数据平台收入增长</li></ul>
+            </div>
+            <div class="risks">
+                <strong>⚠️ 风险</strong>
+                <ul><li>多云开放格式可能降低平台锁定</li><li>Azure/GCP 跟进跨云开放表能力</li><li>GPU 成本与供应波动</li></ul>
+            </div>
+        </div>
+    </article>
+    <article class="stock-item">
+        <div class="stock-header">
+            <span class="ticker">GOOGL</span>
+            <span class="company">Alphabet</span>
+            <span class="signal signal-neutral">⚪ 中性</span>
+        </div>
+        <p class="stock-summary">BigQuery 可查询 AWS S3 Tables 显示 Google Cloud 在多云分析上的开放策略，有助于扩大 BigQuery 使用场景，但也可能弱化数据本地化带来的云收入。</p>
+        <div class="stock-details">
+            <div class="catalysts">
+                <strong>🚀 催化剂</strong>
+                <ul><li>跨云查询生产采用增加</li><li>BigQuery 与 Iceberg 生态整合深化</li><li>企业多云治理需求上升</li></ul>
+            </div>
+            <div class="risks">
+                <strong>⚠️ 风险</strong>
+                <ul><li>跨云数据出口成本影响体验</li><li>性能与网络稳定性不确定</li><li>AWS 原生分析方案竞争</li></ul>
+            </div>
+        </div>
+    </article>
+    <article class="stock-item">
+        <div class="stock-header">
+            <span class="ticker">NVDA</span>
+            <span class="company">NVIDIA</span>
+            <span class="signal signal-bullish">🟢 看多</span>
+        </div>
+        <p class="stock-summary">NVIDIA RTX PRO 4500 被用于 Amazon EMR Spark 加速，显示 GPU 正进入更广泛的大数据分析负载，可能扩大数据中心 GPU 需求。</p>
+        <div class="stock-details">
+            <div class="catalysts">
+                <strong>🚀 催化剂</strong>
+                <ul><li>更多 Spark/数据平台 GPU 基准发布</li><li>Blackwell GPU 供应改善</li><li>云厂商扩大 GPU 实例部署</li></ul>
+            </div>
+            <div class="risks">
+                <strong>⚠️ 风险</strong>
+                <ul><li>真实工作负载适配不足</li><li>CPU 或 ASIC 替代方案竞争</li><li>云资本开支周期波动</li></ul>
+            </div>
+        </div>
+    </article>
+    <article class="stock-item">
+        <div class="stock-header">
+            <span class="ticker">SNOW</span>
+            <span class="company">Snowflake</span>
+            <span class="signal signal-neutral">⚪ 中性</span>
+        </div>
+        <p class="stock-summary">ClickHouse 公布 Suprema Gaming 从 Snowflake 迁移到 ClickHouse Cloud 的案例，反映低延迟和成本敏感场景存在替代压力。但单一案例不代表整体趋势，Snowflake 的平台治理、生态和 AI 能力仍是重要护城河。</p>
+        <div class="stock-details">
+            <div class="catalysts">
+                <strong>🚀 催化剂</strong>
+                <ul><li>Snowflake 财报与客户留存数据</li><li>Iceberg 表与开放生态进展</li><li>AI Agent/分析工作负载增长</li></ul>
+            </div>
+            <div class="risks">
+                <strong>⚠️ 风险</strong>
+                <ul><li>ClickHouse 等替代案例扩大</li><li>价格竞争加剧</li><li>开放表格式降低平台粘性</li></ul>
+            </div>
+        </div>
+    </article>
+        </section>
+
+        <footer>
+            <p>Generated by Data+AI Daily Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
