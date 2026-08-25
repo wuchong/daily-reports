@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-08-24</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-08-24</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 17 新 Issues</div>
+            <div class="stat">✅ 8 关闭</div>
+            <div class="stat">✨ 17 新 PRs</div>
+            <div class="stat">🎉 7 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🐛 <a href="https://github.com/apache/fluss/pull/4013">PR #4013</a> 修复全量截断后孤立日志段阻止 TabletServer 恢复的问题</li><li>🐛 <a href="https://github.com/apache/fluss/pull/4059">PR #4059</a> 修复 Flink LakeSource 拷贝隔离问题，解决 UNION 分支不同下推时湖读取失败</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4019">PR #4019</a> 支持 Iceberg 湖表的 clean 和 legacy 两种表 schema 格式</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3874">PR #3874</a> Rust SDK 移除对系统 protoc 的依赖，改为检入生成的 protobuf 代码</li><li>✨ <a href="https://github.com/apache/fluss/pull/4074">PR #4074</a> Rust SDK 将批统计信息接入日志批次的读写路径</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <ul class="critical-list"><li>⚠️ <a href="https://github.com/apache/fluss/issues/4088">Issue #4088</a> 分区清理失败后 Coordinator 指标可能停止上报，影响监控可观测性</li></ul>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4066">Issue #4066</a> CHAR columns are accepted for statistics but never collect min/max</h4>
+            <ul><li><span class="author">@beetle0915</span>: 提出修复方案：添加 CHAR min/max 收集和序列化支持，并补充往返测试</li><li><span class="author">@leekeiabstraction</span>: 将 issue 分配给 beetle0915，并 cc platinumhamburg 确认</li><li><span class="author">@platinumhamburg</span>: 确认这是遗漏：CHAR 在 review 中被添加到支持类型但代码未同步更新</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4075">Issue #4075</a> Introduce client.writer.delivery-timeout to Fluss Write Client</h4>
+            <ul><li><span class="author">@abhiramaab</span>: 询问是否可以开始实现 delivery-timeout 功能</li><li><span class="author">@vamossagar12</span>: 已创建 FIP-54 提案并发起讨论，计划近期自己实现</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4022">Issue #4022</a> [flink] Support bounded streaming read for Fluss source</h4>
+            <ul><li><span class="author">@naivedogger</span>: 移除冗余构造函数，废弃无参 setBounded()，将批读路径与有界性分离</li><li><span class="author">@loserwang1024</span>: 建议用 isBatch/isStream 替代 isBounded 标志以更清晰表达语义</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3048">Issue #3048</a> [lake][iceberg] Iceberg does not support union read for primary key table</h4>
+            <ul><li><span class="author">@morazow</span>: 说明 DV 方案是长期方向，已有 Paimon FIP-47 在讨论中，Iceberg FIP-31 也在准备</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3621">Issue #3621</a> [kv] Add row TTL support</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: 详细阐述兼容性模型：分离 KV 编码、RocksDB 值布局和 RPC 格式三个维度</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4093">Issue #4093</a> [lake/paimon] Bump Paimon version to 2.0.0</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 质疑是否需要强制 Paimon 2.0，建议保持 1.4 兼容性并添加集成测试验证</li><li><span class="author">@zuston</span>: 认同兼容性分析，感谢详细评论</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3985">Issue #3985</a> [server] Add listRebalances API and expose rebalance timestamps</h4>
+            <ul><li><span class="author">@morazow</span>: 已按要求拆分 procedure，移除 staleness window，处理所有行内评论</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4037">Issue #4037</a> [client][rpc][server] Add getClusterVersion API to expose the server version</h4>
+            <ul><li><span class="author">@morazow</span>: 处理行内评论；CI 因文件超长失败，通过拆分测试类修复</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3621">PR #3621</a> [kv] Add row TTL support</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: 回应兼容性审查：保持 RPC 格式不变，仅 GET_KV_SNAPSHOT_METADATA 升级 v1 作为边界</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3988">PR #3988</a> [c++] Add bounded RecordBatch log reader APIs</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 建议验证 bucket ID 范围、并发解析分区偏移、调整 guard 获取顺序</li><li><span class="author">@naivedogger</span>: 已全部修复：添加 bucket 验证、try_join_all 并发、RAII guard 保护</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4074">PR #4074</a> [rust] Wire batch statistics into the log batch write and read paths</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 建议限制模块可见性为 pub(crate)，确认 V2 生产者，添加 debug_assert</li><li><span class="author">@leekeiabstraction</span>: 已修复：更新描述、添加 debug_assert、补充 .hex 测试文件</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4078">PR #4078</a> [FIP-49][gateway] Add the Gateway backend runtime, cluster discovery, and metadata listing</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 关注拨号失败缓存、close 超时逻辑、SASL 认证错误码设计</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3985">PR #3985</a> [server] Add listRebalances API and expose rebalance timestamps</h4>
+            <ul><li><span class="author">@affo</span>: 建议拆分 list/get procedure、处理历史 ID 查询、清理损坏 znode、配置化保留数量</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4037">PR #4037</a> [client][rpc][server] Add getClusterVersion API to expose the server version</h4>
+            <ul><li><span class="author">@affo</span>: 提醒 API key 1065 冲突，建议返回结果对象以便扩展每节点版本信息</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4022">PR #4022</a> [flink] Support bounded streaming read for Fluss source</h4>
+            <ul><li><span class="author">@loserwang1024</span>: 建议移除 bounded 标志，用执行模式判断批行为，废弃无参 setBounded()</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4077">PR #4077</a> [lake/hudi] Use a clean lake table schema for Hudi lake storage</h4>
+            <ul><li><span class="author">@Copilot</span>: 指出 isLegacyTable 检测不精确、构造函数编译问题、遗留系统列裁剪缺失</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3521">PR #3521</a> [flink] add support for flink 2.3</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 指出多个测试过时、建议精简冗余测试、验证 delta join 文档准确性</li><li><span class="author">@sd4324530</span>: 已修复多项评论，但 lookup-join-after-delta-join 测试遇到 Flink 2.3 限制</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4073">PR #4073</a> [build] Relocate shaded jackson and other internal deps in fluss-fs-s3</h4>
+            <ul><li><span class="author">@Jackeyzhe</span>: 扩大 shade 范围至整个 com.google 命名空间，发现 1974 个未 shade 的 Guava 条目</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4106">#4106</a> [helm] Support multi-disk data.dirs in the tablet StatefulSet <span class="author">@affo</span> </li><li><a href="https://github.com/apache/fluss/issues/4105">#4105</a> [helm] First-class coordinator HA: readiness gate valid for standby coordinators <span class="author">@affo</span> </li><li><a href="https://github.com/apache/fluss/issues/4102">#4102</a> [lake][paimon] Maintain lakestream.enabled with lake acceleration state <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/issues/4101">#4101</a> [gateway] Share dial failures with current waiters <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/issues/4099">#4099</a> [docs] Flink add_acl examples in procedures.md do not match the implementation <span class="author">@Rango-2017</span> </li><li><a href="https://github.com/apache/fluss/issues/4094">#4094</a> [client] Reduce connection setup timeouts for faster metadata recovery. <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/issues/4092">#4092</a> [helm] Support advertised listeners for out-of-cluster clients <span class="author">@charlesdong1991</span> </li><li><a href="https://github.com/apache/fluss/issues/4091">#4091</a> [rust][python] PyPI and crates.io artifacts are missing LICENSE and NOTICE <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/4088">#4088</a> [Bug] Coordinator metrics can stop reporting after failed partition cleanup <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/4087">#4087</a> [client] Support bounded write delivery (delivery timeout) <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/issues/4086">#4086</a> [rebalance] Support preferred leader election goal <span class="author">@raoluSmile</span> </li><li><a href="https://github.com/apache/fluss/issues/4085">#4085</a> [FIP-49][gateway] Add the Gateway container image and the release pipeline <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/issues/4084">#4084</a> [FIP-49][gateway] Add schema-aware batch writes with ordered outcomes and admission limits <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/issues/4083">#4083</a> [FIP-49][gateway] Add schema-aware JSON and Arrow row codecs for FIP-49 data types <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/issues/4082">#4082</a> [FIP-49][gateway] Add catalog and DDL backend operations with REST APIs <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/issues/4081">#4081</a> [FIP-49][gateway] Add HTTP-layer REST authentication and protocol-neutral principals <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/issues/4075">#4075</a> Introduce client.writer.delivery-timeout to Fluss Write Client <span class="author">@vamossagar12</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4109">#4109</a> [rust] Filter pushdown integration test <span class="author">@leekeiabstraction</span> </li><li><a href="https://github.com/apache/fluss/pull/4108">#4108</a> [helm] Add support advertised listeners for out of cluster clients <span class="author">@charlesdong1991</span> </li><li><a href="https://github.com/apache/fluss/pull/4107">#4107</a> [gateway] Add catalog and DDL backend operations with REST APIs <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/pull/4104">#4104</a> [FIP-49][gateway] Add schema-aware JSON and Arrow row codecs for FIP-49 data types <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/pull/4103">#4103</a> [docs] Document shading pitfalls in the building guide <span class="author">@Jackeyzhe</span> </li><li><a href="https://github.com/apache/fluss/pull/4100">#4100</a> [docs] Align Flink add_acl procedure docs with the implementation <span class="author">@Rango-2017</span> </li><li><a href="https://github.com/apache/fluss/pull/4098">#4098</a> [gateway] Add binary distribution and container release flow <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/pull/4097">#4097</a> [server] Support configurable concurrent rebalance tasks <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/pull/4096">#4096</a> [server] Remove unused option of `server.io.tmpdir` <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/pull/4095">#4095</a> [client] Reduce connection setup timeouts for faster metadata recovery. <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/pull/4093">#4093</a> [lake/paimon] Bump Paimon version to 2.0.0 <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/pull/4089">#4089</a> [server] Keep snapshot metrics safe during cleanup <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/4080">#4080</a> [common] Fix CHAR min/max statistics collection <span class="author">@beetle0915</span> </li><li><a href="https://github.com/apache/fluss/pull/4079">#4079</a> [client] Fix flaky testKvSnapshotLeaseAfterCoordinatorServerRestart <span class="author">@leekeiabstraction</span> </li><li><a href="https://github.com/apache/fluss/pull/4078">#4078</a> [FIP-49][gateway] Add the Gateway backend runtime, cluster discovery, and metadata listing <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/pull/4077">#4077</a> [lake/hudi] Use a clean lake table schema for Hudi lake storage <span class="author">@fhan688</span> </li><li><a href="https://github.com/apache/fluss/pull/4076">#4076</a> [hotfix][docs] Fix typos in JavaDoc and comments <span class="author">@Rango-2017</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4091">#4091</a> [rust][python] PyPI and crates.io artifacts are missing LICENSE and NOTICE <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/4056">#4056</a> [flink] Lake reads may fail when UNION branches use different pushdowns <span class="author">@Shawn-Hx</span> </li><li><a href="https://github.com/apache/fluss/issues/4012">#4012</a> [server] Orphan log segments from full truncation can prevent tablet server recovery <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/issues/4010">#4010</a> [rust] Batch statistics write wiring <span class="author">@leekeiabstraction</span> </li><li><a href="https://github.com/apache/fluss/issues/4009">#4009</a> [rust] Batch statistics read wiring <span class="author">@leekeiabstraction</span> </li><li><a href="https://github.com/apache/fluss/issues/3987">#3987</a> [c++] Support bounded RecordBatch log reads <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/issues/3967">#3967</a> [rust] fluss-rs requires a system protoc to build <span class="author">@seokjin0414</span> </li><li><a href="https://github.com/apache/fluss/issues/3903">#3903</a> [FIP-27] Support clean and legacy Iceberg lake table schemas <span class="author">@luoyuxia</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4090">#4090</a> [rust][python] Add LICENSE and NOTICE to the published artifacts <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/4074">#4074</a> [rust] Wire batch statistics into the log batch write and read paths <span class="author">@leekeiabstraction</span> </li><li><a href="https://github.com/apache/fluss/pull/4059">#4059</a> [flink] Fix LakeSource copy isolation <span class="author">@Shawn-Hx</span> </li><li><a href="https://github.com/apache/fluss/pull/4019">#4019</a> [lake/iceberg] Support clean and legacy Iceberg lake table schemas <span class="author">@fhan688</span> </li><li><a href="https://github.com/apache/fluss/pull/4013">#4013</a> [server] Fix orphan segments after full truncation <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/pull/3988">#3988</a> [c++] Add bounded RecordBatch log reader APIs <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/pull/3874">#3874</a> [rust] Check in generated protobuf code and drop protoc requirement <span class="author">@seokjin0414</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
