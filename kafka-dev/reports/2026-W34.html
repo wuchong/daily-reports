@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafka 社区周报 | 2026-W34</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Kafka 社区周报 | 2026-W34</h1>
+            <p class="date-range">2026-08-17 ~ 2026-08-23</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (2)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/rggt3do8965c867xf9x3w9vr2podndn8">Code freeze for Apache Kafka 4.4.0</a></li>
+<li><a href="https://lists.apache.org/thread/1p74grht5vp1d7trowj97x3m9hz76zbx">New committer: Jiunn-Yang Huang</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (4)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/ow8p1n05rob9n3k4b7xw8m8zqx4molbl">KIP-1349 Bytes-based configurable snapshot frequency for share groups</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/djpb63qzxfk4jjlzq24yowqd0m65b8yy">KIP-1362: Add a rollback-compatible storage format option for KRaft migration</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/oqtf030dym1ktyz3rwy7sv265pyjv3zw">4.4.0 RC0</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/52hht8pgyo31sk61zg4q4w6tmho0m32z">KIP-1312: Support unregistering controllers</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/9k1jobl766lrtvvhbhcxrjfrlrsdwjng">KIP-1266 Bounding The Number Of RemoteLogMetadata Messages via Compacted RemoteLogMetadata Topic</a></h3>
+            <p class="meta">5 条回复 · 3 位参与者</p>
+            <p class="summary">讨论围绕 KIP-1266 如何通过压缩（compaction）机制限制 __remote_log_metadata 主题中元数据消息数量展开，核心难点在于现有无键记录如何安全迁移到压缩主题而不丢失数据。Luke Chen 强调默认 retention.ms=-1 的用户同样需要迁移方案，Lijun Tong 认为系统无法自动判断元数据是否仍需要，最终依赖运维人员配置，Kamal 提出分阶段兼容与外部迁移脚本的方案。</p>
+            <div class="key-points"><p><strong>@Lijun Tong:</strong> 旧无键记录可通过现有 retention.ms 自然过期，若去掉迁移中的 retention 步骤，可简化为直接检查消息格式后决定是否启用 compaction，版本仅 0/1 两种。</p>
+<p><strong>@Luke Chen:</strong> 认为不能接受用户因 retention.ms=-1 就不迁移，因为无人真正接受无限增长的主题；目标是让现有 -1 用户无数据丢失地迁移到压缩主题，并提出快照、重写无键记录、后台安全删除检查等思路。</p>
+<p><strong>@Kamal Chandraprakash:</strong> 建议新记录带 key、tombstone 放特性开关后、新主题默认 compact、旧主题不自动改策略，并提供外部脚本帮助安全迁移。</p></div>
+            <p class="conclusion">初步方向是新写入的元数据记录带 key，新集群/主题可采用 compact 策略；对存量集群不自动变更 cleanup policy，需要进一步设计安全迁移或检查机制，下一步是完善无数据丢失的迁移/校验方案。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/bqsxo2bcc53s5b9qw9dk10x900g5pk9n">Beam's new Kafka Streams runner: write KS applications in any Beam SDK</a></h3>
+            <p class="meta">3 条回复 · 2 位参与者</p>
+            <p class="summary">Apache Beam 社区合并了一个实验性的 Kafka Streams runner，可将 Beam 管道转换为 Kafka Streams 拓扑，从而允许使用 Python、Go 或 YAML 等非 Java SDK 编写 Kafka Streams 应用。当前主要阻塞点是在 EOS 场景下通过 wall-clock punctuator 关闭 bundle 并转发记录时出现重复输出问题。经社区讨论后，作者认识到不应将 Beam bundle 边界与 Kafka 事务提交边界对齐，计划改为数据驱动的 flush 机制。</p>
+            <div class="key-points"><p><strong>@Junaid:</strong> Beam 的 Kafka Streams runner 已合并，支持通过 Beam 可移植框架用多种语言编写 Kafka Streams 应用；目前在 EOS 下使用 wall-clock punctuator 关闭 bundle 会导致重复输出。</p>
+<p><strong>@Matthias J. Sax:</strong> EOS 主要保证输入消费、输出生产与偏移量提交的原子性，punctuation 尤其 wall-clock 类型不完全适配该模型，且 Kafka 不支持在 commit 前执行特定操作。</p>
+<p><strong>@Matthias J. Sax:</strong> punctuation 后只会设置 commitNeeded 标志，不存在 commitOffsetNeeded 标志；依赖事务提交边界来 flush 缓冲输出的设计不可靠。</p></div>
+            <p class="conclusion">初步结论是原设计试图对齐 Kafka Streams 不暴露的事务提交边界，方向有误；下一步将改为数据驱动的 flush 机制，由 source 发送 flush marker，各阶段在 process() 中收到标记后关闭 bundle，从而避开事务边界问题。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/ld92v5mvh0tmlosvok743sgl8fhvpxdx">KIP-924 Code cleanup for streams partitions assignor KAFKA-16873</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">新贡献者 Naveen 询问 KIP-924 相关的 Streams 分区分配器代码清理任务（KAFKA-16873，移除 INTERNAL_TASK_ASSIGNOR_CLASS 配置）是否有人在做及是否存在阻塞。Matthias J. Sax 回应称没有阻塞，但由于 KIP-1071 将把分配逻辑从客户端迁移到 Broker 端，相关客户端代码最终会被删除，因此当前清理工作价值有限，建议转向其他更适合新贡献者的 Streams 任务。</p>
+            <div class="key-points"><p><strong>@Naveen:</strong> 希望参与 KIP-924 的代码清理工作，计划先弃用再移除 INTERNAL_TASK_ASSIGNOR_CLASS 配置，并请求社区推荐适合新贡献者的方向。</p>
+<p><strong>@Matthias J. Sax:</strong> 认为该清理工作可能属于重复劳动，因为 KIP-1071 未来会删除客户端分配代码，但承认 KIP-1071 尚未完成且移除时间可能在多年后。</p>
+<p><strong>@Matthias J. Sax:</strong> 为 Naveen 提供了多个可参与的 Streams 相关 JIRA 任务，并提醒当前 PR 审核较慢，需要耐心等待。</p></div>
+            <p class="conclusion">初步结论是暂不建议继续推进 KAFKA-16873 的清理工作；下一步行动是 Naveen 转向 Matthias 推荐的其他 Streams 任务并开始贡献。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/zx3hm0wbq42f1y1pjcg7t0zr0lpldwgr">Requesting review of submitted request for jira account - KAFKA</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">Varshini 请求 Kafka 社区协助审核其通过自助门户提交的 Jira 账号申请，以便参与贡献。Mickael Maison 回复表示该申请已经批准。</p>
+            <div class="key-points"><p><strong>@Varshini:</strong> 请求审核其为 Kafka 贡献而提交的 Jira 账号申请，用户名为 varshini，真实姓名为 Sree Varshini S。</p>
+<p><strong>@Mickael Maison:</strong> 确认该 Jira 账号申请已获批准。</p></div>
+            <p class="conclusion">Jira 账号申请已被批准，事项已处理完成。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/lf2gf5d1mxbo680v9w2mfmnp2zv3m0tl">KIP-1313: Client instance ID in all request headers</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">本次讨论围绕 KIP-1313（在所有请求头中加入客户端实例 ID）展开，重点涉及 clientInstanceID 与 clientID 的行为一致性，以及该机制是否适用于客户端直连 controller 的场景。Andrew 已根据反馈更新 KIP 描述，并确认相关规则同样适用于 controller 连接。</p>
+            <div class="key-points"><p><strong>@Jun Rao:</strong> 指出 clientInstanceID 与 clientID 在后续请求中的拒绝策略仍存在不一致，建议统一行为。</p>
+<p><strong>@Andrew Schofield:</strong> 确认 clientInstanceID 是 tagged field，并更新 KIP 说明；同时确认该 KIP 也适用于客户端通过 bootstrap.controller 直接连接 controller 的场景。</p>
+<p><strong>@Luke Chen:</strong> 询问该 KIP 是否适用于 admin client 直接连接 controller 节点，而不仅是先连接 broker 的常规场景。</p></div>
+            <p class="conclusion">初步确认 KIP-1313 适用于 client 到 controller 的连接；后续需继续完善 clientInstanceID 与 clientID 的行为一致性描述。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/fdvw4tjfkq7pxdp8glcsncqp3fysybrn">[PR] Added Jiunn-Yang Huang image and entry in committers.json [kafka-site]</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">该邮件讨论涉及 Kafka 社区站点仓库中新增 Jiunn-Yang Huang 的头像和 committers.json 条目。m1a2st 提交了 PR #906，随后由 chia7712 合并。</p>
+            <div class="key-points"><p><strong>@m1a2st:</strong> 提交 PR #906，用于添加 Jiunn-Yang Huang 的头像及 committers.json 条目。</p>
+<p><strong>@chia7712:</strong> 合并了该 PR，完成新增提交者信息的变更。</p></div>
+            <p class="conclusion">PR 已被合并，Jiunn-Yang Huang 的头像和提交者信息已添加到 kafka-site。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/hflr4b83hn35xpmqln2qdvgd87qz7c0r">[PR] KAFKA-20974: Restore missing GitHub profile links in committers.json [kafka-site]</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">本次讨论围绕 Kafka 社区网站仓库的 PR #907 展开，目标是恢复在迁移到 committers.json 过程中丢失的 committer GitHub 个人主页链接。该 PR 由 majialoong 提出，并依据原始 committers.html 内容进行修复。</p>
+            <div class="key-points"><p><strong>@majialoong:</strong> 提交 PR #907，用于恢复迁移到 committers.json 时丢失的 GitHub profile 链接，并以原始 committers.html 作为依据。</p>
+<p><strong>@chia7712:</strong> 审核并合并了 PR #907，确认该修复可以落地。</p></div>
+            <p class="conclusion">该 PR 已被合并，GitHub profile 链接缺失问题已完成修复，无需进一步讨论。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/lf5w92kfgmftcxj6ox72cwdkpnjb5ph5">4.4.0 Release Manager</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">邮件讨论围绕 Kafka 4.4.0 版本的发布管理，重点是多个针对 4.4 的 blocker 修复和小改动是否应从 trunk cherry-pick 到 4.4 分支。多位贡献者提交并合并了修复或低风险改动，发布管理者确认可以合入 4.4。</p>
+            <div class="key-points"><p><strong>@Andrew Schofield:</strong> 已合并一个解决 4.4 blocker 的 PR 到 trunk，并认为应同步 cherry-pick 到 4.4 分支。</p>
+<p><strong>@Chia-Ping Tsai:</strong> 审核并已将 Bill Bejeck 提出的一行低风险改动 cherry-pick 到 4.4。</p>
+<p><strong>@Bill Bejeck:</strong> 提出将多个小改动（包括文档和 blocker 修复）cherry-pick 到 4.4，并已合并相关修复。</p></div>
+            <p class="conclusion">相关低风险修复和文档改动被允许或已经 cherry-pick 到 4.4 分支，以推进 4.4.0 发布。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/r1pn0s55rrpvcl580hpt00cmyp3jp2t4">KIP-1027 Add MockFixedKeyProcessorContext</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">该讨论围绕 KIP-1027（新增 MockFixedKeyProcessorContext）是否仍有人推进并进入投票阶段展开。社区成员确认 KIP 基本成熟，主要遗留问题是更新目标发布版本，随后推动发起 VOTE 线程以获得批准。</p>
+            <div class="key-points"><p><strong>@Christopher Moyer:</strong> 询问是否仍有人负责该 KIP；若无人推进，他愿意更新 wiki 中的目标版本并发起投票。</p>
+<p><strong>@Matthias J. Sax:</strong> 认为根据 Lucas 的反馈该 KIP 已可推进，若无其他待讨论问题，下一步应发起 VOTE 线程。</p>
+<p><strong>@Lucas Brutschy:</strong> 认可 KIP 内容，但指出发布版本仍写为 3.8，需要更新，并表示没有其他意见。</p></div>
+            <p class="conclusion">初步结论是 KIP-1027 已具备推进条件，需要更新目标发布版本，并准备发起正式投票。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/ym7jl3skr2vo5syj0vjj81xl2r7l4c9j">[PR] MINOR: Add 4.4 release [kafka-site]</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">OmniaGM 在 Kafka 邮件列表中发起了一个针对 kafka-site 仓库的 Pull Request（#905），主题为添加 4.4 版本发布信息。该邮件为自动通知，未包含具体讨论内容。</p>
+            <div class="key-points"><p><strong>@OmniaGM:</strong> 提交了名为 'MINOR: Add 4.4 release' 的 Pull Request，用于在 kafka-site 项目中添加 Kafka 4.4 版本的发布信息。</p></div>
+            <p class="conclusion">暂无明确结论或下一步行动，需进一步查看 GitHub PR 页面以了解具体变更和评审进展。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (41)</h2>
+            
+    <p>本周新建 <strong>41</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周 Kafka JIRA 主要涉及 Kafka Streams 测试依赖清理与文档完善、KRaft/Controller 及消费者组稳定性问题修复，以及 RemoteLogManager、Connect 重试、静态消费者围栏等潜在缺陷与资源泄漏问题的跟进。同时还包含若干安全扫描、配置项标记、系统测试与构建脚本维护等工程改进事项。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Kafka Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
