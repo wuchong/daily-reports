@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-08-26</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-08-26</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 3 新 Issues</div>
+            <div class="stat">✅ 4 关闭</div>
+            <div class="stat">✨ 7 新 PRs</div>
+            <div class="stat">🎉 8 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/3521">PR #3521</a> 合并 Flink 2.3 支持（原 blocker 级别），完成 SinkAdapter 回归测试和 lookup join 修复</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4001">PR #4001</a> 合并 [FIP-28] 主键写入历史分区支持，为端到端历史分区写入奠定基础</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4078">PR #4078</a> 合并 [FIP-49] Gateway 后端运行时、集群发现和元数据列表功能</li><li>🚀 <a href="https://github.com/apache/fluss/pull/4093">PR #4093</a> 升级 Paimon 版本至 2.0.0，提升湖仓集成能力</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4109">PR #4109</a> 合并 Rust 客户端 Filter Pushdown 集成测试</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3436">Issue #3436</a> Add Admin API and sys procedure to describe bucket metadata</h4>
+            <ul><li><span class="author">@wuchong</span>: 请求 @swuferhong 审阅该 issue 及新增的 bucket 信息 API</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3955">Issue #3955</a> [Improvement] Share Paimon historical lookup disk cache across tables</h4>
+            <ul><li><span class="author">@zuston</span>: 分析发现 Paimon lookup cache 按实例隔离，建议先在 Paimon 中支持共享缓存机制</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3989">Issue #3989</a> HA Coordinator Documentation</h4>
+            <ul><li><span class="author">@striver619</span>: 指引参考分布式集群部署和 Docker 部署文档</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4066">Issue #4066</a> CHAR columns are accepted for statistics but never collect min/max</h4>
+            <ul><li><span class="author">@beetle0915</span>: 首次贡献，请求审阅实现和测试覆盖率</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4102">Issue #4102</a> [lake][paimon] Maintain lakestream.enabled with lake acceleration state</h4>
+            <ul><li><span class="author">@fhan688</span>: 同意接手该任务</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4117">Issue #4117</a> [client] Expose all coordinator servers (leader and standbys) via the client API</h4>
+            <ul><li><span class="author">@striver619</span>: 指出已有相关 PR #4111 涉及 Coordinator HA 文档</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3391">PR #3391</a> [server] Add per-tablet-server sender retry framework</h4>
+            <ul><li><span class="author">@swuferhong</span>: 详细审查连接失效处理逻辑，建议失败时保持队头重试而非丢弃；指出指标命名应使用 snake_case；建议配置项名称更明确</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3521">PR #3521</a> [flink] add support for flink 2.3</h4>
+            <ul><li><span class="author">@sd4324530</span>: 感谢帮助，解释了 lookup join 的 SinkUpsertMaterializer 问题，补充了级联和非确定性函数测试</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3635">PR #3635</a> [lake] Support partition mark-done for lakehouse tiering (processing-time)</h4>
+            <ul><li><span class="author">@leonardBang</span>: 建议在返回 true 前验证 mark-done 配置完整性；指出 JSON 序列化丢弃未知字段可能影响滚动降级兼容性</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3930">PR #3930</a> [flink] Spill cdc log to rocksDB for pk batch read in case of OOM.</h4>
+            <ul><li><span class="author">@leonardBang</span>: 复现堆耗尽问题，建议基于字节阈值触发 spill；发现 SortMergeReader 零输出时迭代器资源泄漏</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3950">PR #3950</a> [rust] Validate append_arrow_batch nullability before enqueue</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 询问切片批次处理、builder 检查是否重复、TypedColumn::build 优化</li><li><span class="author">@charlesdong1991</span>: 确认 builder 检查非重复，已修复切片批次问题并扩展类型覆盖</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4001">PR #4001</a> [server] Support primary-key writes to historical partitions</h4>
+            <ul><li><span class="author">@wuchong</span>: 建议将 PartitionGetter 提取到 fluss-common；质疑写锁使用；要求补充 javadoc 并重命名 encodedPrimaryKey</li><li><span class="author">@luoyuxia</span>: 因有后续依赖 PR，自行合并</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4022">PR #4022</a> [flink] Support bounded streaming read for Fluss source</h4>
+            <ul><li><span class="author">@leonardBang</span>: 建议一次性发现失败应抛出异常以便 Flink 重启；要求保留旧构造函数避免二进制兼容性破坏；建议 BoundedOptions 不可变化</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4036">PR #4036</a> [c++] Create C++ bindings for log filter pushdown</h4>
+            <ul><li><span class="author">@naivedogger</span>: 通知 batch statistics 已接入，请求审阅</li><li><span class="author">@fresh-borzoni</span>: 指出缺少 Decimal/Timestamp 字面量测试；Equal() 数值重载有歧义；建议用 cxx 生成枚举避免重复映射</li><li><span class="author">@leekeiabstraction</span>: 同意枚举生成方案</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4050">PR #4050</a> [server] Remove lookup lock for PaimonLakeTableLookuper</h4>
+            <ul><li><span class="author">@zuston</span>: 请求审阅，已在初始基准测试中验证</li><li><span class="author">@Copilot</span>: 建议添加并发测试验证线程安全；指出文档描述与实现不一致</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4073">PR #4073</a> [build] Relocate shaded jackson and other internal deps in fluss-fs-s3</h4>
+            <ul><li><span class="author">@Jackeyzhe</span>: 已提交 #4116 跟踪 fluss-filesystems 整体 shading 泄漏问题</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4104">PR #4104</a> [FIP-49][gateway] Add schema-aware JSON and Arrow row codecs for FIP-49 data types</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 指出 MAP 复杂键解码错误处理不当；JSON 数值类型强转不一致；CHAR 未校验长度；建议支持 MAP 对象格式</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4107">PR #4107</a> [gateway] Add catalog and DDL backend operations with REST APIs</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 要求区分不同错误消息；指出 nullable 主键应拒绝而非静默修改；质疑 config 读写不一致；建议拒绝 table. 前缀</li><li><span class="author">@naivedogger</span>: 指出 post-commit 读取失败不应覆盖已成功写入；validate_only 缺少服务端校验</li><li><span class="author">@beryllw</span>: 已移除 post-mutation 读取，改为返回 Location 头；说明 validate_only 当前限制</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4109">PR #4109</a> [rust] Filter pushdown integration test</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 建议覆盖更多类型编码和 null 场景；先断言未过滤扫描器可见全部行</li><li><span class="author">@leekeiabstraction</span>: 已添加断言；解释当前未暴露 offset 故无法直接断言偏移推进</li><li><span class="author">@charlesdong1991</span>: 建议断言 bucket offset 推进以证明过滤生效</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4111">PR #4111</a> Fluss Documentation add CoordinatorServer High Availability (HA) Setup</h4>
+            <ul><li><span class="author">@striver619</span>: 请求 @wuchong 和 @luoyuxia 审阅 Coordinator HA 文档</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4119">#4119</a> [FIP-28] Complete end-to-end historical partition writes <span class="author">@luoyuxia</span> <span class="labels">component=client, component=server, component=lake, component=lake/paimon, priority=normal</span></li><li><a href="https://github.com/apache/fluss/issues/4117">#4117</a> [client] Expose all coordinator servers (leader and standbys) via the client API <span class="author">@affo</span> </li><li><a href="https://github.com/apache/fluss/issues/4116">#4116</a> [build] fluss-filesystems uber-jars ship unshaded jackson + guava that can shadow downstream dependencies <span class="author">@Jackeyzhe</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4120">#4120</a> [client][server][paimon] Complete historical partition writes <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/pull/4118">#4118</a> [lake/paimon] Maintain lakestream.enabled with lake acceleration state <span class="author">@fhan688</span> </li><li><a href="https://github.com/apache/fluss/pull/4115">#4115</a> [helm] First-class coordinator HA: standby-aware readiness gate <span class="author">@morazow</span> </li><li><a href="https://github.com/apache/fluss/pull/4114">#4114</a> [helm] Support multi-disk data.dirs for tablet servers <span class="author">@morazow</span> </li><li><a href="https://github.com/apache/fluss/pull/4113">#4113</a> [server] Add support of sharable file cache capacity for historical partition lookup <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/pull/4112">#4112</a> [docs] Document clean lake schemas and rolling upgrade requirements <span class="author">@fhan688</span> </li><li><a href="https://github.com/apache/fluss/pull/4111">#4111</a> Fluss Documentation add CoordinatorServer High Availability (HA) Setup <span class="author">@striver619</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4094">#4094</a> [client] Reduce connection setup timeouts for faster metadata recovery. <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/issues/4067">#4067</a> [FIP-49][gateway] Add the Gateway backend runtime, cluster discovery, and metadata listing <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/issues/3633">#3633</a> [FIP-28] Support writing to historical partitions <span class="author">@luoyuxia</span> <span class="labels">component=client, component=server, component=lake, component=lake/paimon, priority=normal</span></li><li><a href="https://github.com/apache/fluss/issues/3520">#3520</a> [flink] support flink 2.3 <span class="author">@sd4324530</span> <span class="labels">priority=blocker</span></li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4109">#4109</a> [rust] Filter pushdown integration test <span class="author">@leekeiabstraction</span> </li><li><a href="https://github.com/apache/fluss/pull/4096">#4096</a> [server] Remove unused option of `server.io.tmpdir` <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/pull/4095">#4095</a> [client] Reduce connection setup timeouts for faster metadata recovery. <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/pull/4093">#4093</a> [lake/paimon] Bump Paimon version to 2.0.0 <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/pull/4078">#4078</a> [FIP-49][gateway] Add the Gateway backend runtime, cluster discovery, and metadata listing <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/pull/4077">#4077</a> [lake/hudi] Use a clean lake table schema for Hudi lake storage <span class="author">@fhan688</span> </li><li><a href="https://github.com/apache/fluss/pull/4001">#4001</a> [server] Support primary-key writes to historical partitions <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/pull/3521">#3521</a> [flink] add support for flink 2.3 <span class="author">@sd4324530</span> <span class="labels">priority=blocker</span></li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
