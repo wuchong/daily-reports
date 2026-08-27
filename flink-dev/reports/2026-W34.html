@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flink 社区周报 | 2026-W34</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Flink 社区周报 | 2026-W34</h1>
+            <p class="date-range">2026-08-17 ~ 2026-08-23</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (1)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/5054y5nkmr1qsqc7nlgz81q5co1vfynr">New Apache Flink Committer - Weiqing Yang</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (4)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/2tmmoks0gmxhkz8sgtcypz7y3ynkpgfq">Apache Flink Kubernetes Operator Release 1.16.0, release candidate #2</a> <span class="status warning">⚠️ 有异议</span><p class="objection-inline">Dennis-Mircea Ciupitu 提出 -1，原因是 Flink 2.0+ 作业存在持续可见的配置/缓存问题导致误报和 reconcile 线程损耗，且 autoscaler 并行度覆盖会破坏重新部署。</p></li>
+<li><a href="https://lists.apache.org/thread/604nvjx47m0fdf2mcvbyrcqb97g9cc6n">FLIP-604: Complete VARIANT Primitive Coverage with UUID and Timestamps</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/97nwoth5364zdozggnxhtx0b9rc0w2yr">Release flink-shaded 22.0, release candidate #1</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/h6rsxrx291c6pmmqzkt8y56odo1t0gpq">FLIP-595: Differentiate monotonic and non-monotonic counters in Flink metrics</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/p9wr4yt85dq6m9l3zgr6r3yq1vtmqcn6">Use Project Lombok in Flink beyond tests</a></h3>
+            <p class="meta">6 条回复 · 6 位参与者</p>
+            <p class="summary">讨论围绕是否将 Lombok 从测试范围扩展到 Flink 主代码展开，支持者认为可减少样板代码并建议通过根 POM 统一引入，反对者则担忧 JDK 兼容性、维护活跃度及后续迁移成本。后续讨论逐渐转向是否应优先使用 Java 17 records 替代，但受限于当前 Java 11 source level，该方案无法直接落地。</p>
+            <div class="key-points"><p><strong>@Ferenc Csaky:</strong> 支持引入 Lombok，建议在根 POM 统一声明依赖，避免为引入 Lombok 而大规模重构，同时需更新 checkstyle 并限制实验性特性。</p>
+<p><strong>@Martijn Visser:</strong> 倾向反对，认为 Lombok 修补 javac 内部机制会增加 JDK 兼容负担，且后续迁移困难，建议改用 Java 17 records。</p>
+<p><strong>@Samrat Deb:</strong> 承认社区未达成全量采用共识，收窄提案范围，并指出 records 受 Java 11 限制，且对 Builder 或需实现特定接口的类并不完全适用。</p></div>
+            <p class="conclusion">目前未形成全代码库采用 Lombok 的共识，发起人不再推动全面引入；下一步更可能聚焦于小范围、非重构式使用，或等待/结合 Java 17 source level 升级后再评估 records 等原生替代方案。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/rmz3fodovqmf09dnx4v8lmkfzv0xmyjz">FLIP-XXX : Running Flink jobs in MiniCluster using the Kubernetes Operator</a></h3>
+            <p class="meta">4 条回复 · 3 位参与者</p>
+            <p class="summary">讨论围绕 FLIP-XXX 展开，该提案旨在扩展 Flink Kubernetes Operator，使其支持在单 Pod 的 MiniCluster 中运行低吞吐 Flink 作业。核心争议包括是否需要将 MiniCluster 提升为稳定 API、采用独立 CRD 还是复用现有 FlinkDeployment CRD 并新增部署模式，以及启动器（launcher）应放在 Operator 中还是 Flink 发行版中。目前社区倾向于采用 MiniCluster 方案、独立 CRD，并将启动器纳入 Flink 核心发行版。</p>
+            <div class="key-points"><p><strong>@Dale Lane:</strong> 最初认为 Operator 依赖 MiniCluster 需要其 API 提升为 @PublicEvolving，但后来意识到项目中已有使用非稳定 flink-runtime 类的先例，因此质疑该要求是否过于严格。</p>
+<p><strong>@Gyula Fóra:</strong> 支持该提案，建议尽可能复用现有控制器流程和 spec/status；若与 FlinkDeployment 的配置高度重叠，可考虑复用 CRD 并新增部署模式。</p>
+<p><strong>@Dennis-Mircea Ciupitu:</strong> 明确支持 MiniCluster 方案以实现最低资源消耗；主张采用独立 CRD；建议将启动器放入 Flink 发行版以解耦 Operator 与 Flink 版本，并认为其本质接近 `flink run -t local`。</p></div>
+            <p class="conclusion">初步共识是采用 MiniCluster 方案和独立 CRD，启动器应集成到 Flink 发行版中。Dale 计划据此更新 FLIP 文档，并考虑是否需要为 Flink 启动器单独发起 FLIP 讨论。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/dvgv1j3wb2hgp79nyjdy3jvsfs6g1333">FLIP-607: Migrate Flink off end-of-life OkHttp; keep it off the core classpath</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">邮件讨论围绕 FLIP-607 展开，提议将 Flink 从已停止维护的 OkHttp 3.x 迁移，并确保 OkHttp 不进入核心类路径，以解决安全漏洞和依赖升级受阻问题。社区普遍支持该方向，并重点讨论了 Maven enforcer 规则、JDK 版本兼容性以及是否采用 Vert.x 作为替代 HTTP 客户端。</p>
+            <div class="key-points"><p><strong>@Zhe Wang:</strong> 支持迁移方向，建议明确 Maven enforcer 规则边界，使用模块白名单管理例外，并在失败信息中引导开发者使用 JDK HTTP 客户端或隔离的 OkHttp 依赖。</p>
+<p><strong>@Mate Czagany:</strong> 建议在 Kubernetes 客户端工厂中添加运行时 JDK 版本检查，防止低版本 JDK 引发问题；同时提出 Vert.x 5 适配器可作为可行替代方案，尽管会增加分发包体积和维护成本。</p>
+<p><strong>@Martijn Visser:</strong> 说明 enforcer 规则采用默认拒绝策略而非白名单，承诺在发布说明中强调 JDK 11.0.19 要求并添加运行时版本检查；对 Vert.x 5 持保留态度，认为其并非 Fabric8 默认适配器，且希望避免绑定特定规范。</p></div>
+            <p class="conclusion">社区初步支持迁移方向，Martijn 将完善 FLIP 文档、添加运行时 JDK 版本检查并更新发布说明；关于 Vert.x 5 的替代方案仍需进一步评估，但暂不作为默认选择。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/4jgqtyjtg3cqr1x0hvj2vqzy0kbogjtx">FLIP-605: State catch-up of streaming jobs state using BATCH execution mode</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">本次讨论围绕 FLIP-605 提出的利用 BATCH 执行模式完成流作业状态追赶（catch-up）的方案展开，重点是如何在批式追赶阶段创建和提交 savepoint，以及其对 checkpoint 超时、exactly-once sink 和并行度恢复的影响。Piotr Nowojski 对 Roman 和 Mate 提出的问题进行了回应，说明初期方案采用单个覆盖整个批式追赶阶段的 savepoint，并通过复用现有 checkpoint RPC 机制在 task 进入 RUNNING 后触发。</p>
+            <div class="key-points"><p><strong>@Zhe Wang:</strong> 认为该方案对大规模积压数据追赶有价值，但建议在 FLIP 中明确 PendingCheckpoint 的创建时机、超时策略，以及 exactly-once sink 最终 committables 的归属和失败重试时的处理方式。</p>
+<p><strong>@Piotr Nowojski:</strong> 说明初期计划是整个批式追赶阶段只生成一个 savepoint，通常每个 sink 并行子任务会对应一个事务；若作业失败或取消，残留事务会通过 close/dispose 正常中止。</p>
+<p><strong>@Piotr Nowojski:</strong> 解释 checkpoint 触发仍复用现有 CheckpointCoordinator 的 RPC 路径，但触发时机由 task 生命周期驱动，即子任务进入 RUNNING 后再触发，而不是周期性触发。</p></div>
+            <p class="conclusion">讨论初步认可该方案的价值，但认为 FLIP 仍需补充 checkpoint/savepoint 生命周期、超时配置、exactly-once sink 事务语义以及 max parallelism/key-group 兼容性等关键细节。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/x3wyrnzfw949hpmjzvh89j58xjnrs194">FLIP-XXX: Flink Kubernetes Operator Autotuning Redesign</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">本次讨论围绕 Flink Kubernetes Operator Autotuning 的重构方案展开。Dennis 提议将调优决策与扩缩容决策解耦，以解决固定并行度或无需扩缩容作业无法获得调优的问题。Gyula 建议先进行小步重构和流程改进，暂不拆分模块或引入新公共 API，并认为无需单独 FLIP，可用 umbrella JIRA 跟踪。</p>
+            <div class="key-points"><p><strong>@Dennis-Mircea Ciupitu:</strong> 放弃模块拆分和公共可插拔 API，聚焦于在现有 autoscaler 模块内将 tuning 决策与 scaling 决策解耦，使固定并行度作业也能被调优。</p>
+<p><strong>@Gyula Fóra:</strong> 支持先做必要重构和流程改进以增强扩展性，后续再强化逻辑并增加如 RocksDB 内存调优等能力；稳定后再考虑是否拆分模块。</p>
+<p><strong>@Gyula Fóra:</strong> 该改动不破坏 API 也非大型新特性，因此不需要单独 FLIP，建议用 umbrella JIRA 跟踪。</p></div>
+            <p class="conclusion">社区达成初步共识：不采用大重构和独立模块方案，而是以渐进方式在现有 autoscaler 中实现调优与扩缩容解耦。Dennis 已创建 JIRA FLINK-40455 跟踪该工作，并计划在下一个 1.17.0 operator 版本中实现。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/9c0cst85mh3tyq0h4sochyd5nb86opry">FLIP-XXXX: Higher-Order Functions in Flink SQL (TRANSFORM and ARRAY_FILTER)</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕 Flink SQL 高阶函数（TRANSFORM、ARRAY_FILTER 等）的 FLIP 文档展开，核心议题是如何拆分过大的提案范围并完善文档结构。参与者普遍认可方向，但认为当前 85 页文档过于冗长，建议先聚焦基础能力（如 lambda 语法、FUNCTION 类型、代码生成等），再分阶段讨论具体函数设计。</p>
+            <div class="key-points"><p><strong>@Gustavo de Morais:</strong> 建议将 FLIP 拆分为两部分：第一部分聚焦基础能力（lambda 语法、FUNCTION 类型、capture lifting、codegen 等），第二部分讨论具体函数的 API 和形态；同时要求精简文档、增加索引和示例，使其更符合 FLIP 规范。</p>
+<p><strong>@David Anderson:</strong> 支持整体方向和 Gustavo 的建议，认为当前范围过大，单个 FLIP 难以承载所有函数的讨论，应优先解决基础设计问题。</p></div>
+            <p class="conclusion">初步共识是将提案拆分为基础框架和具体函数两个 FLIP，并优先完善基础部分的文档结构（精简内容、添加索引和示例），后续再讨论具体函数设计。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/lx1yhv2lgxy1dyvg0toqdb4yjz8kxojc">[flink-connector-kafka] CI rerun and merge permissions for PR #267 Hi,</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">该邮件讨论了 flink-connector-kafka PR #267 的 CI 重跑权限及合并流程问题。贡献者 Jigar Bhati 询问外部贡献者在 CI 因基础设施或不稳定问题失败时如何请求重跑，以及 PR 获批后是否应由 Flink committer 执行合并。邮件中还包含一条无关的退订请求。</p>
+            <div class="key-points"><p><strong>@jigar bhati:</strong> 询问外部贡献者在 CI 因基础设施或不稳定问题失败时，是否有推荐的方式请求重跑 CI。</p>
+<p><strong>@jigar bhati:</strong> 询问 PR 获得批准后，是否应由 Flink committer 执行合并，还是有其他预期工作流。</p></div>
+            <p class="conclusion">邮件中尚未给出明确结论或后续行动，仅为问题提出阶段。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/oh9m16wdhkf6k9k192dw5voz46ms291r">Splitting FLINK-37357 / PR #26201 into smaller migration tasks</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论围绕如何将 FLINK-37357 / PR #26201 中涉及大量 transformation 迁移的大型 PR 拆分为更小、更易评审的任务。发起人希望确认该迁移方向是否仍被需要，并征求拆分策略及设计、兼容性、测试方面的建议。</p>
+            <div class="key-points"><p><strong>@Hirson Zhang:</strong> 原 PR #26201 范围过大，包含数十个 transformation 的变更，不利于评审，建议拆分为多个独立、自包含的小 PR。</p>
+<p><strong>@Hirson Zhang:</strong> 希望确认该迁移方向是否仍然符合社区需求，并征询应先提交小型代表性 PR 还是预先拆分为多个子任务。</p>
+<p><strong>@Hirson Zhang:</strong> 关注迁移过程中的设计、兼容性和测试问题，并寻求社区反馈与指导。</p></div>
+            <p class="conclusion">目前尚无明确结论，等待社区对迁移方向、拆分策略和潜在风险的反馈。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/qsqxkn8kclzqjwrqly1hm5tv9thxtcmd">FLIP-XXX : Remote Artifact Fetch for Session-Mode Job Submission</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Dale Lane 发起关于 FLIP-XXX（会话模式作业提交的远程构件获取）的讨论。该提案建议将 Flink 现有的远程构件获取能力扩展到会话模式作业提交，使作业可通过 URI 提交，并由 Job Manager 自行获取构件，类似于 Application Mode 集群启动时的行为。</p>
+            <div class="key-points"><p><strong>@Dale Lane:</strong> 提议扩展 Flink 的远程构件获取功能，支持会话模式下通过 URI 提交作业，由 Job Manager 负责获取构件，与 Application Mode 启动时的机制保持一致。</p></div>
+            <p class="conclusion">目前处于讨论发起阶段，尚未形成明确结论，等待社区反馈和进一步讨论。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/27mq661t0tvk4kc4gnr4jysm5dyvdt15">FLIP-604: Complete VARIANT Primitive Coverage with UUID and Timestamps</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">该讨论围绕 FLIP-604 展开，旨在补全 Flink VARIANT 类型对 Parquet Variant 规范中原语类型的支持，新增 TIME、纳秒级时间戳以及 UUID。提案还引入了原生 16 字节 UUID SQL 类型，并支持相关转换、排序、字面量及生成函数，以解决与 Spark、Iceberg 等外部系统互操作的问题。</p>
+            <div class="key-points"><p><strong>@Ramin Gharib:</strong> FLIP-604 补全了 VARIANT 缺失的原语类型，并新增原生 UUID 类型，以支持 lakehouse 场景下的数据往返兼容性。</p>
+<p><strong>@Ramin Gharib:</strong> 新提案无需升级 Calcite，因为当前 Flink 已使用支持 UUID 类型的 Calcite 1.41。</p></div>
+            <p class="conclusion">所有反馈已整合，讨论趋于一致，Ramin 将很快发起投票线程。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (34)</h2>
+            
+    <p>本周新建 <strong>34</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周 JIRA 主要集中在 Autoscaler 与 Kubernetes Operator 的稳定性及兼容性问题，包括自动扩缩容逻辑解耦、Savepoint 重部署异常和 Flink 2.x 配置解析等。同时涉及多个核心运行时与 SQL 功能修复，如异步算子结果丢失、水位线停滞、Upsert Sink 回撤语义异常以及 JSON 函数类型扩展。此外还包括 CI/测试基础设施优化、依赖升级、构建可复现性改进以及 Python 发布支持调整等工程化工作。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Flink Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
