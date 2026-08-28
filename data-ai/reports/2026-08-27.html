@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data+AI 全球日报 | 2026-08-27</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Data+AI 全球日报 | 2026-08-27</h1>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="top-changes">
+            <h2>🔥 今日最重要的3个变化</h2>
+            <ol><li><strong>AWS Glue 6.0 支持 Apache Iceberg v3 新特性</strong> — AWS Glue 6.0 与 Apache Spark 4.1 引入 Iceberg v3 的 geospatial、VARIANT、纳秒时间戳和 DEFAULT 列值，增强湖仓对复杂遥测与半结构化数据的支持。</li><li><strong>Amazon MQ 多 OAuth 身份提供方实践落地</strong> — Picnic 在 Amazon MQ for RabbitMQ 上同时接入 Keycloak 与 AWS IAM，为消息总线消除静态凭据，提供数据管道零信任身份参考。</li><li><strong>ClickHouse 重述 Observability 竞争逻辑</strong> — ClickHouse 回应“赢得可观测性战争”的讨论，强调数据库引擎优势并不等同于完整可观测性平台胜利。</li></ol>
+            <p class="judgment"><strong>总判断：</strong>今日信号显示，Data+AI 基础设施竞争正从单纯查询与存储能力，转向复杂数据类型支持、身份安全和可观测性平台化。云厂商继续强化湖仓与消息管道的底层能力，而数据库厂商则试图通过叙事和生态争夺 Observability 场景入口。</p>
+        </section>
+
+        <section class="top-signals">
+            <h2>📡 重要信号</h2>
+            
+    <article class="news-item">
+        <h3>AWS Glue 6.0 支持 Apache Iceberg v3 关键新特性</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/build-with-geospatial-and-variant-types-in-iceberg-v3-on-aws-glue-6-0/">AWS Big Data Blog</a></p>
+        <p class="date">2026-08-27</p>
+        <p class="summary">AWS 发布博客称，AWS Glue 6.0 搭配 Apache Spark 4.1 支持 Apache Iceberg v3，包括原生 geospatial 类型、纳秒精度时间戳、VARIANT 类型和 DEFAULT 列值。文章以车联网车队遥测管道为例，展示如何在单张 Iceberg v3 表中同时处理位置数据、事件负载、半结构化数据和高精度时间序列。</p>
+        <div class="impact">📊 数据平台影响：AWS 将 Iceberg v3 复杂类型引入 Glue，将增强湖仓对 IoT、日志、半结构化与地理空间数据的统一建模能力，也可能进一步推动 Iceberg 成为 AWS 数据湖生态的核心表格式。</div>
+    </article>
+        </section>
+
+        <section class="product-tech">
+            <h2>💻 产品与技术</h2>
+            
+    <article class="news-item">
+        <h3>Picnic 在 Amazon MQ for RabbitMQ 上配置多 OAuth 提供方</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/how-picnic-configured-multiple-oauth-providers-for-amazon-mq/">AWS Big Data Blog</a></p>
+        <p class="date">2026-08-27</p>
+        <p class="summary">AWS 博客介绍 Picnic 将 Amazon MQ for RabbitMQ 作为数百个微服务的消息总线，并配置同一个 broker 信任多个 OAuth 2.0 身份提供方：运维人员使用 Keycloak，服务身份使用 AWS IAM。该方案在保持访问控制的同时消除静态凭据。</p>
+        <div class="impact">📊 数据平台影响：该实践为数据平台的消息层提供零信任身份模板，有助于数据管道、事件流和微服务通信从静态密钥管理转向联邦身份、短期凭据和细粒度授权。</div>
+    </article>
+        </section>
+
+        <section class="people-views">
+            <h2>👤 人物与观点</h2>
+            
+    <article class="news-item">
+        <h3>ClickHouse 回应：是否正在赢得 Observability 战争？</h3>
+        <p class="sources">📌 <a href="https://clickhouse.com/blog/is-clickhouse-winning-the-observability-wars">ClickHouse Blog</a></p>
+        <p class="date">2026-08-27</p>
+        <p class="summary">ClickHouse 博客围绕“ClickHouse 正在赢得可观测性战争”的说法进行反思，分析其成为领先存储与查询引擎的原因，同时指出短板，并强调赢得数据库层并不等于赢得完整可观测性市场。</p>
+        <div class="impact">📊 数据平台影响：这表明高吞吐日志、指标和追踪分析正成为数据平台竞争焦点，但企业最终需要采集、管道、查询、可视化、告警和治理的完整能力，而非单一引擎性能。</div>
+    </article>
+        </section>
+
+        <section class="analyst-insights">
+            <h2>📊 分析师洞察</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="watchlist">
+            <h2>👀 观察列表</h2>
+            
+    <article class="watchlist-item">
+        <h3>Iceberg v3 在 AWS 生态的落地速度</h3>
+        <span class="status">待观察</span>
+        <p class="reason">AWS Glue 6.0 已支持 Iceberg v3 的 geospatial、VARIANT 等新特性，但生产采用仍取决于 catalog、权限、引擎兼容性和迁移成本。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>Athena、EMR、Redshift 或第三方引擎对 Iceberg v3 新特性的进一步支持及更多客户案例。</p>
+    </article>
+    <article class="watchlist-item">
+        <h3>ClickHouse 在可观测性分析层的位置</h3>
+        <span class="status">待观察</span>
+        <p class="reason">ClickHouse 正强化 Observability 叙事，但需要证明其在采集、可视化、告警和运维工作流中的生态整合能力。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>官方 benchmark、托管服务增强，或与 OpenTelemetry、Grafana 等生态的更深集成。</p>
+    </article>
+    <article class="watchlist-item">
+        <h3>消息层零信任身份实践扩散</h3>
+        <span class="status">待观察</span>
+        <p class="reason">Picnic 展示 Amazon MQ 多 OAuth 提供方方案，可能影响数据管道和事件流的安全架构设计。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>AWS 是否推出更托管的 Amazon MQ OAuth/IAM 集成模板、自动化配置或最佳实践。</p>
+    </article>
+        </section>
+
+        <section class="stock-analysis">
+            <h2>📈 股票分析</h2>
+            <p class="disclaimer">⚠️ 以下内容仅供参考，不构成任何投资建议。投资有风险，入市需谨慎。</p>
+            
+    <article class="stock-item">
+        <div class="stock-header">
+            <span class="ticker">AMZN</span>
+            <span class="company">Amazon</span>
+            <span class="signal signal-neutral">⚪ 中性</span>
+        </div>
+        <p class="stock-summary">AWS 发布 Glue 6.0 对 Iceberg v3 新特性的支持，并展示 Amazon MQ 多 OAuth 配置，属于数据与安全生态增强，对短期财务影响有限，但有利于提升 AWS 数据平台服务粘性。</p>
+        <div class="stock-details">
+            <div class="catalysts">
+                <strong>🚀 催化剂</strong>
+                <ul><li>AWS 数据湖与 AI 基础设施需求增长</li><li>Iceberg v3 生态扩展</li><li>企业安全合规与零信任需求提升</li></ul>
+            </div>
+            <div class="risks">
+                <strong>⚠️ 风险</strong>
+                <ul><li>Databricks、Snowflake 及开源生态竞争</li><li>客户多云策略削弱 AWS 独占性</li><li>AI 基础设施资本开支回报周期不确定</li></ul>
+            </div>
+        </div>
+    </article>
+        </section>
+
+        <footer>
+            <p>Generated by Data+AI Daily Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
