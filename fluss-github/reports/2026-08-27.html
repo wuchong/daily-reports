@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-08-27</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-08-27</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 7 新 Issues</div>
+            <div class="stat">✅ 9 关闭</div>
+            <div class="stat">✨ 8 新 PRs</div>
+            <div class="stat">🎉 8 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/4131">PR #4131</a> [rust] Filter pushdown documentation and example</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4123">PR #4123</a> [lake/tiering] Preserve Arrow column name case in tiering batch writes</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4107">PR #4107</a> [gateway] Add catalog and DDL backend operations with REST APIs</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4104">PR #4104</a> [FIP-49][gateway] Add schema-aware JSON row decoder</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4036">PR #4036</a> [c++] Create C++ bindings for log filter pushdown</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <ul class="critical-list"><li>⚠️ <a href="https://github.com/apache/fluss/issues/2659">Issue #2659</a> [docs] Add a new quickstart tutorial for auto-incremental column and Agg Merge Engine</li></ul>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4117">Issue #4117</a> [client] Expose all coordinator servers (leader and standbys) via the client API</h4>
+            <ul><li><span class="author">@striver619</span>: @affo i already add this pr: https://github.com/apache/fluss/pull/4111 about coordinator ha</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3436">Issue #3436</a> Add Admin API and sys procedure to describe bucket metadata</h4>
+            <ul><li><span class="author">@wuchong</span>: cc @swuferhong , could you help to review this issue and API? This introduces some new APIs for buc…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2669">Issue #2669</a> [docs] Add Real-Time User Profile quickstart tutorial</h4>
+            <ul><li><span class="author">@wuchong</span>: Thanks @pbanakar , the new added diagrams looks good to me. Thanks for the effort!</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4104">Issue #4104</a> [FIP-49][gateway] Add schema-aware JSON row decoder</h4>
+            <ul><li><span class="author">@naivedogger</span>: Thanks @fresh-borzoni for the helpful review! I’ve addressed the comments, PTAL.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4123">Issue #4123</a> [lake/tiering] Preserve Arrow column name case in tiering batch writes</h4>
+            <ul><li><span class="author">@beryllw</span>: @luoyuxia cc</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4036">Issue #4036</a> [c++] Create C++ bindings for log filter pushdown</h4>
+            <ul><li><span class="author">@naivedogger</span>: Thanks @fresh-borzoni and @leekeiabstraction for the review! I’ve addressed the comments, as well a…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4022">Issue #4022</a> [flink] Support bounded streaming read for Fluss source</h4>
+            <ul><li><span class="author">@naivedogger</span>: Thanks @leonardBang for the review! I pushed a commit to address your comments, PTAL when convenien…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3675">Issue #3675</a> [flink] Support custom lookup shuffle by bucket for Flink 2.x</h4>
+            <ul><li><span class="author">@naivedogger</span>: Thanks @loserwang1024 for the detailed review! I have pushed a commit addressing your comments. PTA…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4127">Issue #4127</a> [python] Python bindings - add log filter pushdown</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: @leekeiabstraction @charlesdong1991 @naivedogger PTAL 🙏</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3621">Issue #3621</a> [kv] Add row TTL support</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: > Thanks @platinumhamburg , I left some new comments. @wuchong Thanks, all comments addressed; plea…</li><li><span class="author">@wuchong</span>: I squashed and appended a commit to fix the above issue and improved some code. Please take a look.…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3884">Issue #3884</a> [FLUSS-3553][build] Fix shaded Jackson classes leaking into uber-jars</h4>
+            <ul><li><span class="author">@Jackeyzhe</span>: Thanks @Yohahaha for the review and for verifying locally — glad the root-pom MRJ exclusion fix wor…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3845">Issue #3845</a> [rust] Filter pushdown integration test</h4>
+            <ul><li><span class="author">@leekeiabstraction</span>: Closed by #4109</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4131">Issue #4131</a> [rust] Filter pushdown documentation and example</h4>
+            <ul><li><span class="author">@leekeiabstraction</span>: @fresh-borzoni @charlesdong1991 Appreciate your reviews here 🙏</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3908">Issue #3908</a> [server][client] Support per-partition bucket count for partitioned tables</h4>
+            <ul><li><span class="author">@Kaixuan-Duan</span>: @platinumhamburg Thanks for the thorough re-review. Removed bucketRescaleLocks entirely (all 9 acqu…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4126">Issue #4126</a> [gateway] Add the schema-aware batch write endpoint with per-row outcomes</h4>
+            <ul><li><span class="author">@beryllw</span>: @naivedogger cc</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3950">PR #3950</a> [rust] Validate append_arrow_batch nullability before enqueue</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: could the TypedColumn::build be hoisted out of the loop? it rebuilds per row, and one null containe…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3391">PR #3391</a> [server] Add per-tablet-server sender retry framework</h4>
+            <ul><li><span class="author">@swuferhong</span>: Should we keep this request at the queue head when connection invalidation fails? At this point, th…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3675">PR #3675</a> [flink] Support custom lookup shuffle by bucket for Flink 2.x</h4>
+            <ul><li><span class="author">@loserwang1024</span>: The current `LookupShuffleSourceAdapter` seems more complicated than necessary. It performs capabil…</li><li><span class="author">@naivedogger</span>: Thanks for the suggestion. The previous implementation incorrectly treated custom shuffle as a capa…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4104">PR #4104</a> [FIP-49][gateway] Add schema-aware JSON row decoder</h4>
+            <ul><li><span class="author">@naivedogger</span>: Agreed. MAP<STRING, V> should accept both forms, while non-string keys still require the entry-arra…</li><li><span class="author">@beryllw</span>: LGTM overall. One scope note: since lookups are still listed as Future Work in #3957, the Arrow → J…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4123">PR #4123</a> [lake/tiering] Preserve Arrow column name case in tiering batch writes</h4>
+            <ul><li><span class="author">@luoyuxia</span>: I can't recall why I set it to false. :(</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3860">PR #3860</a> [server] Make timed-out rebalance tasks recoverable</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: Non-blocking: these constants define externally observable operational behavior: how long an unavai…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4036">PR #4036</a> [c++] Create C++ bindings for log filter pushdown</h4>
+            <ul><li><span class="author">@naivedogger</span>: Good catch. I added end-to-end coverage for accepted Decimal, TIMESTAMP, and TIMESTAMP_LTZ literals…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3621">PR #3621</a> [kv] Add row TTL support</h4>
+            <ul><li><span class="author">@wuchong</span>: It's still meaningful to keep this validation?；Is it strictly necessary to guarantee that the log c…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4022">PR #4022</a> [flink] Support bounded streaming read for Fluss source</h4>
+            <ul><li><span class="author">@naivedogger</span>: Good catch. Since bounded reads only perform one-time partition discovery, swallowing the failure c…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3635">PR #3635</a> [lake] Support partition mark-done for lakehouse tiering (processing-time)</h4>
+            <ul><li><span class="author">@leonardBang</span>: Could we preserve readability information when committing the maintenance snapshot here? This call……</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4127">PR #4127</a> [python] Python bindings - add log filter pushdown</h4>
+            <ul><li><span class="author">@leekeiabstraction</span>: Curious why there are two flavours of and/or functions?</li><li><span class="author">@fresh-borzoni</span>: & and | are the primary form, since and/or are keywords and can't be overloaded. The named ones jus…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4126">PR #4126</a> [gateway] Add the schema-aware batch write endpoint with per-row outcomes</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: nit: an upsert?；This and WriteBody describe the same body: one for parsing, one for the docs. I f y…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4098">PR #4098</a> [gateway] Add binary distribution and container release flow</h4>
+            <ul><li><span class="author">@beryllw</span>: gateway.rest.request-timeout gateway.rest.metadata.max-concurrent-requests gateway.cluster.default.…</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4134">#4134</a> Add support of filtering metrics for metrics reporter <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/issues/4132">#4132</a> [KV] Bump RocksDB version to 11.8.1 <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/4129">#4129</a> [server] Support sequence groups in the default merge engine <span class="author">@Kaixuan-Duan</span> </li><li><a href="https://github.com/apache/fluss/issues/4128">#4128</a> [python]  log filter pushdown for python bindings <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/4122">#4122</a> [lake/tiering]Lake tiering fails for append-only tables with upper-case column names <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/issues/4121">#4121</a> [client] Writer job fails after OutOfOrder errors on newly created table partition <span class="author">@litiliu</span> </li><li><a href="https://github.com/apache/fluss/issues/4119">#4119</a> [FIP-28] Complete end-to-end historical partition writes <span class="author">@luoyuxia</span> <span class="labels">component=client, component=server, component=lake, component=lake/paimon, priority=normal</span></li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4135">#4135</a> [observability] Introduce the mechanism of filtering metrics <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/pull/4133">#4133</a> [kv] Bump RocksDB version to 11.8.1 <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/4130">#4130</a> [server] Support sequence groups in the default merge engine <span class="author">@Kaixuan-Duan</span> </li><li><a href="https://github.com/apache/fluss/pull/4127">#4127</a> [python] Python bindings - add log filter pushdown <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/4126">#4126</a> [gateway] Add the schema-aware batch write endpoint with per-row outcomes <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/pull/4125">#4125</a> [client] Retry stale out-of-order responses without resetting writer <span class="author">@litiliu</span> </li><li><a href="https://github.com/apache/fluss/pull/4124">#4124</a> [lake/paimon] Introduce scan-based lake table lookuper <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/pull/4120">#4120</a> [client][server][paimon] Complete historical partition writes <span class="author">@luoyuxia</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4122">#4122</a> [lake/tiering]Lake tiering fails for append-only tables with upper-case column names <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/issues/4083">#4083</a> [FIP-49][gateway] Add schema-aware JSON row decoder <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/issues/4082">#4082</a> [FIP-49][gateway] Add catalog and DDL backend operations with REST APIs <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/issues/4035">#4035</a> [c++] Create C++ bindings for log filter pushdown <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/issues/4021">#4021</a> [flink] Support bounded streaming read for Fluss source <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/issues/3848">#3848</a> [rust] Filter pushdown documentation <span class="author">@leekeiabstraction</span> </li><li><a href="https://github.com/apache/fluss/issues/3845">#3845</a> [rust] Filter pushdown integration test <span class="author">@leekeiabstraction</span> </li><li><a href="https://github.com/apache/fluss/issues/3620">#3620</a> [KV] Support row-level TTL for primary-key tables <span class="author">@platinumhamburg</span> <span class="labels">priority=blocker</span></li><li><a href="https://github.com/apache/fluss/issues/2659">#2659</a> [docs] Add a new quickstart tutorial for auto-incremental column and Agg Merge Engine <span class="author">@wuchong</span> <span class="labels">priority=critical</span></li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4131">#4131</a> [rust] Filter pushdown documentation and example <span class="author">@leekeiabstraction</span> </li><li><a href="https://github.com/apache/fluss/pull/4123">#4123</a> [lake/tiering] Preserve Arrow column name case in tiering batch writes <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/pull/4107">#4107</a> [gateway] Add catalog and DDL backend operations with REST APIs <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/pull/4104">#4104</a> [FIP-49][gateway] Add schema-aware JSON row decoder <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/pull/4036">#4036</a> [c++] Create C++ bindings for log filter pushdown <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/pull/4022">#4022</a> [flink] Support bounded streaming read for Fluss source <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/pull/3621">#3621</a> [kv] Add row TTL support <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/2669">#2669</a> [docs] Add Real-Time User Profile quickstart tutorial <span class="author">@pbanakar</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
