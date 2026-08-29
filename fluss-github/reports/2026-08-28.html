@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-08-28</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-08-28</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 8 新 Issues</div>
+            <div class="stat">✅ 7 关闭</div>
+            <div class="stat">✨ 5 新 PRs</div>
+            <div class="stat">🎉 8 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/4142">PR #4142</a> [gateway] Include concrete path in REST access logs</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4140">PR #4140</a> [docs] Document Paimon tiering issue with externally evolved schema</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4131">PR #4131</a> [rust] Filter pushdown documentation and example</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4127">PR #4127</a> [python] Python bindings - add log filter pushdown</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4126">PR #4126</a> [gateway] Add the schema-aware batch write endpoint with per-row outcomes</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3621">Issue #3621</a> [kv] Add row TTL support</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: > I squashed and appended a commit to fix the above issue and improved some code. Please take a loo…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3908">Issue #3908</a> [server][client] Support per-partition bucket count for partitioned tables</h4>
+            <ul><li><span class="author">@Kaixuan-Duan</span>: @platinumhamburg Thanks for the thorough re-review. Removed bucketRescaleLocks entirely (all 9 acqu…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4126">Issue #4126</a> [gateway] Add the schema-aware batch write endpoint with per-row outcomes</h4>
+            <ul><li><span class="author">@beryllw</span>: @naivedogger cc</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4031">Issue #4031</a> [flink] Batch Log Table scan fix #3972</h4>
+            <ul><li><span class="author">@leekeiabstraction</span>: @binary-signal Thank you for your PR, however this seems like a duplicate, can you check that this…</li><li><span class="author">@binary-signal</span>: @leekeiabstraction it has been resolved, i don't know if it's worth cherry picking from this PR the…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4138">Issue #4138</a> [doc] Update Paimon lake/tiering documentation about on known issue with externally updated schema</h4>
+            <ul><li><span class="author">@leekeiabstraction</span>: Related to #4038 #4112</li><li><span class="author">@gstamatakis95</span>: @leekeiabstraction I believe I can work on this one if it's still an issue. EDIT: Decided to give t…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3941">Issue #3941</a> [lake][follow] Support empty commits for Hudi and Lance to persist tiering progress</h4>
+            <ul><li><span class="author">@beryllw</span>: @fhan688 cc, — just a gentle ping on this one. The current upstream main still has a bug in Hudi ti…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3994">Issue #3994</a> [server] Eliminate global lock for KV tablet creation/deletion/load</h4>
+            <ul><li><span class="author">@zuston</span>: > Am I right that this doesn't change any timing yet? getOrCreateKv, loadKv and dropKv are all reac…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3984">Issue #3984</a> [filesystem] Fix COS STS policy APPID and preserve session credentials</h4>
+            <ul><li><span class="author">@leekeiabstraction</span>: @XuQianJin-Stars Appreciate your review here.</li><li><span class="author">@XuQianJin-Stars</span>: fix the CI pass.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4062">Issue #4062</a> [Bug] Flink Catalog loses nested NOT NULL constraints in complex types</h4>
+            <ul><li><span class="author">@leekeiabstraction</span>: Assigned to you @Rango-2017</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2494">Issue #2494</a> [Umbrella] Support Log RecordBatch Filter Pushdown</h4>
+            <ul><li><span class="author">@leekeiabstraction</span>: @polyzos Are the tasks' statuses up to date? Statistics implementation seemed to be working to me o…</li><li><span class="author">@polyzos</span>: @leekeiabstraction Yes, I think everything should be in place. @platinumhamburg can you also verify?</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4136">Issue #4136</a> [rust] Stop retrying writes after a cached table is dropped</h4>
+            <ul><li><span class="author">@gstamatakis95</span>: I'm willing to work on this one.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4098">Issue #4098</a> [gateway] Add binary distribution and container release flow</h4>
+            <ul><li><span class="author">@naivedogger</span>: @fresh-borzoni Addressed, PTAL.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4142">Issue #4142</a> [gateway] Include concrete path in REST access logs</h4>
+            <ul><li><span class="author">@beryllw</span>: Docker log comparison after sending a write request through the Gateway container: Before: ```text……</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4073">Issue #4073</a> [build] Relocate shaded jackson and other internal deps in fluss-fs-s3</h4>
+            <ul><li><span class="author">@binary-signal</span>: I applied this PR locally on top of `main` (`4e372d5c7`) and can confirm it does what it says: `flu…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4116">Issue #4116</a> [build] fluss-filesystems uber-jars ship unshaded jackson + guava that can shadow downstream dependencies</h4>
+            <ul><li><span class="author">@binary-signal</span>: I reproduced this while working through the same class of leak across the rest of the build, and th…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4127">Issue #4127</a> [python] Python bindings - add log filter pushdown</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: @charlesdong1991 Addressed comments, PTAL 🙏</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3950">Issue #3950</a> [rust] Validate append_arrow_batch nullability before enqueue</h4>
+            <ul><li><span class="author">@charlesdong1991</span>: Hi @fresh-borzoni I presume you meant the second option. ARRAY/MAP now reuse the boxed typed child…</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4127">PR #4127</a> [python] Python bindings - add log filter pushdown</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: & and | are the primary form, since and/or are keywords and can't be overloaded. The named ones jus…</li><li><span class="author">@charlesdong1991</span>: should we need a __bool__ as well? if we have something like `(id >= 1) or (id >= 200)`, will it pu…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4126">PR #4126</a> [gateway] Add the schema-aware batch write endpoint with per-row outcomes</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: nit: an upsert?；This and WriteBody describe the same body: one for parsing, one for the docs. I f y…</li><li><span class="author">@beryllw</span>: fluss-rust currently retries UnknownTableOrBucketException until the deadline, so I filed #4136 and…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4098">PR #4098</a> [gateway] Add binary distribution and container release flow</h4>
+            <ul><li><span class="author">@beryllw</span>: gateway.rest.request-timeout gateway.rest.metadata.max-concurrent-requests gateway.cluster.default.…</li><li><span class="author">@fresh-borzoni</span>: This strips -SNAPSHOT, so 1.1-SNAPSHOT becomes gateway version 1.1.0, --version, the image label an…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3882">PR #3882</a> [server] remove multi-key partitions from cache correctly</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: addPartition just above calls addPartitionToPartitionsByTable. This does the inverse, but inline, s…</li><li><span class="author">@zuston</span>: nice suggestion!；+1. removed</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4029">PR #4029</a> [client] Add Admin API to describe buckets</h4>
+            <ul><li><span class="author">@swuferhong</span>: Nit: would `isr` be a more appropriate field name than `isr_id` here? ISR already represents the co…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3994">PR #3994</a> [server] Eliminate global lock for KV tablet creation/deletion/load</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: The risky case is dropKv racing getOrCreateKv on the same bucket, where the lock is swapped mid-fli…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4112">PR #4112</a> [docs] Document clean lake schemas and rolling upgrade requirements</h4>
+            <ul><li><span class="author">@luoyuxia</span>: **Major:** Could we update the mapping sections and examples below instead of only labeling them as…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4061">PR #4061</a> [server] Add off-loop coordinator health cache (mechanism only)</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: While a bucket is pending activation this snapshot still counts its leader as active, so it says GR…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3785">PR #3785</a> [server][rpc] Return ISR and bucket epoch in bucket metadata</h4>
+            <ul><li><span class="author">@swuferhong</span>: Nit: would `isr` be a more appropriate field name than `isr_id` here? ISR already represents the co…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4141">PR #4141</a> [rust] Stop retrying writes after a cached table is dropped</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: This sweeps by table path, but the entry carries a table_id and get_or_create_deque uses or_insert_…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4135">PR #4135</a> [observability] Introduce the mechanism of filtering metrics</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: getLogicalScope doesn't depend on the reporter, but it's inside the loop. The two-arg version passe…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3950">PR #3950</a> [rust] Validate append_arrow_batch nullability before enqueue</h4>
+            <ul><li><span class="author">@charlesdong1991</span>: per-row rebuild is only on the mixed null path (some list/map rows null), for all-valid path, it bu…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4118">PR #4118</a> [lake/paimon] Maintain lakestream.enabled with lake acceleration state</h4>
+            <ul><li><span class="author">@luoyuxia</span>: RESET removes table.datalake.enabled from the current descriptor. When it is enabled again, createT…</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4145">#4145</a> [Bug][Rust] get_table_info panics on malformed table JSON <span class="author">@slfan1989</span> </li><li><a href="https://github.com/apache/fluss/issues/4143">#4143</a> [build] Unshaded commons, netty and jackson leak from the client, connector, lake and filesystem uber-jars <span class="author">@binary-signal</span> </li><li><a href="https://github.com/apache/fluss/issues/4139">#4139</a> [metrics] Histogram samples never age out, leaving stale percentiles on low-frequency metrics <span class="author">@fxbing</span> </li><li><a href="https://github.com/apache/fluss/issues/4138">#4138</a> [doc] Update Paimon lake/tiering documentation about on known issue with externally updated schema <span class="author">@leekeiabstraction</span> <span class="labels">priority=blocker</span></li><li><a href="https://github.com/apache/fluss/issues/4137">#4137</a> [test] Unstable test Flink22OrphanFilesCleanITCase.mixedOrphanAndActiveFilesInSameBucket <span class="author">@app/github-actions</span> </li><li><a href="https://github.com/apache/fluss/issues/4136">#4136</a> [rust] Stop retrying writes after a cached table is dropped <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/issues/4134">#4134</a> Add support of filtering metrics for metrics reporter <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/issues/4132">#4132</a> [KV] Bump RocksDB version to 11.8.1 <span class="author">@platinumhamburg</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4146">#4146</a> [rust] Return error for invalid table metadata JSON <span class="author">@slfan1989</span> </li><li><a href="https://github.com/apache/fluss/pull/4144">#4144</a> [build] Relocate third-party classes leaking from uber-jars <span class="author">@binary-signal</span> </li><li><a href="https://github.com/apache/fluss/pull/4141">#4141</a> [rust] Stop retrying writes after a cached table is dropped <span class="author">@gstamatakis95</span> </li><li><a href="https://github.com/apache/fluss/pull/4135">#4135</a> [observability] Introduce the mechanism of filtering metrics <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/pull/4133">#4133</a> [kv] Bump RocksDB version to 11.8.1 <span class="author">@platinumhamburg</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4138">#4138</a> [doc] Update Paimon lake/tiering documentation about on known issue with externally updated schema <span class="author">@leekeiabstraction</span> <span class="labels">priority=blocker</span></li><li><a href="https://github.com/apache/fluss/issues/4128">#4128</a> [python]  log filter pushdown for python bindings <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/4085">#4085</a> [FIP-49][gateway] Add the Gateway container image and the release pipeline <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/issues/4084">#4084</a> [FIP-49][gateway] Add schema-aware batch writes with ordered outcomes and admission limits <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/issues/3905">#3905</a> [FIP-27] Document clean lake schemas and rolling upgrade requirements <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/issues/3848">#3848</a> [rust] Filter pushdown documentation <span class="author">@leekeiabstraction</span> </li><li><a href="https://github.com/apache/fluss/issues/3620">#3620</a> [KV] Support row-level TTL for primary-key tables <span class="author">@platinumhamburg</span> <span class="labels">priority=blocker</span></li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4142">#4142</a> [gateway] Include concrete path in REST access logs <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/pull/4140">#4140</a> [docs] Document Paimon tiering issue with externally evolved schema <span class="author">@gstamatakis95</span> </li><li><a href="https://github.com/apache/fluss/pull/4131">#4131</a> [rust] Filter pushdown documentation and example <span class="author">@leekeiabstraction</span> </li><li><a href="https://github.com/apache/fluss/pull/4127">#4127</a> [python] Python bindings - add log filter pushdown <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/4126">#4126</a> [gateway] Add the schema-aware batch write endpoint with per-row outcomes <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/pull/4112">#4112</a> [docs] Document clean lake schemas and rolling upgrade requirements <span class="author">@fhan688</span> </li><li><a href="https://github.com/apache/fluss/pull/4098">#4098</a> [gateway] Add binary distribution and container release flow <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/pull/3621">#3621</a> [kv] Add row TTL support <span class="author">@platinumhamburg</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
