@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-08-29</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-08-29</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 5 新 Issues</div>
+            <div class="stat">✅ 16 关闭</div>
+            <div class="stat">✨ 1 新 PRs</div>
+            <div class="stat">🎉 10 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/4154">PR #4154</a> [rust] Avoid copying the Arrow payload when decoding a batch</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4148">PR #4148</a> [python][cpp] expose arrow schema</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4147">PR #4147</a> [rust] Reject append_arrow_batch columns whose type differs from the table</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4146">PR #4146</a> [rust] Return error for invalid table metadata JSON</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4141">PR #4141</a> [rust] Stop retrying writes after a cached table is dropped</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3984">Issue #3984</a> [filesystem] Fix COS STS policy APPID and preserve session credentials</h4>
+            <ul><li><span class="author">@XuQianJin-Stars</span>: fix the CI pass.</li><li><span class="author">@leekeiabstraction</span>: @damokelis If I gathering correctly hadoop.cos version 3.5.0 requires Java 17, this is thus blocked…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2494">Issue #2494</a> [Umbrella] Support Log RecordBatch Filter Pushdown</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: > <a href="https://github.com/leekeiabstraction">@leekeiabstraction</a> Yes, I think everything should be in p…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2825">Issue #2825</a> [FIP-10] Add Documentation</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: Closed by #4003</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2824">Issue #2824</a> [FIP-10] Integrate Apache Flink</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: Closed by <a href="https://github.com/apache/fluss/pull/3032">PR</a></li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2822">Issue #2822</a> [FIP-10] Extend the Server</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: Closed by <a href="https://github.com/apache/fluss/pull/2951">PR</a></li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2821">Issue #2821</a> [FIP-10] Extend Fluss record to support statistics</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: Closed by <a href="https://github.com/apache/fluss/pull/2886">https://github.com/apache/fluss/pull/2886</a></li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2823">Issue #2823</a> Extend the Java Client</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: Closed by <a href="https://github.com/apache/fluss/pull/2951">https://github.com/apache/fluss/pull/2951</a></li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4147">Issue #4147</a> [rust] Reject append_arrow_batch columns whose type differs from the table</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: @leekeiabstraction @charlesdong1991 PTAL, correctness issue, so I'd better include it into the rele…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4141">Issue #4141</a> [rust] Stop retrying writes after a cached table is dropped</h4>
+            <ul><li><span class="author">@gstamatakis95</span>: Done. `TableNotExist` is in the allowlist in `classify_unknown`, so a dropped table is reported as……</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4146">Issue #4146</a> [rust] Return error for invalid table metadata JSON</h4>
+            <ul><li><span class="author">@slfan1989</span>: > @slfan1989 Thank you for the PR, LGTM 👍 @fresh-borzoni Thanks for the review and for merging this…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4034">Issue #4034</a> [server] Add support of dynamic historical lookup threads and max queued requests reconfiguration</h4>
+            <ul><li><span class="author">@zuston</span>: Could you help review this? @fresh-borzoni</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4148">Issue #4148</a> [python][cpp] expose arrow schema</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: @charlesdong1991 @leekeiabstraction PTAL 🙏；@charlesdong1991 Thank you for the review, addressed, PT…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4154">Issue #4154</a> [rust] Avoid copying the Arrow payload when decoding a batch</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: @leekeiabstraction @charlesdong1991 Also found this optimisation, PTAL 🙏</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4049">Issue #4049</a> [docs] Document Spark scan.maxRecordsPerPartition</h4>
+            <ul><li><span class="author">@leekeiabstraction</span>: @Yohahaha PTAL 🙏</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3882">PR #3882</a> [server] remove multi-key partitions from cache correctly</h4>
+            <ul><li><span class="author">@zuston</span>: +1. removed</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4118">PR #4118</a> [lake/paimon] Maintain lakestream.enabled with lake acceleration state</h4>
+            <ul><li><span class="author">@luoyuxia</span>: RESET removes table.datalake.enabled from the current descriptor. When it is enabled again, createT…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3999">PR #3999</a> [server] Parallelize replica leader transitions</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: The description credits restoring RocksDB from remote snapshots, but initKvTablet already fans that…</li><li><span class="author">@zuston</span>: good point! I have updated the PR description.；added.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4147">PR #4147</a> [rust] Reject append_arrow_batch columns whose type differs from the table</h4>
+            <ul><li><span class="author">@charlesdong1991</span>: so early return will mean that "must accept" cases will pass even if validation rejects them?；can w…</li><li><span class="author">@fresh-borzoni</span>: Good catch, fixed 👍；the first says a batch exists, the second says it parsed as it's an Option<Resu…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4141">PR #4141</a> [rust] Stop retrying writes after a cached table is dropped</h4>
+            <ul><li><span class="author">@gstamatakis95</span>: Fixed, and chasing it went further than the sweep. `fail_batches_for_table` now takes the stale tab…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3977">PR #3977</a> [server] add support of rebuilding KV from local snapshot</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: release() is empty now and SnapshotRunner is its only caller. Remove it?；Can we get the other half:…</li><li><span class="author">@zuston</span>: Good point. This PR only optimizes in-place restarts of the leader TabletServer. Standby promotion……</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4148">PR #4148</a> [python][cpp] expose arrow schema</h4>
+            <ul><li><span class="author">@charlesdong1991</span>: can we also assert the full schema (id + ts, not only ts) and that writing the us batch without cas…</li><li><span class="author">@fresh-borzoni</span>: Yeah, it's me being sloppy - I'll let cpp own the struct</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4154">PR #4154</a> [rust] Avoid copying the Arrow payload when decoding a batch</h4>
+            <ul><li><span class="author">@charlesdong1991</span>: maybe this is actually pub(crate), same as record_batch_for_remote_log</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4028">PR #4028</a> [client] Clean up batches when synchronous sends fail</h4>
+            <ul><li><span class="author">@leekeiabstraction</span>: If I understand correctly, the OOMError is thrown from `MessageCodec.encodeRequest()` called from `…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4049">PR #4049</a> [docs] Document Spark scan.maxRecordsPerPartition</h4>
+            <ul><li><span class="author">@leekeiabstraction</span>: IIUC, this option is not supported in union read mode? Can you confirm? @Yohahaha</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4111">PR #4111</a> Fluss Documentation add CoordinatorServer High Availability (HA) Setup</h4>
+            <ul><li><span class="author">@leekeiabstraction</span>: Can you also update `upgrading.md` where it says the below? ``` 2. Currently, the Fluss `Coordinato…</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4153">#4153</a> [rust] Decoding a log batch copies the whole Arrow payload <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/4152">#4152</a> [rust] append_arrow_batch doesn't check column names or types against the table <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/4151">#4151</a> [cpp][python] Expose the table's Arrow schema on Table <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/4149">#4149</a> Coordinator can advertise a leader before the target tablet server admits the replica, causing NotLeaderOrFollowerException to recur for minutes after a large-table restart <span class="author">@damokelis</span> </li><li><a href="https://github.com/apache/fluss/issues/4145">#4145</a> [Bug][Rust] get_table_info panics on malformed table JSON <span class="author">@slfan1989</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4150">#4150</a> [coordinator] Withhold leader from UpdateMetadataRequest until NotifyLeaderAndIsr is acked <span class="author">@damokelis</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4153">#4153</a> [rust] Decoding a log batch copies the whole Arrow payload <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/4152">#4152</a> [rust] append_arrow_batch doesn't check column names or types against the table <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/4151">#4151</a> [cpp][python] Expose the table's Arrow schema on Table <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/4145">#4145</a> [Bug][Rust] get_table_info panics on malformed table JSON <span class="author">@slfan1989</span> </li><li><a href="https://github.com/apache/fluss/issues/4136">#4136</a> [rust] Stop retrying writes after a cached table is dropped <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/issues/4134">#4134</a> Add support of filtering metrics for metrics reporter <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/issues/4128">#4128</a> [python]  log filter pushdown for python bindings <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/3949">#3949</a> [rust] append_arrow_batch accepts nulls in NOT NULL columns and fails later on scan <span class="author">@charlesdong1991</span> </li><li><a href="https://github.com/apache/fluss/issues/3905">#3905</a> [FIP-27] Document clean lake schemas and rolling upgrade requirements <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/issues/3483">#3483</a> commitLakeTableSnapshot writes stale snapshot path after dropTable, leaving the tiering pipeline permanently stuck <span class="author">@binary-signal</span> </li><li><a href="https://github.com/apache/fluss/issues/2825">#2825</a> [FIP-10] Add Documentation <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/issues/2824">#2824</a> [FIP-10] Integrate Apache Flink <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/issues/2823">#2823</a> Extend the Java Client <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/issues/2822">#2822</a> [FIP-10] Extend the Server <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/issues/2821">#2821</a> [FIP-10] Extend Fluss record to support statistics <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/issues/2494">#2494</a> [Umbrella] Support Log RecordBatch Filter Pushdown <span class="author">@polyzos</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4154">#4154</a> [rust] Avoid copying the Arrow payload when decoding a batch <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/4148">#4148</a> [python][cpp] expose arrow schema <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/4147">#4147</a> [rust] Reject append_arrow_batch columns whose type differs from the table <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/4146">#4146</a> [rust] Return error for invalid table metadata JSON <span class="author">@slfan1989</span> </li><li><a href="https://github.com/apache/fluss/pull/4141">#4141</a> [rust] Stop retrying writes after a cached table is dropped <span class="author">@gstamatakis95</span> </li><li><a href="https://github.com/apache/fluss/pull/4135">#4135</a> [observability] Introduce the mechanism of filtering metrics <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/pull/4127">#4127</a> [python] Python bindings - add log filter pushdown <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/4112">#4112</a> [docs] Document clean lake schemas and rolling upgrade requirements <span class="author">@fhan688</span> </li><li><a href="https://github.com/apache/fluss/pull/3950">#3950</a> [rust] Validate append_arrow_batch nullability before enqueue <span class="author">@charlesdong1991</span> </li><li><a href="https://github.com/apache/fluss/pull/3494">#3494</a> [FLUSS-3483][coordinator] Reject lake snapshot commits for dropped tables <span class="author">@Jackeyzhe</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
