@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spark 社区周报 | 2026-W34</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Spark 社区周报 | 2026-W34</h1>
+            <p class="date-range">2026-08-17 ~ 2026-08-23</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (0)</h2>
+            <p class="empty">本周无公告</p>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (3)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/nozkdbsc7oy69j581qtp9v69wtzv4tdl">SPIP: Add the DECFLOAT data type</a> <span class="status warning">⚠️ 有异议</span><p class="objection-inline">Dongjoon Hyun 提出 -1，原因是该 SPIP 缺少纯 Java 实现作为安全回退方案，且提案在性能、Parquet 和 Arrow 互操作性等细节上尚未充分讨论，整体未准备好进入投票。</p></li>
+<li><a href="https://lists.apache.org/thread/23rolcb5l97tjzszwjn87wm2rhx2spx1">New Apache Spark repository for community-contributed Python Data Sources</a> <span class="status warning">⚠️ 有异议</span><p class="objection-inline">无异议。Wenchen Fan 和 Uroš Bojanić 均投了 +1，未提出 -1 或反对理由。</p></li>
+<li><a href="https://lists.apache.org/thread/pxhb8oqpcvpqs5do5674q8hcyoq0xj1j">Release Apache Spark Connect Rust Client (+ pyspark-client in Rust) 4.2.0 (RC1)</a> <span class="status warning">⚠️ 有异议</span><p class="objection-inline">Hyukjin Kwon 提出 -1，原因是需要先完成关于新增 Python wrapper 和新软件包缺乏事前独立讨论的讨论，再启动 RC2。</p></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/vh21614wrjmr7cdd905qhwbwqd25lmjj">Python wrapper of Rust Connect client</a></h3>
+            <p class="meta">4 条回复 · 3 位参与者</p>
+            <p class="summary">讨论围绕 Rust Spark Connect 客户端的 Python 封装包 pyspark-client-rust 展开，该包提供与现有 PySpark Connect 相同的 API，但底层使用 Rust/tonic 替代 grpcio/py4j。社区关注其作为用户可见包发布时的命名、文档说明及与现有客户端的区分问题。发起人表示将在下一轮 RC 前澄清相关事项。</p>
+            <div class="key-points"><p><strong>@Hyukjin Kwon:</strong> pyspark-client-rust 是与 PySpark 4.2.0 对齐的独立功能包，不修改核心代码，小查询性能更快，计划通过 CI 支持多版本 Spark 服务端。</p>
+<p><strong>@Holden Karau:</strong> 若计划作为 Python 包分发，应先在文档中明确区分两个官方 Connect 客户端，再深入讨论。</p>
+<p><strong>@Adam Binford:</strong> 担心复用 'pyspark' 包名会造成混淆和 bug 报告误判，建议使用独立命名空间，并需同时支持原生与 Rust 客户端以兼容旧版本服务端。</p></div>
+            <p class="conclusion">Hyukjin 决定先终止当前 RC 投票，在发布下一个 RC 前明确文档说明、客户端区分及命名问题，并计划建立类似原 Connect 客户端的 CI 测试。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/bmhhwtjpzsfd3wq1vz8bfwk2wk60976r">[apache-spark] [K8S] Multiple Failed DNS Lookups When Resolving the Driver Hostname in Spark Applications on Kubernetes</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">讨论围绕 Spark on Kubernetes 中 Driver 主机名构造导致的多次无效 DNS 查询问题展开。Shazeb Khan 指出 spark.driver.host 使用 `<service>.<namespace>.svc` 会因 ndots:5 触发两次 NXDOMAIN 查询，建议改为仅使用 Service 名称；Uroš 支持修复并建议提交 JIRA，Dongjoon 则提醒可优先使用 Driver Pod IP 直连的现有特性。</p>
+            <div class="key-points"><p><strong>@Shazeb Khan:</strong> 当前 Driver 主机名格式会因 Kubernetes 默认 ndots:5 和 search domains 产生两次失败 DNS 查询，建议将 spark.driver.host 改为仅使用 Service 名称以减少解析延迟。</p>
+<p><strong>@Uroš Bojanić:</strong> 支持修复该问题，倾向于使用带末尾点的完整 FQDN（可配置域名）作为更稳健方案，也可接受仅用 Service 名作为最小修复，并建议提交普通 K8s JIRA。</p>
+<p><strong>@Dongjoon Hyun:</strong> 建议先尝试现有配置 spark.kubernetes.executor.useDriverPodIP，该能力在 Spark 4.1 引入并将在 4.2 默认启用，可让 executor 直接使用 Driver Pod IP，规避 DNS 解析问题。</p></div>
+            <p class="conclusion">初步建议是提交 K8s 相关 JIRA 继续讨论修复方案；同时可优先评估或启用 spark.kubernetes.executor.useDriverPodIP 作为现有替代方案。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/d1km9c6lf82ww0dyw71qz0wcnnvhqjwx">Does spark-website need a merge script?</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论是否移除 spark-website 仓库中长期未更新的 merge script，并统一改用 GitHub 的 squash and merge 按钮。多数参与者支持删除脚本，认为该脚本对不需要 JIRA 的 spark-website PR 价值有限。</p>
+            <div class="key-points"><p><strong>@Nicholas Chammas:</strong> 建议删除已 7 年未更新的 merge script，并将仓库设置改为仅允许 squash and merge，以统一 PR 合并方式。</p>
+<p><strong>@Uroš Bojanić:</strong> 统计显示近期提交中 GitHub squash 按钮和脚本使用比例接近，脚本没有明显额外价值，支持删除并配置好 squash 设置。</p>
+<p><strong>@Wenchen Fan:</strong> spark-website PR 不需要 JIRA，merge script 收益不大，且发布脚本已有直接推送提交流程，因此支持移除。</p></div>
+            <p class="conclusion">社区初步倾向于删除 spark-website 的 merge script，并仅保留 GitHub squash and merge；后续由提议者提交相关变更并邀请 review。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/nb3wo14j6hpmk52jw8hnfb7vkv6d0ww7">Next step for github issues</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论围绕 Spark 是否以及如何处理 GitHub Issues 与 JIRA 并行的问题展开。Nicholas Chammas 指出近期新贡献者在 PR 标题中引用 GitHub Issue 编号而非 JIRA 编号，说明当前状态造成混淆，并重申了此前关于 GitHub Issues 实验后续方向的几个选项。</p>
+            <div class="key-points"><p><strong>@Nicholas Chammas:</strong> 观察到新贡献者按 PR 模板引用 GitHub Issue 编号而非 JIRA 编号，表明双系统并行带来困惑。</p>
+<p><strong>@Nicholas Chammas:</strong> 个人倾向于选项 5，即至少对新 issue 全面从 JIRA 迁移到 GitHub Issues。</p>
+<p><strong>@Tian Gao:</strong> 此前提出了 5 个后续选项：延长实验期、关闭 GitHub Issues、仅用于讨论、与 JIRA 等价支持、或完全迁移到 GitHub Issues。</p></div>
+            <p class="conclusion">目前尚未形成正式结论；讨论认为现状相当于默认延长了实验期，下一步需要重新评估是否推进 GitHub Issues 与 JIRA 的关系调整。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/gtv08pon447mvyhff20ks5q7fc36v560">Subject: Do people disable S3 lifecycle expiry on Structured Streaming checkpoint dirs?</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Dibyendu Bhattacharya 提出在 Spark Structured Streaming 使用 S3 存储 checkpoint 时，因后台维护任务未能及时生成快照、而 S3 生命周期策略又过期删除旧 delta 文件，导致状态读取失败和 checkpoint 损坏的问题。他计划取消对 checkpoint 前缀的 S3 生命周期过期，并改用基于文件是否仍被引用的清理机制，同时询问社区是否有更安全的保留策略或按查询调整 shuffle 分区的实践经验。</p>
+            <div class="key-points"><p><strong>@Dibyendu Bhattacharya:</strong> S3 生命周期过期可能删除仍被 checkpoint 引用的历史 delta 文件，导致重启时报 'Error reading delta file ... does not exist'，因此基于时间的过期策略存在正确性风险。</p>
+<p><strong>@Dibyendu Bhattacharya:</strong> 后台维护任务若因触发过快或资源不足而落后，系统会依赖从初始版本开始的完整 delta 链，增加被生命周期策略破坏的风险。</p>
+<p><strong>@Dibyendu Bhattacharya:</strong> 建议移除 checkpoint 前缀的 S3 expiry，并改为检查文件是否仍被引用的清理方式，同时考虑按查询调整 spark.sql.shuffle.partitions 作为缓解措施。</p></div>
+            <p class="conclusion">初步倾向是不再对 Structured Streaming checkpoint 目录使用基于时间的 S3 生命周期过期，而采用基于引用关系的清理策略；下一步是征询社区是否有安全的有界保留实践或针对多状态规模查询的参数调优方案。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/q3g9o3vtpylmt66lxktgmg1spt54qkjo">New Apache Spark repository for community-contributed Python Data Sources</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Allison Wang 提议为社区贡献的 Python Data Sources 创建新的 Apache Spark 仓库（apache/spark-python-datasources），用于协作维护可复用的 PySpark Data Source API 实现。讨论中社区普遍支持该提案，并强调应限定范围、避免重蹈 Apache Bahir 因范围蔓延和维护缺失而失败的覆辙。最终因无反对意见，Allison 将联系 PMC 成员创建仓库。</p>
+            <div class="key-points"><p><strong>@Allison Wang:</strong> 提议创建 apache/spark-python-datasources 仓库，为 PySpark Data Source API 提供 Apache 治理下的社区协作空间，而非将这些数据源纳入 Spark 核心。</p>
+<p><strong>@Uroš Bojanić:</strong> 支持该提案，但建议仅限 Python Data Sources，并警惕 Apache Bahir 因范围蔓延和缺乏清理机制导致失败的教训；同时指出 AI 可降低连接器编写成本，但长期维护、审查和安全验证仍需投入。</p></div>
+            <p class="conclusion">提案获得支持且无反对意见，Allison Wang 将与 PMC 成员合作创建新仓库。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/s9c0h2tmf7hk3dl0qv5x4brz0npsl1zr">[NOTICE] The scheduled Apache Spark 4.3.0 RC is approaching.</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Jungtaek Lim 提醒开发者 Apache Spark 4.3.0 RC1 发布时间临近，计划在下周初尽快发布。他呼吁有紧急或关键变更的开发者尽快提出，同时建议优先考虑将非关键变更推迟到 4.4.0 版本。</p>
+            <div class="key-points"><p><strong>@Jungtaek Lim:</strong> Spark 4.3.0 RC1 计划于下周初发布，提醒开发者抓紧合并关键变更。</p>
+<p><strong>@Jungtaek Lim:</strong> 建议非关键变更推迟到 4.4.0，因为两个版本间隔仅 3 个月而非 6 个月。</p></div>
+            <p class="conclusion">即将发布 Spark 4.3.0 RC1，开发者需尽快决定是否合并紧急变更，否则将推迟至 4.4.0。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/5jsglln7xkoko0t24wjckbsbk0n7ttlt">1 SPIP = 1 Markdown file in apache/spark-website/spips/</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论核心议题是将 SPIP 提案统一改为以 Markdown 文件形式存放在 apache/spark-website 的 spips/ 目录，并通过 PR 进行评审和合并。Nicholas Chammas 提出当前 SPIP 分散在 Jira 和 Google Docs 中，建议借鉴 PEP 的做法，用 PR 支持行级评论和讨论，被接受的 SPIP 对应 PR 合并后集中管理。</p>
+            <div class="key-points"><p><strong>@Nicholas Chammas:</strong> SPIP 目前主要是带特殊标签的 Jira ticket，提案和讨论常在 Jira 或 Google Docs 中，建议改为通过 PR 提交 Markdown 文档，以便支持行级评论和集中存储。</p>
+<p><strong>@Nicholas Chammas:</strong> 建议在 apache/spark-website 下新增 spips/ 目录存放所有已接受的 SPIP，仍保留与 Jira ticket 的关联，无需迁移历史 SPIP，也不必在网站上渲染。</p></div>
+            <p class="conclusion">初步建议是未来 SPIP 采用 1 SPIP = 1 Markdown file 的方式，通过 PR 评审并合并到 spips/ 目录，但邮件中尚未形成最终决议或明确下一步行动。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/9w69vwx3kkf948xoc1rsgkzw43gjn9t5">[apache-spark] [K8S] Unnecessary DNS Lookups for Kubernetes API Server Master URL</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论围绕 Spark 在 Kubernetes 集群内运行时对 API Server Master URL 产生不必要 DNS 查询的问题展开。Shazeb Khan 指出默认 master URL `https://kubernetes.default.svc` 会覆盖 Fabric8 客户端基于环境变量自动配置的 IP 地址，导致多次 NXDOMAIN 解析，并提出仅在集群外或显式自定义 master URL 时才覆盖配置的修复方案。</p>
+            <div class="key-points"><p><strong>@Shazeb Khan:</strong> Spark 会无条件用默认的 `https://kubernetes.default.svc` 覆盖 Fabric8 自动获取的集群内 IP 配置，从而引发额外 DNS 查询和 NXDOMAIN 响应。</p>
+<p><strong>@Shazeb Khan:</strong> 建议修改 SparkKubernetesClientFactory：只有在非集群内运行或用户显式指定了自定义 master URL 时才调用 `withMasterUrl`。</p>
+<p><strong>@Shazeb Khan:</strong> 该修复可保留外部提交或跨集群场景下用户提供的 master 配置，同时消除默认集群内场景的不必要 DNS 解析。</p></div>
+            <p class="conclusion">邮件内容未包含社区反馈或最终结论，当前进展为问题提出与修复方案征集意见阶段；下一步是等待社区确认该方案是否为正确修复方向。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/pk3wbxyxr0vz37z4t6mr4p8ml1bfdjy4">For Kind attention: An issue of ClassCastException</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Asif Shahid 报告了 Spark 中一个与计划缓存相关的 ClassCastException 问题（SPARK-59114），认为该问题虽然不在简单场景中显现，但较为严重，并计划尽快提交 PR。讨论核心是可复用的 Spark 执行计划可能与当前 SQL 配置不兼容，从而引发异常。</p>
+            <div class="key-points"><p><strong>@Asif Shahid:</strong> 已提交 JIRA SPARK-59114，计划提交 PR，提醒社区避免重复处理该问题。</p>
+<p><strong>@Asif Shahid:</strong> 问题根源在于缓存/可复用的 Spark 计划可能与当前 SQL Conf 不兼容，导致 ClassCastException。</p></div>
+            <p class="conclusion">初步认为这是一个有效且较严重的 bug，修复可能简单也可能取决于更优雅的修复位置；下一步是等待 PR 提交并围绕原始 JIRA 跟进解决。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (0)</h2>
+            
+    <p>本周新建 <strong>0</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周无新建 JIRA。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Spark Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
