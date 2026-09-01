@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-08-31</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-08-31</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 7 新 Issues</div>
+            <div class="stat">✅ 7 关闭</div>
+            <div class="stat">✨ 5 新 PRs</div>
+            <div class="stat">🎉 6 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/4169">PR #4169</a> [rust] Verify the dependency inventory in CI</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4163">PR #4163</a> [gateway] Log per-request details at debug level</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4162">PR #4162</a> [docs] Add Fluss Gateway 1.0 preview documentation</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4157">PR #4157</a> [server] Stop enabling standby replicas by default for new PK tables</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4125">PR #4125</a> [client] Retry stale out-of-order responses without resetting writer</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4159">Issue #4159</a> [FIP-28] Support incremental cleanup of historical KV state</h4>
+            <ul><li><span class="author">@zuston</span>: Is this possible to leverage the `row-level TTL` to cleaning up the inactive historical rows?</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4100">Issue #4100</a> [docs] Align Flink add_acl procedure docs with the implementation</h4>
+            <ul><li><span class="author">@Rango-2017</span>: Friendly ping: the `add_acl` examples in `procedures.md` still don't match the current implementati…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3799">Issue #3799</a> [TLS] Add certificate hot-reload and TLS metrics</h4>
+            <ul><li><span class="author">@Hakky54</span>: Hi @affo just jumping into this topic to provide some input. [Ayza](https://github.com/Hakky54/ayza…</li><li><span class="author">@affo</span>: @Hakky54 thanks for the input! We can definitely opt for that at implementation time, thank you! Th…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3293">Issue #3293</a> [Flink] Extend the Flink connector to support KvScan</h4>
+            <ul><li><span class="author">@loserwang1024</span>: This is done by https://github.com/apache/fluss/pull/3383</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4162">Issue #4162</a> [docs] Add Fluss Gateway 1.0 preview documentation</h4>
+            <ul><li><span class="author">@beryllw</span>: @fresh-borzoni @naivedogger @leonardBang cc</li><li><span class="author">@leonardBang</span>: Thanks, @fresh-borzoni, for taking the time to review and approve this!</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3294">Issue #3294</a> [Rust] Extend the Rust Client to support KvScan</h4>
+            <ul><li><span class="author">@naivedogger</span>: Hi @fresh-borzoni, are you still planning to work on this issue? If not, I’d be happy to pick it up.</li><li><span class="author">@fresh-borzoni</span>: @naivedogger Feel free to take it, if you wish, thank you for offering help 👍</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4163">Issue #4163</a> [gateway] Log per-request details at debug level</h4>
+            <ul><li><span class="author">@beryllw</span>: @fresh-borzoni cc</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3941">Issue #3941</a> [lake][follow] Support empty commits for Hudi and Lance to persist tiering progress</h4>
+            <ul><li><span class="author">@fhan688</span>: Overall LGTM, one minor comment. @beryllw cc @luoyuxia</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4165">Issue #4165</a> [FIP-28] Support durable freezing and retirement for historical partitions</h4>
+            <ul><li><span class="author">@luoyuxia</span>: Closing this duplicate tracking issue. The freeze and retirement work is already tracked directly b…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4120">Issue #4120</a> [client][server][paimon] Complete historical partition writes</h4>
+            <ul><li><span class="author">@luoyuxia</span>: Thanks for all the review feedback. After addressing the comments, I believe the following follow-u…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4118">Issue #4118</a> [lake/paimon] Maintain lakestream.enabled with lake acceleration state</h4>
+            <ul><li><span class="author">@luoyuxia</span>: I append a small commit to refine code again.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4164">Issue #4164</a> [docs][follow] Clarify Gateway auto-increment writes</h4>
+            <ul><li><span class="author">@beryllw</span>: @fresh-borzoni cc, a small documentation fix.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4117">Issue #4117</a> [client] Expose all coordinator servers (leader and standbys) via the client API</h4>
+            <ul><li><span class="author">@affo</span>: @striver619 thanks for the pointer! This issue is about adding the information of standby replicas…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3885">Issue #3885</a> [rust][client][server][gateway] Relax partial update nullability rule</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: @gstamatakis95 Some of my line refs drifted, sorry - the test request is about the auto increment b…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4169">Issue #4169</a> [rust] Verify the dependency inventory in CI</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: @leekeiabstraction @charlesdong1991 PTAL 🙏；@leekeiabstraction Thank you for the review, addressed,…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4116">Issue #4116</a> [build] fluss-filesystems uber-jars ship unshaded jackson + guava that can shadow downstream dependencies</h4>
+            <ul><li><span class="author">@Jackeyzhe</span>: Thanks @binary-signal, this is very helpful. You're right about `fluss-fs-hadoop-shaded`: the third…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4073">Issue #4073</a> [build] Relocate shaded jackson and other internal deps in fluss-fs-s3</h4>
+            <ul><li><span class="author">@Jackeyzhe</span>: > I applied this PR locally on top of `main` (`4e372d5c7`) and can confirm it does what it says: `f…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4171">Issue #4171</a> [rust][cpp][python] schema serde auto increment</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: @beryllw @leekeiabstraction @charlesdong1991 PTAL 🙏</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4120">PR #4120</a> [client][server][paimon] Complete historical partition writes</h4>
+            <ul><li><span class="author">@luoyuxia</span>: Ok, I will create a separate PR and complete the ttl pr asap.；Although the serialization format has…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4111">PR #4111</a> Fluss Documentation add CoordinatorServer High Availability (HA) Setup</h4>
+            <ul><li><span class="author">@striver619</span>: ok，then i will update this 2. From v1.0, the Fluss `CoordinatorServer` support high availability (H…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4158">PR #4158</a> [lake/paimon] Prevent concurrent local lookup false misses</h4>
+            <ul><li><span class="author">@zuston</span>: Does this mean we have to seralize the lookup operations to ensure thread safe? Is this possible to…</li><li><span class="author">@luoyuxia</span>: Saidly yes. It'll force to seralize the lookup operations. I think we should introduce the dedicate…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4130">PR #4130</a> [server] Support sequence groups in default and agg merge engine</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: The current API attaches sequence columns to the previously declared protected column: ```java .col…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3908">PR #3908</a> [server][client] Support per-partition bucket count for partitioned tables</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: Blocking: Missing bucket-layout metadata cannot be treated unconditionally as TABLET_METADATA_NOT_R…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3999">PR #3999</a> [server] Parallelize replica leader transitions</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: drain the transition pool before replicaStateChangeExecutor, since allOf().join() ignores the inter…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3977">PR #3977</a> [server] add support of rebuilding KV from local snapshot</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: This one's static, while the other KV knobs can be changed at runtime (kv.snapshot.interval, kv.lea…</li><li><span class="author">@zuston</span>: > This one's static, while the other KV knobs can be changed at runtime (kv.snapshot.interval, kv.l…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4060">PR #4060</a> [server] Restore KV minRetainOffset on follower restart</h4>
+            <ul><li><span class="author">@wuchong</span>: Could we avoid this separate ZooKeeper-backed recovery state machine by piggybacking the committed…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3885">PR #3885</a> [rust][client][server][gateway] Relax partial update nullability rule</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: Can you also assert the row is unchanged and a following upsert still lands?；On an auto increment t…</li><li><span class="author">@gstamatakis95</span>: Also the answer to deletes is Yes. See also updated docs.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4162">PR #4162</a> [docs] Add Fluss Gateway 1.0 preview documentation</h4>
+            <ul><li><span class="author">@leonardBang</span>: Would it be worth calling out the auto-increment exception here? Currently, a primary-key table wit…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4034">PR #4034</a> [server] Add support of dynamic historical lookup threads and max queued requests reconfiguration</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: checkArgument throws IllegalArgumentException, but applyToServerReconfigurables only catches Config…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4124">PR #4124</a> [lake/paimon] Introduce scan-based lake table lookuper</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: I think withFilter defeats the withBucket below it as Paimon derives the bucket itself when the pre…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4118">PR #4118</a> [lake/paimon] Maintain lakestream.enabled with lake acceleration state</h4>
+            <ul><li><span class="author">@luoyuxia</span>: Follow-up refined in fe6d58d02: the SET/RESET branches now filter `TABLE_DATALAKE_ENABLED` explicit…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4113">PR #4113</a> [server] Add support of sharable file cache capacity for historical partition lookup</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: This builds the IOManager against the cache root, then startup() deletes and recreates that directo…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3941">PR #3941</a> [lake][follow] Support empty commits for Hudi and Lance to persist tiering progress</h4>
+            <ul><li><span class="author">@fhan688</span>: Separately, do we need `ckpMetadata.startInstant()` / `commitInstant()` for a committer-created emp…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4169">PR #4169</a> [rust] Verify the dependency inventory in CI</h4>
+            <ul><li><span class="author">@leekeiabstraction</span>: Should we include the paths to scripts, DEPENDENCIES.rust.tsv, LICENCE and NOTICE here?；Should we b…</li><li><span class="author">@charlesdong1991</span>: there is also a dependency tsv in `fluss-gateway`, do we need regen that as well?；i think license b…</li><li><span class="author">@fresh-borzoni</span>: That's a very good catch, it was changed in the newer cargo-deny 👍；no, we don't need it, ci checked…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4164">PR #4164</a> [docs][follow] Clarify Gateway auto-increment writes</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: I don't think these 400s can fire today as I discovered the Rust Schema serde never reads auto_incr…</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4172">#4172</a> [rust][python][c++] Carry the auto increment column through the Rust schema serde <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/4170">#4170</a> [rust] Dependency inventory is stale and nothing checks it <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/4166">#4166</a> [FIP-28] Smoothly reroute writes with in-flight requests after partition retirement <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/issues/4165">#4165</a> [FIP-28] Support durable freezing and retirement for historical partitions <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/issues/4161">#4161</a> [FIP-28] Refresh server partition status for historical write routing <span class="author">@luoyuxia</span> <span class="labels">component=client, priority=normal</span></li><li><a href="https://github.com/apache/fluss/issues/4160">#4160</a> [docs] Add Fluss Gateway 1.0 preview documentation <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/issues/4159">#4159</a> [FIP-28] Support incremental cleanup of historical KV state <span class="author">@luoyuxia</span> <span class="labels">component=server, priority=normal</span></li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4171">#4171</a> [rust][cpp][python] schema serde auto increment <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/4168">#4168</a> [docs] Document security.sasl.plain.credentials for multi-user SASL/PLAIN <span class="author">@leekeiabstraction</span> </li><li><a href="https://github.com/apache/fluss/pull/4167">#4167</a> [metrics] Expire stale histogram samples <span class="author">@hutiefang76</span> </li><li><a href="https://github.com/apache/fluss/pull/4164">#4164</a> [docs][follow] Clarify Gateway auto-increment writes <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/pull/4158">#4158</a> [lake/paimon] Prevent concurrent local lookup false misses <span class="author">@luoyuxia</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4170">#4170</a> [rust] Dependency inventory is stale and nothing checks it <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/4165">#4165</a> [FIP-28] Support durable freezing and retirement for historical partitions <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/issues/4160">#4160</a> [docs] Add Fluss Gateway 1.0 preview documentation <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/issues/4156">#4156</a> Don't enable standby replicas by default for newly created primary key tables <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/issues/4121">#4121</a> [client] Writer job fails after OutOfOrder errors on newly created table partition <span class="author">@litiliu</span> <span class="labels">priority=blocker</span></li><li><a href="https://github.com/apache/fluss/issues/4102">#4102</a> [lake][paimon] Maintain lakestream.enabled with lake acceleration state <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/issues/3293">#3293</a> [Flink] Extend the Flink connector to support KvScan <span class="author">@polyzos</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4169">#4169</a> [rust] Verify the dependency inventory in CI <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/4163">#4163</a> [gateway] Log per-request details at debug level <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/pull/4162">#4162</a> [docs] Add Fluss Gateway 1.0 preview documentation <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/pull/4157">#4157</a> [server] Stop enabling standby replicas by default for new PK tables <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/pull/4125">#4125</a> [client] Retry stale out-of-order responses without resetting writer <span class="author">@litiliu</span> </li><li><a href="https://github.com/apache/fluss/pull/4118">#4118</a> [lake/paimon] Maintain lakestream.enabled with lake acceleration state <span class="author">@fhan688</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
