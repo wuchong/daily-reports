@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iceberg 社区周报 | 2026-W35</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Iceberg 社区周报 | 2026-W35</h1>
+            <p class="date-range">2026-08-24 ~ 2026-08-30</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (0)</h2>
+            <p class="empty">本周无公告</p>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (5)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/xd4pbvqxdgtd90vmnk0stbd3xgdcbmwq">[SPEC] Add key-id to table and partition statistics and deprecate key-metadata</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/6gt6r47mn4589d918hkpyy8d3603d2dt">PyIceberg 0.12.0rc2</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/6mcl51hwz1tmp35xg0nsq0fxx4w1j60n">[Terraform] Release Apache Iceberg Terraform Provider v0.1.0 RC2</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/6mxyvc8z62c4olt6rmbm9ptftss21qcf">[Terraform] Release Apache Iceberg Terraform Provider v0.1.0 RC3</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/0zloqhp8wkgyn04yg69j71cwcg5n7g74">Finer grained read restrictions in the Iceberg REST Catalog spec</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/pcokpsg8h0w4h3d8lqnsm5rq0gl411q5">_pos column in efficient column updates in Iceberg</a></h3>
+            <p class="meta">10 条回复 · 7 位参与者</p>
+            <p class="summary">社区讨论 Iceberg 高效列更新（efficient column updates）中是否在列文件里持久化 `_pos` 列。多数参与者认为在 dense 表示和行对齐前提下，持久化 `_pos` 冗余且会增加实现与理解成本，倾向于移除；但 Ryan Blue 提出保留可用于检测写入端遗漏已删除行等不可恢复问题。</p>
+            <div class="key-points"><p><strong>@Marco Kroll:</strong> dense Null 填充表示已能隐式表达位置，通过行数比较即可验证所有行已写入，因此 `_pos` 的调试和校验作用有限。</p>
+<p><strong>@Leonid Lygin:</strong> 持久化 `_pos` 会带来规范清晰度和实现分歧问题：文件已对齐时 `_pos` 冗余，且读取端可能出现按位置读取或按 `_pos` 读取两种合法实现。</p>
+<p><strong>@Ryan Blue:</strong> 概念上需要的是原始数据文件中的行位置；若不存储 `_pos`，写入端遗漏已删除行将是不可检测且不可恢复的问题，因此倾向保留，但并非强烈反对移除。</p></div>
+            <p class="conclusion">初步共识倾向不再在列文件中持久化 `_pos`，但尚未最终定案；下一步是在下次 sync 会议继续讨论，并考虑在设计文档中确认该决定。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/8fsqcovm1cn7zdl571t4f9qlyqgf5qxy">Flink version support in Iceberg 1.12.0</a></h3>
+            <p class="meta">10 条回复 · 5 位参与者</p>
+            <p class="summary">Iceberg 社区围绕 1.12.0 版本应支持的 Flink 版本矩阵展开讨论，核心议题是采用“LTS + 两个最新 Flink 版本”的支持策略，以及是否在 1.12.0 中保留版本重叠以便用户平滑升级。讨论最终倾向于先支持 Flink 1.20 LTS、2.1、2.2、2.3，并通过已提交的 PR 推进发布。</p>
+            <div class="key-points"><p><strong>@Péter Váry:</strong> 提议采用“LTS + 两个最新 Flink 版本”策略，认为虽然缺少版本重叠不理想，但跳过升级更糟，并推动尽快完成升级以推进 1.12.0 发布。</p>
+<p><strong>@Maximilian Michels:</strong> 支持“LTS + 两个最新 Flink 版本”策略，认为跳过某个 Flink 或 Iceberg 版本没有问题，并建议长期探索更轻量的多版本支持方式。</p>
+<p><strong>@Talat Uyarer:</strong> 认为从生产角度保留版本重叠有意义，建议 1.12.0 支持 Flink 1.20、2.1、2.2、2.3，并从后续版本开始正式执行新策略。</p></div>
+            <p class="conclusion">社区已合并支持 Flink 2.2 和 2.3 的 PR（#17849），并决定暂时保留 Flink 2.1 支持，以便用户可独立升级 Flink 与 Iceberg；后续将继续推进 1.12.0 发布，并可能需要 rebase 其他待发布的 Flink 相关 PR。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/qs3tmtsg122l4pfsc7vx6pg4ngtx961x">[DISCUSSION] Moving forward with iceberg-rust 0.11 release</a></h3>
+            <p class="meta">3 条回复 · 4 位参与者</p>
+            <p class="summary">Danny Jones 提议推进 iceberg-rust 0.11 版本发布，并自愿担任发布经理，Shawn 将协助需要 committer 权限的步骤。社区成员普遍支持该提议，认为应整合过去两个月的变更并完成此次发布。</p>
+            <div class="key-points"><p><strong>@Jones, Danny:</strong> 提议发布 iceberg-rust 0.11，自愿担任发布经理，并提到 Matt 已创建跟踪 issue 供社区讨论阻塞项。</p>
+<p><strong>@Renjie Liu:</strong> 明确支持推进 0.11 版本发布。</p>
+<p><strong>@Kevin Liu:</strong> 赞成尽快推进发布。</p></div>
+            <p class="conclusion">社区初步达成共识，支持推进 iceberg-rust 0.11 发布；下一步将通过跟踪 issue 确认是否存在阻塞项，并准备切分 0.11.x 分支。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/0mpgn3p2xhlf5165m40oxbptmcf7f87m">Table and Column Label Metadata in Iceberg REST Catalog</a></h3>
+            <p class="meta">3 条回复 · 3 位参与者</p>
+            <p class="summary">讨论围绕在 Iceberg REST Catalog 的 load 响应中新增可选、只读、扁平化的 labels 字段展开，目标是暴露 catalog 拥有的对象元数据，同时保持规范最小化和向后兼容。社区基本认同 labels 与 table properties、config 及 Read Restrictions 的边界，但对其在治理、继承和跨 catalog 同步场景下的语义仍有顾虑。</p>
+            <div class="key-points"><p><strong>@Andrei Tserakhau:</strong> labels 应是 catalog 拥有并在加载时暴露的只读元数据，不定义解释或强制语义，治理、同步和身份问题不属于本提案范围。</p>
+<p><strong>@Prashant Singh:</strong> 担心治理场景下的附加/继承语义、嵌套字段冲突和跨 catalog 稳定 ID，并质疑为何不复用现有 config 或先设计结构化实体。</p>
+<p><strong>@Ryan Blue:</strong> 反对把用户可控属性混入 catalog 控制的 config，支持先落地只读 labels 以解决当前通过 table properties 传递标签的问题，无需等待完整结构化方案。</p></div>
+            <p class="conclusion">初步共识是推进最小化、只读的 labels 字段作为读取路径标准，后续治理语义、结构化实体和跨系统同步问题可在独立提案中继续讨论。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/0oho5nj5m5w3x5kss6517n9od3dx3yfm">Proposal: File-Level Access Delegation in the Iceberg REST Catalog Spec</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕 Iceberg REST Catalog 规范中文件级访问委托（File-Level Access Delegation）展开，重点是如何支持预签名 URL 场景。参与者就两种场景达成一致：场景1（直接返回预签名URL）无需规范变更，场景2（通过 /sign 端点按需签名）需扩展规范并考虑批量签名 API 以解决大表性能问题。</p>
+            <div class="key-points"><p><strong>@Prashant Singh:</strong> 场景1无需规范变更，已通过 PR #17457 实现通用的 HTTPInputFile/HTTPInputStream；场景2建议引入批量签名 API 以避免逐文件签名导致服务端过载。</p>
+<p><strong>@William Hyun:</strong> 支持场景1无需规范变更；场景2建议复用 /sign 端点并新增 X-Iceberg-Access-Delegation: pre-signed-urls 头部，同时提议讨论批量签名端点，并表示可提供 POC。</p>
+<p><strong>@Daniel Weeks:</strong> 认为 Azure 的特殊性使当前远程签名困难，但预签名模型可在现有远程签名 API 框架下实现。</p></div>
+            <p class="conclusion">初步共识：场景1无需规范变更，场景2需规范扩展；下一步由 William 提供场景2规范变更的 POC，并推进批量签名 API 的讨论。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/2bmj2mp2ggjd1qz466w06047p20kq64g">Iceberg Rust: moving the DataFusion integration into a separate repository</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">Iceberg 社区讨论是否将 DataFusion 集成从 iceberg-rust 仓库拆分到独立仓库，以解决开发速度和评审带宽不足的问题。讨论中提出了多种方案，包括拆分仓库、扩大 DataFusion 贡献者在 iceberg-rust 中的评审权限等，核心目标是在提升迭代效率的同时保持与 Iceberg 核心的设计、测试和治理关系。</p>
+            <div class="key-points"><p><strong>@Shawn Chang:</strong> 总结了社区共识与未决问题：拆分仓库可能提升 DataFusion 集成的迭代速度，但需权衡是否应通过扩大 DataFusion 评审者参与来替代拆分，并关注跨仓库兼容性测试、核心与集成边界划分及 Apache 治理问题。</p>
+<p><strong>@Manu Zhang:</strong> 支持将 DataFusion 集成和测试迁移到一个 Apache 治理下的独立仓库，并建议将该议题带到社区同步会议讨论。</p>
+<p><strong>@Gabriel Musat:</strong> 提出折中方案：不拆分仓库，而是授予部分 DataFusion PMC 成员（如 Matt Butrovich 和 Tim Saucer）对 iceberg-datafusion crate 的受限提交权限，通过 CODEOWNERS 文件限制范围，以缓解评审瓶颈。</p></div>
+            <p class="conclusion">目前尚未达成最终决定，但社区普遍认可存在评审带宽问题，并倾向于探索既能提升开发效率又能维持与 iceberg-rust 核心紧密协作的方案。下一步可能包括在社区同步会议中进一步讨论，并评估授予 DataFusion 贡献者受限提交权限或仓库拆分的可行性。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/d0ftzyf12hww7lg69hl4kb8shzvoqm1r">GSoC 2026 — Wrapping Up and Continuing with Iceberg</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Varun Lakhyani 在 GSoC 2026 项目收官之际向 Iceberg 社区致谢，总结其完成的 EagerInputFile / EagerInputStream 工作及其在 Parquet 读取路径中的集成。社区成员 Anurag Mantripragada 祝贺项目成功，并期待后续贡献。</p>
+            <div class="key-points"><p><strong>@Varun Lakhyani:</strong> GSoC 项目已完成，核心成果是 EagerInputFile / EagerInputStream 及其在 Parquet 读取路径中的集成，并已发布项目文档、基准测试和贡献总结。</p>
+<p><strong>@Varun Lakhyani:</strong> 特别感谢导师 Russell Spitzer 在设计、基准测试和代码评审视角上的指导，以及多位社区成员在讨论、评审和反馈中的帮助。</p>
+<p><strong>@Anurag Mantripragada:</strong> 祝贺项目成功完成，表示期待在自己的工作负载中使用该成果，并欢迎作者继续参与社区贡献。</p></div>
+            <p class="conclusion">GSoC 项目阶段性结束，但作者表示将继续参与 Iceberg 社区贡献；下一步重点是持续贡献并推动该成果在实际工作负载中的应用。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/tnx2p2hbot2vpn5rbz5xd24chn871d27">[REMINDER] Register for Lakehouse Day EU 2026</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">该邮件是 Iceberg 社区关于参加 2026 年欧洲 Lakehouse Day 的提醒。活动将于 2026 年 10 月 10 日在苏格兰格拉斯哥与 Community Over Code 同期举行，聚焦 Apache 基金会下的开放湖仓技术，涵盖 Iceberg、Parquet、Polaris 等多个项目。</p>
+            <div class="key-points"><p><strong>@Danica Fine:</strong> Lakehouse Day 是一场全天多轨道活动，旨在汇聚不同湖仓项目的社区成员进行交流与分享。</p>
+<p><strong>@Danica Fine:</strong> 可以单独购买 Lakehouse Day 门票，价格为 85 美元，也可与 Community Over Code 通行证捆绑购买以获得折扣。</p>
+<p><strong>@Danica Fine:</strong> 使用 apache.org 邮箱注册可获得 committer 价格。</p></div>
+            <p class="conclusion">邮件主要为活动报名提醒，未涉及技术讨论或决策；下一步行动是有意者查看日程并完成注册。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/m388qg6hj0z3xw9923j8qmw3xs28kzpv">storm-iceberg: new Apache Storm module for low-latency processing and Iceberg ingestion</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Apache Storm 社区宣布新增外部模块 storm-iceberg，可在 Storm 拓扑内将流式 tuple 直接写入 Iceberg 表，无需经由 Kafka Connect、Flink 或 Spark。该模块已合并至 Storm master 分支，目标随 3.1.0 发布，当前可构建运行。</p>
+            <div class="key-points"><p><strong>@Gianluca Graziadei:</strong> storm-iceberg 支持仅追加写入，采用 at-least-once 语义，通过目标文件大小与基于 tick tuple 的时间策略双维度控制提交，并利用 WAL 实现重启恢复、清理孤儿文件与重试待提交。</p>
+<p><strong>@Gianluca Graziadei:</strong> 与现有方案相比，其差异在于更细粒度：映射、过滤和分区路由在拓扑内按 tuple 完成，算子可控制 tuple 落入哪个数据文件。</p>
+<p><strong>@Gianluca Graziadei:</strong> 发布前希望社区协助提供可信的基准测试方法，并反馈 bug。</p></div>
+            <p class="conclusion">模块已合并并计划随 Storm 3.1.0 发布；下一步是寻求外部基准测试和 bug 报告以完善发布。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/d6w5do38zgzrxf4r4nv3f14pvh59n2w3">Read Restrictions: overlapping column projections on nested types</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">本次讨论围绕 Iceberg 规范中嵌套类型列投影（column projections）出现重叠时的读取限制问题展开。社区最终倾向于明确禁止重叠投影，并由 catalog 侧负责去冲突或直接失败，而不是将复杂处理留给客户端。Prashant Singh 已根据该结论更新了规范 PR。</p>
+            <div class="key-points"><p><strong>@Daniel Weeks:</strong> 认为不应以“向后兼容、以后可修”为由搁置问题，支持采取更明确立场：由 catalog 处理冲突或禁止重叠。</p>
+<p><strong>@Russell Spitzer:</strong> 引用此前 default values 讨论中的先例，主张应禁止存在歧义的状态，与本次禁止重叠投影的方向一致。</p>
+<p><strong>@Prashant Singh:</strong> 总结讨论结论并更新 spec PR，明确在 catalog 侧和客户端预期中都禁止重叠列投影。</p></div>
+            <p class="conclusion">初步结论是禁止嵌套类型列投影的重叠行为，由 catalog 负责处理冲突或直接失败；下一步是审阅并推进已更新的 spec PR。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (0)</h2>
+            
+    <p>本周新建 <strong>0</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周无新建 JIRA。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Iceberg Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
