@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data+AI 全球日报 | 2026-08-31</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Data+AI 全球日报 | 2026-08-31</h1>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="top-changes">
+            <h2>🔥 今日最重要的3个变化</h2>
+            <ol><li><strong>Kinesis 支持 Iceberg streaming tables</strong> — Amazon Kinesis Data Streams 将流数据持续写入 S3 Tables，并以 Apache Iceberg 表提供查询，宣称降低交付和查询成本。</li><li><strong>AWS Glue 6.0 强化实时管道</strong> — AWS Glue 6.0 支持 Spark Real-Time Mode，统一实时、近实时和批处理管道，并结合 Iceberg v3 Variant 处理异构数据。</li><li><strong>Redshift 增强企业身份治理</strong> — Amazon Redshift 在 enhanced VPC routing 下支持 IAM Identity Center 认证，实现私网内企业 SSO。</li></ol>
+            <p class="judgment"><strong>总判断：</strong>今日信号集中在 AWS 数据平台栈：实时湖仓、统一 ETL 和企业身份治理同步增强。AWS 正通过 Kinesis、S3 Tables、Iceberg、Glue 和 Redshift 组合，强化开放表格式与托管服务的闭环。整体看，云厂商数据平台竞争正从单点能力转向实时、开放和治理一体化。</p>
+        </section>
+
+        <section class="top-signals">
+            <h2>📡 重要信号</h2>
+            
+    <article class="news-item">
+        <h3>Amazon Kinesis Data Streams 推出 Apache Iceberg streaming tables</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/deliver-real-time-data-to-streaming-tables-for-apache-iceberg-with-amazon-kinesis-data-streams/">AWS Big Data Blog</a></p>
+        <p class="date">2026-08-31</p>
+        <p class="summary">Amazon Kinesis Data Streams 推出 streaming tables，将流数据持续写入 Amazon S3 Tables，并以可查询的 Apache Iceberg 表形式提供。AWS 称该能力通过内联 compaction 降低最高 25% 交付成本和 30% 查询成本，减少用户自建流式入湖、表维护和查询优化流程。此举进一步整合实时摄取、开放表格式和对象存储表服务。</p>
+        <div class="impact">📊 数据平台影响：实时数据可直接沉淀为 Apache Iceberg 表，降低流式湖仓链路复杂度，增强 S3 Tables 与开放表格式生态绑定，对 Flink、Kafka 及第三方入湖管道形成竞争压力。</div>
+    </article>
+    <article class="news-item">
+        <h3>Amazon Redshift 支持 IAM Identity Center 与 enhanced VPC routing 集成</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/integrate-amazon-redshift-and-iam-identity-center-with-enhanced-vpc-routing/">AWS Big Data Blog</a></p>
+        <p class="date">2026-08-31</p>
+        <p class="summary">Amazon Redshift 现支持在启用 enhanced VPC routing 的集群和 workgroup 上使用 AWS IAM Identity Center 认证。企业可通过两个 interface VPC endpoint 实现公司凭据单点登录，同时让认证流量保留在 AWS 私有网络内。该更新主要面向安全合规、统一身份和私有网络访问需求。</p>
+        <div class="impact">📊 数据平台影响：数据仓库身份认证与企业 SSO、私网访问进一步打通，有助于大型组织统一治理 Redshift 访问权限，降低网络暴露和身份管理复杂度。</div>
+    </article>
+        </section>
+
+        <section class="product-tech">
+            <h2>💻 产品与技术</h2>
+            
+    <article class="news-item">
+        <h3>AWS Glue 6.0 支持 Spark Real-Time Mode 构建实时事件管道</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/build-a-real-time-event-pipeline-with-spark-real-time-mode-on-aws-glue-6-0/">AWS Big Data Blog</a></p>
+        <p class="date">2026-08-31</p>
+        <p class="summary">AWS Glue 6.0 支持在单一平台上构建实时、近实时和批处理数据管道。文章以金融市场风险为例，展示使用 Spark Real-Time Mode 在亚秒级标记高风险交易，并结合 Apache Iceberg v3 Variant 存储异构定价向量。该能力显示托管 ETL 正加速走向流批一体和半结构化数据处理。</p>
+        <div class="impact">📊 数据平台影响：Glue 6.0 将流批管道统一到托管 Spark 环境，降低多引擎拼接成本，也推动 Iceberg Variant 等半结构化能力在数据平台落地。</div>
+    </article>
+    <article class="news-item">
+        <h3>Amazon OpenSearch Service 强化搜索质量度量与相关性优化</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/measuring-and-improving-search-quality-with-amazon-opensearch-service/">AWS Big Data Blog</a></p>
+        <p class="date">2026-08-31</p>
+        <p class="summary">AWS 发布博客介绍如何在 Amazon OpenSearch Service 中采集 User Behavior Insights（UBI）数据，并使用 Search Relevance Workbench（SRW）将用户行为信号转化为相关性判断，评估和改进搜索质量。该方案面向搜索团队难以量化“结果是否相关”的常见问题。</p>
+        <div class="impact">📊 数据平台影响：搜索质量评估从经验判断转向行为数据闭环，为 RAG、检索增强和电商搜索提供更可量化的相关性治理工具。</div>
+    </article>
+        </section>
+
+        <section class="people-views">
+            <h2>👤 人物与观点</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="analyst-insights">
+            <h2>📊 分析师洞察</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="watchlist">
+            <h2>👀 观察列表</h2>
+            
+    <article class="watchlist-item">
+        <h3>Apache Iceberg streaming tables 生态扩展</h3>
+        <span class="status">待观察</span>
+        <p class="reason">Kinesis 与 S3 Tables 结合可能改变实时湖仓架构，但成本收益、区域可用性和生产稳定性仍需验证。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>更多 GA 指标、客户案例和与 Athena、Redshift Spectrum 等查询引擎集成披露。</p>
+    </article>
+    <article class="watchlist-item">
+        <h3>AWS Glue 6.0 Spark Real-Time Mode 生产成熟度</h3>
+        <span class="status">待观察</span>
+        <p class="reason">流批一体 ETL 是否可替代 Flink、Kafka 等实时管道组件，取决于延迟、可靠性和成本表现。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>官方性能基准、SLA 说明和更多实时场景模板发布。</p>
+    </article>
+    <article class="watchlist-item">
+        <h3>搜索相关性度量与 RAG 评估工具链</h3>
+        <span class="status">待观察</span>
+        <p class="reason">UBI 和 Search Relevance Workbench 可能成为搜索及 RAG 质量治理标准，但仍需观察自动化评估准确性。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>与 Bedrock、RAG 应用和 LLM 评估工具链的进一步集成。</p>
+    </article>
+        </section>
+
+        <section class="stock-analysis">
+            <h2>📈 股票分析</h2>
+            <p class="disclaimer">⚠️ 以下内容仅供参考，不构成任何投资建议。投资有风险，入市需谨慎。</p>
+            
+    <article class="stock-item">
+        <div class="stock-header">
+            <span class="ticker">AMZN</span>
+            <span class="company">Amazon</span>
+            <span class="signal signal-neutral">⚪ 中性</span>
+        </div>
+        <p class="stock-summary">AWS 强化实时湖仓、流批一体和数据治理，有助于提升 Amazon 云服务差异化。但本次内容主要为技术博客和功能增强，短期财务影响有限。仅供参考，不构成投资建议。</p>
+        <div class="stock-details">
+            <div class="catalysts">
+                <strong>🚀 催化剂</strong>
+                <ul><li>Kinesis streaming tables 客户采用扩大</li><li>AWS Glue 6.0 实时管道生产落地</li><li>Amazon Redshift 企业安全治理需求增长</li></ul>
+            </div>
+            <div class="risks">
+                <strong>⚠️ 风险</strong>
+                <ul><li>功能可用性和区域限制存在不确定性</li><li>Snowflake、Databricks 等数据平台竞争加剧</li><li>成本优化效果尚未经过第三方大规模验证</li></ul>
+            </div>
+        </div>
+    </article>
+        </section>
+
+        <footer>
+            <p>Generated by Data+AI Daily Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
