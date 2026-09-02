@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafka 社区周报 | 2026-W35</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Kafka 社区周报 | 2026-W35</h1>
+            <p class="date-range">2026-08-24 ~ 2026-08-30</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (0)</h2>
+            <p class="empty">本周无公告</p>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (2)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/hp30vgysjb4mz3qnhlj1j2t5zg9ntqx7">4.4.0 RC0</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/ykqnzk0mhj9wosho7fk2nczt2fddr54b">KIP-1027: Add MockFixedKeyProcessorContext and TestFixedKeyRecordFactory</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (7)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/4x18ys1938svj6jglbr81j7rmlmnfzlm">Release managers for 4.3.2 and 4.2.2</a></h3>
+            <p class="meta">4 条回复 · 4 位参与者</p>
+            <p class="summary">Kafka 社区讨论 4.3.2 和 4.2.2 两个 bugfix 版本的发布计划，重点是征集 release manager。由于 4.3 和 4.2 分支已积累较多修复，社区认为适合启动发布流程，并最终确定了两位志愿者分别负责对应版本。</p>
+            <div class="key-points"><p><strong>@Chia-Ping Tsai:</strong> 建议启动 4.3.2 和 4.2.2 bugfix 发布，并征集 committer 担任 release manager；若无人认领，他和 Ken 愿意负责。</p>
+<p><strong>@PoAn Yang:</strong> 主动提出可以负责 4.3.2 版本的发布。</p>
+<p><strong>@Apoorv Mittal:</strong> 表示可以负责任一版本，最终确认负责 4.2.2 发布。</p></div>
+            <p class="conclusion">已初步确定 release manager：PoAn Yang 负责 Kafka 4.3.2，Apoorv Mittal 负责 Kafka 4.2.2；Chia-Ping Tsai 和 Ken 将在两个发布中提供协助。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/3p9z29sdpxnwyt3g674vxg3554xrlp24">KIP-1279: Cluster Mirroring</a></h3>
+            <p class="meta">3 条回复 · 2 位参与者</p>
+            <p class="summary">本次讨论围绕 KIP-1279 Cluster Mirroring 的评审意见（RS20-RS28）展开，重点澄清了元数据同步机制、故障恢复语义、旧版本兼容性及 ULE 处理策略。Federico 针对 Rajini 提出的问题逐一回应并更新 KIP，双方对大部分设计达成一致，剩余 RS25 和 RS27 仍在推进中。</p>
+            <div class="key-points"><p><strong>@Federico Valeri:</strong> mirror.metadata.refresh.interval.ms 控制所有元数据同步周期；RecoverMirrorTopics 仅恢复可重试故障，不处理日志一致性；区分可重试与不可重试故障，源 topic 删除重建为不可重试。</p>
+<p><strong>@Rajini Sivaram:</strong> 质疑 ListGroups 预检查的必要性（因 OffsetCommit 本身会拒绝活跃 group）；认为旧客户端不支持 ULE 可接受，除非修复简单；确认其余回复合理。</p>
+<p><strong>@Federico Valeri:</strong> 提出通过动态检测源集群 fetch 版本支持旧集群：优先用 fetch v12+ 的 truncation-on-fetch，失败则降级到 OffsetsForLeaderEpochRequest；RS28 采纳对方建议，RS25 已补充说明。</p></div>
+            <p class="conclusion">大部分评审意见已解决并更新 KIP；RS25 已澄清实现细节，RS27 正在设计旧版本 ULE 兼容方案，后续将跟进确认。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/6gk8zj758syqs7yhn9d3n0pq11nz662n">KIP-1305: Per-Record Context Processing for Kafka Consumers</a></h3>
+            <p class="meta">2 条回复 · 1 位参与者</p>
+            <p class="summary">社区正在讨论 KIP-1305，提议为 Kafka 消费者引入按记录级别的上下文处理钩子（ConsumerRecordContextProcessor）。该提案旨在解决 Spring Kafka、OTel 等框架因客户端缺乏原生支持而各自实现重复钩子的问题，提供统一的单条记录生命周期集成点。</p>
+            <div class="key-points"><p><strong>@Aditya Kousik:</strong> 提议新增 ConsumerRecordContextProcessor 钩子，通过 record.newContext() 为每条记录创建 AutoCloseable 上下文，为框架和可观测性工具提供稳定集成点。</p>
+<p><strong>@Yury Gribkov:</strong> 支持该提案，认为显式的按记录处理边界能提升可观测性扩展的可靠性，避免依赖批处理迭代，并减少埋点和上下文管理的样板代码。</p></div>
+            <p class="conclusion">目前处于提案讨论初期，已获得支持意见，下一步将收集更多社区反馈以推进 KIP 设计。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/tynxthldlq0n8jrcws3926qrnx2n627g">KIP-1324: Support client configuration observability</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论围绕 KIP-1324 客户端配置可观测性支持展开，重点是如何将客户端配置安全、有效地暴露给 broker 以便监控。参与者关注客户端与 broker 端配置控制权的平衡、协议字段设计以及与 Connect/Streams 等组件和既有 KIP 的关系。</p>
+            <div class="key-points"><p><strong>@Rajini Sivaram:</strong> 建议考虑在 broker 端增加配置请求能力，而不是仅由客户端决定推送哪些配置，否则可能限制 broker 侧可观测性。</p>
+<p><strong>@Rajini Sivaram:</strong> 提出协议细节问题，包括 ConfigValue 是否可为空，以及命名应与 DescribeConfigs 保持一致，如使用 PushConfigsRequest/Response 和 Name/Value。</p>
+<p><strong>@Matthias J. Sax:</strong> 关注 Streams、Connect 与 KIP-1313/714/1076 的关系，并认为 Connect 作为独立集群，其配置监控或许应直接由 Connect 框架承担，而非完全依赖向 broker 推送客户端配置。</p></div>
+            <p class="conclusion">目前仍在讨论设计细节和适用边界，尚未形成最终结论；下一步预计需要澄清 broker 端配置请求机制、协议命名/字段设计，以及 Connect/Streams 场景的处理方式。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/xd4lp17ks9jzlp09s08n3zy0bzvzj8sw">KIP-1372: Reject topic configurations where min.insync.replicas exceeds the replication factor</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Zhisu Wang（Gavin）发起关于 KIP-1372 的讨论，提议在创建主题或修改主题级配置时，拒绝将 min.insync.replicas 设置为大于该主题 replication factor 的配置，以避免静默接受永远无法满足 acks=all 的无效配置。该提案重新审视了 2020 年未被采纳的 KIP-579，并说明 KIP-966 引入的 effective-min-ISR 限制如何改变此前的分析背景。</p>
+            <div class="key-points"><p><strong>@Zhisu Wang:</strong> 提议拒绝 topic 创建和 topic 级别配置变更中 min.insync.replicas 超过 replication factor 的设置，以修复长期存在的无效配置被静默接受的问题（KAFKA-19726、KAFKA-4680）。</p>
+<p><strong>@Zhisu Wang:</strong> 该 KIP 重新讨论 KIP-579 曾覆盖的领域，并解释 KIP-966 的 effective-min-ISR clamp 变更如何影响此前的结论。</p></div>
+            <p class="conclusion">目前处于发起讨论和征求意见阶段，尚未形成明确结论；下一步是收集社区反馈。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/5b0zpcyxhz5d2h5ro4rx0w2k4b82lyhl">KAFKA-20776 MeteredKeyValueStore / MeteredTimestampedKeyValueStore ignore skipCache()</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论围绕 KAFKA-20776 中 MeteredKeyValueStore 和 MeteredTimestampedKeyValueStore 忽略 skipCache() 的问题。Naveen 指出大多数相关 handler 已在 PR #22666 的 rawQuery 中使用了 skipCache，但存在重复实现。</p>
+            <div class="key-points"><p><strong>@Naveen:</strong> 大多数提到的 handler 已在 PR #22666 的 rawQuery 中使用了 skipCache，但存在重复代码。</p>
+<p><strong>@Naveen:</strong> 计划通过一个静态辅助方法在多个 handler 间共享该逻辑，但不确定该 helper 应放置的位置。</p></div>
+            <p class="conclusion">初步方向是提取共享的静态辅助方法以减少重复，下一步需确认该 helper 的合适存放位置并征求 Jess 的意见。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/2581jgdw07h38dx8ybowxn4bvzt4olky">Apache Kafka 4.2.2 release</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Apoorv Mittal 宣布担任 Apache Kafka 4.2.2 错误修复版本的发布经理，并分享了发布计划。代码冻结日期定于 2026 年 9 月 15 日（周二），因为当前仅有一个待解决问题，且 4.3.2 版本也将很快发布。首个候选版本将在代码冻结后不久推出。</p>
+            <div class="key-points"><p><strong>@Apoorv Mittal:</strong> 担任 4.2.2 版本发布经理，提出发布计划并设定代码冻结日期为 2026 年 9 月 15 日</p></div>
+            <p class="conclusion">代码冻结将于 2026 年 9 月 15 日进行，随后将很快发布第一个候选版本，目前仅有一个待解决的问题。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (46)</h2>
+            
+    <p>本周新建 <strong>46</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周 JIRA 主要集中在测试依赖清理与构建优化，尤其是大量移除 Streams 及相关模块中的 Hamcrest 依赖，并改进 Gradle 任务创建方式和测试迁移。其次涉及核心功能与稳定性修复，包括 KRaft/ZooKeeper 清理、消费者 CPU 占用、时间索引截断导致的数据丢失、事务状态异常、Streams 死锁与 changelog 恢复优化，以及配置动态更新和 Docker/SASL 配置问题。此外还关注新特性与增强方向，如 Consumer Reactor、HA 任务分配、rack-aware standby 分配、FIPS 支持、记录头过滤/掩码策略，以及安全 CVE 修复和文档补充。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Kafka Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
