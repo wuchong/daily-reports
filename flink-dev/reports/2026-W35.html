@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flink 社区周报 | 2026-W35</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Flink 社区周报 | 2026-W35</h1>
+            <p class="date-range">2026-08-24 ~ 2026-08-30</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (2)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/5054y5nkmr1qsqc7nlgz81q5co1vfynr">New Apache Flink Committer - Weiqing Yang</a></li>
+<li><a href="https://lists.apache.org/thread/1m9tdbsfttxhvz1rpcnby65mzwyh5pot">New Apache Flink Committer: Samrat Deb</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (4)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/yooj0rrnnghojjljy46j11owwwkfw0b8">FLIP-604: Complete VARIANT Primitive Coverage with UUID and Timestamps</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/n49szbn23ho8p5k34fl16m0kf444m2lg">Release flink-shaded 22.0, release candidate #1</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/t4bp8lpgc1c7jhksmqkotjktys6fgbk1">Apache Flink Kubernetes Operator Release 1.16.0, release candidate #3</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/m0qqcd4p6zdhb2fv8djcgm9hldhngr4b">FLIP-597: [Filesystems] Hadoop-less Flink filesystems</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/pfbbyr7lk376n1g85x9xjjkwgz8kosdc">Planning Flink 2.4</a></h3>
+            <p class="meta">7 条回复 · 5 位参与者</p>
+            <p class="summary">本次邮件讨论围绕 Flink 2.4 版本发布规划展开，重点包括发布经理（RM）人选征集、发布时间线安排以及特性收集机制。Mika Naylor 发起讨论并提议组建多元背景的 RM 团队，多位社区成员响应并自愿加入，同时就延长特性冻结窗口达成共识。</p>
+            <div class="key-points"><p><strong>@Mika Naylor:</strong> 发起 Flink 2.4 发布讨论，自愿担任 RM 并提议组建包含不同背景 committer 的 RM 团队；提出初步时间线并建立特性收集 Wiki 页面。</p>
+<p><strong>@Yuepeng Pan:</strong> 支持延长特性冻结窗口至 1.5-2 个月，并自愿担任该版本发布经理。</p>
+<p><strong>@Rui Fan:</strong> 支持 RM 人选和延长冻结窗口的提议，表示愿意以 Committer/PMC 身份提供支持，但因精力有限不担任全职 RM。</p></div>
+            <p class="conclusion">初步确定 Flink 2.4 特性冻结时间为 2026 年 10 月 20 日，发布时间为 11 月 20 日；RM 团队由 Mika、Yuepeng、Chanhae 和 Sumin 组成，Rui 提供 Committer/PMC 支持；每周五举行定期同步会议，使用 Google Meet 进行。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/yly5b2wyqg63k75hn85s7g1nf83c320j">退订</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">该邮件讨论的主题为“退订”，内容仅包含两位用户发送的退订请求，没有涉及 Flink 技术议题或社区讨论。</p>
+            <div class="key-points"><p><strong>@黄新儿:</strong> 请求退订邮件列表。</p>
+<p><strong>@林:</strong> 请求退订邮件列表。</p></div>
+            <p class="conclusion">无实质性讨论或结论，仅为退订请求。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/7t80ycs4yjzqjbv9p3j4758488b48vg5">FLIP-XXX : Running Flink jobs in MiniCluster using the Kubernetes Operator</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">本次讨论围绕 FLIP-XXX 提出在 Kubernetes Operator 中以 MiniCluster 方式运行 Flink 作业，重点比较了 MiniCluster 与双容器 Pod、独立 CRD 与新增模式，以及 launcher 的放置方案。讨论逐渐倾向于将 MiniCluster launcher 纳入 Flink 发行版，以便 Operator 以统一方式管理部署并降低实现复杂度。</p>
+            <div class="key-points"><p><strong>@Dennis-Mircea Ciupitu:</strong> 基于资源消耗考虑，应优先选择 MiniCluster 方案，而不是无法充分降低资源占用的中间方案。</p>
+<p><strong>@Dale Lane:</strong> 认可将 launcher 放入 Flink 发行版的思路，认为这能简化 MiniCluster 与 Deployment 之间的迁移，并已补充 launcher 实现说明，认为实现会比预期更简单。</p>
+<p><strong>@Robert Metzger:</strong> 认为 launcher 可以包含在当前 FLIP 中，不需要单独拆分为新的 FLIP。</p></div>
+            <p class="conclusion">初步共识是采用 MiniCluster 方案，并将 launcher 纳入当前 FLIP；下一步由 Dale Lane 继续完善设计文档并补充 launcher 的实现细节。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/tydk2lzdn635go1ywn06rfty0vjy7jdc">Use Project Lombok in Flink beyond tests</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">该讨论围绕是否在 Flink 主源码中引入 Project Lombok 以减少样板代码展开。Dennis 明确反对，认为 Lombok 会破坏源码 jar 与字节码的一致性，影响调试体验；Samrat 在反馈分歧后撤回提案，并提出寻找替代方案来解决 builder 模式带来的代码冗余问题。</p>
+            <div class="key-points"><p><strong>@Dennis-Mircea Ciupitu:</strong> 反对在主源码中使用 Lombok，因为发布源码 jar 时无论保留注解源码还是 delombok 源码，都会导致调试器断点错位或无法正确映射字节码。</p>
+<p><strong>@Samrat Deb:</strong> 提出 Lombok 是为了缓解 SDK 代码中 builder 模式造成的大量样板代码，但在缺乏共识后决定放弃该提案，并寻求其他减少冗余的方案。</p></div>
+            <p class="conclusion">Lombok 引入提案被撤回，后续将探索替代设计模式或 Java 新特性来解决样板代码问题。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/7m2f1bhn9tjzlk2kklx07j61tm2xmlco">FLIP-609: Type Inference for Python User Defined Functions</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕 FLIP-609 展开，提议为 Python UDF 增加类型提示到 Flink 类型的推断机制，以减少重复类型标注并提升开发体验。社区成员普遍支持该提案，并建议未来可扩展类型提示的其他用途。</p>
+            <div class="key-points"><p><strong>@Mika Naylor:</strong> 提出通过 Python 原生类型提示自动推断 Flink UDF 的输入输出类型，并引入包装 Flink 类型的 Python 影子类型以支持更精确的类型声明。</p>
+<p><strong>@Zander Matheson:</strong> 认为该提案将显著改善开发体验，表示支持。</p>
+<p><strong>@Timo Theusner:</strong> 认可提案价值，并建议后续考虑类型提示在 Schema 构建等场景中的应用，以避免 pyflink.table.typehints 和 DataTypes 的混淆。</p></div>
+            <p class="conclusion">社区对 FLIP-609 表示积极支持，下一步可探讨类型提示在更多场景中的扩展应用。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/jrrz98vm8sjr8yltp0h86qn0xm9pmjj6">Cluster overhead/waste in large shared Flink clusters</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕大型共享 Flink 集群中的资源浪费与碎片化问题展开，重点分析 Kubernetes 原生模式下 JM/TM 资源形状不匹配和 TaskManager Pod 分散导致的集群开销。参与者建议通过调整 Pod 形状、使用 GKE 的 optimize-utilization 调度策略以及可控重启或驱逐来缓解碎片化。</p>
+            <div class="key-points"><p><strong>@Dennis-Mircea Ciupitu:</strong> 资源形状不匹配是供应问题而非 Flink 核心问题，需让节点形状匹配 JM+TM 或反向设计；Operator 的内存自动调优（FLINK-40455）未来可帮助优化 CPU/内存比例。</p>
+<p><strong>@Dennis-Mircea Ciupitu:</strong> 碎片化源于 GKE 默认调度器分散 TM 且无自动整合机制，建议使用 packing 调度策略并标记 TM 为可驱逐、JM 为不可驱逐，借助 Adaptive Scheduler 平滑恢复。</p>
+<p><strong>@Yanis Djeridi:</strong> 团队已采用 GKE optimize-utilization 配置，目前通过手动控制重启来整合资源，正在评估自动驱逐与可控重启在容量回收和业务影响方面的差异。</p></div>
+            <p class="conclusion">初步共识是通过 Pod 形状适配节点、启用 packing 调度策略并结合可控重启或驱逐来减少碎片化；下一步将探索自动化驱逐方案，并寻求社区在大规模场景下的更多实践经验。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/7x30xy2pxmncgv5l0vpvq185r4zjp4dt">FLIP-597: [Filesystems] Hadoop-less Flink filesystems</a></h3>
+            <p class="meta">1 条回复 · 1 位参与者</p>
+            <p class="summary">讨论围绕 FLIP-597（无 Hadoop 依赖的 Flink 文件系统）的设计与推进。Aleksandr 根据反馈更新了 FLIP 文档并提交了包含核心接口的 draft PR，提议若无阻塞意见则启动投票，以便推进 Azure 和 GCS 的后续工作。Samrat 对当前 draft PoC 表示认可。</p>
+            <div class="key-points"><p><strong>@Aleksandr Iushmanov:</strong> 已根据讨论更新 FLIP-597，并提交 draft PR 供接口概览审阅；建议尽快启动投票以解除 Azure/GCS 工作的阻塞。</p>
+<p><strong>@Aleksandr Iushmanov:</strong> 针对线程安全与取消问题，提出通过线程所有权检查作为折中方案，避免修改 @Public 接口，同时保证取消路径的兼容性。</p>
+<p><strong>@Samrat Deb:</strong> 认可当前 draft PoC，认为其看起来不错。</p></div>
+            <p class="conclusion">初步结论是当前方案已获积极反馈，若无进一步阻塞意见，下一步将启动 FLIP 投票，以推进 Azure 和 GCS 文件系统的后续开发。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/97vq4w9l5msx7byxgl55zxoxptxl6d3d">Bump the build/enforced Maven version from 3.8.6 to 3.9.x</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Flink 社区讨论将构建强制使用的 Maven 版本从 3.8.6 升级到 3.9.x。多位成员支持该升级，认为 3.8.6 已停止维护，且升级有助于本地增量构建。Martijn Visser 已提交 PR 并计划观察几天无反对后合并。</p>
+            <div class="key-points"><p><strong>@Martijn Visser:</strong> 已提交升级 PR，计划等待几天无反对后合并；不会 backport，目标是下一个 Flink minor 版本，并会查看 flink-shaded 是否也需要修复。</p>
+<p><strong>@David Radley:</strong> 支持升级，因为 Maven 3.8.6 已 end of life，3.9.x 是合理升级；确认不做 backport，关注目标是 Flink 2 point release 还是 Flink 3。</p>
+<p><strong>@Sergey Nuyanzin:</strong> 支持升级，认为可让本地增量构建无需额外 hack；提醒还需更新 Flink release 文档中明确提到必须使用 3.8.6 的部分。</p></div>
+            <p class="conclusion">社区整体支持升级到 Maven 3.9.x，PR 已开启，计划合入下一个 Flink minor 版本；后续需要检查 flink-shaded 并更新发布文档中的 Maven 版本说明。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/9kkd18cf6w61qbhxpywdwhwgl4v68jm9">Model routing for ML_PREDICT (FLINK-39961)</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论围绕 FLINK-39961 中 ML_PREDICT 的模型路由能力展开，Purshotam Shah 提出了 FLIP 草案，希望通过 routing model 在现有 ML_PREDICT 路径中按行选择候选模型。该方案不引入 SQL 语法变化或新运行时算子，仅对模型解析与计划持久化机制做小幅扩展，并已有概念验证实现。</p>
+            <div class="key-points"><p><strong>@Purshotam Shah:</strong> 提出通过 provider 为 routing 的 CREATE MODEL 实现模型路由，可按行选择不同候选模型，并支持失败回退。</p>
+<p><strong>@Purshotam Shah:</strong> 方案不修改 SQL 语法，也不新增运行时算子，主要扩展 ModelProviderFactory.Context / ModelSpec 以支持候选模型从 catalog 解析并持久化到执行计划。</p>
+<p><strong>@Purshotam Shah:</strong> 已有 proof-of-concept 实现，后续将分享分支链接，并希望社区重点评审 catalog 解析和计划持久化扩展是否可接受。</p></div>
+            <p class="conclusion">目前形成 FLIP 草案并进入征求意见阶段，下一步是社区评审该设计，尤其是 ModelProviderFactory.Context / ModelSpec 的扩展方式。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/2gs2xzzmh8371rnc2993o9bvjsm4n6bd">Flink Kubernetes Operator support for the Flink 2.3 application layer</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论围绕 Flink 2.3 引入的 application 层与 Kubernetes Operator 的兼容性问题展开。James Kan 指出当前 Operator 以 job 为中心，导致在 Flink 2.3 上部署可能卡住，并缺乏对 application 的建模与观测能力。</p>
+            <div class="key-points"><p><strong>@James Kan:</strong> Flink 2.3 中由于 ApplicationResult 路径复用导致部署卡住，已有 PR 通过为每次部署设置唯一的 application-result-store.storage-path 修复，但会带来需手动清理的资源泄漏问题。</p>
+<p><strong>@James Kan:</strong> Kubernetes Operator 目前缺少 application 层模型，无法感知 Application ID 或使用 /applications REST 接口，存在长期功能缺口。</p></div>
+            <p class="conclusion">邮件请求社区对现有修复方案（唯一存储路径）是否可接受给出方向性意见，并开启对 Operator 如何支持 application 层的进一步讨论。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (64)</h2>
+            
+    <p>本周新建 <strong>64</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周 JIRA 主要集中在 Checkpoint 与恢复机制的缺陷修复与优化（包括 Checkpointing-during-recovery、Watermark 空闲处理、Unaligned Checkpoint 等）、新类型系统扩展（UUID 逻辑类型及 VARIANT 类型增强）以及 Materialized Table 和 CDC 相关功能的改进。此外还涉及批处理优化、连接器生态扩展（DB2、Paimon、Fluss、PostgreSQL 等）、Kubernetes 部署配置优化及依赖升级和测试改进。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Flink Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
