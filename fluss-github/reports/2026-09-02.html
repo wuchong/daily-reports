@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-09-02</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-09-02</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 4 新 Issues</div>
+            <div class="stat">✅ 8 关闭</div>
+            <div class="stat">✨ 8 新 PRs</div>
+            <div class="stat">🎉 10 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/4196">PR #4196</a> Revert "[server] Fix alter cluster configs (#4179)"</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4193">PR #4193</a> [docs] Add remove_orphan_files Flink action page</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4192">PR #4192</a> [docs] Add multi-table scanner and writer documentation for the Java client</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4191">PR #4191</a> [docs] Document non-full primary key DELETE and UPDATE in Flink batch mode</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4182">PR #4182</a> [rust] Reject empty or duplicate primary key columns</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4179">Issue #4179</a> [server] Fix alter cluster configs</h4>
+            <ul><li><span class="author">@loserwang1024</span>: @leekeiabstraction Hi Keith, I saw your PR: https://github.com/apache/fluss/pull/4179. Are you curr…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4197">Issue #4197</a> [trino] Add native read-only Trino connector</h4>
+            <ul><li><span class="author">@polyzos</span>: @yangshangqing95 thanks a lot for driving this.. i have seen some requests for a fluss-trino connec…</li><li><span class="author">@yangshangqing95</span>: Hi @polyzos Thanks! Glad to hear there’s interest in this. Based on the current design, I’m plannin…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3591">Issue #3591</a> [flink-action][common][server] Support KV shared SST orphan file cleanup</h4>
+            <ul><li><span class="author">@leekeiabstraction</span>: @platinumhamburg Do you want to include this in 1.0 release?</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4062">Issue #4062</a> [Bug] Flink Catalog loses nested NOT NULL constraints in complex types</h4>
+            <ul><li><span class="author">@leekeiabstraction</span>: Taking over to unblock release；Looked deeper into this. This is actually a bug in Flink 1.x and 2.0…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4198">Issue #4198</a> [flink] Add regression test and docs for nested NOT NULL constraints</h4>
+            <ul><li><span class="author">@leekeiabstraction</span>: @gyang94 Appreciate a review here</li><li><span class="author">@gyang94</span>: @leekeiabstraction cool, It is a bug in Flink side. It is enough for us to aware of it. LGTM.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4174">Issue #4174</a> [spark] Support ADD COLUMN in Spark catalog</h4>
+            <ul><li><span class="author">@Xtpacz</span>: @Yohahaha @luoyuxia PTAL🙏🏻</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3675">Issue #3675</a> [flink] Support custom lookup shuffle by bucket for Flink 2.x</h4>
+            <ul><li><span class="author">@leonardBang</span>: Thanks for the thorough work here — the routing algorithm (divisible / round-robin / LCM weighted-s…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4206">Issue #4206</a> Revert "[docs] Add remove_orphan_files Flink action page"</h4>
+            <ul><li><span class="author">@leekeiabstraction</span>: @polyzos PTAL 🙏</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4049">Issue #4049</a> [docs] Document Spark scan.maxRecordsPerPartition</h4>
+            <ul><li><span class="author">@leekeiabstraction</span>: Approved, TY for your contribution!</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3699">Issue #3699</a> [CVE][filesystem] Align Hadoop dependencies to 3.4.3</h4>
+            <ul><li><span class="author">@leekeiabstraction</span>: Approved, TY for your contribution!</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3566">Issue #3566</a> Support Flink 1.18 compatible for remove_orphan_files action</h4>
+            <ul><li><span class="author">@leekeiabstraction</span>: Removed from v1.0 milestone. Confirmed with @platinumhamburg that this will be released in 1.1 inst…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3489">Issue #3489</a> Support safe cleanup of orphaned KV shared SST files</h4>
+            <ul><li><span class="author">@leekeiabstraction</span>: Removed from v1.0. Confirmed with @platinumhamburg that this will be planned for 1.1 instead.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4111">Issue #4111</a> Fluss Documentation add CoordinatorServer High Availability (HA) Setup</h4>
+            <ul><li><span class="author">@leekeiabstraction</span>: Approved and merged. TY for your contribution!</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3699">PR #3699</a> [CVE][filesystem] Align Hadoop dependencies to 3.4.3</h4>
+            <ul><li><span class="author">@leekeiabstraction</span>: Why do we set `disabledWithoutDocker`? Doing so may cause the test be skipped instead of failed if…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3999">PR #3999</a> [server] Parallelize replica leader transitions</h4>
+            <ul><li><span class="author">@swuferhong</span>: The configured value only bounds the number of bucket transitions; it does not bound the actual rec…</li><li><span class="author">@zuston</span>: Makes sense. For now, we could use a more conservative default. How about setting it to 2?；Good poi…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4028">PR #4028</a> [client] Clean up batches when synchronous sends fail</h4>
+            <ul><li><span class="author">@gyang94</span>: that's right. updated.；updated.</li><li><span class="author">@leekeiabstraction</span>: Throwing here can cause the pending request flush in `switchState(READY)` to be interrupted by an e…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3391">PR #3391</a> [server] Add per-tablet-server sender retry framework</h4>
+            <ul><li><span class="author">@gyang94</span>: Eventually yes. I intentionally make this PR to only introduces the generic per-tablet-server sende…</li><li><span class="author">@Jackeyzhe</span>: Thanks for clarifying — the scope split makes sense (generic per-tablet-server sender/retry infra f…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4049">PR #4049</a> [docs] Document Spark scan.maxRecordsPerPartition</h4>
+            <ul><li><span class="author">@Yohahaha</span>: yes, union read can not be split now</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4060">PR #4060</a> [server] Restore KV minRetainOffset on follower restart</h4>
+            <ul><li><span class="author">@wuchong</span>: The canonical RPC schema change is not mirrored to `fluss-rust/crates/fluss/proto/FlussApi.proto` o…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4195">PR #4195</a> [server] Share RocksDB write buffer across KV tablets</h4>
+            <ul><li><span class="author">@Copilot</span>: The option description claims the shared write buffer manager will not stall writers. That’s a stro…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4200">PR #4200</a> [client] Recover Admin writes after coordinator failover</h4>
+            <ul><li><span class="author">@loserwang1024</span>: I have two suggestions: 1. I previously implemented this in [[PR #3390](https://github.com/apache/f…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3813">PR #3813</a> [FIP-29] Add SSL config parsing and SslContext/SslHandler factory</h4>
+            <ul><li><span class="author">@MicheleGuerriero</span>: Removed both in `5b5b115`. `security.ssl.reload.interval` and `client.security.ssl.reload.interval`…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2436">PR #2436</a> [KV] Add Configuration Option to Control RocksDB Statistics Collection</h4>
+            <ul><li><span class="author">@Jackeyzhe</span>: This option defaults to `false`, while both its description and the user documentation say `true`.…</li><li><span class="author">@platinumhamburg</span>: @Jackeyzhe Thank you for your thorough review and comments. This PR is likely no longer valid — it…</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4204">#4204</a> [gateway] Canonical MAP entry arrays accept duplicate keys <span class="author">@Gezi-lzq</span> </li><li><a href="https://github.com/apache/fluss/issues/4202">#4202</a> [docs] Add Fluss Gateway deployment documentation <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/issues/4197">#4197</a> [trino] Add native read-only Trino connector <span class="author">@yangshangqing95</span> </li><li><a href="https://github.com/apache/fluss/issues/4194">#4194</a> Support a shared RocksDB write buffer manager across KV tablets <span class="author">@platinumhamburg</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4206">#4206</a> Revert "[docs] Add remove_orphan_files Flink action page" <span class="author">@leekeiabstraction</span> </li><li><a href="https://github.com/apache/fluss/pull/4205">#4205</a> [gateway] Reject duplicate MAP keys in entry arrays <span class="author">@Gezi-lzq</span> </li><li><a href="https://github.com/apache/fluss/pull/4203">#4203</a> [lake] Fail fast when a lake plugin is shadowed by a jar in lib <span class="author">@gezapeti</span> </li><li><a href="https://github.com/apache/fluss/pull/4201">#4201</a> [rust] Support KvScan in Rust client <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/pull/4200">#4200</a> [client] Recover Admin writes after coordinator failover <span class="author">@sakshichitnis27</span> </li><li><a href="https://github.com/apache/fluss/pull/4199">#4199</a> [server] Incrementally clean historical KV state <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/pull/4198">#4198</a> [flink] Add regression test and docs for nested NOT NULL constraints <span class="author">@leekeiabstraction</span> </li><li><a href="https://github.com/apache/fluss/pull/4195">#4195</a> [server] Share RocksDB write buffer across KV tablets <span class="author">@platinumhamburg</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4180">#4180</a> [Bug][Rust] SchemaBuilder accepts empty or duplicate primary keys <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/issues/3995">#3995</a> [doc] scan.maxRecordsPerPartition doc <span class="author">@leekeiabstraction</span> <span class="labels">priority=blocker</span></li><li><a href="https://github.com/apache/fluss/issues/3993">#3993</a> [doc] Remove orphan file Flink action doc <span class="author">@leekeiabstraction</span> <span class="labels">priority=blocker</span></li><li><a href="https://github.com/apache/fluss/issues/3991">#3991</a> [doc] Multi-table scanner/writer doc <span class="author">@leekeiabstraction</span> <span class="labels">priority=blocker</span></li><li><a href="https://github.com/apache/fluss/issues/3990">#3990</a> Documentation for non-full primary key DELETE / UPDATE <span class="author">@leekeiabstraction</span> <span class="labels">priority=blocker</span></li><li><a href="https://github.com/apache/fluss/issues/3989">#3989</a> [doc] HA Coordinator Documentation <span class="author">@leekeiabstraction</span> <span class="labels">priority=blocker</span></li><li><a href="https://github.com/apache/fluss/issues/3782">#3782</a> [rpc] Add authoritative ISR to Fluss metadata and RPC <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/3682">#3682</a> [CVE/filesystem] Align Hadoop dependencies to 3.4.3 <span class="author">@litiliu</span> <span class="labels">priority=blocker</span></li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4196">#4196</a> Revert "[server] Fix alter cluster configs (#4179)" <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/pull/4193">#4193</a> [docs] Add remove_orphan_files Flink action page <span class="author">@leekeiabstraction</span> </li><li><a href="https://github.com/apache/fluss/pull/4192">#4192</a> [docs] Add multi-table scanner and writer documentation for the Java client <span class="author">@leekeiabstraction</span> </li><li><a href="https://github.com/apache/fluss/pull/4191">#4191</a> [docs] Document non-full primary key DELETE and UPDATE in Flink batch mode <span class="author">@leekeiabstraction</span> </li><li><a href="https://github.com/apache/fluss/pull/4182">#4182</a> [rust] Reject empty or duplicate primary key columns <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/pull/4111">#4111</a> Fluss Documentation add CoordinatorServer High Availability (HA) Setup <span class="author">@striver619</span> </li><li><a href="https://github.com/apache/fluss/pull/4049">#4049</a> [docs] Document Spark scan.maxRecordsPerPartition <span class="author">@kaiwangleo</span> </li><li><a href="https://github.com/apache/fluss/pull/3785">#3785</a> [server][rpc] Return ISR and bucket epoch in bucket metadata <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/pull/3699">#3699</a> [CVE][filesystem] Align Hadoop dependencies to 3.4.3 <span class="author">@litiliu</span> </li><li><a href="https://github.com/apache/fluss/pull/3476">#3476</a> [lake/paimon] Support custom Paimon lake table path <span class="author">@wzx140</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
