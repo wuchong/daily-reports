@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data+AI 全球日报 | 2026-09-02</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Data+AI 全球日报 | 2026-09-02</h1>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="top-changes">
+            <h2>🔥 今日最重要的3个变化</h2>
+            <ol><li><strong>S3 Tables 与 Trino/Iceberg REST 互通</strong> — Amazon EMR Trino 可通过 Iceberg REST endpoint 查询 Amazon S3 Tables，强化开放目录与多引擎互操作。</li><li><strong>ClickHouse MySQL CDC GA</strong> — ClickPipes MySQL CDC connector 正式发布，提升 MySQL/MariaDB 到 ClickHouse Cloud 的实时入仓能力。</li><li><strong>SageMaker 声明式 Iceberg medallion</strong> — Amazon SageMaker 用 Iceberg materialized views 声明式构建 medallion architecture，减少 ETL 与编排依赖。</li></ol>
+            <p class="judgment"><strong>总判断：</strong>今日信号集中在 AWS 与 ClickHouse 对 Apache Iceberg、CDC 和开放目录的持续加码。数据平台竞争正从单点引擎转向声明式管道、实时摄入与表目录互操作能力。AWS 的密集更新显示其正把 Iceberg 作为湖仓一体默认工程接口。</p>
+        </section>
+
+        <section class="top-signals">
+            <h2>📡 重要信号</h2>
+            
+    <article class="news-item">
+        <h3>Amazon EMR Trino 通过 Iceberg REST endpoint 查询 Amazon S3 Tables</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/query-amazon-s3-tables-from-amazon-emr-trino-using-the-iceberg-rest-endpoint/">AWS Big Data Blog</a></p>
+        <p class="date">2026-09-02</p>
+        <p class="summary">AWS 介绍如何从 Amazon EMR 上的 Trino 查询 Amazon S3 Tables，并通过 Apache Iceberg REST catalog endpoint 连接表目录。文章演示使用 AWS CloudFormation 部署集成、配置 Trino catalog，并以 SQL 创建、查询和管理 Apache Iceberg 表。这一实践显示 S3 Tables 正与开放目录标准更紧密结合，为多引擎查询 S3 表提供统一入口。</p>
+        <div class="impact">📊 数据平台影响：Iceberg REST endpoint 成为目录互操作关键接口，S3 Tables 与 Trino/EMR 打通后，数据平台可更容易实现多引擎共享表、统一权限和开放目录治理。</div>
+    </article>
+    <article class="news-item">
+        <h3>ClickPipes MySQL CDC connector 正式 GA</h3>
+        <p class="sources">📌 <a href="https://clickhouse.com/blog/mysql-cdc-connector-for-clickpipes-is-now-generally-available">ClickHouse Blog</a></p>
+        <p class="date">2026-09-02</p>
+        <p class="summary">ClickHouse 宣布 ClickPipes 的 MySQL CDC connector 正式可用，支持将 MySQL 与 MariaDB 数据复制到 ClickHouse Cloud。GA 版本提供更快并行快照、更安全的生产默认配置、改进的可观测性，以及 infrastructure-as-code 支持。该更新面向实时分析场景，降低数据库变更数据进入 ClickHouse 的门槛。</p>
+        <div class="impact">📊 数据平台影响：OLAP 平台内置 CDC 摄取能力增强，会压缩第三方复制工具在 MySQL 到分析库链路上的空间，实时数仓可更直接承接业务库变更。</div>
+    </article>
+        </section>
+
+        <section class="product-tech">
+            <h2>💻 产品与技术</h2>
+            
+    <article class="news-item">
+        <h3>Amazon SageMaker 用 Iceberg materialized views 构建 medallion architecture</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/building-medallion-architecture-with-iceberg-materialized-views-in-amazon-sagemaker/">AWS Big Data Blog</a></p>
+        <p class="date">2026-09-02</p>
+        <p class="summary">AWS 展示在 Amazon SageMaker 中使用 Apache Iceberg materialized views 构建 Bronze、Silver、Gold 三层 medallion architecture。该方式以三条 SQL 声明式定义各层数据加工，将转换、编排和增量处理折叠到每层定义中，减少传统 ETL 作业和编排器依赖。这为湖仓数据工程提供更简洁的管道抽象。</p>
+        <div class="impact">📊 数据平台影响：声明式 materialized views 可能改变数据管道构建方式，推动数据平台从作业编排转向以表和视图为中心的工程模式，并提升湖仓开发效率。</div>
+    </article>
+    <article class="news-item">
+        <h3>用 Apache Iceberg 和 Apache Flink 构建动态 streaming data lake</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/build-a-dynamic-streaming-data-lake-with-apache-iceberg-and-apache-flink/">AWS Big Data Blog</a></p>
+        <p class="date">2026-09-02</p>
+        <p class="summary">AWS 演示在 Amazon Managed Service for Apache Flink 上构建动态流式数据湖，利用 Apache Iceberg Dynamic Iceberg Sink 实现按记录路由到不同表，并自动适应新事件类型和 schema 变化。管道无需停机即可处理结构变化，适合事件数据、日志和 IoT 等高变化场景。</p>
+        <div class="impact">📊 数据平台影响：流式湖仓可获得更强 schema evolution 和路由能力，降低实时管道因上游结构变化导致的运维中断，有助于减少停机和重跑。</div>
+    </article>
+        </section>
+
+        <section class="people-views">
+            <h2>👤 人物与观点</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="analyst-insights">
+            <h2>📊 分析师洞察</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="watchlist">
+            <h2>👀 观察列表</h2>
+            
+    <article class="watchlist-item">
+        <h3>Iceberg REST catalog 与 Amazon S3 Tables 生态扩展</h3>
+        <span class="status">待观察</span>
+        <p class="reason">AWS 将 S3 Tables 与 EMR Trino、Iceberg REST endpoint 连接，若更多引擎接入，开放目录可能成为湖仓标准。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>更多计算引擎或 AWS 服务原生支持 S3 Tables 与 Iceberg REST catalog。</p>
+    </article>
+    <article class="watchlist-item">
+        <h3>SageMaker materialized views 对 ETL/编排工具的替代</h3>
+        <span class="status">待观察</span>
+        <p class="reason">声明式 SQL 管道可能减少传统 ETL 作业和编排器需求，但需观察企业级治理、监控和复杂场景支持。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>SageMaker materialized views 增强生产监控、权限控制和增量优化能力。</p>
+    </article>
+    <article class="watchlist-item">
+        <h3>ClickPipes CDC 连接器扩展</h3>
+        <span class="status">待观察</span>
+        <p class="reason">MySQL CDC GA 后，ClickHouse 可能继续扩展更多数据源，强化实时入仓能力。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>新增更多数据源、企业级 SLA 和可观测能力。</p>
+    </article>
+        </section>
+
+        <section class="stock-analysis">
+            <h2>📈 股票分析</h2>
+            <p class="disclaimer">⚠️ 以下内容仅供参考，不构成任何投资建议。投资有风险，入市需谨慎。</p>
+            
+    <article class="stock-item">
+        <div class="stock-header">
+            <span class="ticker">AMZN</span>
+            <span class="company">Amazon</span>
+            <span class="signal signal-neutral">⚪ 中性</span>
+        </div>
+        <p class="stock-summary">AWS 持续强化 Iceberg、S3 Tables、SageMaker、Flink 和 EMR Trino 的湖仓能力，有助于提升云数据平台粘性和开放表格式生态。但今日内容偏技术博客，短期对收入和利润影响有限。（仅供参考，不构成投资建议）</p>
+        <div class="stock-details">
+            <div class="catalysts">
+                <strong>🚀 催化剂</strong>
+                <ul><li>S3 Tables 与更多引擎集成</li><li>企业采用 Iceberg/湖仓方案加速</li><li>AWS 数据与 AI 服务交叉销售</li></ul>
+            </div>
+            <div class="risks">
+                <strong>⚠️ 风险</strong>
+                <ul><li>云数据平台竞争加剧</li><li>开源表格式治理和互操作复杂</li><li>企业数据支出谨慎</li></ul>
+            </div>
+        </div>
+    </article>
+        </section>
+
+        <footer>
+            <p>Generated by Data+AI Daily Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
