@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data+AI 全球日报 | 2026-09-03</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Data+AI 全球日报 | 2026-09-03</h1>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="top-changes">
+            <h2>🔥 今日最重要的3个变化</h2>
+            <ol><li><strong>Amazon OpenSearch Serverless 强化企业私网连接</strong> — AWS 发布下一代 Amazon OpenSearch Serverless 的九种私有访问连接模式，推动搜索、日志和向量检索工作负载进入企业私网生产环境。</li><li><strong>ClickHouse Managed Postgres 支持计划升级窗口</strong> — ClickHouse Managed Postgres 增加可计划升级能力，提升托管事务数据库在企业数据平台中的运维可控性。</li><li><strong>Tinybird 增强 ClickHouse 集群管理能力</strong> — Tinybird 允许用户通过 UI 或 API 观察负载、调整 Dedicated 集群并重平衡流量，进一步降低托管 ClickHouse 运维门槛。</li></ol>
+            <p class="judgment"><strong>总判断：</strong>今日 Data+AI 信号集中在云与托管数据服务的工程化落地：AWS 强化 OpenSearch Serverless 私网连接，ClickHouse 和 Tinybird 提升托管数据库运维可控性，AWS 客户案例继续强调多引擎 lakehouse 与成本优化。整体没有重大融资或并购，但显示数据平台竞争正从引擎能力转向企业级网络、安全、运维和成本治理。</p>
+        </section>
+
+        <section class="top-signals">
+            <h2>📡 重要信号</h2>
+            
+    <article class="news-item">
+        <h3>AWS 推进下一代 Amazon OpenSearch Serverless 企业私网连接</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/network-connectivity-patterns-for-the-next-generation-of-amazon-opensearch-serverless/">AWS Big Data Blog</a></p>
+        <p class="date">2026-09-03</p>
+        <p class="summary">AWS 发布下一代 Amazon OpenSearch Serverless 的网络连接模式说明，展示基于标准 AWS PrivateLink 端点和 on.aws 域名的九种私有访问模式，覆盖单 VPC、多 VPC、跨账户、本地数据中心、跨 Region 等场景，并解释 DNS 解析与数据路径。该更新表明 OpenSearch Serverless 正从公网托管搜索服务向企业级私网生产环境推进。</p>
+        <div class="impact">📊 数据平台影响：为搜索、日志、向量检索等 serverless 工作负载提供更安全的私网接入，降低数据平台网络隔离与合规改造成本，有利于在 AWS 上构建多租户和跨账户数据产品。</div>
+    </article>
+        </section>
+
+        <section class="product-tech">
+            <h2>💻 产品与技术</h2>
+            
+    <article class="news-item">
+        <h3>ClickHouse Managed Postgres 推出 Scheduled Upgrades</h3>
+        <p class="sources">📌 <a href="https://clickhouse.com/blog/introducing-scheduled-upgrades-in-clickhouse-managed-postgres">ClickHouse Blog</a></p>
+        <p class="date">2026-09-03</p>
+        <p class="summary">ClickHouse 宣布 Managed Postgres 支持计划升级窗口，Scale 和 Enterprise 用户可自主设定例行平台维护时间。此举将托管 Postgres 的升级从被动维护转向可计划运维，减少业务高峰期中断风险。对于将 Postgres 作为操作型数据源或应用数据库，并与 ClickHouse 分析引擎组合使用的团队，该能力提升了托管服务的可预测性和企业可用性。</p>
+        <div class="impact">📊 数据平台影响：增强托管 Postgres 的企业运维可控性，有利于数据平台将事务数据库升级纳入变更管理流程，降低分析链路因维护窗口不确定造成的同步延迟或故障。</div>
+    </article>
+    <article class="news-item">
+        <h3>Moovit 通过多引擎 lakehouse 架构实现 33% 成本优化</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/how-moovit-achieved-33-cost-optimization-through-architectural-modernization/">AWS Big Data Blog</a></p>
+        <p class="date">2026-09-03</p>
+        <p class="summary">AWS Big Data Blog 发布 Moovit 案例，介绍其通过多引擎 lakehouse 架构实现 33% 数据管道成本优化。Moovit 将重聚合负载从 Amazon Redshift 迁移到 Amazon EMR 的 Spark SQL，并使用 Amazon Redshift Serverless 隔离工作负载，在保持分析性能的同时降低整体成本。该案例展示了交通数据平台在高并发、大规模聚合场景下，通过负载拆分和 serverless 化实现成本治理的路径。</p>
+        <div class="impact">📊 数据平台影响：为数据平台提供 Redshift+EMR+Serverless 的组合样板，提示平台团队按工作负载选择引擎，通过隔离和弹性计费优化成本，而非单一扩容数仓。</div>
+    </article>
+    <article class="news-item">
+        <h3>Tinybird 发布 ClickHouse 集群管理能力</h3>
+        <p class="sources">📌 <a href="https://www.tinybird.co/blog/clickhouse-cluster-management">TinyBird</a></p>
+        <p class="date">2026-09-03</p>
+        <p class="summary">Tinybird 发布 ClickHouse 集群管理能力，用户可在 Organization UI 或 API 中观察工作负载信号、调整 Dedicated 集群规模并重新平衡流量，而底层 ClickHouse 运维由 Tinybird 负责。该功能强调保留控制权但免去集群运维，进一步补齐托管 ClickHouse 实时分析平台的运营界面。对于需要低延迟 API 和实时指标的团队，这降低了 ClickHouse 集群扩缩容和流量治理门槛。</p>
+        <div class="impact">📊 数据平台影响：推动 ClickHouse 托管服务向可观测、可自助运维演进，有助于数据平台在实时分析场景中平衡性能、成本和运维复杂度。</div>
+    </article>
+        </section>
+
+        <section class="people-views">
+            <h2>👤 人物与观点</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="analyst-insights">
+            <h2>📊 分析师洞察</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="watchlist">
+            <h2>👀 观察列表</h2>
+            
+    <article class="watchlist-item">
+        <h3>Amazon OpenSearch Serverless 下一代私网连接采用情况</h3>
+        <span class="status">待观察</span>
+        <p class="reason">PrivateLink 和 on.aws 端点模式可能影响企业搜索、日志和向量检索的私有化落地。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>更多企业级参考架构、跨账户/跨 Region 模板或安全合规认证案例。</p>
+    </article>
+    <article class="watchlist-item">
+        <h3>ClickHouse Managed Postgres 企业运维能力扩展</h3>
+        <span class="status">待观察</span>
+        <p class="reason">计划升级窗口是托管 Postgres 进入生产系统的关键运维门槛。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>是否增加蓝绿升级、维护通知、SLA 和更多区域可用。</p>
+    </article>
+    <article class="watchlist-item">
+        <h3>Tinybird ClickHouse 托管平台自助运维能力</h3>
+        <span class="status">待观察</span>
+        <p class="reason">实时分析平台需要在性能、成本和集群治理间取得平衡。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>自动扩缩容、成本推荐或多集群流量治理功能。</p>
+    </article>
+        </section>
+
+        <section class="stock-analysis">
+            <h2>📈 股票分析</h2>
+            <p class="disclaimer">⚠️ 以下内容仅供参考，不构成任何投资建议。投资有风险，入市需谨慎。</p>
+            
+    <article class="stock-item">
+        <div class="stock-header">
+            <span class="ticker">AMZN</span>
+            <span class="company">Amazon</span>
+            <span class="signal signal-neutral">⚪ 中性</span>
+        </div>
+        <p class="stock-summary">AWS 持续完善 OpenSearch Serverless 与托管数据服务，增强企业数据平台粘性；今日更新偏产品能力，短期财务催化有限。本分析仅供参考，不构成投资建议。</p>
+        <div class="stock-details">
+            <div class="catalysts">
+                <strong>🚀 催化剂</strong>
+                <ul><li>OpenSearch Serverless 企业私网采用扩大</li><li>AWS 数据与搜索服务交叉销售</li><li>后续 AWS 产品发布或客户案例</li></ul>
+            </div>
+            <div class="risks">
+                <strong>⚠️ 风险</strong>
+                <ul><li>云支出优化压力导致客户控制搜索/分析支出</li><li>Elastic、MongoDB 等替代方案竞争</li><li>企业私网与合规落地周期较长</li></ul>
+            </div>
+        </div>
+    </article>
+        </section>
+
+        <footer>
+            <p>Generated by Data+AI Daily Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
