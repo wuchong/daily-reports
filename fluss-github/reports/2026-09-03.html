@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-09-03</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-09-03</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 13 新 Issues</div>
+            <div class="stat">✅ 3 关闭</div>
+            <div class="stat">✨ 12 新 PRs</div>
+            <div class="stat">🎉 3 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/4195">PR #4195</a> [server] Share RocksDB write buffer across KV tablets</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4120">PR #4120</a> [client][server][paimon] Complete historical partition writes</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4060">PR #4060</a> [server] Restore KV minRetainOffset on follower restart</li><li>🐛 <a href="https://github.com/apache/fluss/issues/4227">Issue #4227</a> [Flink] Support Flink batch insert into Fluss primary-key tables</li><li>🐛 <a href="https://github.com/apache/fluss/issues/4226">Issue #4226</a> [Client] [Server] Add temporary write authorization for bulk-load sessions</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4029">Issue #4029</a> [client] Add Admin API to describe buckets</h4>
+            <ul><li><span class="author">@fhan688</span>: refined code implementation according to all the review comments above, please help review, thanks!…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4175">Issue #4175</a> [rust] Return error when table descriptor schema is missing.</h4>
+            <ul><li><span class="author">@slfan1989</span>: > @slfan1989 Thx, LGTM 👍 @fresh-borzoni Thank you for the review and for merging the PR!</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4195">Issue #4195</a> [server] Share RocksDB write buffer across KV tablets</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: > Have we considered exposing a single TabletServer-wide shared RocksDB memory budget and using a w…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3675">Issue #3675</a> [flink] Support custom lookup shuffle by bucket for Flink 2.x</h4>
+            <ul><li><span class="author">@naivedogger</span>: Thanks @leonardBang for pointing this out. I confirmed that the raw DDL path you mentioned is reach…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4060">Issue #4060</a> [server] Restore KV minRetainOffset on follower restart</h4>
+            <ul><li><span class="author">@wuchong</span>: @gyang94 I appended a commit to refine the code, please take a look.</li><li><span class="author">@gyang94</span>: @wuchong: Thanks for refining the code. LGTM.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3832">Issue #3832</a> [spark] Support custom Paimon lake table paths</h4>
+            <ul><li><span class="author">@BackendArchitectX</span>: Hi @wzx140, I’d like to work on this. I’ve reviewed the Spark lake-read path and #3476, and I plan…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3735">Issue #3735</a> [test] Unstable test FlussAdminITCase.testKvSnapshotLeaseAfterCoordinatorServerRestart</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: https://github.com/apache/fluss/actions/runs/33585900691/job/100109863877 ``` [ERROR] org.apache.fl…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4211">Issue #4211</a> [test] Unstable test ReplicaManagerTest.testLookupWithInsertIfNotExistsAutoIncrement</h4>
+            <ul><li><span class="author">@Adarsh-Me</span>: Hi! I'd like to take this unstable test. Could a committer please assign it to me? My plan is to re…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3908">Issue #3908</a> [server][client] Support per-partition bucket count for partitioned tables</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: Could we revert the asynchronous dynamic-partition write changes from this PR and keep the original…</li><li><span class="author">@Kaixuan-Duan</span>: @platinumhamburg Thanks for the suggestion. I’ve reverted the deferred-write path and implemented t…</li><li><span class="author">@wuchong</span>: I just merge another big PR and introduces some conflicts with this PR. Please also rebase and reso…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4200">Issue #4200</a> [client] Recover Admin writes after coordinator failover</h4>
+            <ul><li><span class="author">@litiliu</span>: Thanks @sakshichitnis27 for driving this, and @loserwang1024 for the review. Based on that feedback…</li><li><span class="author">@sakshichitnis27</span>: Thanks @loserwang1024 and @litiliu. I’ve updated the PR to separate metadata refresh from automatic…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4215">Issue #4215</a> [Gateway] DECIMAL decoder rejects exponent notation</h4>
+            <ul><li><span class="author">@naivedogger</span>: @beryllw @fresh-borzoni, could you please take a look when you have a chance? Thanks!</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3751">Issue #3751</a> [server] add support of `KvPreWriteBuffer` backpressure</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: Hi @zuston , do you still plan to continue working on this PR? After giving this some more thought,…</li><li><span class="author">@zuston</span>: @platinumhamburg thanks for your notice and suggestions. This limitation is necessary for our case,…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4209">Issue #4209</a> [rust] Validate nested ROW field names</h4>
+            <ul><li><span class="author">@naivedogger</span>: @beryllw @fresh-borzoni, could you please take a look when you have a chance? Thanks!</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3008">Issue #3008</a> [client] Fix corruption after zero-copy lazy parse ByteBuf</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: @loserwang1024 let me know what we should do with this</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4120">Issue #4120</a> [client][server][paimon] Complete historical partition writes</h4>
+            <ul><li><span class="author">@luoyuxia</span>: @wuchong Thanks for the commit. LGTM! I rebase main branch to resolve conflict.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4219">Issue #4219</a> [gateway] Add Prometheus identity labels</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: > My main question is about the Gateway identity model. We now have: > > * `gateway.id`: logical Ga…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4087">Issue #4087</a> [client] Support bounded write delivery (delivery timeout)</h4>
+            <ul><li><span class="author">@MaheshS08</span>: @beryllw , I'd like to work on implementing a delivery timeout mechanism for the Java client write…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4210">Issue #4210</a> [docs] Add Fluss Gateway deployment guide</h4>
+            <ul><li><span class="author">@beryllw</span>: @platinumhamburg @fresh-borzoni @naivedogger cc</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4061">Issue #4061</a> [server] Add off-loop coordinator health cache (mechanism only)</h4>
+            <ul><li><span class="author">@affo</span>: Thanks for the review @fresh-borzoni — redesigned based on this. Summarizing everything together ra…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4221">Issue #4221</a> [docs] Add an HTTP Gateway quickstart for a real-time lakehouse</h4>
+            <ul><li><span class="author">@pranavshuklaa</span>: Hi, I’m planning to take up this quickstart doc and work on the Docker Compose setup and documentat…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4231">Issue #4231</a> [docs] Add HTTP Gateway lakehouse quickstart</h4>
+            <ul><li><span class="author">@pranavshuklaa</span>: Could someone please review this PR when you get a chance? It adds the HTTP Gateway lakehouse quick…</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4174">PR #4174</a> [spark] Support ADD COLUMN in Spark catalog</h4>
+            <ul><li><span class="author">@Yohahaha</span>: do we need support spark ColumnDefaultValue here?；test not cover ColumnPosition, comments, nullable…</li><li><span class="author">@Xtpacz</span>: fluss doesn't support column defaults (no field anywhere in TableChange/Schema), and since we don't…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4030">PR #4030</a> [docs] Add more details for historical partition lookup</h4>
+            <ul><li><span class="author">@luoyuxia</span>: I mean only the server-side setup part, rather than the entire Historical Partition Lookup section:…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4200">PR #4200</a> [client] Recover Admin writes after coordinator failover</h4>
+            <ul><li><span class="author">@litiliu</span>: Thanks @loserwang1024 On point 2 (don't limit refresh to NotCoordinatorLeaderException): agreed. Af…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4028">PR #4028</a> [client] Clean up batches when synchronous sends fail</h4>
+            <ul><li><span class="author">@leekeiabstraction</span>: I believe `RecordAccumulator` or `WriteBatch` needs to be updated as well to perform full clean up.…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4120">PR #4120</a> [client][server][paimon] Complete historical partition writes</h4>
+            <ul><li><span class="author">@wuchong</span>: Should we use a `volatile boolean isHistoricalPartition`? The original partition name is determinis…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4220">PR #4220</a> [lake/iceberg] Ignore Fluss properties in compatibility checks</h4>
+            <ul><li><span class="author">@Copilot</span>: This introduces a potential NullPointerException if `expectedProperties` contains a null key (Java……</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4219">PR #4219</a> [gateway] Add Prometheus identity labels</h4>
+            <ul><li><span class="author">@beryllw</span>: Should we reject whitespace-only values here? Currently values such as `" " `pass validation and pr…</li><li><span class="author">@platinumhamburg</span>: Addressed. gateway.id now rejects whitespace-only values using trim().is_empty(). gateway.host has…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4229">PR #4229</a> [server] Only super.users can modify configuration of super.user info.</h4>
+            <ul><li><span class="author">@wuchong</span>: Could we use `super` instead of `guest` to represent the super user? The current test code is confu…</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4227">#4227</a> [Flink] Support Flink batch insert into Fluss primary-key tables <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/4226">#4226</a> [Client] [Server] Add temporary write authorization for bulk-load sessions <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/4225">#4225</a> [Client] Add the primary-key table bulk-load client SDK <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/4224">#4224</a> [Server] Add the server-side primary-key table bulk-load protocol <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/4223">#4223</a> [Server] Support importing completed KV snapshots <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/4222">#4222</a> [Umbrella] Support production-ready bulk loading for primary-key tables <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/4221">#4221</a> [docs] Add an HTTP Gateway quickstart for a real-time lakehouse <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/issues/4218">#4218</a> [lake/iceberg] Cannot rebind an existing Iceberg table across Fluss clusters with different replication factors <span class="author">@litiliu</span> </li><li><a href="https://github.com/apache/fluss/issues/4217">#4217</a> [Gateway] Expose stable Gateway identity labels in Prometheus metrics <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/4214">#4214</a> [Gateway] DECIMAL decoder rejects exponent notation <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/issues/4212">#4212</a> [metrics] Add per-error TabletServer request metrics <span class="author">@fxbing</span> </li><li><a href="https://github.com/apache/fluss/issues/4211">#4211</a> [test] Unstable test ReplicaManagerTest.testLookupWithInsertIfNotExistsAutoIncrement <span class="author">@app/github-actions</span> </li><li><a href="https://github.com/apache/fluss/issues/4208">#4208</a> [Rust] SchemaBuilder accepts blank or duplicate nested ROW field names <span class="author">@naivedogger</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4231">#4231</a> [docs] Add HTTP Gateway lakehouse quickstart <span class="author">@pranavshuklaa</span> </li><li><a href="https://github.com/apache/fluss/pull/4230">#4230</a> [spark] Support custom Paimon lake table paths <span class="author">@BackendArchitectX</span> </li><li><a href="https://github.com/apache/fluss/pull/4229">#4229</a> [server] Only super.users can modify configuration of super.user info. <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/pull/4228">#4228</a> [client] Expose node resources and table sizes <span class="author">@fkzhao</span> </li><li><a href="https://github.com/apache/fluss/pull/4220">#4220</a> [lake/iceberg] Ignore Fluss properties in compatibility checks <span class="author">@litiliu</span> </li><li><a href="https://github.com/apache/fluss/pull/4219">#4219</a> [gateway] Add Prometheus identity labels <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/4216">#4216</a> [client] Recover admin writes after coordinator leader failover <span class="author">@litiliu</span> </li><li><a href="https://github.com/apache/fluss/pull/4215">#4215</a> [Gateway] DECIMAL decoder rejects exponent notation <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/pull/4213">#4213</a> [metrics] Add per-error TabletServer request metrics <span class="author">@fxbing</span> </li><li><a href="https://github.com/apache/fluss/pull/4210">#4210</a> [docs] Add Fluss Gateway deployment guide <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/pull/4209">#4209</a> [rust] Validate nested ROW field names <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/pull/4207">#4207</a> [trino] Add initial connector build and plugin skeleton <span class="author">@yangshangqing95</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4194">#4194</a> Support a shared RocksDB write buffer manager across KV tablets <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/4119">#4119</a> [FIP-28] Complete end-to-end historical partition writes <span class="author">@luoyuxia</span> <span class="labels">component=client, component=server, component=lake, component=lake/paimon, priority=normal</span></li><li><a href="https://github.com/apache/fluss/issues/4054">#4054</a> [server] Restore KV minRetainOffset on follower restart <span class="author">@gyang94</span> <span class="labels">priority=normal</span></li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4195">#4195</a> [server] Share RocksDB write buffer across KV tablets <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/4120">#4120</a> [client][server][paimon] Complete historical partition writes <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/pull/4060">#4060</a> [server] Restore KV minRetainOffset on follower restart <span class="author">@gyang94</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
