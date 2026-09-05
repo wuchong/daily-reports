@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-09-04</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-09-04</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 1 新 Issues</div>
+            <div class="stat">✅ 2 关闭</div>
+            <div class="stat">✨ 2 新 PRs</div>
+            <div class="stat">🎉 2 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/4219">PR #4219</a> [gateway] Add Prometheus identity labels</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4089">PR #4089</a> [server] Keep snapshot metrics safe during cleanup</li><li>🐛 <a href="https://github.com/apache/fluss/issues/4233">Issue #4233</a> [test] Unstable test FlinkUnionReadPrimaryKeyTableITCase.testUnionReadWithCustomLakeTablePath</li><li>✨ <a href="https://github.com/apache/fluss/pull/4235">PR #4235</a> [test] Fix flaky testUnionReadWithCustomLakeTablePath test</li><li>✨ <a href="https://github.com/apache/fluss/pull/4232">PR #4232</a> [server] Fix thread-safety bug in RebalanceManager ZooKeeper recovery path</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <ul class="critical-list"><li>⚠️ <a href="https://github.com/apache/fluss/issues/4088">Issue #4088</a> [Bug] Coordinator metrics can stop reporting after failed partition cleanup</li></ul>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4219">Issue #4219</a> [gateway] Add Prometheus identity labels</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: After further discussion, I added host back to provide the Gateway’s network-addressing identity in…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4216">Issue #4216</a> [client] Recover admin writes after coordinator leader failover</h4>
+            <ul><li><span class="author">@litiliu</span>: @loserwang1024 Could you take a look on this?</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4220">Issue #4220</a> [lake/iceberg] Fix Iceberg table rebinding with different Fluss properties</h4>
+            <ul><li><span class="author">@litiliu</span>: Thanks @luoyuxia for reviewing and approving this PR!</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3908">Issue #3908</a> [server][client] Support per-partition bucket count for partitioned tables</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: Hi @Kaixuan-Duan, I pushed one commit to this PR branch. **The problem.** The routing bucket count…</li><li><span class="author">@Kaixuan-Duan</span>: @platinumhamburg Thanks for the commit. Reporting stale routes per bucket is the right fix — failin…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4221">Issue #4221</a> [docs] Add an HTTP Gateway quickstart for a real-time lakehouse</h4>
+            <ul><li><span class="author">@Gezi-lzq</span>: Hi @beryllw, I opened PR #3851 a while ago to introduce a contributor-focused local DevKit, and rec…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4197">Issue #4197</a> [trino] Add native read-only Trino connector</h4>
+            <ul><li><span class="author">@polyzos</span>: @yangshangqing95 did you manage to get access to Confluence?；@yangshangqing95 can you try submittin…</li><li><span class="author">@yangshangqing95</span>: > <a href="https://github.com/yangshangqing95">@yangshangqing95</a> did you manage to get access to Confluence…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4233">Issue #4233</a> [test] Unstable test FlinkUnionReadPrimaryKeyTableITCase.testUnionReadWithCustomLakeTablePath</h4>
+            <ul><li><span class="author">@ChengJie1053</span>: I would like to work on this issue.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4117">Issue #4117</a> [client] Expose all coordinator servers (leader and standbys) via the client API</h4>
+            <ul><li><span class="author">@MaheshS08</span>: @affo, I would like to work on this issue. I'll implement the feature to expose all coordinator ser…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4029">Issue #4029</a> [client] Add Admin API to describe buckets</h4>
+            <ul><li><span class="author">@affo</span>: Thanks @fhan688 — the rebase onto #3785 looks good: the duplicate `BucketMetadata` change is gone a…</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4210">PR #4210</a> [docs] Add Fluss Gateway deployment guide</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: The documentation says that the Gateway logs to standard output, but the current logger writes thro…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3008">PR #3008</a> [client] Fix corruption after zero-copy lazy parse ByteBuf</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: `copyStrings` feels too specific for a generic deep getter. It gives this method two different life…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3468">PR #3468</a> [client] Propagate write batch failures to flush</h4>
+            <ul><li><span class="author">@Jackeyzhe</span>: If one request future fails, this loop exits immediately and leaves the remaining futures captured……</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4233">#4233</a> [test] Unstable test FlinkUnionReadPrimaryKeyTableITCase.testUnionReadWithCustomLakeTablePath <span class="author">@app/github-actions</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4235">#4235</a> [test] Fix flaky testUnionReadWithCustomLakeTablePath test <span class="author">@ChengJie1053</span> </li><li><a href="https://github.com/apache/fluss/pull/4232">#4232</a> [server] Fix thread-safety bug in RebalanceManager ZooKeeper recovery path <span class="author">@fhan688</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4217">#4217</a> [Gateway] Expose stable Gateway identity labels in Prometheus metrics <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/4088">#4088</a> [Bug] Coordinator metrics can stop reporting after failed partition cleanup <span class="author">@platinumhamburg</span> <span class="labels">priority=critical</span></li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4219">#4219</a> [gateway] Add Prometheus identity labels <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/4089">#4089</a> [server] Keep snapshot metrics safe during cleanup <span class="author">@platinumhamburg</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
