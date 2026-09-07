@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spark 社区周报 | 2026-W35</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Spark 社区周报 | 2026-W35</h1>
+            <p class="date-range">2026-08-24 ~ 2026-08-30</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (0)</h2>
+            <p class="empty">本周无公告</p>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (3)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/6bhgq2w84zrv3sl4wr2zl8p23fvbsfrg">Release Spark 4.3.0 (RC1)</a> <span class="status warning">⚠️ 有异议</span><p class="objection-inline">Holden Karau 提出 -1，认为发布候选版本推进过早，相关讨论需在私有邮件列表中继续；Cheng Pan 也投了非绑定 -1，原因是发现了 PySpark 打包问题并已提交修复。</p></li>
+<li><a href="https://lists.apache.org/thread/n8ghxkjtwc289tvffb8sy0s99sp52orh">SPIP: Add the DECFLOAT data type</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/o9h87grjcot5foczfnz444qph2gg7w5q">Release Apache Spark Connect Rust Client (+ pyspark-client in Rust) 4.2.0 (RC2)</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (6)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/4fxkr4nljn62vgdx7pkbppftvkl4mpmj">Delete old SVN repo for website</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕是否删除 Spark 项目遗留的旧版网站 SVN 仓库（spark-svn）展开。Nicholas Chammas 指出该仓库自 2016 年起未更新，且内容已迁移至 GitHub 的 apache/spark-website，保留会造成混淆，因此提议提交 INFRA 工单删除。Uroš Bojanić 支持清理，但建议确认是删除还是归档，Nicholas 随后验证了 Git 仓库已完整导入 SVN 历史记录。</p>
+            <div class="key-points"><p><strong>@Nicholas Chammas:</strong> spark-svn 仓库已过时且与现行 Git 网站仓库并存易造成混淆，建议提交 INFRA 工单删除，并需要 PMC 成员确认。</p>
+<p><strong>@Uroš Bojanić:</strong> 支持清理旧仓库，但提出需权衡删除或归档（attic/read-only），并确认历史是否已迁移到 spark-website。</p>
+<p><strong>@Nicholas Chammas:</strong> 通过对比最早 5 条提交记录，确认 spark-website Git 仓库已包含 spark-svn 的历史，因此删除是可行的。</p></div>
+            <p class="conclusion">初步共识是删除旧 SVN 仓库，但需至少一名 PMC 成员在邮件列表中确认后，Nicholas 才会提交 INFRA 工单。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/6f83qcpj1ox40jfxtottqlhjbhhxwmhf">SPIP: FileType: native support for unstructured data in Spark</a></h3>
+            <p class="meta">1 条回复 · 1 位参与者</p>
+            <p class="summary">该讨论提议在 SparkSQL 中引入新的数据类型 FILE（FileType），用于原生支持 PDF、图片、音视频等非结构化或大文件数据。该类型仅存储文件路径和少量元数据，使查询可在不读取文件内容的情况下进行过滤、连接和投影，从而提升性能并降低成本。提案人已关联 Parquet 新增的 FILE 逻辑类型，并准备推动投票。</p>
+            <div class="key-points"><p><strong>@Burak Yavuz:</strong> 提议新增 SparkSQL 数据类型 FILE，用于以路径加元数据方式管理非结构化文件，避免直接写入二进制列或仅用字符串路径带来的问题。</p>
+<p><strong>@Burak Yavuz:</strong> 该设计可让引擎、文件格式和 UDF 统一理解文件类型，查询时仅在需要处加载文件字节，减少不必要的数据读取。</p>
+<p><strong>@Burak Yavuz:</strong> 提案已与 Parquet 新引入的 FILE 逻辑类型对齐，并计划在下周二发起投票。</p></div>
+            <p class="conclusion">目前尚未形成最终结论，但提案人计划于下周二启动投票，等待社区进一步反馈。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/ptrn1pn1fng0vf5sjhc0sskwrvlx026s">[SPARK-49933] Request to reopen PR #52185</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕 SPARK-49933 请求重开被关闭的 PR #52185，该 PR 旨在优化 RewriteMergeIntoTable：当 MERGE INTO 的 WHEN NOT MATCHED BY SOURCE 子句带有条件时，不再完全禁用谓词下推，从而避免 Iceberg 等场景全表扫描。Uroš Bojanić 已重开 PR，并要求作者解决冲突、恢复 CI 并推进评审。</p>
+            <div class="key-points"><p><strong>@Viacheslav Inozemtsev:</strong> PR 只需 8 行改动，可在有 ON 条件时保留谓词下推，对 Iceberg 的 MERGE INTO 场景尤为重要，且代码已在生产环境作为插件运行。</p>
+<p><strong>@Uroš Bojanić:</strong> 已重开 PR 以解除阻塞，建议作者解决冲突、重新运行 CI，并在 PR 中继续技术讨论和邀请相关 committer 评审。</p></div>
+            <p class="conclusion">PR 已被重新打开，下一步由作者解决冲突、恢复 CI、补充测试并推动相关 committer 评审。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/s57pbcgtbgl12dpctl6z2ojpznzjxh12">SPIP: Add the DECFLOAT data type</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">本次讨论围绕 Spark 社区新增 DECFLOAT 数据类型的 SPIP 提案展开。提案人根据首次投票中的反馈修订了方案，放弃原 JNI/libbid 实现，改为采用自定义的 Java 原生 IEEE 754 兼容实现，并继续征求社区意见。</p>
+            <div class="key-points"><p><strong>@Uroš Bojanić:</strong> DECFLOAT 用于支持 IEEE 754 decimal64/decimal128 十进制浮点数，弥补 DECIMAL 精度/标度限制与 DOUBLE 二进制舍入误差之间的空白。</p>
+<p><strong>@Uroš Bojanić:</strong> 根据首次 SPIP 投票反馈，提案已更新，放弃 JNI/libbid 方案，改用自定义 Java 原生 IEEE 754 兼容移植实现。</p>
+<p><strong>@Uroš Bojanić:</strong> 该类型将支持每值独立指数、十进制运算、带符号零、Inf 和 NaN，并通过配置开关在孵化期发布，保持现有 DECIMAL/DOUBLE 行为不变。</p></div>
+            <p class="conclusion">提案已根据反馈修订实现方案，讨论线程继续保持开放，等待社区进一步反馈和实质性意见。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/vv15cd2gqyjd32dlmscsjlckn5prks90">For kind attention</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Asif Shahid 在社区邮件中提请关注其提交的 JIRA 工单 SPARK-59160，指出 AdaptiveSparkPlan 中子计划通过 AdaptiveContext 复用缓存 stage，而各 AdaptiveSparkPlanExec 的 stage ID 从 0 开始，存在未来冲突风险。他建议将 stage ID 生成移至 AdaptiveExecutionContext 并使用原子整数保证唯一性和并发安全。</p>
+            <div class="key-points"><p><strong>@Asif Shahid:</strong> 当前虽无实际 bug，但 AdaptiveSparkPlanExec 的 stage ID 从 0 初始化，未来若代码依赖 stage ID 可能引发冲突问题。</p>
+<p><strong>@Asif Shahid:</strong> 建议将 stage ID 生成逻辑移至 AdaptiveExecutionContext，并使用 atomic int 避免并发访问下的重复。</p></div>
+            <p class="conclusion">该问题被定位为潜在风险和改进项，Asif 已提交 JIRA（SPARK-59160）并呼吁社区关注，避免重复提交，后续可通过原 JIRA 和 PR 跟进解决。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/ds2sftsdm1nwpo6ojwbcc68cobr51jfr">Hackathon room schedule — please claim your slot</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Rich Bowen 提醒 Spark 社区，Community over Code Glasgow 2026 黑客松的会议室日程已发布，但 Spark 项目尚未认领参与时段。他呼吁尽快通过 GitHub PR 在 comdev-events-site 仓库中登记时段，并建议提前创建项目黑客松页面以便贡献者准备。</p>
+            <div class="key-points"><p><strong>@Rich Bowen:</strong> 黑客松会议室日程已公布，Wee Dram Room 周一至周三开放，每个半日时段最多容纳 5 个项目，仍有空位。</p>
+<p><strong>@Rich Bowen:</strong> 参与项目需向 comdev-events-site 仓库提交 PR，在项目表中认领空闲时段；若计划有变应告知以便更新名单。</p>
+<p><strong>@Rich Bowen:</strong> 建议创建包含协调人、任务想法和资源的项目黑客松页面，仓库中提供了模板，信息越充分越便于贡献者参与。</p></div>
+            <p class="conclusion">下一步行动是尽快提交 PR 认领黑客松时段，并补充项目页面信息；如无法参加需回复告知。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (0)</h2>
+            
+    <p>本周新建 <strong>0</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周无新建 JIRA。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Spark Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
