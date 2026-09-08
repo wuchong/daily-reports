@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-09-07</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-09-07</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 4 新 Issues</div>
+            <div class="stat">✅ 1 关闭</div>
+            <div class="stat">✨ 5 新 PRs</div>
+            <div class="stat">🎉 0 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🐛 <a href="https://github.com/apache/fluss/issues/2998">Issue #2998</a> 关闭 blocker 问题：LimitScanResponse 缓冲区未释放及客户端零拷贝 OOM 风险已修复。</li><li>🐛 <a href="https://github.com/apache/fluss/pull/4245">PR #4245</a> 修复 <a href="https://github.com/apache/fluss/issues/4243">Issue #4243</a> 中 KvPreWriteBuffer 已刷写条目仍可通过 previousEntry 链可达的问题。</li><li>✨ <a href="https://github.com/apache/fluss/pull/4242">PR #4242</a> 新增服务端注册外部 KV 快照并恢复副本的能力。</li><li>✨ <a href="https://github.com/apache/fluss/pull/4240">PR #4240</a> 提交 FIP-45 Log Enrichment 的 POC 实现。</li><li>🐛 <a href="https://github.com/apache/fluss/pull/4237">PR #4237</a> 修复 Fluss Spark 读取路径。</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <ul class="critical-list"><li>⚠️ <a href="https://github.com/apache/fluss/issues/2998">Issue #2998</a> blocker 级别：LimitScanResponse 缓冲区未释放及客户端零拷贝 OOM 风险，已关闭并确认修复。</li></ul>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2998">Issue #2998</a> Fix unreleased buffer in LimitScanResponse and evaluate client-side zero-copy OOM risk</h4>
+            <ul><li><span class="author">@loserwang1024</span>: 确认问题已由相关 Issue 和 PR 修复，并关闭该 blocker。</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3391">PR #3391</a> [server] Add per-tablet-server sender retry framework</h4>
+            <ul><li><span class="author">@leekeiabstraction</span>: 询问 Jackeyzhe 和 swuferhong 是否还有进一步意见，以推进 PR。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4031">PR #4031</a> [flink] Batch Log Table scan fix #3972</h4>
+            <ul><li><span class="author">@leekeiabstraction</span>: 建议补充测试和可读性改进，并将该 PR 移出 1.0 里程碑。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4034">PR #4034</a> [server] Add support of dynamic historical lookup threads and max queued requests reconfiguration</h4>
+            <ul><li><span class="author">@zuston</span>: 抄送并提醒相关维护者关注该动态配置 PR。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4229">PR #4229</a> [server] Only super.users can modify configuration of super.user info.</h4>
+            <ul><li><span class="author">@loserwang1024</span>: 感谢 review，并已根据评审意见完成相应修改。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4130">PR #4130</a> [server] Support sequence groups in default and agg merge engine</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: 建议提前返回、复用缓存、缓存时校验并统一仲裁，减少重复编码与分配。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4174">PR #4174</a> [spark] Support ADD COLUMN in Spark catalog</h4>
+            <ul><li><span class="author">@Yohahaha</span>: 建议在转换层直接抛异常并保护行为，同时质疑默认值判空检查是否无效。</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4243">#4243</a> [KV] Flushed entries remain reachable through previousEntry chains in KvPreWriteBuffer <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/4241">#4241</a> [Rust] Return error for out-of-range server API version values <span class="author">@slfan1989</span> </li><li><a href="https://github.com/apache/fluss/issues/4239">#4239</a> [c++] Avoid redundant STRING and BYTES copies during row type resolution <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/4238">#4238</a> [rust] Stale out-of-order responses can incorrectly reset the idempotent writer <span class="author">@platinumhamburg</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4245">#4245</a> [server] Detach flushed entries from previousEntry chains in KvPreWriteBuffer <span class="author">@Kaixuan-Duan</span> </li><li><a href="https://github.com/apache/fluss/pull/4244">#4244</a> [rust] Return error for out-of-range server API versions <span class="author">@slfan1989</span> </li><li><a href="https://github.com/apache/fluss/pull/4242">#4242</a> [server] Register external KV snapshots and restore replicas <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/4240">#4240</a> [poc] FIP-45 Log Enrichment <span class="author">@leekeiabstraction</span> </li><li><a href="https://github.com/apache/fluss/pull/4237">#4237</a> [spark] Fix Fluss Spark read paths <span class="author">@fkzhao</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/2998">#2998</a> Fix unreleased buffer in LimitScanResponse and evaluate client-side zero-copy OOM risk <span class="author">@wuchong</span> <span class="labels">priority=blocker</span></li></ul>
+            <h3>已合并 PRs</h3>
+            <p class="empty">暂无</p>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
