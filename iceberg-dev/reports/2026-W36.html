@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iceberg 社区周报 | 2026-W36</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Iceberg 社区周报 | 2026-W36</h1>
+            <p class="date-range">2026-08-31 ~ 2026-09-06</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (3)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/mhpf8k8ll8s035p3hyfofwt3jrd9309w">PyIceberg 0.12</a></li>
+<li><a href="https://lists.apache.org/thread/cybrg94x0727wkrwm7n7zptvxhhscxkp">Iceberg File Type Sync — Wednesday, September 2 @ 10 AM PT / 17:00 UTC</a></li>
+<li><a href="https://lists.apache.org/thread/c9wrw53sjymstltmyw4p4yp61kws90vz">Iceberg Community Meetup Europe - October London</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (4)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/9285j5scqb4bqcd15qtyg1j8fdhptszt">Finer grained read restrictions in the Iceberg REST Catalog spec</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/w035r64jpgyjft4dx2wsph3tztmxstq4">[Terraform] Release Apache Iceberg Terraform Provider v0.1.0 RC3</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/hpdmzppsl87l0olkpzm3q47occ9cfydo">[SPEC] Document standard encryption key metadata</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/cvm3kzlt9wnmcrlrr3jp56m0bw9fh30p">REST Spec: Labels on the IRC read path</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/hk1gnjrqnfvmjknrsyyphfs6mfxkz20s">Iceberg Summit 2027 - Selection Committee</a></h3>
+            <p class="meta">32 条回复 · 32 位参与者</p>
+            <p class="summary">Iceberg PMC 已批准 2027 年 Iceberg Summit 提案，当前正在公开征集遴选委员会（Selection Committee）志愿者，负责确定会议议程、设置分论坛并评审 CFP 投稿。邮件中已有十多位社区成员回复表示愿意参与，招募将于 2026 年 9 月 11 日截止。</p>
+            <div class="key-points"><p><strong>@Sung Yun:</strong> 说明了遴选委员会职责、招募时间、11 人规模、每家公司最多 1 人、至少 3 名 PMC 成员等规则。</p>
+<p><strong>@Zhenni Wu / Weimo Liu / Matt Topol 等:</strong> 多位社区成员积极响应，表示愿意成为 2027 Iceberg Summit 遴选委员会志愿者。</p>
+<p><strong>@PMC（由 Sung Yun 转述）:</strong> 招募结束后，PMC 将根据指导原则投票选出最终的 11 名委员会成员。</p></div>
+            <p class="conclusion">当前处于志愿者公开招募阶段，下一步是截止后由 PMC 投票确定最终 11 名遴选委员会成员。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/12bsyhd2g7z3sf86l6j681god6jvyrf1">Field ID tracking for non-materialized columns in v4</a></h3>
+            <p class="meta">7 条回复 · 4 位参与者</p>
+            <p class="summary">讨论围绕 Iceberg v4 中如何为非物化列（如索引或排序表达式产生的值）分配字段 ID 展开。Ryan Blue 提出通过表达式元数据复用现有字段映射机制，参与者就表达式确定性、数据类型存储及字段引用方式等细节进行了讨论并基本达成共识。</p>
+            <div class="key-points"><p><strong>@Ryan Blue:</strong> 非物化列的元数据必须完整描述函数行为，仅支持基于单行输入的确定性表达式，不设计依赖隐式分布的函数。</p>
+<p><strong>@Gianluca Graziadei:</strong> 建议明确区分纯行级确定性表达式与依赖数据分布的表达式（如 Hilbert），并要求表达式参数（含拟合常量）必须内嵌以保证可验证性。</p>
+<p><strong>@Péter Váry:</strong> 支持该提案简化索引定义，建议显式存储结果数据类型并使用字段 ID 引用以增强健壮性，同时提出可复用排序顺序（Sort Order）概念。</p></div>
+            <p class="conclusion">初步达成共识：提案无需重大修改，但需在规范中明确表达式必须为无隐藏输入的确定性函数，且元数据需完整包含所有参数；后续可将排序顺序纳入同一框架考虑。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/wynq4kt6mcj5by6vg4hy642lrvbnzdb3">Views with Multiple Representations</a></h3>
+            <p class="meta">7 条回复 · 6 位参与者</p>
+            <p class="summary">讨论围绕 Iceberg View 规范中“单个视图支持多个引擎方言表示”在实践中的可操作性展开。Alex Stephen 提出新增 view property `replace.append-dialect.allowed`，以便向已有视图追加新的引擎表示，避免只能依赖 REST API。社区多数意见倾向于不引入属性开关，而是通过 `ALTER VIEW` 语义来更新或追加当前引擎自身的表示，并保留其他引擎已有表示。</p>
+            <div class="key-points"><p><strong>@Alex Stephen:</strong> 当前 View 规范虽支持多方言表示，但缺少追加表示的能力，用户只能替换或直接调用 REST API；提议通过新属性允许向已有视图追加新的方言表示。</p>
+<p><strong>@Daniel Weeks:</strong> 应通过 `ALTER VIEW` 更新或添加当前引擎自身的表示，而不是让引擎处理其他引擎的 SQL；反对用属性开关改变行为，因为会引入配置副作用。</p>
+<p><strong>@Talat Uyarer:</strong> 提出较完整的 SQL 工作流：`CREATE VIEW` 创建本引擎表示，`DESCRIBE EXTENDED VIEW` 展示所有方言文本，`ALTER VIEW ... AS` 追加/更新当前引擎表示并保留其他表示，`CREATE OR REPLACE VIEW` 则重置为当前引擎表示。</p></div>
+            <p class="conclusion">初步共识是不通过新增属性开关解决该问题，而更倾向利用现有或扩展的 `ALTER VIEW` 语义实现“追加/更新当前引擎方言并保留其他表示”。下一步需要进一步明确 SQL 工作流、引擎展示多方言 SQL 的方式，以及读取时缺少匹配方言应快速失败而非静默回退。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/5r2419sqw2wdf5pcq8rh4r4n56q2hj1l">Iceberg Rust: moving the DataFusion integration into a separate repository</a></h3>
+            <p class="meta">6 条回复 · 6 位参与者</p>
+            <p class="summary">讨论围绕是否将 iceberg-datafusion 集成从 apache/iceberg-rust 仓库迁移至独立仓库展开，核心原因是当前 reviewer 带宽不足影响开发效率。社区逐渐形成共识，认为该集成更适合由 Apache DataFusion 社区治理，并建议迁移至 apache/datafusion-iceberg 仓库。</p>
+            <div class="key-points"><p><strong>@Renjie Liu:</strong> 认为测试不应成为迁移阻碍，且将 iceberg-datafusion 移至 DataFusion 项目更合理，因其代码主要由 DataFusion 社区使用和设计。</p>
+<p><strong>@Xuanwo:</strong> 支持迁移至 DataFusion PMC，理由是 DataFusion 是最大依赖，且主要下游用户 Comet 与 DataFusion PMC 成员高度重合。</p>
+<p><strong>@Andrew Lamb:</strong> 提出具体迁移流程，包括创建新仓库、提交代码 PR、在 Iceberg 和 DataFusion 邮件列表分别进行正式投票。</p></div>
+            <p class="conclusion">社区初步达成共识，支持将 iceberg-datafusion 迁移至 Apache DataFusion 治理下的独立仓库，下一步将按 Andrew Lamb 提出的流程推进，包括创建新仓库并进行正式投票。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/d6hkx66o8qc1lolh11l1lmswxlq0bpj9">Recommend a standard User-Agent format for REST clients</a></h3>
+            <p class="meta">6 条回复 · 7 位参与者</p>
+            <p class="summary">Rahul Mahadev 提议为 Iceberg REST catalog 客户端制定统一的 User-Agent 格式，以解决当前各语言客户端标识不一致、X-Client-Version 含义不统一的问题。提案建议采用 RFC 7231 标准的 product/version token 格式，并强调该头部仅用于可观测性，不作为认证或能力协商依据。社区多位成员表示支持，认为标准化将显著改善 catalog 侧的客户端识别、调试和运维。</p>
+            <div class="key-points"><p><strong>@rahul mahadev:</strong> 提出统一 User-Agent 格式：按 engine -> integration -> Iceberg library -> runtime 顺序排列 token，Iceberg library token 必须存在；并提交 draft PR #17727，同时列出 X-Client-Version 处理、命名统一、环境标识等开放问题。</p>
+<p><strong>@Alex Dutra:</strong> 支持提案，指出此前在 Polaris 中通过 User-Agent 和 X-Client-Version 识别客户端非常复杂且不可靠，标准化后将使客户端识别真正可行。</p>
+<p><strong>@Ryan Blue:</strong> 认为提案整体良好，表示支持。</p></div>
+            <p class="conclusion">社区对提案总体持积极态度，已有多个 +1 支持；下一步是继续完善规范 PR #17727，并在格式确认后推动 Java、Python、Rust、Go 等客户端统一实现该 User-Agent。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/mlff4mmz2c0ntkkftlhg4h31sq4oc347">[EXTERNAL] Re:  Iceberg Summit 2027 - Selection Committee</a></h3>
+            <p class="meta">5 条回复 · 6 位参与者</p>
+            <p class="summary">该邮件讨论围绕 Iceberg Summit 2027 遴选委员会（Selection Committee）的志愿者招募展开。Sung Yun 宣布 PMC 已批准 Summit 2027 提案，并启动遴选委员会组建；随后多位社区成员积极报名参与。</p>
+            <div class="key-points"><p><strong>@Sung Yun:</strong> Iceberg PMC 已批准 Iceberg Summit 2027 提案，当前首要任务是组建遴选委员会，负责协调议程、定义 track 并选择内容。</p>
+<p><strong>@Ryan Blue:</strong> 表示愿意加入遴选委员会，支持 Summit 2027 的筹备工作。</p>
+<p><strong>@Alex Merced:</strong> 表示愿意为 Summit 2027 或其他相关事项提供力所能及的帮助。</p></div>
+            <p class="conclusion">社区成员普遍积极响应遴选委员会招募，下一步预计将汇总志愿者名单并推进 Summit 2027 的议程规划与组织工作。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/c2qogxd53llw8ozsm6nwfdyh4k48vtcl">File Type: URI Relativization Behavior</a></h3>
+            <p class="meta">4 条回复 · 5 位参与者</p>
+            <p class="summary">讨论围绕 Iceberg File Type 提案中 URI 子字段的处理行为展开，核心议题是 URI 是否允许相对路径、读取时是否应转换为绝对路径、维护操作如何处理文件引用以及所有权归属问题。多数参与者倾向于将 URI 视为数据，Iceberg 应保持原样读写，不进行路径转换或清理。</p>
+            <div class="key-points"><p><strong>@Russell Spitzer:</strong> 允许相对 URI，读取时应原样返回，维护操作默认不拥有引用路径，所有权机制可后续再定。</p>
+<p><strong>@Daniel Weeks:</strong> Iceberg 应忠实保留用户提供的值，不做修改；默认不清理文件引用，所有权和权限控制交由 Catalog 处理。</p>
+<p><strong>@Shawn Chang:</strong> 建议在 File Type 中增加 owned 字段以显式表达生命周期所有权，访问控制仍由 Catalog 负责。</p></div>
+            <p class="conclusion">初步共识是 URI 应作为数据原样处理，允许相对路径且默认不进行维护清理；下一步需讨论是否引入所有权字段以及为引擎提供路径解析指导。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/yhcbd7dtx5yjk7nx9gj7q9nhboxfxpx1">Table and Column Label Metadata in Iceberg REST Catalog</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">讨论围绕在 Iceberg REST Catalog 中引入表和列的标签（labels）元数据展开，核心争议在于标签应复用现有 config 机制还是定义为独立的结构化实体，以及规范应保留多大自由度。多数参与者支持该提案，但强调需明确标签的语义边界和客户端处理预期，避免过早约束实现创新。</p>
+            <div class="key-points"><p><strong>@Prashant Singh:</strong> 主张先明确定义标签的结构化实体（如是否支持多值），再推进规范落地，反对将标签混入 catalog 控制的 config 中。</p>
+<p><strong>@Andrei Tserakhau:</strong> 支持保留标签定义的灵活性，认为应将其视为不透明的 catalog 提供元数据，避免在用法未明前过度标准化而限制创新。</p>
+<p><strong>@Kevin Liu:</strong> 支持提案，认为标签可用于暴露平台级业务元数据（如 Fabric 中的描述信息），并强调实现时应兼顾互操作性。</p></div>
+            <p class="conclusion">提案获得初步支持，下一步需在规范中明确标签应为不透明、仅信息性的 K/V 元数据，并澄清其与 config 的界限，同时保留实现灵活性。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/k84jd995o2kw2sl1djotr1lm53lbdd8j">_pos column in efficient column updates in Iceberg</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕 Iceberg 高效列更新中是否应保留 _pos 列展开，核心争议是该列是否应仅为调试目的而存在。多数参与者倾向于移除 _pos 列，认为位置一致性应由写入引擎在写入时保证，而无需在规范中持久化该列。讨论最终趋向于将 _pos 视为写入器责任，而非规范要求。</p>
+            <div class="key-points"><p><strong>@Marco Kroll:</strong> 认为仅为调试目的保留 _pos 列在 Iceberg 中缺乏先例，倾向于移除；若必须保留，建议设为可选，并明确其不参与读取路径。</p>
+<p><strong>@Ryan Blue:</strong> 认为 _pos 列有助于检测写入器遗漏已删除行的问题，倾向于保留，但承认当前 Parquet 存储效率不高，因此立场不强硬。</p>
+<p><strong>@Russell Spitzer:</strong> 主张移除 _pos 列，认为位置不一致问题应在写入时由引擎检测并中断，无需持久化该列。</p></div>
+            <p class="conclusion">初步共识是移除 _pos 列，认为位置对齐是写入引擎的责任，无需在 Iceberg 规范中强制要求；后续可将此结论正式写入设计文档。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/9hytbjpmkp47c45dy45snrfg9bgm3pyh">Request to subscribe to the Dev and Commits List | Iceberg Community</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">Ravi Shekhar 请求加入 Iceberg 开发者与提交邮件列表并表达参与社区贡献的意愿。Kevin Liu 回复提供了加入邮件列表的官方链接，并指出当前文档在说明如何加入 dev 列表方面可以改进。</p>
+            <div class="key-points"><p><strong>@Ravi Shekhar:</strong> 希望订阅 Dev 和 Commits 邮件列表，加入 Iceberg 社区并未来做出贡献。</p>
+<p><strong>@Kevin Liu:</strong> 提供了加入邮件列表的官方链接，指出 dev@iceberg.apache.org 是最常用的列表。</p>
+<p><strong>@Kevin Liu:</strong> 认为社区文档在指导如何加入 dev 邮件列表方面有待完善，这可作为一个不错的贡献方向。</p></div>
+            <p class="conclusion">Kevin Liu 建议改进官方文档中关于加入邮件列表的说明，作为社区可贡献的改进点。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (0)</h2>
+            
+    <p>本周新建 <strong>0</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周无新建 JIRA。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Iceberg Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
