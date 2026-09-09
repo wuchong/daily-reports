@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafka 社区周报 | 2026-W36</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Kafka 社区周报 | 2026-W36</h1>
+            <p class="date-range">2026-08-31 ~ 2026-09-06</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (0)</h2>
+            <p class="empty">本周无公告</p>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (1)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/bnozb9odk9yjcvgzfbp1gk4t74cbylo6">4.4.0 RC0</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/9kgnzdxd0p9d9frs81zxms3d5bnydn0j">Apache Kafka 4.2.2 release</a></h3>
+            <p class="meta">3 条回复 · 3 位参与者</p>
+            <p class="summary">讨论围绕 Apache Kafka 4.2.2 bug fix 版本的发布计划展开，Apoorv Mittal 担任发布经理并提出代码冻结和候选版本时间表。社区成员认可计划并补充了依赖 CVE 修复建议，发布经理已处理相关 issue。</p>
+            <div class="key-points"><p><strong>@Apoorv Mittal:</strong> 提出 4.2.2 发布计划，代码冻结时间为 2026 年 9 月 15 日，因待解决问题较少且 4.3.2 将很快发布，所以安排两周周期。</p>
+<p><strong>@Bill Bejeck:</strong> 对发布计划表示支持（+1）。</p>
+<p><strong>@Chia-Ping Tsai:</strong> 指出计划中存在拼写错误，并提出 4.2 分支仍有 jline、jetty、lz4-java 等依赖 CVE 未纳入计划，建议确认是否在 4.2.2 中修复。</p></div>
+            <p class="conclusion">发布计划获得支持，Apoorv Mittal 已将 KAFKA-20840、KAFKA-20936、KAFKA-20815 cherry-pick 到 4.2 分支并更新发布计划；下一步将在代码冻结后尽快发布第一个 release candidate。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/hznwf2g2oq1b8s6md6x99l4odxsx450h">Apache Kafka 4.3.2 release</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">Apache Kafka 4.3.2 bug fix 版本启动发布流程，黃竣陽、PoAn 和 Chia-Ping 担任发布经理。最初计划 9 月 23 日切出首个候选版本，后经讨论因当前无未解决问题，决定将代码冻结和候选版本时间提前。</p>
+            <div class="key-points"><p><strong>@黃竣陽:</strong> 宣布 4.3.2 发布计划，初始首个候选版本定于 9 月 23 日（约 3 周后）切出，并提供了发布计划文档。</p>
+<p><strong>@Chia-Ping Tsai:</strong> 认为代码冻结时间偏晚，且当前没有未解决问题，建议缩短为两周。</p>
+<p><strong>@黃竣陽:</strong> 采纳建议，将首个候选版本日期调整为 9 月 16 日（约 2 周后）。</p></div>
+            <p class="conclusion">发布计划已调整：首个候选版本将于 9 月 16 日切出，发布周期缩短为约两周。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/qzkyw1hncj69g4xz5w075ym65xqxcc34">Jira account request pending review</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">Seokmo Yoo 请求 PMC 审核其 Jira 账号申请，以便提交/跟进两个 Kafka SASL/OAUTHBEARER 问题；Mickael Maison 回复称账号已创建。讨论核心是账号申请审批，同时附带说明了两个待提交/已存在的 classloader 相关认证问题。</p>
+            <div class="key-points"><p><strong>@Seokmo Yoo:</strong> 申请 Jira 账号以提交新问题并跟进 KAFKA-14102；两个问题均已有修复和测试，且已 rebase 到 trunk。</p>
+<p><strong>@Seokmo Yoo:</strong> 指出 LoginManager 缓存未包含调用方 class loader，导致多部署共享 LoginManager、刷新线程持有已关闭 classloader，token 过期后重新认证失败；修复方案是将 context class loader 加入缓存键。</p>
+<p><strong>@Mickael Maison:</strong> 确认 Jira 账号已创建。</p></div>
+            <p class="conclusion">Jira 账号已创建；后续预计由 Seokmo Yoo 提交 LoginManager classloader 缓存问题的新 ticket，并继续处理 KAFKA-14102。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/fn7mf67nrsfot55y3pdt61gqymvfrrov">[PR] Add dark and light mode support with system preference auto-detection [kafka-site]</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">该讨论围绕 Apache Kafka 官网新增深色/浅色模式支持的 Pull Request 展开。PR 基于 Bootstrap 5.3+ 的颜色模式和 Docsy 主题规范，为网站引入浅色、深色以及跟随系统偏好的自动模式，并覆盖导航栏、搜索、文档、代码块、表格等多个页面组件的样式适配。</p>
+            <div class="key-points"><p><strong>@O2sa:</strong> 提出为 Kafka 官网增加深色/浅色/自动主题切换能力，并支持跟随操作系统的 prefers-color-scheme 设置。</p>
+<p><strong>@O2sa:</strong> 通过在页面头部注入早期脚本实现 Anti-FOUC，避免主题切换或页面加载时出现样式闪烁。</p>
+<p><strong>@O2sa:</strong> 在桌面导航栏和移动端头部增加主题切换入口，并对导航、搜索、文档、代码块、页脚等大量 UI 元素进行深色模式适配。</p></div>
+            <p class="conclusion">目前邮件内容主要展示了 PR 的功能说明和修改范围，尚未出现明确的评审结论；下一步预计等待社区对 PR 进行审查、测试和反馈。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/b960sj0rss0xrpghl90ch21j8o0lkqdr">KAFKA-20834 / PR #22922 awaiting maintainer workflow approval</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">이주호는 KAFKA-20834 관련 PR #22922가 2주 전 승인 리뷰를 받았음에도 GitHub Actions 워크플로우가 관리자 승인을 기다리며 정체되어 있다고 알렸다. 그는 커미터에게 해당 워크플로우를 검토하고 승인해 줄 것을 요청했다.</p>
+            <div class="key-points"><p><strong>@이주호:</strong> PR #22922는 @uros-b로부터 승인 리뷰를 받았으며, 현재 남은 장애물은 GitHub Actions 워크플로우의 관리자 승인 대기 상태이다.</p></div>
+            <p class="conclusion">커미터가 워크플로우를 검토하고 승인하는 것이 다음 단계이다.</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/cxfzwyklvovpt7q7qn7jbbyh75zq8p4p">KIP-1373: Client Quota Utilization Metrics</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">KIP-1373 提议在 Kafka 客户端配额指标中新增 quota-utilization 属性，用于衡量客户端实际使用速率与有效配额的比例。该指标旨在解决运维人员难以跨客户端比较配额使用情况、且现有 throttle-time 指标滞后于限流发生的问题。</p>
+            <div class="key-points"><p><strong>@Manan Gupta:</strong> 现有指标仅暴露客户端配额使用量和限流时间，缺乏与有效配额的对比，导致绝对速率告警无法跨客户端复用。</p>
+<p><strong>@Manan Gupta:</strong> 提议在 Produce、Fetch 和 Request 配额 MBean 中添加 quota-utilization = measured-rate / effective-quota * 100。</p></div>
+            <p class="conclusion">KIP 已发布并附带 PR，目前处于社区讨论阶段，尚未提及最终结论或明确下一步行动。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/qqdjlb27yjq1r709jrtv6x7884z3s5v2">[PR] KAFKA-21018: fix broken links [kafka-site]</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">本次讨论围绕 Kafka 社区提交的 PR #909（KAFKA-21018）展开，主要修复 kafka-site 文档中的失效链接。该 PR 修正了 `client.config.override.policy` 的格式，并补充了 javadocs 中缺失的锚点以修复相关链接。</p>
+            <div class="key-points"><p><strong>@harmadasg:</strong> 提交了 PR #909，用于修复失效链接，包括统一 `client.config.override.policy` 的格式，以及为 `plugindiscovery` 和 `connect_exactlyoncesource` 等缺失锚点补充链接。</p></div>
+            <p class="conclusion">该 PR 已创建，等待社区审查与合并。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/d1nwoxmdg42y5kjtnndqo0rkp24kmyxg">[PR REVIEW] KAFKA-20989: Add Notification Cleaners to Migrating Controller Servers</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">该邮件主要请求社区评审 KAFKA-20989 的 PR，议题是修复 ZK 到 KRaft 迁移过程中迁移控制器（Migrating Controller）服务器的状态清理问题。提交者同时询问如何将该修复移植到仍在维护的 3.x 分支，以及当前 CI 失败是否属于无关的偶发问题。</p>
+            <div class="key-points"><p><strong>@Youssef Ismail:</strong> KAFKA-20989 用于修复 ZK-to-KRaft 迁移期间迁移控制器服务器的状态清理问题，并请求社区评审。</p>
+<p><strong>@Youssef Ismail:</strong> 由于 trunk 已不再包含 ZK 迁移代码，且问题影响多个 4.0 之前的版本，需要确认向 3.9、3.8 等活跃分支移植修复的流程。</p>
+<p><strong>@Youssef Ismail:</strong> 当前 CI 测试失败看起来与控制器/迁移变更无关，本地测试通过，需确认是否为已知的偶发失败。</p></div>
+            <p class="conclusion">目前尚未形成明确结论，下一步是等待社区评审 PR，并确认跨 3.x 分支的移植流程及 CI 失败是否为偶发问题。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/p8f9p3vfotx3n2logdwq5vzflytg40gv">Hackathon room schedule — please claim your slot</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Rich Bowen 提醒已报名参与 Community over Code Glasgow hackathon 的项目，活动房间时间表已发布，但尚未认领具体时段。Wee Dram Room 在周一至周三开放，每半天最多容纳 5 个项目，参与者需通过向 comdev-events-site 仓库提交 PR 来认领空闲时段。</p>
+            <div class="key-points"><p><strong>@Rich Bowen:</strong> Hackathon 房间时间表已发布，尚未认领时段的项目需尽快通过 GitHub PR 在空闲时段中添加项目名称。</p>
+<p><strong>@Rich Bowen:</strong> 建议项目提前创建 hackathon 页面，包含协调人、任务想法和贡献者资源，以便参与者更好地准备。</p>
+<p><strong>@Rich Bowen:</strong> 如果项目计划有变无法参与，应及时告知以便更新名单。</p></div>
+            <p class="conclusion">下一步行动是相关项目尽快提交 PR 认领 hackathon 时段，并补充项目页面信息；若无法参加则需告知组织者。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/5dw4jf951kok9q1c3gtrwdwny8ryzrf5">KIP-1374: Allow StreamsBuilder.globalTable to Rekey</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Hrishi Baskaran 发起关于 KIP-1374 的讨论，提议允许在使用 StreamsBuilder.globalTable 读取主题构建 GlobalKTable 时支持重新设置键（rekey）。该提案计划通过新增支持 KeyValueMapper 的 globalTable 重载方法来实现，使 globalTable 的自定义能力更接近 addGlobalStore。</p>
+            <div class="key-points"><p><strong>@Hrishi Baskaran:</strong> 建议为 StreamsBuilder.globalTable 增加重载方法，允许用户提供 KeyValueMapper，从而在构建 GlobalKTable 时对消息键进行重新映射。</p></div>
+            <p class="conclusion">目前为 KIP 提案发起讨论阶段，尚未形成最终结论；下一步是社区对该提案进行评审和讨论。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (65)</h2>
+            
+    <p>本周新建 <strong>65</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周 Kafka JIRA 主要围绕测试稳定性与质量改进展开，包括修复多个 flaky 测试、补充消费者/共享组协议测试覆盖，以及持续移除 Streams 模块中的 hamcrest 依赖。同时涉及若干核心功能与稳定性修复，如生产者控制记录重构、KRaft 迁移问题、事务日志与数据损坏风险处理，以及客户端 busy loop 问题修复。此外还包括依赖升级与安全修复（CVE、RocksDB、Testcontainers）、文档完善和模块迁移/基准测试建设等工程化改进。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Kafka Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
