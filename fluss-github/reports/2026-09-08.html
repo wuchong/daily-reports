@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-09-08</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-09-08</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 3 新 Issues</div>
+            <div class="stat">✅ 3 关闭</div>
+            <div class="stat">✨ 6 新 PRs</div>
+            <div class="stat">🎉 4 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/4245">PR #4245</a> [server] Detach flushed entries from previousEntry chains in KvPreWriteBuffer</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4232">PR #4232</a> [server] Fix thread-safety bug in RebalanceManager ZooKeeper recovery path</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4229">PR #4229</a> [server] Only super.users can modify configuration of super.user info.</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4168">PR #4168</a> [docs] Document security.sasl.plain.credentials for multi-user SASL/PLAIN</li><li>🐛 <a href="https://github.com/apache/fluss/issues/4251">Issue #4251</a> [lake/iceberg] Support custom Iceberg lake table path</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4071">Issue #4071</a> [lake/paimon] Bump Paimon version to 2.0.0</h4>
+            <ul><li><span class="author">@luoyuxia</span>: closed via https://github.com/apache/fluss/pull/4093</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4248">Issue #4248</a> [server] Expose KV WAL memory pool metrics for primary key tables</h4>
+            <ul><li><span class="author">@Kaixuan-Duan</span>: @platinumhamburg Could you please review this PR when you have time?</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4087">Issue #4087</a> [client] Support bounded write delivery (delivery timeout)</h4>
+            <ul><li><span class="author">@beryllw</span>: @MaheshS08 The community has since created [FIP-54](https://cwiki.apache.org/confluence/spaces/FLUS…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4252">Issue #4252</a> [rust] Stale out-of-order responses can incorrectly reset the idempotent writer</h4>
+            <ul><li><span class="author">@naivedogger</span>: @platinumhamburg @loserwang1024 could you please take a look when convenient? Thanks!</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4231">Issue #4231</a> [docs] Add HTTP Gateway lakehouse quickstart</h4>
+            <ul><li><span class="author">@beryllw</span>: I put together a similar end-to-end demo earlier: [HTTP Gateway lakehouse quickstart](https://githu…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3391">Issue #3391</a> [server] Add per-tablet-server sender retry framework</h4>
+            <ul><li><span class="author">@Jackeyzhe</span>: @leekeiabstraction Thanks for the ping. I have no further comments on the sender framework itself.…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4247">Issue #4247</a> [Bug] Fetch may fail during non-atomic remote log offset updates</h4>
+            <ul><li><span class="author">@ss666</span>: Could it be assigned to me? I found that the same non-atomic update also occurs in `ReplicaManager.…</li><li><span class="author">@loserwang1024</span>: @ss666 are you using Fluss in production? I was in a rush for this fix, so I didn't wait for your r…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4230">Issue #4230</a> [spark] Support custom Paimon lake table paths</h4>
+            <ul><li><span class="author">@BackendArchitectX</span>: Hi @luoyuxia @YannByron, PTAL when you have a chance. This is the scoped Spark follow-up to #3476 t…</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4237">PR #4237</a> [spark] Fix Fluss Spark read paths</h4>
+            <ul><li><span class="author">@Copilot</span>: For TIMESTAMP_NANO keys, the comparator currently reads timestamps with precision 6 (microseconds)……</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4029">PR #4029</a> [client] Add Admin API to describe buckets</h4>
+            <ul><li><span class="author">@swuferhong</span>: Let's not use Mockito here — prefer testing with real constructed instances instead.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4245">PR #4245</a> [server] Detach flushed entries from previousEntry chains in KvPreWriteBuffer</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: Could we maintain a doubly linked version chain by adding nextEntry to KvEntry? The current approac…</li><li><span class="author">@Kaixuan-Duan</span>: Good point. KvEntry now carries a nextEntry successor pointer, so completeFlush() clears entry.next…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4248">PR #4248</a> [server] Expose KV WAL memory pool metrics for primary key tables</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: Could we make this accessor a lock-free read? The new gauge takes the same exclusive lock as page a…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4250">PR #4250</a> [flink] Support pendingRecords metric for Fluss source.</h4>
+            <ul><li><span class="author">@naivedogger</span>: Could we extend `testPendingRecordsMetric` to cover multiple buckets and remove this separate test?…</li><li><span class="author">@beryllw</span>: Could we update the backing gauge when a split reader is recreated? The current guard keeps pending…</li><li><span class="author">@leonardBang</span>: +1 for this comment</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4231">PR #4231</a> [docs] Add HTTP Gateway lakehouse quickstart</h4>
+            <ul><li><span class="author">@beryllw</span>: Could we introduce a concrete application scenario and clarify that the application writes through……</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4144">PR #4144</a> [build] Relocate third-party classes leaking from uber-jars</h4>
+            <ul><li><span class="author">@Jackeyzhe</span>: I think this relocation needs to be narrowed before merge. The shade plugin rewrites every matching…</li><li><span class="author">@binary-signal</span>: I will revise the logic to show all entries；Must have slept through it 😅 Good catch!；Yes, I can con…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4254">PR #4254</a> [server] Update remote log offsets before local segment cleanup</h4>
+            <ul><li><span class="author">@gyang94</span>: Here we checked the final state after updateRemoteLogEndOffset. It can't check whether we have the…</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4251">#4251</a> [lake/iceberg] Support custom Iceberg lake table path <span class="author">@litiliu</span> </li><li><a href="https://github.com/apache/fluss/issues/4249">#4249</a> [server] Add WAL memory pool metrics for primary key tables <span class="author">@Kaixuan-Duan</span> </li><li><a href="https://github.com/apache/fluss/issues/4247">#4247</a> [Bug] Fetch may fail during non-atomic remote log offset updates <span class="author">@loserwang1024</span> <span class="labels">priority=blocker</span></li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4254">#4254</a> [server] Update remote log offsets before local segment cleanup <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/pull/4253">#4253</a> [lake/iceberg] Support custom Iceberg lake table path <span class="author">@litiliu</span> </li><li><a href="https://github.com/apache/fluss/pull/4252">#4252</a> [rust] Stale out-of-order responses can incorrectly reset the idempotent writer <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/pull/4250">#4250</a> [flink] Support pendingRecords metric for Fluss source. <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/pull/4248">#4248</a> [server] Expose KV WAL memory pool metrics for primary key tables <span class="author">@Kaixuan-Duan</span> </li><li><a href="https://github.com/apache/fluss/pull/4246">#4246</a> [c++] Avoid redundant copies during row type resolution <span class="author">@naivedogger</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4243">#4243</a> [KV] Flushed entries remain reachable through previousEntry chains in KvPreWriteBuffer <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/4071">#4071</a> [lake/paimon] Bump Paimon version to 2.0.0 <span class="author">@luoyuxia</span> <span class="labels">component=lake/paimon</span></li><li><a href="https://github.com/apache/fluss/issues/3996">#3996</a> [doc] Multi-user security.sasl.plain.credentials doc <span class="author">@leekeiabstraction</span> <span class="labels">priority=blocker</span></li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4245">#4245</a> [server] Detach flushed entries from previousEntry chains in KvPreWriteBuffer <span class="author">@Kaixuan-Duan</span> </li><li><a href="https://github.com/apache/fluss/pull/4232">#4232</a> [server] Fix thread-safety bug in RebalanceManager ZooKeeper recovery path <span class="author">@fhan688</span> </li><li><a href="https://github.com/apache/fluss/pull/4229">#4229</a> [server] Only super.users can modify configuration of super.user info. <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/pull/4168">#4168</a> [docs] Document security.sasl.plain.credentials for multi-user SASL/PLAIN <span class="author">@leekeiabstraction</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
