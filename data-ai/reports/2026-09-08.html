@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data+AI 全球日报 | 2026-09-08</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Data+AI 全球日报 | 2026-09-08</h1>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="top-changes">
+            <h2>🔥 今日最重要的3个变化</h2>
+            <ol><li><strong>ClickHouse 推出 chdb Postgres extension</strong> — ClickHouse 发布 chdb Postgres extension，将嵌入式 ClickHouse 引擎引入 Postgres 生态，加速云存储数据导入导出，强化 Postgres 与实时分析引擎之间的数据流动。</li><li><strong>ClickHouse 发布 CostBench 首批端到端结果</strong> — ClickHouse 推出 CostBench，以持续负载下的实时性能与成本比衡量云数据仓库，首批结果强调 ClickHouse Cloud 的性能/美元优势。</li><li><strong>Sony LIV 基于 AWS 构建实时视频流分析平台</strong> — AWS 展示 Sony LIV 使用 Kinesis Data Streams、EMR 和 Apache Iceberg 构建实时流媒体分析系统，为媒体和 OTT 场景提供流式湖仓参考架构。</li></ol>
+            <p class="judgment"><strong>总判断：</strong>今日 Data+AI 行业信号集中在实时分析与成本效率两条主线。ClickHouse 一方面通过 chdb Postgres extension 强化数据接入与生态集成，另一方面通过 CostBench 推动云数仓评估从单点性能转向持续负载下的单位经济性。AWS 则通过 Sony LIV 案例继续巩固 Kinesis、EMR 与 Apache Iceberg 在实时流式分析场景中的组合能力。</p>
+        </section>
+
+        <section class="top-signals">
+            <h2>📡 重要信号</h2>
+            
+    <article class="news-item">
+        <h3>ClickHouse 推出 chdb Postgres extension，加速云存储数据导入导出</h3>
+        <p class="sources">📌 <a href="https://clickhouse.com/blog/introducing-chdb-postgres">ClickHouse Blog</a></p>
+        <p class="date">2026-09-08</p>
+        <p class="summary">ClickHouse 发布 chdb Postgres extension，将嵌入式 ClickHouse 引擎能力带入 PostgreSQL 环境，支持跨云存储平台和数据格式进行高性能导入导出。该扩展有助于降低 Postgres 与 ClickHouse 之间的数据移动成本，使应用数据库、数据湖和分析引擎之间的数据链路更轻量。</p>
+        <div class="impact">📊 数据平台影响：该扩展强化了 PostgreSQL 与 ClickHouse 之间的数据集成路径，可能推动轻量级 ETL/ELT、实时分析和湖仓数据移动场景采用嵌入式分析引擎。</div>
+    </article>
+    <article class="news-item">
+        <h3>ClickHouse 发布 CostBench 首批端到端结果，强调实时性能/美元</h3>
+        <p class="sources">📌 <a href="https://clickhouse.com/blog/costbench-real-time-performance-per-dollar">ClickHouse Blog</a></p>
+        <p class="date">2026-09-08</p>
+        <p class="summary">ClickHouse 推出 CostBench，用于衡量云数据仓库在持续负载下从新鲜数据摄入到快速查询的端到端表现。首批结果称，ClickHouse Cloud 在实时性能/美元指标上较对比系统高出 412 至 1,996 倍，突出其在实时分析工作负载中的成本效率。</p>
+        <div class="impact">📊 数据平台影响：CostBench 将云数仓竞争焦点从传统查询基准转向持续实时负载下的单位经济性，可能影响企业对实时数据平台的采购评估标准。</div>
+    </article>
+    <article class="news-item">
+        <h3>Sony LIV 基于 AWS 构建实时视频流分析平台</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/how-sony-liv-built-real-time-video-streaming-analytics-with-aws/">AWS Big Data Blog</a></p>
+        <p class="date">2026-09-08</p>
+        <p class="summary">AWS Big Data Blog 介绍 Sony LIV 如何使用 Amazon Kinesis Data Streams、Amazon EMR 和 Apache Iceberg 构建实时视频流分析方案。该架构覆盖流媒体事件摄入、实时处理与可查询数据层，用于支持观众体验优化、运营分析和内容决策。</p>
+        <div class="impact">📊 数据平台影响：该案例为媒体和 OTT 行业提供 AWS 流式湖仓参考架构，强化 Kinesis、EMR 与 Apache Iceberg 在低延迟实时分析场景中的组合竞争力。</div>
+    </article>
+        </section>
+
+        <section class="product-tech">
+            <h2>💻 产品与技术</h2>
+            
+    <article class="news-item">
+        <h3>StarTree 解析 Apache Pinot 实时摄入机制第三部分</h3>
+        <p class="sources">📌 <a href="https://startree.ai/resources/inside-the-flight-path-of-realtime-ingestion-in-apache-pinot-part-3/">StarTree Blog</a></p>
+        <p class="date">2026-09-08</p>
+        <p class="summary">StarTree 继续发布 Apache Pinot 实时摄入机制系列第三篇，深入解析 Kafka 分区、服务器 offset 报告、controller 选择 committer 与 winning offset，以及单一提交序列发布 segment 的一致性流程。文章帮助平台工程团队理解 Pinot 实时摄入链路的内部机制和运维关键点。</p>
+        <div class="impact">📊 数据平台影响：该内容提升了 Apache Pinot 实时摄入链路的透明度，有助于评估其在低延迟实时 OLAP 场景中的可靠性、一致性和运维复杂度。</div>
+    </article>
+        </section>
+
+        <section class="people-views">
+            <h2>👤 人物与观点</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="analyst-insights">
+            <h2>📊 分析师洞察</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="watchlist">
+            <h2>👀 观察列表</h2>
+            
+    <article class="watchlist-item">
+        <h3>chdb Postgres extension 生态采用</h3>
+        <span class="status">待观察</span>
+        <p class="reason">该扩展将 ClickHouse 嵌入式分析能力引入 PostgreSQL 生态，需观察其在生产环境中的稳定性、云托管支持以及开发者采用情况。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>后续版本迭代、云服务集成或典型客户案例发布。</p>
+    </article>
+    <article class="watchlist-item">
+        <h3>CostBench 基准的可复现性与行业接受度</h3>
+        <span class="status">待观察</span>
+        <p class="reason">ClickHouse 自研 CostBench 给出的性能/成本结果较为激进，需要更多第三方复现或真实客户工作负载验证。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>独立测试、更多负载场景或竞品回应。</p>
+    </article>
+    <article class="watchlist-item">
+        <h3>AWS Kinesis + EMR + Iceberg 媒体实时分析架构复制情况</h3>
+        <span class="status">待观察</span>
+        <p class="reason">Sony LIV 案例展示了 AWS 在流媒体实时分析场景的参考架构，后续可观察其是否被更多媒体和 OTT 客户采用。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>更多客户案例、AWS 解决方案模板或行业方案包发布。</p>
+    </article>
+    <article class="watchlist-item">
+        <h3>Apache Pinot 实时摄入运维成熟度</h3>
+        <span class="status">待观察</span>
+        <p class="reason">StarTree 系列文章揭示了 Pinot 实时摄入的一致性机制，但生产环境中的可观测性、故障恢复和运维工具仍需持续跟踪。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>后续技术文章、运维工具增强或生产案例披露。</p>
+    </article>
+        </section>
+
+        <section class="stock-analysis">
+            <h2>📈 股票分析</h2>
+            <p class="disclaimer">⚠️ 以下内容仅供参考，不构成任何投资建议。投资有风险，入市需谨慎。</p>
+            
+    <article class="stock-item">
+        <div class="stock-header">
+            <span class="ticker">AMZN</span>
+            <span class="company">Amazon</span>
+            <span class="signal signal-neutral">⚪ 中性</span>
+        </div>
+        <p class="stock-summary">AWS 通过 Sony LIV 实时视频流分析案例继续强化其在流式数据、EMR 和 Apache Iceberg 生态中的平台能力。该案例对 AWS 数据平台叙事偏正面，但短期缺乏直接财务催化。</p>
+        <div class="stock-details">
+            <div class="catalysts">
+                <strong>🚀 催化剂</strong>
+                <ul><li>云厂商实时分析和 AI 数据工程工作负载增长</li><li>媒体和 OTT 客户采用 Kinesis + EMR + Iceberg 参考架构</li><li>AWS 数据平台与开放表格式生态持续扩展</li></ul>
+            </div>
+            <div class="risks">
+                <strong>⚠️ 风险</strong>
+                <ul><li>企业云支出优化压力</li><li>Snowflake、Databricks 等数据平台竞争</li><li>客户自建开源实时分析栈分流需求</li></ul>
+            </div>
+        </div>
+    </article>
+        </section>
+
+        <footer>
+            <p>Generated by Data+AI Daily Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
