@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-09-09</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-09-09</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 10 新 Issues</div>
+            <div class="stat">✅ 4 关闭</div>
+            <div class="stat">✨ 6 新 PRs</div>
+            <div class="stat">🎉 3 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/4258">PR #4258</a> 修复 Rust 客户端中已耗尽批次在发送前未正确关闭的问题，防止重试批次确认未发送记录</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4252">PR #4252</a> 修复 Rust 幂等写入器因过期乱序响应被错误重置的问题，同时修复重试队列排序</li><li>🐛 <a href="https://github.com/apache/fluss/pull/4080">PR #4080</a> 修复 CHAR 列统计信息中 min/max 从未被收集的问题（原 #4066，priority=critical）</li><li>✨ <a href="https://github.com/apache/fluss/issues/4264">Issue #4264</a> 启动 Kafka 协议兼容层建设，包括请求传输框架、ApiVersions API 和 Metadata API 实现</li><li>🚀 <a href="https://github.com/apache/fluss/pull/4263">PR #4263</a> 修复 NettyClient 连接缓存仅按 UID 键控导致 TabletServer 端点变更后请求路由错误的问题</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <ul class="critical-list"><li>⚠️ <a href="https://github.com/apache/fluss/issues/4267">Issue #4267</a> 异步 KV flush 可能在 WAL 批次内部发布高水位线，存在数据一致性风险</li><li>⚠️ <a href="https://github.com/apache/fluss/issues/4269">Issue #4269</a> 干净的 leader 重分配可能在 ISR 副本中留下分歧的 WAL，影响数据可靠性</li><li>⚠️ <a href="https://github.com/apache/fluss/issues/4066">Issue #4066</a> CHAR 列统计信息 min/max 未收集（priority=critical），已通过 PR #4080 修复并关闭</li></ul>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4256">Issue #4256</a> [client] NotLeaderOrFollowerException persists when a stale TabletServer endpoint is reused</h4>
+            <ul><li><span class="author">@BackendArchitectX</span>: 请求认领该 issue，复现了 NettyClient 仅按 UID 缓存连接的问题，提交了 PR #4263 修复，并详细说明了与 #4216 的设计差异</li><li><span class="author">@gyang94</span>: 确认问题并感谢贡献，表示愿意帮忙 review，但需要 committer 权限来 assign issue</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4255">Issue #4255</a> [rust] Retried batches can stall behind unsent batches</h4>
+            <ul><li><span class="author">@naivedogger</span>: 确认已由 #4252 修复并合入 main，详细解释了重试队列排序修复逻辑和回归测试验证结果</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3605">Issue #3605</a> [test] Unstable test FlussAdminITCase.testKvSnapshotLeaseForLogTable</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: CI 报告该测试再次失败，出现 AssertionError</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4233">Issue #4233</a> [test] Unstable test FlinkUnionReadPrimaryKeyTableITCase.testUnionReadWithCustomLakeTablePath</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: CI 报告该测试失败，耗时 68.778 秒后出现 AssertionError</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3391">Issue #3391</a> [server] Add per-tablet-server sender retry framework</h4>
+            <ul><li><span class="author">@gyang94</span>: 已更新 PR 描述，将 StopReplica 后续工作拆分为独立 issue，当前 PR 仅聚焦框架本身</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3008">Issue #3008</a> [client] Fix corruption after zero-copy lazy parse ByteBuf</h4>
+            <ul><li><span class="author">@loserwang1024</span>: 询问 @fresh-borzoni 该 PR 是否仍需要，建议关闭</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4034">Issue #4034</a> [server] Add support of dynamic historical lookup threads and max queued requests reconfiguration</h4>
+            <ul><li><span class="author">@zuston</span>: ping 相关 reviewer 请求关注</li><li><span class="author">@luoyuxia</span>: 确认将在 CI 通过后合并</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3675">Issue #3675</a> [flink] Support custom lookup shuffle by bucket for Flink 2.x</h4>
+            <ul><li><span class="author">@naivedogger</span>: 恢复了 bucket-count 检查，移除了不支持路径的测试和文档，确认 LookupNormalizer 已处理缺失 bucket key 的情况</li><li><span class="author">@leonardBang</span>: 确认更新后 LGTM，等待 CI 通过</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4200">Issue #4200</a> [client] Recover Admin writes after coordinator failover</h4>
+            <ul><li><span class="author">@loserwang1024</span>: 已调整测试，请求 @sakshichitnis27 和 @litiliu 做最终检查</li><li><span class="author">@sakshichitnis27</span>: 确认修改合理，相关测试通过，请求 @litiliu 做最终 review</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3505">Issue #3505</a> [flink] Preserve offsets for empty tiering buckets</h4>
+            <ul><li><span class="author">@hutiefang76</span>: 关闭该 issue，因 #3893 已以更完整的实现覆盖了相同的 offset 保留修复</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4197">Issue #4197</a> [trino] Add native read-only Trino connector</h4>
+            <ul><li><span class="author">@yangshangqing95</span>: 跟进 Confluence 访问问题，Google Doc 设计文档和初始 connector 骨架 PR 已准备好 review</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4216">Issue #4216</a> [client] Recover admin writes after coordinator leader failover</h4>
+            <ul><li><span class="author">@BackendArchitectX</span>: 指出 #4216 与 #4263 在连接处理策略上存在冲突，提议协调确定最终方案以避免竞争性修复</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4263">Issue #4263</a> [rpc] Handle endpoint changes for cached server connections</h4>
+            <ul><li><span class="author">@BackendArchitectX</span>: 请求多位 committer 对连接处理方案给出反馈，该方案与 #4216 存在设计差异需协调</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3908">PR #3908</a> [server][client] Support per-partition bucket count for partitioned tables</h4>
+            <ul><li><span class="author">@wuchong</span>: 大量深度 review：要求引入 InvalidBucketRoutingException、TableOrPartition 统一类、ModifyBucketCount 独立 RPC 路径；指出多处性能问题（P0：不能阻塞写线程等待元数据）、兼容性问题（不能因旧集群缺少 bucket count 而抛异常）；建议简化代码结构、避免锁内 IO、统一异常处理</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4254">PR #4254</a> [server] Update remote log offsets before local segment cleanup</h4>
+            <ul><li><span class="author">@loserwang1024</span>: 解释测试困难，除非在 cleanupSegments 前添加 hook 否则难以测试，认为过于侵入生产代码</li><li><span class="author">@gyang94</span>: 建议将 updateRemoteLogStartOffset 和 updateRemoteLogEndOffset 合并为单个函数调用，避免隐式的同步调用要求</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4252">PR #4252</a> [rust] Stale out-of-order responses can incorrectly reset the idempotent writer</h4>
+            <ul><li><span class="author">@loserwang1024</span>: 询问 !existing.has_batch_sequence() 条件在何种情况下成立</li><li><span class="author">@naivedogger</span>: 解释该条件出现在新批次尚未被 drain 时（序列号在首次 drain 时分配），重试批次需插入到未发送批次之前</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4124">PR #4124</a> [lake/paimon] Introduce scan-based lake table lookuper</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 指出测试中 releaseFirstLookup.countDown() 的清理顺序可能导致死锁，建议移入 try/finally 内层以在 lookuper.close() 之前执行</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4250">PR #4250</a> [flink] Support pendingRecords metric for Fluss source.</h4>
+            <ul><li><span class="author">@loserwang1024</span>: 确认已完成相关修改（标记 done）</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4270">#4270</a> [rust] get_table returns InvalidTableException for a nonexistent table <span class="author">@adamrecsko</span> </li><li><a href="https://github.com/apache/fluss/issues/4269">#4269</a> [Server] Clean leader reassignment can leave divergent WAL in an ISR replica <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/4267">#4267</a> [Bug] Asynchronous KV flush can publish a high watermark inside a WAL batch <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/4266">#4266</a> [kafka] Implement Metadata API for pre-created Fluss tables <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/4265">#4265</a> [kafka] Implement registry-backed ApiVersions API <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/4264">#4264</a> [kafka] Add request and transport framework <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/4262">#4262</a> [server] Add per-TabletServer sender thread infrastructure <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/4257">#4257</a> [rust] Retried Arrow batches can acknowledge unsent records <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/issues/4256">#4256</a> [client] NotLeaderOrFollowerException persists when a stale TabletServer endpoint is reused <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/4255">#4255</a> [rust] Retried batches can stall behind unsent batches <span class="author">@naivedogger</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4271">#4271</a> [rust] Return TableNotExist for missing tables <span class="author">@adamrecsko</span> </li><li><a href="https://github.com/apache/fluss/pull/4268">#4268</a> [server] Keep async KV flushes on WAL batch boundaries <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/4263">#4263</a> [rpc] Handle endpoint changes for cached server connections <span class="author">@BackendArchitectX</span> </li><li><a href="https://github.com/apache/fluss/pull/4261">#4261</a> [kafka] Implement Metadata API over Fluss table metadata <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/pull/4260">#4260</a> [kafka] Serve ApiVersions from registered capabilities <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/pull/4259">#4259</a> [kafka] Add request dispatch and transport framework <span class="author">@gyang94</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4257">#4257</a> [rust] Retried Arrow batches can acknowledge unsent records <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/issues/4255">#4255</a> [rust] Retried batches can stall behind unsent batches <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/issues/4238">#4238</a> [rust] Stale out-of-order responses can incorrectly reset the idempotent writer <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/4066">#4066</a> CHAR columns are accepted for statistics but never collect min/max <span class="author">@leekeiabstraction</span> <span class="labels">priority=critical</span></li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4258">#4258</a> [rust] Close drained batches before sending <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/pull/4252">#4252</a> [rust] Stale out-of-order responses can incorrectly reset the idempotent writer <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/pull/4080">#4080</a> [common] Fix CHAR min/max statistics collection <span class="author">@beetle0915</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
