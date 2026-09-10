@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data+AI 全球日报 | 2026-09-09</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Data+AI 全球日报 | 2026-09-09</h1>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="top-changes">
+            <h2>🔥 今日最重要的3个变化</h2>
+            <ol><li><strong>AWS Glue 6.0 推出声明式 ETL 管道</strong> — AWS 将 Spark Declarative Pipelines 引入 Glue 6.0，降低数据工程编排复杂度，强化托管 Lakehouse 管道能力。</li><li><strong>ClickHouse Managed Postgres 登陆 Google Cloud</strong> — ClickHouse 将托管 Postgres 带到 GCP 私有预览，增强 CDC 入 ClickHouse 与统一查询能力，扩展实时分析入口。</li></ol>
+            <p class="judgment"><strong>总判断：</strong>今日行业信号集中在数据工程低代码化和实时分析入口前移。AWS 通过 Glue 6.0 降低 ETL 管道开发成本，ClickHouse 通过 GCP 上的托管 Postgres 强化事务数据到实时分析的连接。整体看，数据平台竞争正从单一引擎性能转向管道效率、云生态集成与成本性能组合。</p>
+        </section>
+
+        <section class="top-signals">
+            <h2>📡 重要信号</h2>
+            
+    <article class="news-item">
+        <h3>ClickHouse Managed Postgres 进入 Google Cloud 私有预览</h3>
+        <p class="sources">📌 <a href="https://clickhouse.com/blog/postgres-managed-by-clickhouse-gcp-private-preview">ClickHouse Blog</a></p>
+        <p class="date">2026-09-09</p>
+        <p class="summary">ClickHouse 宣布 ClickHouse Managed Postgres 扩展至 Google Cloud，并面向 GCP 私有预览客户开放。该服务提供 NVMe 支持存储、原生 CDC 入 ClickHouse，以及通过 pg_clickhouse 提供的统一查询层，意图让 Postgres 事务数据更低延迟地进入 ClickHouse 实时分析链路。此举显示 ClickHouse 正在将 Postgres 作为数据入口，并加深与主流公有云分析生态的集成。</p>
+        <div class="impact">📊 数据平台影响：该能力可缩短 Postgres 到实时分析的数据链路，给 GCP 上的 OLAP 选型带来新变量，也可能加剧与 BigQuery、Snowflake 在低延迟分析场景的竞争。</div>
+    </article>
+        </section>
+
+        <section class="product-tech">
+            <h2>💻 产品与技术</h2>
+            
+    <article class="news-item">
+        <h3>AWS Glue 6.0 推出 Spark Declarative Pipelines，简化声明式 ETL 管道构建</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/build-declarative-etl-pipelines-with-aws-glue-6-0/">AWS Big Data Blog</a></p>
+        <p class="date">2026-09-09</p>
+        <p class="summary">AWS Glue 6.0 引入 Spark Declarative Pipelines，允许用户通过单个声明式 Glue 作业，将原始订单记录经过 bronze、silver、gold 层级转换为经过校验和聚合的表，而无需编写显式编排逻辑。该更新将数据工程关注点从任务调度转向数据管道声明，进一步降低 Lakehouse 场景下 ETL/ELT 开发门槛，并强化 AWS 在托管数据集成与数据湖处理上的能力。</p>
+        <div class="impact">📊 数据平台影响：Glue 6.0 将声明式管道与 Medallion 架构结合，可能推动数据平台从手写 Spark 作业转向托管、可治理的管道范式，增强 AWS 生态粘性。</div>
+    </article>
+        </section>
+
+        <section class="people-views">
+            <h2>👤 人物与观点</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="analyst-insights">
+            <h2>📊 分析师洞察</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="watchlist">
+            <h2>👀 观察列表</h2>
+            
+    <article class="watchlist-item">
+        <h3>ClickHouse Managed Postgres 私有预览转 GA</h3>
+        <span class="status">待观察</span>
+        <p class="reason">该服务刚进入 GCP 私有预览，需验证稳定性、定价、与 BigQuery/Cloud SQL 的协同及客户采用情况。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>公开 GA 或更多企业客户案例发布</p>
+    </article>
+    <article class="watchlist-item">
+        <h3>AWS Glue 6.0 声明式管道采用情况</h3>
+        <span class="status">待观察</span>
+        <p class="reason">声明式 ETL 能否替代手写 Spark/Airflow 编排，取决于复杂场景表达能力、调试能力和成本表现。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>AWS 公布 Glue 6.0 功能增强、客户案例或第三方迁移实践</p>
+    </article>
+    <article class="watchlist-item">
+        <h3>ClickHouse 在 GCP 上的实时分析生态扩展</h3>
+        <span class="status">待观察</span>
+        <p class="reason">ClickHouse 通过托管 Postgres 和 CDC 能力强化实时分析入口，可能影响 GCP 上 OLAP 与数据仓库选型。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>ClickHouse 与 GCP 数据服务进一步集成或发布正式商用计划</p>
+    </article>
+        </section>
+
+        <section class="stock-analysis">
+            <h2>📈 股票分析</h2>
+            <p class="disclaimer">⚠️ 以下内容仅供参考，不构成任何投资建议。投资有风险，入市需谨慎。</p>
+            
+    <article class="stock-item">
+        <div class="stock-header">
+            <span class="ticker">AMZN</span>
+            <span class="company">Amazon</span>
+            <span class="signal signal-neutral">⚪ 中性</span>
+        </div>
+        <p class="stock-summary">AWS Glue 6.0 是数据集成与数据工程能力增强，短期对 Amazon 整体营收影响有限，但长期有利于提升 AWS 数据平台粘性和 Lakehouse 场景竞争力。本栏目仅供参考，不构成投资建议。</p>
+        <div class="stock-details">
+            <div class="catalysts">
+                <strong>🚀 催化剂</strong>
+                <ul><li>Glue 6.0 与 Redshift、Lake Formation、S3 深度集成</li><li>企业从自建 Spark/Airflow 迁移到托管声明式管道</li></ul>
+            </div>
+            <div class="risks">
+                <strong>⚠️ 风险</strong>
+                <ul><li>客户选择 Databricks、Snowflake 或开源方案</li><li>声明式管道在复杂数据工程场景中的成熟度仍需验证</li></ul>
+            </div>
+        </div>
+    </article>
+    <article class="stock-item">
+        <div class="stock-header">
+            <span class="ticker">GOOGL</span>
+            <span class="company">Alphabet</span>
+            <span class="signal signal-neutral">⚪ 中性</span>
+        </div>
+        <p class="stock-summary">ClickHouse Managed Postgres on GCP 私有预览增强 GCP 数据生态，但短期商业化贡献有限；若正式 GA，可能提升 GCP 对实时分析和 Postgres CDC 工作负载的吸引力。本栏目仅供参考，不构成投资建议。</p>
+        <div class="stock-details">
+            <div class="catalysts">
+                <strong>🚀 催化剂</strong>
+                <ul><li>私有预览转为 GA</li><li>ClickHouse Cloud 与 BigQuery、GCS 等 GCP 服务进一步集成</li></ul>
+            </div>
+            <div class="risks">
+                <strong>⚠️ 风险</strong>
+                <ul><li>与 BigQuery 定位存在潜在重叠</li><li>客户对托管 Postgres 到 ClickHouse 链路稳定性和成本仍持观望态度</li></ul>
+            </div>
+        </div>
+    </article>
+        </section>
+
+        <footer>
+            <p>Generated by Data+AI Daily Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
