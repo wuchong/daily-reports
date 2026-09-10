@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flink 社区周报 | 2026-W36</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Flink 社区周报 | 2026-W36</h1>
+            <p class="date-range">2026-08-31 ~ 2026-09-06</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (2)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/wnq9ds1r39sr59zj1r9tgx0r6o886y6m">Apache Flink-shaded 22.0 released</a></li>
+<li><a href="https://lists.apache.org/thread/z30vw4gwyp2jl3yfbkbyoj731n6q03r3">New Apache Flink Committer: Samrat Deb</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (3)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/sftt1f5lx2gc680mgr5nso7z21t1szf6">FLIP-597: [Filesystems] Hadoop-less Flink filesystems</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/h470xgdg1cfy4pxs54gxznflxhr7dc0h">FLIP-609: Type Inference for Python User Defined Functions</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/1vnbn0g692gowzfq6tcn7933fxth9sb8">Apache Flink Kubernetes Operator Release 1.16.0, release candidate #3</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/ptkyqgmpryh7d6v8w73rwdknsqc3mckd">FLIP-609: Type Inference for Python User Defined Functions</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">本次讨论围绕 FLIP-609 展开，提议为 Python UDF 引入基于原生 Python 类型注解的 Flink 类型推断机制，以减少重复类型声明并提升开发体验。社区成员普遍支持该提案，并探讨了类型提示在 PyFlink 其他场景的潜在扩展。发起人已在征求意见后计划推动投票。</p>
+            <div class="key-points"><p><strong>@Mika Naylor:</strong> 提出通过 Python 类型注解自动推断 Flink 输入输出类型，并提供 shadow types 支持更精细的 Flink 类型声明，以减少重复类型标注。</p>
+<p><strong>@Timo Theusner:</strong> 认可该提案能改善 PyFlink 使用体验，并建议后续可考虑将类型提示用于 Schema 构建等其他场景。</p>
+<p><strong>@Dian Fu:</strong> 整体认可 FLIP，认为这是对 PyFlink 的重大改进。</p></div>
+            <p class="conclusion">提案获得积极反馈，Mika 计划在本周晚些时候发起投票，并特别关注 FLIP 中的弃用计划反馈。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/4jvc8hxpzfqmrnnvsfxjp2wqnwtkn062">Promote Unified File Merging (FLIP-306) to PublicEvolving and Deprecate FLINK-26803</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">本次邮件讨论围绕将 FLIP-306 引入的统一文件合并机制从 @Experimental 提升为 @PublicEvolving，并弃用 FLINK-26803 中的旧文件合并机制。Zakelly Lan 提出该机制已在多个版本中稳定运行，且支持 channel-state 文件合并的关键补丁已合入，因此建议统一采用该方案。Rui Fan 表示支持，并进一步建议默认开启统一文件合并配置以提升开箱即用体验。</p>
+            <div class="key-points"><p><strong>@Zakelly Lan:</strong> FLIP-306 的统一文件合并机制已具备足够稳定性，建议提升为 @PublicEvolving，并弃用 FLINK-26803 的旧机制，以统一 checkpoint 数据和 channel state 的文件合并方案。</p>
+<p><strong>@Rui Fan:</strong> 支持该提案，并建议在移除旧配置的同时，将 execution.checkpointing.file-merging.enabled 默认设置为开启，提供更易用的生产级默认配置。</p>
+<p><strong>@Zakelly Lan:</strong> 同意默认开启统一文件合并机制，但需要先进行更多测试，确保体验不劣于旧方案。</p></div>
+            <p class="conclusion">讨论初步达成共识：推进 FLIP-306 升级为 PublicEvolving 并弃用 FLINK-26803，同时考虑默认开启统一文件合并。下一步由 Zakelly Lan 进行更多测试，验证默认开启后的表现不低于原有机制。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/hgnvb0c4osx1b64cf8tmjgrozfdfwjhc">SQL reserved keywords</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">讨论由 Flink 1.19 升级到 1.20 时新增 SQL 语句（如 CREATE MODEL）引入新的保留关键字导致已有表名（如 model）不可用的问题。David Radley 建议在发布流程中检查保留关键字变化并在发布说明中记录；P Sinha 支持，Martijn Visser 则倾向自动化检查或接受此类变化。</p>
+            <div class="key-points"><p><strong>@David Radley:</strong> 新增 SQL 语句导致新的保留关键字，建议在发布流程中检查关键字文件变化，并在 release notes 中说明哪些关键字需要反引号处理。</p>
+<p><strong>@P Sinha:</strong> 支持在发布流程中检查并记录保留关键字变化，以避免对用户造成阻塞或破坏性变更。</p>
+<p><strong>@Martijn Visser:</strong> 不建议增加人工发布检查步骤，认为应通过 CI 自动化检查，或者接受语言演进中新增关键字可能带来的变化。</p></div>
+            <p class="conclusion">目前尚未形成最终结论，但初步方向是：如果检查保留关键字变化，应优先通过自动化方式完成；若达成共识，David 可更新 wiki 中的发布流程说明。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/2v93yylw2l3ld7nmnlc58cfvhvg6xpsm">FLIP-XXX : Remote Artifact Fetch for Session-Mode Job Submission</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">该讨论围绕 FLIP-XXX 提议将远程 artifact 拉取能力扩展到 session 模式作业提交，使客户端可通过 URI 提交作业并由 JobManager 负责下载。Robert 表示总体支持，但关注阻塞式提交可能带来的超时与错误语义问题；Dale 回应称会通过超时配置和错误提示区分 artifact 拉取超时与作业提交超时，并解释当前方案可保持现有客户端行为不变。</p>
+            <div class="key-points"><p><strong>@Robert Metzger:</strong> 总体支持该 FLIP，但担心作业提交会阻塞在远程下载上，建议考虑异步返回提交请求并让作业处于 INITIALIZING 状态，同时关注慢速拉取场景下客户端是否能获得正确的超时错误信息。</p>
+<p><strong>@Dale Lane:</strong> 方案会应用 user.artifacts.fetch-timeout，并在 HTTP/HTTPS 场景下同时约束请求与拉取过程；其他文件系统方案主要约束提交者收到错误的时间，实际下载仍由对应插件超时控制。</p>
+<p><strong>@Dale Lane:</strong> 当前阻塞式方案的优势是只需修改 Flink 核心并保持现有外部行为，便于 Flink Kubernetes Operator 等客户端无需协同改造即可使用；异步方案虽更优但会引入新的状态查询和端点设计成本。</p></div>
+            <p class="conclusion">讨论初步倾向支持该方向，但尚未最终决定采用阻塞还是异步提交；下一步需要完善实现和默认配置，验证远程拉取长时间停滞时的超时行为与错误提示，并评估相关配置项对并发、大小和超时的限制。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/nxvbqnvtp75016p7ddnhhj9goccp6zfo">[PR] [hotfix] Fix image name in README [flink-ci-docker]</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">该讨论围绕 flink-ci-docker 仓库的 PR #4 展开，核心内容是修复 README 中的镜像名称。raminqaf 提交了该 hotfix PR，随后由 snuyanzin 完成合并。</p>
+            <div class="key-points"><p><strong>@raminqaf:</strong> 提交 PR #4，用于修复 README 中的镜像名称。</p>
+<p><strong>@snuyanzin:</strong> 合并了 PR #4，使该修复生效。</p></div>
+            <p class="conclusion">该 PR 已被合并，README 中的镜像名称问题已修复。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/1jkrxz2n2k0sm03q74xgwcrlhlvn8m37">Review request: FLINK-39775 (Flink CDC, MySQL source) - PR #4418</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">Spoorthi Basu 请求 committer 协助评审 Flink CDC MySQL source 的 PR #4418（FLINK-39775），该 PR 通过在进入 binlog 阶段后释放 snapshot split 元数据来修复 JobManager OOM，且默认关闭、需显式开启。Leonard Xu 回应称自己刚度假回来，将跟进该 PR，但因涉及关键代码路径，需要更多时间仔细评估。</p>
+            <div class="key-points"><p><strong>@Spoorthi Basu:</strong> PR #4418 修复 MySQL 增量快照 source 在 JobManager 侧的 OOM 问题，方案是在进入 binlog 阶段后释放 snapshot split 元数据，功能为 opt-in 且默认关闭；此前评审意见已处理，中英文文档已补充，代码可无冲突合并。</p>
+<p><strong>@Leonard Xu:</strong> 自己近期在度假，刚回来，会跟进这个 PR；由于改动位于关键代码路径，需要更多时间谨慎评估。</p></div>
+            <p class="conclusion">目前尚未形成最终合并结论；下一步由 Leonard Xu 跟进评审，但因改动关键路径，预计仍需更长时间评估。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/xlq7jly6kvxoz6zr9lmwn6bljlcn66vw">Promoting flink-s3-fs-native from @Experimental to a mainstream S3FileSystem</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕将 flink-s3-fs-native 从实验性功能提升为主流 S3FileSystem 展开。Samrat Deb 提出该原生 S3 文件系统已在 Flink 2.3 实验性落地，并通过 FLINK-39109 的 19 个子任务基本补齐与 Hadoop/Presto 版本的功能差距，建议在 2.4 版本转正。Gabor Somogyi 表示支持，并认为其已具备生产可用性。</p>
+            <div class="key-points"><p><strong>@Samrat Deb:</strong> flink-s3-fs-native 已关闭 19 个子任务，基本补齐与 flink-s3-fs-hadoop / flink-s3-fs-presto 的功能差距，提议在 Flink 2.4 中将其从 Experimental 提升为主流实现，并征集生产用户反馈仍缺失的能力。</p>
+<p><strong>@Gabor Somogyi:</strong> 支持尽快转正；认为原生 S3 连接器不需要与 Hadoop 连接器完全一对一功能对齐，只要满足 Flink 数据处理和 checkpoint 生产需求即可作为首选方案。</p>
+<p><strong>@Gabor Somogyi:</strong> 旧连接器应在代码和文档中保留作为回退方案；转正后应持续收集社区反馈、修复问题并逐步淘汰旧连接器，同时给用户足够迁移时间。</p></div>
+            <p class="conclusion">初步倾向支持在 Flink 2.4 中将 flink-s3-fs-native 提升为主流 S3FileSystem；下一步是收集生产环境使用反馈、确认是否存在自定义凭证、特殊 S3 兼容端点等遗漏场景，并在转正后持续完善以推动旧连接器逐步下线。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/9s93q8k83zy4g3s7y58ph2qwmqjtwvy0">Help with Jira account access — self-service reactivation returns HTTP 500</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">纪伟成因无法登录 ASF Jira 账号（密码重置后仍被拒绝，自助恢复页面返回 HTTP 500）向 Flink 社区求助，希望有人协助联系 Infra 或代提工单以报告 Flink bug。随后 Leonard Xu 表示已批准其 Jira 账号，问题得到解决。</p>
+            <div class="key-points"><p><strong>@纪伟成:</strong> 报告 Jira 账号无法登录，自助账号恢复页面返回 HTTP 500，且已联系 infra 邮件列表但未获回复，请求社区协助。</p>
+<p><strong>@Leonard Xu:</strong> 已批准纪伟成的 Jira 账号，并欢迎其加入社区。</p></div>
+            <p class="conclusion">Leonard Xu 已手动批准该 Jira 账号，账号访问问题初步解决，用户可继续登录并报告 Flink bug。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/ykolf114fhs07ky9x5y6xzpobrvtxcvh">Cluster overhead/waste in large shared Flink clusters</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论围绕大型共享 Flink 集群中资源回收与缩容带来的开销展开，重点比较受控重启/缩容与 GKE 驱逐对作业稳定性的影响。Zhe Wang 指出两者在 Flink 语义上并不等价，并建议建立统一的对比指标；邮件末尾显示 Yanis 正在跟进相关方案但内容被截断。</p>
+            <div class="key-points"><p><strong>@Zhe Wang:</strong> TaskManager 驱逐属于故障驱动重启，Adaptive Scheduler 不支持部分 failover，作业需从最近 checkpoint 恢复，不能无缝减少 slot 继续运行。</p>
+<p><strong>@Zhe Wang:</strong> 受控流程的优势在于可选择受影响的作业、控制并发移除的 TaskManager 数量，并可在缩容前显式触发 checkpoint/savepoint 以获得更可预测的恢复点。</p>
+<p><strong>@Zhe Wang:</strong> 建议公平对比时保持目标回收容量一致，并度量受影响作业数、恢复时间、checkpoint 新旧程度、checkpoint 失败率及回收资源量等指标。</p></div>
+            <p class="conclusion">初步结论是 GKE 驱逐不应被假设与 Flink checkpoint 对齐，受控缩容在可预测性上可能更优；下一步需确认现有受控重启流程是否会在移除 TaskManager 前显式触发 checkpoint/savepoint，并按统一指标进行对比评估。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/37zh5l66xwvwlbcrp9hswq9sp36xpm6z">FLIP-607: Migrate Flink off end-of-life OkHttp; keep it off the core classpath</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">本次讨论围绕 FLIP-607：将 Flink 从已停止维护的 OkHttp 迁移，并确保其不进入核心 classpath。Martijn Visser 回应了关于 enforcer 规则、失败提示、运行时版本检查以及 Vert.x 适配器选择等问题，并计划在下周末发起投票。</p>
+            <div class="key-points"><p><strong>@Martijn Visser:</strong> 通过 Maven enforcer 的 deny-by-default 规则禁止旧版 OkHttp，并特别限制 flink-dist 中引入 OkHttp/Okio，从而避免维护显式模块白名单。</p>
+<p><strong>@Martijn Visser:</strong> 同意优化失败提示信息，并将在 Fabric8 client 构造时增加运行时版本检查，若 JVM 缺少必要修复则快速失败。</p>
+<p><strong>@Martijn Visser:</strong> FLIP 中拒绝 Vert.x 的理由针对的是 Fabric8 默认的 Vert.x 4.5 + Netty 4.1 适配器，而非社区成员测试的非默认 Vert.x 5 适配器，因此将更新 FLIP 说明。</p></div>
+            <p class="conclusion">讨论基本收敛，Martijn 计划若无更多意见将于下周末发起投票，并会补充 FLIP 说明与相关实现细节。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (78)</h2>
+            
+    <p>本周新建 <strong>78</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周 JIRA 主要集中在测试稳定性与 CI 基础设施改进、Table API/SQL 功能增强（如 UUID、JSON/VARIANT 解析与函数、Changelog 支持）以及运行时与状态后端的缺陷修复。此外还涉及 Kubernetes Operator、Kafka/Postgres 连接器、HA 恢复、依赖升级和文档修复等方面的维护工作。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Flink Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
