@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fluss 社区周报 | 2026-W36</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Fluss 社区周报 | 2026-W36</h1>
+            <p class="date-range">2026-08-31 ~ 2026-09-06</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (0)</h2>
+            <p class="empty">本周无公告</p>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (0)</h2>
+            <p class="empty">本周无投票</p>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (5)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/ooo2539pkrrxv4gtn0g1hmkv0flhkss4">FIP-44: Enhanced LanceDB Integration — Vector Indexes, FTS, and Hybrid Search</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">本讨论围绕 FIP-44（增强 LanceDB 集成：向量索引、全文检索与混合搜索）展开，重点澄清了向量数据类型在零拷贝范围、维度定义与校验、NULL 语义及兼容性等方面的设计细节。Mehul 已认可大部分方案，并建议先聚焦 VECTOR(n) 数据类型本身，将相似性函数、ANN/KNN 索引、混合读取语义等拆分为后续独立提案。目前整体方向趋于收敛，但仍需完善校验机制、Flink 层类型映射及客户端兼容性等细节。</p>
+            <div class="key-points"><p><strong>@Sagar:</strong> 零拷贝仅保证在原生列式分层管道（Fluss Arrow Log -> Arrow FixedSizeListVector -> Lance Dataset）中，行式写入和 Flink SQL 查询仍使用标准序列化；POC 已实现 Vector(n) 作为一等类型参数，并在写入边界强制校验维度。</p>
+<p><strong>@Mehul Batra:</strong> 建议首个 FIP 仅聚焦 VECTOR(n) 数据类型，而将相似性 UDF、ANN/KNN 索引、混合读取语义和多维支持拆分为后续提案；同时要求统一维度校验逻辑并明确服务端是否校验。</p>
+<p><strong>@Mehul Batra:</strong> 指出 Flink 层使用 ARRAY<FLOAT NOT NULL> 可能导致插入失败，因为多数管道生成可空元素，Flink 不会隐式转换为非空，需验证并明确是添加隐式转换还是要求用户显式 cast。</p></div>
+            <p class="conclusion">初步共识是将首个 FIP 范围限定为 VECTOR(n) 数据类型本身，后续功能分拆为独立提案；下一步需统一校验逻辑、验证 Flink 插入兼容性，并通过社区会议和 Google Doc 对齐设计细节后推进 FIP。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/1d4sh167bmvl6rrgocy886g4gr8zbdx4">FIP-25: Support In-Place Promotion of Existing Paimon Tables to Datalake-Enabled Fluss Tables</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">本次讨论围绕 FIP-25 展开，该提案支持通过 CALL sys.enable_fluss_on_lake_table(...) 将已有 Paimon 表原地升级为启用数据湖能力的 Fluss 表，复用原表和存量数据。社区重点关注长时间 Bulk Load 下的超时与状态查询、失败重试与恢复机制，以及迁移期间写入可用性和数据一致性保障问题。</p>
+            <div class="key-points"><p><strong>@yuxia:</strong> 提出 FIP-25，主张在不重建表、不重写数据的前提下，通过存储过程原地升级 Paimon 表，并在必要时通过 Bulk Load 初始化主键状态、校验 schema 与快照一致性。</p>
+<p><strong>@Liting Liu:</strong> 建议为长时间运行的升级操作引入操作 ID 和状态查询机制，并持久化快照 ID、分区、Bulk Load 事务 ID 等信息，以明确超时、取消、失败重试和恢复语义。</p>
+<p><strong>@Zhe Wang:</strong> 关注生产迁移期间的写入中断和数据正确性，建议区分基线加载与最终写入切换，或至少明确离线迁移限制、写入停写时长及失败恢复方案。</p></div>
+            <p class="conclusion">目前尚未形成最终结论，但讨论方向集中在补充超时/取消/重试语义、增强失败恢复可观测性，以及明确迁移期间写入限制和一致性保障机制。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/l61x18dmbsl6yvs50g5bstjb7g71k22o">FIP-XXX: Native Read-Only Trino Connector for Apache Fluss</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">本次讨论围绕 FIP-XXX 提出的 Apache Fluss 原生只读 Trino Connector 方案展开。Giannis 肯定了提案价值并提出有界日志扫描、日志保留失败语义、bucket 裁剪辅助工具及 PK 表读取等改进建议；Shangqing 表示认可，并重点提议以独立模块和增量 PR 方式推进开发。</p>
+            <div class="key-points"><p><strong>@Giannis Polyzos:</strong> 认为 Trino connector 需求明确、提案范围合理，但建议补充有界 offset 日志扫描、验证日志保留失败语义、提供 bucket 裁剪工具，并考虑使用新的 Full KV Scan API 读取主键表。</p>
+<p><strong>@Shangqing Yang:</strong> 认可上述技术点，将在设计与实现中跟进；同时建议将 connector 作为相对独立模块开发，采用独立构建和 CI，并通过小而独立的 PR 增量合入。</p></div>
+            <p class="conclusion">初步共识是继续完善设计并关注客户端能力抽象；下一步重点是确认开发与构建方式，倾向于独立模块、增量提交并持续更新设计文档。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/m44jm8x2s3p0yw7f46w6qs1jvg74d3l3">FIP-55: Kafka Protocols Compatibility - Basic Produce</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Yang Guo 发起关于 FIP-55 的社区讨论，提议为 Fluss 引入 Kafka 协议兼容性作为数据摄入接口，使标准 Kafka 生产者可通过兼容端点写入数据，并由 Fluss 转换为类型化行存储到原生表中。该提案旨在让数据能通过 Fluss 客户端、Flink SQL 及其他集成方式消费。</p>
+            <div class="key-points"><p><strong>@Yang Guo:</strong> 提议引入 Kafka 协议兼容端点，支持标准 Kafka 生产者写入，并将数据转换为类型化行存入 Fluss 原生表</p></div>
+            <p class="conclusion">目前处于提案公开征求意见阶段，尚未形成结论，下一步是社区审阅提案并提供反馈和建议。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/x2xwj39hoylcc69452qp3smtt4w57g5g">FIP-50: Native DataFusion Query Engine for the Fluss Rust Client</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">本次邮件讨论围绕 FIP-50 为 Fluss Rust 客户端引入原生 DataFusion 查询引擎的提案展开，重点聚焦元数据缓存策略与 KV/湖仓数据读取路径的边界设计。社区成员建议复用现有客户端缓存机制，并同意将非分层 PK 读取作为后续工作，不阻塞当前提案。</p>
+            <div class="key-points"><p><strong>@Junbo Wang:</strong> 建议在 FIP-50 中复用 Rust 客户端已有的 TableInfo 缓存与刷新机制，避免在 fluss-datafusion 中维护独立的长期元数据缓存，以实现 SQL 与直接访问共享缓存和失效逻辑。</p>
+<p><strong>@Jim Hu:</strong> 支持将非分层 PK 读取作为后续工作，不阻塞 FIP-50；建议在 Rust 中复用 Java 的 KV 与湖仓扫描边界设计，将 hash-overlay 逻辑（如 tombstone 处理、快照对齐等）抽象为源无关组件并移至核心 crate。</p>
+<p><strong>@Anton:</strong> 作为提案作者，对 FIP-50 进行了修订并澄清了相关设计细节，接受了关于分阶段实施和架构边界的建议。</p></div>
+            <p class="conclusion">初步达成共识：FIP-50 可继续推进，元数据缓存应复用客户端现有机制，非分层 PK 读取作为后续独立工作；下一步是将数据合并与删除语义抽象为引擎无关的核心组件，为统一 current-view 契约奠定基础。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (0)</h2>
+            
+    <p>本周新建 <strong>0</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周无新建 JIRA。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Fluss Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
