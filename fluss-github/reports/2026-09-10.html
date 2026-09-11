@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-09-10</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-09-10</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 14 新 Issues</div>
+            <div class="stat">✅ 5 关闭</div>
+            <div class="stat">✨ 7 新 PRs</div>
+            <div class="stat">🎉 6 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/4254">PR #4254</a> [server] Update remote log offsets before local segment cleanup</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4250">PR #4250</a> [flink] Support pendingRecords metric for Fluss source.</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4244">PR #4244</a> [rust] Return error for out-of-range server API versions</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4034">PR #4034</a> [server] Add support of dynamic historical lookup threads and max queued requests reconfiguration</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3974">PR #3974</a> [server] Fix equals/hashCode contract in ISR states and remote log manifest handle</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <ul class="critical-list"><li>⚠️ <a href="https://github.com/apache/fluss/issues/4289">Issue #4289</a> [docs] Document bucket rescaling for future partitions</li></ul>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4216">Issue #4216</a> [client] Recover admin writes after coordinator leader failover</h4>
+            <ul><li><span class="author">@litiliu</span>: @BackendArchitectX Thanks for pointing this out. After comparing the two approaches, I agree that k…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3974">Issue #3974</a> [server] Fix equals/hashCode contract in ISR states and remote log manifest handle</h4>
+            <ul><li><span class="author">@vbhanuchander-lang</span>: @wuchong @platinumhamburg could one of you take a look when you have a moment? You have both merged…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4034">Issue #4034</a> [server] Add support of dynamic historical lookup threads and max queued requests reconfiguration</h4>
+            <ul><li><span class="author">@zuston</span>: thanks @fresh-borzoni @luoyuxia .</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4200">Issue #4200</a> [client] Recover Admin writes after coordinator failover</h4>
+            <ul><li><span class="author">@litiliu</span>: @loserwang1024 Thanks for the updates. After comparing this PR with #4216 and discussing the connec…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4220">Issue #4220</a> [lake/iceberg] Fix Iceberg table rebinding with different Fluss properties</h4>
+            <ul><li><span class="author">@litiliu</span>: @luoyuxia If you have no more concerns, Would you mind merging this pr when you have time?</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4254">Issue #4254</a> [server] Update remote log offsets before local segment cleanup</h4>
+            <ul><li><span class="author">@loserwang1024</span>: > @loserwang1024 would it be better to update remote log offset in one single function? (e.g. `upda…</li><li><span class="author">@polyzos</span>: @loserwang1024 LGTM 👍 I think we can merge this</li><li><span class="author">@gyang94</span>: @loserwang1024 Thanks. LGTM now.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4256">Issue #4256</a> [client] NotLeaderOrFollowerException persists when a stale TabletServer endpoint is reused</h4>
+            <ul><li><span class="author">@BackendArchitectX</span>: @loserwang1024, @gyang94 mentioned that a committer is needed to assign #4256. I?ve reproduced the…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3391">Issue #3391</a> [server] Add per-tablet-server sender retry framework</h4>
+            <ul><li><span class="author">@polyzos</span>: @gyang94 Thanks for this and overall LGTM. One thing I will like to add here, maybe as a follow-up…</li><li><span class="author">@gyang94</span>: @polyzos thanks. Added a issue ticket here: https://github.com/apache/fluss/issues/4291</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4028">Issue #4028</a> [client] Clean up batches when synchronous sends fail</h4>
+            <ul><li><span class="author">@gyang94</span>: @leekeiabstraction updated. please check.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4197">Issue #4197</a> [trino] Add native read-only Trino connector</h4>
+            <ul><li><span class="author">@polyzos</span>: @yangshangqing95 I will add some comments on the mailing list for visibility. Regarding Confluence…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4276">Issue #4276</a> [Feature] C++ client: provide async/callback API for write result instead of blocking Wait()</h4>
+            <ul><li><span class="author">@loserwang1024</span>: @naivedogger @fresh-borzoni , CC</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4250">Issue #4250</a> [flink] Support pendingRecords metric for Fluss source.</h4>
+            <ul><li><span class="author">@loserwang1024</span>: @naivedogger @beryllw @leonardBang , I have modified it.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4124">Issue #4124</a> [lake/paimon] Introduce scan-based lake table lookuper</h4>
+            <ul><li><span class="author">@luoyuxia</span>: Regarding [`PaimonScanBasedTableLookuper.lookup()` at line 104](https://github.com/apache/fluss/blo…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4263">Issue #4263</a> [rpc] Handle endpoint changes for cached server connections</h4>
+            <ul><li><span class="author">@gyang94</span>: @BackendArchitectX Thanks! Using `serverId + host + port` as the composite key for the cache seems…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4278">Issue #4278</a> [client] Add retry backoff when disk protection rejects writes</h4>
+            <ul><li><span class="author">@fhan688</span>: Could you please assign this to me, thanks! @swuferhong</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4201">PR #4201</a> [rust] Support KvScan in Rust client</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: nit: KvSnapshot in this crate is the RocksDB checkpoint on remote storage — metadata/kv_snapshot.rs…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4124">PR #4124</a> [lake/paimon] Introduce scan-based lake table lookuper</h4>
+            <ul><li><span class="author">@Copilot</span>: The scan sets `withLimit(1)` and then returns the first row produced by the reader without validati…</li><li><span class="author">@luoyuxia</span>: is it possible to make it can be altered after created?</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4199">PR #4199</a> [server] Incrementally clean historical KV state</h4>
+            <ul><li><span class="author">@Copilot</span>: This change forces historical tablets to always use `KvValueLayout.TAGGED` and treats tombstones as…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3908">PR #3908</a> [server][client] Support per-partition bucket count for partitioned tables</h4>
+            <ul><li><span class="author">@wuchong</span>: Please use Testing classes (such as `TestingLakeSplit` and `TestAdminAdapter`) rather than using mo…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4144">PR #4144</a> [build] Relocate third-party classes leaking from uber-jars</h4>
+            <ul><li><span class="author">@Jackeyzhe</span>: Thanks for confirming. I think `website/community/dev/building.md` is a reasonable place for the do…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4274">PR #4274</a> [server] Normalize legacy remote log manifest ranges</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: @gyang94 Thanks for the fix! The normalization addresses the legacy overlap issue, and the explicit…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4263">PR #4263</a> [rpc] Handle endpoint changes for cached server connections</h4>
+            <ul><li><span class="author">@gyang94</span>: Feel a little bit strange here. One serverUid may have multiple ServerConnections, any one of conne…</li><li><span class="author">@BackendArchitectX</span>: Thanks @gyang94. Updated. `isReady` now takes `ServerNode` and checks the exact `serverUid + host +…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4209">PR #4209</a> [rust] Validate nested ROW field names</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: Blank column names still pass here: column(" ", int()) builds fine, and Java rejects it. Through th…</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4291">#4291</a> [server] Bound per-TS sender queues and handle stale retries <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/4290">#4290</a> [server] KV writes stall indefinitely when a WAL batch exhausts the shared memory pool <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/4289">#4289</a> [docs] Document bucket rescaling for future partitions <span class="author">@wuchong</span> <span class="labels">priority=critical</span></li><li><a href="https://github.com/apache/fluss/issues/4288">#4288</a> [Umbrella] Rescale buckets for future partitions <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/issues/4287">#4287</a> [client] Keep dynamic partition writes non-blocking with asynchronous metadata refresh <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/issues/4283">#4283</a> [kafka] Integrate Produce with native Fluss append <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/4282">#4282</a> [kafka] Transcode mapped raw and string records to Arrow <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/4281">#4281</a> [kafka] Handle basic Produce requests independently of storage <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/4280">#4280</a> [test] Cover aggregation recovery across partitions with different bucket counts <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/issues/4279">#4279</a> [rpc] Missing client-side request deadlines can stall Flink writes until connection idle timeout <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/4278">#4278</a> [client] Add retry backoff when disk protection rejects writes <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/issues/4276">#4276</a> [Feature] C++ client: provide async/callback API for write result instead of blocking Wait() <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/issues/4275">#4275</a> [kafka] Define DDL table mapping for Kafka compatibility <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/4272">#4272</a> [Server] Loading overlapping remote log segments can make existing offsets unreadable <span class="author">@platinumhamburg</span> <span class="labels">priority=blocker</span></li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4292">#4292</a> [test] Improve test coverage for utils.* classes <span class="author">@jay1466</span> </li><li><a href="https://github.com/apache/fluss/pull/4286">#4286</a> [kafka] Integrate Produce with native Fluss append <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/pull/4285">#4285</a> [kafka] Transcode mapped raw and string records to Arrow <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/pull/4284">#4284</a> [kafka] Handle basic Produce requests independently of storage <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/pull/4277">#4277</a> [kafka] Define DDL table mapping for Kafka compatibility <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/pull/4274">#4274</a> [server] Normalize legacy remote log manifest ranges <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/pull/4273">#4273</a> [server] Reconcile divergent replica logs using leader epochs <span class="author">@platinumhamburg</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4247">#4247</a> [Bug] Fetch may fail during non-atomic remote log offset updates <span class="author">@loserwang1024</span> <span class="labels">priority=blocker</span></li><li><a href="https://github.com/apache/fluss/issues/4241">#4241</a> [Rust] Return error for out-of-range server API version values <span class="author">@slfan1989</span> </li><li><a href="https://github.com/apache/fluss/issues/3973">#3973</a> [server] Four classes override equals() without hashCode() <span class="author">@vbhanuchander-lang</span> </li><li><a href="https://github.com/apache/fluss/issues/3670">#3670</a> [flink] Support custom lookup shuffle for Flink lookup join. <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/issues/138">#138</a> [Feature] Flink Connector support pendingRecords metric <span class="author">@wuchong</span> <span class="labels">good first issue, component=connector/flink</span></li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4254">#4254</a> [server] Update remote log offsets before local segment cleanup <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/pull/4250">#4250</a> [flink] Support pendingRecords metric for Fluss source. <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/pull/4244">#4244</a> [rust] Return error for out-of-range server API versions <span class="author">@slfan1989</span> </li><li><a href="https://github.com/apache/fluss/pull/4034">#4034</a> [server] Add support of dynamic historical lookup threads and max queued requests reconfiguration <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/pull/3974">#3974</a> [server] Fix equals/hashCode contract in ISR states and remote log manifest handle <span class="author">@vbhanuchander-lang</span> </li><li><a href="https://github.com/apache/fluss/pull/3675">#3675</a> [flink] Support custom lookup shuffle by bucket for Flink 2.x <span class="author">@naivedogger</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
