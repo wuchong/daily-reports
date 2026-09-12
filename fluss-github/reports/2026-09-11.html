@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-09-11</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-09-11</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 6 新 Issues</div>
+            <div class="stat">✅ 4 关闭</div>
+            <div class="stat">✨ 8 新 PRs</div>
+            <div class="stat">🎉 4 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/3391">PR #3391</a> 合并 per-TabletServer sender retry framework，增强服务端写入重试与恢复能力。</li><li>🐛 <a href="https://github.com/apache/fluss/pull/4028">PR #4028</a> 修复同步发送失败后批次未清理的问题，避免写入批次永久挂起，关联 <a href="https://github.com/apache/fluss/issues/4018">Issue #4018</a>。</li><li>🐛 <a href="https://github.com/apache/fluss/pull/4274">PR #4274</a> 规范化旧版远程日志 manifest 区间，修复重叠远程日志段导致偏移不可读的问题，关联 <a href="https://github.com/apache/fluss/issues/4272">Issue #4272</a>。</li><li>✨ <a href="https://github.com/apache/fluss/pull/4308">PR #4308</a> 为主键表新增 pre-write buffer memory metrics，增强服务端内存可观测性。</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <ul class="critical-list"><li>⚠️ <a href="https://github.com/apache/fluss/issues/4018">Issue #4018</a> Blocker：同步 RPC 编码失败可能导致写入批次永久挂起，当前已关闭且修复已合并。</li><li>⚠️ <a href="https://github.com/apache/fluss/issues/4272">Issue #4272</a> Blocker：加载重叠远程日志段可能导致已有偏移不可读，当前已关闭且相关修复已合并。</li></ul>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4278">Issue #4278</a> [client] Add retry backoff when disk protection rejects writes</h4>
+            <ul><li><span class="author">@fhan688</span>: 提出 Java 与 Rust 客户端磁盘保护拒写后的退避方案，包含配置与测试计划。</li><li><span class="author">@swuferhong</span>: 确认将该 issue 分配给贡献者，并感谢其参与。</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3908">PR #3908</a> [server][client] Support per-partition bucket count for partitioned tables</h4>
+            <ul><li><span class="author">@wuchong</span>: 指出仅失败错批会破坏写顺序，建议协调整个写入上下文恢复并补充回归测试。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4028">PR #4028</a> [client] Clean up batches when synchronous sends fail</h4>
+            <ul><li><span class="author">@polyzos</span>: 表示 LGTM，认可同步发送失败时清理批次以避免挂起的修复。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4199">PR #4199</a> [server] Incrementally clean historical KV state</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 请求 wuchong 与 platinumhamburg 协助审阅历史 KV 状态清理相关改动。</li><li><span class="author">@platinumhamburg</span>: 指出 keysMissingLocally 与 createValueLookup 存在隐式调用契约，不宜由调用方保证顺序。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4231">PR #4231</a> [docs] Add HTTP Gateway lakehouse quickstart</h4>
+            <ul><li><span class="author">@pranavshuklaa</span>: 已按建议完善快速入门：突出订单管理、即时查询、补充输出说明并链接网关概览。</li><li><span class="author">@beryllw</span>: 指出新终端变量缺失会导致 curl 报错，并建议补架构图、调整侧边栏及@审阅者。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4253">PR #4253</a> [lake/iceberg] Support custom Iceberg lake table path</h4>
+            <ul><li><span class="author">@litiliu</span>: 请求 luoyuxia 有空时查看自定义 Iceberg 表路径支持的 PR。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4306">PR #4306</a> [build] Fix Gateway 1.0 release provenance and verification</h4>
+            <ul><li><span class="author">@beryllw</span>: 请求多位社区成员审阅 Gateway 1.0 发布溯源与验证修复。</li><li><span class="author">@fresh-borzoni</span>: 指出发布脚本步骤顺序、退出码、锁文件、GPG 跳过和 Docker 提取范围等问题。</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4307">#4307</a> [server] Add pre-write buffer memory metrics for primary key tables <span class="author">@Kaixuan-Duan</span> </li><li><a href="https://github.com/apache/fluss/issues/4303">#4303</a> [client] Typed deletes drop partition keys on partitioned primary-key tables <span class="author">@fxbing</span> </li><li><a href="https://github.com/apache/fluss/issues/4302">#4302</a> [client] Java table writers do not consistently reject NOT NULL violations <span class="author">@fxbing</span> </li><li><a href="https://github.com/apache/fluss/issues/4300">#4300</a> [server] Clarify minimum ISR write rejection diagnostics <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/4298">#4298</a> [kafka] Cover Produce lifecycle and replication regressions <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/4295">#4295</a> [common] Negative timestamps fail to decode in Arrow and Iceberg <span class="author">@fxbing</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4308">#4308</a> [server] Add pre-write buffer memory metrics for primary key tables <span class="author">@Kaixuan-Duan</span> </li><li><a href="https://github.com/apache/fluss/pull/4306">#4306</a> [build] Fix Gateway 1.0 release provenance and verification <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/pull/4305">#4305</a> [client] Reject NOT NULL violations before Java table writes <span class="author">@fxbing</span> </li><li><a href="https://github.com/apache/fluss/pull/4304">#4304</a> [client] Preserve partition keys in typed deletes <span class="author">@fxbing</span> </li><li><a href="https://github.com/apache/fluss/pull/4299">#4299</a> [kafka] Cover Produce lifecycle and replication regressions <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/pull/4296">#4296</a> [common] Fix negative timestamp decoding in Arrow and Iceberg <span class="author">@fxbing</span> </li><li><a href="https://github.com/apache/fluss/pull/4294">#4294</a> [server] Prevent WAL memory pool deadlocks <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/4293">#4293</a> [client] Back off writes rejected by disk protection <span class="author">@fhan688</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4300">#4300</a> [server] Clarify minimum ISR write rejection diagnostics <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/4272">#4272</a> [Server] Loading overlapping remote log segments can make existing offsets unreadable <span class="author">@platinumhamburg</span> <span class="labels">priority=blocker</span></li><li><a href="https://github.com/apache/fluss/issues/4262">#4262</a> [server] Add per-TabletServer sender thread infrastructure <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/4018">#4018</a> [Bug] Writer batches can hang forever after synchronous RPC encoding failure <span class="author">@gyang94</span> <span class="labels">priority=blocker</span></li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4297">#4297</a> [hotfix] Fix compile of RemoteLogFetcherTest. <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/pull/4274">#4274</a> [server] Normalize legacy remote log manifest ranges <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/pull/4028">#4028</a> [client] Clean up batches when synchronous sends fail <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/pull/3391">#3391</a> [server] Add per-tablet-server sender retry framework <span class="author">@gyang94</span> <span class="labels">priority=blocker</span></li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
