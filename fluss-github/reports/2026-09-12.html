@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-09-12</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-09-12</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 1 新 Issues</div>
+            <div class="stat">✅ 2 关闭</div>
+            <div class="stat">✨ 2 新 PRs</div>
+            <div class="stat">🎉 2 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/3908">PR #3908</a> 合并，支持分区表按分区设置 bucket 数量，增强分区扩缩能力。</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4248">PR #4248</a> 合并，为主键表暴露 KV WAL 内存池指标，提升可观测性。</li><li>🐛 <a href="https://github.com/apache/fluss/issues/4310">Issue #4310</a> 报告 Flink bucket shuffle 使用固定表级 numBuckets，分区扩缩后影响 sink 恢复。</li><li>✨ <a href="https://github.com/apache/fluss/pull/4311">PR #4311</a> 与 <a href="https://github.com/apache/fluss/pull/4309">PR #4309</a> 正在推进按分区解析 bucket 数量，修复相关恢复问题。</li><li>✨ <a href="https://github.com/apache/fluss/issues/1153">Issue #1153</a> 社区提出基于 ZK 创建 zxid 的 TabletServer epoch 防护方案。</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <ul class="critical-list"><li>⚠️ <a href="https://github.com/apache/fluss/issues/4310">Issue #4310</a> Flink bucket shuffle 固定使用表级 numBuckets，分区 rescale 后可能破坏 sink 恢复，需要优先确认修复方案。</li></ul>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/1153">Issue #1153</a> Add tabletServerEpoch to prevent offline tabletServer send requests to coordinator and wrongly handle</h4>
+            <ul><li><span class="author">@hutiefang76</span>: 建议使用 ZK 注册节点创建 zxid 作为 incarnation，并提出兼容策略与测试方案。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3944">Issue #3944</a> [docs] Document local log TTL and active segment rolling</h4>
+            <ul><li><span class="author">@wuchong</span>: 请求作者 rebase 并解决当前冲突，以便继续推进该文档 PR。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4006">Issue #4006</a> [client] Expose Arrow changelog batches</h4>
+            <ul><li><span class="author">@polyzos</span>: 已推送 Javadoc 修复并认可，合并前征询将 API 调整为 public evolving 的意见。</li><li><span class="author">@luoyuxia</span>: 感谢考虑，将在未来几天内查看该 API 变更问题并反馈。</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4306">PR #4306</a> [build] Fix Gateway 1.0 release provenance and verification</h4>
+            <ul><li><span class="author">@beryllw</span>: 说明 git archive 可生成干净 RC，Docker 构建已限定所需输入，无需进一步修改。</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4310">#4310</a> [flink] Bucket shuffle uses a fixed table-level numBuckets, breaking sink recovery after partition rescale <span class="author">@Kaixuan-Duan</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4311">#4311</a> [flink] Resolve per-partition bucket count in sink bucket shuffle <span class="author">@Kaixuan-Duan</span> </li><li><a href="https://github.com/apache/fluss/pull/4309">#4309</a> [client] Resolve dynamic partition bucket counts before sending <span class="author">@wuchong</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4249">#4249</a> [server] Add WAL memory pool metrics for primary key tables <span class="author">@Kaixuan-Duan</span> </li><li><a href="https://github.com/apache/fluss/issues/3907">#3907</a> Support per-partition bucket rescale <span class="author">@Kaixuan-Duan</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4248">#4248</a> [server] Expose KV WAL memory pool metrics for primary key tables <span class="author">@Kaixuan-Duan</span> </li><li><a href="https://github.com/apache/fluss/pull/3908">#3908</a> [server][client] Support per-partition bucket count for partitioned tables <span class="author">@Kaixuan-Duan</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
