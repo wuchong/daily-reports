@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-09-14</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-09-14</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 7 新 Issues</div>
+            <div class="stat">✅ 8 关闭</div>
+            <div class="stat">✨ 10 新 PRs</div>
+            <div class="stat">🎉 9 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/4323">PR #4323</a> [docs] Document orphan file cleanup scope and usage</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4315">PR #4315</a> [server] Forbid ALTER bucket.num on aggregation merge engine tables</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4313">PR #4313</a> [build] Exempt coordinator event processor files from FileLength</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4306">PR #4306</a> [build] Fix Gateway 1.0 release provenance and verification</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4268">PR #4268</a> [server] Keep async KV flushes on WAL batch boundaries</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <ul class="critical-list"><li>⚠️ <a href="https://github.com/apache/fluss/issues/2595">Issue #2595</a> Release 0.9 Documentation</li></ul>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4029">Issue #4029</a> [client] Add Admin API to describe buckets</h4>
+            <ul><li><span class="author">@swuferhong</span>: Hi, @fhan688. Can u rebase the code when u have free time.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3466">Issue #3466</a> [server][client] Partition expiration storms ZooKeeper via repeated GET_METADATA on non-existent partitions until enumerator unsubscribes</h4>
+            <ul><li><span class="author">@fxbing</span>: I ran into a related issue in a Fluss-to-Fluss CDC pipeline: after auto-partition retention deletes…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4293">Issue #4293</a> [client] Back off writes rejected by disk protection</h4>
+            <ul><li><span class="author">@fhan688</span>: > Hi, @fhan688 I suggest extracting an internal `WriteThrottleController` to unify the existing dis…</li><li><span class="author">@swuferhong</span>: > > Hi, @fhan688 I suggest extracting an internal `WriteThrottleController` to unify the existing d…</li><li><span class="author">@platinumhamburg</span>: > > > Hi, @fhan688 I suggest extracting an internal `WriteThrottleController` to unify the existing…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4308">Issue #4308</a> [server] Add pre-write buffer memory metrics for primary key tables</h4>
+            <ul><li><span class="author">@zuston</span>: looks duplicate with https://github.com/apache/fluss/pull/3533；> I've looked at both https://github…</li><li><span class="author">@platinumhamburg</span>: > looks duplicate with #3533 I've looked at both #4308 and #3533. IMO, the way #4308 calculates act…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3851">Issue #3851</a> [build] Add a local development kit for contributors</h4>
+            <ul><li><span class="author">@Gezi-lzq</span>: Hi @beryllw, I noticed the recent work on the Gateway lakehouse quickstart. #3851 also includes a c…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4315">Issue #4315</a> [server] Forbid ALTER bucket.num on aggregation merge engine tables</h4>
+            <ul><li><span class="author">@wuchong</span>: most CI are passed, merging...</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3519">Issue #3519</a> [lake][paimon] Fix DV readable snapshot and offset selection</h4>
+            <ul><li><span class="author">@luoyuxia</span>: @fresh-borzoni Thanks for the review! I've narrowed this PR to Bug 1: scanning the intended COMPACT…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4332">Issue #4332</a> [spark] Fix spark async write exception propagation</h4>
+            <ul><li><span class="author">@Yohahaha</span>: @wuchong @luoyuxia @beryllw PTAL!</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3944">Issue #3944</a> [docs] Document local log TTL and active segment rolling</h4>
+            <ul><li><span class="author">@wuchong</span>: @gyang94 @platinumhamburg I have added a commit to refactor the TTL documentation page. It now expl…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4333">Issue #4333</a> [build] Publish Rust and Python clients with Trusted Publishing</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: @leekeiabstraction @wuchong @luoyuxia PTAL 🙏</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4279">Issue #4279</a> [rpc] Missing client-side request deadlines can stall Flink writes until connection idle timeout</h4>
+            <ul><li><span class="author">@hutiefang76</span>: I would like to investigate and fix this client-side deadline gap. I will start with the described…</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4268">PR #4268</a> [server] Keep async KV flushes on WAL batch boundaries</h4>
+            <ul><li><span class="author">@Copilot</span>: `waitUntil` checks this predicate every 1 ms, and `putRecordBatch` returns a future without waiting…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4294">PR #4294</a> [server] Prevent WAL memory pool deadlocks</h4>
+            <ul><li><span class="author">@Copilot</span>: This fast path relies only on the list sizes, so `returnPage`/`returnAll` can pass a foreign page t…</li><li><span class="author">@platinumhamburg</span>: Nice caght.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4124">PR #4124</a> [lake/paimon] Introduce scan-based lake table lookuper</h4>
+            <ul><li><span class="author">@zuston</span>: How about making this supported in the next PRs?</li><li><span class="author">@luoyuxia</span>: I'm fine to that.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4315">PR #4315</a> [server] Forbid ALTER bucket.num on aggregation merge engine tables</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: table.merge-engine cannot be altered regardless of whether the table has been rescaled, so this tes…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4326">PR #4326</a> [flink] Preserve lake offsets when partition splits are pruned</h4>
+            <ul><li><span class="author">@Copilot</span>: `ZeroOffsetsRetriever` is now used as a base class for a retriever that returns non-zero offsets in…</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4330">#4330</a> [helm] First-class existingSecret form for the readiness probe credential <span class="author">@morazow</span> </li><li><a href="https://github.com/apache/fluss/issues/4325">#4325</a> [flink] Union reads restart from earliest when all lake splits of a partition are pruned <span class="author">@wangzhigang1999</span> </li><li><a href="https://github.com/apache/fluss/issues/4320">#4320</a> [flink] Respect low filesystem rate limits in remove_orphan_files <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/4318">#4318</a> [flink] Add reliable cleanup result summaries to remove_orphan_files <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/4316">#4316</a> [flink] Preserve filesystem configuration in remove_orphan_files <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/4314">#4314</a> [build] Exempt CoordinatorEventProcessor and its test from FileLength check style <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/issues/4312">#4312</a> [server] Refactor CoordinatorEventProcessor and split its tests <span class="author">@swuferhong</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4333">#4333</a> [build] Publish Rust and Python clients with Trusted Publishing <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/4332">#4332</a> [spark] Fix spark async write exception propagation <span class="author">@Yohahaha</span> </li><li><a href="https://github.com/apache/fluss/pull/4331">#4331</a> [helm] Add existingSecret form for the readiness probe credential <span class="author">@morazow</span> </li><li><a href="https://github.com/apache/fluss/pull/4329">#4329</a> [helm] Document and validate Secret-backed readiness probe auth <span class="author">@morazow</span> </li><li><a href="https://github.com/apache/fluss/pull/4328">#4328</a> [c++] Add write callbacks with batch completion dispatch <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/pull/4326">#4326</a> [flink] Preserve lake offsets when partition splits are pruned <span class="author">@wangzhigang1999</span> </li><li><a href="https://github.com/apache/fluss/pull/4322">#4322</a> [test] Remove redundant merge-engine alter test from AlterBucketNumTest <span class="author">@Kaixuan-Duan</span> </li><li><a href="https://github.com/apache/fluss/pull/4321">#4321</a> [flink] fix orphan scan rate limit <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/4319">#4319</a> [flink] orphan cleanup job support result audit <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/4317">#4317</a> [flink] preserve orphan cleanup job filesystem configuration <span class="author">@platinumhamburg</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4314">#4314</a> [build] Exempt CoordinatorEventProcessor and its test from FileLength check style <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/issues/4267">#4267</a> [Bug] Asynchronous KV flush can publish a high watermark inside a WAL batch <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/4221">#4221</a> [docs] Add an HTTP Gateway quickstart for a real-time lakehouse <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/issues/4218">#4218</a> [lake/iceberg] Cannot rebind an existing Iceberg table across Fluss clusters with different replication factors <span class="author">@litiliu</span> </li><li><a href="https://github.com/apache/fluss/issues/4212">#4212</a> [metrics] Add per-error TabletServer request metrics <span class="author">@fxbing</span> </li><li><a href="https://github.com/apache/fluss/issues/3993">#3993</a> [doc] Remove orphan file Flink action doc <span class="author">@leekeiabstraction</span> <span class="labels">priority=blocker</span></li><li><a href="https://github.com/apache/fluss/issues/2889">#2889</a> [client] Support specifying rack when adding/removing server tags in Admin API <span class="author">@LiebingYu</span> </li><li><a href="https://github.com/apache/fluss/issues/2595">#2595</a> Release 0.9 Documentation <span class="author">@wuchong</span> <span class="labels">priority=critical</span></li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4323">#4323</a> [docs] Document orphan file cleanup scope and usage <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/4315">#4315</a> [server] Forbid ALTER bucket.num on aggregation merge engine tables <span class="author">@Kaixuan-Duan</span> </li><li><a href="https://github.com/apache/fluss/pull/4313">#4313</a> [build] Exempt coordinator event processor files from FileLength <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/pull/4306">#4306</a> [build] Fix Gateway 1.0 release provenance and verification <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/pull/4268">#4268</a> [server] Keep async KV flushes on WAL batch boundaries <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/4231">#4231</a> [docs] Add HTTP Gateway lakehouse quickstart <span class="author">@pranavshuklaa</span> </li><li><a href="https://github.com/apache/fluss/pull/4220">#4220</a> [lake/iceberg] Fix Iceberg table rebinding with different Fluss properties <span class="author">@litiliu</span> </li><li><a href="https://github.com/apache/fluss/pull/4213">#4213</a> [metrics] Add per-error TabletServer request metrics <span class="author">@fxbing</span> </li><li><a href="https://github.com/apache/fluss/pull/2890">#2890</a> [client] Support specifying rack when adding/removing server tags in Admin API <span class="author">@LiebingYu</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
