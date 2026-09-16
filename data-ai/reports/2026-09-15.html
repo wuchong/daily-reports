@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data+AI 全球日报 | 2026-09-15</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Data+AI 全球日报 | 2026-09-15</h1>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="top-changes">
+            <h2>🔥 今日最重要的3个变化</h2>
+            <ol><li><strong>AWS 强化 Redshift 与 Databricks 联邦查询</strong> — United Airlines 案例显示，AWS 可通过 Amazon Redshift、AWS Glue Data Catalog federation 和 Lake Formation 直接查询 Databricks Unity Catalog 数据，降低跨平台数据复制成本。</li><li><strong>ClickHouse 进军时序与可观测性</strong> — ClickHouse 推出 TimeSeries Engine 和 PromQL 支持，试图成为 Prometheus 替代方案，将指标、日志和轨迹统一到其分析平台中。</li><li><strong>SageMaker Unified Studio 打通 Power BI</strong> — AWS 通过 Amazon Athena ODBC driver 的新认证模式连接 Microsoft Power BI，增强治理数据在主流 BI 生态中的可消费性。</li></ol>
+            <p class="judgment"><strong>总判断：</strong>今日主线是互操作与多模态数据工作负载竞争：AWS 以联邦查询、统一治理和 BI 连接降低数据移动成本，ClickHouse 则向时序与可观测性场景扩张。行业平台边界进一步模糊，目录、权限和查询入口正成为数据平台竞争的关键控制点。</p>
+        </section>
+
+        <section class="top-signals">
+            <h2>📡 重要信号</h2>
+            
+    <article class="news-item">
+        <h3>AWS 展示 Redshift 与 Glue Data Catalog 联邦查询 Databricks Unity Catalog 数据</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/how-united-airlines-uses-amazon-redshift-and-aws-glue-data-catalog-federation-to-query-databricks-managed-data/">AWS Big Data Blog</a></p>
+        <p class="date">2026-09-15</p>
+        <p class="summary">AWS 博客发布 United Airlines 案例，介绍其使用 Amazon Redshift Serverless 与 AWS Glue Data Catalog federation 查询 Databricks Unity Catalog 管理的数据。该方案通过 resource links 和 AWS Lake Formation 进行治理，无需复制数据，使分析团队可在 Redshift 中直接访问 Databricks 湖仓数据。这一实践显示 AWS 正强化与第三方开放目录和湖仓平台的互操作能力。</p>
+        <div class="impact">📊 数据平台影响：联邦查询可降低跨平台数据复制和 ETL 成本，但治理与权限控制进一步集中到 AWS Lake Formation，可能增强 AWS 在企业湖仓架构中的入口地位。</div>
+    </article>
+    <article class="news-item">
+        <h3>ClickHouse 推出 TimeSeries Engine 与 PromQL 支持，瞄准 Prometheus 替代</h3>
+        <p class="sources">📌 <a href="https://clickhouse.com/blog/introducing-promql">ClickHouse Blog</a></p>
+        <p class="date">2026-09-15</p>
+        <p class="summary">ClickHouse 发布新的 TimeSeries Engine，并支持在 ClickHouse Cloud 中存储 Prometheus 指标、使用 PromQL 查询。该能力允许用户将指标、日志和轨迹统一在 ClickHouse 中，而无需将现有 Prometheus 查询重写为 SQL。此举将 ClickHouse 从分析型数据库进一步扩展到可观测性与时序数据平台场景。</p>
+        <div class="impact">📊 数据平台影响：若 PromQL 兼容性和成本效率得到验证，ClickHouse 可能吸引更多可观测性工作负载，推动统一遥测数据湖仓发展，并对 Prometheus 及周边时序数据库形成替代压力。</div>
+    </article>
+        </section>
+
+        <section class="product-tech">
+            <h2>💻 产品与技术</h2>
+            
+    <article class="news-item">
+        <h3>ClickHouse 推出 Replica-aware routing public beta</h3>
+        <p class="sources">📌 <a href="https://clickhouse.com/blog/replica-aware-routing-public-beta">ClickHouse Blog</a></p>
+        <p class="date">2026-09-15</p>
+        <p class="summary">ClickHouse 宣布 Replica-aware routing 公开测试。由于临时表和 named sessions 通常只存在于单个 ClickHouse replica，后续查询若被路由到其他副本会无法访问相关状态。新功能可在 HTTP 或 native protocol 上将请求固定到同一 replica，以保证会话、临时表和连续查询的一致性。</p>
+        <div class="impact">📊 数据平台影响：该能力改善有状态查询场景的可用性，减少代理或负载均衡导致的一致性陷阱，有助于 ClickHouse 承载更复杂的交互式与多步分析工作负载。</div>
+    </article>
+    <article class="news-item">
+        <h3>Amazon SageMaker Unified Studio 连接 Microsoft Power BI：Part 1 覆盖 IAM Identity Center 域</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/connect-amazon-sagemaker-unified-studio-to-microsoft-power-bi-part-1-iam-identity-center-idc-based-domains/">AWS Big Data Blog</a></p>
+        <p class="date">2026-09-15</p>
+        <p class="summary">AWS 发布技术博客，介绍如何将 Microsoft Power BI 直接连接到 Amazon SageMaker Unified Studio 中的治理数据。Part 1 聚焦 IAM Identity Center-based domains，使用 Amazon Athena ODBC driver 的新认证模式，支持 DSN-based 和 DSN-less 连接，无需第三方 ODBC-JDBC bridge。</p>
+        <div class="impact">📊 数据平台影响：该连接方式降低治理数据接入 Power BI 的门槛，有助于 AWS 将 SageMaker Unified Studio 打造成面向业务分析的数据产品与语义层入口。</div>
+    </article>
+    <article class="news-item">
+        <h3>Amazon SageMaker Unified Studio 连接 Microsoft Power BI：Part 2 覆盖 IAM 域</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/connect-amazon-sagemaker-unified-studio-to-microsoft-power-bi-part-2-iam-based-domains/">AWS Big Data Blog</a></p>
+        <p class="date">2026-09-15</p>
+        <p class="summary">AWS 继续介绍 SageMaker Unified Studio 与 Microsoft Power BI 的连接方式。Part 2 覆盖 IAM-based domains，使用 SageMakerIam 认证，并说明 AWS IAM Identity Center 管理员配置流程，同样支持 DSN-based 和 DSN-less 连接，进一步补齐企业级认证与部署路径。</p>
+        <div class="impact">📊 数据平台影响：更多认证模式可适配不同企业身份体系，减少 BI 集成的定制成本，但也可能进一步加深企业对 AWS 数据治理与身份体系的依赖。</div>
+    </article>
+        </section>
+
+        <section class="people-views">
+            <h2>👤 人物与观点</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="analyst-insights">
+            <h2>📊 分析师洞察</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="watchlist">
+            <h2>👀 观察列表</h2>
+            
+    <article class="watchlist-item">
+        <h3>AWS-Databricks 联邦查询与 Lake Formation 治理采用</h3>
+        <span class="status">待观察</span>
+        <p class="reason">该能力可能改变跨平台湖仓访问模式，但生产环境中的查询性能、权限粒度和稳定性仍需更多客户案例验证。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>更多生产客户案例、区域扩展或正式 GA 说明</p>
+    </article>
+    <article class="watchlist-item">
+        <h3>ClickHouse TimeSeries/PromQL 生态成熟度</h3>
+        <span class="status">待观察</span>
+        <p class="reason">若 ClickHouse 能良好兼容 Prometheus 生态并降低统一遥测存储成本，可能重塑可观测性数据架构。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>正式 GA、仪表盘/Agent 集成、性能基准测试或标杆客户</p>
+    </article>
+    <article class="watchlist-item">
+        <h3>SageMaker Unified Studio 与 Power BI 连接的企业采用</h3>
+        <span class="status">待观察</span>
+        <p class="reason">连接治理数据与主流 BI 是数据产品化关键，但认证配置复杂性和 ODBC 驱动稳定性会影响企业落地速度。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>更多认证模式、自动化配置模板或企业客户案例</p>
+    </article>
+        </section>
+
+        <section class="stock-analysis">
+            <h2>📈 股票分析</h2>
+            <p class="disclaimer">⚠️ 以下内容仅供参考，不构成任何投资建议。投资有风险，入市需谨慎。</p>
+            
+    <article class="stock-item">
+        <div class="stock-header">
+            <span class="ticker">AMZN</span>
+            <span class="company">Amazon</span>
+            <span class="signal signal-bullish">🟢 看多</span>
+        </div>
+        <p class="stock-summary">AWS 通过 Redshift、Glue、Lake Formation 与 SageMaker Unified Studio 增强数据互操作和治理能力，可能提升企业数据平台黏性。本分析仅供参考，不构成投资建议。</p>
+        <div class="stock-details">
+            <div class="catalysts">
+                <strong>🚀 催化剂</strong>
+                <ul><li>联邦查询 Databricks 数据场景扩大</li><li>Power BI 连接提升治理数据消费</li><li>AI 与数据治理需求带动 AWS 服务消耗</li></ul>
+            </div>
+            <div class="risks">
+                <strong>⚠️ 风险</strong>
+                <ul><li>Databricks、Snowflake 等平台竞争</li><li>联邦查询性能与成本不确定</li><li>企业多云策略削弱 AWS 锁定效应</li></ul>
+            </div>
+        </div>
+    </article>
+    <article class="stock-item">
+        <div class="stock-header">
+            <span class="ticker">UAL</span>
+            <span class="company">United Airlines</span>
+            <span class="signal signal-neutral">⚪ 中性</span>
+        </div>
+        <p class="stock-summary">United Airlines 采用 AWS 与 Databricks 联邦查询提升数据分析效率，属于企业用户技术案例，对航空主业短期财务影响有限。本分析仅供参考，不构成投资建议。</p>
+        <div class="stock-details">
+            <div class="catalysts">
+                <strong>🚀 催化剂</strong>
+                <ul><li>数据驱动运营优化</li><li>减少数据复制带来的 IT 成本优化</li></ul>
+            </div>
+            <div class="risks">
+                <strong>⚠️ 风险</strong>
+                <ul><li>技术落地效果不直接反映收入增长</li><li>航空业受宏观需求、燃油成本和运力周期影响更大</li></ul>
+            </div>
+        </div>
+    </article>
+        </section>
+
+        <footer>
+            <p>Generated by Data+AI Daily Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
