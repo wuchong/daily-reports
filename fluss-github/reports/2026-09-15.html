@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-09-15</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-09-15</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 10 新 Issues</div>
+            <div class="stat">✅ 5 关闭</div>
+            <div class="stat">✨ 5 新 PRs</div>
+            <div class="stat">🎉 9 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/4326">PR #4326</a> 修复 Flink 读取时分区 split 被裁剪后 lake offset 丢失的问题，避免从 earliest 重新消费</li><li>🐛 <a href="https://github.com/apache/fluss/pull/3882">PR #3882</a> 修复 server 端 multi-key 分区缓存未正确清除的问题</li><li>🐛 <a href="https://github.com/apache/fluss/pull/3519">PR #3519</a> 修复 Paimon 湖仓 DV 可读快照和 offset 选择逻辑</li><li>✨ <a href="https://github.com/apache/fluss/pull/4339">PR #4339</a> 新增 sys.list_partition_infos 系统表，暴露分区信息</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4333">PR #4333</a> 使用 Trusted Publishing 发布 Rust 和 Python 客户端，提升构建安全性</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <ul class="critical-list"><li>⚠️ <a href="https://github.com/apache/fluss/issues/4341">Issue #4341</a> 需要完善并统一 0.9 到 1.0 升级文档（标记为 priority=critical）</li><li>⚠️ <a href="https://github.com/apache/fluss/issues/4352">Issue #4352</a> Iceberg compaction 对主键表始终失败，RewriteFiles 在 RowDelta 之后提交</li><li>⚠️ <a href="https://github.com/apache/fluss/issues/4335">Issue #4335</a> 过大的 lake metadata 导致 Coordinator 与 ZooKeeper 断连及 ISR 更新失败</li></ul>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2236">Issue #2236</a> Flink job is deployed to YARN failed with java.lang.OutOfMemoryError: Direct buffer memory</h4>
+            <ul><li><span class="author">@loserwang1024</span>: 说明已在 #2663 中改进了 OOM 问题，关闭该 issue</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4038">Issue #4038</a> [Lake][Paimon] Tiering fails with endless retries when the Paimon lake table schema is wider than the Fluss record (externally evolved schema)</h4>
+            <ul><li><span class="author">@loserwang1024</span>: 提问为何 lake 表 schema 比 Fluss record 更宽</li><li><span class="author">@beryllw</span>: 建议湖仓表只通过 Fluss 演进，外部 schema 漂移应视为不支持；但赞同改进报错信息，快速失败并给出明确提示</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4177">Issue #4177</a> [test] Unstable test ReplicaManagerTest.testTaggedLookupAndPrefixResultsUseRpcSlices</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: CI 报告该测试出现 NullPointerException 失败</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4347">Issue #4347</a> [metrics] Add KV snapshot upload throughput metrics</h4>
+            <ul><li><span class="author">@chaohaochen</span>: 表示愿意提交 PR 来实现该功能</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4351">Issue #4351</a> [client] LogRecordReadContext.close() can leak Arrow memory after a failed close</h4>
+            <ul><li><span class="author">@EchoLee5</span>: 关闭该 issue，说明这是 #4350 未合入代码引入的问题，应在该 PR 中修复而非单独建 issue</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4174">PR #4174</a> [spark] Support ADD COLUMN in Spark catalog</h4>
+            <ul><li><span class="author">@Yohahaha</span>: 建议将不支持的测试用例合并为一个以节省 CI 时间</li><li><span class="author">@Xtpacz</span>: 确认建议合理并已修复</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4333">PR #4333</a> [build] Publish Rust and Python clients with Trusted Publishing</h4>
+            <ul><li><span class="author">@wuchong</span>: 认为无需等待与 PR 无关的 CI 通过，直接合并</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3882">PR #3882</a> [server] remove multi-key partitions from cache correctly</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 感谢提醒，确认合并该 PR</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3994">PR #3994</a> [server] Eliminate global lock for KV tablet creation/deletion/load</h4>
+            <ul><li><span class="author">@zuston</span>: 已完成 rebase，请求 fresh-borzoni 继续 review</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3977">PR #3977</a> [server] add support of rebuilding KV from local snapshot</h4>
+            <ul><li><span class="author">@zuston</span>: 已完成 rebase，请求 fresh-borzoni 继续 review</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4029">PR #4029</a> [client] Add Admin API to describe buckets</h4>
+            <ul><li><span class="author">@morazow</span>: 询问 swuferhong 是否可以合并该 PR</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4108">PR #4108</a> [helm] Add support advertised listeners for out of cluster clients</h4>
+            <ul><li><span class="author">@charlesdong1991</span>: 根据 review 反馈改用 per-ordinal 数组、移除多余配置项、明确 EXTERNAL 认证继承关系，并补充 metrics 端口冲突检查</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4244">PR #4244</a> [rust] Return error for out-of-range server API versions</h4>
+            <ul><li><span class="author">@slfan1989</span>: 感谢 review 和合并</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4342">PR #4342</a> [docs] Refine Gateway lakehouse quickstart diagram and wording</h4>
+            <ul><li><span class="author">@beryllw</span>: cc 多位 reviewer 请求关注该文档改进 PR</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4350">PR #4350</a> [client] Close remaining Arrow resources if scanner close fails</h4>
+            <ul><li><span class="author">@EchoLee5</span>: 补充说明 close 失败时存在引用置空和锁外关闭 allocator 的问题，已跟踪为 #4351</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3629">PR #3629</a> [common] Fix equals/hashCode contract violation in Schema.PrimaryKey</h4>
+            <ul><li><span class="author">@Jackeyzhe</span>: 确认 LGTM，表示认可该修复</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4352">#4352</a> Iceberg compaction always fails for primary-key tables — RewriteFiles committed after RowDelta <span class="author">@amccartney-r7</span> </li><li><a href="https://github.com/apache/fluss/issues/4351">#4351</a> [client] LogRecordReadContext.close() can leak Arrow memory after a failed close <span class="author">@EchoLee5</span> </li><li><a href="https://github.com/apache/fluss/issues/4347">#4347</a> [metrics] Add KV snapshot upload throughput metrics <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/4346">#4346</a> [CI] NettyClientTest.testServerDisconnection is flaky <span class="author">@litiliu</span> </li><li><a href="https://github.com/apache/fluss/issues/4345">#4345</a> [client] LogFetcher close chain leaks Arrow memory when close fails mid-chain <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/issues/4343">#4343</a> [Feature] Support an update-if-changed merge engine for primary-key tables <span class="author">@litiliu</span> </li><li><a href="https://github.com/apache/fluss/issues/4341">#4341</a> [docs] Complete and reconcile the 0.9-to-1.0 upgrade notes <span class="author">@wuchong</span> <span class="labels">priority=critical</span></li><li><a href="https://github.com/apache/fluss/issues/4338">#4338</a> [docs] Add Production Readiness Checklist <span class="author">@hanliu0830</span> </li><li><a href="https://github.com/apache/fluss/issues/4336">#4336</a> [docs] Complete ZooKeeper client configuration documentation <span class="author">@hanliu0830</span> </li><li><a href="https://github.com/apache/fluss/issues/4335">#4335</a> [server] Oversized lake metadata causes Coordinator disconnections from ZooKeeper and ISR update failures <span class="author">@hanliu0830</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4350">#4350</a> [client] Close remaining Arrow resources if scanner close fails <span class="author">@EchoLee5</span> </li><li><a href="https://github.com/apache/fluss/pull/4349">#4349</a> [docs] Add Production Readiness Checklist <span class="author">@hanliu0830</span> </li><li><a href="https://github.com/apache/fluss/pull/4348">#4348</a> [rpc] Add client-side RPC request deadlines <span class="author">@hutiefang76</span> </li><li><a href="https://github.com/apache/fluss/pull/4344">#4344</a> [CI] Stabilize Netty client disconnection test <span class="author">@litiliu</span> </li><li><a href="https://github.com/apache/fluss/pull/4337">#4337</a> [docs] Complete ZooKeeper client configuration documentation <span class="author">@hanliu0830</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4351">#4351</a> [client] LogRecordReadContext.close() can leak Arrow memory after a failed close <span class="author">@EchoLee5</span> </li><li><a href="https://github.com/apache/fluss/issues/4325">#4325</a> [flink] Union reads restart from earliest when all lake splits of a partition are pruned <span class="author">@wangzhigang1999</span> </li><li><a href="https://github.com/apache/fluss/issues/4289">#4289</a> [docs] Document bucket rescaling for future partitions <span class="author">@wuchong</span> <span class="labels">priority=critical</span></li><li><a href="https://github.com/apache/fluss/issues/3938">#3938</a> [docs] Document local log TTL and active segment rolling <span class="author">@wuchong</span> <span class="labels">priority=critical</span></li><li><a href="https://github.com/apache/fluss/issues/2236">#2236</a> Flink job is deployed to YARN failed with java.lang.OutOfMemoryError: Direct buffer memory <span class="author">@yulei0824</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4342">#4342</a> [docs] Refine Gateway lakehouse quickstart diagram and wording <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/pull/4340">#4340</a> [docs] Document bucket rescaling for future partitions <span class="author">@Kaixuan-Duan</span> </li><li><a href="https://github.com/apache/fluss/pull/4339">#4339</a> [flink] Expose partition infos via sys.list_partition_infos <span class="author">@Kaixuan-Duan</span> </li><li><a href="https://github.com/apache/fluss/pull/4334">#4334</a> [server] Only log bucket-count backfill when partitions were backfilled <span class="author">@Kaixuan-Duan</span> </li><li><a href="https://github.com/apache/fluss/pull/4333">#4333</a> [build] Publish Rust and Python clients with Trusted Publishing <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/4326">#4326</a> [flink] Preserve lake offsets when partition splits are pruned <span class="author">@wangzhigang1999</span> </li><li><a href="https://github.com/apache/fluss/pull/3944">#3944</a> [docs] Document local log TTL and active segment rolling <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/pull/3882">#3882</a> [server] remove multi-key partitions from cache correctly <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/pull/3519">#3519</a> [lake][paimon] Fix DV readable snapshot and offset selection <span class="author">@luoyuxia</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
