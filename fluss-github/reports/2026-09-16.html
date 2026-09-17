@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-09-16</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-09-16</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 14 新 Issues</div>
+            <div class="stat">✅ 5 关闭</div>
+            <div class="stat">✨ 12 新 PRs</div>
+            <div class="stat">🎉 14 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/4390">PR #4390</a> [docs] Fix Gateway lakehouse quickstart setup (release-1.0)</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4389">PR #4389</a> [docs] Fix Gateway lakehouse quickstart setup</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4388">PR #4388</a> [hotfix][docs] Fix release-1.0 documentation version metadata</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4387">PR #4387</a> [backport][c++] Declare type_lowering.hpp in fluss_cpp textual_hdrs</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4386">PR #4386</a> [c++] Declare type_lowering.hpp in fluss_cpp textual_hdrs</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4351">Issue #4351</a> [client] LogRecordReadContext.close() can leak Arrow memory after a failed close</h4>
+            <ul><li><span class="author">@EchoLee5</span>: Closing: this is a bug introduced by unmerged #4350, not a standalone defect. It should be fixed on…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4209">Issue #4209</a> [rust] Validate nested ROW field names</h4>
+            <ul><li><span class="author">@naivedogger</span>: @fresh-borzoni Thanks for catching this! I agree that blank top-level column names should also be r…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4253">Issue #4253</a> [lake/iceberg] Support custom Iceberg lake table path</h4>
+            <ul><li><span class="author">@litiliu</span>: @fresh-borzoni Would you mind reviewing this when you have time, Thanks in advance!</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4029">Issue #4029</a> [client] Add Admin API to describe buckets</h4>
+            <ul><li><span class="author">@swuferhong</span>: > Hello @swuferhong , could we merge this now? 🤝 Ok, I will merge it. @wuchong could you also take…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4233">Issue #4233</a> [test] Unstable test FlinkUnionReadPrimaryKeyTableITCase.testUnionReadWithCustomLakeTablePath</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: https://github.com/apache/fluss/actions/runs/34958538719/job/104346331356 ``` [ERROR] org.apache.fl…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4308">Issue #4308</a> [server] Add pre-write buffer memory metrics for primary key tables</h4>
+            <ul><li><span class="author">@Kaixuan-Duan</span>: @platinumhamburg @zuston Thanks for the direction, and for closing #3533 The unified ledger is now…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4207">Issue #4207</a> [trino] Add initial connector build and plugin skeleton</h4>
+            <ul><li><span class="author">@polyzos</span>: @yangshangqing95, Once more, thank you for driving this. One thought here: Fluss has recently creat…</li><li><span class="author">@yangshangqing95</span>: Hi @polyzos, Thanks again for continuing to drive this discussion. I think `fluss-contrib` is a ver…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4367">Issue #4367</a> [rust] Change DEFAULT_CONNECT_TIMEOUT_MS from 120s to 15s</h4>
+            <ul><li><span class="author">@loserwang1024</span>: @naivedogger , cc</li><li><span class="author">@naivedogger</span>: please assign this to me.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4368">Issue #4368</a> [rust] Add unavailable tabletServer set for MetadataUpdater to avoid serverNode info of all tabletServers are invalid</h4>
+            <ul><li><span class="author">@naivedogger</span>: please assign this to me.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4055">Issue #4055</a> [server] Add coordinator metrics for rebalance</h4>
+            <ul><li><span class="author">@heyallencao</span>: Hi, I have a local implementation for this issue and am preparing a PR. This adds coordinator-level…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4365">Issue #4365</a> [build] Fix quickstart JAR selection for release builds</h4>
+            <ul><li><span class="author">@MehulBatra</span>: @wuchong seems like the integration test cannot pull/start the SeaweedFS Docker image, rest looks g…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4366">Issue #4366</a> [build] Fix quickstart JAR selection for release builds (release-1.0)</h4>
+            <ul><li><span class="author">@MehulBatra</span>: @wuchong Approved the changes. One thing I noticed while running the CI is that the Hudi integratio…</li><li><span class="author">@wuchong</span>: Thanks @MehulBatra , I think this is an unstable test (https://github.com/apache/fluss/issues?q=is%…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4381">Issue #4381</a> [rust] Route non-partitioned tables to table_path in metadata request</h4>
+            <ul><li><span class="author">@naivedogger</span>: @leekeiabstraction @fresh-borzoni @loserwang1024, could you please take a look when convenient? Tha…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4389">Issue #4389</a> [docs] Fix Gateway lakehouse quickstart setup</h4>
+            <ul><li><span class="author">@wuchong</span>: cc @fresh-borzoni @beryllw</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4006">PR #4006</a> [client] Expose Arrow changelog batches</h4>
+            <ul><li><span class="author">@luoyuxia</span>: With the projection restriction removed from `pollRecordBatch()`, this path only applies the schema…</li><li><span class="author">@jordepic</span>: Fixed in [be0ff9e34](https://github.com/jordepic/fluss/commit/be0ff9e34ac71cf49a323744680e9a53e2a6d…</li><li><span class="author">@fresh-borzoni</span>: A project that depends on fluss-client alone can't compile batch.getVectorSchemaRoot() — the jar sh…</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4380">#4380</a> [rust] Rust client write stalls permanently after a tablet-server scale-down <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/issues/4377">#4377</a> [docs] Replace unavailable MinIO client image in quickstarts <span class="author">@Gezi-lzq</span> </li><li><a href="https://github.com/apache/fluss/issues/4376">#4376</a> [Bug] C++ Bazel build fails due to undeclared type_lowering.hpp in 1.0.0 RC1 <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/issues/4372">#4372</a> [Bug] Lake tiering stalls up to 30s per empty table <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/issues/4371">#4371</a> [FIP-28] Support consuming historical partition changelog in Flink <span class="author">@luoyuxia</span> <span class="labels">component=connector/flink, component=lake/common</span></li><li><a href="https://github.com/apache/fluss/issues/4368">#4368</a> [rust] Add unavailable tabletServer set for MetadataUpdater to avoid serverNode info of all tabletServers are invalid <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/issues/4367">#4367</a> [rust] Change DEFAULT_CONNECT_TIMEOUT_MS from 120s to 15s <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/issues/4363">#4363</a> [Bug] KvBatchScanner leaks response buffers even after normal close <span class="author">@fxbing</span> </li><li><a href="https://github.com/apache/fluss/issues/4362">#4362</a> [Bug] Coordinator may fail to regain leadership after ZooKeeper session expiration <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/4361">#4361</a> [test] Unstable test IcebergTieringITCase.testTieringForLegacyTable <span class="author">@app/github-actions</span> </li><li><a href="https://github.com/apache/fluss/issues/4359">#4359</a> [metrics] Count per-bucket errors in TabletServer response metrics <span class="author">@fxbing</span> </li><li><a href="https://github.com/apache/fluss/issues/4355">#4355</a> [docs] Document advertised-resource and ACL principal ignore-case options <span class="author">@EchoLee5</span> </li><li><a href="https://github.com/apache/fluss/issues/4354">#4354</a> [client][server] Close remaining scanners and native resources when one close fails <span class="author">@EchoLee5</span> </li><li><a href="https://github.com/apache/fluss/issues/4353">#4353</a> [client] LimitBatchScanner leaks Arrow read context on log-table LIMIT scan <span class="author">@EchoLee5</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4383">#4383</a> [flink] Support consuming historical partition changelog <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/pull/4382">#4382</a> [server] Recover coordinator leader election after ZK session expiry <span class="author">@Kaixuan-Duan</span> </li><li><a href="https://github.com/apache/fluss/pull/4379">#4379</a> [flink] Add describe buckets procedure <span class="author">@fhan688</span> </li><li><a href="https://github.com/apache/fluss/pull/4375">#4375</a> [metrics] Add KV snapshot upload throughput metrics <span class="author">@chaohaochen</span> </li><li><a href="https://github.com/apache/fluss/pull/4374">#4374</a> [lake/tiering] Continue tiering after empty tables <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/pull/4373">#4373</a> [coordinator] Add rebalance progress and outcome metrics <span class="author">@heyallencao</span> </li><li><a href="https://github.com/apache/fluss/pull/4370">#4370</a> [rust] Recover metadata when tablet server addresses become stale <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/pull/4364">#4364</a> [client] Release KvBatchScanner response buffers <span class="author">@fxbing</span> </li><li><a href="https://github.com/apache/fluss/pull/4360">#4360</a> [metrics] Count per-bucket errors in TabletServer response metrics <span class="author">@fxbing</span> </li><li><a href="https://github.com/apache/fluss/pull/4358">#4358</a> [docs] Document advertised-resource and ACL ignore-case options <span class="author">@EchoLee5</span> </li><li><a href="https://github.com/apache/fluss/pull/4357">#4357</a> [client][server] Close remaining resources if one close fails <span class="author">@EchoLee5</span> </li><li><a href="https://github.com/apache/fluss/pull/4356">#4356</a> [client] Close Arrow read context after LIMIT log scan <span class="author">@EchoLee5</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4380">#4380</a> [rust] Rust client write stalls permanently after a tablet-server scale-down <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/issues/4377">#4377</a> [docs] Replace unavailable MinIO client image in quickstarts <span class="author">@Gezi-lzq</span> </li><li><a href="https://github.com/apache/fluss/issues/4376">#4376</a> [Bug] C++ Bazel build fails due to undeclared type_lowering.hpp in 1.0.0 RC1 <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/issues/4367">#4367</a> [rust] Change DEFAULT_CONNECT_TIMEOUT_MS from 120s to 15s <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/issues/4351">#4351</a> [client] LogRecordReadContext.close() can leak Arrow memory after a failed close <span class="author">@EchoLee5</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4390">#4390</a> [docs] Fix Gateway lakehouse quickstart setup (release-1.0) <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/pull/4389">#4389</a> [docs] Fix Gateway lakehouse quickstart setup <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/pull/4388">#4388</a> [hotfix][docs] Fix release-1.0 documentation version metadata <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/pull/4387">#4387</a> [backport][c++] Declare type_lowering.hpp in fluss_cpp textual_hdrs <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/4386">#4386</a> [c++] Declare type_lowering.hpp in fluss_cpp textual_hdrs <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/4385">#4385</a> [backport][docs] Correct the client support matrix <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/4384">#4384</a> [docs] Correct the client support matrix <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/4381">#4381</a> [rust] Route non-partitioned tables to table_path in metadata request <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/pull/4378">#4378</a> [docs] Use RustFS client image in quickstart examples <span class="author">@Gezi-lzq</span> </li><li><a href="https://github.com/apache/fluss/pull/4369">#4369</a> [rust] Reduce default connection timeout to 15 seconds <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/pull/4366">#4366</a> [build] Fix quickstart JAR selection for release builds (release-1.0) <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/pull/4365">#4365</a> [build] Fix quickstart JAR selection for release builds <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/pull/4332">#4332</a> [spark] Fix spark async write exception propagation <span class="author">@Yohahaha</span> </li><li><a href="https://github.com/apache/fluss/pull/4029">#4029</a> [client] Add Admin API to describe buckets <span class="author">@fhan688</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
