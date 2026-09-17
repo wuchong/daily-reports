@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flink 社区周报 | 2026-W37</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Flink 社区周报 | 2026-W37</h1>
+            <p class="date-range">2026-09-07 ~ 2026-09-13</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (1)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/kksq582w26o0gm55p99kpmf7xt81qpg3">Lakehouse Day EU 2026</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (4)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/my1s5rhjtdr1d382n8q5cjwl7y6mg4mw">Apache Flink Kubernetes Operator Release 1.16.0, release candidate #3</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/3mfvlvc87kl4m1btc8pygz0db77qhg3b">FLIP-607: Migrate Flink off end-of-life OkHttp; keep it off the core classpath</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/ohpmyh7ovzjw8m49psy9hk4cg2hmyl3f">FLIP-569: Sunset the Stateful Functions (StateFun) Sub-project</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/018b3z69wv92h3wvwf7yhhyhmcnsgwtx">FLIP-611: Running Flink jobs in MiniCluster using the Kubernetes Operator</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/2o8s2lszhz6875v6oxpdrwn9hzw1ozm8">Remove Deprecated Configuration Options/Keys in Flink</a></h3>
+            <p class="meta">8 条回复 · 3 位参与者</p>
+            <p class="summary">本次讨论围绕在 Flink 2.x 系列中系统性移除长期废弃的配置键/兼容别名展开。Yuepeng Pan 提供了 withDeprecatedKeys 与 withFallbackKeys 的清单，并提议按废弃时间和兼容风险分批清理；Rui Fan 支持该方向。讨论进一步区分了真正废弃键与仍用于跨配置项默认值的 fallback 键，并初步明确了清理范围与风险控制原则。</p>
+            <div class="key-points"><p><strong>@Yuepeng Pan:</strong> 提出系统性清理 Flink 2.x 中长期废弃配置键，整理了候选清单，并建议以 2025 年前最后变更的声明为初步范围；对未标记 deprecated 的 fallback 键需逐项核实，避免误删仍在使用的跨配置项默认值。</p>
+<p><strong>@Rui Fan:</strong> 认为这些多为 Flink 1.x 遗留配置，依据 FLIP-321 已有足够迁移时间；对于在 Flink 1.20.0 前已废弃的键，移除不存在明显兼容性风险，支持系统性清理。</p>
+<p><strong>@Krishna Sai:</strong> 强调必须区分 withDeprecatedKeys 与 withFallbackKeys，许多 fallback 并非旧配置名而是活跃配置间的默认引用；建议对从未正式标记废弃的键谨慎处理，并扫描确认 s3.* 等较新 fallback 应保留，web.address 可移除，schema-registry.* 需注意连接器兼容性。</p></div>
+            <p class="conclusion">初步共识是优先移除已在 2.0 release notes 中宣布移除但代码中仍保留声明的配置项，其中 web.address 可作为明确移除对象；s3.* 等较新或仍具功能性 fallback 保留。schema-registry.* 需先在相关连接器仓库处理依赖，尤其是 schema-registry.subject 仍被 flink-connector-kafka 主动使用，之后再考虑从 Flink 主仓库移除。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/snl3zmpwxcr2fp973m8thcn00g57ptdt">Promoting flink-s3-fs-native from @Experimental to a mainstream S3FileSystem</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">本次讨论围绕将 flink-s3-fs-native 从 Experimental 提升为 Flink 主流 S3 文件系统（mainstream）展开。Samrat Deb 提出该原生 S3 文件系统已在 Flink 2.3 中实验性落地，并在 Phase 2 中关闭了 19 个子任务，基本补齐与 Hadoop/Presto S3 连接器的功能差距。Gabor Somogyi 和 Ferenc Csaky 均表示支持，认为其已具备生产可用性，可逐步推广并保留旧连接器作为回退方案。</p>
+            <div class="key-points"><p><strong>@Samrat Deb:</strong> 提议在 Flink 2.4 中将 NativeS3FileSystem 从 Experimental 提升为 mainstream，并已提交相关 PR，且该变更不影响其他 S3 连接器。</p>
+<p><strong>@Gabor Somogyi:</strong> 支持提升，认为 native S3 连接器已满足数据处理和 checkpointing 的生产需求，无需与 Hadoop 完全功能对齐；旧连接器应暂时保留作为回退，后续再逐步下线。</p>
+<p><strong>@Ferenc Csaky:</strong> 支持该提议，认可 Gabor 的观点，认为将 native S3 文件系统提升为主流方案合理。</p></div>
+            <p class="conclusion">社区初步形成支持将 flink-s3-fs-native 提升为主流 S3 文件系统的共识。下一步是推进相关 PR 合入，并在推广后持续收集社区反馈、修复问题和补齐不足，为后续逐步下线旧 S3 连接器做准备。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/tyw45k5ww3yzfmfkmhz241nm82swlrsm">Flink Kubernetes Operator support for the Flink 2.3 application layer</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">讨论围绕 Flink Kubernetes Operator 对 Flink 2.3 application 层的支持问题展开，重点分析了 stop-with-savepoint、应用结果存储清理、HA 数据清理以及 JobManager 重建之间的时序和恢复行为。参与者认为长期需要面向 application 概念的协调与清理机制，但短期需要先解决 Flink 2.3 单作业部署被阻塞的问题。</p>
+            <div class="key-points"><p><strong>@Dennis-Mircea Ciupitu:</strong> 详细梳理了 Operator cancel/stop-with-savepoint 流程，指出 Flink 2.3 中 job 和 application result store 的异步清理顺序会影响 Operator 重新部署，建议区分 FLINK-27569 与 FLINK-40467 所需的不同修复。</p>
+<p><strong>@Dale Lane:</strong> 认同长期应支持 application-centric reconciliation，并认为 Flink core 提供 cleanup-complete 信号有价值；同时指出 clean application result 在恢复路径中可能阻止应用重复提交，仅修复顺序可能不足以覆盖 JM 重启场景。</p>
+<p><strong>@Gyula Fóra:</strong> 认为完整支持 application 概念需要较大改动并可能需要 FLIP；当前 Operator 不依赖 application 概念进行 reconciliation/cleanup，建议短期沿用现有临时方案以解除 Flink 2.3 单作业部署阻塞。</p></div>
+            <p class="conclusion">初步结论是长期应通过更大改动或 FLIP 设计 application 层清理与协调机制，短期则采用现有兼容方案先恢复 Flink 2.3 单作业部署能力；后续可继续讨论 cleanup-complete 信号和恢复语义。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/gmnh8cc3c3hzgko9do3fl3zjlj1r6mgz">FLIP-XXX : Running Flink jobs in MiniCluster using the Kubernetes Operator</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">该邮件讨论围绕 FLIP-610（通过 Kubernetes Operator 在 MiniCluster 中运行 Flink 作业）展开，重点确认了 MiniCluster launcher 的实现方式和归属。Dale Lane 补充了 launcher 实现说明并认为实现比预期更简单，Robert Metzger 认可方案可进入投票阶段。最终该 FLIP 已迁移到正式 FLIP-610 页面，并计划发起单独投票。</p>
+            <div class="key-points"><p><strong>@Dale Lane:</strong> 补充了 launcher 的实现描述，认为实现范围比最初预期更小、更简单，并已整理到 FLIP-610 文档。</p>
+<p><strong>@Robert Metzger:</strong> 认为 launcher 可以纳入当前 FLIP，并建议 MiniCluster launcher 随 Flink distribution 发布，以保持 operator 与 Flink 版本解耦。</p>
+<p><strong>@Robert Metzger:</strong> 认为该 FLIP 已经成熟，可以进入 VOTE 阶段。</p></div>
+            <p class="conclusion">讨论达成初步共识：方案可进入投票流程；Dale Lane 已将文档复制到 FLIP-610，并将发起单独的 VOTE 线程。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/fpzc746vn5ko0cn2g25hvtrfd6b038dj">FLIP-612: Native XML Functions for Flink SQL</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕 FLIP-612 展开，提议为 Flink SQL 增加原生 XML 函数，将 XML 解析为 VARIANT 类型，避免用户编写自定义 UDF。方案提出 PARSE_XML、TRY_PARSE_XML 和 XML_STRING 三个函数，设计上对齐现有 JSON 函数，并通过 @/$ 字段及 # 字段保留属性、文本和文档顺序。</p>
+            <div class="key-points"><p><strong>@Moritz Manner:</strong> 提议新增三个原生 XML 函数，将 XML 转换为 VARIANT，并复用现有 VARIANT 访问方式，无需新增 SQL 语法或 Table API。</p>
+<p><strong>@Timo Walther:</strong> 认为设计文档质量高，方案在易用性和 XML 信息无损保留之间取得良好平衡。</p>
+<p><strong>@Timo Walther:</strong> 指出 XML 处理是当前用户自定义 UDF 的最主要需求之一，因此支持该 FLIP。</p></div>
+            <p class="conclusion">目前讨论呈积极支持态度，Timo Walther 明确表示 +1，初步结论倾向于认可该设计；下一步预计继续收集社区反馈并推进 FLIP 评审。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/13mm4m99pt2nxmo6gxc4djyzf3f7f0jm">SQL reserved keywords</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕 Flink SQL 新增保留关键字导致用户表名（如 model）在版本升级后不可用的问题展开。David 提议在发布流程中检查保留关键字变化并在 release notes 中说明，Martijn 建议通过 CI 自动化检查而非增加人工流程，Timo 则提出更根本地审视并修订 parser 中保留关键字列表。</p>
+            <div class="key-points"><p><strong>@David Radley:</strong> 因 Flink 1.19 升 1.20 新增 CREATE MODEL 等语句导致 model 成为保留关键字，建议在发布流程中检查保留关键字变化，并要求在 release notes 中记录。</p>
+<p><strong>@Martijn Visser:</strong> 不建议增加依赖人工的发布检查步骤，应通过 CI 自动化检查，或者接受关键字变化；Flink 未对保留关键字提供向后兼容保证。</p>
+<p><strong>@Timo Walther:</strong> parser 实现中可区分关键字和保留关键字，建议重新审查保留关键字列表，移除不必要保留的词（如 user），以恢复更多可用标识符。</p></div>
+            <p class="conclusion">初步方向是通过自动化检查保留关键字变化，并考虑修订 parser 的保留关键字列表；下一步可评估 GitHub Action/CI 检查方案及关键字列表清理工作。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/zz2htrz27wq62w30tcg86dc3cy66wxw9">[PR] [FLINK-40642] Flink CI docker build fails on Mac [flink-ci-docker]</a></h3>
+            <p class="meta">1 条回复 · 1 位参与者</p>
+            <p class="summary">该讨论围绕 FLINK-40642 提出的 Flink CI Docker 在 Mac 上构建失败问题，snuyanzin 在 flink-ci-docker 仓库提交了 PR #5 用于修复。随后该 PR 被合并，表明问题已获得初步处理。</p>
+            <div class="key-points"><p><strong>@snuyanzin:</strong> 提交 PR #5 以修复 Flink CI Docker 在 Mac 上的构建失败问题。</p>
+<p><strong>@snuyanzin:</strong> 合并 PR #5，使修复进入仓库。</p></div>
+            <p class="conclusion">PR #5 已被合并，修复已落地；后续可关注 CI 构建是否恢复正常。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/wq7bnvmwjr6jk76jsm914502m25x67h4">[PR] [FLINK-40643][ci] Combine download and untar runs to decrease image size [flink-ci-docker]</a></h3>
+            <p class="meta">1 条回复 · 1 位参与者</p>
+            <p class="summary">该讨论围绕 flink-ci-docker 的 PR #6 展开，目标是通过合并下载和解压步骤来减少 Docker 镜像体积。snuyanzin 提出并合并了该 PR，指出问题在于 tar 压缩文件未被清理。</p>
+            <div class="key-points"><p><strong>@snuyanzin:</strong> 提出通过合并下载和解压操作来清理未删除的 tar 文件，从而减小镜像大小。</p></div>
+            <p class="conclusion">PR #6 已被 snuyanzin 合并，优化方案已实施。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/10y4tp548zd8v3j14g7d368lmm533fs1">Hackathon at Community over Code Glasgow — schedule slot needed</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕是否参加 Community over Code Glasgow 的黑客松活动展开。Rich Bowen 提醒项目方需尽快认领时间段，否则将被分配给其他项目。社区内部正在确认是否有人负责组织参与。</p>
+            <div class="key-points"><p><strong>@Rich Bowen:</strong> 项目尚未认领黑客松时间段，需在 9 月 19 日前确认，否则名额将被释放</p>
+<p><strong>@Cynthia Omovoiye:</strong> 询问是否有社区成员计划参加并组织 Camel 项目的黑客松活动</p>
+<p><strong>@Andrea Cosetti:</strong> 目前除 JB Onofre 外，似乎没有其他人跟进此事</p></div>
+            <p class="conclusion">尚未有明确结论，需尽快确认是否参与并认领时间段</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/0vs1v0yl2t63qst0fqopy0fdvxr1qq8g">[Flink CDC][postgres] JobManager connection pool exhausted after 20 incremental-snapshot jobs: JdbcSourceChunkSplitter keeps a pooled JDBC connection for the whole job lifetime</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">邮件讨论了一个 Flink CDC PostgreSQL 增量快照作业的 Bug：自 CDC 3.3.0 引入异步分片拆分后，JdbcSourceChunkSplitter 会在整个作业生命周期内持有 JDBC 连接，导致 JobManager 侧 HikariCP 连接池被耗尽。Kyrie 报告在 3.6.0 升级后，同一数据库上运行超过 20 个增量快照作业时，第 21 个作业会因连接获取超时而持续重启。</p>
+            <div class="key-points"><p><strong>@Kyrie:</strong> JdbcSourceChunkSplitter 在 open() 中打开 JDBC 连接，直到作业结束才关闭，导致每个增量快照作业长期占用一个连接池连接；默认连接池大小为 20，因此第 21 个作业会失败。</p>
+<p><strong>@Kyrie:</strong> 该问题由 FLINK-34688（异步分片拆分）引入，3.2.1 版本因每次生成 split 时使用 try-with-resources 而不受影响。</p>
+<p><strong>@Kyrie:</strong> 由于 ASF JIRA 账号尚未批准，建议由 committer 代为创建 issue，否则待账号批准后自行提交。</p></div>
+            <p class="conclusion">初步确认这是一个连接泄漏/资源占用问题，下一步是创建 Flink CDC JIRA ticket 并修复连接释放时机，使 JDBC 连接在分片拆分完成后及时归还连接池。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (69)</h2>
+            
+    <p>本周新建 <strong>69</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周 JIRA 主要集中在连接器与 CDC 相关问题的修复和优化，尤其是 Kafka 事务/生产者异常处理、JDBC 连接池泄漏以及 SQL Server/Postgres CDC 的稳定性改进。同时涉及大量测试与 CI/构建基础设施问题，包括 E2E 测试超时、Docker/Maven 环境失败、Azure 流水线不稳定以及依赖版本升级。此外，还涵盖 Table Planner/SQL 语义问题、Iceberg 写入正确性、PyFlink 初始化阻塞、状态后端文件缓存资源泄漏和运行时资源管理等方面的缺陷修复与增强。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Flink Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
