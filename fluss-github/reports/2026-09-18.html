@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-09-18</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-09-18</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 3 新 Issues</div>
+            <div class="stat">✅ 3 关闭</div>
+            <div class="stat">✨ 8 新 PRs</div>
+            <div class="stat">🎉 9 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/4423">PR #4423</a> [docs] Complete v1.0 upgrade notes</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4422">PR #4422</a> [docs] Complete v1.0 upgrade notes</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4420">PR #4420</a> [docs] Use RC tags for Gateway image releases</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4415">PR #4415</a> [docs] Use 1.0.0 RC3 Docker images in Quickstart</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4413">PR #4413</a> [build] Give Python release candidates distinct versions</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <ul class="critical-list"><li>⚠️ <a href="https://github.com/apache/fluss/issues/4341">Issue #4341</a> [docs] Complete and reconcile the 0.9-to-1.0 upgrade notes</li></ul>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4199">Issue #4199</a> [server] Incrementally clean historical KV state</h4>
+            <ul><li><span class="author">@luoyuxia</span>: Let me merge it first since the risk is realtely low. If there’s any further feedback, we can addre…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4406">Issue #4406</a> [server] Handle duplicate tiering completion reports idempotently</h4>
+            <ul><li><span class="author">@fhan688</span>: > cc <a href="https://github.com/fhan688">@fhan688</a> Thanks! Please assign to me</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4396">Issue #4396</a> [Paimon] Use unique commit users for lake tiering commits</h4>
+            <ul><li><span class="author">@fhan688</span>: > cc <a href="https://github.com/fhan688">@fhan688</a> Thanks! Please assign to me</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4177">Issue #4177</a> [test] Unstable test ReplicaManagerTest.testTaggedLookupAndPrefixResultsUseRpcSlices</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: https://github.com/apache/fluss/actions/runs/35214305094/job/105178993576 ``` [ERROR] org.apache.fl…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4416">Issue #4416</a> [FIP-28] Version-gate historical partition lookup: bump ApiKeys.LOOKUP and add the client-side gate</h4>
+            <ul><li><span class="author">@luoyuxia</span>: @ss666 One compatibility concern: some of our clusters are already running a version that includes…</li><li><span class="author">@ss666</span>: Thanks so much for your comments! Reworked along the transitional path: - `ApiKeys.LOOKUP` stays at…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4417">Issue #4417</a> [rpc] version-gate historical partition lookup</h4>
+            <ul><li><span class="author">@luoyuxia</span>: @ss666 Thanks for the pr. One compatibility concern: please see https://github.com/apache/fluss/iss…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4420">Issue #4420</a> [docs] Use RC tags for Gateway image releases</h4>
+            <ul><li><span class="author">@beryllw</span>: @wuchong @fresh-borzoni cc</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4124">Issue #4124</a> [lake/paimon] Introduce scan-based lake table lookuper</h4>
+            <ul><li><span class="author">@zuston</span>: cc @luoyuxia</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4418">Issue #4418</a> [docs] Add Fluss 1.0.0 download links</h4>
+            <ul><li><span class="author">@wuchong</span>: This is ready for review, but can only be merged after the 1.0.0 is released.</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4417">PR #4417</a> [rpc] version-gate historical partition lookup</h4>
+            <ul><li><span class="author">@Copilot</span>: This version bump makes a current client negotiate LOOKUP v1 with a release-1.0 server and then rej…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4373">PR #4373</a> [coordinator] Add rebalance progress and outcome metrics</h4>
+            <ul><li><span class="author">@morazow</span>: ```suggestion /** * Rebalance metrics registered for the lifetime of a coordinator server. * * <p>T…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4328">PR #4328</a> [c++] Add write callbacks with batch completion dispatch</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: Two threads can be waiting here at once: one in Flush() waiting for callbacks to finish, one in App…</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4426">#4426</a> [docker] Include LICENSE and NOTICE in the Fluss server image <span class="author">@wuchong</span> <span class="labels">component=docker</span></li><li><a href="https://github.com/apache/fluss/issues/4419">#4419</a> [Docs] Use RC tags for Gateway Docker image releases <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/issues/4416">#4416</a> [FIP-28] Version-gate historical partition lookup: bump ApiKeys.LOOKUP and add the client-side gate <span class="author">@ss666</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4428">#4428</a> [build] Include legal files in Fluss server image (release-1.0) <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/pull/4427">#4427</a> [build] Include legal files in Fluss server image <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/pull/4425">#4425</a> [fs] Support IRSA with AssumeRole delegation tokens <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/4424">#4424</a> [helm] Add opt-in release-scoped resource names <span class="author">@affo</span> </li><li><a href="https://github.com/apache/fluss/pull/4421">#4421</a> [docs] Document historical partition access <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/pull/4418">#4418</a> [docs] Add Fluss 1.0.0 download links <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/pull/4417">#4417</a> [rpc] version-gate historical partition lookup <span class="author">@ss666</span> </li><li><a href="https://github.com/apache/fluss/pull/4414">#4414</a> [hotfix][server] Simplify KV cleanup tests and directory discovery <span class="author">@swuferhong</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4419">#4419</a> [Docs] Use RC tags for Gateway Docker image releases <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/issues/4372">#4372</a> [Bug] Lake tiering stalls up to 30s per empty table <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/issues/4341">#4341</a> [docs] Complete and reconcile the 0.9-to-1.0 upgrade notes <span class="author">@wuchong</span> <span class="labels">priority=critical</span></li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4423">#4423</a> [docs] Complete v1.0 upgrade notes <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/pull/4422">#4422</a> [docs] Complete v1.0 upgrade notes <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/pull/4420">#4420</a> [docs] Use RC tags for Gateway image releases <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/pull/4415">#4415</a> [docs] Use 1.0.0 RC3 Docker images in Quickstart <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/pull/4413">#4413</a> [build] Give Python release candidates distinct versions <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/pull/4412">#4412</a> [build] Give Python release candidates distinct versions <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/pull/4404">#4404</a> [license] Compare packaged wheel licenses with generated files <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/pull/4374">#4374</a> [lake/tiering] Continue tiering after empty tables <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/pull/4199">#4199</a> [server] Incrementally clean historical KV state <span class="author">@luoyuxia</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
