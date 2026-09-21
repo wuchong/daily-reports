@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spark 社区周报 | 2026-W37</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Spark 社区周报 | 2026-W37</h1>
+            <p class="date-range">2026-09-07 ~ 2026-09-13</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (0)</h2>
+            <p class="empty">本周无公告</p>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (1)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/jgh4t8fp64vt1so8m7xv5wf103wyrx9m">SPIP: FileType</a> <span class="status passed">✅ 已通过</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (5)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/or2hs36558lnkq971mdy5nj0vltkzto2">[SDP] withColumn over an in-graph table seems to lose its dependency edge on reruns</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">Eric Smith 报告在 Spark Declarative Pipelines 中，物化视图使用 withColumn 读取已存在的 in-graph 表时，重跑会丢失依赖边，导致与上游表并行执行并读取被清空的数据，结果为空；而使用 select 的对照组正常。他推测原因是 SparkConnectPlanner.transformWithColumns 对 child 做了 eager analysis，表已存在时解析成功，导致 FlowAnalysis 只为 UnresolvedRelation 注册依赖。Andreas Neumann 确认这是真实 bug 且测试覆盖不足。</p>
+            <div class="key-points"><p><strong>@Eric Smith:</strong> withColumn 在重跑且上游表已存在时会丢失依赖边，导致执行顺序错误并产生空结果，而 select 不受影响。</p>
+<p><strong>@Eric Smith:</strong> 疑似根因是 transformWithColumns 提前解析子计划，使已解析关系绕过 FlowAnalysis 中仅针对 UnresolvedRelation 的依赖注册。</p>
+<p><strong>@Andreas Neumann:</strong> 确认这是真实 bug，并建议提交 Jira 和 PR 修复。</p></div>
+            <p class="conclusion">初步确认这是一个依赖注册缺失的 bug，下一步是创建 Jira 并提交修复 PR。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/f4fhjvsyt2tlnk6gysrymfoc444kh7jb">SPARK-58126: Pluggable root pool comparator via configuration</a></h3>
+            <p class="meta">1 条回复 · 1 位参与者</p>
+            <p class="summary">讨论围绕 SPARK-58126 展开，提议通过新增配置项支持可插拔的根池比较器，以允许用户自定义调度池排序。该变更旨在解决现有调度算法硬编码的问题，尤其适用于托管平台用户无法修改 SparkContext 的场景。</p>
+            <div class="key-points"><p><strong>@Christian:</strong> 提议新增配置项 spark.scheduler.rootPool.comparator.class，允许用户通过 Java Comparator 自定义根池排序逻辑，而无需修改 Spark 源码。</p>
+<p><strong>@Christian:</strong> 引入新的 @DeveloperApi 类型 SchedulableInfo 作为唯一暴露给用户的不可变快照类型，以保持内部调度结构私有且可演进。</p>
+<p><strong>@Christian:</strong> 提出开放性问题：该扩展点是否应标记为 @DeveloperApi，还是因引入新公共类型和配置而需通过 SPIP 流程。</p></div>
+            <p class="conclusion">目前尚无明确结论，发起人正寻求社区对稳定性级别（@DeveloperApi 或 SPIP）及调度器相关设计的反馈。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/srycgff56ylongvon703zz98j01olzcf">SPIP: Add the DECFLOAT data type</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕 Spark 新增 DECFLOAT 数据类型的 SPIP 展开，核心焦点是其逻辑值域是否应包含 IEEE 754 非有限值（+Inf、-Inf、NaN、有符号零）。发起者强调值域属于不可逆决策，而位数和算术实现可后续调整；Gengliang Wang 表示支持并认为应先确定值域，其他实现细节可后续评审。</p>
+            <div class="key-points"><p><strong>@Uroš Bojanić:</strong> DECFLOAT 应支持 IEEE 754 非有限值，因为这是不可逆的值域决策；仅有限值类型无法表达无界/未定义业务状态，且会迫使应用用 NULL 混淆语义。</p>
+<p><strong>@Gengliang Wang:</strong> 支持定义包含有符号零、正负无穷和 quiet NaN 的 DECFLOAT，认为这些是数值而非 SQL NULL，有助于跨语言/引擎的数据保真和往返兼容。</p></div>
+            <p class="conclusion">初步形成共识：应优先确认 DECFLOAT 的 IEEE 非有限值值域，并支持推进 SPIP；类型强转规则、执行实现、外部 API 和 Parquet 编码等细节仍需后续评审。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/gg4tjscpoqbp110t96rz4svhykwr3spb">Funded fellow contributors - looking for a reviewer</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">MLH 的 Harsh Shah 向 Spark 社区提议让其 12 周 Fellowship 项目的初级工程师参与贡献，并寻求愿意担任联络人和 PR 审核者的维护者。这些贡献者将在 MLH 导师初审后从文档、PySpark 测试、spark-website 和入门级 JIRA 等低风险任务开始，并先在 user@ 邮件列表提供帮助。Karan Alang 回复表示愿意担任审核者/导师。</p>
+            <div class="key-points"><p><strong>@Harsh Shah:</strong> MLH Fellowship 参与者将在内部导师初审后参与 Spark 贡献，从低风险任务开始，是否扩大贡献范围由社区审核者决定。</p>
+<p><strong>@Karan Alang:</strong> 表示愿意担任该项目的审核者/导师。</p></div>
+            <p class="conclusion">已有初步响应：Karan Alang 愿意担任审核者/导师，后续可能需要进一步确认该协作方式是否符合 Spark 社区流程。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/5dtbyok7xm2wmdwvtmnlthrsb5o697mf">[K8s] Generic ConfigMap volume support</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论围绕是否应在 Spark 的通用 Kubernetes volume 配置中支持 ConfigMap 类型挂载。提议者希望复用现有 named-volume API，通过 Spark 属性挂载已有 ConfigMap，以简化多租户平台中平台级配置与用户自定义配置的合并，避免依赖复杂的 pod template 合并。</p>
+            <div class="key-points"><p><strong>@Tamir K:</strong> 建议在 Spark on Kubernetes 的通用 volume 配置中新增 ConfigMap 卷类型，支持通过 spark.kubernetes.driver/executor.volumes.configMap.* 属性挂载已有 ConfigMap。</p>
+<p><strong>@Tamir K:</strong> 当前通过 driver/executor pod template 处理挂载，在多租户场景下会导致模板合并复杂，且用户需要了解或维护平台级 pod 配置。</p>
+<p><strong>@Tamir K:</strong> 提到 2018 年类似提案 SPARK-25500 / PR #22536 曾因应使用 pod template 而被拒绝，因此询问维护者当前是否仍倾向该立场或愿意重新考虑。</p></div>
+            <p class="conclusion">邮件尚未形成最终结论，核心待确认问题是维护者是否仍坚持通过 pod template 实现此类定制，或同意重新引入 ConfigMap volume 支持。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (0)</h2>
+            
+    <p>本周新建 <strong>0</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周无新建 JIRA。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Spark Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
