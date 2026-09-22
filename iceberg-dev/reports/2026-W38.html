@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iceberg 社区周报 | 2026-W38</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Iceberg 社区周报 | 2026-W38</h1>
+            <p class="date-range">2026-09-14 ~ 2026-09-20</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (5)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/xq4hc54s4q532jqoyvtlf0hgk3y07t5z">Apache Iceberg Virtual Meetup Series</a></li>
+<li><a href="https://lists.apache.org/thread/fy7o4kyvp2fjotxrpsf4y8nmotyfp6o9">Seattle Apache Iceberg Community Meetup: October 21</a></li>
+<li><a href="https://lists.apache.org/thread/xjvwzfdwdb1gnq62whq3y5n11998vb4n">apache/iceberg-verification repository</a></li>
+<li><a href="https://lists.apache.org/thread/c350wkfbo7wj9qczlnnsghr8cjyhjlqv">Iceberg Community Meetup Europe - November Copenhagen</a></li>
+<li><a href="https://lists.apache.org/thread/zy5co6xj839p68jd88rw7o6d1ww6309p">Bay Area Iceberg Community Meetup: Sep 23</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (2)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/bfh1x4wjlfbvy0qbgokk5vb12orljvn6">Release Apache Iceberg Rust 0.11.0 RC2</a> <span class="status warning">⚠️ 有异议</span><p class="objection-inline">Alexander Bailey 提出 -1，原因是他在测试 RC2 时发现加密功能缺少防篡改（tamperproofing）检查，导致文件在 Java 中不可读，并已提交修复 PR #3236。</p></li>
+<li><a href="https://lists.apache.org/thread/7qtxrysl1w5sjs7o74y31snt0jrkf5qb">Release Apache Iceberg 1.12.0 RC0</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/gtfg34k7w2m7po0ngh62x9von5hmjw4h">New PMC membe: Gang Wu</a></h3>
+            <p class="meta">35 条回复 · 36 位参与者</p>
+            <p class="summary">Apache Iceberg PMC 宣布 Gang Wu 加入项目管理委员会（PMC），以表彰他对 Iceberg C++ 项目发起和成长的重要贡献。邮件中多位社区成员纷纷表示祝贺，认可其贡献实至名归。</p>
+            <div class="key-points"><p><strong>@Fokko Driesprong:</strong> 代表 PMC 宣布 Gang Wu 加入，并强调其在 Iceberg C++ 项目中的关键作用。</p>
+<p><strong>@Renjie Liu:</strong> 祝贺 Gang Wu，认为其加入 PMC 实至名归。</p>
+<p><strong>@Aihua Xu:</strong> 再次表达对 Gang Wu 的祝贺，并肯定其贡献。</p></div>
+            <p class="conclusion">Gang Wu 正式成为 Apache Iceberg PMC 成员，社区成员一致表示欢迎与祝贺，无进一步行动项。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/yfjj2p96w4s0fd7067fkr5dgknwp62d1">iceberg-cpp 0.4.0 release</a></h3>
+            <p class="meta">8 条回复 · 5 位参与者</p>
+            <p class="summary">社区围绕 iceberg-cpp 0.4.0 发布展开讨论。Manu Zhang 提议基于 0.3.0 以来的 174 个提交启动 0.4.0 发布，将 variant、加密和 Puffin 统计等未完成功能推迟；多数成员支持尽快发布，最终同意推进发布流程。</p>
+            <div class="key-points"><p><strong>@Manu Zhang:</strong> 提议发布 0.4.0，并主张采用快速、小步发布策略以尽早获得用户反馈；variant、加密、Puffin 统计等推迟到后续版本。</p>
+<p><strong>@Gang Wu:</strong> 支持发布 0.4.0，认为当前没有阻塞项；Arrow C++ 的 variant PR 尚未合并，可推迟到 0.5.0。</p>
+<p><strong>@Junwang Zhao:</strong> 最初建议推迟到 10 月底以纳入 CherryPickOperation 和 RewriteManifests，随后接受先发布 0.4.0，并确认 0.4.0 roadmap 中大部分任务已完成。</p></div>
+            <p class="conclusion">社区基本达成一致：启动 iceberg-cpp 0.4.0 发布，由 Manu Zhang 担任 release manager，Gang Wu 协助；CherryPickOperation、RewriteManifests 等后续功能留到下个版本。Manu 表示将再等待一天，如无反对意见即创建 release candidate。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/xyq8m7thmbt602g8hzz19oq8csp9gfrr">[REPORT] September board report</a></h3>
+            <p class="meta">7 条回复 · 8 位参与者</p>
+            <p class="summary">Ryan Blue 提交了 Apache Iceberg 9 月董事会报告草案，并说明本次改为以发布版本和规范变更为核心来总结项目进展，而不是社区同步会议中的进行中亮点。社区成员普遍认可新格式，并补充了博客站点、LICENSE/NOTICE 文件、GitHub Runner、PMC 成员变化和共享 fixtures 仓库等可加入报告的内容。</p>
+            <div class="key-points"><p><strong>@Ryan Blue:</strong> 本次董事会报告改为总结已发布的 releases 和 spec changes，以更准确反映实际可用成果，并建议后续在发布投票、结果或公告邮件中写清楚高层级亮点。</p>
+<p><strong>@Kevin Liu:</strong> 建议补充新博客站点、LICENSE/NOTICE 文件重构、GitHub Runner 使用改进，以及邮件进入 Gmail 垃圾邮件问题的 INFRA-28187 跟踪。</p>
+<p><strong>@Neelesh Salian:</strong> 建议补充 Gang 加入 PMC，以及为共享 fixtures 创建 iceberg-verification 仓库。</p></div>
+            <p class="conclusion">报告草案整体获得社区认可（LGTM），下一步是吸收补充项后完成并提交 9 月董事会报告；后续发布应在发布说明/公告中突出主要改进。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/c5yxp85dp0ottpq10nlbvrsfd51yjfd3">Apache Iceberg 1.12.0 release</a></h3>
+            <p class="meta">6 条回复 · 3 位参与者</p>
+            <p class="summary">本次邮件讨论围绕 Apache Iceberg 1.12.0 版本发布展开，核心议题包括发布候选（RC）准备、关键修复合并情况，以及是否将部分新特性纳入当前版本。讨论中确认了核心修复已合并，RC0 已创建并发起投票，但后续因地理类型 toString() 行为变化问题决定重新制作新的 RC。</p>
+            <div class="key-points"><p><strong>@Neelesh Salian:</strong> 确认关键修复（如 PR #17984）已合并，RC0 已创建并发起投票；对于非阻塞性新特性（如 referenced-by 实现）推迟至 1.13.0，并决定在当前投票结束后根据反馈决定是否发布新 RC。</p>
+<p><strong>@Alex Reid:</strong> 请求将 Kafka-Connect 修复（PR #17713）和 referenced-by 实现（PR #13979）纳入 1.12.0，前者已确认合并，后者被推迟至下一版本。</p>
+<p><strong>@Steven Wu:</strong> 指出 PR #16765 导致 GeometryType/GeographyType 的 toString() 行为变化，虽读取兼容但写入字符串不稳定，质疑是否属于破坏性变更，最终社区决定保留该行为变化。</p></div>
+            <p class="conclusion">社区决定保留地理类型 toString() 的行为变化，关闭回退修复 PR #18169，并因新增修复合并将制作新的 1.12.0 RC 并重新发起投票。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/k72c2y72w2j00xph2mn2bnsbvcbj43o4">pyiceberg-core / iceberg-rust Python bindings appears not to include third-party notice files</a></h3>
+            <p class="meta">3 条回复 · 4 位参与者</p>
+            <p class="summary">讨论围绕 pyiceberg-core / iceberg-rust Python bindings 发布的 wheel 中包含编译依赖但未附带第三方版权/许可通知文件的问题展开。参与者一致认为这是发布前必须修复的合规问题，并建议参考其他 Apache 项目做法，在构建时生成并打包第三方许可文件。</p>
+            <div class="key-points"><p><strong>@Jones, Danny:</strong> 发现 pyiceberg-core 的 wheel 分发了编译依赖但未包含相应版权声明，已提交 GitHub issue，建议在构建时加入 THIRD-PARTY-LICENSES 文件，并在方案确定后提交 legal-discuss 确认。</p>
+<p><strong>@Ryan Blue:</strong> 确认若分发第三方代码，必须在 LICENSE 和 NOTICE 中完整反映；对 THIRD-PARTY-LICENSES 持开放态度，但强调必须有包含法定通知的 NOTICE 文件。</p>
+<p><strong>@Kevin Liu:</strong> 指出这是创建 Python binding 时的疏漏，应在再次发布 pyiceberg-core 前修复；需先确认 wheel 中打包了哪些库，再补充 LICENSE/NOTICE，且已有 cargo deny 检查许可证兼容性。</p></div>
+            <p class="conclusion">需要在下次发布前确定 wheel 中包含的第三方依赖清单，并在构建流程中生成和打包相应的 LICENSE/NOTICE 或 THIRD-PARTY-LICENSES 文件；方案确定后再向 legal-discuss 邮件列表确认合规性。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/2qxrhphdgcf88464rwl09cd9o3b41v64">Access Delegation for Iceberg FILE type in the REST Catalog</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">本次讨论围绕 Iceberg REST Catalog 中 FILE 类型的访问委托机制展开，核心议题是如何通过预签名 URL（pre-signed URLs）实现文件级访问控制。社区成员分享了已在进行中的相关规范提案与 POC 工作，并建议整合现有实现以避免重复开发。</p>
+            <div class="key-points"><p><strong>@Prashant Singh:</strong> 已有团队在推进基于预签名 URL 的文件级访问方案，包括 /plan 端点返回预签名 URL 和客户端支持，建议复用现有工作而非另起炉灶。</p>
+<p><strong>@Sung Yun:</strong> 支持整合现有工作，并建议聚焦 FILE 类型的具体使用场景及由此引发的 SDK 或规范变更。</p>
+<p><strong>@Daniel Weeks:</strong> 强调需统一 remote pre-signing 与 plan/tasks 预签名 URL 的基础设施，并反对当前 bulk signing 的方向，主张在 File 同步会议上进一步对齐实现路径。</p></div>
+            <p class="conclusion">初步达成共识：应整合现有预签名 URL 相关工作，避免并行实现；下一步将在 File 同步会议中深入讨论统一实现方案，尤其关注 bulk 操作与 FILE 访问委托的兼容性。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/xhrl87d1lnqhm0d8n6w3dzjb1k9hkqcj">Iceberg Materialized View Spec Update</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">Iceberg 社区讨论 Materialized View（物化视图）规范更新，目前已在 Spark 和 Trino 中完成 POC 实现，验证了规范的可行性，整体接近投票阶段。讨论焦点之一是是否需要为 MV 引入类似 Table/View Spec 的 format-version 字段。</p>
+            <div class="key-points"><p><strong>@Jan Kaul:</strong> MV Spec 已取得显著进展，Spark/Trino POC 验证了规范合理性；提出是否应引入 materialized-view-format-version 字段以支持规范独立演进。</p>
+<p><strong>@Walaa Eldin Moustafa:</strong> 规范已接近完成，计划在 10 月 1 日社区同步会进行最后讨论，随后发起投票，呼吁社区在投票前提交最终反馈。</p>
+<p><strong>@Steven Wu:</strong> 认为 MV 本质上是 View 和 Table Spec 的组合，单独在 View Spec 中引入 materialized-view-format-version 较奇怪；若有不兼容变更，直接提升 View 或 Table Spec 版本即可。</p></div>
+            <p class="conclusion">下一步将在 10 月 1 日社区同步会进行最终讨论，之后发起投票；format-version 字段问题尚未最终定论，但 Steven Wu 倾向于复用现有 View/Table 版本机制。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/9t4l1kp4zjk7cjynd81nlsv2rttjkwcl">Iceberg Rust: moving the DataFusion integration into a separate repository</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">Iceberg 社区讨论将 DataFusion 集成迁移至独立仓库（datafusion-iceberg）。相关代码迁移提案已在 DataFusion 和 Iceberg 双方邮件列表发起投票，并均已全票通过，项目可正式推进。</p>
+            <div class="key-points"><p><strong>@Andrew Lamb:</strong> 宣布两个项目的投票均已全票通过，确认可以继续推进 DataFusion 集成的独立仓库迁移工作。</p>
+<p><strong>@Kevin Liu:</strong> 支持代码迁移，感谢贡献者并协助在 Iceberg 侧发起投票，认为此举有利于两个项目及生态系统的整合。</p>
+<p><strong>@Gabriel:</strong> 负责将代码移植到新仓库并提交 PR，为投票和迁移提供了基础。</p></div>
+            <p class="conclusion">迁移提案已获双方社区一致通过，下一步是继续推进 datafusion-iceberg 仓库的代码整合与后续开发。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/oo2jr61my4qv8163hqqkrrtr9dyk4k7g">Dedicated sync for Iceberg Index Support</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">本次 Iceberg 社区同步会议聚焦 Iceberg 索引支持，重点讨论了 Bloom Filter Index 与 Scalar Index 的设计优先级及实现细节。会议明确优先推进 Scalar Index，并确认其索引文件采用 Tracking file 与 Region file 结构。目前规范 PR 已基本成熟，仅剩少量开放问题。</p>
+            <div class="key-points"><p><strong>@Péter Váry:</strong> Bloom Filter Index 的扩展性问题可能来自限流，且 Scalar Index 预计能提供相近或更优性能，因此应优先推进 Scalar Index。</p>
+<p><strong>@Péter Váry:</strong> Scalar Index 的 Region file schema 包含 identity、materialized 和 non-materialized 字段，并且需要排序与聚类能力。</p>
+<p><strong>@Péter Váry:</strong> 索引文件命名修正为 Tracking file 存储 region 文件列表，Region file 存储索引数据行。</p></div>
+            <p class="conclusion">社区初步决定优先设计并实现 Scalar Index，规范 PR 已准备好进行 review，剩余问题将通过线下或下次同步继续讨论。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/xf30qn3vs9r3qzvw5hclcyt91673nf8h">Defining gc.enabled semantics across engines and clients</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论围绕 Iceberg 中 gc.enabled 属性在不同引擎和客户端间的语义与执行方式展开。Alexander Bailey 提议先推进一个较窄的改动：当 gc.enabled=false 时，仅允许以 CleanupLevel.NONE 执行快照过期，不删除底层文件；Dan 和 Russell 则更关注该属性的历史约定性质及是否应正式规范化。</p>
+            <div class="key-points"><p><strong>@Alexander Bailey:</strong> 建议暂时搁置对 gc.enabled 的正式规范讨论，先推进 PR #17791 的有限改动，即在 gc.enabled=false 时允许仅移除快照记录但不删除文件。</p>
+<p><strong>@Daniel Weeks:</strong> 认为 gc.enabled 更像历史约定而非规范，不建议在客户端层面强制编码该行为，而应由 catalog 实现在必要时强制执行删除限制。</p>
+<p><strong>@Russell Spitzer:</strong> 指出该属性最初用于表示 Iceberg 表仅管理元数据、而数据文件由外部系统拥有的场景。</p></div>
+            <p class="conclusion">初步方向是将 PR #17791 限定为允许无文件清理的快照过期，以保留现有数据和共享元数据保护；更广泛的 gc.enabled 语义定义和执行机制将另行讨论。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (0)</h2>
+            
+    <p>本周新建 <strong>0</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周无新建 JIRA。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Iceberg Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
