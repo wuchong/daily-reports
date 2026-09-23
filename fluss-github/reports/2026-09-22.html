@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-09-22</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-09-22</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 2 新 Issues</div>
+            <div class="stat">✅ 5 关闭</div>
+            <div class="stat">✨ 3 新 PRs</div>
+            <div class="stat">🎉 6 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/1752">PR #1752</a> 合并 blocker 级客户端修复，下载日志重试多次后抛出异常。</li><li>🐛 <a href="https://github.com/apache/fluss/pull/4364">PR #4364</a> 修复 KvBatchScanner 响应缓冲区泄漏问题，关闭相关 Issue。</li><li>🚀 <a href="https://github.com/apache/fluss/pull/4457">PR #4457</a> 优化 tiering split 队列与提交收集，降低分层处理开销。</li><li>📚 <a href="https://github.com/apache/fluss/pull/4349">PR #4349</a> 新增生产就绪清单文档，提升生产部署与运维指引。</li><li>✨ <a href="https://github.com/apache/fluss/issues/4470">Issue #4470</a> 提出 FIP-49，为协议前端网关增加共享 TLS 基础设施。</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <ul class="critical-list"><li>⚠️ <a href="https://github.com/apache/fluss/issues/4467">Issue #4467</a> 服务端 Arrow 读上下文保留 ChunkedFactory 内存，存在内存泄漏风险。</li><li>⚠️ <a href="https://github.com/apache/fluss/issues/4233">Issue #4233</a> Tiering enumerator 关闭时丢失完成上报，可能影响生产可用性。</li></ul>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3605">Issue #3605</a> [test] Unstable test FlussAdminITCase.testKvSnapshotLeaseForLogTable</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: CI 测试 FlussAdminITCase.testKvSnapshotLeaseForLogTable 断言失败，需关注稳定性。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4222">Issue #4222</a> [Umbrella] Support bulk loading for primary-key tables</h4>
+            <ul><li><span class="author">@xx789633</span>: 支持主键表批量加载提案，认为生产场景需求强烈且价值较高。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4233">Issue #4233</a> [test] Unstable test FlinkUnionReadPrimaryKeyTableITCase.testUnionReadWithCustomLakeTablePath</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: CI 测试 FlinkUnionReadPrimaryKeyTableITCase 断言失败，耗时较长。</li><li><span class="author">@Jackeyzhe</span>: 分析发现 enumerator 关闭未刷新完成表，建议扩展 #4235 修复并补充回归测试。</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3635">PR #3635</a> [lake] Support partition mark-done for lakehouse tiering (processing-time)</h4>
+            <ul><li><span class="author">@Copilot</span>: 指出 mark-done 动作在提交前执行可能产生错误就绪信号，建议移到提交后或保证原子性。</li><li><span class="author">@beryllw</span>: 说明 mark-done 动作需幂等并可重试，保留当前重试语义，不引入复杂提交协议。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4308">PR #4308</a> [server] Add pre-write buffer memory metrics for primary key tables</h4>
+            <ul><li><span class="author">@Kaixuan-Duan</span>: 说明 put 路径已对称 flush/truncate，本地累计增量并在批写结束统一更新。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4328">PR #4328</a> [c++] Add write callbacks with batch completion dispatch</h4>
+            <ul><li><span class="author">@loserwang1024</span>: 关注回调容量、deadline 范围与同 bucket 顺序，要求默认单 worker 保证完成顺序。</li><li><span class="author">@naivedogger</span>: 已改为单 FIFO worker、内部容量推导，并采用 WriteCompletion 保留扩展。</li><li><span class="author">@fresh-borzoni</span>: 建议回调参数使用结构体便于扩展，并关注文档过期、未用接口与固定容量估算。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4360">PR #4360</a> [metrics] Count per-bucket errors in TabletServer response metrics</h4>
+            <ul><li><span class="author">@swuferhong</span>: 建议补充更多 API 错误指标并覆盖客户端/从端，测试避免 Mockito，使用真实组件。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4439">PR #4439</a> [server] Support update_if_changed merge engine for primary-key tables</h4>
+            <ul><li><span class="author">@Copilot</span>: SchemaGetter 可能返回 null，建议显式空检查并抛出清晰异常，避免 NPE。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4450">PR #4450</a> [flink] Support BUCKET_LOAD_BALANCE shuffle strategy for table with bucket kyes.</h4>
+            <ul><li><span class="author">@leonardBang</span>: 关注 AGGREGATION 与桶负载均衡恢复兼容性，建议限制模式、抽取共享路由并处理 rescale。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4466">PR #4466</a> [hotfix] Fix error log of DataStatisticsCoordinator.</h4>
+            <ul><li><span class="author">@Copilot</span>: INFO 日志可能输出高基数分区统计全量，建议仅记录数量并将完整信息降为 DEBUG。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4108">PR #4108</a> [helm] Add support advertised listeners for out of cluster clients</h4>
+            <ul><li><span class="author">@affo</span>: 认可方向，建议后续支持多协调器 schema，并表示当天会再次审阅。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4448">PR #4448</a> [client] Replace Unsafe with Netty direct memory in ChunkedAllocationManager and expose metrics.</h4>
+            <ul><li><span class="author">@loserwang1024</span>: 说明该 PR 仍在测试中，请求暂时不要合并。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4461">PR #4461</a> [rpc] Reject inactive lazy requests before queuing</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: 认为已高置信度定位根因，请求相关同学审阅该 PR。</li><li><span class="author">@gyang94</span>: 表示认可并投支持票。</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4470">#4470</a> [FIP-49][gateway] Add shared TLS infrastructure for protocol frontends <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/issues/4467">#4467</a> [Bug] Server-side Arrow read contexts retain ChunkedFactory memory <span class="author">@loserwang1024</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4471">#4471</a> docs: add fluss-adk-toolkit to the Gateway community tools <span class="author">@Ashfaqbs</span> </li><li><a href="https://github.com/apache/fluss/pull/4469">#4469</a> [docs] Add user logo banner and dedicated user stories <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/pull/4468">#4468</a> [server] Use default NettyAllocationManager for read contexts in server side. <span class="author">@loserwang1024</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4455">#4455</a> [lake/tiering] Reduce split queue and commit collection overhead <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/issues/4363">#4363</a> [Bug] KvBatchScanner leaks response buffers even after normal close <span class="author">@fxbing</span> </li><li><a href="https://github.com/apache/fluss/issues/4338">#4338</a> [docs] Add Production Readiness Checklist <span class="author">@hanliu0830</span> </li><li><a href="https://github.com/apache/fluss/issues/4336">#4336</a> [docs] Complete ZooKeeper client configuration documentation <span class="author">@hanliu0830</span> </li><li><a href="https://github.com/apache/fluss/issues/1751">#1751</a> RemoteLogDownloader deadlock when met exception. <span class="author">@loserwang1024</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4466">#4466</a> [hotfix] Fix error log of DataStatisticsCoordinator. <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/pull/4457">#4457</a> [tiering] Optimize tiering split queue and commit collection <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/pull/4364">#4364</a> [client] Release KvBatchScanner response buffers <span class="author">@fxbing</span> </li><li><a href="https://github.com/apache/fluss/pull/4349">#4349</a> [docs] Add Production Readiness Checklist <span class="author">@hanliu0830</span> </li><li><a href="https://github.com/apache/fluss/pull/4337">#4337</a> [docs] Complete ZooKeeper client configuration documentation <span class="author">@hanliu0830</span> </li><li><a href="https://github.com/apache/fluss/pull/1752">#1752</a> [client] Throw Exception when retry several times when downloading log. <span class="author">@loserwang1024</span> <span class="labels">component=client, priority=blocker</span></li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
