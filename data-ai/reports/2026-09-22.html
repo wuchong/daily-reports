@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data+AI 全球日报 | 2026-09-22</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Data+AI 全球日报 | 2026-09-22</h1>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="top-changes">
+            <h2>🔥 今日最重要的3个变化</h2>
+            <ol><li><strong>ClickHouse 引入前 Snowflake CFO 进入董事会</strong> — ClickHouse 任命 Michael Scarpelli 为董事，强化企业级治理与商业化经验，释放实时分析数据库向 AI 数据平台加速扩张的信号。</li><li><strong>AWS 给出 Amazon MSK 大消费者组扩展最佳实践</strong> — AWS 针对 Kafka 消费者组数千成员场景提出元数据限制、容量规划和再平衡优化方法，有助于提升大规模流数据平台稳定性。</li><li><strong>Fountain 用 ClickHouse Cloud 重构 Agentic AI 数据平面</strong> — Fountain 将 Cue 的分析延迟从三小时降至两分钟以内并降本 66%，显示实时分析数据库正成为 AI Agent 的关键数据底座。</li></ol>
+            <p class="judgment"><strong>总判断：</strong>今日信号显示数据平台竞争正从单点分析转向面向 AI Agent 的实时数据平面与工程化治理。AWS 通过最佳实践强化流式与湖仓编排能力，ClickHouse 则借高管任命和客户案例补强企业化与 AI 场景可信度。短期内，低延迟、低成本、可编排的数据平台能力仍是核心抓手。</p>
+        </section>
+
+        <section class="top-signals">
+            <h2>📡 重要信号</h2>
+            
+    <article class="news-item">
+        <h3>ClickHouse 任命前 Snowflake 和 ServiceNow CFO Michael Scarpelli 为董事会成员</h3>
+        <p class="sources">📌 <a href="https://clickhouse.com/blog/clickhouse-appoints-mike-scarpelli-to-board-of-directors">ClickHouse Blog</a></p>
+        <p class="date">2026-09-22</p>
+        <p class="summary">ClickHouse 宣布任命前 Snowflake 和 ServiceNow CFO Michael Scarpelli 为董事会成员。Scarpelli 具备企业软件、云数据平台和规模化财务运营经验，其加入可能强化 ClickHouse 在企业级商业化、治理和潜在资本运作方面的能力。</p>
+        <div class="impact">📊 数据平台影响：该任命释放 ClickHouse 加速企业级扩张和资本市场对接的信号，可能增强其与 Snowflake、Databricks 等在实时分析和 AI 数据层竞争的可信度。</div>
+    </article>
+        </section>
+
+        <section class="product-tech">
+            <h2>💻 产品与技术</h2>
+            
+    <article class="news-item">
+        <h3>AWS 发布 Amazon MSK 大规模消费者组扩展最佳实践</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/best-practices-for-scaling-large-consumer-groups-on-amazon-msk/">AWS Big Data Blog</a></p>
+        <p class="date">2026-09-22</p>
+        <p class="summary">AWS 发布 Amazon MSK 大规模消费者组扩展最佳实践，聚焦 Kafka 消费者组扩展至数千成员时，rebalance 元数据可能超过 1 MB 限制并导致组停滞。文章给出元数据大小估算、主题级限制安全调优、容量规划与配套策略，帮助平台团队在高规模流处理场景下提升稳定性。</p>
+        <div class="impact">📊 数据平台影响：该实践有助于数据平台团队提前规划 Kafka/MSK 消费者组容量与元数据上限，减少实时管道再平衡故障，提升大规模流式 ETL、特征计算和事件驱动架构的可靠性。</div>
+    </article>
+    <article class="news-item">
+        <h3>Moeve 使用 Amazon Athena 标准化跨数据湖 dbt 运行</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/how-moeve-standardized-dbt-runs-across-data-lakes-with-amazon-athena/">AWS Big Data Blog</a></p>
+        <p class="date">2026-09-22</p>
+        <p class="summary">Moeve 通过基于 Amazon Athena、Step Functions、Fargate、DynamoDB 和 EventBridge 的集中式 serverless 启动器，统一多个数据湖中的 dbt 运行方式。该方案将新项目接入从数天缩短至约15分钟，并使计算靠近数据，降低跨湖编排复杂度。</p>
+        <div class="impact">📊 数据平台影响：这为数据湖上的 dbt 标准化、权限治理和任务编排提供参考，推动 lakehouse 工程化，强化 Athena 在 serverless 数据转换与多湖管理中的位置。</div>
+    </article>
+    <article class="news-item">
+        <h3>Fountain 基于 ClickHouse Cloud 重构 Cue 的 Agentic AI 数据平面</h3>
+        <p class="sources">📌 <a href="https://clickhouse.com/blog/fountain-agentic-ai-for-high-volume-hiring">ClickHouse Blog</a></p>
+        <p class="date">2026-09-22</p>
+        <p class="summary">Fountain 为支持其 Cue ‘Frontline Superintelligence’ 高容量招聘场景，基于 ClickPipes 和 ClickHouse Cloud 重建数据平面。该改造将分析延迟从三小时降至两分钟以内，并降低成本 66%，支撑 Agentic AI 对高吞吐、低延迟实时数据访问的需求。</p>
+        <div class="impact">📊 数据平台影响：案例显示 ClickHouse Cloud 正切入 Agentic AI 的实时数据层，为 AI Agent 提供低延迟分析和状态查询能力，提升 AI 应用对实时数据平台的依赖。</div>
+    </article>
+        </section>
+
+        <section class="people-views">
+            <h2>👤 人物与观点</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="analyst-insights">
+            <h2>📊 分析师洞察</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="watchlist">
+            <h2>👀 观察列表</h2>
+            
+    <article class="watchlist-item">
+        <h3>ClickHouse 企业化与潜在资本运作</h3>
+        <span class="status">待观察</span>
+        <p class="reason">Michael Scarpelli 加入董事会，带来 Snowflake 和 ServiceNow 规模化经验，可能影响 ClickHouse 的商业化、治理和资本市场路径。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>后续融资、IPO 相关动作、企业级产品发布或高管团队变化。</p>
+    </article>
+    <article class="watchlist-item">
+        <h3>Agentic AI 实时数据平面需求</h3>
+        <span class="status">待观察</span>
+        <p class="reason">Fountain 使用 ClickHouse Cloud 支撑 Cue，显示 AI Agent 对低延迟、高吞吐分析和数据管道的需求上升。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>更多 AI Agent 客户案例、ClickHouse AI/实时功能发布，以及云厂商竞品响应。</p>
+    </article>
+        </section>
+
+        <section class="stock-analysis">
+            <h2>📈 股票分析</h2>
+            <p class="disclaimer">⚠️ 以下内容仅供参考，不构成任何投资建议。投资有风险，入市需谨慎。</p>
+            
+    <article class="stock-item">
+        <div class="stock-header">
+            <span class="ticker">AMZN</span>
+            <span class="company">Amazon</span>
+            <span class="signal signal-neutral">⚪ 中性</span>
+        </div>
+        <p class="stock-summary">AWS 持续输出 MSK 与 Athena 数据平台最佳实践，强化流式、湖仓和 dbt 编排生态粘性，但今日无直接财务催化。本分析仅供参考，不构成投资建议。</p>
+        <div class="stock-details">
+            <div class="catalysts">
+                <strong>🚀 催化剂</strong>
+                <ul><li>企业流式数据和湖仓项目增长</li><li>AWS 数据与 AI 服务交叉销售</li></ul>
+            </div>
+            <div class="risks">
+                <strong>⚠️ 风险</strong>
+                <ul><li>Snowflake、Databricks、ClickHouse 等竞争</li><li>客户云成本优化</li></ul>
+            </div>
+        </div>
+    </article>
+    <article class="stock-item">
+        <div class="stock-header">
+            <span class="ticker">SNOW</span>
+            <span class="company">Snowflake</span>
+            <span class="signal signal-neutral">⚪ 中性</span>
+        </div>
+        <p class="stock-summary">前 Snowflake CFO Michael Scarpelli 加入 ClickHouse 董事会，更多体现竞争层面信号，未显示 Snowflake 当日产品或财务变化。本分析仅供参考，不构成投资建议。</p>
+        <div class="stock-details">
+            <div class="catalysts">
+                <strong>🚀 催化剂</strong>
+                <ul><li>Snowflake 实时分析和 AI 数据产品进展</li><li>财报和新客户增长</li></ul>
+            </div>
+            <div class="risks">
+                <strong>⚠️ 风险</strong>
+                <ul><li>ClickHouse 等实时数据库竞争</li><li>云厂商原生数据平台替代</li></ul>
+            </div>
+        </div>
+    </article>
+        </section>
+
+        <footer>
+            <p>Generated by Data+AI Daily Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
