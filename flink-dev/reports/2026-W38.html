@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flink 社区周报 | 2026-W38</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Flink 社区周报 | 2026-W38</h1>
+            <p class="date-range">2026-09-14 ~ 2026-09-20</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (1)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/0sjolnbc8q2kh0gsqry4bkwd5469npsm">Apache Flink Kubernetes Operator 1.16.1 released</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (4)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/bhpn12ynooyj8pqdgwm2l1by023z7znj">FLIP-611: Running Flink jobs in MiniCluster using the Kubernetes Operator</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/mbxcyblv4clmypqjtklhty4fjocgsr73">Apache Flink Kubernetes Operator Release 1.16.1, release candidate #1</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/9svswgg2tnb0py73z10n16cb0145c8r8">FLIP-569: Sunset the Stateful Functions (StateFun) Sub-project</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/gh06g4bv5vfvfoh8hx3mhvxjspwgp96l">FLIP-607: Migrate Flink off end-of-life OkHttp; keep it off the core classpath</a> <span class="status passed">✅ 已通过</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/ow534vp586skv2o6qsdd2pxmo1k8xf1o">FLIP-612: Native XML Functions for Flink SQL</a></h3>
+            <p class="meta">7 条回复 · 4 位参与者</p>
+            <p class="summary">讨论围绕 FLIP-612 为 Flink SQL 引入原生 XML 函数展开，核心关注 XML 解析为 VARIANT 后的结构设计、访问易用性以及命名空间处理。社区整体认可该设计，并重点讨论了重复元素是否应统一表示为数组，以保持同构 XML 文档转换后的 VARIANT 结构一致。</p>
+            <div class="key-points"><p><strong>@Fabian Hüske:</strong> 建议将 XML 元素统一映射为数组，避免同构文档因元素出现次数不同而产生不一致的 VARIANT 结构，从而减少 CASE WHEN 等复杂处理。</p>
+<p><strong>@Timo Walther:</strong> 支持该 FLIP，但认为默认应优先保证 a.b.c 这类简洁访问方式，数组索引可作为可选参数，未来也可通过 XML_PATH 等函数改进访问。</p>
+<p><strong>@Krishna Sai:</strong> 关注 xmlns 声明和 xsi 前缀在 PARSE_XML 与 XML_STRING 往返转换中的处理，指出可能导致命名空间语义变化的边界情况。</p></div>
+            <p class="conclusion">初步结论倾向于默认采用紧凑结构以保持 a.b.c 访问，同时提供可选参数使所有元素包装为数组以保证结构一致；Timo 表示支持投票，但仍需在 FLIP 中补充说明 Sai 提出的命名空间边界问题。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/qcp940r9mz7n8ykxx1dpjlq01gr324mt">Operator 1.16.1 patch release due to serious bug with observed runtime config feature</a></h3>
+            <p class="meta">3 条回复 · 4 位参与者</p>
+            <p class="summary">Flink Operator 1.16.1 补丁版本讨论源于运行时配置观察功能（FLINK-35746）在真实环境中暴露严重缺陷，会导致部署错误、健康应用被错误重启及配置不一致等问题。Gyula Fóra 提议在 main 和 release-1.16 分支回滚该功能，并立即发布 1.16.1 补丁版本，获得社区一致支持。</p>
+            <div class="key-points"><p><strong>@Gyula Fóra:</strong> 运行时配置观察功能存在严重缺陷，建议回滚该功能并尽快发布 1.16.1 补丁版本，仅包含回滚和少量关键修复。</p>
+<p><strong>@Dennis-Mircea Ciupitu:</strong> 支持回滚运行时配置功能并立即推进 1.16.1 补丁版本发布。</p>
+<p><strong>@P Sinha:</strong> 同意发布补丁版本，并建议后续补充针对该场景的测试，以便未来重新实现该功能时可验证。</p></div>
+            <p class="conclusion">社区一致同意回滚运行时配置观察功能，并立即推进 Flink Operator 1.16.1 补丁版本发布；后续建议补充相关测试用例。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/csdnssjv65bbywwboj0wpb1rgj7p6syd">[PR] [FLINK-40721][ci] Add maven 3.9.16 to ci docker [flink-ci-docker]</a></h3>
+            <p class="meta">2 条回复 · 1 位参与者</p>
+            <p class="summary">该讨论围绕 Flink CI Docker 镜像中新增 Maven 3.9.16 支持的 PR 展开。snuyanzin 提交了相关 Dockerfile 修改，并通过 Maven Wrapper 预热缓存以减少 CI 构建时的网络依赖。随后该 PR 被合并。</p>
+            <div class="key-points"><p><strong>@snuyanzin:</strong> 在 CI Docker 镜像中添加 Maven 3.9.16，并保留原有 3.8.6 版本支持。</p>
+<p><strong>@snuyanzin:</strong> 通过预先下载 Maven Wrapper 并预热 Maven 发行版缓存，避免 CI 执行 ./mvnw 时产生网络引导问题。</p></div>
+            <p class="conclusion">PR #7 已被 snuyanzin 合并，Maven 3.9.16 支持及 CI Docker 镜像优化正式落地。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/4f4svtwz1bw3rojfsop3jjq26qg0q8wc">Emit "Z" instead of "+00:00" for UTC in Variant.toJson()</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">讨论围绕 Flink 新 VARIANT 类型的 Variant.toJson() 输出格式展开，提议将 UTC 零偏移时间戳从 '+00:00' 改为更标准的 'Z'。参与者普遍支持该变更，认为其符合 ISO 8601/RFC 3339 和主流 Java/JSON 库习惯，且因 VARIANT 较新影响面可控。</p>
+            <div class="key-points"><p><strong>@Ramin Gharib:</strong> 提议将 Variant.toJson() 中 UTC 时间戳偏移输出由 '+00:00' 改为 'Z'，以提升标准兼容性、可读性和紧凑性，并建议在 VARIANT 广泛使用前尽早调整。</p>
+<p><strong>@Timo Walther:</strong> 支持该变更，认为 UTC 时间戳应使用 'Z'，且解析器通常兼容两种格式，当前 toJson 主要用于打印输出，因此风险较低。</p>
+<p><strong>@Krishna Sai:</strong> 验证后支持变更，指出该改动会影响 toJson、JSON/raw sink 等输出但不影响 CAST(VARIANT AS STRING)，并提醒发布说明需注明影响范围及 Python 3.9/3.10 对 'Z' 的兼容性问题。</p></div>
+            <p class="conclusion">初步达成共识支持改为输出 'Z'；下一步由 Ramin Gharib 提交 JIRA 和 PR，更新相关测试，并在发布说明中说明受影响的输出场景和兼容性注意事项。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/c0hcc6nk1o99nwc2pzkp1xqbw51n3gs6">Review request: FLINK-39775 (Flink CDC, MySQL source) - PR #4418</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">该讨论围绕 FLINK-39775（Flink CDC MySQL source）PR #4418 的评审与合入展开。Spoorthi 请求 committer 协助推进该 PR，Leonard 表示因涉及关键代码路径需要谨慎评估，最终在完成评审后将其合入 master。</p>
+            <div class="key-points"><p><strong>@Spoorthi Basu:</strong> 该 PR 用于修复 MySQL 增量快照 source 在 JobManager 上的 OOM 问题，通过在进入 binlog 阶段后释放 snapshot split 元数据实现，且该功能默认关闭、需显式开启。</p>
+<p><strong>@Leonard Xu:</strong> 该变更涉及关键代码路径，需要更多时间仔细评估；后续确认评审完成并已合入 master。</p>
+<p><strong>@Yanquan:</strong> 对该 PR 进行了详细评审，贡献被 Leonard 在合入说明中致谢。</p></div>
+            <p class="conclusion">PR #4418 已完成评审并合入 master（commit: 09d467466bc24fa7afd3f45ce5f13a45f4c18614），无进一步待办事项。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/ks179hobkj04yfj5wcyczhpkm37p71kn">Review request for FLINK-40508: Support DB2 pipeline connector</a></h3>
+            <p class="meta">1 条回复 · 1 位参与者</p>
+            <p class="summary">Jagger 提交 FLINK-40508 的 Review 请求，希望为 Flink CDC 新增 DB2 pipeline connector，使 DB2 可作为 YAML Pipeline API 的 source。该 PR 复用现有 DB2 source connector 和增量快照框架，支持快照/增量读取、分片、schema evolution 及 DB2 特有类型，并补充了测试、文档和 CI 配置。Leonard Xu 回复表示会查看该 PR。</p>
+            <div class="key-points"><p><strong>@Jagger:</strong> 新增 flink-cdc-pipeline-connector-db2 模块，使 DB2 能通过 YAML Pipeline API 作为 source 使用，并复用现有 flink-connector-db2-cdc 能力。</p>
+<p><strong>@Jagger:</strong> 该 connector 支持快照与增量阶段、可配置 chunk key 的分片、schema evolution，以及 DECFLOAT、XML、CLOB/BLOB 等 DB2 类型，并提供中英文文档。</p>
+<p><strong>@Leonard Xu:</strong> 感谢贡献并表示会查看该 PR。</p></div>
+            <p class="conclusion">目前尚未形成明确结论，下一步是等待 committer 审批上游 CI workflow，并由 Leonard Xu 等社区成员进行代码 review。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/0tp7wf4bmv2wogffvkyy8owz15kn4tjl">[Flink CDC][postgres] JobManager connection pool exhausted after 20 incremental-snapshot jobs: JdbcSourceChunkSplitter keeps a pooled JDBC connection for the whole job lifetime</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕 Flink CDC PostgreSQL 增量快照作业导致 JobManager JDBC 连接池耗尽的 bug 展开。Kyrie 指出自 CDC 3.3.0 引入异步切分后，JdbcSourceChunkSplitter 会在整个作业生命周期内持有连接，导致同库作业超过默认连接池大小（20）时新作业启动失败。目前问题已定位，Kyrie 已提交修复 PR 并完成验证。</p>
+            <div class="key-points"><p><strong>@Kyrie:</strong> JdbcSourceChunkSplitter 在 open() 时获取连接，直到作业结束 close() 才释放，导致每个增量快照作业长期占用一个 HikariCP 连接，最终耗尽连接池。</p>
+<p><strong>@Hongshun Wang:</strong> 确认该问题对应 JIRA FLINK-34623，并将其分配给 wglbd12 处理。</p>
+<p><strong>@Kyrie:</strong> 已提交 PR #4534，将连接生命周期恢复为按表获取和释放，并在 30 个 postgres-cdc 作业场景下验证连接数从 31 降至 1。</p></div>
+            <p class="conclusion">初步结论是确认该行为为 bug，修复方案已提交（PR #4534），下一步是等待 committer 审批 CI 并进行代码评审。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/1dx71f64r1qlm41r6lscrhf18g84h6mc">FLIP-XXXX: Higher-Order Functions in Flink SQL (TRANSFORM and ARRAY_FILTER)</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">Flink 社区讨论 FLIP-XXXX（SQL 高阶函数 TRANSFORM 和 ARRAY_FILTER）的推进情况。多位成员支持整体方向，但认为当前 FLIP 范围过大、文档过长，建议拆分并简化；作者确认仍在继续工作，正在拆分和优化文档。</p>
+            <div class="key-points"><p><strong>@Gustavo de Morais:</strong> 建议将 FLIP 拆分为两个阶段：FLIP 1 聚焦基础能力（lambda 语法、FUNCTION 类型、代码生成等），FLIP 2 再讨论具体函数 API；同时建议将 85 页文档精简为更易读的正式 FLIP 文档。</p>
+<p><strong>@David Anderson:</strong> 支持整体方向，认为高阶函数能显著提升可用性和可读性；同时支持 Gustavo 的拆分建议，认为单个 FLIP 范围过大。</p>
+<p><strong>@Dominik:</strong> 确认 Michal、Lorand 和他正在继续推进，当前正在对 FLIP 进行拆分、简化和审阅，以提升可读性。</p></div>
+            <p class="conclusion">社区初步达成共识：支持高阶函数方向，但需拆分 FLIP 范围并精简文档；下一步是完成基础能力 FLIP 的拆分和优化，再逐步讨论具体函数设计。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/zd5p911rbnskc3cq6868vffyzh43y0vk">Remove Deprecated Configuration Options/Keys in Flink</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论围绕移除 Flink 中已废弃的配置项/键展开，重点是 web.address 与 schema-registry.* 相关配置。参与者确认 web.address 可以移除，但 schema-registry.subject 仍被 flink-connector-kafka 主动使用，直接移除可能破坏兼容性。</p>
+            <div class="key-points"><p><strong>@Yuepeng Pan:</strong> 支持移除 web.address；对 schema-registry.* 配置建议先在外部 connector 仓库中移除相关用法，再从 Flink 主仓库移除，以保证兼容性。</p>
+<p><strong>@Sai Krishna:</strong> 确认 schema-registry.subject 仍被 flink-connector-kafka 使用，移除会悄悄停止自动 subject 命名；schema-registry.url 和 schema-registry.schema 未在官方 connector 仓库中被引用。</p>
+<p><strong>@Sai Krishna:</strong> 建议优先处理 2.0 release notes 中已声明移除、但 master 上仍以 deprecated 或 fallback 形式存在的 22 个配置项，因为风险最低。</p></div>
+            <p class="conclusion">初步共识是可以移除 web.address；schema-registry.subject 需遵循“先移除 connector 使用，再移除 Flink 配置”的顺序。下一步可从 2.0 已宣布移除但仍残留的配置项开始清理。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/tsm8b9wrk21sm6m79dlz1ply1h19fgcb">Planning Flink CDC 3.7 release</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">本次讨论围绕 Flink CDC 3.7 版本的发布计划展开，涉及开发路线图、发布时间调整及代码冻结提醒。Xiqian YU 提出了以多模态数据支持、AI 生态集成和连接器增强为核心的开发方向，并主动担任发布经理。后续因开发周期原因，代码冻结日期被推迟至 8 月 28 日，并在 9 月临近时再次提醒社区推进待合入的功能与修复。</p>
+            <div class="key-points"><p><strong>@Xiqian YU:</strong> 提出 Flink CDC 3.7 的三大开发重点：多模态数据支持、AI 生态集成、连接器生态增强，并自愿担任发布经理。</p>
+<p><strong>@Leonard Xu:</strong> 认可多模态数据管道的重要性，支持 Xiqian 提出的路线图和发布经理人选。</p>
+<p><strong>@Xiqian YU:</strong> 宣布将代码冻结日期从原计划推迟至 8 月 28 日，并在后续提醒开发者在冻结前完成待审功能与修复。</p></div>
+            <p class="conclusion">Flink CDC 3.7 的开发方向已获社区初步认可，代码冻结时间调整为 8 月 28 日，后续需开发者在冻结前推进相关 PR 与任务合入。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (95)</h2>
+            
+    <p>本周新建 <strong>95</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周 JIRA 主要集中在连接器与外部系统集成的修复和增强（如 MongoDB、JDBC、HTTP sink、Kafka、MaxCompute 及 CDC 元数据释放），SQL/Table API 与流处理语义的正确性问题（包括 OVER 窗口、UDF、类型比较、INSERT 语义等），以及 CI/依赖升级和构建基础设施优化。同时涉及 Kubernetes Operator 安全校验、文件系统去 Hadoop 化设计（FLIP-597/607）和配置项清理等架构与运维改进。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Flink Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
