@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fluss 社区周报 | 2026-W38</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Fluss 社区周报 | 2026-W38</h1>
+            <p class="date-range">2026-09-14 ~ 2026-09-20</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (2)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/5q1zz4x47kyd2fl4r2xx8tpqz62k0zdw">Apache Fluss 1.0.0 released</a></li>
+<li><a href="https://lists.apache.org/thread/ftmwsh1vp8tn2fl8fg49bymxt5xm57pj">Fluss Community Call — Thursday, September 24 (rescheduled from Sep 25)</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (1)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/x7nd4dglhpoh4vgz6d8c2s7yd4bs3ml5">Release Apache Fluss 1.0.0 (RC3)</a> <span class="status passed">✅ 已通过</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (6)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/5oscovy1zt1lfvwdh9lnhcwobrj8mpk0">Reschedule September Community Call to September 24</a></h3>
+            <p class="meta">5 条回复 · 4 位参与者</p>
+            <p class="summary">本次邮件讨论围绕将原定于9月25日的 Fluss 社区电话会议提前至9月24日举行展开，原因是9月25日为中国中秋节。多位社区成员支持改期，最终会议时间确认调整，并确定了主持人及后续通知安排。</p>
+            <div class="key-points"><p><strong>@Jark Wu:</strong> 提议将社区电话会议从9月25日提前至9月24日，以避开中秋节，并征集主持人。</p>
+<p><strong>@Leonard Xu:</strong> 支持改期至9月24日，并主动请缨担任本次社区会议主持人。</p>
+<p><strong>@Giannis Polyzos / yuxia:</strong> 均表示支持将会议改期至9月24日举行。</p></div>
+            <p class="conclusion">会议已正式改期至9月24日（UTC 08:00-08:45），由 Leonard Xu 主持；后续需通过邮件列表和 Slack 发布通知并征集议程，本次重点议题为 Fluss 1.1 路线图与发布时间表。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/j0bkh1opqczf7hdbxcm7jtmhjd75lv9m">Planning 1.1 Release</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">Fluss 社区启动 1.1 版本规划，提议约两个月的开发周期（特性冻结 2026/12/1，发布 2026/12/15），并通过 GitHub Discussion 收集功能需求与优先级。Nicholas Jiang 主动请缨担任 1.1.0 发布经理，Lorenzo Affetti 则提出希望作为联合发布负责人参与学习并沉淀发布流程文档。</p>
+            <div class="key-points"><p><strong>@Jark Wu:</strong> 1.1 希望恢复更紧凑、规律的发布节奏，提议约两个月开发周期，并在 GitHub Discussion 中集中收集特性请求、使用场景和贡献计划。</p>
+<p><strong>@Nicholas Jiang:</strong> 自愿担任 Apache Fluss 1.1.0 的 Release Manager，愿意协调发布时间表、特性冻结、分支切出、候选版本和投票流程。</p>
+<p><strong>@Lorenzo Affetti:</strong> 希望与 committer/PMC 配对作为 co-release owner，记录发布任务并编写可供未来复用、甚至可被 AI 代理利用的 release manager guide，同时建议用 epic/umbrella issue 组织工作。</p></div>
+            <p class="conclusion">时间线仍在讨论中，社区正在通过 GitHub Discussion（#3819）收集 1.1 的功能请求与优先级；下一步包括在社区会议中讨论发布时间与发布经理角色，并推进 roadmap 共识。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/tjhgpp2fw7hhq3lf9zc095sjymvk04os">FIP sponsor</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">本次讨论围绕 Fluss 社区 FIP（Fluss Improvement Proposal）推进机制展开，核心议题是为每个 FIP 引入“sponsor”角色，以提升实现进度跟踪和代码评审效率。Lorenzo Affetti 提议绑定投票者可自荐为 FIP sponsor，负责跟踪任务并推动 PR 及时合入；Giannis Polyzos 认为该提议与社区会议中提出的 reviewer/reporter 机制一致，并建议将其纳入 roadmap 管理。</p>
+            <div class="key-points"><p><strong>@Lorenzo Affetti:</strong> 建议绑定投票者可在投票时自荐为 FIP sponsor，负责跟踪 FIP 实施进度、担任主要评审人并推动 PR 及时合入，多个 sponsor 可提升评审覆盖和合入效率。</p>
+<p><strong>@Giannis Polyzos:</strong> 认同 sponsor/reviewer 机制，建议参考 Flink 做法，在 roadmap 中为每个 FIP 明确主要贡献者和 reviewer/reporter，以支持实现按期进入发布。</p>
+<p><strong>@Lorenzo Affetti:</strong> 进一步提出可将 sponsor 机制嵌入现有投票流程，例如在投票中标记 (SPONSOR)，或修改 FIP 模板增加相关字段。</p></div>
+            <p class="conclusion">双方初步达成共识：为 FIP 引入 sponsor/reviewer 角色以提升推进效率。下一步是确定落地方式，可能通过投票机制标记 sponsor，或在 FIP 模板和 roadmap 中增加 contributor/reviewer 字段。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/o86c3c64jg65rofxfc2f4g087ob8so3r">FIP-53: Log Scanner Offset Management</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Fluss 社区围绕 FIP-53（Log Scanner Offset Management）展开讨论，核心是是否引入原生 offset 持久化以及分阶段交付 commit/fetch 与手动分配能力。Nicholas Jiang 支持提案方向，并提出 offset 表分布、手动提交与活跃消费组并发、提交顺序与故障恢复、Flink checkpoint 集成等实现细节问题。</p>
+            <div class="key-points"><p><strong>@Nicholas Jiang:</strong> 支持原生 offset 持久化，并建议先交付 commit/fetch 和 manual assignment，再单独讨论 group protocol。</p>
+<p><strong>@Nicholas Jiang:</strong> 建议明确 offset 表按 group_id 分布，确保与 coordinator discovery 一致，避免同一 group 的 offset 分散到不同 bucket。</p>
+<p><strong>@Nicholas Jiang:</strong> 关注手动提交、offset 重置与活跃消费组的并发安全，以及提交乱序、重试和 coordinator 故障切换下的语义保证。</p></div>
+            <p class="conclusion">整体支持提案方向，初步建议分阶段实现；下一步需补充并澄清 offset 表分布、并发与故障恢复契约，以及 Flink checkpoint 提交语义。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/fp8ljo2j4tszyp8jnr1gdvl35nopqqm2">FIP-54: Introduce client.writer.delivery-timeout to Fluss Write Client</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">该邮件围绕 FIP-54 引入 client.writer.delivery-timeout 的提案展开，核心关注其是否能真正限制写入客户端的排队、在途 RPC 和重试总时长，以及 flush() 遇到过期 batch 时的语义。Zhe Wang 认可提案动机，但对实现细节和公开契约提出澄清请求。</p>
+            <div class="key-points"><p><strong>@Zhe Wang:</strong> 当前提案可能无法严格限制在途 RPC，因为 request-timeout 不强制执行独立的客户端 RPC 截止时间，且临近超时的重试可能超出整体预算。</p>
+<p><strong>@Zhe Wang:</strong> 需要澄清在途 batch 到达交付截止时间时是否会过期、过期后迟到的响应如何处理，以及每次 RPC 超时是否受剩余交付时间约束。</p>
+<p><strong>@Zhe Wang:</strong> flush() 可能仅因 CountDownLatch 释放而正常返回，不会暴露 batch 过期异常；若这是预期行为，FIP 应明确说明其公共契约。</p></div>
+            <p class="conclusion">暂无最终结论；下一步需要提案方在 FIP 中澄清 delivery-timeout 对在途请求的语义、重试截止时间约束，以及 flush() 对过期 batch 的异常暴露方式。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/mv571zrbfwfglpcz738dxy7vw94t85sl">[REMINDER] Register for Lakehouse Day EU 2026</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Jean-Baptiste Onofré 提醒社区成员报名参加将于 2026 年 10 月 10 日在苏格兰格拉斯哥举行的 Lakehouse Day EU 2026。该活动与 Community Over Code 同期举办，聚焦 ASF 旗下开源湖仓技术，涵盖 Fluss、Iceberg、Paimon、Hudi 等多个项目。</p>
+            <div class="key-points"><p><strong>@Jean-Baptiste Onofré:</strong> Lakehouse Day EU 2026 是一个全天多轨活动，旨在汇聚多个湖仓项目社区成员进行交流分享。</p>
+<p><strong>@Jean-Baptiste Onofré:</strong> 单独参加 Lakehouse Day 的门票为 85 美元，使用 apache.org 邮箱注册可享受 committer 优惠价。</p></div>
+            <p class="conclusion">呼吁社区成员查看完整日程并注册参会，如有问题可联系组织者。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (0)</h2>
+            
+    <p>本周新建 <strong>0</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周无新建 JIRA。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Fluss Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
