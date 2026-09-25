@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-09-24</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-09-24</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 2 新 Issues</div>
+            <div class="stat">✅ 0 关闭</div>
+            <div class="stat">✨ 3 新 PRs</div>
+            <div class="stat">🎉 2 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/4425">PR #4425</a> 合并：支持通过 AssumeRole 委托令牌启用 IRSA，增强文件系统访问认证能力。</li><li>🎉 <a href="https://github.com/apache/fluss/pull/3994">PR #3994</a> 合并：消除 KV tablet 创建、删除和加载的全局锁，提升服务端并发性能。</li><li>🚀 <a href="https://github.com/apache/fluss/pull/4480">PR #4480</a> 推进：显式设置 snapshotId 以改善 scan-based lookup 性能，评审关注快照一致性。</li><li>✨ <a href="https://github.com/apache/fluss/issues/4481">Issue #4481</a> 与 <a href="https://github.com/apache/fluss/pull/4482">PR #4482</a> 提出 Flink lookup 支持 Cache ALL，增强维表查询缓存能力。</li><li>🐛 <a href="https://github.com/apache/fluss/issues/4484">Issue #4484</a> 新增缺陷：RocksDBKv.multiGet 将读取错误报告为 key 缺失，需关注正确性。</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4233">Issue #4233</a> [test] Unstable test FlinkUnionReadPrimaryKeyTableITCase.testUnionReadWithCustomLakeTablePath</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: CI 报告该集成测试失败，日志显示断言错误，需关注测试稳定性。</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3813">PR #3813</a> [FIP-29] Add SSL config parsing and SslContext/SslHandler factory</h4>
+            <ul><li><span class="author">@polyzos</span>: 确认是否还有意见，若没有即可合并，并建议先 rebase 再合并。</li><li><span class="author">@fresh-borzoni</span>: 建议补齐 mTLS 监听、协议名、客户端配置和 keystore 私钥等安全校验。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4133">PR #4133</a> [kv] Bump RocksDB version to 11.8.1</h4>
+            <ul><li><span class="author">@rakeshkodathala</span>: 表示希望认领该事项，参与并推进 RocksDB 版本升级相关工作。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4425">PR #4425</a> [fs] Support IRSA with AssumeRole delegation tokens</h4>
+            <ul><li><span class="author">@polyzos</span>: 审阅通过，未发现进一步问题，认为该 PR 当前变更可以合并。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3851">PR #3851</a> [build] Add a local development kit for contributors</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 提出 DevKit 多项改进：Lance 主键、冒烟校验、CI 触发、下载校验和安全端口等。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3977">PR #3977</a> [server] add support of rebuilding KV from local snapshot</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 关注本地快照重建的残留目录、硬链接、恢复重试锁、指标和配置说明，建议完善清理与文档。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4113">PR #4113</a> [server] Add support of sharable file cache capacity for historical partition lookup</h4>
+            <ul><li><span class="author">@Copilot</span>: 指出 query-auth 保护、缓存驱逐引用计数、启动清理顺序、关闭竞态和保留配置等问题。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4480">PR #4480</a> [lake/paimon] Explictly snapshotId setting to improve scan-based lookup performance</h4>
+            <ul><li><span class="author">@Copilot</span>: 指出快照上下文与获取不原子可能导致旧快照查询，建议传播选中快照并更新文档。</li><li><span class="author">@zuston</span>: 回应所有变更均来自 Fluss，认为不会出现旧快照问题。</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4484">#4484</a> [kv] RocksDBKv.multiGet reports read errors as missing keys <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/4481">#4481</a> Support Cache ALL for flink lookup. <span class="author">@loserwang1024</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4483">#4483</a> [lake/paimon] Support dynamic config for `table.datalake.historical-partition.lookup-mode` <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/pull/4482">#4482</a> [flink] Support Cache ALL for lookup. <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/pull/4480">#4480</a> [lake/paimon] Explictly snapshotId setting to improve scan-based lookup performance <span class="author">@zuston</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <p class="empty">暂无</p>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4425">#4425</a> [fs] Support IRSA with AssumeRole delegation tokens <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/3994">#3994</a> [server] Eliminate global lock for KV tablet creation/deletion/load <span class="author">@zuston</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
