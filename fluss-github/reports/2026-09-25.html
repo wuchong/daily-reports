@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-09-25</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-09-25</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 1 新 Issues</div>
+            <div class="stat">✅ 0 关闭</div>
+            <div class="stat">✨ 3 新 PRs</div>
+            <div class="stat">🎉 0 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🐛 <a href="https://github.com/apache/fluss/pull/4488">PR #4488</a> 修复 RocksDB multiGet 将读错误误报为缺失键的问题，并补充回归验证。</li><li>✨ <a href="https://github.com/apache/fluss/pull/4487">PR #4487</a> 推进历史分区本地 WAL 随 lake 进度清理，响应 <a href="https://github.com/apache/fluss/issues/4486">Issue #4486</a>。</li><li>✨ <a href="https://github.com/apache/fluss/pull/4485">PR #4485</a> 在 tagged lookup 断言前等待 KV flush，提升测试稳定性。</li><li>📚 <a href="https://github.com/apache/fluss/pull/3635">PR #3635</a> 分区 mark-done 功能收到围绕接口设计、配置来源和文档的深入评审。</li><li>🚀 <a href="https://github.com/apache/fluss/pull/4113">PR #4113</a> 历史分区 lookup 共享文件缓存方案评审关注全局磁盘预算与淘汰策略。</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4177">Issue #4177</a> [test] Unstable test ReplicaManagerTest.testTaggedLookupAndPrefixResultsUseRpcSlices</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: CI 报告 ReplicaManagerTest 用例出现 NullPointerException，导致测试失败。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4233">Issue #4233</a> [test] Unstable test FlinkUnionReadPrimaryKeyTableITCase.testUnionReadWithCustomLakeTablePath</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: CI 报告 FlinkUnionReadPrimaryKeyTableITCase 用例发生断言失败。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4484">Issue #4484</a> [kv] RocksDBKv.multiGet reports read errors as missing keys</h4>
+            <ul><li><span class="author">@zhang-arvin</span>: 定位 multiGet 将读错误误报为缺失键，提出重查方案并提交 PR #4488 修复。</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3635">PR #3635</a> [lake] Support partition mark-done for lakehouse tiering (processing-time)</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 建议统一能力接口、重命名状态类、从 Paimon 表读取配置并完善测试与文档。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4113">PR #4113</a> [server] Add support of sharable file cache capacity for historical partition lookup</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 建议重命名管理器、移除固定缓存上限、完善命名空间注释、许可证说明和配置复用。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4480">PR #4480</a> [lake/paimon] Explictly snapshotId setting to improve scan-based lookup performance</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 建议移除仅测试用重载，测试直接调用六参构造并传入 null。</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4486">#4486</a> [server] Historical partitions retain local WAL after lake progress <span class="author">@luoyuxia</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4488">#4488</a> [kv] Fail multiGet on read errors instead of reporting missing keys <span class="author">@zhang-arvin</span> </li><li><a href="https://github.com/apache/fluss/pull/4487">#4487</a> [server] Advance historical WAL retention with lake progress <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/pull/4485">#4485</a> [test] Wait for KV flush before tagged lookup assertions <span class="author">@Leondon9</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <p class="empty">暂无</p>
+            <h3>已合并 PRs</h3>
+            <p class="empty">暂无</p>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
