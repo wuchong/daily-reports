@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spark 社区周报 | 2026-W38</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Spark 社区周报 | 2026-W38</h1>
+            <p class="date-range">2026-09-14 ~ 2026-09-20</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (0)</h2>
+            <p class="empty">本周无公告</p>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (0)</h2>
+            <p class="empty">本周无投票</p>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (8)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/4r7zonlh748wn2fhos6w9vgm5wqr1pgw">Release Apache Spark 4.2.1</a></h3>
+            <p class="meta">11 条回复 · 10 位参与者</p>
+            <p class="summary">社区讨论发布 Apache Spark 4.2.1 维护版本，主要动机是修复 4.2.0 引入的 DSv2 PartitionPredicate 正确性问题（SPARK-59572），同时包含自 4.2.0 以来积累的 99 个 PR，涉及 SQL、Core、Streaming、PySpark 和 Kubernetes 等模块的正确性与稳定性修复。讨论获得多位社区成员支持，Szehon Ho 自愿担任发布负责人。</p>
+            <div class="key-points"><p><strong>@Szehon Ho:</strong> 提议发布 Spark 4.2.1，重点修复 SPARK-59572 正确性问题，并自愿推动发布流程</p>
+<p><strong>@Uroš Bojanić:</strong> 支持 4.2.1 发布，并建议协调其他维护版本（如 4.1.4、4.0.5、3.5.10）的发布</p>
+<p><strong>@Hyukjin Kwon / huaxin gao / Yuming Wang / Cheng Pan / Wenchen Fan / Peter Toth / Dongjoon Hyun / Kousuke Saruta:</strong> 多位社区成员投票支持（+1）推进 4.2.1 发布</p></div>
+            <p class="conclusion">社区已达成初步共识支持发布 Spark 4.2.1；已知阻塞问题（PR #58870）已合并，Szehon Ho 将启动发布流程，同时继续征集是否还有其他阻塞问题。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/bfdvfq7576w64kmjhhtxf16xwd3rx041">SPIP: Pluggable Row-Filter and Column-Mask Enforcement in Catalyst</a></h3>
+            <p class="meta">8 条回复 · 8 位参与者</p>
+            <p class="summary">该讨论围绕一项 SPIP 提案展开，提议为 Spark DataSource V2 增加公共访问控制 API，使表或 Catalog 能声明可读列、行过滤和列掩码策略，并由 Spark 在查询计划中强制执行。社区普遍支持该方向，认为可替代当前依赖内部 Catalyst API 的脆弱实现，但重点提出需要补充安全边界、失败关闭机制和优化器安全性等细节。</p>
+            <div class="key-points"><p><strong>@huaxin gao:</strong> 提议新增 SupportsAccessControl DSv2 API，在分析阶段强制执行访问策略，保证掩码不会被优化器移除、行过滤使用原始值，并在无法解析时直接失败以避免泄露数据。</p>
+<p><strong>@Dongjoon Hyun:</strong> 支持提案方向，但要求在投票前明确安全保证，包括安全屏障、DML 读路径、旧版本兼容、绕过路径，以及将掩码不可移除表述为优化器不变量。</p>
+<p><strong>@Martin Grund:</strong> 认为当前提案对安全边界和执行保证描述不足，建议明确泄露表达式、类型不匹配、时间旅行等场景，并将内置掩码函数与核心提案解耦。</p></div>
+            <p class="conclusion">提案方向获得多方支持，但尚未形成最终结论；huaxin gao 表示正在整理邮件和文档中的反馈，后续将发布修订版提案文档。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/96goypb9vq64h9t5jkmw8n8yo3xtrogv">Release Apache Spark 4.1.4</a></h3>
+            <p class="meta">6 条回复 · 6 位参与者</p>
+            <p class="summary">Uroš Bojanić 提议发布 Apache Spark 4.1.4 维护版本，并建议协调推进 4.0.5 及面向安全的 3.5.10。社区成员普遍支持，最终确认将优先发布 4.2.1 和 4.1.4，由 Uroš 主导 4.1.4 并与 Szehon Ho 协作。</p>
+            <div class="key-points"><p><strong>@Uroš Bojanić:</strong> branch-4.1 已积累 68 个 JIRA，包含正确性、稳定性和资源泄漏修复，建议启动 4.1.4 发布，并可同步考虑 4.0.5 与 3.5.10。</p>
+<p><strong>@Szehon Ho:</strong> 支持该提议，建议先推进 4.2.1 和 4.1.4，并愿意与 Uroš 协作处理其他分支或寻找志愿者。</p>
+<p><strong>@Uroš Bojanić:</strong> 已补充 5 个遗漏的 4.1.4 Fix Version，当前 4.1.4 无未解决阻塞项，仍欢迎社区提出额外 backport。</p></div>
+            <p class="conclusion">社区同意推进发布，下一步由 Uroš Bojanić 主导 Apache Spark 4.1.4，与 Szehon Ho 协调并优先推进 4.2.1 和 4.1.4；如有额外 4.1 backport 可继续提出。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/dbmtdt8n7kh4x957yr4420prnbchgjb1">SPIP: Add the DECFLOAT data type</a></h3>
+            <p class="meta">5 条回复 · 6 位参与者</p>
+            <p class="summary">本次讨论围绕 Spark 新增 DECFLOAT 数据类型的 SPIP 展开，重点是如何区分不可逆的逻辑值域设计与可后续调整的实现细节。修订后的提案改为纯 Java 实现，解决了部分架构担忧，但在 API 完整性、Parquet 编码、算术实现方案及成熟度方面仍存在分歧，尚未达到可投票状态。</p>
+            <div class="key-points"><p><strong>@Uroš Bojanić:</strong> DECFLOAT 应支持 IEEE 754 非有限值（+Inf、-Inf、NaN、signed zero），这是不可逆的关键设计决策；而位数和算术实现可在后续兼容地调整。</p>
+<p><strong>@Dongjoon Hyun:</strong> 修订版解决了原生依赖问题，但提案仍不成熟：公共 API 存在未决项、Parquet 编码未被社区接受，且当前 PR 仅为算术库移植，缺少与 Spark 引擎的集成，不建议作为独立模块合并。</p>
+<p><strong>@Thomas Kissinger:</strong> 质疑 IEEE BID 方案未经过充分比较，建议评估基于 BigDecimal 的有限算术包装方案，以支持 38 位精度并减少自研算术代码的维护负担。</p></div>
+            <p class="conclusion">提案方已明确 v1 仅采用纯 Java 算术路径、原生优化不在本 SPIP 范围内，并承诺公共 API 不再开放未决项；但社区普遍认为仍需完善实现集成与外部格式兼容性，后续将在 PR 代码评审中继续讨论实现细节。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/r3jyf1on98lgnxw6pdhjj0qrh09mnxvz">Spark routing architecture for Iceberg Materialized Views</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论围绕 Spark 与 Iceberg 物化视图（MV）的路由架构展开，核心是如何在查询时选择读取物化表还是重新计算视图。Walaa 提出实现分为 Iceberg-core 元数据与新鲜度检查、以及 Spark 引擎侧路由两部分，并已基于 DSv2 catalog-based routing 和 Spark 4.2 的 loadRelation API 更新方案。Ryan 建议先从 Iceberg 内的基础检查实现起步，再逐步让引擎支持更复杂的路由决策。</p>
+            <div class="key-points"><p><strong>@Walaa Eldin Moustafa:</strong> 实现拆分为两部分：Iceberg-core 负责物化视图元数据、源状态解析与基础新鲜度检查；Spark 侧负责引擎路由，新鲜时读取存储表，过期时评估视图查询。</p>
+<p><strong>@Walaa Eldin Moustafa:</strong> Spark 组件已采用 DSv2 catalog-based routing（PR #9830），并适配 Spark 4.2 的 loadRelation API，用单一调用统一返回存储表或视图，简化了旧版多路径逻辑。</p>
+<p><strong>@Ryan Blue:</strong> 建议先在 Iceberg 中实现基础检查，支持无引擎场景；引擎侧的复杂决策（如增量合并新数据）可后续逐步扩展，初期以“用表读替代视图”为简单路径。</p></div>
+            <p class="conclusion">初步方向是先在 Iceberg 层实现基础新鲜度检查与简单路由，Spark 侧利用 Spark 4.2 loadRelation API 统一处理新鲜/过期两种情况；后续再考虑引擎侧更复杂的优化与决策。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/ptt7c4kydks45s23k53ycmzdjr202omz">Committer support for website improvements</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Nicholas Chammas 正在推动 Spark 官网仓库的维护优化，当前重点是重构 PR 工作流，实现站点 HTML 的自动生成与提交。他已发起相关 PR，并等待至少一位 Committer 批准，因为该变更会影响所有贡献者的工作流程。</p>
+            <div class="key-points"><p><strong>@Nicholas Chammas:</strong> 提出改进 spark-website 的多项易维护性优化，核心是 PR #699 的自动化站点生成工作流，需 Committer 支持后才能合并。</p></div>
+            <p class="conclusion">等待至少一位 Committer 批准 PR #699；若通过，后续较小改进将采用懒惰共识方式推进。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/6ovo25o9rsfrbcsq72bv4yb0y7b4wk5v"></a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论主题与邮件内容缺失，仅提供了发件人姓名，无法概括 Spark 社区邮件讨论的核心议题、进展或结论。</p>
+            
+            <p class="conclusion">需补充完整讨论主题和邮件正文后才能生成有效摘要。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/3nkx52x3smdg7romqdzgw2mb5s7xtlvv">Release Apache Spark 4.0.5</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Uroš Bojanić 提议发布 Apache Spark 4.0.5，作为与 4.2.1 和 4.1.4 协调的配套维护版本。自 4.0.4 以来，branch-4.0 已积累 56 个 JIRA 和 72 次提交，主要为正确性和稳定性修复；由于 4.0.x 支持窗口将于 2026 年 11 月结束，这可能是倒数第二个 4.0 版本。</p>
+            <div class="key-points"><p><strong>@Uroš Bojanić:</strong> 建议发布 Spark 4.0.5 作为协调维护版本，并指出该分支已积累较多修复，且 4.0.x 生命周期接近尾声。</p></div>
+            <p class="conclusion">目前处于提议和征求意见阶段，尚未形成最终结论；下一步是社区成员反馈是否有需要额外 backport 到 4.0 的重要修复。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (0)</h2>
+            
+    <p>本周新建 <strong>0</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周无新建 JIRA。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Spark Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
