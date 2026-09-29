@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data+AI 全球日报 | 2026-09-28</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Data+AI 全球日报 | 2026-09-28</h1>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="top-changes">
+            <h2>🔥 今日最重要的3个变化</h2>
+            <ol><li><strong>Amazon Redshift 深化 Apache Iceberg 写入与表演进能力</strong> — Amazon Redshift 支持通过 ALTER 语句演进 Iceberg 表结构和分区布局，减少数据重写与管道重建成本，强化湖仓一体能力。</li><li><strong>ClickHouse 推出 chDB Durable Layer，切入 Agent Memory 场景</strong> — chDB Durable Layer 将本地高速查询与可恢复的 Agent 分析状态结合，推动分析型数据库进入 AI Agent 状态管理领域。</li><li><strong>Amazon SageMaker Unified Studio 增强 AI Agent 权限治理</strong> — SageMaker Unified Studio 支持为 Tooling blueprint 配置 IAM permissions boundaries，提升企业 AI Agent 工具链的安全与合规能力。</li></ol>
+            <p class="judgment"><strong>总判断：</strong>今日行业信号显示，数据平台竞争正从单纯查询性能转向开放表格式治理、Agent 状态持久化与安全权限控制。AWS 通过 Redshift Iceberg 写入与 SageMaker 权限边界强化湖仓和 AI 工程化闭环；ClickHouse、StarTree 等厂商则在 Agent memory 与实时可观测性分析中寻找差异化机会。</p>
+        </section>
+
+        <section class="top-signals">
+            <h2>📡 重要信号</h2>
+            
+    <article class="news-item">
+        <h3>Amazon Redshift 推进 Apache Iceberg 写入与表演进能力</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/getting-started-with-apache-iceberg-write-support-in-amazon-redshift-part-3/">AWS Big Data Blog</a></p>
+        <p class="date">2026-09-28</p>
+        <p class="summary">AWS 发布 Amazon Redshift Apache Iceberg 写入支持系列第三篇，介绍通过 ALTER 语句演进 Iceberg 表结构和分区布局。用户可重命名、新增、删除和扩展列，并演进分区，而无需重写数据或重建管道。文章还展示如何创建 AWS Lake Formation resource links，进一步连接湖仓目录与权限体系。</p>
+        <div class="impact">📊 数据平台影响：Redshift 将 Iceberg 从读取扩展到写入和元数据演进，增强湖仓一体竞争力，降低企业从专有表格式迁移到开放表格式的成本，也会推动 Lake Formation 成为统一治理层。</div>
+    </article>
+    <article class="news-item">
+        <h3>ClickHouse 推出 chDB Durable Layer，面向 Agent Memory 的持久化分析层</h3>
+        <p class="sources">📌 <a href="https://clickhouse.com/blog/chdb-durable-layer-for-agent-memory">ClickHouse Blog</a></p>
+        <p class="date">2026-09-28</p>
+        <p class="summary">ClickHouse 发布 chDB Durable Layer，用于保存 AI agent memory。该层在本地保持高速查询能力，同时让分析状态可在笔记本、CI 任务和短生命周期沙箱之间恢复。其目标是为 agent 提供可持久、可审计、可复用的上下文状态，而不是只依赖临时缓存或外部向量库。</p>
+        <div class="impact">📊 数据平台影响：chDB 将分析型数据库能力嵌入 Agent 运行时，推动数据库从查询引擎扩展为 Agent 状态基础设施。这可能为本地化、边缘化和 CI 内 AI 工作流提供更轻量化的记忆层。</div>
+    </article>
+    <article class="news-item">
+        <h3>Amazon SageMaker Unified Studio 支持 Tooling blueprint 的 IAM 权限边界</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/enforce-iam-permissions-boundaries-for-amazon-sagemaker-unified-studio-tooling-blueprints/">AWS Big Data Blog</a></p>
+        <p class="date">2026-09-28</p>
+        <p class="summary">AWS 介绍 Amazon SageMaker Unified Studio Tooling blueprint 新增自定义 IAM permissions boundaries 能力。用户可创建限制 AI agent 能力的权限边界，通过 AWS CLI 配置到 Tooling blueprint，并验证每个自动创建的 IAM role 是否符合最小权限要求。这有助于企业在自动化 AI 工具链中加强安全治理。</p>
+        <div class="impact">📊 数据平台影响：AI Agent 工具链正从可用性转向可治理性。将权限边界嵌入 SageMaker blueprint，有助于企业把数据访问、模型调用和工具执行纳入统一安全模型，降低自动化 Agent 越权风险。</div>
+    </article>
+        </section>
+
+        <section class="product-tech">
+            <h2>💻 产品与技术</h2>
+            
+    <article class="news-item">
+        <h3>StarTree 介绍 Pinot 可配置架构如何适配解耦可观测性管道</h3>
+        <p class="sources">📌 <a href="https://startree.ai/resources/how-a-configurable-architecture-helps-pinot-adapt-to-the-complexities-of-disaggregated-observability-pipelines/">StarTree Blog</a></p>
+        <p class="date">2026-09-28</p>
+        <p class="summary">StarTree 发布文章，说明 Apache Pinot 如何通过可配置架构应对解耦 observability pipelines 的复杂性。新的 Custom Hash Function framework 允许直接在 Pinot table configuration 中定义分区逻辑，帮助生产管道处理非标准数据分布、热点键和自定义分区需求。</p>
+        <div class="impact">📊 数据平台影响：可观测性数据平台正在从固定摄入管道转向可插拔架构。Pinot 通过表级配置增强分区灵活性，有利于实时分析系统在日志、指标和追踪场景中降低热点并提升多租户适配能力。</div>
+    </article>
+        </section>
+
+        <section class="people-views">
+            <h2>👤 人物与观点</h2>
+            
+    <article class="news-item">
+        <h3>ClickHouse 评测托管 Postgres 在坏查询下的生存能力</h3>
+        <p class="sources">📌 <a href="https://clickhouse.com/blog/can-your-postgres-survive-a-bad-query">ClickHouse Blog</a></p>
+        <p class="date">2026-09-28</p>
+        <p class="summary">ClickHouse 发布评测文章，考察托管 Postgres 服务在内存耗尽型坏查询下的表现。文章通过递归查询基准，比较 ClickHouse Managed Postgres、Cloud SQL、PlanetScale 和 Amazon RDS 在查询失败、资源隔离和集群存活方面的差异，强调数据库平台需要更强的查询防护与资源治理能力。</p>
+        <div class="impact">📊 数据平台影响：该评测凸显托管数据库的稳定性不仅取决于性能，还取决于坏查询隔离、内存保护和故障恢复能力。对数据平台选型而言，资源治理和查询熔断将成为重要指标。</div>
+    </article>
+        </section>
+
+        <section class="analyst-insights">
+            <h2>📊 分析师洞察</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="watchlist">
+            <h2>👀 观察列表</h2>
+            
+    <article class="watchlist-item">
+        <h3>Redshift Iceberg 写入与表演进生产化</h3>
+        <span class="status">待观察</span>
+        <p class="reason">AWS 正在增强开放表格式写入能力，但企业仍会关注性能、事务语义、跨引擎兼容和治理成熟度。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>更多 ALTER 场景、跨引擎写入验证及 Lake Formation 权限策略落地案例。</p>
+    </article>
+    <article class="watchlist-item">
+        <h3>Agent Memory 数据库化</h3>
+        <span class="status">待观察</span>
+        <p class="reason">chDB Durable Layer 显示分析数据库开始承担 Agent 长期记忆和状态恢复职责，但生态集成和生产可靠性仍需验证。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>与 LangChain、LlamaIndex 或 Agent runtime 的官方集成，以及跨节点同步能力。</p>
+    </article>
+    <article class="watchlist-item">
+        <h3>AI Agent 权限治理标准化</h3>
+        <span class="status">待观察</span>
+        <p class="reason">SageMaker 权限边界表明云厂商开始把 Agent 工具链安全前置到 blueprint 层，后续可能影响企业 AI 平台采购标准。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>更多托管服务支持 permission boundary、审计日志和自动化合规检查。</p>
+    </article>
+        </section>
+
+        <section class="stock-analysis">
+            <h2>📈 股票分析</h2>
+            <p class="disclaimer">⚠️ 以下内容仅供参考，不构成任何投资建议。投资有风险，入市需谨慎。</p>
+            
+    <article class="stock-item">
+        <div class="stock-header">
+            <span class="ticker">AMZN</span>
+            <span class="company">Amazon</span>
+            <span class="signal signal-bullish">🟢 看多</span>
+        </div>
+        <p class="stock-summary">AWS 在 Redshift Iceberg 写入和 SageMaker Agent 权限治理上的更新，强化其湖仓一体与企业 AI 工程化能力，有助于提升云数据平台粘性；本分析仅供参考，不构成投资建议。</p>
+        <div class="stock-details">
+            <div class="catalysts">
+                <strong>🚀 催化剂</strong>
+                <ul><li>AWS 数据与 AI 服务收入增长</li><li>Iceberg 与 Lake Formation 生态扩展</li><li>企业 AI Agent 治理需求上升</li></ul>
+            </div>
+            <div class="risks">
+                <strong>⚠️ 风险</strong>
+                <ul><li>云支出优化压力</li><li>Snowflake、Databricks 等竞争</li><li>开放表格式跨云兼容可能削弱平台锁定效应</li></ul>
+            </div>
+        </div>
+    </article>
+        </section>
+
+        <footer>
+            <p>Generated by Data+AI Daily Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
