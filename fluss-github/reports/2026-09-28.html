@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-09-28</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-09-28</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 4 新 Issues</div>
+            <div class="stat">✅ 2 关闭</div>
+            <div class="stat">✨ 8 新 PRs</div>
+            <div class="stat">🎉 3 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/4487">PR #4487</a> [server] Advance historical WAL retention with lake progress</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4483">PR #4483</a> [lake/paimon] Support dynamic config for `table.datalake.historical-partition.lookup-mode`</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4113">PR #4113</a> [server] Add support of sharable file cache capacity for historical partition lookup</li><li>🐛 <a href="https://github.com/apache/fluss/issues/4499">Issue #4499</a> [rust] Concurrent lookups on one Lookuper run one at a time</li><li>🐛 <a href="https://github.com/apache/fluss/issues/4497">Issue #4497</a> [rust] Bounded read never finishes when a filter prunes the tail</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/280">Issue #280</a> [Feature] Add itcase to test restoring for savepoint state.</h4>
+            <ul><li><span class="author">@loserwang1024</span>: @Anurag15v , I have assigned this to you.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4487">Issue #4487</a> [server] Advance historical WAL retention with lake progress</h4>
+            <ul><li><span class="author">@luoyuxia</span>: @coding-otter-bot review</li><li><span class="author">@coding-otter-bot</span>: ## Automated code review ### Problem For datalake tables with the historical system partition (__hi…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3460">Issue #3460</a> [test] Unstable test RemoteLogDownloaderTest.testPrefetchNum</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: https://github.com/apache/fluss/actions/runs/36347050984/job/108698142227 ``` [ERROR] org.apache.fl…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/1594">Issue #1594</a> Support general DELETE statement on primary key table</h4>
+            <ul><li><span class="author">@Zhuoxi2000</span>: @luoyuxia, could you assign this to me so I can start the PR?</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2712">Issue #2712</a> When enabled, JMX metrics reporter throws exception on startup</h4>
+            <ul><li><span class="author">@Zhuoxi2000</span>: I'd like to fix this by replacing the RegistryImpl subclass with public LocateRegistry APIs.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4489">Issue #4489</a> [server] KV snapshot scheduling stops permanently after a transient snapshot-init failure</h4>
+            <ul><li><span class="author">@zhang-arvin</span>: @midnattsol — I'd like to take this one (@zhang-arvin). Thanks for the detailed reproduction. The k…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4439">Issue #4439</a> [server] Support update_if_changed merge engine for primary-key tables</h4>
+            <ul><li><span class="author">@luoyuxia</span>: @coding-otter-bot review</li><li><span class="author">@coding-otter-bot</span>: ## Automated code review could not complete The review for commit <code>5a7eec929e7757f35580b10c608…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4492">Issue #4492</a> [#4489] [server] Re-arm KV snapshot scheduling after a transient initialization failure</h4>
+            <ul><li><span class="author">@midnattsol</span>: We fixed this independently in our fork and verified it live with real S3-outage drills (snapshots…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3635">Issue #3635</a> [lake] Support partition mark-done for lakehouse tiering (processing-time)</h4>
+            <ul><li><span class="author">@luoyuxia</span>: Regarding [`createPartitionMarkDone()` in `PaimonLakeCommitter`](https://github.com/apache/fluss/bl…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2106">Issue #2106</a> [core] Support rename table.</h4>
+            <ul><li><span class="author">@Jackeyzhe</span>: Hi @zhuangchong, are you still planning to continue this PR? I’m interested in helping move rename-…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4116">Issue #4116</a> [build] fluss-filesystems uber-jars ship unshaded jackson + guava that can shadow downstream dependencies</h4>
+            <ul><li><span class="author">@Jackeyzhe</span>: I re-measured this against the **released 1.0.0 artifacts** on Maven Central rather than a local `m…</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4113">PR #4113</a> [server] Add support of sharable file cache capacity for historical partition lookup</h4>
+            <ul><li><span class="author">@luoyuxia</span>: Could we rename `LookupRuntimeOptions` to `LookupCacheOptions`? It currently contains only `localCa…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3635">PR #3635</a> [lake] Support partition mark-done for lakehouse tiering (processing-time)</h4>
+            <ul><li><span class="author">@beryllw</span>: We now share the normal commit path while retaining Paimon’s process-time behavior: mark-done does……</li><li><span class="author">@luoyuxia</span>: An supports interface extends a Factory interface seems not a good design to me.；sine we already ch…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4293">PR #4293</a> [client] Back off writes rejected by disk protection</h4>
+            <ul><li><span class="author">@Jackeyzhe</span>: With this change, an all-throttled writer sleeps until the full effective gate deadline instead of…</li><li><span class="author">@fhan688</span>: > With this change, an all-throttled writer sleeps until the full effective gate deadline instead o…</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4499">#4499</a> [rust] Concurrent lookups on one Lookuper run one at a time <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/4497">#4497</a> [rust] Bounded read never finishes when a filter prunes the tail <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/4495">#4495</a> [rust] Bucket hash disagrees with Java for keys with bytes >= 0x80 <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/4490">#4490</a> [security] PlainSaslServerProvider conflicts with Hadoop SASL provider causing authentication failure <span class="author">@xinzhang-hello</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4501">#4501</a> [security] Fix concurrent ACL cache access in DefaultAuthorizer <span class="author">@fhan688</span> </li><li><a href="https://github.com/apache/fluss/pull/4500">#4500</a> [rust] Allow concurrent lookups on one Lookuper <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/4498">#4498</a> [rust] Fix bounded read hang on pruned tail <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/4496">#4496</a> [rust] Fix bucket hash sign extension <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/4494">#4494</a> Add explanations for streamhouse and lakestream <span class="author">@polyzos</span> </li><li><a href="https://github.com/apache/fluss/pull/4493">#4493</a> [server] Add support of concurrent SST lookup for paimon historical partition <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/pull/4492">#4492</a> [#4489] [server] Re-arm KV snapshot scheduling after a transient initialization failure <span class="author">@zhang-arvin</span> </li><li><a href="https://github.com/apache/fluss/pull/4491">#4491</a> [security] Prioritize PlainSaslServerProvider to avoid conflict with Hadoop SASL provider <span class="author">@xinzhang-hello</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4486">#4486</a> [server] Historical partitions retain local WAL after lake progress <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/issues/3955">#3955</a> [Improvement] Share Paimon historical lookup disk cache across tables <span class="author">@luoyuxia</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4487">#4487</a> [server] Advance historical WAL retention with lake progress <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/pull/4483">#4483</a> [lake/paimon] Support dynamic config for `table.datalake.historical-partition.lookup-mode` <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/pull/4113">#4113</a> [server] Add support of sharable file cache capacity for historical partition lookup <span class="author">@zuston</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
