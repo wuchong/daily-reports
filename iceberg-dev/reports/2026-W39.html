@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iceberg 社区周报 | 2026-W39</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Iceberg 社区周报 | 2026-W39</h1>
+            <p class="date-range">2026-09-21 ~ 2026-09-27</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (3)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/pq1z3vk09kkqs87j522ksg67lj66bkwb">Iceberg Community Meetup Europe - November Berlin</a></li>
+<li><a href="https://lists.apache.org/thread/lndrr0yn3l2pt7o72wfn2d9ssvhn5ho1">Apache Iceberg C++ 0.4.0 released</a></li>
+<li><a href="https://lists.apache.org/thread/fqmsxckdw88t32y2owvfd3mxjs7ttkr3">Iceberg Community Meetup Europe - November Amsterdam</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (6)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/ptq6gyf6gcd4xwwkn2q3yrt9lxr7ojdk">Release Apache Iceberg 1.12.0 RC1</a> <span class="status warning">⚠️ 有异议</span><p class="objection-inline">ku... 和 Jean-Baptiste Onofré 提出 -1，原因是发布包中的 LICENSE 文件不完整：iceberg-gcp-bundle 打包了 Caffeine 但未在 LICENSE 中声明，且多个 bundle 和 runtime JAR 中的 Jackson（FastDoubleParser）许可信息需要更新。</p></li>
+<li><a href="https://lists.apache.org/thread/qqrg1l5qntf2m8h11gvopyvojrffgbw3">Release Apache Iceberg C++ 0.4.0 RC0</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/2pgfvf8v5ob221q5t2xwzjo4xvw5ltz1">[SPEC] Forbid writing new equality deletes in v4 (#17783)</a> <span class="status warning">⚠️ 有异议</span><p class="objection-inline">无人提出 -1，投票以 4 个 binding +1 和 5 个 non-binding +1 通过，没有异议。</p></li>
+<li><a href="https://lists.apache.org/thread/79b5p9pfjso9d8tbs1w10619qz61rt85">Recommend a standard User-Agent format for REST clients</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/l8gjs6z1ocfd70hv6dj923s7p9qm0w77">Release Apache Iceberg 1.12.0 RC2</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/18mcytdbd953cdwz5wsvzx6sbqzsvofh">[Go] Release Apache Iceberg Go v0.7.0 RC0</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/6zspb6cpb6j2po5lm57mq1sgcp2hppkf">REST spec: expected server behavior when X-Iceberg-Access-Delegation cannot be satisfied</a></h3>
+            <p class="meta">8 条回复 · 4 位参与者</p>
+            <p class="summary">讨论围绕 Iceberg REST Catalog 规范中 X-Iceberg-Access-Delegation 请求头的语义展开：当客户端请求的访问委托机制（如 vended-credentials、remote-signing）服务器均无法满足时，服务器应返回 200（无凭证）还是 400 错误。讨论中出现分歧：一方主张规范应明确要求返回 400 以实现快速失败；另一方（Daniel Weeks）认为访问控制应由 Catalog 主导，当前规范措辞有意保持宽松，不应强制要求失败。最终发起人接受不修改强制行为，但希望澄清该请求头是能力声明还是强制要求。</p>
+            <div class="key-points"><p><strong>@youngrae kim:</strong> 提出规范中 'any or none' 表述存在歧义，询问服务器无法满足任何请求机制时是否可返回 400，并表示愿意起草澄清文本。</p>
+<p><strong>@Alex Dutra:</strong> 主张更新规范，要求当所有请求机制均不可用时服务器应返回 HTTP 400，并指出当前请求头无法表达客户端自带凭证的能力，存在语义模糊。</p>
+<p><strong>@Daniel Weeks:</strong> 反对修改规范强制返回错误，认为访问委托应由 Catalog 全权决定，当前宽松措辞是有意为之；客户端自带凭证属于反模式，建议通过 Catalog 提供的凭证/签名配置来表达访问方式。</p></div>
+            <p class="conclusion">未达成修改规范强制行为的共识。Polaris 将保留其返回 400 的实现选择并作为实现层面行为记录。后续可能的行动是起草一句澄清，说明 X-Iceberg-Access-Delegation 请求头是能力声明还是强制要求，以及缺失该请求头的含义，但不强制规定服务器必须失败。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/hrcyh8nqf1svrwnm279n466c75r3wwxn">Catalog-provided metadata tables</a></h3>
+            <p class="meta">8 条回复 · 4 位参与者</p>
+            <p class="summary">讨论围绕是否新增由 Catalog 提供的 .labels 元数据表展开，核心问题是 Iceberg 是否允许元数据表暴露非表元数据、而是 Catalog 侧拥有的信息。Andrei 认为这可支持 SQL 查询和与 .files 等表联查，Ryan 质疑其必要性，Peter 指出这可能与 labels 当前“非持久化、仅当前视图”的设计假设冲突。最终讨论倾向于暂不引入该元数据表，优先通过 SupportsLabels 和 DESCRIBE 等方式暴露 labels。</p>
+            <div class="key-points"><p><strong>@Andrei Tserakhau:</strong> 提议新增 .labels 元数据表，作为 Catalog 提供元数据的独立类别，便于 SQL 用户、治理工具和 LLM Agent 查询 labels，并可与其他元数据表组合使用。</p>
+<p><strong>@Ryan Blue:</strong> 不反对通过系统表暴露元数据，但质疑是否必须提供 SQL 表面；认为 labels 主要面向引擎能力，如成本归因或策略附加，不一定需要元数据表。</p>
+<p><strong>@Péter Váry:</strong> 若将 labels 做成可查询、可联查的元数据表，会使其趋向正式表元数据，与当前 spec 中 labels 不要求持久化、版本化、只表示当前视图的设计不一致。</p></div>
+            <p class="conclusion">初步结论是暂不添加 .labels 元数据表；当前更倾向通过 SupportsLabels 编程接口和 DESCRIBE 输出暴露 labels，待后续有更多实际用例后再重新评估。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/38rkthkr1fg0s86493fjq755cnl3y90s">Reusable encryption keys</a></h3>
+            <p class="meta">7 条回复 · 3 位参与者</p>
+            <p class="summary">讨论围绕 Iceberg 加密密钥设计展开，核心议题是是否应放弃在表元数据 encryption-keys 列表中复用 DEK 的现有模式，改为为每个文件生成独立 DEK 并将加密密钥元数据直接内联到对应文件元数据中。参与者普遍认为 DEK 复用在实践中复杂且收益有限，倾向在 V4 root manifest 和 statistics 文件中采用新的按文件存储密钥元数据方案。</p>
+            <div class="key-points"><p><strong>@Gábor Kaszab:</strong> 现有 encryption-keys 列表假设 DEK 可复用，但实际因 nonce/AAD 等密码学要求导致复用复杂，建议新文件类型直接将加密密钥存入文件元数据，实现 1-1 映射并简化解密钥清理。</p>
+<p><strong>@Gidon Gershinsky:</strong> 同意在 V4 中将 DEK 元数据移至按文件结构，每个文件生成随机 DEK 更简单安全；共享的 KEK 仍保留在表元数据的 encryption-keys 列表中。</p>
+<p><strong>@Xander Bailey:</strong> 支持每文件生成新 DEK，并认可内联密钥元数据带来的清理优势，但关注与现有 manifest-list 模式的一致性，最终被长期维护成本和清理便利性论证说服。</p></div>
+            <p class="conclusion">初步达成共识：不再复用 DEK，V4 root manifest 和 statistics 文件应采用按文件内联加密 DEK 元数据的设计，KEK 仍通过现有 encryption-keys 列表共享；下一步是先敲定规范设计（参考 PR #17533），随后提供 Java 实现，并关注 Rust 实现。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/385j2js884o2vct31n775kt7m49jm4sn">Switching S3 test backend to address issue #14638</a></h3>
+            <p class="meta">4 条回复 · 4 位参与者</p>
+            <p class="summary">讨论围绕将 Iceberg CI 测试中的 S3 后端从 MinIO 切换为 RustFS，以解决 MinIO 导致的集成测试失败和 CI 阻塞问题。社区已就迁移到 RustFS 达成共识，并完成了所有相关仓库的切换。</p>
+            <div class="key-points"><p><strong>@Kevin Liu:</strong> 支持弃用 MinIO，建议在 Iceberg 各仓库统一采用 RustFS 以与 PyIceberg 和 Polaris 保持一致。</p>
+<p><strong>@Neelesh Salian:</strong> 关注 RustFS 的 CVE 安全问题，强调需要长期支持和及时的安全补丁修复。</p>
+<p><strong>@Steven Wu:</strong> 指出 Kafka Connect 集成测试因 MinIO 问题在 CI 中失败，询问迁移进展。</p></div>
+            <p class="conclusion">所有 Iceberg 仓库已完成从 MinIO 到 RustFS 的切换，CI 阻塞已解除，RC 发布不再受阻。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/hdf5zd96sm38sjsmp0jjvfp274wfwmk2">Apache Iceberg 1.12.0 release</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">该邮件串主要围绕 Apache Iceberg 1.12.0 版本发布推进，包括 RC 候选版本的投票、geo 类型行为变更的讨论，以及发布前遗留修复项的处理。期间还穿插了对未使用类废弃和加密密钥清理问题的讨论。</p>
+            <div class="key-points"><p><strong>@Neelesh Salian:</strong> 作为发布负责人推进 1.12.0 版本，确认 geo 类型行为变更将保留在 1.12 中，并陆续发布 RC1、RC2 供社区投票。</p>
+<p><strong>@Steven Wu:</strong> 指出 PR #16765 引入了 GeometryType/GeographyType toString() 行为变更，默认参数不再省略，可能影响兼容性，呼吁社区关注。</p>
+<p><strong>@Sergei Nikolaev:</strong> 提出 DataReader 移除后，ProjectionDatumReader 等类已无使用，建议废弃并提交 PR 添加弃用注解。</p></div>
+            <p class="conclusion">geo 类型行为变更已确认保留在 1.12.0 中，RC2 已发布并延长投票时间至 2026-09-29；相关废弃类问题需维护者进一步评估。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/465y1l88hkrwkv39r8b84xwsl7f19kpg">Access Delegation for Iceberg FILE type in the REST Catalog</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">本次讨论围绕 Iceberg REST Catalog 中 FILE 类型的访问委托机制展开，核心争议在于预签名 URL 的刷新机制、端点设计及与现有签名的关系。Prashant 强调需支持 URL 过期刷新以应对长时间查询，Sung Yun 则澄清讨论目标是梳理 FILE 类型用例并推动相关设计文档评审。</p>
+            <div class="key-points"><p><strong>@Prashant Singh:</strong> 预签名 URL 需要类似凭证的刷新机制以应对执行器消费前过期的问题，建议支持批量签名和 planId 审计。</p>
+<p><strong>@Sung Yun:</strong> 讨论旨在明确 FILE 类型用例，预签名适合外部服务交接，但客户端内部访问可用现有模式。</p>
+<p><strong>@Sung Yun:</strong> 已发布用例分析和批量签名文档，将纳入 FILE 同步会议议程。</p></div>
+            <p class="conclusion">下一步将评审 Sung Yun 提供的两份设计文档，并在 FILE 同步会议中继续讨论。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/ds15k34koh25c1z7ck3qlqd1sdc9b345">iceberg-cpp 0.4.0 release</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">社区围绕 iceberg-cpp 0.4.0 发布节奏展开讨论，核心争议是是否推迟发布以纳入 CherryPickOperation 和 RewriteManifests 等新特性。最终倾向于按原计划进行小而快的发布，并创建 issue 跟踪发布进度。</p>
+            <div class="key-points"><p><strong>@Junwang Zhao:</strong> 建议推迟到 10 月底发布，以便纳入 CherryPickOperation 和 RewriteManifests，使元数据更新支持更完整。</p>
+<p><strong>@Manu Zhang:</strong> 主张快速、小步发布以尽早获取用户反馈，新特性可留到后续版本发布。</p>
+<p><strong>@Junwang Zhao:</strong> 提醒应创建 issue 跟踪发布进度，并引用了此前版本的跟踪 issue 作为参考。</p></div>
+            <p class="conclusion">社区初步同意按当前功能范围推进 0.4.0 发布，Manu Zhang 已创建 issue #955 跟踪发布进展，计划在无异议后一天内开始构建 release candidate。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/l1pwkl8vmj4fh0v1ld1ozlr8mhp435y7">[SPARK] Support for the defaultDatabase configuration key</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论围绕 Iceberg 中 Spark 集成的默认数据库配置键展开，核心议题是修复 SessionCatalog 中硬编码的默认数据库名称问题，并将配置键从 'default-namespace' 弃用并统一为 'defaultDatabase'。作者 dzeri96 提出了相关 issue 和 PR，并请求社区成员审查。</p>
+            <div class="key-points"><p><strong>@dzeri96:</strong> 提出修复 SessionCatalog 中硬编码默认数据库名称的问题，并建议弃用 'default-namespace' 配置键，改用与 Spark、Hudi 和 Delta 对齐的 'defaultDatabase'。</p>
+<p><strong>@dzeri96:</strong> 担心该变更可能破坏现有依赖，但经过分析后认为风险较低，但由于 defaultNamespace() 函数调用链较广，无法完全静态证明无破坏性。</p></div>
+            <p class="conclusion">作者已提交两个相关 PR（#17029 和 #18222），并请求社区成员进行代码审查，表示可以接受其中一个、两个或都不接受。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/bjztsshokns59lzrmny6szlvk7vk2o6c">[DISCUSSION] Encryption community sync</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Xander Bailey 提议为 Iceberg 社区建立一个半定期的加密主题同步会议，以协调各客户端库加密实现、KMS vending 规范以及 V4 相关讨论等多项工作。该邮件目前处于征求意见阶段，尚未展开具体讨论。</p>
+            <div class="key-points"><p><strong>@Xander Bailey:</strong> 社区中加密相关工作较多，建议通过半定期的 community sync 集中讨论相关问题。</p></div>
+            <p class="conclusion">暂无明确结论，下一步是等待社区成员反馈是否认可并需要该定期同步会议。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/4kmgk284hzqd9fdfpsff66vck2f6sldr">CONFLUENCE 2026 x Apache Iceberg — Open-Source & Linux Bootcamp Collaboration</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">IEEE VIPS 学生分会邀请 Apache Iceberg 成为其 2026 年 CONFLUENCE 科技节的开源与 Linux 训练营合作伙伴，提议通过 Masterclass、展位和周边等形式向学生开发者推广 Iceberg 的开放表格式技术。邮件目前仍处于初步合作邀请阶段，尚未有社区成员回应或展开实质讨论。</p>
+            <div class="key-points"><p><strong>@Aviral Bohra:</strong> 提议 Apache Iceberg 作为官方开放表格式合作伙伴，在 2026 年 10 月德里科技节中面向 1500+ 学生贡献者开展 Masterclass、动手工作坊和周边推广活动。</p></div>
+            <p class="conclusion">暂无社区反馈或明确结论，发起方请求安排 10 分钟线上会议以进一步探讨合作细节。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (0)</h2>
+            
+    <p>本周新建 <strong>0</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周无新建 JIRA。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Iceberg Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
