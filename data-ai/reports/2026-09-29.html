@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data+AI 全球日报 | 2026-09-29</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Data+AI 全球日报 | 2026-09-29</h1>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="top-changes">
+            <h2>🔥 今日最重要的3个变化</h2>
+            <ol><li><strong>ClickHouse 深度融入 Microsoft Fabric 与 OneLake</strong> — ClickHouse 推出 Fabric workload、OneLake Iceberg 读写与 BYOC 上架，微软湖仓实时分析能力显著增强。</li><li><strong>AWS 推进 Aurora 到 SageMaker 的 zero-ETL 链路</strong> — Aurora PostgreSQL 可近实时复制至 SageMaker lakehouse，减少自定义 ETL，提升操作型数据的 AI 可用性。</li><li><strong>Spark Connect 登陆 Amazon EMR on EKS</strong> — AWS 将 Spark Connect 引入 EKS，支持本地 IDE、Jupyter 与 dbt 开发，推动 Spark 云原生开发体验开放化。</li></ol>
+            <p class="judgment"><strong>总判断：</strong>今日主线是微软与 AWS 在湖仓、数据工程和 AI 数据底座上的平台化竞争加速。ClickHouse 深度进入 Microsoft Fabric/OneLake，AWS 则通过 zero-ETL 与 Spark Connect 降低数据链路和开发门槛。LLM 开始嵌入数据管道运维，DataOps 自动化正在成为数据平台新的差异化能力。</p>
+        </section>
+
+        <section class="top-signals">
+            <h2>📡 重要信号</h2>
+            
+    <article class="news-item">
+        <h3>ClickHouse 扩大与 Microsoft 合作，强化 Fabric 与 OneLake 生态</h3>
+        <p class="sources">📌 <a href="https://clickhouse.com/blog/clickhouse-expands-collaboration-with-microsoft">ClickHouse Blog</a></p>
+        <p class="date">2026-09-29</p>
+        <p class="summary">ClickHouse 宣布扩大与 Microsoft 的合作，推出原生 Fabric workload、OneLake 读写能力，并在 Microsoft Marketplace 提供 BYOC 部署选项。此举将 ClickHouse 高性能实时分析能力嵌入微软数据生态，使企业可在 Fabric 中直接分析 OneLake 数据。</p>
+        <div class="impact">📊 数据平台影响：数据平台将加速向多引擎湖仓演进，OneLake 作为开放存储层可接入更多分析引擎，提升实时查询与 BI/Agent 场景竞争力。</div>
+    </article>
+    <article class="news-item">
+        <h3>Aurora PostgreSQL 与 SageMaker 推出 zero-ETL 集成</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/aurora-postgresql-zero-etl-integration-with-amazon-sagemaker/">AWS Big Data Blog</a></p>
+        <p class="date">2026-09-29</p>
+        <p class="summary">Amazon Aurora PostgreSQL 与 Amazon SageMaker 推出 zero-ETL 集成，可将操作型数据近实时复制到 lakehouse，无需自建 ETL 管道。AWS 介绍了整体架构、CDC 机制、集成配置以及在 SageMaker 中查询数据的方式。</p>
+        <div class="impact">📊 数据平台影响：降低交易数据进入 AI/分析链路的延迟与工程成本，推动数据平台从批处理 ETL 转向原生、持续同步的数据供给。</div>
+    </article>
+    <article class="news-item">
+        <h3>Spark Connect on Amazon EMR on EKS 发布</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/announcing-spark-connect-on-amazon-emr-on-eks/">AWS Big Data Blog</a></p>
+        <p class="date">2026-09-29</p>
+        <p class="summary">AWS 宣布 Spark Connect on Amazon EMR on EKS，支持从 VS Code、PyCharm、Jupyter notebooks、Amazon SageMaker Unified Studio 或 dbt 构建、测试和调试 Spark 应用，同时在现有 Amazon EKS 集群中运行大规模 Spark 作业。</p>
+        <div class="impact">📊 数据平台影响：Spark 开发体验进一步云原生化和解耦，EKS 成为统一运行时，有利于数据平台整合批处理、交互开发与容器化运维。</div>
+    </article>
+        </section>
+
+        <section class="product-tech">
+            <h2>💻 产品与技术</h2>
+            
+    <article class="news-item">
+        <h3>ClickHouse Workload for Microsoft Fabric 进入 public preview</h3>
+        <p class="sources">📌 <a href="https://clickhouse.com/blog/clickhouse-for-microsoft-fabric">ClickHouse Blog</a></p>
+        <p class="date">2026-09-29</p>
+        <p class="summary">ClickHouse Workload for Microsoft Fabric 进入 public preview，通过原生 Fabric workload 为 OneLake 数据提供亚秒级分析能力，并为 agents、dashboards 和 applications 提供专用 ClickHouse Cloud 计算资源。</p>
+        <div class="impact">📊 数据平台影响：Fabric 可通过外部高性能引擎补足实时分析能力，推动数据产品化和 AI agent 查询场景落地。</div>
+    </article>
+    <article class="news-item">
+        <h3>ClickHouse 支持写入 Microsoft OneLake 中的 Apache Iceberg 表</h3>
+        <p class="sources">📌 <a href="https://clickhouse.com/blog/clickhouse-now-writes-to-microsoft-onelake">ClickHouse Blog</a></p>
+        <p class="date">2026-09-29</p>
+        <p class="summary">ClickHouse 宣布可直接写入 Microsoft OneLake 中的 Apache Iceberg 表，使 ClickHouse 不仅作为查询引擎，也能成为湖仓写入引擎。这为微软生态中的开放表格式增加了新的高性能写入路径。</p>
+        <div class="impact">📊 数据平台影响：增强 Iceberg 在微软生态的写入能力，促进多引擎共享表格式，减少数据复制与管道复杂度。</div>
+    </article>
+    <article class="news-item">
+        <h3>AWS 展示基于 Bedrock 的 Airflow DAG 故障分析插件</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/building-an-llm-powered-dag-failure-analysis-plugin-for-amazon-mwaa/">AWS Big Data Blog</a></p>
+        <p class="date">2026-09-29</p>
+        <p class="summary">AWS 展示如何为 Amazon MWAA 构建 LLM 驱动的 DAG 失败分析插件，集成 Amazon Bedrock，自动分析跨 AWS Glue、Amazon EMR、Amazon Athena 的任务失败，并提供按需根因分析能力。</p>
+        <div class="impact">📊 数据平台影响：DataOps 运维从人工排查转向 LLM 辅助诊断，提升复杂数据管道可靠性，也为平台层 AIOps 功能提供模板。</div>
+    </article>
+        </section>
+
+        <section class="people-views">
+            <h2>👤 人物与观点</h2>
+            
+    <article class="news-item">
+        <h3>StarTree 回应 Databricks 与 ClickHouse 基准讨论，展示开放表格式高并发能力</h3>
+        <p class="sources">📌 <a href="https://startree.ai/resources/beyond-databricks-and-clickhouse-125k-qps-on-open-tables/">StarTree Blog</a></p>
+        <p class="date">2026-09-29</p>
+        <p class="summary">StarTree 发文回应 Databricks 与 ClickHouse 围绕开放表格式高并发分析的基准讨论，展示其在 open tables 上将分析吞吐从 12k QPS 扩展至 125k QPS 的能力，强调外部表分析可通过专用加速层实现更高并发。</p>
+        <div class="impact">📊 数据平台影响：开放表格式的高并发服务化成为竞争焦点，OLAP 加速层可能成为湖仓架构标配，影响引擎选型与成本设计。</div>
+    </article>
+        </section>
+
+        <section class="analyst-insights">
+            <h2>📊 分析师洞察</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="watchlist">
+            <h2>👀 观察列表</h2>
+            
+    <article class="watchlist-item">
+        <h3>ClickHouse Fabric workload 从 public preview 到 GA</h3>
+        <span class="status">待观察</span>
+        <p class="reason">该集成决定微软湖仓中实时分析能力的可用性、性能表现和企业采用速度。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>正式发布、定价细节、企业客户案例与生产负载验证。</p>
+    </article>
+    <article class="watchlist-item">
+        <h3>OneLake Iceberg 多引擎写入生态</h3>
+        <span class="status">待观察</span>
+        <p class="reason">ClickHouse 写入 OneLake Iceberg 表后，需要观察其与 Fabric、Spark、Databricks 等引擎的互操作性和治理能力。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>更多引擎支持、统一权限管理、事务一致性与性能验证。</p>
+    </article>
+    <article class="watchlist-item">
+        <h3>AWS zero-ETL 覆盖范围扩展</h3>
+        <span class="status">待观察</span>
+        <p class="reason">Aurora PostgreSQL 到 SageMaker 的 zero-ETL 集成是 AWS 简化数据链路的重要一步，后续可能扩展到更多数据库和 AI 服务。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>新增数据源、区域扩展、生产级 SLA 与更多 AI 工作负载集成。</p>
+    </article>
+    <article class="watchlist-item">
+        <h3>LLM 驱动 DataOps 插件的产品化进展</h3>
+        <span class="status">待观察</span>
+        <p class="reason">AWS 当前展示的是构建方式，后续是否沉淀为托管能力，将影响数据平台运维自动化竞争格局。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>官方托管插件、根因分析准确率提升、与告警和修复流程闭环。</p>
+    </article>
+        </section>
+
+        <section class="stock-analysis">
+            <h2>📈 股票分析</h2>
+            <p class="disclaimer">⚠️ 以下内容仅供参考，不构成任何投资建议。投资有风险，入市需谨慎。</p>
+            
+    <article class="stock-item">
+        <div class="stock-header">
+            <span class="ticker">AMZN</span>
+            <span class="company">Amazon</span>
+            <span class="signal signal-bullish">🟢 看多</span>
+        </div>
+        <p class="stock-summary">AWS 连发 Spark Connect on EKS、Aurora zero-ETL 与 Bedrock 驱动的数据管道运维示例，强化数据与 AI 平台闭环。短期利好 AWS 数据服务消耗，但需关注开源替代与多云竞争。本栏目仅供参考，不构成投资建议。</p>
+        <div class="stock-details">
+            <div class="catalysts">
+                <strong>🚀 催化剂</strong>
+                <ul><li>zero-ETL 集成扩展到更多数据库和服务</li><li>EMR、EKS、SageMaker 工作负载增长</li><li>Bedrock 在 DataOps 和 AIOps 场景落地</li></ul>
+            </div>
+            <div class="risks">
+                <strong>⚠️ 风险</strong>
+                <ul><li>价格竞争与开源方案替代</li><li>客户多云策略降低锁定效应</li><li>数据治理、安全与合规复杂度上升</li></ul>
+            </div>
+        </div>
+    </article>
+    <article class="stock-item">
+        <div class="stock-header">
+            <span class="ticker">MSFT</span>
+            <span class="company">Microsoft</span>
+            <span class="signal signal-bullish">🟢 看多</span>
+        </div>
+        <p class="stock-summary">ClickHouse 合作增强 Microsoft Fabric 与 OneLake 的实时分析能力，有助于微软在湖仓和 AI agent 数据服务上形成差异化。若生态顺利推进，将提升 Fabric 消耗与企业采用。本栏目仅供参考，不构成投资建议。</p>
+        <div class="stock-details">
+            <div class="catalysts">
+                <strong>🚀 催化剂</strong>
+                <ul><li>ClickHouse Fabric workload 从 preview 走向 GA</li><li>OneLake Iceberg 写入案例增加</li><li>Marketplace BYOC 带来企业级部署增长</li></ul>
+            </div>
+            <div class="risks">
+                <strong>⚠️ 风险</strong>
+                <ul><li>多引擎集成带来架构和治理复杂度</li><li>对第三方引擎能力存在依赖</li><li>与 Databricks、Snowflake 等平台竞争加剧</li></ul>
+            </div>
+        </div>
+    </article>
+        </section>
+
+        <footer>
+            <p>Generated by Data+AI Daily Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
