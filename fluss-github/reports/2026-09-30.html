@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-09-30</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-09-30</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 2 新 Issues</div>
+            <div class="stat">✅ 0 关闭</div>
+            <div class="stat">✨ 1 新 PRs</div>
+            <div class="stat">🎉 3 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/4523">PR #4523</a> [github] Upgrade Fluss version 1.0.0 in BUG issue template</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4521">PR #4521</a> [server] Prevent remote directory round-robin overflow</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4515">PR #4515</a> [common] Make boolean config parsing locale-independent</li><li>🐛 <a href="https://github.com/apache/fluss/issues/4532">Issue #4532</a> [helm] Support several Fluss clusters in one namespace</li><li>🐛 <a href="https://github.com/apache/fluss/issues/4530">Issue #4530</a> [filesystem] Normalize file system operation failures</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4501">Issue #4501</a> [security] Fix concurrent ACL cache access in DefaultAuthorizer</h4>
+            <ul><li><span class="author">@fhan688</span>: hi @loserwang1024 , could you please help review this PR when you have time? thanks!</li><li><span class="author">@luoyuxia</span>: @coding-otter-bot review</li><li><span class="author">@coding-otter-bot</span>: ## Automated code review ### Problem DefaultAuthorizer stored ACL state in a plain TreeMap (aclCach…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4502">Issue #4502</a> [client] Fix LimitBatchScanner response buffer leak on close</h4>
+            <ul><li><span class="author">@fhan688</span>: hi @loserwang1024 , could you please help review this PR when you have time? thanks!</li><li><span class="author">@luoyuxia</span>: @coding-otter-bot review</li><li><span class="author">@coding-otter-bot</span>: ## Automated code review ### Problem LimitBatchScanner.close() cancelled the pending limitScan RPC.…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4293">Issue #4293</a> [client] Back off writes rejected by disk protection</h4>
+            <ul><li><span class="author">@naivedogger</span>: @fhan688 Thanks for the update. +1 from my side.</li><li><span class="author">@luoyuxia</span>: @coding-otter-bot review</li><li><span class="author">@coding-otter-bot</span>: ## Automated code review ### Problem Disk protection rejects Log/KV writes with Errors.DISK_WRITE_L…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4521">Issue #4521</a> [server] Prevent remote directory round-robin overflow</h4>
+            <ul><li><span class="author">@coding-otter-bot</span>: ## Automated code review could not complete The review for commit <code>b88c1571accd23ae98a8ef05d76…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4103">Issue #4103</a> [docs] Document shading pitfalls in the building guide</h4>
+            <ul><li><span class="author">@Jackeyzhe</span>: Closing: #4144 adds a `## Shaded dependencies` section at the same location in `building.md` that c…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4379">Issue #4379</a> [flink] Add describe buckets procedure</h4>
+            <ul><li><span class="author">@luoyuxia</span>: @coding-otter-bot review</li><li><span class="author">@coding-otter-bot</span>: ## Automated code review ### Problem Expose the existing Admin#describeBuckets bucket-metadata API……</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4527">Issue #4527</a> [rust] Route partitions by their own bucket count</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: @naivedogger Thank you for the review, addressed and also fixed while walking #3908/#4309 file by f…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4424">Issue #4424</a> [helm] Support several Fluss clusters in one namespace</h4>
+            <ul><li><span class="author">@affo</span>: @swuferhong could you have a look?</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4391">Issue #4391</a> [client] Expose all coordinator servers (leader and standbys) via the client API</h4>
+            <ul><li><span class="author">@MaheshS08</span>: @affo , could you please review this?</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3635">PR #3635</a> [lake] Support partition mark-done for lakehouse tiering (processing-time)</h4>
+            <ul><li><span class="author">@beryllw</span>: The factory check only indicates capability support, while enablement depends on the job-level swit…</li><li><span class="author">@luoyuxia</span>: Could we simplify this test to focus on Fluss `paimon.*` properties not enabling mark-done when it……</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4527">PR #4527</a> [rust] Route partitions by their own bucket count</h4>
+            <ul><li><span class="author">@naivedogger</span>: IIUC, this can reject a valid bucket on the client before its partition metadata is fetched. For ex…</li><li><span class="author">@fresh-borzoni</span>: Right. The client now checks only against a cached count, and the scan checks again after `leader_f…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4293">PR #4293</a> [client] Back off writes rejected by disk protection</h4>
+            <ul><li><span class="author">@coding-otter-bot</span>: **MEDIUM: Per-batch metadata invalidation rebuilds the entire Cluster snapshot once per failing buc…</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4532">#4532</a> [helm] Support several Fluss clusters in one namespace <span class="author">@affo</span> </li><li><a href="https://github.com/apache/fluss/issues/4530">#4530</a> [filesystem] Normalize file system operation failures <span class="author">@platinumhamburg</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4531">#4531</a> [filesystem] Normalize file system operation failures <span class="author">@platinumhamburg</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <p class="empty">暂无</p>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4523">#4523</a> [github] Upgrade Fluss version 1.0.0 in BUG issue template <span class="author">@morazow</span> </li><li><a href="https://github.com/apache/fluss/pull/4521">#4521</a> [server] Prevent remote directory round-robin overflow <span class="author">@fhan688</span> </li><li><a href="https://github.com/apache/fluss/pull/4515">#4515</a> [common] Make boolean config parsing locale-independent <span class="author">@fhan688</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
