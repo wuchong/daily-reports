@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-10-01</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-10-01</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 0 新 Issues</div>
+            <div class="stat">✅ 0 关闭</div>
+            <div class="stat">✨ 2 新 PRs</div>
+            <div class="stat">🎉 1 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/4494">PR #4494</a> 合并，补充 streamhouse 与 lakestream 概念说明，并新增示意图。</li><li>✨ <a href="https://github.com/apache/fluss/pull/4533">PR #4533</a> 提出客户端对磁盘写保护拒绝写入进行指数退避，提高稳定性。</li><li>✨ <a href="https://github.com/apache/fluss/pull/4534">PR #4534</a> 修复 JDK 17+ 下 JMX reporter 启动问题，使用公开 RMI registry。</li><li>🐛 <a href="https://github.com/apache/fluss/pull/4496">PR #4496</a> Rust 客户端修复 bucket hash 符号扩展问题，正在请求评审。</li><li>🚀 <a href="https://github.com/apache/fluss/pull/4293">PR #4293</a> 自动评审通过磁盘写保护退避方案，未发现阻塞问题。</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4293">Issue #4293</a> [client] Back off writes rejected by disk protection</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 请求自动代码评审机器人对本次磁盘写保护退避改动进行审查。</li><li><span class="author">@coding-otter-bot</span>: 自动评审认为磁盘写保护退避方案覆盖完整，静态审查未发现需要修改的问题。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4494">Issue #4494</a> Add explanations for streamhouse and lakestream</h4>
+            <ul><li><span class="author">@polyzos</span>: 补充 streamhouse 与 lakestream 的明暗示意图，帮助解释整体概念。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4496">Issue #4496</a> [rust] Fix bucket hash sign extension</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 请求维护者审阅 Rust bucket hash 符号扩展修复，以确保哈希计算正确。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4498">Issue #4498</a> [rust] Fix bounded read hang on pruned tail</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 请求维护者审阅 Rust 有界读取在尾部被裁剪时可能挂起的修复。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4500">Issue #4500</a> [rust] Allow concurrent lookups on one Lookuper</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 请求维护者审阅允许单个 Lookuper 并发查询的 Rust 客户端改动。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4529">Issue #4529</a> [rust] Send table stats requests to bucket leaders</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 请求维护者审阅将表统计请求发送到 bucket leaders 的 Rust 改动。</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3813">PR #3813</a> [FIP-29] Add SSL config parsing and SslContext/SslHandler factory</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 指出 SSL 配置与信任库问题，包括 PKCS12 空密码、JDK8 TLS 默认协议和描述不准确。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4006">PR #4006</a> [client] Expose Arrow IPC batches with optional Java adapter</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 指出 Arrow tiering 类路径风险，建议检查 ArrowBatchReader 并支持独立 ArrowLogScanner。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4207">PR #4207</a> [trino] Add initial connector build and plugin skeleton</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 关注 Trino 连接器 CI 依赖、启动容错、JDK25 SASL、统计信息与停止偏移逻辑。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4533">PR #4533</a> [client] Back off writes rejected by disk protection</h4>
+            <ul><li><span class="author">@Copilot</span>: 建议按请求聚合失效元数据，避免多桶失败时重复重建集群映射造成 CPU 和 GC 开销。</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <p class="empty">暂无</p>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4534">#4534</a> [metrics] Use a public RMI registry so the JMX reporter starts on JDK 17+ <span class="author">@Zhuoxi2000</span> </li><li><a href="https://github.com/apache/fluss/pull/4533">#4533</a> [client] Back off writes rejected by disk protection <span class="author">@luoyuxia</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <p class="empty">暂无</p>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4494">#4494</a> Add explanations for streamhouse and lakestream <span class="author">@polyzos</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
