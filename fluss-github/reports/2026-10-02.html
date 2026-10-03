@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-10-02</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-10-02</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 1 新 Issues</div>
+            <div class="stat">✅ 3 关闭</div>
+            <div class="stat">✨ 1 新 PRs</div>
+            <div class="stat">🎉 3 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/4529">PR #4529</a> 合并：将表统计请求发送到 bucket leader，修正路由并关闭 <a href="https://github.com/apache/fluss/issues/4528">Issue #4528</a>。</li><li>🐛 <a href="https://github.com/apache/fluss/pull/4498">PR #4498</a> 修复过滤导致有界读取挂起的问题，对应 <a href="https://github.com/apache/fluss/issues/4497">Issue #4497</a>。</li><li>🐛 <a href="https://github.com/apache/fluss/pull/4496">PR #4496</a> 修复 bucket hash 对高字节的符号扩展问题，对应 <a href="https://github.com/apache/fluss/issues/4495">Issue #4495</a>。</li><li>✨ <a href="https://github.com/apache/fluss/issues/4535">Issue #4535</a> 报告 Writer 在 bucket 无 leader 时紧密轮询元数据，<a href="https://github.com/apache/fluss/pull/4536">PR #4536</a> 提出限速方案。</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4061">Issue #4061</a> [server] Add off-loop coordinator health cache (mechanism only)</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 评估健康缓存收益有限，建议按需计算并暂缓；若保留需修复异常退出和刷新间隔问题。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4200">Issue #4200</a> [client] Recover Admin writes after coordinator failover</h4>
+            <ul><li><span class="author">@sakshichitnis27</span>: 已本地准备重试策略和故障转移测试，待 #4263 合并后 rebase 并更新 PR。</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4207">PR #4207</a> [trino] Add initial connector build and plugin skeleton</h4>
+            <ul><li><span class="author">@yangshangqing95</span>: 回应 Trino 连接器评审：修复 CI 与懒加载，说明客户端迁移计划，并限制 SASL、延后统计功能。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4424">PR #4424</a> [helm] Support several Fluss clusters in one namespace</h4>
+            <ul><li><span class="author">@morazow</span>: 指出 StatefulSet 名称需考虑最多 10 位的 revision 哈希，建议确认命名长度处理。</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4535">#4535</a> [rust] Writer polls metadata in a tight loop while a bucket has no leader <span class="author">@fresh-borzoni</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4536">#4536</a> [rust] Pace metadata refreshes for buckets without a leader <span class="author">@fresh-borzoni</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4528">#4528</a> [rust] get_table_stats is sent to the CoordinatorServer <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/4497">#4497</a> [rust] Bounded read never finishes when a filter prunes the tail <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/4495">#4495</a> [rust] Bucket hash disagrees with Java for keys with bytes >= 0x80 <span class="author">@fresh-borzoni</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4529">#4529</a> [rust] Send table stats requests to bucket leaders <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/4498">#4498</a> [rust] Fix bounded read hang on pruned tail <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/4496">#4496</a> [rust] Fix bucket hash sign extension <span class="author">@fresh-borzoni</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
