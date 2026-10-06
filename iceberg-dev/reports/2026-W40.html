@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iceberg 社区周报 | 2026-W40</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Iceberg 社区周报 | 2026-W40</h1>
+            <p class="date-range">2026-09-28 ~ 2026-10-04</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (2)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/kst8b58yjnvfy353g2ysvb4fkx3xdcr9">Apache Iceberg release 1.12.0</a></li>
+<li><a href="https://lists.apache.org/thread/0r8b7yt84xgmosbzzk9p8c4b3gq93gdb">CFP for Apache Iceberg Meetup Bay Area – Nov 2 @ Google Sunnyvale</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (3)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/0b4h7y2btfphz5z2wssw4xopqn5d1ocs">Release Apache Iceberg 1.12.0 RC2</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/6sfhg7z7rqt4nxc3m9pgt40354vbgnw1">[Go] Release Apache Iceberg Go v0.7.0 RC0</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/bzs62qqt9k4t9sr76pk0d36l47zwcpyb">Recommend a standard User-Agent format for REST clients [REOPEN]</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/0r9fhdb1zc74ycz0hx2wyl1xyn48jyxl">Spec changes in release notes</a></h3>
+            <p class="meta">10 条回复 · 9 位参与者</p>
+            <p class="summary">社区讨论是否应将 Iceberg Spec 变更从 Java 二进制版本发布说明中移除，因为 Spec 变更与 Java 实现发布是独立的。多数参与者支持分离，并建议为 Spec 单独维护变更日志，Peter 已提交 PR 实现该方案。</p>
+            <div class="key-points"><p><strong>@Péter Váry:</strong> Spec 变更在投票通过或版本定稿时即发布，与 Java 二进制发布无关，不应混在 Java release notes 中，建议单独页面展示 Spec 变更。</p>
+<p><strong>@Kevin Liu:</strong> 支持将 Spec 变更从历史 release notes 中移除，并迁移到 spec 页面的 changelog 中。</p>
+<p><strong>@kurtiscwright (ku...):</strong> 提议创建独立的 Iceberg-Format 仓库，专门管理 Spec 变更和文档，以结构性分离 Java 实现与规范。</p></div>
+            <p class="conclusion">初步共识是将 Spec 变更从 Java release notes 中移除，Peter 已提交 PR (#18349) 实现独立的 Spec changelog；关于是否拆分为独立仓库（iceberg-format）仍有分歧，Daniel Weeks 表示反对，认为当前结构可行。下一步是完善 PR 并补充 IRC spec 的变更记录。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/mj8czb2ljf8kj1d7ldbfw39sffr9knjc">Iceberg 1.13 release (Java)</a></h3>
+            <p class="meta">9 条回复 · 7 位参与者</p>
+            <p class="summary">社区围绕 Iceberg 1.13 (Java) 发布展开讨论，核心议题包括发布时间、发布经理人选以及功能范围。Anoop Johnson 提议在年底前发布并自愿担任发布经理，但 Anurag Mantripragada 表示已先行认领 1.13，建议 Anoop 负责 1.14；多数参与者倾向因假期因素将发布推迟到明年初，不过 Daniel Weeks 认为不应过早排除年底发布的可能。</p>
+            <div class="key-points"><p><strong>@Anurag Mantripragada:</strong> 已自愿负责 1.13 发布，建议发布时间为明年初；期望包含 V4 spec 相关早期工作和 Spark 4.2 支持。</p>
+<p><strong>@Xin Huang:</strong> 关注是否支持 Spark 4.2，提议在 1.13 中支持现有 Iceberg 功能，Spark 新特性（如 Transactional API）集成按尽力而为处理。</p>
+<p><strong>@Daniel Weeks:</strong> 认为不应过早排除年底发布，发布不必很大，可包含未赶上 1.12 的内容，保留讨论空间。</p></div>
+            <p class="conclusion">初步共识是由 Anurag Mantripragada 担任 1.13 发布协调人，Anoop Johnson 转向 1.14；发布时间倾向明年初但仍保留年底发布讨论。下一步需规划 1.13 范围，并先完成或汇总 Spark 4.2 相关跟踪事项后再决定是否纳入支持。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/8f91nk08cq2pxtsdpf1o34ktthn7jcwk">Changing avg_value_size_in_bytes to total_bytes in content stats</a></h3>
+            <p class="meta">6 条回复 · 4 位参与者</p>
+            <p class="summary">社区讨论将 Iceberg 内容统计中的 avg_value_size_in_bytes 字段改为 total_bytes，认为记录总字节数比平均值更利于聚合和估算。讨论进一步聚焦在 Java API、JSON 序列化和 REST spec 中如何处理已发布的 avgValueSize 接口。</p>
+            <div class="key-points"><p><strong>@Eduard Tudenhöfner:</strong> 提议将 avg_value_size_in_bytes 重命名为 total_bytes，因为平均值会增加聚合难度；同时指出 Java 实现中 avgValueSizes() 刚在 1.12.0 发布，直接重命名会带来 API 破坏。</p>
+<p><strong>@Daniel Weeks:</strong> 确认可以通过 total_bytes 和 value_count 推导平均值，因此 total_bytes 对估算更有价值，因为它提供了明确的大小上界。</p>
+<p><strong>@Ryan Blue:</strong> 支持使用 total 而非 average，并建议新增 totalBytes，同时让 avgValueSize 作为派生值计算。</p></div>
+            <p class="conclusion">初步共识是底层只存储 total_bytes，Java API 可保留 avgValueSize 作为派生值；Steven Wu 进一步建议不在 JSON parser 和 REST spec 中保留派生的 avgValueSize，因为 v4 表尚未在 REST spec 中支持，JSON 序列化的破坏性变更可接受。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/8zq10wdsz5rx8v35zgon24r4gnsjsv9h">Non-overlapping index region files</a></h3>
+            <p class="meta">5 条回复 · 3 位参与者</p>
+            <p class="summary">讨论围绕 Iceberg 索引规范中 region 文件必须全局有序且不重叠的设计取舍展开。Shawn Chang 质疑该约束带来的写放大、维护复杂度和未来演进风险，并建议明确记录替代方案；Péter Váry 解释当前设计是为了保证单键查找快速且可预测。Russell Spitzer 提到此前似乎已倾向于 Ryan 提出的有界 overlay 方案，但讨论仍聚焦于是否先从更简单的非重叠方案开始。</p>
+            <div class="key-points"><p><strong>@Shawn Chang:</strong> 非重叠约束会导致写放大和维护复杂度，且未来若允许重叠可能成为破坏性变更，因此应明确记录设计权衡，并考虑有界 overlay 等折中方案。</p>
+<p><strong>@Péter Váry:</strong> 当前设计优先优化快速、可预测的单键查找；非重叠范围可使查找只需读取一个 region 文件，避免多文件读取、合并和延迟不可预测的问题。</p>
+<p><strong>@Russell Spitzer:</strong> 社区此前似乎已讨论并倾向 Ryan 的有界 region 文件方案，即每个 region 最多由两个文件组成。</p></div>
+            <p class="conclusion">初步方向仍是优先采用更简单、非重叠的索引设计以保证读取延迟可预测；后续需要补充设计权衡文档，并在有更多数据后再评估是否引入有界 overlay 或针对 covering index 的优化。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/pmck5pojp28fcyw0n8x7tdo1kclh9yrg">Remove dependency TSV files in iceberg-rust</a></h3>
+            <p class="meta">3 条回复 · 4 位参与者</p>
+            <p class="summary">Iceberg 社区讨论从 iceberg-rust 仓库中移除用于描述各 crate 依赖关系的 TSV 文件。Danny 提出这些文件并非许可证义务所需、内容容易过期，且对维护者和使用者帮助有限；移除的主要目的是降低维护负担，并推进 Python 绑定所需归属信息的正确生成。讨论中多位参与者表示支持，包括最初添加 TSV 文件的 Xuanwo 也同意移除。</p>
+            <div class="key-points"><p><strong>@Jones, Danny:</strong> 计划移除 iceberg-rust 中记录依赖的 TSV 文件，因其不满足许可证义务、容易过期，依赖变更可通过 Cargo 或 CI 策略（如 cargo-deny）更好地处理。</p>
+<p><strong>@Kevin Liu:</strong> 支持移除 TSV 文件，并指出最初添加这些文件的 Xuanwo 也同意该变更。</p>
+<p><strong>@ku...:</strong> 明确支持移除 TSV 文件，并感谢 Danny 推动发布流程改进。</p></div>
+            <p class="conclusion">社区初步达成共识：移除 iceberg-rust 中的依赖 TSV 文件；Danny 将继续推进该变更，如社区后续有明确反对意见，可再恢复相关文件。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/w7rxbgwovyxtwwls5rlzdnwt5t7h4zcf">Security Contact Inquiry</a></h3>
+            <p class="meta">3 条回复 · 3 位参与者</p>
+            <p class="summary">独立安全研究员 Aditya 询问 Apache Iceberg 外部系统安全问题的负责任披露渠道。社区成员回复应通过官方安全邮箱提交，并补充了 ASF 无漏洞赏金计划及高质量报告要求。</p>
+            <div class="key-points"><p><strong>@Aditya:</strong> 发现 Iceberg 外部系统存在安全隐患，询问负责任披露渠道、安全联系人或漏洞赏金政策。</p>
+<p><strong>@Sung Yun:</strong> 指引将报告发送至官方邮箱 security@iceberg.apache.org，并引用官网安全文档。</p>
+<p><strong>@Steve Loughran:</strong> 说明 GitHub Actions 问题应联系 ASF 安全团队；ASF 无赏金计划；建议报告需具备可验证性，避免低质量 AI 生成内容，鼓励附带修复补丁。</p></div>
+            <p class="conclusion">明确披露渠道为 security@iceberg.apache.org（GitHub Actions 问题转 ASF）；无赏金计划；后续报告需高质量、可复现，最好附带修复方案。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/5cnrhd3kfwzxywkj07kdls8o1twoomoq">Catalog-provided metadata tables</a></h3>
+            <p class="meta">3 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕是否允许非 Java 客户端（PyIceberg、iceberg-rust、iceberg-go）通过 inspect API 暴露 catalog 提供的 labels 元数据。Andrei 建议保持 Java/Spark 中 metadata table 需为表元数据确定性投影的既有决定，但允许客户端 inspect API 单独处理此类 catalog 提供的数据。Manu 对其 API 设计提出疑虑，认为无法区分表本身没有 label 还是 catalog 不支持 labels。</p>
+            <div class="key-points"><p><strong>@Andrei Tserakhau:</strong> Java/Spark 的 metadata table 应保持确定性投影约束，但非 Java 客户端的 inspect 是库读取 API，可允许暴露 catalog 提供的 labels，并说明其为加载时捕获、无数据时为空。</p>
+<p><strong>@Andrei Tserakhau:</strong> 该能力主要服务于以 Arrow 形式处理元数据的客户端场景，例如跨多表过滤/聚合 labels 用于 PII、归属或成本分析，并保持 Go/Rust/C++ inspect API 的一致性。</p>
+<p><strong>@Manu Zhang:</strong> 当前 API 不够合理，因为返回为空时无法区分是表没有 label，还是 catalog 不支持 labels。</p></div>
+            <p class="conclusion">尚未形成明确共识；下一步需要解决或澄清 catalog 不支持与空 labels 的可区分性问题，之后再决定是否推进 iceberg-go PR 并同步到 rust/python。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/r8pbrsvqyyvtko4qw6n14b0gvyqpp1rp">GlueCatalog and what it writes to the Glue table on commit</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">讨论围绕 Iceberg GlueCatalog 在 commit 时写入 Glue 表的元数据范围展开。Javier 提出当前 Glue 仅写入 table_type、metadata_location 等最小信息，而 Hive Catalog 会同步更多表属性，导致仅读取 Glue 的工具无法获取 Iceberg 表属性，因此询问是否可让 Glue 镜像 HMS 行为。Shawn 和 Daniel 对扩大同步持谨慎态度，认为 Glue 与 HMS 设计定位不同，且外部目录存在元数据不一致风险。</p>
+            <div class="key-points"><p><strong>@Javier Sanchez Beltran:</strong> GlueCatalog 当前只写入最小元数据，导致治理、发现等只读 Glue 的工具无法直接看到 Iceberg 表属性；建议可选地将表属性、快照摘要、schema 等同步到 Glue，并设置大小上限。</p>
+<p><strong>@Shawn Chang:</strong> Glue 中最小元数据足迹是有意设计，Glue 主要作为控制平面/目录表示，Iceberg metadata 才是真实来源；不建议简单镜像 HMS 行为。</p>
+<p><strong>@Daniel Weeks:</strong> HMS 和 Glue 都存在与 Iceberg metadata 的 split-brain 问题，外部工具可能直接修改 catalog 表示导致不一致，因此不应依赖这些同步元数据做安全或治理。</p></div>
+            <p class="conclusion">初步倾向是保持 Glue 的最小元数据设计，不建议直接复制 HMS 的完整属性同步；如需支持治理/发现场景，应谨慎评估一致性、大小限制、保留键和删除键等问题。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/tv7bvqctdfh5qng1sx5rp8r4r00nsv60">Iceberg v4 Stats Tightness</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">讨论围绕 Iceberg v4 中统计信息 tightness 在存在 Deletion Vector（DV）时如何表示的问题展开。Anoop Johnson 提出，当文件附加 DV 后，统计信息通常被视为 non-tight，从而影响基于元数据的查询优化，因此需要一种在 DV 存在下仍能表达 tightness 的方案。Russell Spitzer 和 Daniel Weeks 分析了不同场景后，倾向于采用文件级（file-wide）flag 而非按列标记。</p>
+            <div class="key-points"><p><strong>@Anoop Johnson:</strong> v4 引入 tightness 概念用于判断上下界是否真实存在于文件有效行中，但 DV 的存在会使统计信息被默认视为 non-tight，需要新的表示方式以保留元数据查询优化能力。</p>
+<p><strong>@Russell Spitzer:</strong> 分析了按列 tightness 可能适用的几种模式，认为现实场景主要是 DV writer 自行修复边界或通过命令恢复 tight stats，这两种情况都只需要文件级 flag，因此倾向文件级方案。</p>
+<p><strong>@Daniel Weeks:</strong> 支持 Russell 的分析，认为按列 tightness 的潜在用例较窄或不切实际，建议采用文件级 flag。</p></div>
+            <p class="conclusion">初步共识是采用文件级（file-wide）flag 来表示存在 DV 时的统计信息 tightness，而不是引入更复杂的按列标记。下一步可继续在设计文档或邮件列表中完善方案细节。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/rxf3sb2srgmjdkq9vys67q9ppns5d8fg">OSA CON 2026 Attendee Information</a></h3>
+            <p class="meta">1 条回复 · 1 位参与者</p>
+            <p class="summary">该邮件串并非技术讨论，而是市场研究人员 Janice Yellin 向 Apache Iceberg dev 邮件列表反复推销 OSA CON 2026 参会者数据库，询问社区是否有兴趣购买用于营销和业务拓展。整体没有社区成员回复，也没有形成任何技术或项目层面的讨论。</p>
+            <div class="key-points"><p><strong>@Janice Yellin:</strong> 询问 Apache Iceberg 社区是否有兴趣购买 OSA CON 2026 参会者数据库，用于营销活动和业务拓展。</p>
+<p><strong>@Janice Yellin:</strong> 表示可提供价格、数据量和样本信息，并多次跟进询问是否需要发送成本与数量详情。</p>
+<p><strong>@Janice Yellin:</strong> 在未获回复后，请收件人选择：发送成本和数量详情、不感兴趣，或几个月后再联系。</p></div>
+            <p class="conclusion">邮件中未出现社区回复或初步结论，也无明确下一步行动；仅发件人单方面请求对方反馈是否对购买参会者数据感兴趣。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (0)</h2>
+            
+    <p>本周新建 <strong>0</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周无新建 JIRA。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Iceberg Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
