@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data+AI 全球日报 | 2026-10-05</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Data+AI 全球日报 | 2026-10-05</h1>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="top-changes">
+            <h2>🔥 今日最重要的3个变化</h2>
+            <ol><li><strong>Amazon Redshift 支持 Iceberg 物化视图</strong> — Redshift 可将聚合结果物化为 S3 上的标准 Iceberg 表，供 Athena、Spark、SageMaker 和 Glue 等多引擎查询，强化开放湖仓能力。</li><li><strong>Amazon Redshift MCP server 推动自动化运维诊断</strong> — Redshift MCP server 的 review_cluster 工具可通过自然语言执行 12 个领域的集群诊断，显示数据库运维正在向 AI Agent 化演进。</li><li><strong>ClickHouse Cloud Executable UDFs 正式 GA</strong> — ClickHouse Cloud 在 AWS、GCP 和 Azure 上全面支持可执行 UDF，增强自定义代码扩展、外部运行时和 Terraform 管理能力。</li></ol>
+            <p class="judgment"><strong>总判断：</strong>今日行业信号集中在开放湖仓与智能运维：AWS 通过 Redshift Iceberg 物化视图和 MCP 诊断工具，强化数据仓库在 S3 生态和 AI Agent 运维中的入口地位。ClickHouse 则以可执行 UDF 提升可编程分析能力。整体看，数据平台竞争正从查询性能转向开放格式、互操作、自动化治理和扩展性。</p>
+        </section>
+
+        <section class="top-signals">
+            <h2>📡 重要信号</h2>
+            
+    <article class="news-item">
+        <h3>Amazon Redshift 推出 Iceberg 物化视图</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/materialize-once-query-anywhere-introducing-iceberg-materialized-views-in-amazon-redshift/">AWS Big Data Blog</a></p>
+        <p class="date">2026-10-05</p>
+        <p class="summary">Amazon Redshift 宣布支持 Iceberg 物化视图，可在 Redshift 中计算聚合，并将结果写入 Amazon S3 上的标准 Apache Iceberg 表。该结果可被 Amazon Athena、Apache Spark、Amazon SageMaker 和 AWS Glue 等引擎查询，文章重点介绍用例、增量刷新和多引擎共享模式。</p>
+        <div class="impact">📊 数据平台影响：数据平台可将高频聚合预计算一次，减少重复 ETL 和多引擎拷贝；Iceberg 作为共享开放表格式，提升 Redshift 与湖上引擎互操作性，但需管理表生命周期、权限和一致性。</div>
+    </article>
+    <article class="news-item">
+        <h3>Amazon Redshift MCP server 提供自动化运维诊断</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/run-an-automated-operational-review-with-the-amazon-redshift-mcp-server/">AWS Big Data Blog</a></p>
+        <p class="date">2026-10-05</p>
+        <p class="summary">AWS 介绍开源 Amazon Redshift MCP server 中的 review_cluster 工具。该工具可通过一次自然语言请求运行完整集群诊断，评估 12 个诊断领域，并返回优先级排序的运维建议，体现 Redshift 在自动化运维和 AI Agent 集成上的进展。</p>
+        <div class="impact">📊 数据平台影响：MCP 将数据库运维能力暴露给 AI Agent，降低 DBA 诊断门槛；数据平台可探索自动化巡检、故障定位和优化建议，但需关注权限边界、审计和自动执行风险。</div>
+    </article>
+        </section>
+
+        <section class="product-tech">
+            <h2>💻 产品与技术</h2>
+            
+    <article class="news-item">
+        <h3>Executable UDFs 在 ClickHouse Cloud 正式 GA</h3>
+        <p class="sources">📌 <a href="https://clickhouse.com/blog/executable-udfs-generally-available-on-clickhouse-cloud">ClickHouse Blog</a></p>
+        <p class="date">2026-10-05</p>
+        <p class="summary">ClickHouse Cloud 宣布 Executable UDFs 在 AWS、GCP 和 Azure 上正式 GA。该功能支持原生运行时、网络访问、可观测性，并提供 API 和 Terraform 支持，使用户能够通过自定义代码扩展 ClickHouse 的分析能力。</p>
+        <div class="impact">📊 数据平台影响：用户可用自定义代码扩展 SQL 分析，适配模型推理、复杂转换和外部服务调用；平台需加强 UDF 安全沙箱、资源隔离、依赖管理和数据出境治理。</div>
+    </article>
+        </section>
+
+        <section class="people-views">
+            <h2>👤 人物与观点</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="analyst-insights">
+            <h2>📊 分析师洞察</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="watchlist">
+            <h2>👀 观察列表</h2>
+            
+    <article class="watchlist-item">
+        <h3>Redshift Iceberg 物化视图的企业采用</h3>
+        <span class="status">待观察</span>
+        <p class="reason">该能力连接 Redshift 与开放湖仓，可能影响数据仓库、数据湖和跨引擎查询架构的分工。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>是否进一步完善增量刷新策略、跨引擎权限模型和 Iceberg 表治理能力。</p>
+    </article>
+    <article class="watchlist-item">
+        <h3>MCP 在数据库运维中的落地</h3>
+        <span class="status">待观察</span>
+        <p class="reason">Redshift MCP server 将诊断能力 Agent 化，可能成为数据平台智能运维的重要接口。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>是否从诊断扩展到自动修复、性能调优和多集群运维场景。</p>
+    </article>
+    <article class="watchlist-item">
+        <h3>ClickHouse UDF 生态与安全治理</h3>
+        <span class="status">待观察</span>
+        <p class="reason">Executable UDF 提高 ClickHouse Cloud 可编程性，但自定义代码会带来安全、稳定性和资源管理挑战。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>官方模板、UDF 市场生态、沙箱限制和审计能力是否成熟。</p>
+    </article>
+        </section>
+
+        <section class="stock-analysis">
+            <h2>📈 股票分析</h2>
+            <p class="disclaimer">⚠️ 以下内容仅供参考，不构成任何投资建议。投资有风险，入市需谨慎。</p>
+            
+    <article class="stock-item">
+        <div class="stock-header">
+            <span class="ticker">AMZN</span>
+            <span class="company">Amazon.com, Inc.</span>
+            <span class="signal signal-bullish">🟢 看多</span>
+        </div>
+        <p class="stock-summary">AWS 通过 Redshift Iceberg 物化视图和 MCP 运维诊断强化湖仓与智能运维差异化，提升企业数据平台粘性；短期收入影响有限。仅供参考，不构成投资建议。</p>
+        <div class="stock-details">
+            <div class="catalysts">
+                <strong>🚀 催化剂</strong>
+                <ul><li>Redshift Iceberg 物化视图客户采用扩大</li><li>MCP 运维诊断工具生态成熟</li><li>AWS 数据与 AI 平台集成深化</li></ul>
+            </div>
+            <div class="risks">
+                <strong>⚠️ 风险</strong>
+                <ul><li>Snowflake、Databricks 等竞争加剧</li><li>Iceberg 多引擎权限与治理复杂</li><li>AI 自动运维安全与审计风险</li></ul>
+            </div>
+        </div>
+    </article>
+        </section>
+
+        <footer>
+            <p>Generated by Data+AI Daily Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
