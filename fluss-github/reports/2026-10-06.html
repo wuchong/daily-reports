@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-10-06</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-10-06</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 2 新 Issues</div>
+            <div class="stat">✅ 1 关闭</div>
+            <div class="stat">✨ 4 新 PRs</div>
+            <div class="stat">🎉 2 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/3813">PR #3813</a> 合并，新增 SSL 配置解析与 SslContext/SslHandler 工厂，并关闭 <a href="https://github.com/apache/fluss/issues/3796">Issue #3796</a>。</li><li>📚 <a href="https://github.com/apache/fluss/pull/4554">PR #4554</a> 合并，对齐文档侧边栏折叠箭头与当前页激活指示器。</li><li>✨ <a href="https://github.com/apache/fluss/pull/4559">PR #4559</a> 提出 C++ 客户端非阻塞 lookup，配套 <a href="https://github.com/apache/fluss/issues/4558">Issue #4558</a> 关注单线程多 lookup 限制。</li><li>🐛 <a href="https://github.com/apache/fluss/issues/4557">Issue #4557</a> 报告 Flink lake reader 错误使用 Flink catalog 命名 Iceberg catalog，导致 JDBC catalog 表无法找到。</li><li>🚀 <a href="https://github.com/apache/fluss/pull/4520">PR #4520</a> 推进 Spark 连接器复用 Fluss 连接，新增连接缓存以降低任务连接开销。</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4185">Issue #4185</a> [Umbrella] Kafka Protocols Compatibility - Basic Produce</h4>
+            <ul><li><span class="author">@dstolis</span>: 认可先合并基础 Kafka 兼容代码再优化，并在作者 fork 上提交初步测试发现的小 PR。</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3813">PR #3813</a> [FIP-29] Add SSL config parsing and SslContext/SslHandler factory</h4>
+            <ul><li><span class="author">@MicheleGuerriero</span>: 处理最新评审意见，修复 SSL 配置回归、truststore 校验和配置项关系，并请求批准 CI。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4545">PR #4545</a> [Client] Support bounded log scanning</h4>
+            <ul><li><span class="author">@polyzos</span>: 建议改用现有 log_start_offset，转换既有 reader，并指出元数据刷新、完成判断与缓冲释放问题。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4520">PR #4520</a> [spark] Reuse Fluss connections across Spark tasks</h4>
+            <ul><li><span class="author">@Yohahaha</span>: 新增 FlussConnectionCache 以复用 Spark 任务中的 Fluss 连接，并请求再次评审。</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4558">#4558</a> [cpp] One thread can't keep more than one lookup in flight <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/4557">#4557</a> [lake] Flink lake reader names the Iceberg catalog after the Flink catalog, so JDBC catalog tables are not found <span class="author">@affo</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4560">#4560</a> chore: update pins to make CI clients integration to work again <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/4559">#4559</a> [cpp] Allow starting lookups without blocking <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/4556">#4556</a> [docs][1.0] Clarify Fluss overview, architecture, and table layout <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/pull/4555">#4555</a> [docs] Clarify Fluss overview, architecture, and table layout <span class="author">@wuchong</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/3796">#3796</a> [TLS] Add SSL config parsing and SslContext/SslHandler factory <span class="author">@affo</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4554">#4554</a> [docs] Align sidebar carets and active indicators <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/pull/3813">#3813</a> [FIP-29] Add SSL config parsing and SslContext/SslHandler factory <span class="author">@MicheleGuerriero</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
