@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafka 社区周报 | 2026-W40</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Kafka 社区周报 | 2026-W40</h1>
+            <p class="date-range">2026-09-28 ~ 2026-10-04</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (1)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/6xgotkb9jo85w33y0szr1m7kxjkz4gnr">New committer: Sushant Mahajan</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (3)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/h9q0tx49bmo2dwpscrxfn1w0cnh64tf9">4.4.0 RC3</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/hxzv89m1tlrx3yym1szlv1xjzfy0bdzv">KIP-1349 Bytes-based configurable snapshot frequency for share groups</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/yc0sq4vnn1cjsnhlbog2fhvql0dyz479">4.3.2 RC0</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/v76bvtvsbv9kkmcrgkr1dqv4jo9fsp6n">[PR] Change order of KRaft migration revert steps [kafka-site]</a></h3>
+            <p class="meta">5 条回复 · 3 位参与者</p>
+            <p class="summary">讨论围绕 Kafka 文档中 KRaft 迁移回退步骤的顺序调整展开，核心是将 epoch 比较与更新操作移到 KRaft 控制器下线之后执行，以避免边界情况。参与者还讨论了如何在保证正确性的同时缩短无控制器窗口，并建议同步更新 Kafka 主仓库文档。</p>
+            <div class="key-points"><p><strong>@mwesterby:</strong> 最初将 epoch 检查放在下线 quorum 之前是为了缩短无控制器时间，但下线后检查才能确保新 epoch 超过 KRaft epoch，避免边界问题；建议在文档中提示该步骤需尽快执行。</p>
+<p><strong>@chia7712:</strong> 需要同步更新 Kafka 主仓库中的文档，否则发布 3.9.3 时 kafka-site 的修改会被覆盖。</p>
+<p><strong>@morgando:</strong> 已按建议更新文档提示步骤需快速执行，并提出一种优化回退顺序以最小化无控制器窗口，但可能在极少数情况下短暂出现低 epoch 控制器，需配合文档化的恢复策略。</p></div>
+            <p class="conclusion">初步共识是将 epoch 检查放在 KRaft 控制器下线之后，并在文档中强调快速执行；下一步是将相同变更同步到 Kafka 主仓库，并继续评估优化回退顺序的方案。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/rdqxv91hmmtx7hpr8k3s8y3nfd5hnqvs">[PR] MINOR: Add smjn as committer. [kafka-site]</a></h3>
+            <p class="meta">2 条回复 · 1 位参与者</p>
+            <p class="summary">该讨论围绕 kafka-site 仓库的 PR #921 展开，目的是将 smjn 添加为 committer。smjn 提交并合并了该 PR，并在评论中提供了本地验证截图。</p>
+            <div class="key-points"><p><strong>@smjn:</strong> 发起并合并了 PR #921，用于将 smjn 添加为 committer。</p>
+<p><strong>@smjn:</strong> 在 PR 评论中说明已在本地验证，并附上验证截图。</p></div>
+            <p class="conclusion">PR #921 已被 smjn 合并，添加 committer 的变更已完成。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/nvyjbl1g4wlbm2cg8onxdrd52wfg3jrg">KIP-1368: Client framework name and version</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">讨论围绕 KIP-1368 中客户端框架名称、版本及实例标识的配置与归属展开。Andrew 提出新增 client.framework.id 配置，用于标识框架实例（如 Kafka Streams 的 process ID 或 Kafka Connect 的连接器类与版本），并强调框架配置应由框架自身控制。Chris 对将连接器类型和版本拼接为单一 ID 的做法提出质疑，建议引入 client.application.name/version 作为中间层，并主张 Connect 运行时禁止覆盖这些配置。</p>
+            <div class="key-points"><p><strong>@Lianet Magrans:</strong> 支持框架拥有配置的策略，并建议为 Kafka Streams 增加框架实例标识（如 process ID），以便关联同一 Streams 实例的所有连接。</p>
+<p><strong>@Andrew Schofield:</strong> 提出更新版 KIP，新增 client.framework.id 配置，允许框架设置实例标识，并说明其验证规则更宽松，适用于非用户直接控制的来源。</p>
+<p><strong>@Chris Egerton:</strong> 反对将连接器类名和版本拼接为单一 ID，建议使用 client.application.name/version 字段，并认为 Connect 应使用 worker ID 作为实例标识，同时禁止运行时覆盖这些配置。</p></div>
+            <p class="conclusion">Andrew 已更新 KIP，新增 client.framework.id 配置以支持框架实例标识，但关于 Connect 中该字段的具体用途及是否引入 application 层级配置仍需进一步讨论。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/025vmx6pk917tzo9m906t51c3ompyx0y">KAFKA-20684/KIP-1306 PR Review Request</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">Aditya Kousik 请求社区评审 KAFKA-20684/KIP-1306 相关的 6 个小型 PR，内容是将 RebalanceListener 的使用收尾，移除 ConsumerRebalanceListener 的引用，并在清理完成后添加 @Deprecated 注解。Andrew Schofield 表示已将自己加为评审人，会逐步处理这些 PR。Aditya 感谢其评审，并说明距离 4.5.0 代码冻结还有时间，希望先关闭这些待处理项。</p>
+            <div class="key-points"><p><strong>@Aditya Kousik:</strong> 请求评审 6 个与 KAFKA-20684 相关的小型纯函数变更 PR，目标是完成 RebalanceListener 的收尾并移除 ConsumerRebalanceListener 的引用。</p>
+<p><strong>@Andrew Schofield:</strong> 已加入为评审人，将逐步处理这些 PR，并指出当前有大量 PR 等待评审。</p>
+<p><strong>@Aditya Kousik:</strong> 感谢评审支持，并表示距离 4.5.0 代码冻结仍有时间，希望先关闭这些未完成的 PR。</p></div>
+            <p class="conclusion">Andrew Schofield 将负责逐步评审这些 PR，暂无进一步行动项。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/btk1pr3d10tjztxtq6lf3216j9nbpcxk">4.4.0 Release Manager</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕 Kafka 4.4.0 的发布进度与测试构建获取展开。Ericsson 的 Vivek 因产品升级和安全漏洞修复需求，询问 4.4.0 正式发布时间及可用的测试构建；Chia-Ping 回应称新的 RC 正在准备，并最终通知 RC3 已发布。</p>
+            <div class="key-points"><p><strong>@Vivek Agarwal B:</strong> 请求提供 Kafka 4.4.0 的测试构建，并确认正式版本是否能在 10 月第一周发布，以便从 4.3.0 迁移并修复漏洞。</p>
+<p><strong>@Chia-Ping Tsai:</strong> 说明包含所需更新的下一个 4.4.0 RC 正在准备中，并在后续通知 RC3 已发布，提供了对应链接。</p></div>
+            <p class="conclusion">Kafka 4.4.0 RC3 已发布，Vivek 可基于该候选版本进行测试；正式发布时间未在邮件中明确确认。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/nl5kxodkwkk2mlblporw570kk2fbjphq">KIP-1379: Make server-side rack-aware assignment opt-in</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">David Jacot 提出 KIP-1379，建议将 Kafka 服务端机架感知分配改为可选启用，通过新增默认关闭的 broker 配置来减少不必要的协调开销。Lucas Brutschy 认可该简化方案，并提出了关于配置切换兼容性、配置粒度、Streams 组影响及 API 契约变更等几点疑问。</p>
+            <div class="key-points"><p><strong>@David Jacot:</strong> 机架感知分配仅在消费者从 follower 拉取且分区副本未覆盖所有机架时才有价值，但当前所有 consumer group 都会承担其开销，因此建议改为默认关闭的可选配置。</p>
+<p><strong>@Lucas Brutschy:</strong> 该配置是 broker 级别，但收益取决于各 group 的 topic 和消费者行为，建议考虑是否应设为 group 级别配置。</p>
+<p><strong>@Lucas Brutschy:</strong> 禁用配置时，SubscribedTopicDescriber#racksForPartition() 对已存在 topic 会返回空集合，与现有 javadoc 契约不一致，建议在兼容性部分说明此变更。</p></div>
+            <p class="conclusion">目前处于讨论初期，David Jacot 尚未回应 Lucas Brutschy 提出的技术疑问，暂无明确结论或下一步行动。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/pmrfr0t9713kpyvyy7pbsj4nf2q4nczc">KIP-1165: Object Consolidation for Diskless</a></h3>
+            <p class="meta">1 条回复 · 1 位参与者</p>
+            <p class="summary">Viktor Somogyi-Vass 宣布更新重新开放的 KIP-1165，提出了针对 Diskless 的对象合并（object merging）更完整设计。该提案定义了带有分层前缀的无盘合并主题，并涵盖其生命周期、行为、复制机制，以及记录在主题各阶段中的流转、存储和消费直至过期。</p>
+            <div class="key-points"><p><strong>@Viktor Somogyi-Vass:</strong> 更新了 KIP-1165，提出更完整的对象合并设计，定义了带分层前缀的无盘合并主题。</p>
+<p><strong>@Viktor Somogyi-Vass:</strong> 提案详细说明了合并主题的生命周期、行为和复制机制，包括记录在主题各阶段的存储、消费和过期处理。</p></div>
+            <p class="conclusion">目前处于征求意见阶段，尚未形成最终结论，下一步是等待社区反馈并继续完善提案。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/m9wy0myyyyq615ln8dkyksl1mho407yf">Bug Report - ProducerBatch.split() Straddling Signed Int Max</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Chris Jakins 报告了 Kafka Producer 中的一个潜在 Bug：当 broker 因 MESSAGE_TOO_LARGE 拒绝批次并触发 ProducerBatch.split() 时，若序列号跨越 2^31，会产生负数序列号，导致 producer 停滞并最终抛出 BufferExhaustedException。他建议改用已有的 wrap-safe 辅助方法，并表示愿意提交 JIRA 和 PR。</p>
+            <div class="key-points"><p><strong>@Chris Jakins:</strong> ProducerBatch.split() 在重新分配序列号时使用原始 int 加法，跨越 2^31 会产生负序列号，导致 producer 停滞和 BufferExhaustedException。</p>
+<p><strong>@Chris Jakins:</strong> 建议使用 KAFKA-7693 中引入的 wrap-safe 辅助方法替代原始 int 加法，修复只需一行代码。</p>
+<p><strong>@Chris Jakins:</strong> 表示愿意提交 JIRA ticket 并参与 PR 修复。</p></div>
+            <p class="conclusion">目前尚无社区回复或正式结论，提议的下一步是提交 JIRA ticket 并开展一行代码修复的 PR。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/sxd4pw6n56wohgovsck0k7pcro6k4jp8">Please provide "ci-approved" label for two PR's</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Dejan Stojadinović 请求社区为两个 PR 添加 'ci-approved' 标签，分别涉及 Gradle RAT 插件版本升级（PR #23424）和启用 Gradle 可重现归档功能（PR #23167）。邮件中仅包含 PR 链接和请求说明，未出现其他参与者的讨论内容。</p>
+            <div class="key-points"><p><strong>@Dejan Stojadinović:</strong> 请求为两个 Gradle 相关的 PR（#23424 和 #23167）添加 'ci-approved' 标签，以便推进 CI 流程。</p></div>
+            <p class="conclusion">暂无初步结论或后续讨论，邮件仅为标签申请请求，尚未有社区成员回应。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/2ksszt3gnx18k2nw71oplnvjwmt2jjkr">Mirror Maker 2 Feature Requests</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Jeremy Bohrer 在邮件中提出了两个关于 Mirror Maker 2（MM2）的功能请求/文档改进建议：一是在关闭自动主题创建的集群中，希望提供 MM2 内部主题的创建文档或脚本；二是希望为 Python 等非 Java 语言提供类似 RemoteClusterUtils 的客户端支持，用于跨集群转换消费者组偏移量。他表示愿意提交 CR，但不确定社区是否有其他用户需要这些功能。</p>
+            <div class="key-points"><p><strong>@Jeremy Bohrer:</strong> 对于关闭了自动主题创建的 Kafka 集群，首次运行 MM2 很困难，建议提供内部主题的创建文档或生成脚本。</p>
+<p><strong>@Jeremy Bohrer:</strong> Java 已有 RemoteClusterUtils 可用于跨集群转换消费者组偏移量，建议增加 Python 等其他语言的客户端支持。</p></div>
+            <p class="conclusion">目前尚无明确结论或后续行动，提议者表示愿意提交 CR，但需先确认社区是否有需求。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (65)</h2>
+            
+    <p>本周新建 <strong>65</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周 Kafka JIRA 主要集中在消费者组与 Streams 的任务分配、再平衡及 rack-aware 分配优化，涉及 share session、静态成员、动态成员关闭和 assignor 相关修复与增强。同时包含日志存储与远程日志恢复、offset 处理、事务与协调器内存管理等服务端稳定性改进，以及发布流程、安全校验、依赖升级和测试提速/覆盖率提升等工程化工作。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Kafka Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
