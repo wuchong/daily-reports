@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data+AI 全球日报 | 2026-10-06</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Data+AI 全球日报 | 2026-10-06</h1>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="top-changes">
+            <h2>🔥 今日最重要的3个变化</h2>
+            <ol><li><strong>AWS EMR 8.1.0 强化开放湖仓互操作</strong> — Amazon EMR 新增 multi-catalog 能力，可通过 RedirectingSessionCatalog 在单一入口查询 Iceberg、Delta Lake、Hudi 和 Hive 表，并支持跨 AWS 账户联合查询，减少数据复制。</li><li><strong>AWS Glue 6.0 推进 DuckDB + S3 Tables 低成本 ETL</strong> — AWS 展示在 Glue 6.0 中使用 DuckDB 运行单 worker SQL ETL，从 S3 读取 Parquet 并写入 S3 Tables 中的 Iceberg 表，为 Spark 之外的轻量 ETL 路径提供成本对比。</li><li><strong>AWS 将 OpenSearch 与 Bedrock AgentCore 引入 ETL 可观测性</strong> — AWS 提出将 MWAA 编排的 ETL 日志集中到 Amazon OpenSearch Service，并通过 Bedrock AgentCore 上的 MCP server 以自然语言查询日志，推动 DataOps 与 AIOps 融合。</li></ol>
+            <p class="judgment"><strong>总判断：</strong>今日信号集中在 AWS 对湖仓一体与 DataOps 的持续加密：开放表格式互操作、低成本 SQL ETL、AI 驱动可观测性同时推进。ClickHouse 对 Databricks 的实时性价比攻势则显示实时分析市场竞争进一步白热化。</p>
+        </section>
+
+        <section class="top-signals">
+            <h2>📡 重要信号</h2>
+            
+    <article class="news-item">
+        <h3>Amazon EMR 8.1.0 增加 multi-catalog 支持</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/query-across-accounts-and-table-formats-with-multi-catalog-in-amazon-emr/">AWS Big Data Blog</a></p>
+        <p class="date">2026-10-06</p>
+        <p class="summary">Amazon EMR 8.1.0 通过 RedirectingSessionCatalog 支持在单一 catalog 入口中查询 Iceberg、Delta Lake、Hudi 和 Hive 表，并可跨 AWS 账户联合查询，无需复制数据。该能力面向 EMR Serverless 等场景，降低多账户、多表格式环境下的数据访问复杂度。</p>
+        <div class="impact">📊 数据平台影响：EMR 强化开放表格式互操作和跨账户治理，可能提升 AWS 湖仓作为多格式统一查询层的吸引力，并加剧与 Databricks、Snowflake 在开放湖仓上的竞争。</div>
+    </article>
+    <article class="news-item">
+        <h3>AWS 将 OpenSearch 与 Bedrock AgentCore 用于 ETL 可观测性</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/monitoring-mwaa-orchestrated-etl-pipelines-with-amazon-opensearch-service/">AWS Big Data Blog</a></p>
+        <p class="date">2026-10-06</p>
+        <p class="summary">AWS 展示将 MWAA 编排的 ETL 管道日志集中写入 Amazon OpenSearch Service，并借助 Amazon Bedrock AgentCore 上的 MCP server 以自然语言查询日志。该方案旨在减少跨 CloudWatch log groups 排障成本，将可观测性与 AI 代理能力结合。</p>
+        <div class="impact">📊 数据平台影响：将 ETL 可观测性接入 OpenSearch 与 Bedrock，有助于 AWS 形成 DataOps/AIOps 闭环，提升数据管道故障定位效率，也可能带动 OpenSearch 在运维分析场景的使用。</div>
+    </article>
+        </section>
+
+        <section class="product-tech">
+            <h2>💻 产品与技术</h2>
+            
+    <article class="news-item">
+        <h3>AWS Glue 6.0 结合 DuckDB 与 Amazon S3 Tables 提供低成本 ETL</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/cost-effective-etl-with-duckdb-and-amazon-s3-tables-on-aws-glue/">AWS Big Data Blog</a></p>
+        <p class="date">2026-10-06</p>
+        <p class="summary">AWS 介绍在 AWS Glue 6.0 中使用 DuckDB 运行以 SQL 为中心的单 worker ETL，从 Amazon S3 读取 Parquet，并将 Apache Iceberg 表写入 Amazon S3 Tables。文章提供可运行示例，并与等效 Apache Spark 作业比较成本和运行时间。</p>
+        <div class="impact">📊 数据平台影响：为中小规模湖仓 ETL 提供更低成本、更轻量的替代路径，进一步推动 DuckDB、Iceberg 和 S3 Tables 在 AWS 数据平台中的组合采用。</div>
+    </article>
+        </section>
+
+        <section class="people-views">
+            <h2>👤 人物与观点</h2>
+            
+    <article class="news-item">
+        <h3>ClickHouse 称 ClickHouse Cloud 在实时分析性价比上大幅领先 Databricks</h3>
+        <p class="sources">📌 <a href="https://clickhouse.com/blog/clickhouse-vs-databricks-real-time-performance-per-dollar">ClickHouse Blog</a></p>
+        <p class="date">2026-10-06</p>
+        <p class="summary">ClickHouse 发布对比文章称，在 CostBench 测试中 ClickHouse Cloud 的 performance per dollar 达到 Databricks 的 752 倍。文章将差距归因于实时数据到达、查询延迟和实时分析架构效率，属于厂商主导的性能叙事。</p>
+        <div class="impact">📊 数据平台影响：该对比可能促使企业在实时分析选型中更关注查询成本、新鲜数据摄入和低延迟服务，也会给 Databricks 在实时/交互式分析场景的价值主张带来舆论压力。</div>
+    </article>
+        </section>
+
+        <section class="analyst-insights">
+            <h2>📊 分析师洞察</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="watchlist">
+            <h2>👀 观察列表</h2>
+            
+    <article class="watchlist-item">
+        <h3>DuckDB + AWS Glue + S3 Tables 的轻量 ETL 采用</h3>
+        <span class="status">待观察</span>
+        <p class="reason">AWS 正在推广低成本 SQL ETL 路径，但生产级可靠性、复杂转换能力和治理集成仍需验证。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>更多企业案例、Glue/DuckDB 功能增强或与 S3 Tables 的深度集成。</p>
+    </article>
+    <article class="watchlist-item">
+        <h3>EMR multi-catalog 在多账户湖仓中的落地</h3>
+        <span class="status">待观察</span>
+        <p class="reason">跨账户、跨表格式查询是开放湖仓关键能力，但权限、性能和元数据治理决定实际采用。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>与 Lake Formation、Unity Catalog 或第三方 catalog 的互操作案例。</p>
+    </article>
+    <article class="watchlist-item">
+        <h3>ClickHouse 与 Databricks 实时分析竞争</h3>
+        <span class="status">待观察</span>
+        <p class="reason">ClickHouse 的 752× 性价比说法来自厂商 CostBench，需要第三方或客户工作负载验证。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>独立基准、客户 PoC 结果或 Databricks 实时查询性能回应。</p>
+    </article>
+        </section>
+
+        <section class="stock-analysis">
+            <h2>📈 股票分析</h2>
+            <p class="disclaimer">⚠️ 以下内容仅供参考，不构成任何投资建议。投资有风险，入市需谨慎。</p>
+            
+    <article class="stock-item">
+        <div class="stock-header">
+            <span class="ticker">AMZN</span>
+            <span class="company">Amazon</span>
+            <span class="signal signal-neutral">⚪ 中性</span>
+        </div>
+        <p class="stock-summary">AWS 多项数据平台更新有助于增强湖仓与 AI DataOps 生态粘性，但均为技术博客层面，短期财务影响有限。本分析仅供参考，不构成投资建议。</p>
+        <div class="stock-details">
+            <div class="catalysts">
+                <strong>🚀 催化剂</strong>
+                <ul><li>AWS 数据与 AI 服务收入增长</li><li>Iceberg/S3 Tables 生态扩展</li><li>Bedrock 与数据平台集成加深</li></ul>
+            </div>
+            <div class="risks">
+                <strong>⚠️ 风险</strong>
+                <ul><li>云数据平台竞争加剧</li><li>客户成本优化可能降低服务消耗</li><li>AI 基础设施投入回报不确定</li></ul>
+            </div>
+        </div>
+    </article>
+        </section>
+
+        <footer>
+            <p>Generated by Data+AI Daily Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
