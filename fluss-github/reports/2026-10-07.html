@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-10-07</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-10-07</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 1 新 Issues</div>
+            <div class="stat">✅ 1 关闭</div>
+            <div class="stat">✨ 2 新 PRs</div>
+            <div class="stat">🎉 5 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🐛 <a href="https://github.com/apache/fluss/pull/4468">PR #4468</a> 合并：服务端读上下文改用默认 NettyAllocationManager，修复 Arrow 内存保留问题（<a href="https://github.com/apache/fluss/issues/4467">Issue #4467</a>）。</li><li>📚 <a href="https://github.com/apache/fluss/pull/4556">PR #4556</a> 合并：澄清 1.0 文档中的 Fluss 概述、架构和表布局，相关主分支文档见 <a href="https://github.com/apache/fluss/pull/4555">PR #4555</a>。</li><li>✨ <a href="https://github.com/apache/fluss/issues/4562">Issue #4562</a> 报告 Rust 客户端单台不可用服务器会阻塞所有 lookup，已提交修复 <a href="https://github.com/apache/fluss/pull/4563">PR #4563</a>。</li><li>✨ <a href="https://github.com/apache/fluss/pull/4564">PR #4564</a> 打开：让 Flink lake reader 的 Iceberg catalog 名称与服务端保持一致。</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4063">Issue #4063</a> [kv] Batch old-value lookups in the KV write path</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: 感谢社区参与，并将该批量旧值查询问题分配给 Anurag15v 处理。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4557">Issue #4557</a> [lake] Flink lake reader names the Iceberg catalog after the Flink catalog, so JDBC catalog tables are not found</h4>
+            <ul><li><span class="author">@firasbouzazi</span>: 请求 Lorenzo 协助评审，以便修复 Flink 读取 Iceberg 表时找不到 JDBC catalog 表的问题。</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4545">PR #4545</a> [Client] Support bounded log scanning</h4>
+            <ul><li><span class="author">@yangshangqing95</span>: 回应评审并更新实现：修复清理逻辑、区分空结果，讨论 bounded EARLIEST 兼容方案。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4559">PR #4559</a> [cpp] Allow starting lookups without blocking</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 请求两位维护者评审 C++ 客户端允许非阻塞启动 lookup 的改动。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4560">PR #4560</a> chore: update pins to make CI clients integration to work again</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 请求维护者评审更新依赖 pin 以恢复客户端 CI 集成测试的 PR。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4563">PR #4563</a> [rust] Keep one unavailable server from stalling every lookup</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 请求评审 Rust 客户端修复，避免单台不可用服务器阻塞所有 lookup。</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4562">#4562</a> [rust] One unavailable tablet server stalls every lookup on a client <span class="author">@fresh-borzoni</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4564">#4564</a> [lake] Name the Flink lake reader's Iceberg catalog like the server's <span class="author">@firasbouzazi</span> </li><li><a href="https://github.com/apache/fluss/pull/4563">#4563</a> [rust] Keep one unavailable server from stalling every lookup <span class="author">@fresh-borzoni</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4467">#4467</a> [Bug] Server-side Arrow read contexts retain ChunkedFactory memory <span class="author">@loserwang1024</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4565">#4565</a> chore: Fix clippy 1.99 lints <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/4561">#4561</a> update company <span class="author">@polyzos</span> </li><li><a href="https://github.com/apache/fluss/pull/4556">#4556</a> [docs][1.0] Clarify Fluss overview, architecture, and table layout <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/pull/4555">#4555</a> [docs] Clarify Fluss overview, architecture, and table layout <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/pull/4468">#4468</a> [server] Use default NettyAllocationManager for read contexts in server side. <span class="author">@loserwang1024</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
