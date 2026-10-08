@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flink 社区周报 | 2026-W40</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Flink 社区周报 | 2026-W40</h1>
+            <p class="date-range">2026-09-28 ~ 2026-10-04</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (0)</h2>
+            <p class="empty">本周无公告</p>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (1)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/g708ypht0v5kfkxh43x7d5hbxnpnltl6">FLIP-612: Native XML Functions for Flink SQL</a> <span class="status passed">✅ 已通过</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/zvy8tdbqvknn9tjr7hchzxsf9tdmrnbo">Guidelines for post-FLIP adjustments to built-in PTFs</a></h3>
+            <p class="meta">4 条回复 · 3 位参与者</p>
+            <p class="summary">本次讨论围绕内置 PTF（Process Table Function）在原始 FLIP 通过后进行调整时，应遵循何种社区讨论和审批流程展开。Ferenc 提出按变更影响分级处理：非 API 变更走普通 PR 评审，向后兼容的用户可见变更可酌情进行邮件列表讨论，不兼容或涉及核心设计变更则需重新走 FLIP 流程。参与者基本认可该分级原则，并进一步明确 FLIP 应作为历史设计记录，当前实现和文档才是实际契约。</p>
+            <div class="key-points"><p><strong>@Ferenc Csaky:</strong> 提出内置 PTF 后续变更的分级流程建议：非 API 变更走 PR 评审，用户可见变更建议进行邮件列表讨论，不兼容或核心设计变更需走完整 FLIP 流程。</p>
+<p><strong>@Gustavo de Morais:</strong> 同意分级原则，但认为新增可选参数这类向后兼容变更不一定强制讨论，应根据影响程度用常识判断，新增必选参数则属于破坏性变更。</p>
+<p><strong>@Krishna Sai:</strong> 引用 FROM_CHANGELOG 案例，关注变更后 FLIP 页面是否需要同步更新；最终认可文档作为当前语义契约，无需持续回改 FLIP。</p></div>
+            <p class="conclusion">初步达成共识：非 API 变更通过普通 PR 处理；向后兼容 API 扩展按影响程度判断是否发起 dev@ 讨论；不兼容或重审核心设计的变更需走 FLIP 流程。下一步由 Ferenc 将该指导原则整理写入 wiki。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/f37w82xk1bz1zgsybpsd87q3mgy4zwkx">FLIP-614: Add built-in DEDUPLICATE_KEEP_FIRST PTF</a></h3>
+            <p class="meta">3 条回复 · 3 位参与者</p>
+            <p class="summary">本次讨论围绕 FLIP-614 提议在 Flink SQL 中新增内置 DEDUPLICATE_KEEP_FIRST PTF，以简化常见去重场景的使用体验。社区成员就函数参数设计、事件时间语义、无分区调用行为、更新流输入处理和状态 TTL 默认值等问题进行了澄清和改进建议。提案作者已回应主要意见并计划修订 FLIP 后再发起投票。</p>
+            <div class="key-points"><p><strong>@Timo Walther:</strong> 建议不要通过 keep=last 等参数扩展单个函数，而是将 DEDUPLICATE_KEEP_LAST 拆分为独立函数，避免参数组合导致功能矩阵稀疏和用户体验复杂化。</p>
+<p><strong>@Gustavo de Morais:</strong> 支持该 FLIP，认为去重是 Flink 常见用例，当前 SQL 去重方式不够直观或低效；并澄清事件时间去重只需保留最早记录，无需缓存排序。</p>
+<p><strong>@Mate Czagany:</strong> 指出 FLIP 中无分区调用语义存在矛盾，建议明确只保留 +I/+U 并忽略未见 key 的 -U/-D，同时状态 TTL 未设置时应回退到 table.exec.state.ttl。</p></div>
+            <p class="conclusion">作者 Vas Shabu 接受了主要建议，承诺修正无分区调用语义、更新流输入处理以及状态 TTL 回退逻辑，并在更新 FLIP 后预留几天继续征求意见，再发起投票。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/r5fd59h2lmz3mxh4ft288dfh60938kf6">Release flink-connector-aws [6.1.0]</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">Madison Roberts 提议发布 flink-connector-aws 6.1.0，主要目的是将已合入主干但尚未发布的 7 个提交带给用户，尤其是客户明确需要的 FLINK-39137 功能。该提议已获得社区成员支持，Madison 自愿担任本次发布的 Release Manager。</p>
+            <div class="key-points"><p><strong>@Madison Roberts:</strong> 提议发布 6.1.0，核心动机是发布 FLINK-39137（为非空 getRecords 调用增加可配置间隔），并自愿担任 Release Manager。</p>
+<p><strong>@Ahmed Hammed:</strong> 支持发布计划，并支持 Madison 担任 Release Manager。</p>
+<p><strong>@Andreas Bube:</strong> 支持发布，认为应尽快切换到包含这些修复的正式构建版本。</p></div>
+            <p class="conclusion">社区初步达成共识，支持发布 flink-connector-aws 6.1.0，并由 Madison Roberts 担任 Release Manager，下一步将推进正式发布流程。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/7fs8kt5q8o3l0vsbc2fft3mko3nm7yyw">TO_CHANGELOG: Add optional operation column or EXCLUDE projection?</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕 TO_CHANGELOG PTF 是否应支持省略操作码列以保持输入表结构。Ferenc 提出通过可选参数（如 include_op_column => FALSE）或未来 Calcite 1.42 的 SELECT * EXCLUDE(op) 投影实现，并倾向于前者以提升通用性和灵活性。Gustavo 则列举了三种使用场景，质疑该需求是否足够通用，倾向于先观察社区对专用参数必要性的看法。</p>
+            <div class="key-points"><p><strong>@Ferenc Csaky:</strong> 建议为 TO_CHANGELOG 增加可选参数以省略操作码列，保持输入 schema，便于通用 SQL 作业使用 SELECT *，避免额外 UDF 移除列。</p>
+<p><strong>@Gustavo de Morais:</strong> 提出三种场景并质疑该需求是否常见，认为可考虑使用 EXCLUDE 投影，而非为特定场景新增参数。</p></div>
+            <p class="conclusion">暂无明确结论，等待社区进一步评估是否需要专用参数以及哪种设计更合适。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/mvm5j7wvj2ksbqw1n614f523lyw4om8s">FLIP-XXX: GEOGRAPHY type in Flink SQL and Table API</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕在 Flink SQL/Table API 中引入 GEOGRAPHY 类型的 FLIP 展开，核心关注点是应优先与 Calcite 社区对齐语义并在 Calcite 中实现，以避免 Flink 侧形成长期私有 planner 逻辑。邮件中各方基本认可先在 Calcite 讨论/实现，再将改动复制到 Flink，并等待后续 Calcite 升级时移除临时改动。</p>
+            <div class="key-points"><p><strong>@Sergey Nuyanzin:</strong> 建议先在 Calcite 中实现并合入 GEOGRAPHY，Flink 可直接复制相关改动，后续随 Calcite 升级移除，避免 Flink 特有实现。</p>
+<p><strong>@David Chaava:</strong> 接受先推进 Calcite 贡献，再引入 Flink 所需改动，并请求 Sergey 在 Calcite 侧提供早期技术反馈和评审支持。</p>
+<p><strong>@dylanhz:</strong> 支持先与 Calcite 讨论语义，认为新类型影响面广，早期对齐有助于未来切换到 Calcite 原生支持。</p></div>
+            <p class="conclusion">初步结论是优先在 Calcite 社区讨论并实现 GEOGRAPHY 类型，Flink 随后基于 Calcite 成果引入；下一步是准备 Calcite 贡献并推进评审。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/kjttwkq4tpc6zyzzj6j14o51ff3gjrft">FLIP-XXX: Dynamic Rate Limiting for FLIP-27 Source</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">本次讨论围绕 FLIP-XXX: Dynamic Rate Limiting for FLIP-27 Source 展开，旨在解决现有 Source 静态限流难以配置且无法感知运行时状态的问题。David Radley 指出按并行度平均分配全局速率可能因 split 分配不均和数据倾斜导致整体吞吐低于目标，Peter Huang 认可该问题并计划更新提案。</p>
+            <div class="key-points"><p><strong>@Peter Huang:</strong> 提出动态限流 FLIP，解决 FLIP-27 Source 现有限流静态固定、难以适配不同场景和运行时状态的问题。</p>
+<p><strong>@David Radley:</strong> 指出全局速率平均分配到 subtask 会在 split 不均或分区热点时造成限流过早触发或配额浪费，建议基于 subtask 上报吞吐或 active split 数加权分配，并支持可插拔分配策略。</p>
+<p><strong>@Peter Huang:</strong> 同意将加权分配纳入默认算法，并考虑暴露接口让用户自定义速率分配算法，将更新提案。</p></div>
+            <p class="conclusion">初步共识是默认限流分配应考虑 split 分配不均和数据倾斜，采用基于上报吞吐或 active split 的加权分配，并提供自定义策略扩展点；下一步由 Peter 更新 FLIP 提案。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/zgspj34oxvkr01mnhn5pw5qvygb7328g">[Announcement] Flink 2.4 Release Manager Sync Meeting #3</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">本次邮件是 Flink 2.4 Release Manager 第三次同步会议的提醒通知。会议定于 2026 年 10 月 9 日举行，主要目的是同步发布进展并确认相关 FLIP 的状态。</p>
+            <div class="key-points"><p><strong>@Chanhae Oh:</strong> 提醒相关人员参加第三次 Flink 2.4 Release Manager 同步会议，并提供了会议时间和链接。</p>
+<p><strong>@Chanhae Oh:</strong> 要求负责 2.4 版本中 FLIP 的参与者在会前检查并更新发布页面。</p></div>
+            <p class="conclusion">下一步行动是相关人员参加会议，并在会前更新 Flink 2.4 发布页面。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/j0krs5xhvqgm29xrj46ctvktv8j8nlxl">FLIP-615: Snapshot Splitters for Table and Database Ingestion</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论围绕 FLIP-615 提出的 JDBC 连接器快照切分器（Snapshot Splitters）展开，旨在改进表和数据库摄入场景下的并行读取、一致性与切分管理。Chanhae Oh 提出了复合主键可能导致数据倾斜以及与 FLIP-602 抽象复用的问题，建议在设计中统筹考虑相关重叠部分。</p>
+            <div class="key-points"><p><strong>@Chanhae Oh:</strong> 复合主键场景下仅使用第一列可能导致数据倾斜，需要关注切分均衡问题。</p>
+<p><strong>@Chanhae Oh:</strong> 建议将 ConnectionProvider 设计为可共享抽象，以便 FLIP-602 等相关方案复用，而不是仅专用于 FLIP-615。</p>
+<p><strong>@Joao Boto:</strong> FLIP-615 提出 TableSplitterEnumerator 和 DatabaseSplitterEnumerator，以自动化生成基于主键或元数据的切分，提升并行读取的正确性、一致性和容错恢复能力。</p></div>
+            <p class="conclusion">目前处于初步讨论阶段，尚未形成最终结论；后续需要进一步评估复合主键切分策略，并协调 FLIP-615 与 FLIP-602 在共享抽象上的设计。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/mp4hxvoqbhg76mb3gprzy4cfk5cnqtb1">[FLINK-40574] Upgrade SLF4J from 1.7 to 2.x</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论围绕将 Flink 中捆绑的 SLF4J 从 1.7 升级到 2.x 展开，主要关注其带来的安全漏洞修复与兼容性收益。Piotr Przybylski 提议在 minor 版本中完成升级，P Sinha 表示支持并强调应尽早落地于 2.4 版本。</p>
+            <div class="key-points"><p><strong>@Piotr Przybylski:</strong> 建议将 flink-dist.jar 中的 SLF4J 从 1.7 升级至 2.x，以支持新版 Logback 并避免运行时兼容问题。</p>
+<p><strong>@P Sinha:</strong> 支持升级，认为有助于减少 CVE 数量，并建议在 Flink 2.4 中实施而非等待 3.0。</p></div>
+            <p class="conclusion">初步倾向于在 Flink 2.4 版本中推进 SLF4J 升级，后续需处理依赖 log4j-slf4j-impl 的用户迁移问题。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/43mfgpj58y70r5s0mohbd32nc44d8f40">Maintenance status and plans for several Flink repositories</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Aleksandr Savonin 询问多个 Flink 仓库（如 flink-connector-rabbitmq、flink-training、flink-ml 等）的维护状态和计划，指出这些仓库存在长期开发停滞或待升级问题。他请求维护者澄清是否有退役/归档计划，以及是否有人可评审贡献并推进升级发布。</p>
+            <div class="key-points"><p><strong>@Aleksandr Savonin:</strong> 列出多个活跃度低或有未决问题的 Flink 仓库，希望明确其维护计划，避免在无人评审的情况下提交变更。</p>
+<p><strong>@Aleksandr Savonin:</strong> 提到已有相关讨论，包括 flink-training 是否继续维护、RabbitMQ 连接器支持状态、Pub/Sub 迁移评审困难，以及 flink-ml 不活跃与 CI 资源使用问题。</p>
+<p><strong>@Aleksandr Savonin:</strong> 请求维护者说明是否存在退役/归档决定，以及仍维护的仓库是否有评审人员、升级或发布计划。</p></div>
+            <p class="conclusion">邮件尚未形成最终结论，下一步是等待相关维护者或熟悉这些仓库的人回复，确认各仓库的维护、归档、评审和发布计划。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (80)</h2>
+            
+    <p>本周新建 <strong>80</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周 JIRA 主要集中在 Table/SQL 引擎的正确性与性能优化，尤其是 VARIANT 类型、LATERAL SNAPSHOT join、NDU（非确定性处理）、MATCH_RECOGNIZE 及多个内置函数和表达式的问题修复。同时涉及流处理核心能力的增强，包括动态限流（Dynamic Rate Limit）在 Source 侧的支持、Mini-batch streaming join 优化、代码生成与编译缓存改进，以及状态后端和资源泄漏等运行时问题。此外还包括若干配置、测试稳定性、依赖升级和文档更新方面的维护工作。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Flink Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
