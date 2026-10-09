@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-10-08</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-10-08</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 2 新 Issues</div>
+            <div class="stat">✅ 1 关闭</div>
+            <div class="stat">✨ 2 新 PRs</div>
+            <div class="stat">🎉 3 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/4568">PR #4568</a> [hotfix][test] Wait for bucket leaders in bounded source test</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4560">PR #4560</a> chore: update pins to make CI clients integration to work again</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4468">PR #4468</a> [server] Use default NettyAllocationManager for read contexts in server side.</li><li>🐛 <a href="https://github.com/apache/fluss/issues/4569">Issue #4569</a> [server] Aggregation merge engine for the last N elements of an array</li><li>🐛 <a href="https://github.com/apache/fluss/issues/4566">Issue #4566</a> [Bug] KV recovery fails after all TabletServer local data is lost</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4063">Issue #4063</a> [kv] Batch old-value lookups in the KV write path</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: > Hi <a href="https://github.com/platinumhamburg">@platinumhamburg</a> Can you assign this to me ? @Anurag15v…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4520">Issue #4520</a> [spark] Reuse Fluss connections across Spark tasks</h4>
+            <ul><li><span class="author">@Yohahaha</span>: kindly ping @wuchong @luoyuxia @beryllw</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/144">Issue #144</a> [Test] TableManagerITCase.testPartitionedTableManagement is not stable</h4>
+            <ul><li><span class="author">@leonardBang</span>: @Anurag15v Assigned this ticket to you</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4253">Issue #4253</a> [lake/iceberg] Support custom Iceberg lake table path</h4>
+            <ul><li><span class="author">@litiliu</span>: @luoyuxia Please take a look when you have time. Thanks!</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4439">Issue #4439</a> [server] Support update_if_changed merge engine for primary-key tables</h4>
+            <ul><li><span class="author">@litiliu</span>: @luoyuxia The locale-sensitive parsing issue noted by Copilot is fixed in 014e28b (`Locale.ROOT`).…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4492">Issue #4492</a> [#4489] [server] Re-arm KV snapshot scheduling after a transient initialization failure</h4>
+            <ul><li><span class="author">@zhang-arvin</span>: Thanks @midnattsol — the independent S3-outage verification is really helpful, and the shape you de…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4570">Issue #4570</a> [server] Add last_n aggregate function to aggregation merge engine</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: @polyzos @wuchong @pbanakar WDYT?</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4439">PR #4439</a> [server] Support update_if_changed merge engine for primary-key tables</h4>
+            <ul><li><span class="author">@litiliu</span>: Thanks for the review. In the tablet-server write path, this SchemaGetter is ServerSchemaCache.Sche…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4450">PR #4450</a> [flink] Support BUCKET_LOAD_BALANCE shuffle strategy for table with bucket kyes.</h4>
+            <ul><li><span class="author">@leonardBang</span>: Could we make the guarantee of `BUCKET_LOAD_BALANCE` slightly more precise here? BUCKET_LOAD_BALANC…</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4569">#4569</a> [server] Aggregation merge engine for the last N elements of an array <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/4566">#4566</a> [Bug] KV recovery fails after all TabletServer local data is lost <span class="author">@swuferhong</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4570">#4570</a> [server] Add last_n aggregate function to aggregation merge engine <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/4567">#4567</a> [server] Recover KV tables after complete local disk loss <span class="author">@swuferhong</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4467">#4467</a> [Bug] Server-side Arrow read contexts retain ChunkedFactory memory <span class="author">@loserwang1024</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4568">#4568</a> [hotfix][test] Wait for bucket leaders in bounded source test <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/pull/4560">#4560</a> chore: update pins to make CI clients integration to work again <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/4468">#4468</a> [server] Use default NettyAllocationManager for read contexts in server side. <span class="author">@loserwang1024</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
