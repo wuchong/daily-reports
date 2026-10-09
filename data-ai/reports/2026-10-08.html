@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data+AI 全球日报 | 2026-10-08</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Data+AI 全球日报 | 2026-10-08</h1>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="top-changes">
+            <h2>🔥 今日最重要的3个变化</h2>
+            <ol><li><strong>ClickHouse Cloud 引入 JWT 认证</strong> — ClickHouse Cloud 支持使用身份提供商签发的短期 JWT token 替代数据库密码连接，提升企业级安全与自动化凭证管理能力。</li><li><strong>Clera 一夜迁移 500GB 生产库至 ClickHouse Managed Postgres</strong> — Clera 将 500GB、500+ 表的生产数据库迁移至 ClickHouse Managed Postgres，CPU 使用率从 100% 降至 10–20%，展示低停机迁移与性能收益。</li><li><strong>ClickHouse 宣称实时分析性价比大幅领先 BigQuery</strong> — ClickHouse 称在 CostBench 中实时分析每美元性能为 BigQuery 的 438 倍，强化其在实时分析成本效率上的竞争定位。</li></ol>
+            <p class="judgment"><strong>总判断：</strong>今日信号集中在数据平台的企业级安全、迁移可行性与实时分析成本效率。ClickHouse 通过 JWT、托管 Postgres 迁移案例和对比 BigQuery，持续向企业生产系统渗透。Apache Pinot/StarTree 则补齐实时 OLAP 数据删除与合规能力，反映实时数据平台从性能竞争走向治理与运营成熟。</p>
+        </section>
+
+        <section class="top-signals">
+            <h2>📡 重要信号</h2>
+            
+    <article class="news-item">
+        <h3>Introducing JWT authentication in ClickHouse Cloud</h3>
+        <p class="sources">📌 <a href="https://clickhouse.com/blog/introducing-jwt-authentication-in-clickhouse-cloud">ClickHouse Blog</a></p>
+        <p class="date">2026-10-08</p>
+        <p class="summary">ClickHouse Cloud 宣布支持 JWT 认证，用户可使用由身份提供商签发的短期 token 连接数据库，而不再依赖长期数据库密码。该能力面向企业级部署，可与现有 IdP、SSO 和 IAM 体系集成，有助于实现自动凭证轮换、最小权限访问和降低密钥泄露风险。此举显示 ClickHouse 正补齐云数据平台安全接入与企业治理基础能力。</p>
+        <div class="impact">📊 数据平台影响：推动数据平台接入从静态密钥转向身份驱动安全，有利于企业统一 IAM、审计和零信任访问控制，降低多环境密钥管理复杂度。</div>
+    </article>
+    <article class="news-item">
+        <h3>How we migrated Clera’s 500 GB production database to ClickHouse Managed Postgres overnight</h3>
+        <p class="sources">📌 <a href="https://clickhouse.com/blog/clera-migrates-to-clickhouse-managed-postgres">ClickHouse Blog</a></p>
+        <p class="date">2026-10-08</p>
+        <p class="summary">Clera 将 500GB 生产数据库和 500 多张表在一夜之间迁移至 ClickHouse Managed Postgres。ClickHouse 称迁移后 CPU 使用率从 100% 降至 10%–20%，说明新托管服务在资源效率、查询性能和运维稳定性方面带来明显改善。该案例突出 ClickHouse 正以托管 Postgres 形态承接生产型工作负载，并降低迁移门槛。</p>
+        <div class="impact">📊 数据平台影响：为 Postgres 生态用户提供向托管分析/混合负载平台迁移的参考样本，可能加剧托管数据库在成本、性能和迁移工具上的竞争。</div>
+    </article>
+    <article class="news-item">
+        <h3>Why BigQuery can’t match ClickHouse Cloud for real-time analytics</h3>
+        <p class="sources">📌 <a href="https://clickhouse.com/blog/clickhouse-vs-bigquery-real-time-performance-per-dollar">ClickHouse Blog</a></p>
+        <p class="date">2026-10-08</p>
+        <p class="summary">ClickHouse 发布对比文章，称 ClickHouse Cloud 在 CostBench 实时分析测试中实现了比 BigQuery 高 438 倍的每美元性能。文章将优势归因于新数据写入后可快速查询、低延迟响应和更高成本效率。虽然该结果来自厂商自测，但反映出实时分析场景正成为云数据平台竞争焦点，尤其关注新鲜数据到查询结果的端到端效率。</p>
+        <div class="impact">📊 数据平台影响：实时分析和成本效率将成为云数仓竞争关键指标，企业选型会更关注写入新鲜度、查询延迟与计费模型，而非单一功能覆盖。</div>
+    </article>
+        </section>
+
+        <section class="product-tech">
+            <h2>💻 产品与技术</h2>
+            
+    <article class="news-item">
+        <h3>Deleting Rows in Apache Pinot & StarTree</h3>
+        <p class="sources">📌 <a href="https://startree.ai/resources/deleting-rows-in-apache-pinot-startree/">StarTree Blog</a></p>
+        <p class="date">2026-10-08</p>
+        <p class="summary">StarTree 发布技术文章，介绍如何在 Apache Pinot 和 StarTree 中删除行。文章指出实时 OLAP 系统中删除数据通常较复杂，Pinot 可通过 query-based purge 使用 SQL WHERE 条件移除符合条件的行。该能力有助于数据修正、合规删除和异常数据清理，但用户仍需理解其对实时摄入、索引和查询性能的影响。</p>
+        <div class="impact">📊 数据平台影响：实时分析平台开始更重视数据治理与合规删除能力，有助于 Pinot/StarTree 进入对隐私、审计和数据生命周期要求更高的生产场景。</div>
+    </article>
+        </section>
+
+        <section class="people-views">
+            <h2>👤 人物与观点</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="analyst-insights">
+            <h2>📊 分析师洞察</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="watchlist">
+            <h2>👀 观察列表</h2>
+            
+    <article class="watchlist-item">
+        <h3>ClickHouse Managed Postgres 生产采用</h3>
+        <span class="status">待观察</span>
+        <p class="reason">Clera 迁移案例显示 ClickHouse 正将托管 Postgres 推向生产数据库场景，但长期稳定性、生态兼容性和更多客户验证仍需观察。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>是否出现更多生产迁移案例、SLA/生态工具完善，以及是否公布规模化客户数据。</p>
+    </article>
+    <article class="watchlist-item">
+        <h3>实时分析性价比基准竞争</h3>
+        <span class="status">待观察</span>
+        <p class="reason">ClickHouse 宣称相对 BigQuery 的 438× 每美元性能优势，但厂商自测基准需要第三方验证，且工作负载差异较大。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>第三方 CostBench 复测、云厂商回应或客户真实工作负载对比结果。</p>
+    </article>
+    <article class="watchlist-item">
+        <h3>Apache Pinot 数据删除与合规能力</h3>
+        <span class="status">待观察</span>
+        <p class="reason">实时 OLAP 系统的数据删除是隐私合规和数据治理关键，StarTree 的 query-based purge 说明该能力正在产品化。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>是否支持更细粒度审计、自动化合规删除和大规模生产验证。</p>
+    </article>
+        </section>
+
+        <section class="stock-analysis">
+            <h2>📈 股票分析</h2>
+            <p class="disclaimer">⚠️ 以下内容仅供参考，不构成任何投资建议。投资有风险，入市需谨慎。</p>
+            
+    <article class="stock-item">
+        <div class="stock-header">
+            <span class="ticker">GOOGL</span>
+            <span class="company">Alphabet</span>
+            <span class="signal signal-neutral">⚪ 中性</span>
+        </div>
+        <p class="stock-summary">ClickHouse 宣称在实时分析每美元性能上显著优于 BigQuery，短期可能强化市场对云数仓竞争格局的关注，但该厂商自测结果尚未证明会对 Google Cloud 收入产生实质影响。</p>
+        <div class="stock-details">
+            <div class="catalysts">
+                <strong>🚀 催化剂</strong>
+                <ul><li>云数据平台实时分析基准对比</li><li>企业客户在实时分析场景的选型变化</li><li>Google BigQuery 性能/定价优化</li></ul>
+            </div>
+            <div class="risks">
+                <strong>⚠️ 风险</strong>
+                <ul><li>竞品实时分析性价比提升</li><li>客户对成本敏感度上升</li><li>厂商基准测试引发市场误读</li></ul>
+            </div>
+        </div>
+    </article>
+        </section>
+
+        <footer>
+            <p>Generated by Data+AI Daily Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
