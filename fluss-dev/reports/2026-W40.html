@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fluss 社区周报 | 2026-W40</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Fluss 社区周报 | 2026-W40</h1>
+            <p class="date-range">2026-09-28 ~ 2026-10-04</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (0)</h2>
+            <p class="empty">本周无公告</p>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (0)</h2>
+            <p class="empty">本周无投票</p>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (6)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/mon7nlz733sqmpy0gx70n3g1mq0sx6tl">Pump Iceberg Version to 1.12</a></h3>
+            <p class="meta">3 条回复 · 3 位参与者</p>
+            <p class="summary">本次讨论围绕将 Fluss 的 Iceberg 依赖升级至 1.12 展开，核心约束是 Iceberg 1.12 需要 Java 17。社区初步认可通过 Maven Toolchains 构建新插件、保留主构建在 JDK 11，并倾向于在首个版本中保留 Iceberg 1.10 插件作为默认、将 1.12 作为可选项。</p>
+            <div class="key-points"><p><strong>@Giannis Polyzos:</strong> 提出升级 Iceberg 至 1.12，并征询构建方式、Java 11 用户过渡、savepoint 迁移及 REST catalog 支持等四项决策。</p>
+<p><strong>@Nicholas Jiang:</strong> 支持升级，建议保留 1.10 插件一个版本作为默认、1.12 为 opt-in，并强调需要明确兼容性契约、迁移测试和文档说明。</p>
+<p><strong>@Jark Wu:</strong> 支持升级到 Iceberg 1.12，并同意暂时保留 Iceberg 1.10 插件作为默认，由需要 1.12 的用户手动切换到 JDK 17 环境。</p></div>
+            <p class="conclusion">初步共识是支持升级到 Iceberg 1.12，采用 JDK 17 构建新插件、主项目继续基于 JDK 11，并在首个版本中保留 Iceberg 1.10 插件作为默认、1.12 作为可选插件；下一步需要进一步收集现有 Fluss-Iceberg 用户的 Java 版本和状态迁移需求，以确认过渡周期和迁移方案。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/b0o78r1gxqzvzb0wkkymp41b5gtl40bl">FIP-54: Introduce client.writer.delivery-timeout to Fluss Write Client</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">该邮件讨论围绕 FIP-54 引入 client.writer.delivery-timeout 配置，核心议题是 Fluss 写客户端如何在批次超时后可靠过期并保证语义一致。Zhe Wang 认可了对 in-flight 批次独立过期、显式 flush() 契约和 Java API 测试的回应，但进一步提出在 writer-id 初始化/重置或同步元数据刷新期间，过期扫描可能因阻塞而无法持续运行的问题。Sagar 表示可根据反馈更新 FIP，并在无进一步问题后发起投票。</p>
+            <div class="key-points"><p><strong>@Zhe Wang:</strong> 关注 writer-id 分配或重置期间若 initWriter RPC 未完成，Sender 可能无法继续执行过期扫描，导致排队批次超过交付期限；建议 FIP 明确该场景并补充测试。</p>
+<p><strong>@Sagar:</strong> 解释了幂等性和序列号机制：在 accumulator 中尚未被 drain 的过期批次未分配序列号，因此可安全中止；并表示会根据反馈更新 FIP。</p></div>
+            <p class="conclusion">讨论已接近收敛，Sagar 计划根据 Zhe Wang 的剩余问题更新 FIP，若无进一步异议将开放投票。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/tx095lxf6g2lxcpzj24g5wr934xldnzr">FIP-44: Enhanced LanceDB Integration — Vector Indexes, FTS, and Hybrid Search</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">本次讨论围绕 FIP-44（增强 LanceDB 集成：向量索引、全文检索与混合搜索）的推进方式展开，重点确认了向量数据类型的实现边界与后续流程。Mehul Batra 已明确同意方案方向，建议 Sagar 先撰写聚焦向量数据类型的 FIP，并在社区会议上介绍。</p>
+            <div class="key-points"><p><strong>@Mehul Batra:</strong> 认可整体方案：fluss-common 层校验所有写入路径是合理设计，类型 ID 定为 19，union 读取可留到后续提案。</p>
+<p><strong>@Mehul Batra:</strong> 强调 Flink 不会在计划阶段阻止可空元素数组写入 NOT NULL sink，非空约束实际由 fluss-common 入口检查保证，应在 FIP 文档中明确说明。</p>
+<p><strong>@Mehul Batra:</strong> 建议关注 Iceberg v4 向量类型进展，但由于其依赖 Parquet 固定大小支持仍在演进中，当前只需在动机中说明待其落地后再集成。</p></div>
+            <p class="conclusion">Mehul Batra 给出绿灯，Sagar 将开始撰写聚焦向量数据类型的 FIP，并计划在下次社区会议上展示，随后开启正式讨论。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/8h1z7n28fwcvpp8rktd95x5h4bhdsrf9">Planning 1.1 Release</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">本次邮件讨论围绕 Apache Fluss 1.1 版本的发布计划展开，核心议题是确定 Release Manager 人选及协作方式。Nicholas Jiang 主动请缨担任发布经理，Lorenzo Affetti 提议以联合发布负责人身份参与并沉淀发布流程文档。Jark Wu 对两人分工表示支持，初步确定了发布管理角色安排。</p>
+            <div class="key-points"><p><strong>@Nicholas Jiang:</strong> 自愿担任 Fluss 1.1.0 的 Release Manager，负责协调发布时间表、功能冻结、分支切割、候选版本及投票流程。</p>
+<p><strong>@Lorenzo Affetti:</strong> 希望作为联合发布负责人参与，协助处理实际任务并学习发布经验；计划整理发布任务并编写可供未来发布经理及 AI 代理使用的发布指南。</p>
+<p><strong>@Jark Wu:</strong> 支持 Nicholas 担任 Release Manager、Lorenzo 担任联合发布负责人，认为这种协作方式有助于分担工作并帮助更多贡献者积累发布经验。</p></div>
+            <p class="conclusion">社区初步同意由 Nicholas Jiang 担任 1.1 版本 Release Manager，Lorenzo Affetti 作为联合发布负责人参与；下一步将讨论确定发布时间线，并推进发布任务梳理与发布指南编写。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/3f0pvm7tptx89173wy1yzyqprg22wvvq">FIP-55: Kafka Protocols Compatibility - Basic Produce</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">本次讨论围绕 FIP-55（Kafka 协议兼容 - 基础 Produce）展开，核心议题是如何让 Kafka Producer 能直接写入 Fluss 原生表。Jark Wu 支持该方向，并提出了支持跨数据库双向映射以及简化 Schema 映射的两点改进建议。</p>
+            <div class="key-points"><p><strong>@Jark Wu:</strong> 建议移除仅限 kafka.database 的限制，支持任意数据库表的 Kafka 协议映射，并将配置更名为 kafka.default.database 以表示默认数据库。</p>
+<p><strong>@Jark Wu:</strong> 建议简化 Schema 映射，业务列来自记录值，而 Key、Headers 等元数据通过可选的预定义系统列（如 _kafka_key, _kafka_headers）显式声明，未声明则不存储。</p></div>
+            <p class="conclusion">目前处于提案建议阶段，尚未达成最终结论，下一步预计是根据这些反馈修订 FIP-55 的设计细节。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/81bmynz7ffyzpjvsx7dnomw5h794wpds">FIP-53: Log Scanner Offset Management</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Fluss 社区围绕 FIP-53: Log Scanner Offset Management 展开讨论，重点是如何拆分提案范围并明确 offset 存储、读取一致性和提交原子性设计。作者已根据评审意见将原提案拆分为三个独立 FIP，并计划优先推进低风险的 offset 存储与手动分配核心能力。</p>
+            <div class="key-points"><p><strong>@jie lu:</strong> 同意拆分 FIP，已将提案分为 FIP-53（offset 存储、手动 assign、OffsetCommit/OffsetFetch 和 Admin 操作）、后续组成员与 rebalance 协议、Flink/Kafka 兼容集成三个独立部分。</p>
+<p><strong>@jie lu:</strong> 明确 offset 存储保证：同一 group 的 offset 行落在同一 offsets 系统表 bucket，OffsetFetch 由 coordinator 从内存状态读取，并在 requireStable 下对未稳定提交返回 UNSTABLE。</p>
+<p><strong>@jie lu:</strong> 多 bucket 提交具有原子性，因为同一 group 的 offsets 会打包为单个 KvRecordBatch 进行一次 append，成功或失败都会整体生效并返回一致结果。</p></div>
+            <p class="conclusion">初步结论是优先推进拆分后的 FIP-53 核心存储设计，将组成员和 rebalance 协议移到单独 FIP 继续深入讨论。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (0)</h2>
+            
+    <p>本周新建 <strong>0</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周无新建 JIRA。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Fluss Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
