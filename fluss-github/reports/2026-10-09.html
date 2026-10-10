@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-10-09</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-10-09</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 6 新 Issues</div>
+            <div class="stat">✅ 0 关闭</div>
+            <div class="stat">✨ 4 新 PRs</div>
+            <div class="stat">🎉 2 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/4579">PR #4579</a> [hotfix][build] Exempt ConfigOptions from the file length check</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4568">PR #4568</a> [hotfix][test] Wait for bucket leaders in bounded source test</li><li>🐛 <a href="https://github.com/apache/fluss/issues/4578">Issue #4578</a> [Improvement] Refactor ConfigOptions to address the Checkstyle file length limit</li><li>🐛 <a href="https://github.com/apache/fluss/issues/4576">Issue #4576</a> [rust] Support ossj scheme alias for remote log reads</li><li>🐛 <a href="https://github.com/apache/fluss/issues/4574">Issue #4574</a> Expose the log batch commit timestamp on the Arrow batch scan APIs</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4551">Issue #4551</a> [docs] Add collapsible sidebar support</h4>
+            <ul><li><span class="author">@wuchong</span>: @pbanakar Thanks for working on this! This might be my personal thoughts. I’d prefer to keep the si…</li><li><span class="author">@pbanakar</span>: Thanks @wuchong for the feedback, That makes complete sense. Since the current layout and sidebar s…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3008">Issue #3008</a> [client] Fix corruption after zero-copy lazy parse ByteBuf</h4>
+            <ul><li><span class="author">@fxbing</span>: @loserwang1024 @fresh-borzoni @platinumhamburg Would it be possible to merge this PR? We recently e…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4570">Issue #4570</a> [server] Add last_n aggregate function to aggregation merge engine</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: @pbanakar Thank you for the review, addressed, PTAL 🙏</li><li><span class="author">@pbanakar</span>: Thanks @fresh-borzoni for considering my points, the changes look great to me, and tagging @platinu…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4573">Issue #4573</a> Remove the copied FlussApi.proto for fluss-rust</h4>
+            <ul><li><span class="author">@zuston</span>: PTAL @fresh-borzoni</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4571">Issue #4571</a> [test] Unstable test FlinkSourceSplitReaderTest.testPendingRecordsMetric</h4>
+            <ul><li><span class="author">@zhang-arvin</span>: Opened #4580 to fix this: root cause is the nondeterministic `aggregationVerified` assertion (CI fa…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4578">Issue #4578</a> [Improvement] Refactor ConfigOptions to address the Checkstyle file length limit</h4>
+            <ul><li><span class="author">@swuferhong</span>: Temporary workaround: skip the check for this class.：https://github.com/apache/fluss/pull/4579</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4572">Issue #4572</a> [test] Unstable test FlinkSourceEnumeratorTest.testBoundedPkTableEmitsSnapshotSplitsByDefault</h4>
+            <ul><li><span class="author">@zhang-arvin</span>: This is already fixed on `main` by #4568 (commit 98343e4), which added a wait for all bucket leader…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3851">Issue #3851</a> [build] Add a local development kit for contributors</h4>
+            <ul><li><span class="author">@Gezi-lzq</span>: Hi @fresh-borzoni, apologies for the delayed follow-up, and thank you again for the detailed review…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4263">Issue #4263</a> [rpc] Handle endpoint changes for cached server connections</h4>
+            <ul><li><span class="author">@BackendArchitectX</span>: Hi @gyang94, I've completed the latest updates to this PR. Local validation is successful across RP…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4207">Issue #4207</a> [trino] Add initial connector build and plugin skeleton</h4>
+            <ul><li><span class="author">@yangshangqing95</span>: Hi @fresh-borzoni any news on this? and the design updated https://cwiki.apache.org/confluence/spac…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4533">Issue #4533</a> [client] Back off writes rejected by disk protection</h4>
+            <ul><li><span class="author">@luoyuxia</span>: @ coding-otter-bot review；@coding-otter-bot review</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4450">PR #4450</a> [flink] Support BUCKET_LOAD_BALANCE shuffle strategy for table with bucket kyes.</h4>
+            <ul><li><span class="author">@leonardBang</span>: Could we make the guarantee of `BUCKET_LOAD_BALANCE` slightly more precise here? BUCKET_BALANCE: Sh…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4570">PR #4570</a> [server] Add last_n aggregate function to aggregation merge engine</h4>
+            <ul><li><span class="author">@pbanakar</span>: I was wondering whether it would be useful to add a checkArgument(size > 0, ...) in the constructor…</li><li><span class="author">@fresh-borzoni</span>: Good point, aded, it skips the copy in both cases. It's safe because the result gets encoded right…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4575">PR #4575</a> [rust] Expose Arrow batch commit timestamps in client bindings</h4>
+            <ul><li><span class="author">@Copilot</span>: This parity check is O(num_offsets × num_records) due to the inner linear scan of `record_stamps`.……</li><li><span class="author">@spoon-lz</span>: Good catch, done — switched to an `unordered_map` lookup (`fluss.hpp` already pulls in `<unordered_…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3851">PR #3851</a> [build] Add a local development kit for contributors</h4>
+            <ul><li><span class="author">@Gezi-lzq</span>: Thanks for pointing this out. Lance currently supports tiering Log Tables only, so I updated the De…</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4578">#4578</a> [Improvement] Refactor ConfigOptions to address the Checkstyle file length limit <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/issues/4576">#4576</a> [rust] Support ossj scheme alias for remote log reads <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/issues/4574">#4574</a> Expose the log batch commit timestamp on the Arrow batch scan APIs <span class="author">@spoon-lz</span> </li><li><a href="https://github.com/apache/fluss/issues/4573">#4573</a> Remove the copied FlussApi.proto for fluss-rust <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/issues/4572">#4572</a> [test] Unstable test FlinkSourceEnumeratorTest.testBoundedPkTableEmitsSnapshotSplitsByDefault <span class="author">@app/github-actions</span> </li><li><a href="https://github.com/apache/fluss/issues/4571">#4571</a> [test] Unstable test FlinkSourceSplitReaderTest.testPendingRecordsMetric <span class="author">@app/github-actions</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4581">#4581</a> [docs] Fix Lance Log Table example <span class="author">@Gezi-lzq</span> </li><li><a href="https://github.com/apache/fluss/pull/4580">#4580</a> [test] Stabilize FlinkSourceSplitReaderTest.testPendingRecordsMetric <span class="author">@zhang-arvin</span> </li><li><a href="https://github.com/apache/fluss/pull/4577">#4577</a> [rust] Support ossj scheme alias for remote log reads <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/pull/4575">#4575</a> [rust] Expose Arrow batch commit timestamps in client bindings <span class="author">@spoon-lz</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <p class="empty">暂无</p>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4579">#4579</a> [hotfix][build] Exempt ConfigOptions from the file length check <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/pull/4568">#4568</a> [hotfix][test] Wait for bucket leaders in bounded source test <span class="author">@swuferhong</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
