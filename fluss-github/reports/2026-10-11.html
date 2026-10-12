@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-10-11</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-10-11</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 2 新 Issues</div>
+            <div class="stat">✅ 5 关闭</div>
+            <div class="stat">✨ 0 新 PRs</div>
+            <div class="stat">🎉 4 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/4598">PR #4598</a> 合并，保持 KV 快照对 FRocksDB 6.20.3 客户端可读，关闭 <a href="https://github.com/apache/fluss/issues/4597">Issue #4597</a>。</li><li>🐛 <a href="https://github.com/apache/fluss/pull/4596">PR #4596</a> 合并，修复 Iceberg 过滤下推中的时间字面量问题，关闭 <a href="https://github.com/apache/fluss/issues/4595">Issue #4595</a>。</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4485">PR #4485</a> 合并，在 tagged lookup 测试前等待 KV flush，关闭 <a href="https://github.com/apache/fluss/issues/4177">Issue #4177</a>。</li><li>📚 <a href="https://github.com/apache/fluss/pull/4587">PR #4587</a> 合并，新增 StarRocks 用户案例文档。</li><li>✨ <a href="https://github.com/apache/fluss/issues/4572">Issue #4572</a> 的 flaky 诊断确认主分支已包含等待 bucket leader 的测试修复，无需新增 PR。</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4159">Issue #4159</a> [FIP-28] Support incremental cleanup of historical KV state</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 说明该 FIP-28 历史 KV 状态增量清理问题将通过 #4199 关闭。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4176">Issue #4176</a> [test] Unstable test HistoricalPartitionLookupITCase.testLookupExpiredPartitionFromPaimon</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 认为该 Paimon 过期分区查询不稳定测试已经通过 #4158 修复。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4177">Issue #4177</a> [test] Unstable test ReplicaManagerTest.testTaggedLookupAndPrefixResultsUseRpcSlices</h4>
+            <ul><li><span class="author">@Leondon9</span>: 已提交 #4485 处理该不稳定测试，在断言前等待 KV flush 完成。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4361">Issue #4361</a> [test] Unstable test IcebergTieringITCase.testTieringForLegacyTable</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 请求 coding-otter-bot 诊断 Iceberg tiering 旧表测试的不稳定失败。</li><li><span class="author">@coding-otter-bot</span>: 自动 flaky 调查未能完成，报告准备失败，错误码为 FLAKY_PREPARATION_FAILED。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4572">Issue #4572</a> [test] Unstable test FlinkSourceEnumeratorTest.testBoundedPkTableEmitsSnapshotSplitsByDefault</h4>
+            <ul><li><span class="author">@luoyuxia</span>: 请求机器人诊断 FlinkSourceEnumeratorTest 的 bounded PK 表测试不稳定问题。</li><li><span class="author">@coding-otter-bot</span>: 诊断认为主分支已包含等待 bucket leader 的修复，因此未创建新的修复 PR。</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2782">PR #2782</a> [server] Update Tablet Server to use per-table/partition remote data directory</h4>
+            <ul><li><span class="author">@LiebingYu</span>: 根据评审意见移除 Manifest 和 Segment 中的 remoteLogDir，仅保留在 RemoteLogTablet。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4485">PR #4485</a> [test] Wait for KV flush before tagged lookup assertions</h4>
+            <ul><li><span class="author">@Leondon9</span>: 说明使用 flushAndWait 等待 KV flush，以避免异步刷盘和水位竞态导致测试失败。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4533">PR #4533</a> [client] Back off writes rejected by disk protection</h4>
+            <ul><li><span class="author">@coding-otter-bot</span>: 自动代码审查未完成，分别因含义变更和不可校验而停止，提示解决问题后重试。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4570">PR #4570</a> [server] Add last_n aggregate function to aggregation merge engine</h4>
+            <ul><li><span class="author">@polyzos</span>: 已推送新提交回应评审意见，并补充若干测试，请求继续评审。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4583">PR #4583</a> [lake][paimon] Resolve DV offsets from committed COMPACT</h4>
+            <ul><li><span class="author">@polyzos</span>: 整体认可，建议处理 Copilot 意见，并确保空保留边界不会丢弃可读快照。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4594">PR #4594</a> [flink] Persist lake split state for restore</h4>
+            <ul><li><span class="author">@polyzos</span>: 请求评审，并说明这是升级 Iceberg 到 1.12 系列工作的首个 PR。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4598">PR #4598</a> [kv] Keep KV snapshots readable by FRocksDB 6.20.3 for uniform keys</h4>
+            <ul><li><span class="author">@morazow</span>: 感谢评审，请在 CI 通过后合并该 KV 快照兼容性修复。</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4597">#4597</a> [kv] KV snapshots written after the RocksDB 11.8.1 fail to read on FRocksDB 6.20.3 clients <span class="author">@morazow</span> </li><li><a href="https://github.com/apache/fluss/issues/4595">#4595</a> [lake/iceberg] Date/time filters fail query planning on Iceberg datalake tables <span class="author">@wattt3</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <p class="empty">暂无</p>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4597">#4597</a> [kv] KV snapshots written after the RocksDB 11.8.1 fail to read on FRocksDB 6.20.3 clients <span class="author">@morazow</span> </li><li><a href="https://github.com/apache/fluss/issues/4595">#4595</a> [lake/iceberg] Date/time filters fail query planning on Iceberg datalake tables <span class="author">@wattt3</span> </li><li><a href="https://github.com/apache/fluss/issues/4572">#4572</a> [test] Unstable test FlinkSourceEnumeratorTest.testBoundedPkTableEmitsSnapshotSplitsByDefault <span class="author">@app/github-actions</span> </li><li><a href="https://github.com/apache/fluss/issues/4177">#4177</a> [test] Unstable test ReplicaManagerTest.testTaggedLookupAndPrefixResultsUseRpcSlices <span class="author">@app/github-actions</span> </li><li><a href="https://github.com/apache/fluss/issues/4176">#4176</a> [test] Unstable test HistoricalPartitionLookupITCase.testLookupExpiredPartitionFromPaimon <span class="author">@app/github-actions</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4598">#4598</a> [kv] Keep KV snapshots readable by FRocksDB 6.20.3 for uniform keys <span class="author">@morazow</span> </li><li><a href="https://github.com/apache/fluss/pull/4596">#4596</a> [lake/iceberg] Fix temporal literals in Iceberg filter push-down <span class="author">@wattt3</span> </li><li><a href="https://github.com/apache/fluss/pull/4587">#4587</a> [docs] Add StarRocks user story <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/pull/4485">#4485</a> [test] Wait for KV flush before tagged lookup assertions <span class="author">@Leondon9</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
