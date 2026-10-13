@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-10-12</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-10-12</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 11 新 Issues</div>
+            <div class="stat">✅ 7 关闭</div>
+            <div class="stat">✨ 8 新 PRs</div>
+            <div class="stat">🎉 9 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/4611">PR #4611</a> [kv] Use HyperClockCache for the shared RocksDB block cache</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4609">PR #4609</a> [website] Update hongshun role as PMC member.</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4604">PR #4604</a> [website] Add Yang Wang to Fluss team page</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4594">PR #4594</a> [flink] Persist lake split state for restore</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4575">PR #4575</a> [rust] Expose Arrow batch commit timestamps in client bindings</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4452">Issue #4452</a> [lake/tiering] Retry failed splits without restarting the tiering job</h4>
+            <ul><li><span class="author">@beryllw</span>: Implementing retries for individual tiering splits would be complex and require substantial changes…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3917">Issue #3917</a> [server] Balance replicas and leaders within each table</h4>
+            <ul><li><span class="author">@loserwang1024</span>: LGTM</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3460">Issue #3460</a> [test] Unstable test RemoteLogDownloaderTest.testPrefetchNum</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: https://github.com/apache/fluss/actions/runs/38171191653/job/114563975542 ``` [ERROR] org.apache.fl…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4439">Issue #4439</a> [server] Support update_if_changed merge engine for primary-key tables</h4>
+            <ul><li><span class="author">@luoyuxia</span>: cc @platinumhamburg</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4567">Issue #4567</a> [server] Recover KV tables after complete local disk loss</h4>
+            <ul><li><span class="author">@swuferhong</span>: @platinumhamburg comments addressed. could you take another look? thx.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4570">Issue #4570</a> [server] Add last_n aggregate function to aggregation merge engine</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: @platinumhamburg Thank you for the review, answered the comments, PTAL 🙏 Thank you @polyzos for tes…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4581">Issue #4581</a> [docs] Fix Lance Log Table example</h4>
+            <ul><li><span class="author">@Gezi-lzq</span>: Hi @wuchong, could you merge #4581? It’s approved. Thanks!</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4547">Issue #4547</a> [Iceberg] Bump Iceberg Version to 1.12</h4>
+            <ul><li><span class="author">@MehulBatra</span>: Thanks for raising this. I agree that the Flink 2.2/2.3 upgrade is worth pursuing. One clarificatio…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2782">Issue #2782</a> [server] Update Tablet Server to use per-table/partition remote data directory</h4>
+            <ul><li><span class="author">@LiebingYu</span>: @platinumhamburg Thanks for the review. Fixed the startup issue and added tests for configuring eit…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4373">Issue #4373</a> [coordinator] Add rebalance progress and outcome metrics</h4>
+            <ul><li><span class="author">@heyallencao</span>: > @heyallencao what you say makes sense, metrics are indeed scoped on a per-pod basis, so there is…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4505">Issue #4505</a> [server] Resume pending replica deletion after server restart</h4>
+            <ul><li><span class="author">@swuferhong</span>: @platinumhamburg comments addressed. Could you take another look? Thanks.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4379">Issue #4379</a> [flink] Add describe buckets procedure</h4>
+            <ul><li><span class="author">@wuchong</span>: Thanks @fhan688 for the contribution, what do you think about supporting this via `$buckets` system…</li><li><span class="author">@fhan688</span>: > Thanks @fhan688 for the contribution, what do you think about supporting this via `$buckets` syst…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4073">Issue #4073</a> [build] Relocate shaded jackson and other internal deps in fluss-fs-s3</h4>
+            <ul><li><span class="author">@Jackeyzhe</span>: Gentle ping @fresh-borzoni for review when you have a moment. CI is green and the branch is CLEAN a…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3884">Issue #3884</a> [FLUSS-3553][build] Fix shaded Jackson classes leaking into uber-jars</h4>
+            <ul><li><span class="author">@Jackeyzhe</span>: Gentle ping @luoyuxia — this one already has an approval from @Yohahaha (2026-08-17, still anchored…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4578">Issue #4578</a> [Improvement] Refactor ConfigOptions to address the Checkstyle file length limit</h4>
+            <ul><li><span class="author">@pbanakar</span>: Hi @swuferhong, Thanks for raising this, since i've opened a PR related to this topic a long time a…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4593">Issue #4593</a> [lake] Fail early when a REST catalog requires server-side scan planning</h4>
+            <ul><li><span class="author">@Trunghieuu0910</span>: Hi @polyzos, I'd like to work on this issue if it's still available. Are you already working on a f…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/1965">Issue #1965</a> mvnw script error on Mac OS</h4>
+            <ul><li><span class="author">@ottlinger</span>: Maybe it would help to just update the underlying Maven wrapper here? ``` wrapperVersion=3.3.2 dist…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4601">Issue #4601</a> [lake] Fail fast when two plugins register the same lake format</h4>
+            <ul><li><span class="author">@Hachiman566</span>: I’d like to work on this if it’s still available. I propose detecting a second match for the reques…</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4575">PR #4575</a> [rust] Expose Arrow batch commit timestamps in client bindings</h4>
+            <ul><li><span class="author">@spoon-lz</span>: Thanks for the review! I changed `CompletedFetch` to `pub(crate)` in commit `5c98839c4`. I’ll addre…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2782">PR #2782</a> [server] Update Tablet Server to use per-table/partition remote data directory</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: Passing the assigned `remoteDataDir` to the Tablet Server's bucket cleanup is right, but the Coordi…</li><li><span class="author">@LiebingYu</span>: Added a follower recovery test for a table assigned to dir2, verifying the recovered writer IDs, se…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3917">PR #3917</a> [server] Balance replicas and leaders within each table</h4>
+            <ul><li><span class="author">@loserwang1024</span>: Ok , I have no problem any more</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4570">PR #4570</a> [server] Add last_n aggregate function to aggregation merge engine</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: @platinumhamburg Thanks for the good suggestion. I benchmarked it, and it turns out the intermediat…</li><li><span class="author">@platinumhamburg</span>: @fresh-borzoni Thanks for investigating this. A follow-up PR sounds reasonable to me. The current i…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4439">PR #4439</a> [server] Support update_if_changed merge engine for primary-key tables</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: The default merger already constructs the complete candidate row, including partial updates and par…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4505">PR #4505</a> [server] Resume pending replica deletion after server restart</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: Could we retain the transition through `OfflineReplica` for replicas on unavailable servers before…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4253">PR #4253</a> [lake/iceberg] Support custom Iceberg lake table path</h4>
+            <ul><li><span class="author">@MehulBatra</span>: The rebind guard is bypassable via `RESET`, so the "cannot be rebound" guarantee isn't airtight. `r…</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4617">#4617</a> [Server] Remote log metrics become stale after repeated leader notifications <span class="author">@fxbing</span> </li><li><a href="https://github.com/apache/fluss/issues/4615">#4615</a> [rust] Expose source schema IDs in Arrow batch scans <span class="author">@spoon-lz</span> </li><li><a href="https://github.com/apache/fluss/issues/4613">#4613</a> [rust]Reuse Arrow columns for identity schema alignment in the Rust client <span class="author">@spoon-lz</span> </li><li><a href="https://github.com/apache/fluss/issues/4610">#4610</a> [kv] Use HyperClockCache for the shared RocksDB block cache <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/4608">#4608</a> FIP-53: Log Scanner Offset Management <span class="author">@pisceslj</span> </li><li><a href="https://github.com/apache/fluss/issues/4607">#4607</a> [KV] Support partitioned metadata with HyperClockCache <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/4605">#4605</a> [rust]Preserve decoded Arrow batches when a later batch fails to decode <span class="author">@spoon-lz</span> </li><li><a href="https://github.com/apache/fluss/issues/4602">#4602</a> [rust]Support configuring the download directory for remote log segments in the Rust client <span class="author">@spoon-lz</span> </li><li><a href="https://github.com/apache/fluss/issues/4601">#4601</a> [lake] Fail fast when two plugins register the same lake format <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/4600">#4600</a> [server] Local-first leader election for KV recovery after partial local disk loss <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/issues/4599">#4599</a> [server] Periodic KV snapshot initialization races with Replica deletion <span class="author">@fxbing</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4620">#4620</a> [server] Upgrade paimon 2.1 to activate concurrent SST lookup for historical partition <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/pull/4619">#4619</a> [lake/paimon] Promote existing Paimon log tables to Fluss lake tables <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/pull/4618">#4618</a> [server] Fix stale remote log metrics on repeated leader updates <span class="author">@fxbing</span> </li><li><a href="https://github.com/apache/fluss/pull/4616">#4616</a> [rust] Expose source schema IDs in Arrow batch scans <span class="author">@spoon-lz</span> </li><li><a href="https://github.com/apache/fluss/pull/4614">#4614</a> [rust] Reuse Arrow columns for identity schema alignment <span class="author">@spoon-lz</span> </li><li><a href="https://github.com/apache/fluss/pull/4612">#4612</a> [kv] Support partitioned metadata with HyperClockCache <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/4606">#4606</a> [rust] Return decoded scan batches before later errors <span class="author">@spoon-lz</span> </li><li><a href="https://github.com/apache/fluss/pull/4603">#4603</a> [rust] Allow configuring remote log download directory <span class="author">@spoon-lz</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4610">#4610</a> [kv] Use HyperClockCache for the shared RocksDB block cache <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/4589">#4589</a> [flink] Fix lake split state and plugin loading for plugin switching <span class="author">@polyzos</span> </li><li><a href="https://github.com/apache/fluss/issues/4574">#4574</a> Expose the log batch commit timestamp on the Arrow batch scan APIs <span class="author">@spoon-lz</span> </li><li><a href="https://github.com/apache/fluss/issues/4569">#4569</a> [server] Aggregation merge engine for the last N elements of an array <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/4452">#4452</a> [lake/tiering] Retry failed splits without restarting the tiering job <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/issues/4177">#4177</a> [test] Unstable test ReplicaManagerTest.testTaggedLookupAndPrefixResultsUseRpcSlices <span class="author">@app/github-actions</span> </li><li><a href="https://github.com/apache/fluss/issues/3871">#3871</a> [server] Balance leaders within each table <span class="author">@fxbing</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4611">#4611</a> [kv] Use HyperClockCache for the shared RocksDB block cache <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/4609">#4609</a> [website] Update hongshun role as PMC member. <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/pull/4604">#4604</a> [website] Add Yang Wang to Fluss team page <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/4594">#4594</a> [flink] Persist lake split state for restore <span class="author">@polyzos</span> </li><li><a href="https://github.com/apache/fluss/pull/4575">#4575</a> [rust] Expose Arrow batch commit timestamps in client bindings <span class="author">@spoon-lz</span> </li><li><a href="https://github.com/apache/fluss/pull/4570">#4570</a> [server] Add last_n aggregate function to aggregation merge engine <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/4520">#4520</a> [spark] Reuse Fluss connections across Spark tasks <span class="author">@Yohahaha</span> </li><li><a href="https://github.com/apache/fluss/pull/4485">#4485</a> [test] Wait for KV flush before tagged lookup assertions <span class="author">@Leondon9</span> </li><li><a href="https://github.com/apache/fluss/pull/3917">#3917</a> [server] Balance replicas and leaders within each table <span class="author">@fxbing</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
