@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iceberg 社区周报 | 2026-W41</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Iceberg 社区周报 | 2026-W41</h1>
+            <p class="date-range">2026-10-05 ~ 2026-10-11</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (1)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/ov4bk4qg8pfod2s4z035mg3tj3tcv8mn">Apache Iceberg Meetup Virtual October Edition</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (5)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/pzfs82hhx8n8zbxbmkzs3dg264b11kz7">Recommend a standard User-Agent format for REST clients [REOPEN]</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/y2fvgh4ojfcss7o76drkgdvdrpb17ccm">Require monotonically increasing snapshot timestamps in v4</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/pllz983cvffryzcwskglsr0cyo7p0gxx">Recommend a standard User-Agent format for REST clients</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/qch7jjnwb8pm49lt3h7lqfxj82hlg8ps">Merge baseline V4 AMT spec PR into main repo</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/7ctclwomk8yqcclzj82z0htlqk2xjf49">Add the File type to the Iceberg v4 spec</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/9pn2bh1jgk097hvcoxs5x4597kp7xjb6">Iceberg v4 Stats Tightness</a></h3>
+            <p class="meta">4 条回复 · 5 位参与者</p>
+            <p class="summary">社区讨论了 Iceberg v4 中统计信息边界是否为 tight 的元数据应按列还是按文件/条目标记。经过对使用场景的分析，参与者普遍认为按列标记收益有限且复杂，倾向用文件级布尔标记简化写入与读取。目前讨论已基本收敛到文件级 tightness flag。</p>
+            <div class="key-points"><p><strong>@Russell Spitzer:</strong> 分析了按列标记 tightness 的多个场景，认为 DV writer 修复统计和恢复统计等关键需求都可以由文件级 flag 覆盖，按列标记会带来不必要复杂性。</p>
+<p><strong>@Hongyue Zhang:</strong> tightness 的变化主要来自文件级状态（如后续 DV 删除），而变长列截断属于静态列属性；因此建议将 tightness 布尔值从按列移到 v4 tracked_file 条目级，并说明旧表升级时可保持轻量、不重写 manifest。</p>
+<p><strong>@Anoop Johnson:</strong> 总结社区正收敛到文件级 tightness flag；现有 v3 manifest 中的文件没有该 flag 时默认视为 wide，v4 后新文件可根据是否附带 DV 设置为 true 或 false。</p></div>
+            <p class="conclusion">初步结论是采用文件级/条目级 tightness flag 而非按列标记；下一步是在 v4 设计中落实该标记，并明确升级语义：旧条目无 tightness 时按 wide 处理，新文件无 DV 时为 tight，有 DV 时为 wide。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/ws89d7doddgqc2j8fc2xt84bchr374t2">REST spec: expected server behavior when X-Iceberg-Access-Delegation cannot be satisfied</a></h3>
+            <p class="meta">4 条回复 · 4 位参与者</p>
+            <p class="summary">讨论围绕 REST 规范中 X-Iceberg-Access-Delegation 头在服务器无法满足客户端请求的委托访问机制时的预期行为展开。社区倾向于新增 none 值，用于表示客户端不需要 catalog 提供委托访问；对是否明确写入服务器可失败，最终倾向认为无需额外说明。</p>
+            <div class="key-points"><p><strong>@Daniel Weeks:</strong> 建议用 none 替代 local，表示客户端不请求或不需要 catalog 提供凭据/访问；并认为服务器本来就可以拒绝请求，无需在规范中特别澄清失败行为。</p>
+<p><strong>@Yufei Gu:</strong> 支持 none，并关注客户端请求机制 A 但服务器返回机制 B 的问题；建议规范允许服务器在请求机制中选择任一或无机制，或使请求失败。</p>
+<p><strong>@Youngrae Kim:</strong> 总结讨论并推动落地，最初提议同时添加 none 和澄清失败行为，后续根据反馈可只提交添加 none 的规范 PR。</p></div>
+            <p class="conclusion">初步结论是在 X-Iceberg-Access-Delegation 中增加 none 值；下一步由 Youngrae Kim 提交规范 PR，且大概率只包含 none，不额外规定服务器失败行为。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/49bm2d8szbzkvtdog38s1o6zb04cj67o">Extend Thur's biweekly sync to both File and Vector types (starting Oct 8)</a></h3>
+            <p class="meta">1 条回复 · 1 位参与者</p>
+            <p class="summary">社区围绕在 Iceberg 中引入 Vector 类型展开讨论，并决定将周四双周会扩展为同时覆盖 File 和 Vector 类型。Yan Yan 已基于 Parquet 社区进展提交 Iceberg spec 草案 PR，并在会后明确了初始 Vector 类型的范围和设计原则。</p>
+            <div class="key-points"><p><strong>@Steven Wu:</strong> 为加速 Vector 类型讨论，自 10 月 8 日起将周四双周会扩展覆盖 File 和 Vector 类型，且重点将更多放在 Vector 上。</p>
+<p><strong>@Yan Yan:</strong> 已提交 Iceberg Vector 类型的 spec 草案 PR #18416，并将根据社区反馈持续迭代设计文档和规范。</p>
+<p><strong>@Yan Yan:</strong> 初步建议聚焦一维定长、非空、有限数值的 numeric vector，先支持 int/long/float/double，距离函数和稀疏向量暂不纳入范围。</p></div>
+            <p class="conclusion">社区已就初始 Vector 类型范围形成初步共识，下一步将根据讨论更新 spec PR，并继续与 Avro/Parquet 等格式社区协调支持方案。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/28kw8cnzm835y2l8c6w8pp3m24551qlb">make appendUpdate in BaseTransaction public</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">社区讨论是否将 BaseTransaction 中的 appendUpdate 方法公开，以便自定义索引团队注入自定义 PendingUpdate 并控制事务冲突检测与元数据更新。维护者认为应优先评估 SnapshotAncestryValidator 等现有公共扩展点，并指出公开该方法涉及清理和重试逻辑，历史上存在反对意见。</p>
+            <div class="key-points"><p><strong>@Dzeri:</strong> 建议将 appendUpdate 设为 public，并补充获取 transactionOpts 或 TableOperations 的机制，以减少反射或包装 BaseTransaction 的成本。</p>
+<p><strong>@Hongyue Zhang:</strong> 如果冲突检测只需检查刷新后的表状态并拒绝，优先使用 1.11 提供的 SnapshotAncestryValidator 公共钩子。</p>
+<p><strong>@Hongyue Zhang:</strong> 不建议轻易公开 appendUpdate，可考虑通过 HasTableOperations 获取 TableOperations，或使用 split-package shim 作为较轻替代。</p></div>
+            <p class="conclusion">目前未决定公开 appendUpdate；下一步是进一步了解自定义更新和冲突语义，评估现有扩展点是否足够，再讨论是否需要更通用的扩展方案。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/kp41hjc76o3byrw4pp3599qf13p2ykhl">[PyIceberg] Two Azure fixes waiting for committer review</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论聚焦两个 PyIceberg Azure 相关修复 PR 因等待 committer 审阅而在邮件列表中请求关注。K Krishna 说明 #3886 修复 FsspecFileIO 在多存储账户下错误共享文件系统的问题，#3936 让 PyArrowFileIO 可从 abfss 路径推断存储账户。Fokko Driesprong 回应将处理并审阅这些 PR。</p>
+            <div class="key-points"><p><strong>@K Krishna:</strong> 两个 Azure 修复 PR 已通过检查但两周未获 committer 审阅，因此请求社区关注。</p>
+<p><strong>@K Krishna:</strong> #3886 修复 FsspecFileIO 将推断存储账户写回共享属性导致跨账户表使用错误文件系统的问题；#3936 支持在未设置 adls.account-name 时从 abfss 位置获取账户。</p>
+<p><strong>@Fokko Driesprong:</strong> 对等待时间表示歉意，并承诺会查看这两个 PR。</p></div>
+            <p class="conclusion">下一步由 Fokko Driesprong 审阅 #3886 和 #3936，若需要修改将反馈给作者。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/q011wr5ncbhf5b9ngob7cvs8119otyon">Iceberg Public Dataset Launch</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">社区围绕 Iceberg 公共数据集发布展开，宣布新增由公共 Iceberg REST Catalog 支持的数据集，规模达到 72 张表、超过 6400 亿行。讨论还回顾了早期访问时遇到的读取配额问题，该问题已缓解但仍保留每项目每分钟 200 次请求的限制。</p>
+            <div class="key-points"><p><strong>@Alex Stephen:</strong> 发布新一批 Iceberg 公共数据集，强调其适合作为 Apache Iceberg 生态实验的数据来源。</p>
+<p><strong>@Talat Uyarer:</strong> 补充公共数据集列表和说明链接，并说明配额限制及此前问题已缓解。</p>
+<p><strong>@Manu Zhang:</strong> 反馈读取请求配额容易超限且无法提升到 200 以上，后续确认修复后可正常使用。</p></div>
+            <p class="conclusion">Iceberg 公共数据集已发布并可用，用户可通过博客和数据集列表链接访问；使用时需注意每项目每分钟 200 次读取请求的配额限制，博客可补充数据集列表入口。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/y7mong1h19onxlxdrb757drsd69rmt1b">[External] Re: GlueCatalog and what it writes to the Glue table on commit</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论围绕 GlueCatalog 在提交时写入 Glue 表的元数据是否可作为 Iceberg 表的权威元数据来源。社区认为 Glue 和 HMS 都只保存部分表信息，且可能与底层 Iceberg metadata 不一致，因此应以 Iceberg metadata 为事实来源。Javier 表示将调整平台工具，改为直接拉取 Iceberg metadata。</p>
+            <div class="key-points"><p><strong>@Shawn Chang:</strong> Glue 中只保留有限元数据是有意设计，Glue catalog 主要作为控制平面/目录表示，Iceberg metadata 才是真实来源，不建议让 Glue 镜像 HMS。</p>
+<p><strong>@Daniel Weeks:</strong> HMS 和 Glue 都存在“split-brain”问题，只反映部分 Iceberg 元数据，且外部工具可能修改这些信息导致不一致，不宜依赖其做安全或治理。</p>
+<p><strong>@Javier Sanchez Beltran:</strong> 将评估在自身平台工具侧演进，改为直接读取 Iceberg metadata，而不是依赖 Glue 表中的信息。</p></div>
+            <p class="conclusion">初步结论是不应将 Glue 表写入的元数据视为权威来源；下一步 Javier 团队将探索让平台工具直接拉取 Iceberg metadata。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/tvr8nsrl5srnslsxnk9thgt44m73y2ws">Dedicated sync for Iceberg Index Support</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">社区围绕 Iceberg 索引支持召开专项同步会，重点讨论索引区域设计、排序键术语、索引类型兼容和模式演化。会议确认优先推进标量索引并采用非重叠区域优化点查，相关会议总结和规格 PR 已发布供评审。</p>
+            <div class="key-points"><p><strong>@Péter Váry:</strong> 优先推进标量索引，Bloom Filter 相关测试主要用于设计阶段理解，暂不扩展更多索引类型。</p>
+<p><strong>@Péter Váry:</strong> 同意采用非重叠索引区域以提升点查性能，接受更高写放大，并将 overlay 方案延后到未来版本。</p>
+<p><strong>@Péter Váry:</strong> 确认使用 sort key 表示总行排序，保留显式索引类型元数据，并讨论删除索引列导致索引失效及模式演化处理。</p></div>
+            <p class="conclusion">初步结论是确定非重叠区域、sort key 术语和索引类型兼容策略；下一步将解决索引类型与模式演化遗留问题，更新规范和 PR，并继续社区评审。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/c91ph82tnrlhj8qq9lj8n72b0s7qq5r0">Spec clarification: readers must accept promotable types in any data file</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论围绕 Iceberg 规范澄清展开：当数据文件中的列类型窄于表 schema 中字段类型时，读取器应如何处理。提案指出由于类型提升可能不会在元数据中留下明确标记，读取器必须能够接受可提升的窄类型，而不是仅做精确类型匹配。目前已提交 PR #18404，建议在 Schema Evolution 部分增加明确说明。</p>
+            <div class="key-points"><p><strong>@Sandeep Gottimukkala:</strong> 类型提升允许字段类型演进而不重写数据文件，因此旧数据文件仍可能保存较窄类型，读取器必须按当前表 schema 类型正确读取。</p>
+<p><strong>@Sandeep Gottimukkala:</strong> 现有系统中有实现只检查精确类型匹配，未接受所有允许的提升类型，因此需要在规范中明确读取器行为。</p>
+<p><strong>@Sandeep Gottimukkala:</strong> 建议在规范中新增一句：读取器必须接受字段类型本身，或接受可根据当前格式版本规则提升到字段类型的数据文件列类型，无论字段类型是否发生过演进。</p></div>
+            <p class="conclusion">目前处于提案和征求意见阶段，尚未形成最终结论；下一步是通过邮件列表和 PR #18404 收集社区反馈并推进规范文本修改。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/ff4v7jvtl1r44wvl0nntlv0d63n8p8p7">Upgrading arrow-java from 15.0.2 to 19.0.0</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">社区讨论将 Iceberg 的 arrow-java 依赖从 15.0.2 升级到 19.0.0。Robert 认为当前版本较旧，升级可带来 ListView、VarBinView 和原生 UUID 扩展类型等支持，并已提交 PR。该升级整体改动较小，也为后续 arrow-java 20 的 Decimal32/64 支持做准备。</p>
+            <div class="key-points"><p><strong>@Robert Kruszewski:</strong> Iceberg 当前 arrow-java 版本已超过两年未升级，建议升级到 19.0.0 以获取 View 类型和原生 UUID 扩展类型支持。</p>
+<p><strong>@Robert Kruszewski:</strong> 已提交 PR #18274，升级主要是较小改动，并有助于后续适配 arrow-java 20。</p></div>
+            <p class="conclusion">初步结论是升级收益明确且风险较低；下一步是推进 PR #18274 的评审与合并，为 arrow-java 20 做准备。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (0)</h2>
+            
+    <p>本周新建 <strong>0</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周无新建 JIRA。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Iceberg Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
