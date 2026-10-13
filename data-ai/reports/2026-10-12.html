@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data+AI 全球日报 | 2026-10-12</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Data+AI 全球日报 | 2026-10-12</h1>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="top-changes">
+            <h2>🔥 今日最重要的3个变化</h2>
+            <ol><li><strong>AWS 将数据质量原生引入 EMR</strong> — AWS Glue Data Quality 内置到 Amazon EMR Spark 运行时，使数据质量规则可直接嵌入湖仓计算流程。</li><li><strong>AWS 强化跨账号实时数据管道能力</strong> — AWS 给出基于 KPL/KCL 的跨账号 Kinesis 流式管道参考架构，提升多账号企业实时数据治理与安全性。</li><li><strong>StarTree 提出 Query Abundance 趋势</strong> — StarTree 认为机器和 AI agent 将成为查询主要发起者，数据平台需要为机器规模查询重新设计。</li></ol>
+            <p class="judgment"><strong>总判断：</strong>今日行业信号集中在 AWS 数据平台工程化能力的持续增强：数据质量、流式管道和多账号安全治理进一步内建到云原生数据栈中。同时，StarTree 提出的 Query Abundance 观点提示，AI agent 正在改变数据平台的查询负载结构。整体来看，Data+AI 平台竞争正从“支持查询”转向“支持可信、可治理、可承受机器规模查询的数据服务”。</p>
+        </section>
+
+        <section class="top-signals">
+            <h2>📡 重要信号</h2>
+            
+    <article class="news-item">
+        <h3>AWS 将 Glue Data Quality 原生引入 Amazon EMR</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/bring-data-quality-to-your-amazon-emr-workloads-with-amazon-emr-data-quality-built-on-aws-glue-data-quality/">AWS Big Data Blog</a></p>
+        <p class="date">2026-10-12</p>
+        <p class="summary">AWS 宣布 AWS Glue Data Quality 现已原生运行在 Amazon EMR 的 Apache Spark 运行时 emr-spark-8.1.0 中。用户可以在 EMR Spark 作业中直接复用 Glue 的 DQDL 规则，实现轻量级内联数据校验，或结合 Apache Iceberg 表构建更完整的数据质量门。该能力将数据质量检查嵌入湖仓与大数据计算工作负载，减少额外编排和独立质量服务。</p>
+        <div class="impact">📊 数据平台影响：数据质量从旁路治理转向计算引擎内建，有助于 EMR/Iceberg 湖仓在入湖、加工和发布环节统一质量策略，提升可信数据供给效率。</div>
+    </article>
+        </section>
+
+        <section class="product-tech">
+            <h2>💻 产品与技术</h2>
+            
+    <article class="news-item">
+        <h3>AWS 发布跨账号 Amazon Kinesis 流式管道构建指南</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/build-cross-account-streaming-pipelines-with-the-amazon-kinesis-producer-library-and-kinesis-client-library/">AWS Big Data Blog</a></p>
+        <p class="date">2026-10-12</p>
+        <p class="summary">AWS Big Data Blog 介绍如何使用 Kinesis Producer Library 和 Kinesis Client Library，在三个独立 AWS 账号之间构建企业级跨账号流式数据管道。方案结合资源型策略、跨账号 IAM 权限和共享客户托管 AWS KMS 密钥，覆盖生产者、消费者与加密密钥分离的企业安全模型，为多账号数据平台提供可复制的实时数据分发架构。</p>
+        <div class="impact">📊 数据平台影响：为多账号企业实时数据平台提供安全边界清晰的参考架构，降低跨组织、跨环境 Kinesis 数据共享与治理门槛。</div>
+    </article>
+        </section>
+
+        <section class="people-views">
+            <h2>👤 人物与观点</h2>
+            
+    <article class="news-item">
+        <h3>StarTree 提出 Query Abundance：当机器开始提问</h3>
+        <p class="sources">📌 <a href="https://startree.ai/resources/query-abundance-when-machines-ask-the-questions/">StarTree Blog</a></p>
+        <p class="date">2026-10-12</p>
+        <p class="summary">StarTree 博客文章提出“Query Abundance”概念，认为大数据时代的第一个反转是机器产生数据超过人类，而下一阶段将是机器发起的查询超过人类查询。随着 AI agent、自动化分析和嵌入式智能应用普及，数据平台不再只服务人类分析师的交互式提问，还要承接高频、并发、自动化的机器问题。文章指出这要求平台在查询模式、索引、语义层、成本和实时性上重新设计。</p>
+        <div class="impact">📊 数据平台影响：AI agent 将放大查询负载并改变工作负载形态，实时 OLAP、语义索引、查询缓存与成本控制将成为平台竞争力。</div>
+    </article>
+        </section>
+
+        <section class="analyst-insights">
+            <h2>📊 分析师洞察</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="watchlist">
+            <h2>👀 观察列表</h2>
+            
+    <article class="watchlist-item">
+        <h3>AWS Glue Data Quality 与 Iceberg/EMR 数据质量生态扩展</h3>
+        <span class="status">待观察</span>
+        <p class="reason">AWS 将 DQDL 原生嵌入 EMR Spark，可能影响湖仓数据质量工具格局。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>更多 Iceberg 表质量门、Catalog 集成或客户案例发布。</p>
+    </article>
+    <article class="watchlist-item">
+        <h3>机器发起查询（Query Abundance）对数据平台负载的影响</h3>
+        <span class="status">待观察</span>
+        <p class="reason">AI agent 和自动化分析可能显著提升查询并发与语义复杂度。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>StarTree 或其他厂商发布面向机器查询的基准、产品能力或架构白皮书。</p>
+    </article>
+        </section>
+
+        <section class="stock-analysis">
+            <h2>📈 股票分析</h2>
+            <p class="disclaimer">⚠️ 以下内容仅供参考，不构成任何投资建议。投资有风险，入市需谨慎。</p>
+            
+    <article class="stock-item">
+        <div class="stock-header">
+            <span class="ticker">AMZN</span>
+            <span class="company">Amazon</span>
+            <span class="signal signal-neutral">⚪ 中性</span>
+        </div>
+        <p class="stock-summary">AWS 在 EMR 数据质量与 Kinesis 跨账号流管道上的更新增强企业数据平台能力，但均为渐进式博客和功能说明，短期财务影响有限。长期有利于提升 AWS 数据与分析生态粘性。</p>
+        <div class="stock-details">
+            <div class="catalysts">
+                <strong>🚀 催化剂</strong>
+                <ul><li>企业采用 EMR Data Quality 与 Iceberg 治理</li><li>跨账号实时数据管道在大型企业落地</li></ul>
+            </div>
+            <div class="risks">
+                <strong>⚠️ 风险</strong>
+                <ul><li>Databricks、Snowflake 及开源方案竞争</li><li>企业数据平台预算收缩</li></ul>
+            </div>
+        </div>
+    </article>
+        </section>
+
+        <footer>
+            <p>Generated by Data+AI Daily Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
