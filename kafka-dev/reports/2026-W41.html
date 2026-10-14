@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafka 社区周报 | 2026-W41</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Kafka 社区周报 | 2026-W41</h1>
+            <p class="date-range">2026-10-05 ~ 2026-10-11</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (0)</h2>
+            <p class="empty">本周无公告</p>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (5)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/yy0gybz2y9b3ylylr5rsdxq4j0xmf222">4.4.0 RC4</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/9gjy984fbdkot92p6bmkrpmrcn8smnhf">4.3.2 RC0</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/vv0dbrl42r7rclq19j052j0mcd6snm30">4.3.2 RC1</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/0rs78f73frj3h1mwrlmkr6dkso327ds7">4.3.2 RC3</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/jm8stgtp5qprnxmhj8qb7ocs0po7v3pv">KIP-1322: Add metrics to Kraft that measure the number of fetch timeouts and election timeouts</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/ongwvhpmsfscd5g8xckc635npfwnwvro">KIP-1376: Support setting TLS named groups</a></h3>
+            <p class="meta">6 条回复 · 5 位参与者</p>
+            <p class="summary">社区围绕 KIP-1376 讨论在 Kafka 中支持配置 TLS named groups，重点澄清 Java API/版本、JEP 文档和 TLS 版本兼容性处理。实现侧已推进 PR #22865，确认由 JVM/SSL provider 处理兼容性与默认行为，并计划分阶段覆盖 client、broker、OAuth 和 Connect REST。</p>
+            <div class="key-points"><p><strong>@Paolo Patierno:</strong> 指出需要修正 Java/JEP 版本和回移路线图描述，并询问 TLS 版本与不兼容 named groups 的具体处理方式。</p>
+<p><strong>@Mickael Maison:</strong> 说明 named groups 配置应交给 JVM 处理，空或未设置时不调用 setNamedGroups，以保持与 cipher suites 行为一致，并同意拆分后续实现。</p>
+<p><strong>@Arnab Nandy:</strong> 推进 client/broker 实现，确认使用反射调用 API、不校验兼容性，并将更新空值语义、文档和后续 PR 范围。</p></div>
+            <p class="conclusion">初步结论是 ssl.named.groups 在空或未设置时保留 JVM 默认，非空时按配置顺序生效；PR #22865 先实现 client 和 broker，OAuth 与 Connect REST 支持后续提交，并更新文档示例为 Java 27 和 x25519_mlkem768。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/bfpdbpg49gwm474k9qy334chxt8bnzd6">Base image for system test dependencies</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">社区讨论为 Kafka 系统测试依赖建立一个包含已发布 Kafka 二进制的基础镜像，以简化发布流程并减少对 S3 镜像、Dockerfile 和 Vagrant 文件重复维护的依赖。多数参与者支持该方案，并倾向移除 Vagrant。</p>
+            <div class="key-points"><p><strong>@Chia-Ping Tsai:</strong> 提议在 GitHub Container Registry 提供系统测试基础镜像，通过 GitHub workflow 在发布后构建推送，从而减少手动上传和重复更新。</p>
+<p><strong>@Maroš Orsák:</strong> 支持引入基础镜像和移除 Vagrant 的方向，但希望进一步了解具体实现细节，并观察更多社区意见。</p>
+<p><strong>@Luke Chen:</strong> 明确支持新的基础镜像方案以及移除 Vagrant。</p></div>
+            <p class="conclusion">初步共识是推进基础镜像方案并考虑移除 Vagrant；Chia-Ping 已创建 KAFKA-21260 和 KAFKA-21261，后续细节将在独立 KIP 线程中讨论。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/6tsjrn8qqdvnlvdzdno2zgtdo4h9sg1s">Tightening time-based releases</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">社区讨论 Kafka 4.5.0 与 4.6.0 的时间型发布计划，重点是 KIP 冻结、发布间隔和历史延期对排期的影响。讨论进展显示 4.5.0 倾向按修订后的时间表推进，而 4.6.0 因不确定性暂不急于确定。</p>
+            <div class="key-points"><p><strong>@Matthias J. Sax:</strong> 质疑 4.6.0 安排在 3 月过早，若 4.5.0 在 1 月发布，4.6.0 可能内容过少且发布成本较高。</p>
+<p><strong>@Chia-Ping Tsai:</strong> 支持修订后的 4.5.0 时间表，不建议再提前一周；4.6.0 应等 4.5.0 代码冻结后再讨论。</p>
+<p><strong>@Muralidhar Basani:</strong> 历史数据显示代码冻结后发布常延期约 40 天，按当前计划 4.5.0 实际可能延至 2027 年 4 月底。</p></div>
+            <p class="conclusion">Andrew Schofield 已按当前 4.5.0 时间表推进，4.6.0 暂不制定具体计划，后续将结合 4.5.0 冻结与发布情况再评估。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/4bz5pqzdsxjdt5tnjtbjgtn555cp1lcb">Please approve workflow runs for two PR's (add "ci-approved" label)</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Dejan Stojadinović 请求社区为两个 Kafka PR 批准 GitHub Actions 工作流运行并添加 ci-approved 标签。两个 PR 分别涉及开启 Gradle 可复现归档特性，以及升级 Apache Ldap Api 和 Directory Server 依赖。</p>
+            <div class="key-points"><p><strong>@Dejan Stojadinović:</strong> 请求为 PR #23167 和 PR #23730 添加 ci-approved 标签，以批准其 CI 工作流运行。</p></div>
+            <p class="conclusion">暂无明确结论；下一步需要维护者添加 ci-approved 标签，以推进这两个 PR 的 CI 运行。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/ytrls16lkkd70go2vxno6fc8831jrr7v">KIP-1349 : Configurable snapshot frequency for share groups</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论围绕 KIP-1349 中 share group 快照频率配置应采用按字节还是按记录数阈值展开。核心进展是确认快照清理受同一 state partition 中最慢组限制，因此按字节阈值难以直接控制日志保留，讨论倾向于按组配置记录数阈值。</p>
+            <div class="key-points"><p><strong>@Chia-Ping Tsai:</strong> 由于清理需等待所有 share partition 完成快照，按字节或按分区阈值都难以让用户准确评估保留日志大小；支持 per-group 配置，认为 per-group count 加提高 broker 上限可能足够。</p>
+<p><strong>@Muralidhar Basani:</strong> 快照清理点由最慢组决定，低频组会拖住磁盘空间释放；更新记录大小较固定，按计数与按字节效果接近。</p>
+<p><strong>@Muralidhar Basani:</strong> 此前曾按建议改为 bytes，但认为该场景下 bytes 不如 count 实用，将把 KIP 改回 count-based。</p></div>
+            <p class="conclusion">初步方向是放弃 bytes 阈值，改回基于记录数的 per-group 快照频率配置；Murali 将修订 KIP 并继续跟进讨论。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/x109d78nlg56stgfhw9o2b26tp89q57y">KIP-1163: Diskless Core</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">本次讨论围绕 KIP-1163 Diskless Core 中 Diskless 主题与 ISR 机制及经典模式迁移的关系。Greg 说明纯 Diskless 主题通常保持空 ISR 且不进入错误状态，而迁移中的 Hybrid 主题仍沿用 ISR。Viktor 补充了 KIP-1165 的对象整合设计，并讨论基于对象存储恢复副本与本地日志构建策略。</p>
+            <div class="key-points"><p><strong>@Greg Harris:</strong> 纯 Diskless 主题通常维持空 ISR 且不视为错误；Hybrid 主题在经典与 Diskless 模式迁移期间仍使用 ISR。</p>
+<p><strong>@Viktor Somogyi-Vass:</strong> KIP-1165 更新为对象整合（object consolidation），用于把 WAL 段转换为经典 Kafka 日志；当前仍假设 ISR，幂等与事务支持留作后续工作。</p>
+<p><strong>@Viktor Somogyi-Vass:</strong> 副本可从对象存储拉取数据而无需等待本地日志完全追赶，并提出从最早非分层 offset、最新 offset 或可配置数据量开始构建本地日志的策略。</p></div>
+            <p class="conclusion">初步方向是区分纯 Diskless 与 Hybrid 主题的 ISR 语义，并继续完善对象整合及副本恢复策略；下一步将更新相关 KIP 和讨论线程，推进 JR3、JR4、JR5、JR6.2 等事项。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/moj8hyf238qhqsmh5cpmws58g282wtp0">[Please Review/Approve] KAFKA-19657 & KAFKA-6621</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">本次讨论围绕 KAFKA-19657 和 KAFKA-6621 两个 PR 的评审与批准展开。Naveen 请求社区对这两个 PR 进行审查或批准。目前邮件中尚未出现进一步技术讨论或反馈。</p>
+            <div class="key-points"><p><strong>@Naveen:</strong> 请求社区审查或批准 KAFKA-19657 和 KAFKA-6621 对应的两个 PR。</p></div>
+            <p class="conclusion">暂无明确结论，下一步行动是等待社区对这两个 PR 进行审阅、批准或提出反馈。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/fc3ysrd2qo5po520ngctnlo6cvt81kjh">New contributor interested in Apache Kafka</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">新贡献者 Akshay Shinde 向 Kafka 社区表达参与贡献的意愿，希望从适合新手的 bug 修复或测试改进开始。他具备 Java 和 Spring Boot 经验，已申请 Kafka JIRA 账号，并寻求社区在选择入门 issue 方面的指导。</p>
+            <div class="key-points"><p><strong>@Akshay Shinde:</strong> 希望参与 Apache Kafka 贡献，建议从新手友好的 bug 修复或测试改进入手，并请求社区推荐合适的 issue。</p></div>
+            <p class="conclusion">目前尚未形成技术结论，下一步是等待社区成员提供适合新贡献者的 issue 建议，同时等待 JIRA 账号申请通过。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/bd6zkrkj0rgnsnjygr2o7b69003no7ob">Qestions for migrating KRaft kafka dedicated controllers to combined broker/controller role nodes</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论围绕如何将 KRaft 集群从 3 个专用 Controller 节点迁移到 broker/controller 混合角色节点展开。发件人表示社区此前认为其原地迁移方案可行，但进一步询问迁移过程中是否必须停集群、落后节点加入新 quorum 的影响，以及是否可以不重格存储。</p>
+            <div class="key-points"><p><strong>@Xiong, Benson:</strong> 希望确认整个角色迁移是否可以避免停止整个 Kafka 集群，即在专用 Controller 和混合角色 Controller 共存的情况下完成迁移。</p>
+<p><strong>@Xiong, Benson:</strong> 本地测试显示，即使某个未来 voter 节点因停机导致元数据落后，加入新的混合角色 quorum 后仍可追赶，且未发现数据丢失或发布订阅异常。</p>
+<p><strong>@Xiong, Benson:</strong> 官方文档称角色变更需要重格存储，但本地测试表明不清空/重格存储也可能完成迁移，因此希望社区确认安全性。</p></div>
+            <p class="conclusion">目前尚无最终结论；此前社区认为原地拓扑变更可行，但仍需进一步确认不停机迁移、落后节点加入 quorum 以及免重格存储的安全性和正确操作步骤。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/qz9pj9tgxh9vc2gd6l1s76rhzjg0dc87">PR review request: Gradle build improvements</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Dejan Stojadinović 请求社区审查一组 Gradle 构建改进 PR，涉及 RAT 插件、Develocity 插件、可复现归档、Apache 依赖和 Gradle 版本升级。部分 PR 已通过 GitHub Actions 验证，另一些仅完成本地测试并需要先获得 ci-approved 标签。</p>
+            <div class="key-points"><p><strong>@Dejan Stojadinović:</strong> 请求社区审查多个 Gradle 构建改进 PR，并说明部分 PR 已通过 GitHub Actions 测试，部分仅本地测试且需要 ci-approved 标签。</p></div>
+            <p class="conclusion">目前尚无最终结论；下一步是社区成员审查相关 PR，并对需要本地测试的 PR 添加 ci-approved 标签。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (62)</h2>
+            
+    <p>本周新建 <strong>62</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周 JIRA 主要围绕客户端与服务端正确性修复展开，涉及消费者自动提交、分配状态、元数据加载、遥测、事务、ACL 和 OAuth 安全等问题，同时包含 KRaft 控制器、Streams、Connect 及控制台工具的功能增强。社区还推进了测试与工程化改进，包括 JUnit 5 迁移、临时目录支持、测试重构、依赖升级以及多项文档补充。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Kafka Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
