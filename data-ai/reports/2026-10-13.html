@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data+AI 全球日报 | 2026-10-13</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Data+AI 全球日报 | 2026-10-13</h1>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="top-changes">
+            <h2>🔥 今日最重要的3个变化</h2>
+            <ol><li><strong>Redshift 增强 Iceberg 并发写入</strong> — Amazon Redshift 自动解决 Apache Iceberg 表多类非重叠并发写冲突，减少失败重试，提升湖仓写入可靠性。</li><li><strong>ClickHouse 强化 Postgres 一体化</strong> — ClickHouse 展示 Managed Postgres 与 ClickHouse 组合，WalShadow 可将 Postgres 变更亚秒级复制进 ClickHouse。</li><li><strong>ClickHouse 优化尾延迟</strong> — ClickHouse 定位并修复空闲后简单 SELECT 约 32ms 尾延迟，提升低延迟实时分析稳定性。</li></ol>
+            <p class="judgment"><strong>总判断：</strong>今日 Data+AI 信号集中在湖仓写入可靠性与 OLTP/OLAP 数据流动的工程优化，未见重大融资、收购或政策事件。云厂商继续围绕 Iceberg 降低并发写入门槛，数据公司则通过 Postgres 复制与尾延迟治理强化实时分析体验。整体信号偏产品工程迭代，反映数据平台竞争正进入可靠性与低延迟细节打磨阶段。</p>
+        </section>
+
+        <section class="top-signals">
+            <h2>📡 重要信号</h2>
+            
+    <article class="news-item">
+        <h3>Amazon Redshift 自动解决 Apache Iceberg 并发写冲突</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/resolving-concurrent-write-conflicts-for-apache-iceberg-tables-in-amazon-redshift/">AWS Big Data Blog</a></p>
+        <p class="date">2026-10-13</p>
+        <p class="summary">Amazon Redshift 宣布可自动解决 Apache Iceberg 表中许多实际不重叠的并发写入冲突。引擎会在操作、分区和文件层级检查冲突，对非重叠写入进行 rebase 并提交，减少此前失败后重试的成本。该更新面向湖仓场景中的多任务并发写入，强调 Redshift 对开放表格式的托管运维优化。</p>
+        <div class="impact">📊 数据平台影响：降低 Iceberg 并发写失败率，有助于 ETL/ELT 管道减少重试与补偿逻辑，提升湖仓一体架构的数据新鲜度和运维稳定性。</div>
+    </article>
+    <article class="news-item">
+        <h3>ClickHouse 展示 Managed Postgres 与 ClickHouse 一体化</h3>
+        <p class="sources">📌 <a href="https://clickhouse.com/blog/postgres-at-open-house-nyc">ClickHouse Blog</a></p>
+        <p class="date">2026-10-13</p>
+        <p class="summary">ClickHouse 在 Open House NYC 展示 ClickHouse Managed Postgres 与 ClickHouse 组成统一分析栈，并演示 WalShadow 将 Postgres 数据以亚秒级延迟复制到 ClickHouse。文章还提及同周 Google Cloud 和 chdb 扩展发布，显示 ClickHouse 正强化从事务型 Postgres 到实时分析的低延迟数据通路。</p>
+        <div class="impact">📊 数据平台影响：若 WalShadow 与 Managed Postgres 走向生产可用，可减少单独 CDC 管道，简化 Postgres 到分析引擎的实时同步与报表链路。</div>
+    </article>
+        </section>
+
+        <section class="product-tech">
+            <h2>💻 产品与技术</h2>
+            
+    <article class="news-item">
+        <h3>ClickHouse 修复空闲后约 32ms 尾延迟问题</h3>
+        <p class="sources">📌 <a href="https://clickhouse.com/blog/chasing-32ms-tail-latency-clickhouse">ClickHouse Blog</a></p>
+        <p class="date">2026-10-13</p>
+        <p class="summary">ClickHouse 工程团队排查客户在空闲后执行简单 SELECT 时出现约 32ms 额外尾延迟的问题。根因是 Native 协议元数据包未批量发送，导致重置后的 TCP 拥塞窗口溢出。团队使用 network namespaces 复现问题，并通过批量发送元数据包完成修复。</p>
+        <div class="impact">📊 数据平台影响：此类底层网络与协议优化有助于降低 P99/P999 查询抖动，对交互式仪表盘、实时 API 和低延迟分析场景尤为重要。</div>
+    </article>
+        </section>
+
+        <section class="people-views">
+            <h2>👤 人物与观点</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="analyst-insights">
+            <h2>📊 分析师洞察</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="watchlist">
+            <h2>👀 观察列表</h2>
+            
+    <article class="watchlist-item">
+        <h3>Redshift Iceberg 并发写优化覆盖范围</h3>
+        <span class="status">待观察</span>
+        <p class="reason">当前更新强调自动解决许多非重叠写入冲突，但仍需观察复杂并发写、跨分区更新和性能开销表现。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>AWS 是否发布基准测试、冲突类型覆盖说明或 GA/区域扩展细节。</p>
+    </article>
+    <article class="watchlist-item">
+        <h3>ClickHouse Managed Postgres 与 WalShadow 生产化</h3>
+        <span class="status">待观察</span>
+        <p class="reason">Postgres 到 ClickHouse 的亚秒级复制若可用，将影响 CDC 与实时分析架构，但成熟度和可用性仍待确认。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>产品 GA、SLA、复制一致性、故障恢复与云环境支持细节。</p>
+    </article>
+    <article class="watchlist-item">
+        <h3>ClickHouse 低延迟工程优化</h3>
+        <span class="status">待观察</span>
+        <p class="reason">尾延迟治理反映实时分析竞争进入毫秒级体验阶段，后续可能影响查询路由、连接池和缓存设计。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>更多 P99/P999 基准、空闲连接优化和客户端协议改进。</p>
+    </article>
+        </section>
+
+        <section class="stock-analysis">
+            <h2>📈 股票分析</h2>
+            <p class="disclaimer">⚠️ 以下内容仅供参考，不构成任何投资建议。投资有风险，入市需谨慎。</p>
+            
+    <article class="stock-item">
+        <div class="stock-header">
+            <span class="ticker">AMZN</span>
+            <span class="company">Amazon</span>
+            <span class="signal signal-neutral">⚪ 中性</span>
+        </div>
+        <p class="stock-summary">Redshift 对 Apache Iceberg 并发写入的优化属于产品工程改进，短期对 AWS 收入影响有限，但有助于增强云数据仓库与湖仓生态竞争力。本分析仅供参考，不构成投资建议。</p>
+        <div class="stock-details">
+            <div class="catalysts">
+                <strong>🚀 催化剂</strong>
+                <ul><li>Redshift/Iceberg 功能进一步 GA 或区域扩展</li><li>AWS 数据与 AI 服务客户采用增长</li><li>湖仓负载迁移案例增加</li></ul>
+            </div>
+            <div class="risks">
+                <strong>⚠️ 风险</strong>
+                <ul><li>Databricks/Snowflake 等竞争加剧</li><li>Iceberg 生态演进导致兼容性成本</li><li>云支出放缓影响数据平台预算</li></ul>
+            </div>
+        </div>
+    </article>
+        </section>
+
+        <footer>
+            <p>Generated by Data+AI Daily Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
