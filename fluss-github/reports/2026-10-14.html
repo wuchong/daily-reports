@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-10-14</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-10-14</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 6 新 Issues</div>
+            <div class="stat">✅ 9 关闭</div>
+            <div class="stat">✨ 9 新 PRs</div>
+            <div class="stat">🎉 10 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/4640">PR #4640</a> [test] Avoid network retries in AzureFileSystemPluginTest</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4633">PR #4633</a> [elixir] Set up HexDocs and add usage guides</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4631">PR #4631</a> [docs] Clarify RustFS key login in Flink quickstart</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4630">PR #4630</a> [flink] Make source plan assertions independent of Flink version</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4624">PR #4624</a> [flink] Exclude bundled SLF4J API from Flink connector JARs</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4505">Issue #4505</a> [server] Resume pending replica deletion after server restart</h4>
+            <ul><li><span class="author">@swuferhong</span>: @loserwang1024 comments addressed. Could you take another look? Thanks.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4559">Issue #4559</a> [cpp] Allow starting lookups without blocking</h4>
+            <ul><li><span class="author">@naivedogger</span>: Hi @fresh-borzoni, thanks for working on this. This feels similar to the `Append(row, WriteResult&)…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4622">Issue #4622</a> [test] Unstable test RebalanceITCase.testRebalanceForLogTable</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: https://github.com/apache/fluss/actions/runs/38498283050/job/115638965414 ``` [ERROR] org.apache.fl…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3266">Issue #3266</a> [flink] Support hint-based watermark configuration for Flink connector</h4>
+            <ul><li><span class="author">@gustavodemorais</span>: You're welcome to share your comments and ping other people that are interested on the ticket @swuf…</li><li><span class="author">@swuferhong</span>: > You're welcome to share your comments and ping other people that are interested on the ticket @sw…</li><li><span class="author">@xuyangzhong</span>: Hi, @gustavodemorais. The Flink community has proposed a built-in APPLY_WATERMARK PTF to support fl…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4637">Issue #4637</a> [test] AzureFileSystemPluginTest spends ~10 min retrying DNS lookups</h4>
+            <ul><li><span class="author">@dstolis</span>: @polyzos can i take this one?；@polyzos I reproduced this locally (macOS, JDK 17, hadoop-azure 3.4.3…</li><li><span class="author">@polyzos</span>: @dstolis assigned to you</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4636">Issue #4636</a> [rust] remove the duplicate proto definition</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: @zuston @luoyuxia The copy is there for the Rust source release, not only as a duplicate. fluss-rus…</li><li><span class="author">@zuston</span>: thanks for sharing the context. @fresh-borzoni > Could we drop the committed copy and add the proto…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4207">Issue #4207</a> [trino] Add initial connector build and plugin skeleton</h4>
+            <ul><li><span class="author">@polyzos</span>: Thanks @yangshangqing95 ,and I think we are almost there with a few more comments - although some m…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4600">Issue #4600</a> [server] Local-first leader election for KV recovery after partial local disk loss</h4>
+            <ul><li><span class="author">@JAEKWANG97</span>: Hi @swuferhong, I'd like to work on this issue if it's still available. I've read #4567 and the rev…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4640">Issue #4640</a> [test] Avoid network retries in AzureFileSystemPluginTest</h4>
+            <ul><li><span class="author">@dstolis</span>: | | `main` (#4259) | `main` (#4624) | PR #4640 | |---|---|---|---| | `AzureFileSystemPluginTest` |…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4643">Issue #4643</a> [build] Use RAT0.18 configuration options and remove deprecation warnings in build</h4>
+            <ul><li><span class="author">@ottlinger</span>: Sorry, I did not realize that you are working with JDK8. RAT 0.18 requires Java17 as a minimum to b…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4642">Issue #4642</a> [build] Use RAT0.18 configuration options and remove deprecation warnings in build</h4>
+            <ul><li><span class="author">@ottlinger</span>: Sry, I didn't realize you still rely on JDK8. RAT 0.18 has a minimum build requirement of JDK17.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4648">Issue #4648</a> [rpc] Skip Netty quiet period when closing NettyClient</h4>
+            <ul><li><span class="author">@polyzos</span>: addressed in #4645</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4646">Issue #4646</a> [build] Split Iceberg plugin into common, 1.10 and 1.12 modules</h4>
+            <ul><li><span class="author">@polyzos</span>: @luoyuxia @fresh-borzoni @MehulBatra PTAL 🙌 .. most changes are files moved into another package</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4619">PR #4619</a> [lake/paimon] Promote existing Paimon log tables to Fluss lake tables</h4>
+            <ul><li><span class="author">@luoyuxia</span>: Good catch. This retry gap is real. `Admin.getLatestLakeSnapshot` already gives us the read we need…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4626">PR #4626</a> [server] Add consumer offset table foundations</h4>
+            <ul><li><span class="author">@gyang94</span>: failed to compile `repeat()` with Java 8.；failed to compile `Arrays.equals` in Java 8；Maybe we can…</li><li><span class="author">@pisceslj</span>: I’ve updated the code.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4293">PR #4293</a> [client] Back off writes rejected by disk protection</h4>
+            <ul><li><span class="author">@loserwang1024</span>: Is commit([flink] Release pending tiering rounds when closing enumerator) related to this issue?；Co…</li><li><span class="author">@fhan688</span>: It is not directly related to the client write-backoff feature. The new retry delay changed the CI…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4628">PR #4628</a> [elixir] Add UpsertWriter for primary key tables</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: When the write buffer is full, upsert waits right here inside the NIF until space frees up. By defa…</li><li><span class="author">@nicolazar</span>: @fresh-borzoni, thanks, I will think about it. 👍 I will fix the upsert writer here, and then follow…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2804">PR #2804</a> [fs] Support independent authentication for multiple remote paths</h4>
+            <ul><li><span class="author">@chaohaochen</span>: here we should add pbFileSystemSecurityToken to the list? `securityTokens.add(pbFileSystemSecurityT…</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4650">#4650</a> [Bug][flink] Snapshot bootstrap stops at empty inner lake splits <span class="author">@jonah-rpo</span> </li><li><a href="https://github.com/apache/fluss/issues/4647">#4647</a> [rpc] NettyClient.close() always waits for Netty's 2 s shutdown quiet period <span class="author">@dstolis</span> </li><li><a href="https://github.com/apache/fluss/issues/4642">#4642</a> [build] Use RAT0.18 configuration options and remove deprecation warnings in build <span class="author">@ottlinger</span> </li><li><a href="https://github.com/apache/fluss/issues/4639">#4639</a> [flink] DISTRIBUTED BY is silently ignored when creating tables and materialized tables <span class="author">@raminqaf</span> </li><li><a href="https://github.com/apache/fluss/issues/4638">#4638</a> [flink] SHOW MATERIALIZED TABLES fails on Flink 2.2 and 2.3 <span class="author">@raminqaf</span> </li><li><a href="https://github.com/apache/fluss/issues/4637">#4637</a> [test] AzureFileSystemPluginTest spends ~10 min retrying DNS lookups <span class="author">@polyzos</span> <span class="labels">component=test</span></li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4649">#4649</a> [flink] Skip empty lake snapshot splits <span class="author">@jonah-rpo</span> </li><li><a href="https://github.com/apache/fluss/pull/4646">#4646</a> [build] Split Iceberg plugin into common, 1.10 and 1.12 modules <span class="author">@polyzos</span> </li><li><a href="https://github.com/apache/fluss/pull/4645">#4645</a> [Server] improve CI test time for netty <span class="author">@polyzos</span> <span class="labels">component=server</span></li><li><a href="https://github.com/apache/fluss/pull/4644">#4644</a> [FIP-29][rpc] Wire TLS encryption into the server Netty pipeline <span class="author">@morazow</span> </li><li><a href="https://github.com/apache/fluss/pull/4643">#4643</a> [build] Use RAT0.18 configuration options and remove deprecation warnings in build <span class="author">@ottlinger</span> </li><li><a href="https://github.com/apache/fluss/pull/4641">#4641</a> [FIP-29][security] Add SslPrincipalMapper for certificate DN to principal mapping <span class="author">@morazow</span> </li><li><a href="https://github.com/apache/fluss/pull/4636">#4636</a> [rust] remove the duplicate proto definition <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/pull/4635">#4635</a> [flink] Respect DISTRIBUTED BY when creating tables and materialized tables <span class="author">@raminqaf</span> </li><li><a href="https://github.com/apache/fluss/pull/4634">#4634</a> [flink] Support SHOW MATERIALIZED TABLES on Flink 2.2+ <span class="author">@raminqaf</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4647">#4647</a> [rpc] NettyClient.close() always waits for Netty's 2 s shutdown quiet period <span class="author">@dstolis</span> </li><li><a href="https://github.com/apache/fluss/issues/4637">#4637</a> [test] AzureFileSystemPluginTest spends ~10 min retrying DNS lookups <span class="author">@polyzos</span> <span class="labels">component=test</span></li><li><a href="https://github.com/apache/fluss/issues/4629">#4629</a> [flink] Filter push-down plan assertions in source ITCases fail on Flink 2.4 <span class="author">@gustavodemorais</span> </li><li><a href="https://github.com/apache/fluss/issues/4623">#4623</a> [flink] Exclude bundled SLF4J API from Flink connector JARs <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/issues/4557">#4557</a> [lake] Flink lake reader names the Iceberg catalog after the Flink catalog, so JDBC catalog tables are not found <span class="author">@affo</span> </li><li><a href="https://github.com/apache/fluss/issues/4264">#4264</a> [kafka] Add request and transport framework <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/3936">#3936</a> [CI] Move Spark Scala 2.13 tests from PR CI to nightly <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/issues/3314">#3314</a> [Feature] Support Partition Mark Done for Fluss Tiering (Paimon Lake) <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/issues/3307">#3307</a> Fluss binlog source fails checkpoint/savepoint with NPE in FlinkSourceEnumerator.snapshotState <span class="author">@lgtm4e</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4640">#4640</a> [test] Avoid network retries in AzureFileSystemPluginTest <span class="author">@dstolis</span> </li><li><a href="https://github.com/apache/fluss/pull/4633">#4633</a> [elixir] Set up HexDocs and add usage guides <span class="author">@nicolazar</span> </li><li><a href="https://github.com/apache/fluss/pull/4631">#4631</a> [docs] Clarify RustFS key login in Flink quickstart <span class="author">@JandyTenedora</span> </li><li><a href="https://github.com/apache/fluss/pull/4630">#4630</a> [flink] Make source plan assertions independent of Flink version <span class="author">@gustavodemorais</span> </li><li><a href="https://github.com/apache/fluss/pull/4624">#4624</a> [flink] Exclude bundled SLF4J API from Flink connector JARs <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/pull/4581">#4581</a> [docs] Fix Lance Log Table example <span class="author">@Gezi-lzq</span> </li><li><a href="https://github.com/apache/fluss/pull/4564">#4564</a> [lake] Name the Flink lake reader's Iceberg catalog like the server's <span class="author">@firasbouzazi</span> </li><li><a href="https://github.com/apache/fluss/pull/4259">#4259</a> [kafka] Add request dispatch and transport framework <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/pull/3954">#3954</a> [build] Move Spark Scala 2.13 tests to nightly <span class="author">@litiliu</span> </li><li><a href="https://github.com/apache/fluss/pull/3635">#3635</a> [lake] Support partition mark-done for lakehouse tiering (processing-time) <span class="author">@beryllw</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
