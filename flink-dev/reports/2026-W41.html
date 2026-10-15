@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flink 社区周报 | 2026-W41</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Flink 社区周报 | 2026-W41</h1>
+            <p class="date-range">2026-10-05 ~ 2026-10-11</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (1)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/wqsw3p8pnckxd9tk95fo3ny62q6qtzkd">Apache Flink CDC 3.7.0 released</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (2)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/qtn9mz6t92o6ko529kjl5zn7mj5d98tw">Apache Flink CDC Release 3.7.0, release candidate #1</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/1sll2bvd1m1vjk879v375trvyl3rn0kb">FLIP-614: Add built-in DEDUPLICATE_KEEP_FIRST PTF</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/skglvq171wg53nok33twk0hffbkt1b7w">FLIP-XXX: Store large operator coordinator state outside the checkpoint metadata</a></h3>
+            <p class="meta">5 条回复 · 3 位参与者</p>
+            <p class="summary">讨论 FLIP-XXX 将超过阈值的大型 Operator Coordinator 状态从 checkpoint 元数据内联改为独立文件存储，以降低 _metadata 大小和 JobManager 内存占用。提案人根据社区反馈调整了默认配置和阈值设计，以保证升级回滚兼容性。原型验证显示大状态下元数据和堆内存开销显著下降。</p>
+            <div class="key-points"><p><strong>@Spoorthi Basu:</strong> 提出将超过阈值且支持异步恢复的 Coordinator 状态写入独立文件，并根据反馈将功能默认关闭、新增独立的 coordinator-state-inline-threshold。</p>
+<p><strong>@Yanquan Lv:</strong> 担心默认启用会产生旧版本不可读的 V7 checkpoint 和 HA 条目，影响回滚安全，建议初始默认 false 并由用户显式开启。</p>
+<p><strong>@Hang Ruan:</strong> 建议为 Coordinator 状态设置独立的 inline threshold，避免复用 data-inline-threshold 影响 task state 或产生过多小文件。</p></div>
+            <p class="conclusion">初步方案调整为默认关闭该特性，仅在启用时通过独立阈值控制 Coordinator 状态外置；已有非绑定 +1 审查意见，下一步继续收集反馈，并基于生产经验再评估是否默认开启。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/6czf2sc7ths62j43xol4tnr0xslt8sd6">FLIP-XXX: Dynamic Rate Limiting for FLIP-27 Source</a></h3>
+            <p class="meta">4 条回复 · 4 位参与者</p>
+            <p class="summary">讨论聚焦为 FLIP-27 Source 提供基于 checkpoint 时长和吞吐反馈的动态限流能力。社区认可该特性与整体架构，但重点质疑默认算法的通用性、不均等 split 分配、多源归因、checkpoint 阈值及事件协调语义。提案人已根据反馈更新方案，倾向先提供可编程接口和实验性实现，并补充内部测试数据。</p>
+            <div class="key-points"><p><strong>@Zhanghao Chen:</strong> 认可整体架构，但建议先提供编程接口和实验性实现，避免过早引入过多全局配置，并补充生产数据验证默认算法。</p>
+<p><strong>@Yanquan Lv:</strong> 关注多源场景下无法准确归因、小 checkpoint 时长下相对变化过于敏感，以及事件丢失和非对齐 checkpoint 的兼容问题。</p>
+<p><strong>@Peter Huang:</strong> 回应将支持 source 级配置、基于 checkpoint interval 的激活阈值、丢失容忍的速率更新事件，并说明当前仅支持对齐 checkpoint，已更新提案。</p></div>
+            <p class="conclusion">初步方向是保留动态限流架构但降低默认配置复杂度，先以 RateAllocator/实验性实现推进；下一步由 Peter 更新提案、补充内部测试与生产观测，并继续澄清恢复、超时、reader 集成及不等额分配下发等细节。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/bw66c6cd5563cpb9rm7gs4twn4hdorvy">A New Flink Native Engine StreamFusion Based On DataFusion</a></h3>
+            <p class="meta">2 条回复 · 1 位参与者</p>
+            <p class="summary">讨论主要介绍了基于 DataFusion 的新 Flink Native 引擎 StreamFusion，并提到其参考了 Risingwave、Arroyo 等项目。发起人展示了多项 SQL 查询性能基准，强调该引擎具有较好性能并支持较多 SQL 算子。</p>
+            <div class="key-points"><p><strong>@Jacky Lau:</strong> 提出并介绍 StreamFusion，一个基于 DataFusion 的 Flink Native 引擎，目标是提供新的流处理执行引擎选择。</p>
+<p><strong>@Jacky Lau:</strong> 给出与 Flink 对比的基准测试结果，显示在多种内存/磁盘配置下整体有性能提升，部分查询提升明显。</p>
+<p><strong>@Jacky Lau:</strong> 表示 StreamFusion 支持较多 SQL 算子，并邀请社区参与共建和完善项目。</p></div>
+            <p class="conclusion">目前主要是项目介绍和性能展示，尚未形成社区层面的明确结论；下一步是吸引社区关注并参与 StreamFusion 的开发与完善。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/fk34zv75zm16kvnv531bgx4v1b7knnbj">Flink Community Skills</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">讨论聚焦于 Flink 社区是否应维护可复用的 AI Agent Skills，以及这些技能应存放在何处。Rui Fan 展示了面向 patch release 流程的 POC 技能，并征求社区对维护方式和仓库位置的意见。多位参与者倾向由社区维护并建立专用 skills 仓库。</p>
+            <div class="key-points"><p><strong>@Rui Fan:</strong> 提议社区维护可复用的 Agent Skills，用于发布准备、检查和草稿等社区工作，并给出 flink-release 与 verify-flink-release 的 POC；倾向建立专用社区 skills 仓库以便跨项目复用。</p>
+<p><strong>@Purushottam Sinha:</strong> 支持社区维护和专用 skills 仓库，认为这有助于沉淀端到端经验；并表示愿意贡献自己已有的 flink-oss-setup 和 flink-pr-reviewer 技能。</p>
+<p><strong>@Krishna Sai:</strong> 支持共享仓库方案，认为 release skills 需要跨项目复用；建议纳入此前提出的运维故障排查技能讨论，并区分代码仓库内的 AGENTS.md 与社区级技能。</p></div>
+            <p class="conclusion">初步共识倾向由 Flink 社区维护这些 Agent Skills，并优先采用专用 skills 仓库；下一步可继续讨论仓库方案，整合已有技能与故障排查方向，并完善发布流程相关技能。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/lh65w0ygtmgfv92c0prblsv52ltzrvxx">Help with Confluence account creation</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕 Sumin Joo 在协助 Flink 2.4 发布时无法创建 Confluence 账号的问题。她已多次联系 Apache Infra 但未获回复，Rui Fan 尝试审批账号请求时也遇到内部服务器错误。当前问题仍需 Infra 侧进一步处理。</p>
+            <div class="key-points"><p><strong>@Sumin Joo:</strong> 因无法创建 Confluence 账号，无法更新 Flink 2.4 发布页面，已联系 users@infra.apache.org 但未获回复。</p>
+<p><strong>@Rui Fan:</strong> 尝试批准账号请求时失败，提示 Confluence 账号创建因内部服务器错误失败，认为需要 Infra 支持。</p>
+<p><strong>@Sumin Joo:</strong> 确认此前也收到过相同内部服务器错误导致的拒绝通知，将继续向 Infra 跟进。</p></div>
+            <p class="conclusion">初步判断问题由 Infra 侧内部服务器错误导致；下一步由 Sumin 继续联系 users@infra.apache.org 跟进账号创建问题。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/bqwb6m0g0c6n6v8dkcbcq0p4o3gyxlxm">FLIP-608: Flink on Ray, Ray Resource Backend For Flink</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕 FLIP-608 提出让 Flink 运行在 Ray 上，并将 Ray 作为 Flink 的资源后端，重点关注整体架构、资源管理、TaskManager 生命周期、故障恢复和部署细节。社区认可该方向有助于连接 Python 和 AI 生态，并初步认可由 Ray Actor 承载 Flink JVM 进程、Ray 负责资源分配、Flink 继续负责调度、Checkpoint 和任务恢复的架构。当前仍处于设计细节澄清阶段，尚未形成最终结论。</p>
+            <div class="key-points"><p><strong>@Dian Fu:</strong> 认可 Flink on Ray 的生态价值和总体架构，但希望澄清 JobManager failover 时 TaskManager Actor 是否保持运行、如何重新获取句柄、如何防止重复创建、如何清理 detached Actor，以及 HA 模型如何设计。</p>
+<p><strong>@Biao Geng:</strong> 认为该方案与 Flink 现有 YARN/Kubernetes 集成思路类似，但需要统一 TaskManager Actor 的创建责任，建议由 RayResourceManagerDriver 请求所有 TaskManager Actor。</p>
+<p><strong>@Biao Geng:</strong> 建议进一步澄清应用 JAR 和依赖的分发方式，例如是复用 Flink 现有 artifact 管理机制，还是使用 Ray 的 runtime_env.working_dir 等文件分发能力。</p></div>
+            <p class="conclusion">初步结论是 Flink on Ray 的方向具有价值且总体架构可行，但需要补充 TaskManager Actor 生命周期、故障恢复、HA 和应用制品分发等设计细节；下一步建议 FLIP 作者根据邮件中的问题进行澄清并更新提案。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/wv3l9g3ygrnkw88ccf392rss3yvfoz1l">FLIP-616: Materialized Tables support for Table API</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕 FLIP-616 为 Table API 增加 Materialized Tables 支持，使用户可以通过 Table#materializeInto 创建、管理和控制物化表，并将相关逻辑从 SQL Gateway 下沉到 planner。讨论重点包括未变更定义重新部署时是否应重启刷新作业，以及刷新作业丢失导致表“卡住”时的恢复方式。目前仍在征求意见阶段，尚未形成最终结论。</p>
+            <div class="key-points"><p><strong>@Timo Theusner:</strong> 提出通过 Table#materializeInto 和 MaterializedTable 句柄让 Table API 支持物化表定义与管理，并重点征询未变更重部署是否重启作业以及如何处理卡住的表。</p>
+<p><strong>@Xuyang:</strong> 关注 Table API 场景下 getOriginalQuery/getExpandedQuery 的返回内容、序列化限制，以及 MaterializedTableEvolution 合并多个变更时的顺序和冲突处理。</p>
+<p><strong>@Xuyang:</strong> 认为未变更重部署总是重启作业可以优化但可作为后续改进；建议为作业丢失的表提供显式恢复机制，在确认旧作业停止后保留表和数据重新部署刷新作业。</p></div>
+            <p class="conclusion">尚未形成最终结论；下一步将继续讨论 API 语义、重部署重启策略和卡住表恢复方案，相关优化可能作为后续改进推进。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/pxrq7vcsrly8n36mfxf9lhn3cfyl8s40">FLIP-617: Support Pluggable REST Handler Extensions</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕 FLIP-617 提议为 Flink JobManager REST 接口引入可插拔扩展机制，使外部组件可注册自定义 REST 路由，避免 fork 或侵入核心。提案强调复用现有 REST 路由、版本、领导者获取和生命周期，并保持兼容。目前讨论焦点是该机制是否足够覆盖实际组件访问需求。</p>
+            <div class="key-points"><p><strong>@Yunfeng Zhou:</strong> 提出在 JobManager REST 层提供可插拔扩展，让可信组件注册自定义路由，并复用现有路由、版本、领导者获取和生命周期。</p>
+<p><strong>@Gen Luo:</strong> 认可自定义 REST 处理器的价值，但指出提案缺少从 REST 到内部组件的桥接，可能只适用于已有桥的 OperatorCoordinator 等场景。</p>
+<p><strong>@Gen Luo:</strong> 建议先明确目标场景，若主要是访问 OperatorCoordinator，可将提案缩小为专用 coordinator handler。</p></div>
+            <p class="conclusion">尚未形成最终结论；下一步由提案方澄清目标使用场景，并评估采用通用可插拔 REST handler 还是面向 OperatorCoordinator 的专用 handler。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/6opp1j3osx8kc4r9p85pv3q6x7v1w07j">FLIP-613 : Remote Artifact Fetch for Session-Mode Job Submission</a></h3>
+            <p class="meta">1 条回复 · 1 位参与者</p>
+            <p class="summary">讨论围绕 FLIP-613 将远程制品拉取能力扩展到 Session 模式作业提交，使 JobManager 可根据 URI 下载作业制品。当前焦点是提交过程是否阻塞下载、如何保持现有客户端兼容，以及超时默认值设计。讨论已趋于认可避免破坏客户端的方案，并接近发起投票。</p>
+            <div class="key-points"><p><strong>@Dale Lane:</strong> 提议让 Session 模式支持通过 URI 提交作业并由 JobManager 拉取制品；为兼容现有客户端（如 Flink Kubernetes Operator），提交可阻塞等待下载完成。</p>
+<p><strong>@Robert Metzger:</strong> 关注兼容性，认可避免破坏现有客户端的方案，并认为该 FLIP 已较充分，可很快发起投票。</p>
+<p><strong>@Krishna（由 Dale 转述）:</strong> 指出默认超时设置不合理；后续验证显示 user.artifacts.fetch-timeout 与 Operator 的 rest.idleness-timeout 相同会产生竞态，应调整默认值使行为可预测。</p></div>
+            <p class="conclusion">初步结论是优先采用不破坏现有客户端的实现路径，并将 fetch-timeout 默认值调小或与 idle timeout 区分；下一步是完善超时默认值后发起 FLIP 投票。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/tm6j40yl5f9dmpqfn6dsx70628ll6sr8">[FLINK-40574] Upgrade SLF4J from 1.7 to 2.x</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">社区讨论在 Flink 2.4 中将 SLF4J 从 1.7 升级到 2.x，多数参与者支持升级以降低漏洞风险并获得新能力。测试显示默认配置可以正常工作，但自定义日志后端、用户 jar 或 connector 固定旧版 slf4j-api 可能导致日志丢失或测试失败。当前进展是已识别兼容性风险，并准备补充文档、发布说明和相关社区提醒。</p>
+            <div class="key-points"><p><strong>@Martijn Visser:</strong> 支持在 Flink 2.4 中升级；测试发现默认配置正常，但使用旧版 slf4j-api 1.x、更换日志后端或特定 connector/作业 jar 场景可能丢失日志，需要补充文档和发布说明。</p>
+<p><strong>@P Sinha:</strong> 支持升级，认为有助于减少依赖漏洞，并提到 Flink Kubernetes Operator 曾通过排除并覆盖 log4j-slf4j-impl 解决类似问题。</p>
+<p><strong>@Krishna Sai:</strong> 支持升级但非绑定；指出多数 connector 仓库仍固定 slf4j-api 1.7.36，且未使用 log4j-slf4j2-impl，升级到 Flink 2.x 后可能遇到日志绑定或测试失败问题。</p></div>
+            <p class="conclusion">初步共识是倾向在 Flink 2.4 中升级 SLF4J，若 10 月 16 日周五前无异议则视为通过。下一步包括将受影响场景补充到文档和发布说明、在 Jira 中添加发布说明，并提前提醒 Fluss 等 connector 社区；同时建议 Logback 1.2 用户升级到 1.5。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (48)</h2>
+            
+    <p>本周新建 <strong>48</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周 JIRA 主要集中在连接器与外部系统集成、SQL/Table 功能与正确性修复，以及运行时状态管理和集群运维能力增强，涉及 CDC、Fluss、Iceberg/Paimon、ForSt、Savepoint、Kubernetes 清理与自适应调度等问题。同时包含大量测试基础设施改进，如 JUnit 5 迁移、参数化测试修复、测试覆盖补充和依赖升级，并涉及少量文档同步与 Web Dashboard 维护。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Flink Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
