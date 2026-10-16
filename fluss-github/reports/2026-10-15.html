@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-10-15</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-10-15</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 6 新 Issues</div>
+            <div class="stat">✅ 4 关闭</div>
+            <div class="stat">✨ 5 新 PRs</div>
+            <div class="stat">🎉 6 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/4652">PR #4652</a> [rust] Share the test cluster remote directory across servers</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4646">PR #4646</a> [build] Split Iceberg plugin into common, 1.10 and 1.12 modules</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4634">PR #4634</a> [flink] Support SHOW MATERIALIZED TABLES on Flink 2.2+</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4505">PR #4505</a> [server] Resume pending replica deletion after server restart</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4501">PR #4501</a> [security] Fix concurrent ACL cache access in DefaultAuthorizer</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4601">Issue #4601</a> [lake] Fail fast when two plugins register the same lake format</h4>
+            <ul><li><span class="author">@polyzos</span>: @Hachiman566 I see it doesn't affect the other tickets, so please go ahead and thank you for your i…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4207">Issue #4207</a> [trino] Add initial connector build and plugin skeleton</h4>
+            <ul><li><span class="author">@yangshangqing95</span>: Hi @polyzos thanks for the reviewing! For 1 ~ 4 all fixed. For 5, Yes I also fill there are too man…</li><li><span class="author">@polyzos</span>: @yangshangqing95 pushed one commit with a few improvements and will merge once CI passes 👍 thank yo…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4652">Issue #4652</a> [rust] Share the test cluster remote directory across servers</h4>
+            <ul><li><span class="author">@naivedogger</span>: @loserwang1024 @fresh-borzoni Could you take a look at this PR? It fixes the remote directory confi…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4571">Issue #4571</a> [test] Unstable test FlinkSourceSplitReaderTest.testPendingRecordsMetric</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: https://github.com/apache/fluss/actions/runs/38570309047/job/115873459007 ``` [ERROR] org.apache.fl…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3460">Issue #3460</a> [test] Unstable test RemoteLogDownloaderTest.testPrefetchNum</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: https://github.com/apache/fluss/actions/runs/38629896995/job/116078533852 ``` [ERROR] org.apache.fl…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4626">Issue #4626</a> [server] Add consumer offset table foundations</h4>
+            <ul><li><span class="author">@gyang94</span>: Looks good to me. One concern is that, now we always create a new encoder `createFullKeyEncoder()`…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4603">Issue #4603</a> [rust] Allow configuring remote log download directory</h4>
+            <ul><li><span class="author">@naivedogger</span>: Hi @spoon-lz, thank you for your contribution! LGTM overall. Could we also expose `scanner_io_tmp_d…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4439">Issue #4439</a> [server] Skip unchanged upserts for primary-key tables</h4>
+            <ul><li><span class="author">@litiliu</span>: @platinumhamburg Thank you for the detailed review. I replaced `UPDATE_IF_CHANGED` with the opt-in…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4591">Issue #4591</a> [lake] Versioned split-state format for Iceberg union read</h4>
+            <ul><li><span class="author">@dstolis</span>: @polyzos can i take this one?</li><li><span class="author">@polyzos</span>: @dstolis assigned</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4657">Issue #4657</a> [server] Preserve recreated table mapping during old cleanup</h4>
+            <ul><li><span class="author">@luoyuxia</span>: @swuferhong Could you please help review this.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4641">Issue #4641</a> [FIP-29][security] Add SslPrincipalMapper for certificate DN to principal mapping</h4>
+            <ul><li><span class="author">@polyzos</span>: @morazow LGTM 👍 .. i only left one minor comment</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3266">Issue #3266</a> [flink] Support hint-based watermark configuration for Flink connector</h4>
+            <ul><li><span class="author">@gustavodemorais</span>: Hey @xuyangzhong and @swuferhong, thanks for the replies. That's correct. That would be a generic v…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4654">Issue #4654</a> [build] Extract Spark CI into a separate workflow</h4>
+            <ul><li><span class="author">@Yohahaha</span>: @wuchong @luoyuxia @fresh-borzoni PTAL!</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4545">Issue #4545</a> [Client] Support bounded log scanning</h4>
+            <ul><li><span class="author">@yangshangqing95</span>: Hi @polyzos the previous failed rust CI is caused by docker remote dir mismatch and has been fixed…</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4439">PR #4439</a> [server] Skip unchanged upserts for primary-key tables</h4>
+            <ul><li><span class="author">@litiliu</span>: Following up on the allocation/latency question for the bucket write lock: I measured the current P…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4646">PR #4646</a> [build] Split Iceberg plugin into common, 1.10 and 1.12 modules</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: This sets Java 11 class files, but the code can still call methods Java 11 doesn't have. Shall we u…</li><li><span class="author">@polyzos</span>: Good catch</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4253">PR #4253</a> [lake/iceberg] Support custom Iceberg lake table path</h4>
+            <ul><li><span class="author">@litiliu</span>: Thanks for the careful review. I updated the PR description to narrow the guarantee and added a Kno…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4649">PR #4649</a> [flink] Skip empty lake snapshot splits</h4>
+            <ul><li><span class="author">@luoyuxia</span>: For updateCurrentIterator, can we also close the previous iterator?</li><li><span class="author">@jonah-rpo</span>: I’d avoid adding an unconditional close here alone: returned iterators are already closed through b…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4606">PR #4606</a> [rust] Return decoded scan batches before later errors</h4>
+            <ul><li><span class="author">@naivedogger</span>: If a valid batch from bucket A is followed by an authorization error from bucket B, the `initialize…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4550">PR #4550</a> [spark] Implement SupportsRuntimeV2Filtering</h4>
+            <ul><li><span class="author">@Copilot</span>: For FLOAT/DOUBLE partition keys, this can discard valid join rows. `PartitionNameConverters` preser…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4641">PR #4641</a> [FIP-29][security] Add SslPrincipalMapper for certificate DN to principal mapping</h4>
+            <ul><li><span class="author">@polyzos</span>: nit: This message lists the server's full mapping rules. Once #3793 wraps it in an AuthenticationEx…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4644">PR #4644</a> [FIP-29][rpc] Wire TLS encryption into the server Netty pipeline</h4>
+            <ul><li><span class="author">@polyzos</span>: If the copy fails here (for example, the segment's file channel is closed by retention or truncatio…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4621">PR #4621</a> [server] Eliminate global lock for LOG tablet creation/deletion/load</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: nit: same code as KvManager.inKvLock. Could we share one helper?；nit: Could we add a test with the…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4654">PR #4654</a> [build] Extract Spark CI into a separate workflow</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: The flaky test reporter only looks at ci.yaml and nightly.yaml (tools/ci/unstable_test_reporter.py:…</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4662">#4662</a> [flink] Close discarded lake snapshot iterators safely <span class="author">@jonah-rpo</span> </li><li><a href="https://github.com/apache/fluss/issues/4658">#4658</a> [lake/iceberg] Reserved write-mode properties can be set and reset through their `iceberg.` key <span class="author">@aphenix-r7</span> </li><li><a href="https://github.com/apache/fluss/issues/4656">#4656</a> [Bug] Historical Paimon tiering repeatedly scans manifests <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/issues/4655">#4655</a> [server] Old table cleanup removes recreated table path mapping <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/issues/4653">#4653</a> [test] Unstable test ControlRequestSendThreadTest.testShutdownCancelsInFlight <span class="author">@app/github-actions</span> </li><li><a href="https://github.com/apache/fluss/issues/4651">#4651</a> [rust] Test cluster remote directory mismatch causes flaky scans <span class="author">@naivedogger</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4661">#4661</a> [flink] Close discarded lake snapshot iterators safely <span class="author">@jonah-rpo</span> </li><li><a href="https://github.com/apache/fluss/pull/4660">#4660</a> [lake] Add versioned v2 format for Iceberg split and tiering state <span class="author">@dstolis</span> </li><li><a href="https://github.com/apache/fluss/pull/4659">#4659</a> [lake] Refuse reserved Iceberg write modes set through the iceberg. prefix <span class="author">@aphenix-r7</span> </li><li><a href="https://github.com/apache/fluss/pull/4657">#4657</a> [server] Preserve recreated table mapping during old cleanup <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/pull/4654">#4654</a> [build] Extract Spark CI into a separate workflow <span class="author">@Yohahaha</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4651">#4651</a> [rust] Test cluster remote directory mismatch causes flaky scans <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/issues/4638">#4638</a> [flink] SHOW MATERIALIZED TABLES fails on Flink 2.2 and 2.3 <span class="author">@raminqaf</span> </li><li><a href="https://github.com/apache/fluss/issues/4590">#4590</a> [build] Split the Iceberg plugin into common, 1.10 and 1.12 modules with a JDK 17 toolchain <span class="author">@polyzos</span> </li><li><a href="https://github.com/apache/fluss/issues/4504">#4504</a> [Server] Table or partition deletion may remain unfinished after a TabletServer restart <span class="author">@swuferhong</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4652">#4652</a> [rust] Share the test cluster remote directory across servers <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/pull/4646">#4646</a> [build] Split Iceberg plugin into common, 1.10 and 1.12 modules <span class="author">@polyzos</span> </li><li><a href="https://github.com/apache/fluss/pull/4634">#4634</a> [flink] Support SHOW MATERIALIZED TABLES on Flink 2.2+ <span class="author">@raminqaf</span> </li><li><a href="https://github.com/apache/fluss/pull/4505">#4505</a> [server] Resume pending replica deletion after server restart <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/pull/4501">#4501</a> [security] Fix concurrent ACL cache access in DefaultAuthorizer <span class="author">@fhan688</span> </li><li><a href="https://github.com/apache/fluss/pull/4207">#4207</a> [trino] Add initial connector build and plugin skeleton <span class="author">@yangshangqing95</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
