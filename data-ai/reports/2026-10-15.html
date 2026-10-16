@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data+AI 全球日报 | 2026-10-15</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Data+AI 全球日报 | 2026-10-15</h1>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="top-changes">
+            <h2>🔥 今日最重要的3个变化</h2>
+            <ol><li><strong>AWS 推进 Redshift 与 dbt Cloud 零拷贝数据共享</strong> — AWS 展示 Amazon Redshift Data Sharing 与 dbt Cloud 结合，实现多集群分析管道无需跨集群移动数据，降低 ETL 与数据延迟。</li><li><strong>ClickHouse 发布 26.9、executable UDFs 与成本基准</strong> — ClickHouse 十月 newsletter 披露 26.9、ClickHouse Cloud executable UDFs 和针对 BigQuery、Databricks 的 CostBench 结果，强化低成本分析定位。</li><li><strong>ClickHouse 推动 Postgres 数据分层降本</strong> — ClickHouse 提出将已结算 Postgres 数据卸载到 ClickHouse，在保留 OLTP 事务能力的同时降低存储与查询成本。</li></ol>
+            <p class="judgment"><strong>总判断：</strong>今日 Data+AI 行业信号集中在数据平台降本与零拷贝架构：云厂商通过数据共享减少 ETL，分析数据库通过分层承接 OLTP 历史数据与成本基准争夺工作负载。整体看，数据平台竞争正从功能完备转向总拥有成本、查询性能和生态集成效率。</p>
+        </section>
+
+        <section class="top-signals">
+            <h2>📡 重要信号</h2>
+            
+    <article class="news-item">
+        <h3>AWS 推进 dbt + Amazon Redshift Data Sharing 零拷贝多集群管道</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/dbt-and-amazon-redshift-data-sharing-multi-cluster-pipelines-without-moving-a-byte/">AWS Big Data Blog</a></p>
+        <p class="date">2026-10-15</p>
+        <p class="summary">AWS Big Data Blog 介绍如何在 producer 与 consumer Amazon Redshift 集群间配置 Data Sharing，并使用 dbt Cloud 对共享数据进行转换，构建分析就绪模型。该方案强调 live、zero-copy 访问，无需在集群间进行 ETL 数据搬运。</p>
+        <div class="impact">📊 数据平台影响：该实践强化 Redshift 多集群数据共享与 dbt 生态结合，有助于降低跨团队和跨环境数据复制成本，推动数据平台向零拷贝、多集群治理和实时分析演进。</div>
+    </article>
+        </section>
+
+        <section class="product-tech">
+            <h2>💻 产品与技术</h2>
+            
+    <article class="news-item">
+        <h3>ClickHouse 发布 26.9、executable UDFs 与 CostBench 成本对比</h3>
+        <p class="sources">📌 <a href="https://clickhouse.com/blog/202610-newsletter">ClickHouse Blog</a></p>
+        <p class="date">2026-10-15</p>
+        <p class="summary">ClickHouse 十月 newsletter 发布 26.9 版本更新、ClickHouse Cloud 上的 executable UDFs，并公布 CostBench 对 BigQuery 和 Databricks 的成本结果，同时汇总社区新闻与活动。</p>
+        <div class="impact">📊 数据平台影响：新版本与 UDF 扩展增强 ClickHouse 在云端分析场景的可编程性，成本基准则直接挑战 BigQuery 与 Databricks 的性价比叙事，可能影响企业 OLAP 选型。</div>
+    </article>
+    <article class="news-item">
+        <h3>ClickHouse 提出 Postgres 数据分层降本方案</h3>
+        <p class="sources">📌 <a href="https://clickhouse.com/blog/oltp-is-expensive-you-can-clickhouse-it">ClickHouse Blog</a></p>
+        <p class="date">2026-10-15</p>
+        <p class="summary">ClickHouse 博客建议将已结算的 Postgres 数据卸载到 ClickHouse，以降低存储与查询成本，同时让活跃交易继续保留在 Postgres 中。该方案面向 OLTP 数据增长后的分析与成本压力。</p>
+        <div class="impact">📊 数据平台影响：该架构推动 OLTP 与 OLAP 分层协同，为 Postgres 生态提供低成本历史数据分析路径，也可能带动 CDC、数据同步和分层存储工具链需求。</div>
+    </article>
+        </section>
+
+        <section class="people-views">
+            <h2>👤 人物与观点</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="analyst-insights">
+            <h2>📊 分析师洞察</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="watchlist">
+            <h2>👀 观察列表</h2>
+            
+    <article class="watchlist-item">
+        <h3>Redshift Data Sharing + dbt Cloud 零拷贝生产采用</h3>
+        <span class="status">待观察</span>
+        <p class="reason">AWS 正在推广多集群零拷贝管道，但企业生产环境中的权限治理、性能稳定性和成本分配仍需验证。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>更多生产案例、参考架构或 dbt/Redshift 跨集群共享模板发布。</p>
+    </article>
+    <article class="watchlist-item">
+        <h3>ClickHouse 26.9 与 executable UDFs on ClickHouse Cloud</h3>
+        <span class="status">待观察</span>
+        <p class="reason">UDF 与版本更新可能增强 ClickHouse 云端扩展能力，但可用性、安全沙箱和性能影响需要观察。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>executable UDFs 正式可用范围扩大或官方性能与安全最佳实践发布。</p>
+    </article>
+    <article class="watchlist-item">
+        <h3>ClickHouse CostBench 对 BigQuery/Databricks 的第三方验证</h3>
+        <span class="status">待观察</span>
+        <p class="reason">厂商成本基准可能影响选型，但测试口径、工作负载覆盖和可复现性需进一步确认。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>第三方评测、客户案例或更细粒度 TCO 对比发布。</p>
+    </article>
+        </section>
+
+        <section class="stock-analysis">
+            <h2>📈 股票分析</h2>
+            <p class="disclaimer">⚠️ 以下内容仅供参考，不构成任何投资建议。投资有风险，入市需谨慎。</p>
+            
+    <article class="stock-item">
+        <div class="stock-header">
+            <span class="ticker">AMZN</span>
+            <span class="company">Amazon</span>
+            <span class="signal signal-neutral">⚪ 中性</span>
+        </div>
+        <p class="stock-summary">AWS 推进 Redshift Data Sharing 与 dbt Cloud 集成，增强云数据仓库的零拷贝数据共享能力，但单篇技术博客短期财务影响有限。</p>
+        <div class="stock-details">
+            <div class="catalysts">
+                <strong>🚀 催化剂</strong>
+                <ul><li>Redshift 多集群共享生产案例增加</li><li>dbt 生态企业采用扩大</li><li>AWS 数据平台捆绑销售增强</li></ul>
+            </div>
+            <div class="risks">
+                <strong>⚠️ 风险</strong>
+                <ul><li>Snowflake/Databricks 竞争</li><li>数据共享治理与成本复杂度</li><li>云支出放缓</li></ul>
+            </div>
+        </div>
+    </article>
+    <article class="stock-item">
+        <div class="stock-header">
+            <span class="ticker">GOOGL</span>
+            <span class="company">Alphabet</span>
+            <span class="signal signal-neutral">⚪ 中性</span>
+        </div>
+        <p class="stock-summary">ClickHouse 在 CostBench 中对比 BigQuery，凸显低成本 OLAP 竞争，但 BigQuery 仍是 Google Cloud 数据平台核心资产，短期影响有限。</p>
+        <div class="stock-details">
+            <div class="catalysts">
+                <strong>🚀 催化剂</strong>
+                <ul><li>BigQuery 成本优化功能发布</li><li>Google Cloud 数据平台客户增长</li><li>与 Gemini/AI 数据服务整合</li></ul>
+            </div>
+            <div class="risks">
+                <strong>⚠️ 风险</strong>
+                <ul><li>ClickHouse 等开源 OLAP 分流价格敏感客户</li><li>数据仓库价格竞争加剧</li><li>云预算收紧</li></ul>
+            </div>
+        </div>
+    </article>
+        </section>
+
+        <footer>
+            <p>Generated by Data+AI Daily Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
