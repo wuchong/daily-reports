@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-10-17</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-10-17</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 7 新 Issues</div>
+            <div class="stat">✅ 7 关闭</div>
+            <div class="stat">✨ 7 新 PRs</div>
+            <div class="stat">🎉 13 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/4691">PR #4691</a> [elixir] Don't block a scheduler in AppendWriter.append</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4690">PR #4690</a> [docs] Fix DeepWiki badge image in README</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4688">PR #4688</a> [rpc] Add contiguous ID tests for Errors and ApiKeys</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4668">PR #4668</a> [server] Enable active segment retention rolling by default</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4664">PR #4664</a> [rpc] Add consumer offset protocol and error definitions</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4608">Issue #4608</a> FIP-53: Log Scanner Offset Management</h4>
+            <ul><li><span class="author">@pisceslj</span>: ### Subtasks - [x] **[4625 [server] Add consumer offset table foundations](https://github.com/apach…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4656">Issue #4656</a> [Bug] Historical Paimon tiering repeatedly scans manifests</h4>
+            <ul><li><span class="author">@luoyuxia</span>: I checked apache/paimon#8256 against this issue. It can remove the specific repeated *writer-initia…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4675">Issue #4675</a> [kafka] Separate value decoding and preserve record metadata</h4>
+            <ul><li><span class="author">@gyang94</span>: Superseded by #4678, which is based on the latest PR08 and uses the original codex/kafka-format-dec…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4233">Issue #4233</a> [test] Unstable test FlinkUnionReadPrimaryKeyTableITCase.testUnionReadWithCustomLakeTablePath</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: https://github.com/apache/fluss/actions/runs/38960216526/job/117173096199 ``` [ERROR] org.apache.fl…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4668">Issue #4668</a> [server] Enable active segment retention rolling by default</h4>
+            <ul><li><span class="author">@gyang94</span>: @wuchong thanks for your update. It avoids the first-segment case which will be blocked with condit…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4563">Issue #4563</a> [rust] Keep one unavailable server from stalling every lookup</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: @naivedogger Can you, please, take a look?</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4559">Issue #4559</a> [cpp] Allow starting lookups without blocking</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: Thanks for the review @naivedogger! I'd keep the handle as the base async API: it's the future Java…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4636">Issue #4636</a> [rust] remove the duplicate proto definition</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: @zuston rebased and added a small check so release.sh fails if FlussApi.proto has uncommitted chang…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4379">Issue #4379</a> [flink] Add $buckets virtual table for bucket metadata</h4>
+            <ul><li><span class="author">@wuchong</span>: Thanks, @fhan688, for the update. I like the new API. Will take a closer look later. Btw, I suggest…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4692">Issue #4692</a> [docs] Reorganize documentation navigation and add ecosystem guides</h4>
+            <ul><li><span class="author">@wuchong</span>: cc @polyzos</li><li><span class="author">@polyzos</span>: @wuchong LGTM 👍</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3554">PR #3554</a> [tiering] Decouple common tiering class from flink module</h4>
+            <ul><li><span class="author">@luoyuxia</span>: why remove these comments?；dito: why remove these comments?；Move follow-up: `fluss-test-coverage/po…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4277">PR #4277</a> [kafka] Define DDL table mapping for Kafka compatibility</h4>
+            <ul><li><span class="author">@wuchong</span>: I suggest renaming `ValueType` to `ValueConversionType` and `ValueLayout` to `ValueConversionLayout…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4563">PR #4563</a> [rust] Keep one unavailable server from stalling every lookup</h4>
+            <ul><li><span class="author">@charlesdong1991</span>: this is in write path, not lookup, is it intentional? but change looks right, and is range checked…</li><li><span class="author">@fresh-borzoni</span>: @charlesdong1991 yes, it's intentional, just quickly fixed the thing while I was here :)</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4693">#4693</a> [CI] NettyClientTest.testServerDisconnection may fail with DisconnectException <span class="author">@yangshangqing95</span> </li><li><a href="https://github.com/apache/fluss/issues/4692">#4692</a> [docs] Reorganize documentation navigation and add ecosystem guides <span class="author">@wuchong</span> <span class="labels">component=docs</span></li><li><a href="https://github.com/apache/fluss/issues/4687">#4687</a> [rpc] Add contiguous ID tests for Errors and ApiKeys <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/issues/4685">#4685</a> [kafka] Preserve unknown JSON fields in rescue column <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/4683">#4683</a> [kafka] Support complex JSON values in Produce <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/4681">#4681</a> [kafka] Add schema-aware JSON Produce <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/4679">#4679</a> [kafka] Convert JSON scalar values to Fluss types <span class="author">@gyang94</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4694">#4694</a> [rpc] Fix race in Netty client disconnection test <span class="author">@yangshangqing95</span> </li><li><a href="https://github.com/apache/fluss/pull/4689">#4689</a> [trino] Add predicate constraint handling and equality-based partition pruning <span class="author">@yangshangqing95</span> </li><li><a href="https://github.com/apache/fluss/pull/4686">#4686</a> [kafka] Preserve unknown JSON fields in rescue column <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/pull/4684">#4684</a> [kafka] Support complex JSON values in Produce <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/pull/4682">#4682</a> [kafka] Add schema-aware JSON Produce <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/pull/4680">#4680</a> [kafka] Convert JSON scalar values to Fluss types <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/pull/4678">#4678</a> [kafka] Separate value decoding and preserve record metadata <span class="author">@gyang94</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4687">#4687</a> [rpc] Add contiguous ID tests for Errors and ApiKeys <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/issues/4666">#4666</a> [server] Enable active segment retention rolling by default <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/4665">#4665</a> [rpc] Add consumer offset protocol and error definitions <span class="author">@pisceslj</span> </li><li><a href="https://github.com/apache/fluss/issues/4625">#4625</a> [server] Add consumer offset table foundations <span class="author">@pisceslj</span> </li><li><a href="https://github.com/apache/fluss/issues/4573">#4573</a> Remove the copied FlussApi.proto for fluss-rust <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/issues/4562">#4562</a> [rust] One unavailable tablet server stalls every lookup on a client <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/4265">#4265</a> [kafka] Implement registry-backed ApiVersions API <span class="author">@gyang94</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4691">#4691</a> [elixir] Don't block a scheduler in AppendWriter.append <span class="author">@nicolazar</span> </li><li><a href="https://github.com/apache/fluss/pull/4690">#4690</a> [docs] Fix DeepWiki badge image in README <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/pull/4688">#4688</a> [rpc] Add contiguous ID tests for Errors and ApiKeys <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/pull/4668">#4668</a> [server] Enable active segment retention rolling by default <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/pull/4664">#4664</a> [rpc] Add consumer offset protocol and error definitions <span class="author">@pisceslj</span> </li><li><a href="https://github.com/apache/fluss/pull/4654">#4654</a> [build] Extract Spark CI into a separate workflow <span class="author">@Yohahaha</span> </li><li><a href="https://github.com/apache/fluss/pull/4645">#4645</a> [Server] improve CI test time for netty <span class="author">@polyzos</span> <span class="labels">component=server</span></li><li><a href="https://github.com/apache/fluss/pull/4636">#4636</a> [rust] remove the duplicate proto definition <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/pull/4626">#4626</a> [server] Add consumer offset table foundations <span class="author">@pisceslj</span> </li><li><a href="https://github.com/apache/fluss/pull/4621">#4621</a> [server] Eliminate global lock for LOG tablet creation/deletion/load <span class="author">@zuston</span> </li><li><a href="https://github.com/apache/fluss/pull/4563">#4563</a> [rust] Keep one unavailable server from stalling every lookup <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/4260">#4260</a> [kafka] Serve ApiVersions from registered capabilities <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/pull/3008">#3008</a> [client] Fix corruption after zero-copy lazy parse ByteBuf <span class="author">@fresh-borzoni</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
