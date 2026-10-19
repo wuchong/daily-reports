@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-10-18</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-10-18</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 9 新 Issues</div>
+            <div class="stat">✅ 5 关闭</div>
+            <div class="stat">✨ 2 新 PRs</div>
+            <div class="stat">🎉 6 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/4641">PR #4641</a> 合并 FIP-29 安全特性：新增 SslPrincipalMapper 支持证书 DN 到 principal 的映射</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4559">PR #4559</a> 合并 C++ 客户端异步 lookup 改进：允许非阻塞方式发起 lookup 请求</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4577">PR #4577</a> 合并 Rust 客户端支持 ossj scheme 别名用于远程日志读取</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4632">PR #4632</a> 合并 Python 客户端 prefix lookup 示例和文档</li><li>🐛 <a href="https://github.com/apache/fluss/pull/4696">PR #4696</a> 修复 rebalance cluster model 测试中的竞态条件；<a href="https://github.com/apache/fluss/pull/4694">PR #4694</a> 修复 Netty 客户端断连测试竞态</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <ul class="critical-list"><li>⚠️ <a href="https://github.com/apache/fluss/issues/4706">Issue #4706</a> 客户端对已删除表的 lookup 请求永远不会返回（不断重新入队但不计数重试），导致请求超时</li><li>⚠️ <a href="https://github.com/apache/fluss/issues/4702">Issue #4702</a> Flink TieringSourceEnumerator 在 shutdown 期间可能丢失已完成的 tiering 报告，存在数据一致性风险</li></ul>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3452">Issue #3452</a> [Flink] Add support for partition pruning to the Datastream API</h4>
+            <ul><li><span class="author">@Anurag15v</span>: 提出基于名称的 PartitionFilter 辅助类方案，详细分析了现有剪枝逻辑、API 设计、语义和 lake union read 潜在问题，并提出 6 个开放问题</li><li><span class="author">@polyzos</span>: 确认设计方向正确，建议复用 PredicateBuilder 而非新建类；要求先修复 lake union read 问题再提交；对 6 个问题逐一给出明确答复</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4627">Issue #4627</a> Dynamic config DELETE should fall back to the default value, not the server.yaml startup value</h4>
+            <ul><li><span class="author">@Jackeyzhe</span>: 分析当前实现确实回退到启动值而非默认值；指出 config-source 记录存在独立 bug；建议将记录修复与重置语义讨论分开处理</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3789">Issue #3789</a> [lake/tiering] Support group-aware table assignment for tiering services</h4>
+            <ul><li><span class="author">@jsinghkukreja</span>: 表示支持该功能，认为非常有用</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4277">Issue #4277</a> [kafka] Define DDL table mapping for Kafka compatibility</h4>
+            <ul><li><span class="author">@wuchong</span>: 建议将 Kafka 文档从 Table Design 子页面改为顶级 Kafka Compatibility 页面，并要求移除 AI 生成的低质量内容</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4704">PR #4704</a> [elixir] Add primary key and prefix lookup</h4>
+            <ul><li><span class="author">@nicolazar</span>: 测试中发现对已删除表的 lookup 永不返回，已跳过该测试并提交 Issue #4706 跟踪</li><li><span class="author">@fresh-borzoni</span>: 确认这是跨客户端的已知缺陷（Java 客户端也有同样行为），同意跳过测试并建议提交 issue 跟踪</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4559">PR #4559</a> [cpp] Allow starting lookups without blocking</h4>
+            <ul><li><span class="author">@naivedogger</span>: 建议明确文档说明只有本地等待超时才能保证 lookup 仍在运行，调用者应在再次等待前检查 Available()</li><li><span class="author">@fresh-borzoni</span>: 感谢 review 反馈，已修改并提交后续 Issue #4705 作为跟进</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4644">PR #4644</a> [FIP-29][rpc] Wire TLS encryption into the server Netty pipeline</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 指出当前实现在 TLS 前将整个 region（最大 16MB）复制到内存，多连接时内存压力大；建议改用 ChunkedWriteHandler 分块流式传输</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4253">PR #4253</a> [lake/iceberg] Support custom Iceberg lake table path</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 建议在 MetadataManager 层面拒绝已有 lake snapshot 的表进行库名/表名变更，而非仅做路径相等检查；要求提交独立 issue 跟踪</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4277">PR #4277</a> [kafka] Define DDL table mapping for Kafka compatibility</h4>
+            <ul><li><span class="author">@wuchong</span>: 建议重构文档结构为顶级 Kafka Compatibility 页面，涵盖完整集成指南；移除了部分 AI 生成的低质量内容</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4706">#4706</a> [client] Lookups on a dropped table never return <span class="author">@nicolazar</span> </li><li><a href="https://github.com/apache/fluss/issues/4705">#4705</a> [cpp] Add poll-based async lookups <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/4702">#4702</a> [flink] TieringSourceEnumerator may lose finished tiering reports during shutdown <span class="author">@yangshangqing95</span> </li><li><a href="https://github.com/apache/fluss/issues/4700">#4700</a> [test] Unstable test FlussAuthorizationITCase.testDatabaseExistsAuthorization <span class="author">@app/github-actions</span> </li><li><a href="https://github.com/apache/fluss/issues/4701">#4701</a> [test] Unstable test ReplicaManagerTest.testConcurrentLookupWithInsertIfNotExistsAutoIncrement <span class="author">@app/github-actions</span> </li><li><a href="https://github.com/apache/fluss/issues/4699">#4699</a> [test] Unstable test HistoricalPartitionITCase.testLookupExpiredPartitionFromPaimon <span class="author">@app/github-actions</span> </li><li><a href="https://github.com/apache/fluss/issues/4697">#4697</a> [test] Unstable test FlinkCatalogTest.testListMaterializedTables <span class="author">@app/github-actions</span> </li><li><a href="https://github.com/apache/fluss/issues/4698">#4698</a> [test] Unstable test FlussAuthorizationITCase.testProduceAndConsumer <span class="author">@app/github-actions</span> </li><li><a href="https://github.com/apache/fluss/issues/4695">#4695</a> [CI] RebalanceManagerITCase.testBuildClusterModel is flaky <span class="author">@yangshangqing95</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4704">#4704</a> [elixir] Add primary key and prefix lookup <span class="author">@nicolazar</span> </li><li><a href="https://github.com/apache/fluss/pull/4703">#4703</a> [flink] Report pending finished tiering tables on enumerator shutdown <span class="author">@yangshangqing95</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4695">#4695</a> [CI] RebalanceManagerITCase.testBuildClusterModel is flaky <span class="author">@yangshangqing95</span> </li><li><a href="https://github.com/apache/fluss/issues/4693">#4693</a> [CI] NettyClientTest.testServerDisconnection may fail with DisconnectException <span class="author">@yangshangqing95</span> </li><li><a href="https://github.com/apache/fluss/issues/4576">#4576</a> [rust] Support ossj scheme alias for remote log reads <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/issues/4558">#4558</a> [cpp] One thread can't keep more than one lookup in flight <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/3795">#3795</a> [TLS] Extract SSL principal mapping (SslPrincipalMapper) <span class="author">@affo</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4696">#4696</a> [ci] Fix race in rebalance cluster model test <span class="author">@yangshangqing95</span> </li><li><a href="https://github.com/apache/fluss/pull/4694">#4694</a> [rpc] Fix race in Netty client disconnection test <span class="author">@yangshangqing95</span> </li><li><a href="https://github.com/apache/fluss/pull/4641">#4641</a> [FIP-29][security] Add SslPrincipalMapper for certificate DN to principal mapping <span class="author">@morazow</span> </li><li><a href="https://github.com/apache/fluss/pull/4632">#4632</a> [python] Add prefix lookup example and documentation <span class="author">@JandyTenedora</span> </li><li><a href="https://github.com/apache/fluss/pull/4577">#4577</a> [rust] Support ossj scheme alias for remote log reads <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/pull/4559">#4559</a> [cpp] Allow starting lookups without blocking <span class="author">@fresh-borzoni</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
