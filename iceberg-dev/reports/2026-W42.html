@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iceberg 社区周报 | 2026-W42</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Iceberg 社区周报 | 2026-W42</h1>
+            <p class="date-range">2026-10-12 ~ 2026-10-18</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (1)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/x5jnyggbjhy4xgs8jo3fwtbd59mdqztd">Seattle Apache Iceberg Community Meetup: October 21</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (3)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/0xxxod3kz8srb77zf1p1rzph5wt9msg3">Add the File type to the Iceberg v4 spec</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/ts4g2sbxxnl0vg6lm66v6k9sdsgsjr5k">Require monotonically increasing snapshot timestamps in v4</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/6x4k6n5sr5nk0l909oytmxf3rss20wbr">Merge baseline V4 AMT spec PR into main repo</a> <span class="status warning">⚠️ 有异议</span><p class="objection-inline">无人提出 -1，原因是邮件显示该投票已获得 18 个 +1（含 9 个 binding）且没有 0 或 -1 票。</p></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/p41hstcw9r702zo9k94qzn67foxbbnzk">Extend Thur's biweekly sync to both File and Vector types (starting Oct 8)</a></h3>
+            <p class="meta">3 条回复 · 3 位参与者</p>
+            <p class="summary">社区讨论 Iceberg 双周同步扩展到 File 与 Vector 类型，重点推进 Vector 类型规范，初步方向是定义固定长度、非空的 1D 数值向量，并先基于 Parquet 支持 int、long、float、double。对于 int8 和 float16，Peter 提出作为基础原始类型加入以支持 AI 向量索引，但社区担心其通用性并建议先限制为向量元素类型。</p>
+            <div class="key-points"><p><strong>@Yan Yan:</strong> 会议总结建议初始向量规范保持简单：支持固定长度、非空、有限数值的一维向量，先支持 int、long、float、double，距离函数和稀疏向量暂不纳入。</p>
+<p><strong>@Péter Váry:</strong> 主张为 AI 向量索引支持 int8 和 float16，并提交 draft PR；认为二者是清晰标量类型，应作为 Iceberg 常规原始类型而非仅限向量元素。</p>
+<p><strong>@Philipp Fischbeck:</strong> 质疑将 int8、float16 扩展为通用原始类型的必要性，建议先仅允许作为向量元素类型，避免影响 bounds、schema evolution 等规范。</p></div>
+            <p class="conclusion">初步结论是先推进简单向量类型规范并由 Yan Yan 更新 spec PR；int8、float16 等窄类型是否成为通用原始类型尚未达成一致，建议另开 DISCUSS 线程讨论。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/7otnzpb2lwcw1ck520y7qcgz570occo3">Support for derived columns in Iceberg.</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">讨论围绕 Iceberg 支持派生列（derived columns）的定义、确定性、表达式可移植性及其与非物化列和二级索引的关系。社区已有初步文档和提案，正在补充 SQL 规范、生成列/虚拟列等概念，并重新推进该特性。</p>
+            <div class="key-points"><p><strong>@Szehon Ho:</strong> 建议先统一派生列定义，补充 SQL 规范、生成列/虚拟列概念，并关注确定性表达式的限制及跨引擎可移植性，最好与 UDF/View、Check Constraint、Default Value 等规范对齐。</p>
+<p><strong>@Péter Váry:</strong> 认为派生列不仅有独立价值，还可服务于非物化列和二级索引等项目，询问当前进展并表示愿意参与推进。</p>
+<p><strong>@Prashant Sharma:</strong> 表示会分享当前已有进展，并欢迎其他贡献者继续参与。</p></div>
+            <p class="conclusion">初步方向是继续完善提案文档，并考虑先将派生列模型嵌入二级索引规范进行验证，而不是等待 Table spec 采用；后续由 Szehon、Prashant 等人继续整理提案并邀请社区参与。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/tg0tqhlml3rcrts9s9rbvnx9d4dqo107">REST spec: expected server behavior when X-Iceberg-Access-Delegation cannot be satisfied</a></h3>
+            <p class="meta">1 条回复 · 1 位参与者</p>
+            <p class="summary">讨论聚焦于 REST 规范中 X-Iceberg-Access-Delegation 无法满足时的预期服务端行为。社区倾向于在枚举中新增 none，表示客户端不需要 catalog 提供委托访问；同时认为无需额外说明服务端可以拒绝或失败请求。Youngrae Kim 已提交仅添加 none 的规范 PR。</p>
+            <div class="key-points"><p><strong>@Daniel Weeks:</strong> 建议使用 none 而非 local，以表达客户端不请求或不需要 catalog 生成凭证/访问。</p>
+<p><strong>@Dmitri Bourlatchkov:</strong> 支持 none 的命名，并同意不需要专门说明请求失败的服务端行为。</p>
+<p><strong>@Youngrae Kim:</strong> 总结共识并提交 PR #18480，仅在枚举中添加 none 及一句定义，保持其余描述不变。</p></div>
+            <p class="conclusion">初步结论是只添加 none 枚举，不额外修改失败请求说明；下一步是评审和继续讨论 PR #18480。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/l703q6mcyzbgkfczs91mj5bffk1k5pj4">should V4 manifests be Parquet-only?</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论聚焦 Iceberg V4 manifest 是否统一为 Parquet，并进一步延伸到 V4 数据文件格式是否应收敛。随着 AMT spec 合并，V4 manifest 已确定使用 Parquet，旧表可保留 Avro manifest。Kevin Liu 提议在 V4 中同时移除 ORC 和 Avro 数据文件格式，引发对维护成本、实现支持和 API 抽象灵活性的讨论。</p>
+            <div class="key-points"><p><strong>@Kevin Liu:</strong> V4 manifest 已确定为 Parquet；建议 V4 数据文件也移除 ORC 和 Avro，因为其 V3 特性支持不足、非 Java 实现支持有限且上游演进不足。</p>
+<p><strong>@Péter Váry:</strong> 重视保留 InternalData 抽象和未来灵活性，倾向支持多种元数据格式以验证 API 通用性，但不反对社区移除 Avro 作为元数据格式。</p>
+<p><strong>@Steven Wu:</strong> 认为关于 V4 数据文件格式变更的提议应另开新线程讨论。</p></div>
+            <p class="conclusion">当前未形成最终结论；下一步是为 V4 数据文件格式变更另开讨论线程，并补充更多支持现状和方案细节。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/hfzm8yfngm7jzgffks0rmq5rvw61zrgz">Spec clarification: readers must accept promotable types in any data file</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论聚焦于在 Iceberg 规范中明确读取器必须接受数据文件中可类型提升的列类型，即使表模式未显示类型演进。提案旨在解决部分系统只做精确类型匹配而无法读取合法窄类型数据文件的问题。Russell Spitzer 认为澄清方向合理，但建议删除与不变量无关的措辞。</p>
+            <div class="key-points"><p><strong>@Sandeep Gottimukkala:</strong> 提议在规范中补充说明，读取器必须接受数据文件列类型等于字段类型，或可按当前格式版本的有效类型提升规则提升到字段类型。</p>
+<p><strong>@Russell Spitzer:</strong> 认为该澄清合理，但建议删除 regardless of whether the field type was evolved，因为这与需要维护的不变量无关，并询问社区是否也遇到类似混淆。</p></div>
+            <p class="conclusion">初步认可规范澄清方向，下一步是根据反馈调整措辞，并在 PR 18404 或邮件列表中继续推进讨论。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/6knthbbgmfm3jlyz5f162q5c600jq47q">make appendUpdate in BaseTransaction public</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论是否将 BaseTransaction 中的 appendUpdate 方法公开，以便在事务中支持自定义更新（如写入专有索引的 Puffin 统计文件）并处理冲突重试。提议方认为现有 SnapshotAncestryValidator 只能覆盖校验，无法封装统计文件重写的重试逻辑；appendUpdate 引入者则建议先评估现有公开验证机制是否足够。</p>
+            <div class="key-points"><p><strong>@Filip (dzeri96):</strong> 每次 append 都需要更新专有索引的 Puffin 统计文件，若事务冲突需要重读最新状态并重写文件；公开 appendUpdate 可通过自定义 PendingUpdate 将重试范围限制在统计文件，而不影响数据文件。</p>
+<p><strong>@Hongyue Zhang:</strong> 作为引入 appendUpdate 的 PR 作者，提出可以先确认冲突检测与解决语义是否能用 1.11 中公开的 SnapshotAncestryValidator 表达，因为它会在元数据刷新和提交重试时执行。</p>
+<p><strong>@Filip (dzeri96):</strong> 认为这更多是哲学问题：公开扩展点有助于基于 Iceberg 构建自定义能力，但也可能带来数据格式或兼容性问题，长期希望部分能力能逐步上游化。</p></div>
+            <p class="conclusion">目前尚未形成最终结论。下一步是继续讨论 SnapshotAncestryValidator 是否能满足该用例，以及公开 appendUpdate 是否会带来兼容性风险，并建议在原邮件线程或相关 PR 中深入补充需求细节。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/qms426sxl3r1hjdm0jzm5wwqbkhdx01o">Row-granular concurrency for V3 deletion vectors</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论聚焦 Iceberg V3 deletion vectors 的行级并发提交能力，当前重点是合并纯 delete 提交中并发新增的 DV。PR #17754 已处理评审意见且 CI 通过，正在请求熟悉 DV 提交路径的 committer 复审提交/重试语义。后续计划在合入后推进面向 UPDATE/MERGE 的位置重叠检查设计。</p>
+            <div class="key-points"><p><strong>@EJ Song:</strong> #17754 已解决并发 DV 在重试间消失等问题，并请求熟悉 DV 提交路径的 committer 复审；合入后将继续推进 #18020 中的 position-overlap 检查。</p>
+<p><strong>@Huaxin:</strong> 建议在合入前由第二个 committer 检查 MergingSnapshotProducer 的 commit/retry 语义。</p></div>
+            <p class="conclusion">初步方向获得支持，#17754 接近可合入状态，但仍需额外 committer 确认提交/重试语义；下一步将推进并征求 UPDATE/MERGE 场景下基于删除位置不重叠的检查方案反馈。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/tkh85lp18w95lxnpkgo8kym3cgzhxvlo">Dedicated sync for Iceberg Index Support</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">社区围绕 Iceberg 索引支持的规范设计进行专项同步，重点讨论索引区域、排序键、索引元数据和 schema 演进。讨论已形成多项初步共识，并提出将 Region 边界与 Extract schema 直接纳入索引元数据以增强自包含性。</p>
+            <div class="key-points"><p><strong>@Péter Váry:</strong> 建议将 Region 文件边界作为跟踪文件 schema 的顶层字段存储，而非列统计，并需决定新增字段 ID 还是复用分区字段 ID。</p>
+<p><strong>@Péter Váry:</strong> 建议在索引元数据中直接存储实际 Extract schema，使索引自包含，但需要维护历史 schema 和演进规则，并使 Derived Column 支持成为必需。</p>
+<p><strong>@Péter Váry:</strong> 总结会议共识：采用非重叠 Region 优化点查并接受写放大，保留显式索引类型以便读取器跳过不支持类型，删除被索引列会使对应索引失效。</p></div>
+            <p class="conclusion">初步结论是采纳非重叠 Region、使用 sort key 表示总排序并保留显式索引类型元数据；下一步将解决索引类型和 schema 演进的剩余问题，更新规范与 PR 采用 sort key 术语，并继续评审相关设计。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/sq52zcsmc7ls7gzv6o10r9r5m4kobvx4">Field ID tracking for non-materialized columns in v4</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论围绕 Iceberg v4 中如何为非物化列追踪 Field ID，提出可借助派生/虚拟列及相关规范来表达。参与者关注排序、索引、统计信息复用，以及元数据表达式必须完整描述转换函数。</p>
+            <div class="key-points"><p><strong>@Péter Váry:</strong> 建议用派生/虚拟列处理非物化列，并复用 Sort Order、Group max/min 等统计信息来支持索引和数据范围描述。</p>
+<p><strong>@Ryan Blue:</strong> 无论函数如何参数化，元数据都必须完整描述函数操作，且应关注单行输入的明确定义转换。</p>
+<p><strong>@Gianluca Graziadei:</strong> 如果参数化完全包含在元数据表达式中，则不存在隐藏输入，表达式就是明确定义的行转换。</p></div>
+            <p class="conclusion">初步共识是通过元数据表达式或虚拟列表达非物化列，后续需确保函数参数化完整落入元数据并继续推进相关规范设计。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/p2kq8pjsy803kv8n66698z8gj4mf7hrm">Iceberg v4 Stats Tightness</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">社区围绕 Iceberg v4 中统计信息 tightness 的粒度和语义展开讨论，已就采用文件级 tightness 标志达成共识。Anoop 进一步提议将 tightness 从列上下界扩展到 null/NaN/value counts，并将字段重命名为 tight_stats，以支持更多仅元数据查询优化。</p>
+            <div class="key-points"><p><strong>@Anoop Johnson:</strong> 提议将统计 tightness 覆盖范围扩展到 null/NaN/value counts，并将 tight_bounds 重命名为 tight_stats；旧 v3 文件无标志时默认视为 wide。</p>
+<p><strong>@Steven Wu:</strong> 认可 Russell 的分析，支持采用文件级 tightness 标志。</p>
+<p><strong>@Szehon Ho:</strong> 认为按文件设置 tightness 更简单，并认可 Anoop 对问题和用例的梳理。</p></div>
+            <p class="conclusion">初步结论是采用文件级 tightness 标志，新 v4 文件根据是否带 DV 标记 true/false；下一步将在周一的 v4 Adaptive Metadata Tree 同步会上讨论扩展统计覆盖和重命名提案。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (0)</h2>
+            
+    <p>本周新建 <strong>0</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周无新建 JIRA。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Iceberg Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
