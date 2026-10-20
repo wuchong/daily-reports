@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-10-19</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-10-19</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 17 新 Issues</div>
+            <div class="stat">✅ 2 关闭</div>
+            <div class="stat">✨ 17 新 PRs</div>
+            <div class="stat">🎉 3 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/4689">PR #4689</a> [trino] Add predicate constraint handling and equality-based partition pruning</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4618">PR #4618</a> [server] Fix stale remote log metrics on repeated leader updates</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4277">PR #4277</a> [kafka] Define DDL table mapping for Kafka compatibility</li><li>🐛 <a href="https://github.com/apache/fluss/issues/4738">Issue #4738</a> [test] Stabilize RemoteLogDownloader prefetch permit assertions</li><li>🐛 <a href="https://github.com/apache/fluss/issues/4736">Issue #4736</a> [server] Handle uninitialized table ZNodes in ZooKeeper metadata reads</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4608">Issue #4608</a> FIP-53: Log Scanner Offset Management</h4>
+            <ul><li><span class="author">@pisceslj</span>: ### Subtasks - [x] **[4625 [server] Add consumer offset table foundations](https://github.com/apach…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4379">Issue #4379</a> [flink] Add $buckets virtual table for bucket metadata</h4>
+            <ul><li><span class="author">@fhan688</span>: > Thanks, @fhan688, for the update. I like the new API. Will take a closer look later. > > Btw, I s…</li><li><span class="author">@Kaixuan-Duan</span>: +1 to @wuchong's suggestion. Query-like metadata fits a virtual table better than a CALL procedure:…</li><li><span class="author">@platinumhamburg</span>: > +1 to @wuchong's suggestion. Query-like metadata fits a virtual table better than a CALL procedur…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4293">Issue #4293</a> [client] Back off writes rejected by disk protection</h4>
+            <ul><li><span class="author">@fhan688</span>: hi @wuchong, could you please help review this PR when you have time? thanks!</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/76">Issue #76</a> [Feature] Support rename table in flink catalog</h4>
+            <ul><li><span class="author">@zhuangchong</span>: Hi @Jackeyzhe, thanks for reaching out. I won't be able to keep driving #2106 — it has accumulated…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4697">Issue #4697</a> [test] Unstable test FlinkCatalogTest.testListMaterializedTables</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: https://github.com/apache/fluss/actions/runs/39176515714/job/117820201087 ``` [ERROR] org.apache.fl…</li><li><span class="author">@wuchong</span>: Reproduced in PR #4242, Java 11 / flink2 (`fluss-flink-2.3`): https://github.com/apache/fluss/actio…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4699">Issue #4699</a> [test] Unstable test HistoricalPartitionITCase.testLookupExpiredPartitionFromPaimon</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: https://github.com/apache/fluss/actions/runs/39176515714/job/117820201275 ``` [ERROR] org.apache.fl…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4253">Issue #4253</a> [lake/iceberg] Support custom Iceberg lake table path</h4>
+            <ul><li><span class="author">@litiliu</span>: Thanks @fresh-borzoni! Updated both mapping options in website/docs/engine-flink/options.md to matc…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4698">Issue #4698</a> [test] Unstable test FlussAuthorizationITCase.testProduceAndConsumer</h4>
+            <ul><li><span class="author">@wuchong</span>: Reproduced in PR #4242, Java 11 / core: https://github.com/apache/fluss/actions/runs/39205033760/jo…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4723">Issue #4723</a> [test] Unstable test Flink120TableSourceBatchITCase.testScanFullPrimaryKeyTable</h4>
+            <ul><li><span class="author">@wuchong</span>: cc @loserwang1024</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4722">Issue #4722</a> [test] Unstable test FlussAdminITCase.testClusterHealthDuringRollingUpgrade</h4>
+            <ul><li><span class="author">@wuchong</span>: cc @swuferhong</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3789">Issue #3789</a> [lake/tiering] Support group-aware table assignment for tiering services</h4>
+            <ul><li><span class="author">@polyzos</span>: Pretty useful indeed.. +1</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4694">Issue #4694</a> [rpc] Fix race in Netty client disconnection test</h4>
+            <ul><li><span class="author">@zuston</span>: @fresh-borzoni It looks like we didn’t use squash merge here. Should we disable the other merge met…</li><li><span class="author">@fresh-borzoni</span>: > @fresh-borzoni It looks like we didn’t use squash merge here. Should we disable the other merge m…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4717">Issue #4717</a> [rust] Reuse predicate binding and add local Arrow evaluation</h4>
+            <ul><li><span class="author">@naivedogger</span>: cc @fresh-borzoni @beryllw, this is the first PR for FIP-48. Would appreciate your review!</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4728">Issue #4728</a> [build] Make the Iceberg 1.12 build opt-in</h4>
+            <ul><li><span class="author">@polyzos</span>: Thanks @naivedogger, +1 on making it opt-in. A plain JDK 11 build should work. One concern: a separ…</li><li><span class="author">@naivedogger</span>: Thanks @polyzos, I have updated #4729 following your suggestion. The release profile and JDK 17+ no…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4706">Issue #4706</a> [client] Lookups on a dropped table never return</h4>
+            <ul><li><span class="author">@dstolis</span>: @nicolazar can i work on this one?</li><li><span class="author">@polyzos</span>: @dstolis assigned；@nicolazar Thanks for surfacing this 👍</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2806">Issue #2806</a> Add compression for CompactedRow</h4>
+            <ul><li><span class="author">@dstolis</span>: @polyzos can i take this one?</li><li><span class="author">@polyzos</span>: @dstolis sure... assigned</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4644">Issue #4644</a> [FIP-29][rpc] Wire TLS encryption into the server Netty pipeline</h4>
+            <ul><li><span class="author">@morazow</span>: Morning @polyzos, @fresh-borzoni Thanks for the quick reviews 🚀 On point suggestions, addressing.；H…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2871">Issue #2871</a> [helm] Restructure helm chart of Fluss</h4>
+            <ul><li><span class="author">@affo</span>: @polyzos thanks for hopping in! @nhuantho as said in the past, I would keep the schema validation p…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4729">Issue #4729</a> [build] Make the Iceberg 1.12 build opt-in</h4>
+            <ul><li><span class="author">@polyzos</span>: Thanks @loserwang1024 and @naivedogger. @loserwang1024, the `lake` job on main, and the 1.12 module…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4733">Issue #4733</a> [rust] Preserve write request order across asynchronous dispatch</h4>
+            <ul><li><span class="author">@naivedogger</span>: @fresh-borzoni @loserwang1024, could you please take a look at this one when you got a chance? Than…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3554">Issue #3554</a> [tiering] Decouple common tiering class from flink module</h4>
+            <ul><li><span class="author">@Yohahaha</span>: @luoyuxia @beryllw I believe all comments has been fixed, PTAL!</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4689">Issue #4689</a> [trino] Add predicate constraint handling and equality-based partition pruning</h4>
+            <ul><li><span class="author">@yangshangqing95</span>: Yes Hi @fresh-borzoni thanks for the reviewing! Don't worry, bucket pruning, look up optimization,…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4263">Issue #4263</a> [rpc] Handle endpoint changes for cached server connections</h4>
+            <ul><li><span class="author">@BackendArchitectX</span>: Hi @gyang94, I've resolved the merge conflicts and updated the PR description with the latest valid…</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4253">PR #4253</a> [lake/iceberg] Support custom Iceberg lake table path</h4>
+            <ul><li><span class="author">@litiliu</span>: Thanks @fresh-borzoni, agreed. Opened #4711 to track the RESET/rebinding gap and the proposed forma…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3554">PR #3554</a> [tiering] Decouple common tiering class from flink module</h4>
+            <ul><li><span class="author">@beryllw</span>: This can return flinkTieringSplit.copy(flinkTieringSplit.getNumberOfSplits()). It removes both cons…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4716">PR #4716</a> [server] Add consumer group owner discovery</h4>
+            <ul><li><span class="author">@gyang94</span>: tabletIdOpt.isEmpty()；It may throw exception if getLeaderId() returns Optional.empty()；This snapsho…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4729">PR #4729</a> [build] Make the Iceberg 1.12 build opt-in</h4>
+            <ul><li><span class="author">@loserwang1024</span>: Only the JDK 8 and JDK 11 jobs use ci-template.yaml right now, so this PR needs to remove MAVEN_TOO…</li><li><span class="author">@naivedogger</span>: Thanks, I agree that a dedicated JDK 17 job would be cleaner. I kept the toolchain setup introduced…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4379">PR #4379</a> [flink] Add $buckets virtual table for bucket metadata</h4>
+            <ul><li><span class="author">@swuferhong</span>: Could we defer fetching bucket metadata until runtime? Calling `loadBucketRows()` here embeds the c…</li><li><span class="author">@fhan688</span>: > Could we defer fetching bucket metadata until runtime? Calling `loadBucketRows()` here embeds the…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4641">PR #4641</a> [FIP-29][security] Add SslPrincipalMapper for certificate DN to principal mapping</h4>
+            <ul><li><span class="author">@morazow</span>: Thanks @polyzos , I am going to handle it in #3793, where the authenticator sits between the server…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4644">PR #4644</a> [FIP-29][rpc] Wire TLS encryption into the server Netty pipeline</h4>
+            <ul><li><span class="author">@morazow</span>: Done 🤝；Fixed, opted for rejection for now, then we land it in next PRs 🤝；Yes, add a class for chunk…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3820">PR #3820</a> [server] add lake-aware partition drop when auto-partition retention is enabled</h4>
+            <ul><li><span class="author">@luoyuxia</span>: Could we reuse `coordinator.control-request.timeout` instead of adding a freeze-specific option? Th…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4293">PR #4293</a> [client] Back off writes rejected by disk protection</h4>
+            <ul><li><span class="author">@swuferhong</span>: This can be removed as it already merged.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4663">PR #4663</a> [flink] Flush finished tiering tables when closing enumerator</h4>
+            <ul><li><span class="author">@Copilot</span>: Clearing `finishedTables` (and `tieringTableEpochs`) before `reportTablesOnClose(...)` succeeds los…</li><li><span class="author">@beryllw</span>: Small nit: could we use `Collections.emptyMap()` here to make the intent clearer?；Could we also che…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3923">PR #3923</a> [tiering] Trigger job failover when coordinator epoch changes</h4>
+            <ul><li><span class="author">@beryllw</span>: Could we test this through both heartbeat paths, rather than calling `checkCoordinatorEpoch()` dire…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4717">PR #4717</a> [rust] Reuse predicate binding and add local Arrow evaluation</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: Some filters fail while reading, e.g. ts >= 1.5 s on a TIMESTAMP(0) column. Java never fails on a f…</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4738">#4738</a> [test] Stabilize RemoteLogDownloader prefetch permit assertions <span class="author">@yangshangqing95</span> </li><li><a href="https://github.com/apache/fluss/issues/4736">#4736</a> [server] Handle uninitialized table ZNodes in ZooKeeper metadata reads <span class="author">@yangshangqing95</span> </li><li><a href="https://github.com/apache/fluss/issues/4732">#4732</a> [rust] Write requests to one tablet server can reach the wire out of order <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/issues/4728">#4728</a> [build] Make the Iceberg 1.12 build opt-in <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/issues/4726">#4726</a> [sender] Writer retries expired auto partitions indefinitely <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/issues/4724">#4724</a> [Bug] Schema.Builder.fromColumns leaves nested field IDs unset <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/4723">#4723</a> [test] Unstable test Flink120TableSourceBatchITCase.testScanFullPrimaryKeyTable <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/issues/4722">#4722</a> [test] Unstable test FlussAdminITCase.testClusterHealthDuringRollingUpgrade <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/issues/4721">#4721</a> [Bug] First lake enablement allows binding to a non-empty lake table <span class="author">@litiliu</span> </li><li><a href="https://github.com/apache/fluss/issues/4720">#4720</a> [test] Unstable test FlussAuthorizationITCase.testAclOperation <span class="author">@app/github-actions</span> </li><li><a href="https://github.com/apache/fluss/issues/4719">#4719</a> [test] Unstable test FlussAdminITCase.testAlterAggregationTableColumnWithAggFunction <span class="author">@app/github-actions</span> </li><li><a href="https://github.com/apache/fluss/issues/4718">#4718</a> [test] Unstable test HistoricalPartitionITCase.testWriteAndTierHistoricalKvToPaimon <span class="author">@app/github-actions</span> </li><li><a href="https://github.com/apache/fluss/issues/4715">#4715</a> [rust] Add predicate foundations for UnionRead <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/issues/4714">#4714</a> [server] Add consumer group owner discovery <span class="author">@pisceslj</span> </li><li><a href="https://github.com/apache/fluss/issues/4713">#4713</a> [FIP-48][rust] Introduce a UnionRead kernel for fluss-rust <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/issues/4712">#4712</a> [spark] Support custom Iceberg lake table paths <span class="author">@litiliu</span> </li><li><a href="https://github.com/apache/fluss/issues/4711">#4711</a> [Bug] Resetting datalake.enabled allows unsafe lake table rebinding <span class="author">@litiliu</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4740">#4740</a> [server] Fix flaky shutdown metric assertion in ControlRequestSendThreadTest <span class="author">@yangshangqing95</span> </li><li><a href="https://github.com/apache/fluss/pull/4739">#4739</a> [client] Fix flaky prefetch permit assertion in RemoteLogDownloaderTest <span class="author">@yangshangqing95</span> </li><li><a href="https://github.com/apache/fluss/pull/4737">#4737</a> [server] Handle uninitialized table ZNodes in ZooKeeper metadata reads <span class="author">@yangshangqing95</span> </li><li><a href="https://github.com/apache/fluss/pull/4735">#4735</a> [client] Wait for in-flight writes before historical rerouting <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/pull/4734">#4734</a> [test] Stabilize cluster health test setup <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/pull/4733">#4733</a> [rust] Preserve write request order across asynchronous dispatch <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/pull/4731">#4731</a> [lake/paimon] Avoid repeated manifest scans for historical tiering <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/pull/4730">#4730</a> [test] Wait for auto partitions in Flink catalog test <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/pull/4729">#4729</a> [build] Make the Iceberg 1.12 build opt-in <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/pull/4727">#4727</a> [client] Abort pending writes for expired auto partitions in sender. <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/pull/4725">#4725</a> [common] Fix nested field IDs in Schema.Builder.fromColumns <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/pull/4717">#4717</a> [rust] Reuse predicate binding and add local Arrow evaluation <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/pull/4716">#4716</a> [server] Add consumer group owner discovery <span class="author">@pisceslj</span> </li><li><a href="https://github.com/apache/fluss/pull/4710">#4710</a> Bump rustls from 0.23.37 to 0.23.46 in /fluss-rust <span class="author">@app/dependabot</span> <span class="labels">dependencies, rust</span></li><li><a href="https://github.com/apache/fluss/pull/4709">#4709</a> Bump com.fasterxml.jackson.core:jackson-databind from 2.22.2 to 2.22.3 in /fluss-lake/fluss-lake-iceberg-1.12 <span class="author">@app/dependabot</span> <span class="labels">dependencies, java</span></li><li><a href="https://github.com/apache/fluss/pull/4708">#4708</a> Bump at.yawk.lz4:lz4-java from 1.10.2 to 1.11.4 in /fluss-common <span class="author">@app/dependabot</span> <span class="labels">dependencies, java</span></li><li><a href="https://github.com/apache/fluss/pull/4707">#4707</a> Bump com.fasterxml.jackson.core:jackson-core from 2.22.2 to 2.22.3 in /fluss-lake/fluss-lake-iceberg-1.12 <span class="author">@app/dependabot</span> <span class="labels">dependencies, java</span></li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4617">#4617</a> [Server] Remote log metrics become stale after repeated leader notifications <span class="author">@fxbing</span> </li><li><a href="https://github.com/apache/fluss/issues/4275">#4275</a> [kafka] Define DDL table mapping for Kafka compatibility <span class="author">@gyang94</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4689">#4689</a> [trino] Add predicate constraint handling and equality-based partition pruning <span class="author">@yangshangqing95</span> </li><li><a href="https://github.com/apache/fluss/pull/4618">#4618</a> [server] Fix stale remote log metrics on repeated leader updates <span class="author">@fxbing</span> </li><li><a href="https://github.com/apache/fluss/pull/4277">#4277</a> [kafka] Define DDL table mapping for Kafka compatibility <span class="author">@gyang94</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
