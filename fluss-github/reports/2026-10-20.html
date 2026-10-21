@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-10-20</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-10-20</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 11 新 Issues</div>
+            <div class="stat">✅ 1 关闭</div>
+            <div class="stat">✨ 13 新 PRs</div>
+            <div class="stat">🎉 4 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/4746">PR #4746</a> [hotfix][rpc] Revert Netty shutdown optimization #4645</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4734">PR #4734</a> [test] Stabilize cluster health test setup</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4612">PR #4612</a> [kv] Support partitioned metadata with HyperClockCache</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4293">PR #4293</a> [client] Back off writes rejected by disk protection</li><li>🐛 <a href="https://github.com/apache/fluss/issues/4765">Issue #4765</a> [kafka] Unify schema type validation for Kafka table mappings</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4645">Issue #4645</a> [Server] improve CI test time for netty</h4>
+            <ul><li><span class="author">@swuferhong</span>: Hi, @polyzos, @wuchong I did some basic validation in production and found no impact on health chec…</li><li><span class="author">@polyzos</span>: Sure thing and thanks for checking 🥇</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4293">Issue #4293</a> [client] Back off writes rejected by disk protection</h4>
+            <ul><li><span class="author">@swuferhong</span>: @fhan688 Could you rebase onto `main` again? A PR to improve CI stability has just been merged.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4722">Issue #4722</a> [test] Unstable test FlussAdminITCase.testClusterHealthDuringRollingUpgrade</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: https://github.com/apache/fluss/actions/runs/39247011691/job/118041266113 ``` [ERROR] org.apache.fl…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4697">Issue #4697</a> [test] Unstable test FlinkCatalogTest.testListMaterializedTables</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: https://github.com/apache/fluss/actions/runs/39317221463/job/118281716647 ``` [ERROR] org.apache.fl…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4263">Issue #4263</a> [rpc] Handle endpoint changes for cached server connections</h4>
+            <ul><li><span class="author">@gyang94</span>: @BackendArchitectX Thanks. LGTM. btw, there are conflicts need to resolve.</li><li><span class="author">@BackendArchitectX</span>: Hi @gyang94, Thank you for the review and approval. I've resolved the merge conflicts and updated t…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4717">Issue #4717</a> [rust] Reuse predicate binding and add local Arrow evaluation</h4>
+            <ul><li><span class="author">@naivedogger</span>: @fresh-borzoni, thank you for the helpful review! I've addressed your comments. For accepted/remain…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4065">Issue #4065</a> [kv] Batch old value lookups in write path</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: Benchmarked the complete `KvTablet.putAsLeader` call against main on a Mac mini M4, using five inde…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4745">Issue #4745</a> [server] Support group-aware tiering table assignment</h4>
+            <ul><li><span class="author">@litiliu</span>: Hi @polyzos, CI is green and this PR is ready for review. Could you take a look when you have a cha…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4063">Issue #4063</a> [kv] Batch old-value lookups in the KV write path</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: Hi @Anurag15v , this issue has become a high priority, so I’ve reopened my earlier PR #4065 and com…</li><li><span class="author">@Anurag15v</span>: Hi @platinumhamburg There is no concern; you may proceed. At present, I am delayed by other open is…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3452">Issue #3452</a> [Flink] Add support for partition pruning to the Datastream API</h4>
+            <ul><li><span class="author">@Anurag15v</span>: Hi @polyzos <a href="https://github.com/apache/fluss/pull/4764">Here</a> is the first PR to fix lake union rea…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4704">Issue #4704</a> [elixir] Add primary key and prefix lookup</h4>
+            <ul><li><span class="author">@nicolazar</span>: > LGTM overall, just minor comment, PTAL. @fresh-borzoni - I addressed your review comment in the l…</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4717">PR #4717</a> [rust] Reuse predicate binding and add local Arrow evaluation</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: Some filters fail while reading, e.g. ts >= 1.5 s on a TIMESTAMP(0) column. Java never fails on a f…</li><li><span class="author">@naivedogger</span>: I agree that engine adapters should return accepted/remaining filters so the engine can evaluate th…</li><li><span class="author">@beryllw</span>: Could we allow binary literals with a different length from the column? For a `BINARY(4)` column co…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4729">PR #4729</a> [build] Make the Iceberg 1.12 build opt-in</h4>
+            <ul><li><span class="author">@loserwang1024</span>: why true here?；ditto</li><li><span class="author">@naivedogger</span>: Here, `<value>true</value>` is an activation condition, not a default value, this profile is enable…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3820">PR #3820</a> [server] add lake-aware partition drop when auto-partition retention is enabled</h4>
+            <ul><li><span class="author">@zuston</span>: make sense! thanks for your advice. let me push forward</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4716">PR #4716</a> [server] Add consumer group owner discovery</h4>
+            <ul><li><span class="author">@pisceslj</span>: Thanks for pointing this out. The leader ID is checked immediately before calling `buildFindConsume…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4606">PR #4606</a> [rust] Return decoded scan batches before later errors</h4>
+            <ul><li><span class="author">@spoon-lz</span>: Fixed by preserving the original fetch offset when a pending fetch fails. Added regression tests ve…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4744">PR #4744</a> [kv] Bound prefix lookups with an exclusive upper limit</h4>
+            <ul><li><span class="author">@Copilot</span>: `setTotalOrderSeek(true)` disables prefix-based optimizations (e.g., prefix bloom / prefix seek) an…</li><li><span class="author">@platinumhamburg</span>: Thanks for raising this. I checked the current column-family options: Fluss does not configure a pr…</li><li><span class="author">@luoyuxia</span>: Seems then BytesUtils.prefixEquals can be removed?</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4749">PR #4749</a> [kv] Iterate prefix lookups outside the KV lock</h4>
+            <ul><li><span class="author">@Copilot</span>: `closeCompletion.get()` can throw `InterruptedException`, and the current code will propagate it wi…</li><li><span class="author">@platinumhamburg</span>: `InterruptedException` already propagates to the caller; only `ExecutionException` is caught here.……</li><li><span class="author">@luoyuxia</span>: This wrapper is now only used by tests, while production calls `openPrefixLookup()` directly. Could…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2787">PR #2787</a> [server] RemoteStorageCleaner support clean for multiple remote directories</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: Could we strengthen this test to cover the new ordering guarantee that table deletion must wait for…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4439">PR #4439</a> [server] Skip unchanged upserts for primary-key tables</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: Could we move this documentation into a “Skip Unchanged Upserts” section of `pk-table.md` and link……</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4733">PR #4733</a> [rust] Preserve write request order across asynchronous dispatch</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: This splits each drain into per-table requests, and each one calls get_connection on its own, one a…</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4765">#4765</a> [kafka] Unify schema type validation for Kafka table mappings <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/issues/4762">#4762</a> [client] Read-only admin retries can select a disconnected tablet server <span class="author">@fxbing</span> </li><li><a href="https://github.com/apache/fluss/issues/4760">#4760</a> [client] Support explicit target buckets for append writes <span class="author">@fxbing</span> </li><li><a href="https://github.com/apache/fluss/issues/4759">#4759</a> [test] Unstable test RemoteLogITCase.testFollowerFetchAlreadyMoveToRemoteLog <span class="author">@dstolis</span> </li><li><a href="https://github.com/apache/fluss/issues/4755">#4755</a> [server] Stale or wrong metadata served for missing and re-created tables <span class="author">@dstolis</span> </li><li><a href="https://github.com/apache/fluss/issues/4753">#4753</a> [helm] Add a standalone Helm chart for Fluss Gateway <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/issues/4750">#4750</a> [Bug] [lake/paimon] Union reads can fail after snapshot expiration <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/issues/4748">#4748</a> [tiering] Handle partitions removed during split generation <span class="author">@kamisama0002</span> </li><li><a href="https://github.com/apache/fluss/issues/4747">#4747</a> [kv] Iterate prefix lookups outside the KV lock with a fixed read view <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/4743">#4743</a> [kv] Bound RocksDB prefix lookups with an exclusive upper limit <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/4741">#4741</a> [server] Table and partition metadata may become inconsistent after drop and recreation <span class="author">@yangshangqing95</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4766">#4766</a> [kafka] Unify schema type validation for Kafka table mappings <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/pull/4764">#4764</a> [flink] Apply partition filter to lake partitions in union read <span class="author">@Anurag15v</span> </li><li><a href="https://github.com/apache/fluss/pull/4763">#4763</a> [client] Add connection backoff and avoid failed nodes on admin retry <span class="author">@fxbing</span> </li><li><a href="https://github.com/apache/fluss/pull/4761">#4761</a> [client] Support explicit target buckets for append writes <span class="author">@fxbing</span> </li><li><a href="https://github.com/apache/fluss/pull/4758">#4758</a> [server] Fix stale metadata served for missing and re-created tables <span class="author">@dstolis</span> </li><li><a href="https://github.com/apache/fluss/pull/4757">#4757</a> [client] Fail lookups and writes on a dropped or re-created table instead of hanging <span class="author">@dstolis</span> </li><li><a href="https://github.com/apache/fluss/pull/4754">#4754</a> [helm] Add standalone Kubernetes deployment for Fluss Gateway <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/pull/4752">#4752</a> [WIP][Server] improve CI test time for netty (#4645) <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/pull/4751">#4751</a> [flink] Skip removed partitions during tiering split generation <span class="author">@kamisama0002</span> </li><li><a href="https://github.com/apache/fluss/pull/4749">#4749</a> [kv] Iterate prefix lookups outside the KV lock <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/4745">#4745</a> [server] Support group-aware tiering table assignment <span class="author">@litiliu</span> </li><li><a href="https://github.com/apache/fluss/pull/4744">#4744</a> [kv] Bound prefix lookups with an exclusive upper limit <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/4742">#4742</a> [WIP][server] Fix stale metadata deletion for recreated tables and partitions <span class="author">@yangshangqing95</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4722">#4722</a> [test] Unstable test FlussAdminITCase.testClusterHealthDuringRollingUpgrade <span class="author">@wuchong</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4746">#4746</a> [hotfix][rpc] Revert Netty shutdown optimization #4645 <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/pull/4734">#4734</a> [test] Stabilize cluster health test setup <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/pull/4612">#4612</a> [kv] Support partitioned metadata with HyperClockCache <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/4293">#4293</a> [client] Back off writes rejected by disk protection <span class="author">@fhan688</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
