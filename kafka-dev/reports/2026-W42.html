@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafka 社区周报 | 2026-W42</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Kafka 社区周报 | 2026-W42</h1>
+            <p class="date-range">2026-10-12 ~ 2026-10-18</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (0)</h2>
+            <p class="empty">本周无公告</p>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (2)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/nyyvodd2wrvkrp7jgq3gs93chj9wo7yz">KIP-1322: Add metrics to Kraft that measure the number of fetch timeouts and election timeouts</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/w0yk8g0q2f9bywy9fo38cfxxqoprgz8l">4.3.2 RC3</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/y97z2xwdprcy1h9bbtcqh3fkpdh5hlqq">[PR] MINOR: Add 4.4 release [kafka-site]</a></h3>
+            <p class="meta">19 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕在 kafka-site 中新增 Kafka 4.4 版本文档展开，重点处理文档生成、版本链接和站点配置问题。原 PR #905 因 force push 意外关闭且无法重开，OmniaGM 改为提交新 PR #925 并根据评审意见更新内容。目前仍在修正文档标题、遗留的 4.3 硬编码链接以及版本归档配置等细节。</p>
+            <div class="key-points"><p><strong>@chia7712:</strong> 已将相关修复 backport 到 4.4 分支以便重新生成文档，并建议修正 4.4 文档标题、遗留的 4.3 链接以及添加 archived_version 配置。</p>
+<p><strong>@OmniaGM:</strong> 说明原 PR 因 force push 意外关闭且无法重开，因此创建新 PR #925，并已根据评审意见更新 PR；同时提到误推分支已回滚，建议限制直接推送。</p></div>
+            <p class="conclusion">下一步继续在新 PR #925 中完成 4.4 文档的标题、链接和配置修正；KAFKA-21128 和 KAFKA-21134 相关问题可先手动处理，并考虑后续 backport 到 4.4 分支用于 4.4.1 文档。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/zqf10co2mhmzgrwcp3oh7tvm4wtqyk7o">KIP-1376: Support setting TLS named groups</a></h3>
+            <p class="meta">9 条回复 · 6 位参与者</p>
+            <p class="summary">社区讨论 KIP-1376 为 Kafka TLS 连接支持配置 named groups，重点包括跨 Java 版本测试、与 JVM 系统属性 jdk.tls.namedGroups 的优先级及兼容性说明。目前方案趋向于空或未设置配置时保留 JVM 默认，非空配置显式覆盖，并补充低版本 Java 的异常测试和文档。</p>
+            <div class="key-points"><p><strong>@Luke Chen:</strong> 建议测试覆盖所有 Java 版本，低版本应验证配置异常，并要求说明 ssl.named.groups 与 jdk.tls.namedGroups 同时设置时的优先级和兼容性。</p>
+<p><strong>@Arnab Nandy:</strong> 空或未设置 ssl.named.groups 时不调用 setNamedGroups，保留 JVM 或 Provider 默认；非空配置按优先级生效并优先于 JVM 属性，同时更新测试、文档，并将 OAuth 和 Connect REST 支持拆分到后续 PR。</p>
+<p><strong>@Mickael Maison:</strong> 确认 CI 会覆盖 Java 17 等不支持路径，配置优先行为与现有 ssl.cipher.suites 等一致；named group 指标有后续价值，但因相关 JDK 能力尚未发布，当前暂不纳入。</p></div>
+            <p class="conclusion">讨论已趋于一致，KIP 获得认可；下一步是完善状态、测试、兼容性说明和文档，当前实现聚焦 client 与 broker，OAuth、Connect REST 支持及指标能力作为后续跟进事项。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/d3vvg3xmv6zyn0tw1j6nb8sfz85bss6r">[PR] Bump hugo-extended from 0.164.0 to 0.167.0 [kafka-site]</a></h3>
+            <p class="meta">2 条回复 · 1 位参与者</p>
+            <p class="summary">该邮件涉及 kafka-site 仓库中由 Dependabot 提交的 hugo-extended 依赖升级 PR，从 0.164.0 升级到 0.167.0。该 PR 后续被说明已由 #926 取代，并最终关闭。</p>
+            <div class="key-points"><p><strong>@dependabot[bot]:</strong> 创建 PR #924，升级 hugo-extended 从 0.164.0 到 0.167.0。</p>
+<p><strong>@dependabot[bot]:</strong> 说明该 PR 已被 #926 取代。</p>
+<p><strong>@dependabot[bot]:</strong> 关闭 PR #924。</p></div>
+            <p class="conclusion">PR #924 未继续推进，已被关闭；后续应关注替代的 #926。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/fjbyjzs8k7cfl1xbw824jpn2sptk0x32">KIP-1382: Expose Explicit Configuration Deletions to AlterConfigPolicy</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕 KIP-1382 是否应让 AlterConfigPolicy 显式感知配置删除。发起者最初提议暴露删除配置信息，但社区认为仅扩展现有接口会固化局限，建议从策略检查能力层面重新设计。目前讨论转向提出新的配置变更 policy 契约，并保持旧接口兼容。</p>
+            <div class="key-points"><p><strong>@Arnab Nandy:</strong> 提出 KIP-1382，希望让 AlterConfigPolicy 能够识别显式配置删除，避免通过 null 值或推断处理删除。</p>
+<p><strong>@Edoardo Comar:</strong> 认为给现有 AlterConfigPolicy 增加方法不是好方案，参考 KIP-170/KIP-201，建议提出能扩展策略检查能力的 KIP，而不是只修补参数不一致。</p>
+<p><strong>@Arnab Nandy:</strong> 接受反馈，表示愿意改为设计新的 policy 契约/请求元数据，明确暴露请求操作、当前配置和目标配置，同时保持 AlterConfigPolicy 兼容。</p></div>
+            <p class="conclusion">初步方向是不直接扩展现有接口，而是修订 KIP-1382 以设计更清晰的配置变更策略契约；下一步需确认该聚焦方案是否满足社区诉求，或是否需要覆盖更广的主题管理策略模型。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/2gnr1lk1ns8w8w5b21yxss9jwvo20r7q">[Bug report] Java consumer with SubscriptionPattern stops refreshing metadata after an assigned topic is deleted (4.1+)</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">社区讨论了一个 Kafka Java 消费者在使用 SubscriptionPattern 订阅时，若已分配主题被删除会停止刷新元数据的 Bug。该问题影响 4.1 至 4.3.1，表现为抛出 IllegalStateException 后无法发现新匹配主题，只能重启恢复。报告者已定位原因并有复现，但尚未提交 Jira。</p>
+            <div class="key-points"><p><strong>@James Palmer:</strong> 报告 Bug：使用 SubscriptionPattern 的消费者在分配主题被删除后停止发送 Metadata 请求，并抛出 IllegalStateException，导致无法发现新匹配主题。</p>
+<p><strong>@David Jacot:</strong> 认可该发现，并建议将复现以 PR 形式提供。</p>
+<p><strong>@Lianet Magrans:</strong> 确认报告者的 Jira 账号已开通，建议在 issue 和复现材料上继续跟进定位与修复。</p></div>
+            <p class="conclusion">初步下一步是报告者创建 Jira issue 并提交复现或 PR，社区将在 Jira 中继续跟进修复。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/jqbjdxv1ormzcgbrfn5hk46mls8oh6tk">KIP-1384: Base image for system test dependencies</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">社区围绕 KIP-1384（为系统测试依赖提供基础镜像）展开讨论，重点是完善提案内容并处理与 Vagrant 的过渡安排。PoAn Yang 已根据评审意见更新了被否决方案和 Vagrant 相关说明。</p>
+            <div class="key-points"><p><strong>@PoAn Yang:</strong> 发起 KIP-1384 讨论，并根据反馈补充了 Rejected Alternatives 和 Vagrant 部分，说明 vagrant/base.sh 暂时保持不变。</p>
+<p><strong>@Chia-Ping Tsai:</strong> 建议补充被否决的替代方案（例如允许其他 PMC 成员推送到 S3），并在移除 Vagrant 的 KIP 尚未就绪时引用相关 ticket。</p></div>
+            <p class="conclusion">初步进展是 PoAn Yang 已更新 KIP 文档，链接 KAFKA-21260 并说明 Vagrant 现状，后续等待社区进一步评审。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/h5myd2lt1dg5qy29xzc4l50vqd17sgm6">[PR] Bump hugo-extended from 0.164.0 to 0.166.0 [kafka-site]</a></h3>
+            <p class="meta">1 条回复 · 1 位参与者</p>
+            <p class="summary">讨论围绕 kafka-site 仓库中将 hugo-extended 依赖从 0.164.0 升级到 0.166.0 的 PR #913。该 PR 已被后续 PR #924 取代，因此被关闭。</p>
+            <div class="key-points"><p><strong>@dependabot[bot]:</strong> PR #913 已被 #924 取代，并已关闭。</p></div>
+            <p class="conclusion">无需继续处理 PR #913，后续升级应关注 #924。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/q62cszw361b26wd80fw6cln5124rmnw8">KIP-1325: Add restore.buffered.records.per.partition new streams config - restore path</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论聚焦 KIP-1325 是否仍需为 Streams restore buffer 增加可配置限制。Eric Chang 定位到 restore buffer 增长并可能导致 OOM 的唯一场景，并提交修复以恢复旧版暂停行为。Chia-Ping Tsai 认可该分析，建议待修复 PR 合并后再重新审视 KIP-1325。</p>
+            <div class="key-points"><p><strong>@Eric Chang:</strong> restore buffer 只在 standby task 使用 input topic 作为 changelog 且继续拉取超过 active 提交偏移量时增长；已提交 KAFKA-21276 和 PR 恢复暂停行为，并质疑是否仍需新增配置限制。</p>
+<p><strong>@Chia-Ping Tsai:</strong> 认可 Eric 的排查结论，已在 PR 中留言，建议等 PR 合并后再重新评估 KIP-1325。</p></div>
+            <p class="conclusion">初步下一步是先合并行为修复，再决定是否继续推进或调整 KIP-1325 的配置限制；目前尚未形成最终结论。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/q8jdzxvm169q5vx9ln1yfz343wpq9jb1">[PR] Bump hugo-extended from 0.164.0 to 0.168.0 [kafka-site]</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">该讨论围绕 kafka-site 仓库中 hugo-extended 依赖的版本升级展开。Dependabot 提交 PR 将 hugo-extended 从 0.164.0 升级到 0.168.0，涵盖 Hugo 0.165.0 至 0.168.0 的更新。该 PR 已由 mimaison 合并。</p>
+            <div class="key-points"><p><strong>@dependabot[bot]:</strong> 提交 PR #926，建议将 kafka-site 的 hugo-extended 依赖从 0.164.0 升级到 0.168.0。</p>
+<p><strong>@mimaison:</strong> 合并了该依赖升级 PR，确认变更进入仓库。</p></div>
+            <p class="conclusion">该依赖升级 PR 已合并，暂无明确的后续行动。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/957g04mf64m8fdcxcvx7q5jv2o8ygtgs">Kafka 4.4.0 already on maven repo, is that okay?</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">社区讨论 Kafka 4.4.0 客户端制品已出现在 Maven 仓库但尚未发布公告是否符合预期。回复称 4.4.0 已接近发布，但官网文档相关 PR 仍未准备好。</p>
+            <div class="key-points"><p><strong>@Erik van Oosten:</strong> 发现 kafka-clients 4.4.0 出现在自动依赖升级 PR 中，但未看到发布公告，因此询问是否正常。</p>
+<p><strong>@Chia-Ping Tsai:</strong> 4.4.0 已接近发布，但 apache/kafka-site 中关于 4.4 发布的文档 PR 尚未就绪。</p></div>
+            <p class="conclusion">Kafka 4.4.0 制品出现在 Maven 仓库并非异常，但正式发布或公告仍需等待文档 PR 完成。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (72)</h2>
+            
+    <p>本周新建 <strong>72</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周 JIRA 主要集中在 Kafka Streams 与消费者组/任务分配的稳定性修复，涵盖 standby 恢复、状态更新死锁、exactly-once offset 丢失、心跳与再平衡异常等问题。同时涉及 KRaft 控制器、动态配置、Docker 镜像、MirrorMaker2、Share Group、遥测与协议能力等服务端功能演进。还包括安全认证、测试迁移与清理、依赖升级、文档修正及 CI/发布流程等工程质量改进。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Kafka Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
