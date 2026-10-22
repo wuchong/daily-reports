@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-10-21</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-10-21</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 14 新 Issues</div>
+            <div class="stat">✅ 6 关闭</div>
+            <div class="stat">✨ 15 新 PRs</div>
+            <div class="stat">🎉 8 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/4749">PR #4749</a> [kv] Iterate prefix lookups outside the KV lock</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4744">PR #4744</a> [kv] Bound prefix lookups with an exclusive upper limit</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4717">PR #4717</a> [rust] Reuse predicate binding and add local Arrow evaluation</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4704">PR #4704</a> [elixir] Add primary key and prefix lookup</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4586">PR #4586</a> [client] Avoid retry loops during historical partition writes</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4242">Issue #4242</a> [server] Register external KV snapshots and restore replicas</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: > LGTM. Please rebase to resolve the conflicts. > > It seems the `org.apache.fluss.server.coordinat…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4482">Issue #4482</a> [flink] Support Cache ALL for lookup.</h4>
+            <ul><li><span class="author">@loserwang1024</span>: @leonardBang , would you like to review this PR?</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4663">Issue #4663</a> [flink] Flush finished tiering tables when closing enumerator</h4>
+            <ul><li><span class="author">@Jackeyzhe</span>: @beryllw Thanks for the review — all three addressed: - `Collections.emptyMap()` in the heartbeat b…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/1696">Issue #1696</a> [filesystems/gs] Implement obtainSecurityToken for Google filesystem</h4>
+            <ul><li><span class="author">@falsity</span>: Hi @gkatzioura @luoyuxia , I'd like to help get this merged. The branch is behind main, Java 11 / c…</li><li><span class="author">@polyzos</span>: @falsity it should be fine, you can pick this up. Assigned to you</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4733">Issue #4733</a> [rust] Preserve write request order across asynchronous dispatch</h4>
+            <ul><li><span class="author">@naivedogger</span>: Thanks @fresh-borzoni for the review! I have pushed a commit to address your comment. PTAL. On the…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4717">Issue #4717</a> [rust] Reuse predicate binding and add local Arrow evaluation</h4>
+            <ul><li><span class="author">@naivedogger</span>: @beryllw Thanks for the detailed review! I have push a commit to address your comment.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3554">Issue #3554</a> [tiering] Decouple common tiering class from flink module</h4>
+            <ul><li><span class="author">@Yohahaha</span>: @yuxia @beryllw could we merge this pr and continue core spark tiering implementation?</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4439">Issue #4439</a> [server] Skip unchanged upserts for primary-key tables</h4>
+            <ul><li><span class="author">@litiliu</span>: @platinumhamburg Thanks for the review. Both comments are addressed in `5192ffa`: the option is doc…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4764">Issue #4764</a> [flink] Apply partition filter to lake partitions in union read</h4>
+            <ul><li><span class="author">@luoyuxia</span>: I have a concern about putting partition-filter evaluation in `LakeSplitGenerator`. We already pass…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4706">Issue #4706</a> [client] Lookups on a dropped table never return</h4>
+            <ul><li><span class="author">@dstolis</span>: @nicolazar @polyzos could you please take a look?</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4781">Issue #4781</a> [docs] Avoid Mockito in AI agent testing guidelines</h4>
+            <ul><li><span class="author">@luoyuxia</span>: cc @platinumhamburg</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4779">Issue #4779</a> [spark] Fix batch reads on empty log buckets with nonzero offsets</h4>
+            <ul><li><span class="author">@litiliu</span>: Hi @YannByron, could you please review this Spark batch-read fix when you have a chance? Regression…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4783">Issue #4783</a> [rust] Align client logging coverage with Java conventions</h4>
+            <ul><li><span class="author">@naivedogger</span>: @luoyuxia @fresh-borzoni @loserwang1024 Could you please take a look when you have time? I'd apprec…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4383">Issue #4383</a> [flink] Support consuming historical partition changelog</h4>
+            <ul><li><span class="author">@luoyuxia</span>: @beryllw @loserwang1024 Could you please help review this pr</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4061">Issue #4061</a> [server] Add off-loop coordinator health cache (mechanism only)</h4>
+            <ul><li><span class="author">@affo</span>: @fresh-borzoni sorry for the latency, I do agree on your view. We explored here and got where we wa…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3743">Issue #3743</a> [server] Support DescribeTabletServers API for safe scaling and upgrades</h4>
+            <ul><li><span class="author">@affo</span>: @morazow as per https://github.com/apache/fluss/pull/4061#issuecomment-5955110796 this one is unblo…</li><li><span class="author">@morazow</span>: yeap, going to rebase and fix conflicts 🤝</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/1389">Issue #1389</a> [rebalance] Change the implementation of Admin#getServerNodes() as introducing a new API to get cluster information</h4>
+            <ul><li><span class="author">@affo</span>: @LiebingYu @swuferhong I think we are done with the performance analysis at https://github.com/apac…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4584">Issue #4584</a> [lake] Propagate Hadoop configuration to Hudi writer</h4>
+            <ul><li><span class="author">@Gezi-lzq</span>: @fhan688 If you have time, could you please review it? Thank you!</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4773">Issue #4773</a> [lake] Fix position-delete commit failures in Iceberg V3 tiering</h4>
+            <ul><li><span class="author">@litiliu</span>: @polyzos Hi Giannis, could you review this when convenient? This fixes same-key updates during Iceb…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4348">Issue #4348</a> [rpc] Add client-side RPC request deadlines</h4>
+            <ul><li><span class="author">@hutiefang76</span>: The four review points are addressed in `2b862e84`, with replies on each thread and the current-mai…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4786">Issue #4786</a> [tiering] Expose the tiering reader waiting ratio</h4>
+            <ul><li><span class="author">@beryllw</span>: > Quick question: are we planning to use this metric to drive autoscaling for the Flink tiering job…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4705">Issue #4705</a> [cpp] Add poll-based async lookups</h4>
+            <ul><li><span class="author">@pbanakar</span>: Hi @fresh-borzoni are you working on this? happy to take this</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4793">Issue #4793</a> Support Paimon tiering to different warehouses</h4>
+            <ul><li><span class="author">@jsinghkukreja</span>: cc: @polyzos any thoughts?</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4717">PR #4717</a> [rust] Reuse predicate binding and add local Arrow evaluation</h4>
+            <ul><li><span class="author">@naivedogger</span>: Good catch, the width check was incorrectly applied to comparison literals. Fixed in this PR: binar…</li><li><span class="author">@beryllw</span>: Could we skip pushdown here for TIME precision > 3, except null checks? For a TIME(9) value of 500,…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4263">PR #4263</a> [rpc] Handle endpoint changes for cached server connections</h4>
+            <ul><li><span class="author">@loserwang1024</span>: Please document why two endpoints for one uid coexist. Nothing in ConnectionKey (:254) explains it,…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4663">PR #4663</a> [flink] Flush finished tiering tables when closing enumerator</h4>
+            <ul><li><span class="author">@Jackeyzhe</span>: Added epoch assertions to the existing empty-table test and a new test covering a single close-time…</li><li><span class="author">@luoyuxia</span>: Could we simplify the shutdown lifecycle here? Flushing `finishedTables` on shutdown fixes the miss…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4348">PR #4348</a> [rpc] Add client-side RPC request deadlines</h4>
+            <ul><li><span class="author">@fxbing</span>: `FutureUtils.orTimeout()` produces `java.util.concurrent.TimeoutException`, but `Errors` maps the F…</li><li><span class="author">@hutiefang76</span>: Changed in `2b862e84` to the existing retryable Fluss `TimeoutException` (`REQUEST_TIME_OUT`). `Sen…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4716">PR #4716</a> [server] Add consumer group owner discovery</h4>
+            <ul><li><span class="author">@pisceslj</span>: Good point. The TabletServer metadata cache is eventually updated when bucket leadership changes, s…</li><li><span class="author">@swuferhong</span>: Cache miss fallback covers missing metadata, but not stale metadata. If leadership moves from A to……</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4733">PR #4733</a> [rust] Preserve write request order across asynchronous dispatch</h4>
+            <ul><li><span class="author">@naivedogger</span>: Fixed in f9128740e: a drained round is now dispatched as a whole, so `get_connection` runs once per…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4773">PR #4773</a> [lake] Fix position-delete commit failures in Iceberg V3 tiering</h4>
+            <ul><li><span class="author">@Copilot</span>: Both `write()` and `delete()` only capture `RuntimeException`. If `dataWriter.write(...)`, `equalit…</li><li><span class="author">@litiliu</span>: Checked this against Iceberg 1.10.1 and 1.12.0. The checked-IOException scenario does not apply to…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4751">PR #4751</a> [client] Skip removed partitions during tiering split generation</h4>
+            <ul><li><span class="author">@Copilot</span>: The warning omits the underlying exception, which makes it harder to diagnose unexpected “partition…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3099">PR #3099</a> [spark] Add spark tiering service</h4>
+            <ul><li><span class="author">@Copilot</span>: `parseArgs` returns an immutable Scala `Map`, and `paramsMap.asJava` is a read-only Java view for i…</li><li><span class="author">@Yohahaha</span>: `extractAndRemovePrefix` does not mutate the input map. It filters `entrySet()` and collects a new……</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4383">PR #4383</a> [flink] Support consuming historical partition changelog</h4>
+            <ul><li><span class="author">@Copilot</span>: For non-historical partitions, if `lakeSplits` exist but `snapshotLogOffset` is missing/negative, t…</li><li><span class="author">@luoyuxia</span>: For an ordinary partition, a valid readable lake snapshot includes the corresponding log offset for…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3923">PR #3923</a> [tiering] Trigger job failover when coordinator epoch changes</h4>
+            <ul><li><span class="author">@luoyuxia</span>: Could we encapsulate sending the heartbeat and checking the coordinator epoch in a single method? B…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4745">PR #4745</a> [server] Support group-aware tiering table assignment</h4>
+            <ul><li><span class="author">@Copilot</span>: Current validation allows control characters and embedded newlines (e.g. `\"a\\nb\"` passes because…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4619">PR #4619</a> [lake/paimon] Promote existing Paimon log tables to Fluss lake tables</h4>
+            <ul><li><span class="author">@wuchong</span>: Could we relax `isPaimonSchemaCompatible` to accept the `VARCHAR(n)`/`STRING` and `VARBINARY(n)`/`B…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4783">PR #4783</a> [rust] Align client logging coverage with Java conventions</h4>
+            <ul><li><span class="author">@zuston</span>: Do we need to test log-level filtering here, given that Rust’s standard `log` crate is already matu…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4791">PR #4791</a> [elixir] Add partition management to Admin</h4>
+            <ul><li><span class="author">@nicolazar</span>: @fresh-borzoni: It seems that there is a problem with trying to write to a partition that does not……</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4794">#4794</a> Iceberg tables with multiple bucket keys can be created but cannot be written <span class="author">@yangshangqing95</span> </li><li><a href="https://github.com/apache/fluss/issues/4793">#4793</a> Support Paimon tiering to different warehouses <span class="author">@jsinghkukreja</span> </li><li><a href="https://github.com/apache/fluss/issues/4789">#4789</a> [File system] Add Baidu Cloud BOS integration <span class="author">@falsity</span> </li><li><a href="https://github.com/apache/fluss/issues/4787">#4787</a> [Bug] Partition creation races with table and database deletion <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/issues/4784">#4784</a> [client][server] Fetch request ordering can cause bucket starvation <span class="author">@fxbing</span> </li><li><a href="https://github.com/apache/fluss/issues/4782">#4782</a> [flink] Expose the tiering reader waiting ratio <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/issues/4780">#4780</a> [rust] Align client logging conventions and coverage with Java <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/issues/4777">#4777</a> [kv] Skip compression for small Arrow WAL buffers <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/4776">#4776</a> [spark] Support table snapshots at a Fluss commit timestamp <span class="author">@Yohahaha</span> </li><li><a href="https://github.com/apache/fluss/issues/4775">#4775</a> [kv] Reuse ZSTD compression contexts during Arrow WAL serialization <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/4774">#4774</a> [spark] Batch reads fail on empty log buckets with nonzero offsets <span class="author">@litiliu</span> </li><li><a href="https://github.com/apache/fluss/issues/4772">#4772</a> [lake/iceberg] Tiering fails with "Must use DVs for position deletes in V3" <span class="author">@litiliu</span> </li><li><a href="https://github.com/apache/fluss/issues/4769">#4769</a> [kv] Support asynchronous manual compaction for primary-key tables <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/4767">#4767</a> [kv] Run MultiGet outside the KV lock with snapshot read views <span class="author">@platinumhamburg</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4795">#4795</a> [Server] Prevent creating iceberg format tables with multiple bucket keys <span class="author">@yangshangqing95</span> </li><li><a href="https://github.com/apache/fluss/pull/4792">#4792</a> [Trino] Support equivalent bucket pruning <span class="author">@yangshangqing95</span> </li><li><a href="https://github.com/apache/fluss/pull/4791">#4791</a> [elixir] Add partition management to Admin <span class="author">@nicolazar</span> </li><li><a href="https://github.com/apache/fluss/pull/4790">#4790</a> [filesystems] Implement obtainSecurityToken for Google filesystem <span class="author">@falsity</span> </li><li><a href="https://github.com/apache/fluss/pull/4788">#4788</a> [server] Guard partition registration against concurrent table drops <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/pull/4786">#4786</a> [tiering] Expose the tiering reader waiting ratio <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/pull/4785">#4785</a> [client][server] Preserve fetch bucket order to prevent starvation <span class="author">@fxbing</span> </li><li><a href="https://github.com/apache/fluss/pull/4783">#4783</a> [rust] Align client logging coverage with Java conventions <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/pull/4781">#4781</a> [docs] Avoid Mockito in AI agent testing guidelines <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/pull/4779">#4779</a> [spark] Fix batch reads on empty log buckets with nonzero offsets <span class="author">@litiliu</span> </li><li><a href="https://github.com/apache/fluss/pull/4778">#4778</a> [spark] Add commit-time snapshot TVF <span class="author">@Yohahaha</span> </li><li><a href="https://github.com/apache/fluss/pull/4773">#4773</a> [lake] Fix position-delete commit failures in Iceberg V3 tiering <span class="author">@litiliu</span> </li><li><a href="https://github.com/apache/fluss/pull/4771">#4771</a> [server] Add recoverable bulk-load transactions <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/4770">#4770</a> [kv] Support asynchronous manual compaction for primary-key tables <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/4768">#4768</a> [kv] Run MultiGet outside the KV lock with snapshot read views <span class="author">@platinumhamburg</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4777">#4777</a> [kv] Skip compression for small Arrow WAL buffers <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/4747">#4747</a> [kv] Iterate prefix lookups outside the KV lock with a fixed read view <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/4743">#4743</a> [kv] Bound RocksDB prefix lookups with an exclusive upper limit <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/4715">#4715</a> [rust] Add predicate foundations for UnionRead <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/issues/4343">#4343</a> [Feature] Support an update-if-changed merge engine for primary-key tables <span class="author">@litiliu</span> </li><li><a href="https://github.com/apache/fluss/issues/4223">#4223</a> [Server] Support importing completed KV snapshots <span class="author">@platinumhamburg</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4749">#4749</a> [kv] Iterate prefix lookups outside the KV lock <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/4744">#4744</a> [kv] Bound prefix lookups with an exclusive upper limit <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/4717">#4717</a> [rust] Reuse predicate binding and add local Arrow evaluation <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/pull/4704">#4704</a> [elixir] Add primary key and prefix lookup <span class="author">@nicolazar</span> </li><li><a href="https://github.com/apache/fluss/pull/4586">#4586</a> [client] Avoid retry loops during historical partition writes <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/pull/4439">#4439</a> [server] Skip unchanged upserts for primary-key tables <span class="author">@litiliu</span> </li><li><a href="https://github.com/apache/fluss/pull/4242">#4242</a> [server] Register external KV snapshots and restore replicas <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/3554">#3554</a> [tiering] Decouple common tiering class from flink module <span class="author">@Yohahaha</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
