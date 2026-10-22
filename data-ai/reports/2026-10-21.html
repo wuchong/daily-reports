@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data+AI 全球日报 | 2026-10-21</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Data+AI 全球日报 | 2026-10-21</h1>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="top-changes">
+            <h2>🔥 今日最重要的3个变化</h2>
+            <ol><li><strong>ClickHouse 在 NVIDIA Vera CPU 上展示高扩展性</strong> — ClickHouse 称 NVIDIA Vera 登顶 ClickBench 硬件榜，过滤、聚合和 Join 微基准显示其在 176 核上接近线性扩展，为 OLAP 硬件选型提供新参考。</li><li><strong>OpenReplay 用 ClickHouse 承载前端可观测性大规模负载</strong> — OpenReplay 将 Postgres 替换为 ClickHouse，单实例即可每日摄取数十亿事件和最高 6TB 数据，并保持亚秒查询，显示专用实时分析引擎进入可观测性核心链路。</li><li><strong>StarTree 强调查询性能需关注实际工作量</strong> — StarTree 文章以 Stripe 的 Apache Pinot 时序聚合系统为例，展示 150K events/s、20K QPS 和 p99 21ms 的低延迟，提示数据平台选型应综合延迟、吞吐和资源成本。</li></ol>
+            <p class="judgment"><strong>总判断：</strong>今日信号集中在实时分析引擎的性能竞争与生产化落地：ClickHouse 一方面借 NVIDIA Vera 展示硬件适配能力，另一方面通过 OpenReplay 案例强化可观测性场景。StarTree 对查询性能的讨论则提醒市场从单一延迟指标转向吞吐、长尾延迟和资源效率的综合评估。整体看，Data+AI 基础设施仍在向高吞吐、低延迟、可观测性数据统一分析演进。</p>
+        </section>
+
+        <section class="top-signals">
+            <h2>📡 重要信号</h2>
+            
+    <article class="news-item">
+        <h3>Running ClickHouse on NVIDIA Vera CPU: Is your favorite database up to the challenge?</h3>
+        <p class="sources">📌 <a href="https://clickhouse.com/blog/clickhouse-performance-on-nvidia-vera">ClickHouse Blog</a></p>
+        <p class="date">2026-10-21</p>
+        <p class="summary">ClickHouse 官方博客发布 NVIDIA Vera CPU 性能测试，称该硬件在 ClickBench 硬件排行榜中位列第一。文章通过过滤、聚合和 Join 三类微基准测试，展示 ClickHouse 在 176 个核心上接近线性扩展，体现其对高并行 CPU 架构的适配能力。该结果虽偏基准测试，但为分析型数据库在新一代 CPU 平台上的部署提供了参考。</p>
+        <div class="impact">📊 数据平台影响：若 Vera 类高核数 CPU 能稳定承载 OLAP 负载，数据平台可在通用计算与专用加速之间获得新的成本性能选项，也可能推动云厂商重新评估查询引擎与硬件组合。</div>
+    </article>
+    <article class="news-item">
+        <h3>Front-end observability at scale: How OpenReplay captures billions of daily events in real time with ClickHouse</h3>
+        <p class="sources">📌 <a href="https://clickhouse.com/blog/openreplay-front-end-observability-at-scale-clickhouse">ClickHouse Blog</a></p>
+        <p class="date">2026-10-21</p>
+        <p class="summary">ClickHouse 博客发布 OpenReplay 案例，称其前端可观测性平台用 ClickHouse 替换 Postgres 后，可在单个垂直扩展实例上每日摄取数十亿事件，最高约 6TB 数据，并实现亚秒级查询。系统还通过单一 TTL 设置管理数据保留，降低运维复杂度。该案例显示 ClickHouse 正进入高吞吐会话回放和产品分析场景。</p>
+        <div class="impact">📊 数据平台影响：可观测性数据具有高基数、高写入和即席查询特征，ClickHouse 的列存与 TTL 能力为实时事件分析提供替代方案，可能挤压通用事务数据库在分析链路中的空间。</div>
+    </article>
+        </section>
+
+        <section class="product-tech">
+            <h2>💻 产品与技术</h2>
+            
+    <article class="news-item">
+        <h3>Query Performance: How Much Work Does Each Query Actually Require?</h3>
+        <p class="sources">📌 <a href="https://startree.ai/resources/clickhouse-field-notes-query-performance/">StarTree Blog</a></p>
+        <p class="date">2026-10-21</p>
+        <p class="summary">StarTree 发布关于查询性能的技术文章，讨论每条查询实际需要多少计算工作，而非只看平均延迟。文章引用 Stripe 在 Apache Pinot 上运行时间序列聚合系统的例子：系统处理约 150K events/s 和 20K QPS，p99 查询延迟约 21ms，p99.9 约 63ms，最大集群约 3PB 数据。该案例强调实时分析平台需同时关注吞吐、长尾延迟和资源效率。</p>
+        <div class="impact">📊 数据平台影响：实时 OLAP 竞争正从单点查询延迟转向大规模并发下的稳定性和成本，数据平台需要提供更细粒度的查询工作量分析，以支持容量规划和引擎选型。</div>
+    </article>
+        </section>
+
+        <section class="people-views">
+            <h2>👤 人物与观点</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="analyst-insights">
+            <h2>📊 分析师洞察</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="watchlist">
+            <h2>👀 观察列表</h2>
+            
+    <article class="watchlist-item">
+        <h3>NVIDIA Vera 在分析型数据库负载上的生产化验证</h3>
+        <span class="status">待观察</span>
+        <p class="reason">ClickBench 成绩显示硬件潜力，但生产环境还需验证稳定性、成本和云实例供给。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>更多真实工作负载、云厂商实例或第三方基准结果发布。</p>
+    </article>
+    <article class="watchlist-item">
+        <h3>ClickHouse 在可观测性与事件分析场景的扩张</h3>
+        <span class="status">待观察</span>
+        <p class="reason">OpenReplay 案例显示 ClickHouse 可承载高吞吐前端事件数据，但是否能形成行业标准化仍需观察。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>更多可观测性平台公布 ClickHouse 迁移或托管服务集成。</p>
+    </article>
+    <article class="watchlist-item">
+        <h3>Apache Pinot/StarTree 与 ClickHouse 的实时分析竞争</h3>
+        <span class="status">待观察</span>
+        <p class="reason">StarTree 借 Stripe Pinot 案例强调低延迟和高并发，实时 OLAP 引擎差异化竞争加剧。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>更多生产级性能对比、成本分析或企业选型案例。</p>
+    </article>
+        </section>
+
+        <section class="stock-analysis">
+            <h2>📈 股票分析</h2>
+            <p class="disclaimer">⚠️ 以下内容仅供参考，不构成任何投资建议。投资有风险，入市需谨慎。</p>
+            
+    <article class="stock-item">
+        <div class="stock-header">
+            <span class="ticker">NVDA</span>
+            <span class="company">NVIDIA</span>
+            <span class="signal signal-neutral">⚪ 中性</span>
+        </div>
+        <p class="stock-summary">NVIDIA Vera 在 ClickHouse 基准测试中表现突出，显示其 CPU 在数据分析负载上的扩展能力。若后续被更多数据库和云平台采用，可能增强 NVIDIA 在数据中心 CPU/加速计算生态中的位置，但短期财务影响仍需观察。</p>
+        <div class="stock-details">
+            <div class="catalysts">
+                <strong>🚀 催化剂</strong>
+                <ul><li>更多数据库或云厂商宣布支持 Vera</li><li>生产环境基准和 TCO 数据发布</li><li>数据中心 CPU/加速计算出货增长</li></ul>
+            </div>
+            <div class="risks">
+                <strong>⚠️ 风险</strong>
+                <ul><li>基准测试无法完全代表生产负载</li><li>x86 和云厂商自研 CPU 竞争</li><li>AI 资本开支波动影响硬件采购</li></ul>
+            </div>
+        </div>
+    </article>
+        </section>
+
+        <footer>
+            <p>Generated by Data+AI Daily Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
