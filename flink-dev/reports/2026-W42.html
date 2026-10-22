@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flink 社区周报 | 2026-W42</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Flink 社区周报 | 2026-W42</h1>
+            <p class="date-range">2026-10-12 ~ 2026-10-18</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (1)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/l89sryydod2dmcb37x28rt8oyyp8hl5r">New Apache Flink Committer - Ramin Gharib</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (0)</h2>
+            <p class="empty">本周无投票</p>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/931p9tzr7jmhyg5l5qob5sd0t8xyr6ns">FLIP-616: Materialized Tables support for Table API</a></h3>
+            <p class="meta">5 条回复 · 3 位参与者</p>
+            <p class="summary">本次讨论围绕 FLIP-616 为 Flink Table API 增加 Materialized Tables 支持，重点澄清查询序列化、选项变更语义以及刷新作业丢失后的恢复机制。社区对方案总体认可，主要疑问已通过回复和文档补充说明解决，FLIP 已接近投票阶段。</p>
+            <div class="key-points"><p><strong>@Timo Theusner:</strong> 说明 Table API 与 SQL 创建的 Materialized Table 在 original/expanded query 上的差异，不可序列化查询会在写入 Catalog 前被拒绝；选项变更按调用顺序生效，并计划补充文档。</p>
+<p><strong>@Xuyang:</strong> 认可使用 resume() 作为刷新作业丢失后的恢复方式，并曾建议增加类似 FORCE 或 IGNORE NOT EXISTS 的可选参数，以便在保留表数据的情况下重启作业。</p>
+<p><strong>@Gustavo de Morais:</strong> 支持该 FLIP，认为 Materialized Tables 是简化 Flink 作业创建的重要能力，在 Table API 中暴露该能力是合理的。</p></div>
+            <p class="conclusion">初步共识是不额外引入恢复参数，而是通过 resume()、警告日志和文档说明来处理刷新作业丢失场景；Timo 将更新 FLIP，并计划在无反对意见后发起投票。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/jc9j6r21fjm0qf75dowgfny89vv4wqp7">Flink Native Engine StreamFusion Based On DataFusion As Flink SubProject</a></h3>
+            <p class="meta">4 条回复 · 4 位参与者</p>
+            <p class="summary">讨论围绕是否将基于 DataFusion 的 StreamFusion 原生执行引擎纳入 Flink 子项目展开。发起人介绍了其性能优势和低侵入式集成方式，社区成员表达了兴趣并关注状态管理、容错及生产落地情况。</p>
+            <div class="key-points"><p><strong>@Jacky Lau:</strong> 提议将 StreamFusion 作为 Flink 子项目；该项目不修改 Flink 代码，通过 jar 和配置开关启用，替换物理执行计划并复用 Flink 的 checkpoint 与容错机制。</p>
+<p><strong>@Ran Tao:</strong> 关注 StreamFusion 与 Flink 现有 planner 和 runtime 的集成方式，尤其是有状态流处理、checkpoint、容错，以及是否已有生产使用案例。</p>
+<p><strong>@Yongming Zhang:</strong> 认为项目性能和代码质量较好，其公司正在集成评估，支持将其作为 Flink 子项目以丰富社区生态。</p></div>
+            <p class="conclusion">社区初步反馈积极，倾向支持 StreamFusion 作为 Flink 子项目，但仍需进一步明确集成细节、状态与容错保证以及生产验证；下一步可继续推进评估、试用和子项目流程讨论。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/4vro6n1jf7ftodlb62j49rx3252ctkrw">FLIP-XXX: Store large operator coordinator state outside the checkpoint metadata</a></h3>
+            <p class="meta">4 条回复 · 2 位参与者</p>
+            <p class="summary">该讨论围绕 FLIP-XXX：将较大的 Operator Coordinator 状态存储到 checkpoint 元数据之外，以降低元数据体积并提升检查点处理可靠性。社区已完成关键实现路径审查，并重点解决了异步状态读取在 reset 被替代或 coordinator 关闭时的取消与资源释放问题。当前方案已获得认可，正在推进进入 wiki 和投票阶段。</p>
+            <div class="key-points"><p><strong>@Spoorthi Basu:</strong> 已根据反馈更新 FLIP 和原型：在 reset 被替代或 coordinator 关闭时取消未完成读取并关闭流，同时补充阻塞读测试；并请求 committer 协助创建 wiki 页面或授权。</p>
+<p><strong>@Krishna Sai:</strong> 审查原型后给出 +1，确认元数据序列化版本、写入线程、文件合并隔离、阈值配置和 savepoint 清理等关键风险点无明显问题。</p>
+<p><strong>@Zhe Wang:</strong> 关注大型协调器状态异步读取的生命周期，建议验证被替代或关闭场景下是否取消读取并释放输入流；在作者补充实现和测试后认可该处理。</p></div>
+            <p class="conclusion">讨论已形成初步共识：方案无重大阻塞问题，异步读取资源清理已补齐；下一步由 committer 创建或授权 Flink wiki 页面并分配 FLIP 编号，随后发起投票。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/6zmjql5dzmnsclhq6nsro114pl5hlz93">Release flink-connector-pulsar v5.0.0</a></h3>
+            <p class="meta">3 条回复 · 3 位参与者</p>
+            <p class="summary">社区讨论发布 flink-connector-pulsar v5.0.0，主版本升级的原因是主线已迁移到 Flink 2.x，并计划支持 Flink 2.0/2.1 与 Pulsar client 4.0.x。讨论整体支持该发布，并建议将 Pulsar client 升级到 4.0.14 以修复 CVE。目前相关版本升级已完成，等待剩余工单完成后准备 RC。</p>
+            <div class="key-points"><p><strong>@Ferenc Csaky:</strong> 发起 flink-connector-pulsar v5.0.0 发布，范围包括支持 Flink 2.0/2.1 和 Pulsar client 4.0.x，并准备首个 RC。</p>
+<p><strong>@Mate Czagany:</strong> 支持发布，并建议将 Pulsar client 从 4.0.13 升级到 4.0.14，以修复两个 CVE。</p>
+<p><strong>@Leonard Xu:</strong> 表示 +1，支持该发布计划。</p></div>
+            <p class="conclusion">发布计划获得支持，Pulsar client 版本升级已交付；待 FLINK-41009 完成后，Ferenc 将准备第一个 RC。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/pfd6ktpyh95j126jm0qolngkrm2bpyhg">TO_CHANGELOG: Add optional operation column or EXCLUDE projection?</a></h3>
+            <p class="meta">3 条回复 · 3 位参与者</p>
+            <p class="summary">社区讨论是否在 TO_CHANGELOG 中增加可选参数以省略操作列，还是通过 SQL 的 EXCLUDE/投影移除该列。Gustavo、Mate 和 Timo 分别围绕使用场景、参数必要性与函数设计边界展开讨论，目前更倾向于通过下游投影或未来 EXCLUDE 能力解决。</p>
+            <div class="key-points"><p><strong>@Gustavo de Morais:</strong> 梳理了需要或不需要 op 列的多种场景，认为应评估新增参数的普遍性，并指出 Table API 已可通过 dropColumns/withoutColumns 移除 op 列。</p>
+<p><strong>@Mate Czagany:</strong> 支持新增 include_op_column 参数，认为这与 TO_CHANGELOG 已有输出控制一致、实现成本低，但需文档说明 -U/-D 可能表现为重复记录。</p>
+<p><strong>@Timo Walther:</strong> 反对为该场景增加参数，认为 changelog 应保留 op 字段，PTF 不应承担 SQL 可完成的投影功能，建议推动 SELECT * EXCLUDE 等投影能力。</p></div>
+            <p class="conclusion">目前未形成明确最终结论，但讨论倾向不新增该参数，优先通过下游 SQL 投影或未来 EXCLUDE 能力解决；若后续推进，需要补充文档说明省略 op 列后的语义和风险。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/p2cgw7fmqls7onhbz5zl2grrstyxb4o4">Flink CDC 3.8 Kick Off</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">本次讨论启动了 Flink CDC 3.8 的发布周期，重点方向包括升级 Flink 2.3 依赖、评估将 Debezium 从 1.9.x 升级到 2.7.x，并持续完善 Elasticsearch、Iceberg、Paimon、Fluss 等 Pipeline 连接器能力。社区初步认可发布经理人选和 2027 年 2 月底的发布目标，同时开始讨论是否扩展对 Flink 2.4 或更高版本的支持。</p>
+            <div class="key-points"><p><strong>@Yanquan Lv:</strong> 提议 Flink CDC 3.8 聚焦升级 Flink 2.3、评估升级 Debezium 2.7.x 并保留 Java 11 支持，同时增强 Pipeline 连接器生态，目标在 2027 年 2 月底发布，并自愿担任 Release Manager。</p>
+<p><strong>@Xiqian YU:</strong> 支持升级 Flink 和 Debezium 依赖，并建议考虑将 Flink 支持矩阵扩展到即将发布的 Flink 2.4，甚至视情况支持 2.5。</p>
+<p><strong>@Leonard Xu:</strong> 支持 Yanquan Lv 作为 Release Manager 候选，并认可提出的发布时间安排。</p></div>
+            <p class="conclusion">初步结论是社区支持启动 Flink CDC 3.8 发布，并认可 Yanquan Lv 作为 Release Manager 及 2027 年 2 月底的发布目标。下一步是继续征集社区反馈、创建 cdc-3.8.0 相关 JIRA，并重点评估 Debezium 升级兼容性及 Flink 版本支持范围。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/n45c7h4jlg5ztp096764y24dtdw0jrc3">FLIP-608: Flink on Ray, Ray Resource Backend For Flink</a></h3>
+            <p class="meta">1 条回复 · 1 位参与者</p>
+            <p class="summary">本次讨论围绕 FLIP-608 将 Flink 运行在 Ray 上，并由 Ray 充当资源后端，重点澄清 TaskManager 生命周期、HA、GPU 资源边界和 API 设计。提案方已根据评审意见更新方案，并明确初版将复用 Flink 现有 HA 与制品分发机制，同时收敛 GPU 隔离和客户端制品上传范围。</p>
+            <div class="key-points"><p><strong>@Zhanghao Chen:</strong> 更新 Flink on Ray 设计：初版复用 Flink HA 与 Blob/制品分发，TaskManager 由资源管理驱动创建，并通过 cluster ID 和 Ray namespace 管理生命周期；GPU 仅在 TaskManager 级别可见。</p>
+<p><strong>@Biao Geng:</strong> 认可该集成对 Python/AI 生态的价值以及类似 YARN/Kubernetes 的整体架构，并关注 TaskManager Actor 创建与制品分发问题。</p></div>
+            <p class="conclusion">初步结论是按初版范围收敛：TaskManager 由资源管理驱动创建，制品仅支持预置环境或 Flink 文件系统路径，自动客户端上传和 Ray runtime_env.working_dir 集成延后；下一步继续完善 FLIP 并推进实现。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/o0tqh3y369zwvbt6nkwbygtjjzg1x2rs">[Flink CDC][Bug] MongoDB CDC recreates change stream cursor from the task's starting offset</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论聚焦 Flink CDC MongoDB 连接器在错误恢复时重建 change stream cursor 仍从任务起始 offset 恢复，导致重复消费和严重延迟的 bug。报告者提出跟踪最新 resume token、增强错误日志，并针对超大 BSON 事件提出拆分重组方案。社区认可问题价值，但建议先提供最小复现示例，并将不同问题拆分跟踪。</p>
+            <div class="key-points"><p><strong>@Sonal Maheshwari:</strong> 指出 MongoDB CDC 错误恢复重建 cursor 时使用固定起始 offset，导致从任务开始重放数据，并提出基于最新 resume token 恢复、增强日志及大事件拆分两个修复方向。</p>
+<p><strong>@Xiqian YU:</strong> 认为 StreamSplitState 可能已在 MongoDBRecordEmitter 中更新，因此需要最小可复现示例来确认状态恢复 bug。</p>
+<p><strong>@Xiqian YU:</strong> 建议将错误日志不足和 BSONObjectTooLarge 大事件问题与状态恢复问题拆分，分别创建独立 JIRA 或 PR 跟踪。</p></div>
+            <p class="conclusion">目前尚未形成最终结论，下一步是提供最小复现示例并创建 JIRA；状态恢复、日志增强和大事件处理可能拆分为独立问题分别推进。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/63l76mcn9n7bnm6cvd643hlt5kclo8tq">[REQUEST] Creating versions 2.4.1 and 2.5.0 in Jira</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">Flink 2.4 发布团队请求 PMC 在 Jira 中创建 2.4.1 和 2.5.0 版本，以便分支切割后正确归类工单。该请求已得到响应并完成。</p>
+            <div class="key-points"><p><strong>@Mika Naylor:</strong> 请求 PMC 成员创建 Jira 版本 2.4.1 和 2.5.0，用于 2.4 分支切割后的工单分配。</p>
+<p><strong>@Rui Fan:</strong> 确认已完成添加 Jira 版本 2.4.1 和 2.5.0。</p></div>
+            <p class="conclusion">Jira 版本 2.4.1 和 2.5.0 已创建，后续发布团队可将相关工单分配到对应版本。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/hx29bph8fxvspqz5yg85l19m7x8oy1m6">Guidelines for post-FLIP adjustments to built-in PTFs</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论聚焦内置 PTF/SQL 函数在 FLIP 接受后发生调整时应遵循的流程。社区基本认可 FLIP 仅记录接受时设计，后续实现以代码和用户文档为准，并计划在 FLIP 页面补充相应说明。</p>
+            <div class="key-points"><p><strong>@Gustavo de Morais:</strong> 建议在 FLIP 流程后新增“Changes after a FLIP is accepted”小节，明确向后兼容扩展通常无需新 FLIP，破坏性或核心决策变更需走常规流程，并将适用范围扩展到内置 SQL 函数。</p>
+<p><strong>@Sai Krishna Sepuri:</strong> 支持上述三点，认为用户文档已能准确描述当前语义，FLIP 作为历史记录即可，持续更新 FLIP 的维护负担不值得。</p></div>
+            <p class="conclusion">初步结论是以后续代码和用户文档为准；下一步是在 FLIP 页面添加简短章节，说明 FLIP 接受后的变更规则，并将第二点范围表述为内置 SQL 函数。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (81)</h2>
+            
+    <p>本周新建 <strong>81</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周 JIRA 主要集中在连接器与 CDC 链路的问题修复和能力增强，包括 Pulsar、StarRocks、Doris、Postgres CDC、Avro、S3/Fluss 以及 schema change、事务写入等场景。其次是 SQL/Table API 与运行时的正确性和稳定性改进，涉及 upsert、join、decimal 类型、执行计划、savepoint、operator 生命周期、MiniCluster 和 K8s/YARN 部署等问题。同时还包含 PyFlink 使用与文档、依赖升级、JUnit5 迁移以及多个测试/构建稳定性修复。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Flink Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
