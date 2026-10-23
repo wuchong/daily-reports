@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-10-22</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-10-22</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 7 新 Issues</div>
+            <div class="stat">✅ 2 关闭</div>
+            <div class="stat">✨ 7 新 PRs</div>
+            <div class="stat">🎉 2 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/4733">PR #4733</a> [rust] Preserve write request order across asynchronous dispatch</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4619">PR #4619</a> [lake/paimon] Promote existing Paimon log tables to Fluss lake tables</li><li>🐛 <a href="https://github.com/apache/fluss/issues/4807">Issue #4807</a> [kafka] Serve Metadata from the server cache with tablePropertyCache</li><li>🐛 <a href="https://github.com/apache/fluss/issues/4804">Issue #4804</a> Support per-partition bucket rescale for Iceberg lake tables</li><li>🐛 <a href="https://github.com/apache/fluss/issues/4803">Issue #4803</a> [build] Consider self-hosted runners for client integration CI</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4773">Issue #4773</a> [lake] Fix position-delete commit failures in Iceberg V3 tiering</h4>
+            <ul><li><span class="author">@litiliu</span>: @luoyuxia PTAL</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4779">Issue #4779</a> [spark] Fix batch reads on empty log buckets with nonzero offsets</h4>
+            <ul><li><span class="author">@litiliu</span>: @beryllw PTAL</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/1410">Issue #1410</a> Change the implementation of Admin#getServerNodes() to support carrying ServerTag</h4>
+            <ul><li><span class="author">@polyzos</span>: Thanks @LiebingYu for the work 👍 can you please rebase the branch.. and a few more thoughts: 1. **O…</li><li><span class="author">@affo</span>: @LiebingYu are you still working on this one? I see your latest commit was 2 months ago here. I wou…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4373">Issue #4373</a> [coordinator] Add rebalance progress and outcome metrics</h4>
+            <ul><li><span class="author">@heyallencao</span>: Hi @morazow @affo, thanks again for reviewing and approving this PR. I've merged current main into…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4794">Issue #4794</a> Iceberg tables with multiple bucket keys can be created but cannot be written</h4>
+            <ul><li><span class="author">@polyzos</span>: @yangshangqing95 for my own curiosity, there is no way to write to iceberg, a table with multiple b…</li><li><span class="author">@yangshangqing95</span>: Hi @polyzos, Iceberg itself is not limited to a single bucket partition field. The restriction come…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4790">Issue #4790</a> [filesystems] Implement obtainSecurityToken for Google filesystem</h4>
+            <ul><li><span class="author">@polyzos</span>: Thanks @falsity, and thanks @gkatzioura for the groundwork in #1696. Two things here: 1. **Read-onl…</li><li><span class="author">@falsity</span>: Both points are addressed. The token scope is now `https://www.googleapis.com/auth/devstorage.read_…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2666">Issue #2666</a> [spark] to support Spark4.x</h4>
+            <ul><li><span class="author">@Yohahaha</span>: Hi @gezapeti, are you still working on #2735 for Spark 4.x support? I’m interested in this feature…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4619">Issue #4619</a> [lake/paimon] Promote existing Paimon log tables to Fluss lake tables</h4>
+            <ul><li><span class="author">@luoyuxia</span>: @wuchong Thanks for you review. I have address your comment；Let me merge this first. I'll address t…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4804">Issue #4804</a> Support per-partition bucket rescale for Iceberg lake tables</h4>
+            <ul><li><span class="author">@litiliu</span>: Please assign to me</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4348">Issue #4348</a> [rpc] Add client-side RPC request deadlines</h4>
+            <ul><li><span class="author">@gyang94</span>: @hutiefang76 Hi, thanks for your contribution. LGTM +1. One small thing, the AI generated code comm…</li><li><span class="author">@hutiefang76</span>: @gyang94 Shortened the new comments in d2df1490 and used your wording for the unaccounted-request p…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4263">Issue #4263</a> [rpc] Handle endpoint changes for cached server connections</h4>
+            <ul><li><span class="author">@BackendArchitectX</span>: Hi @loserwang1024, I've rebased and consolidated the PR into a single commit (`29cbc8789`) as reque…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4391">Issue #4391</a> [client] Expose all coordinator servers (leader and standbys) via the client API</h4>
+            <ul><li><span class="author">@affo</span>: @MaheshS08 I am directly involving @polyzos in the review 🤝 Can you please rebase?</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4733">Issue #4733</a> [rust] Preserve write request order across asynchronous dispatch</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: Merging...</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4805">Issue #4805</a> [lake/paimon] Accept nested bounded types during enablement</h4>
+            <ul><li><span class="author">@wuchong</span>: @luoyuxia is it ready to be reviewed?</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4230">Issue #4230</a> [spark] Support custom Paimon lake table paths</h4>
+            <ul><li><span class="author">@BackendArchitectX</span>: Hi maintainers, I've added two regression tests covering custom Paimon primary-key fallback and pre…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4807">Issue #4807</a> [kafka] Serve Metadata from the server cache with tablePropertyCache</h4>
+            <ul><li><span class="author">@hutiefang76</span>: @gyang94, could I help with tests for `table.kafka.enabled` changes and cache population after a ta…</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3099">PR #3099</a> [spark] Add spark tiering service</h4>
+            <ul><li><span class="author">@luoyuxia</span>: Could we consolidate the pre-commit cancellation checks into one and remove the extra synchronous `…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4348">PR #4348</a> [rpc] Add client-side RPC request deadlines</h4>
+            <ul><li><span class="author">@fxbing</span>: One small nit: multiple connections can share an EventLoop, so a blocking callback can delay all co…</li><li><span class="author">@hutiefang76</span>: Updated in `7a70b425`: the comment and test name now describe isolation across event loops. Connect…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4745">PR #4745</a> [server] Support group-aware tiering table assignment</h4>
+            <ul><li><span class="author">@litiliu</span>: Addressed in [e84d7dce1](https://github.com/apache/fluss/commit/e84d7dce19505837a9d5b61ce465d8a95b1…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3820">PR #3820</a> [server] add lake-aware partition drop when auto-partition retention is enabled</h4>
+            <ul><li><span class="author">@Copilot</span>: Unlike most Coordinator→TabletServer control-plane RPCs, `FreezePartitionRequest` has no coordinato…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4482">PR #4482</a> [flink] Support Cache ALL for lookup.</h4>
+            <ul><li><span class="author">@leonardBang</span>: Would it make sense to make the "sharded" part of this mode more explicit in the naming and the doc…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4261">PR #4261</a> [kafka] Implement Metadata API over Fluss table metadata</h4>
+            <ul><li><span class="author">@wuchong</span>: This ZK-backed catalog scan is not production-ready. Every all-topics Metadata request lists the da…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4663">PR #4663</a> [flink] Flush finished tiering tables when closing enumerator</h4>
+            <ul><li><span class="author">@Jackeyzhe</span>: Thanks for reviewing, I've restructured as suggested.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4619">PR #4619</a> [lake/paimon] Promote existing Paimon log tables to Fluss lake tables</h4>
+            <ul><li><span class="author">@wuchong</span>: Could we apply this normalization recursively to ARRAY elements, MAP keys/values, and ROW fields? `…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3930">PR #3930</a> [flink] Spill cdc log to rocksDB for pk batch read in case of OOM.</h4>
+            <ul><li><span class="author">@leonardBang</span>: Spilling the changelog to RocksDB is a good direction for moving the bulk of the data off the JVM h…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4263">PR #4263</a> [rpc] Handle endpoint changes for cached server connections</h4>
+            <ul><li><span class="author">@BackendArchitectX</span>: Thanks @loserwang1024 for the detailed review. Addressed in commit `6e66c9f9f`: - Added `Connection…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4424">PR #4424</a> [helm] Support several Fluss clusters in one namespace</h4>
+            <ul><li><span class="author">@affo</span>: Good catch — it did not. Pods carry a `controller-revision-hash` label holding `<statefulset>-<hash…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4716">PR #4716</a> [server] Add consumer group owner discovery</h4>
+            <ul><li><span class="author">@pisceslj</span>: Thanks for catching this. I updated the creation defaults so system tables, including sys.consumer_…</li><li><span class="author">@wuchong</span>: Could we classify every table in the `sys` database as a system table, using `SYSTEM_DATABASE.equal…</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4807">#4807</a> [kafka] Serve Metadata from the server cache with tablePropertyCache <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/4804">#4804</a> Support per-partition bucket rescale for Iceberg lake tables <span class="author">@litiliu</span> </li><li><a href="https://github.com/apache/fluss/issues/4803">#4803</a> [build] Consider self-hosted runners for client integration CI <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/issues/4801">#4801</a> [build] Python 3.9 CI setup fails on Ubuntu 26.04 <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/issues/4799">#4799</a> [Feature] Expose a partition seal API with write fencing and explicit end-of-stream signaling <span class="author">@threadfly2026</span> </li><li><a href="https://github.com/apache/fluss/issues/4797">#4797</a> [spark] Expose Fluss table properties in Spark SQL <span class="author">@shuyouZZ</span> </li><li><a href="https://github.com/apache/fluss/issues/4796">#4796</a> [client] Support physical partition id based offset lookup <span class="author">@yangshangqing95</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4809">#4809</a> [client] Support listing offsets by physical table and partition IDs <span class="author">@yangshangqing95</span> </li><li><a href="https://github.com/apache/fluss/pull/4808">#4808</a> [docs] Improve AGENTS.md testing and review guidance <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/pull/4806">#4806</a> [build] Avoid the ubuntu-latest queue in client and gateway CI <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/4805">#4805</a> [lake/paimon] Accept nested bounded types during enablement <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/pull/4802">#4802</a> [build] Install Python integration runtimes with uv <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/pull/4800">#4800</a> [filesystems] Add Baidu Object Storage filesystem <span class="author">@falsity</span> </li><li><a href="https://github.com/apache/fluss/pull/4798">#4798</a> [spark] Expose Fluss table properties in Spark SQL <span class="author">@shuyouZZ</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4803">#4803</a> [build] Consider self-hosted runners for client integration CI <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/issues/4732">#4732</a> [rust] Write requests to one tablet server can reach the wire out of order <span class="author">@naivedogger</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4733">#4733</a> [rust] Preserve write request order across asynchronous dispatch <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/pull/4619">#4619</a> [lake/paimon] Promote existing Paimon log tables to Fluss lake tables <span class="author">@luoyuxia</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
