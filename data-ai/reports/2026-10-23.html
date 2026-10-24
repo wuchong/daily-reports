@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data+AI 全球日报 | 2026-10-23</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Data+AI 全球日报 | 2026-10-23</h1>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="top-changes">
+            <h2>🔥 今日最重要的3个变化</h2>
+            <ol><li><strong>AWS Lake Formation 支持跨 Region 细粒度数据访问</strong> — AWS 将 Trusted Identity Propagation 扩展到跨 Region 场景，使企业可以在不同 Region 间共享 Lake Formation 治理的 S3 与 Redshift 数据，并保留用户级身份、细粒度权限和审计能力。</li><li><strong>Amazon OpenSearch 推出 RAG-ready 智能摄取能力</strong> — Amazon OpenSearch intelligent ingestion 可将 S3 中的文档和结构化数据直接转化为 RAG-ready 搜索索引，减少自建摄取管道和索引工程成本，强化 AWS 在 AI 检索基础设施上的能力。</li><li><strong>Shipsidekick 从 Neon 迁移至 ClickHouse Managed Postgres</strong> — Shipsidekick 在一个周末内完成从 Neon 到 ClickHouse Managed Postgres 的迁移，查询速度提升约 10 倍，CPU 使用率从 100% 降至 5%-10%，显示托管 Postgres 性能竞争加剧。</li></ol>
+            <p class="judgment"><strong>总判断：</strong>今日信号集中在 AWS 强化 AI-ready 数据底座能力，尤其是跨 Region 数据治理、细粒度权限和 RAG 数据摄取。与此同时，托管 Postgres 市场出现以性能和迁移效率为核心的竞争案例。整体来看，数据平台正在从单纯的数据存储与计算，转向身份治理、检索增强和低运维 AI 数据管道的综合能力竞争。</p>
+        </section>
+
+        <section class="top-signals">
+            <h2>📡 重要信号</h2>
+            
+    <article class="news-item">
+        <h3>AWS Lake Formation 与 Trusted Identity Propagation 实现跨 Region 细粒度数据访问</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/enable-cross-region-fine-grained-data-access-with-aws-lake-formation-and-trusted-identity-propagation/">AWS Big Data Blog</a></p>
+        <p class="date">2026-10-23</p>
+        <p class="summary">AWS 宣布 Trusted Identity Propagation 与 AWS IAM Identity Center 现已支持跨 Region 使用。企业可以在一个 Region 共享由 AWS Lake Formation 治理的 Amazon S3 和 Amazon Redshift 数据，并从另一个 Region 以实际企业用户身份查询数据，同时保留细粒度访问控制和按用户审计能力。</p>
+        <div class="impact">📊 数据平台影响：该能力有助于构建多 Region 数据湖和数据网格，在减少数据复制复杂度的同时保持统一身份、权限和审计。对于跨地域运营的企业，AWS 原生数据治理栈的吸引力进一步增强。</div>
+    </article>
+        </section>
+
+        <section class="product-tech">
+            <h2>💻 产品与技术</h2>
+            
+    <article class="news-item">
+        <h3>Amazon OpenSearch intelligent ingestion 从 Amazon S3 构建 RAG-ready 索引</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/build-rag-ready-indexes-from-amazon-s3-with-amazon-opensearch-intelligent-ingestion/">AWS Big Data Blog</a></p>
+        <p class="date">2026-10-23</p>
+        <p class="summary">Amazon OpenSearch intelligent ingestion 是一项全托管、serverless 能力，可将 Amazon S3 中的文档和结构化数据转化为 RAG-ready、可搜索索引，无需自行管理摄取管道。AWS 同时介绍了 Ingestion Jobs 与 Ingestion Streams 的适用场景。</p>
+        <div class="impact">📊 数据平台影响：该能力降低了 RAG 应用中数据摄取、索引构建和向量检索的工程门槛，可能减少企业对自建 ETL、embedding pipeline 和部分第三方数据集成的依赖。</div>
+    </article>
+    <article class="news-item">
+        <h3>Shipsidekick 使用 ClickHouse Managed Postgres 替换 Neon，实现查询性能提升</h3>
+        <p class="sources">📌 <a href="https://clickhouse.com/blog/shipsidekick-neon-to-clickhouse-managed-postgres">ClickHouse Blog</a></p>
+        <p class="date">2026-10-23</p>
+        <p class="summary">Shipsidekick 将数据库从 Neon 迁移到 ClickHouse Managed Postgres，整个过程在一个周末内完成。迁移后，其 CPU 使用率从 100% 降至 5%-10%，查询速度约提升 10 倍，系统可靠性也得到改善。</p>
+        <div class="impact">📊 数据平台影响：该案例显示托管 Postgres 竞争正从兼容性和开发体验扩展到查询性能、资源效率与迁移便利性。数据平台选型将更重视真实负载下的成本与性能表现。</div>
+    </article>
+        </section>
+
+        <section class="people-views">
+            <h2>👤 人物与观点</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="analyst-insights">
+            <h2>📊 分析师洞察</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="watchlist">
+            <h2>👀 观察列表</h2>
+            
+    <article class="watchlist-item">
+        <h3>AWS 跨 Region 数据治理与身份传播能力采用情况</h3>
+        <span class="status">待观察</span>
+        <p class="reason">跨 Region 数据共享、细粒度权限和用户级审计是企业级数据湖与数据网格的关键能力，AWS 新能力可能影响多 Region 数据平台架构选择。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>观察是否出现更多企业落地案例，以及是否扩展到更多 AWS 数据服务或外部身份体系。</p>
+    </article>
+    <article class="watchlist-item">
+        <h3>Amazon OpenSearch intelligent ingestion 对 RAG 数据管道的影响</h3>
+        <span class="status">待观察</span>
+        <p class="reason">如果 OpenSearch 能直接从 S3 构建 RAG-ready 索引，可能改变企业构建检索增强应用时的数据工程架构。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>关注其支持的数据格式、权限模型、生产级客户案例以及与第三方向量数据库的竞争表现。</p>
+    </article>
+    <article class="watchlist-item">
+        <h3>ClickHouse Managed Postgres 与 Neon 等托管 Postgres 服务商的竞争</h3>
+        <span class="status">待观察</span>
+        <p class="reason">Shipsidekick 案例展示了性能提升和迁移效率优势，可能影响中小规模数据应用对托管 Postgres 的选型。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>观察是否有更多从 Neon、Supabase、RDS Postgres 等平台迁移的案例，以及独立性能基准测试结果。</p>
+    </article>
+        </section>
+
+        <section class="stock-analysis">
+            <h2>📈 股票分析</h2>
+            <p class="disclaimer">⚠️ 以下内容仅供参考，不构成任何投资建议。投资有风险，入市需谨慎。</p>
+            
+    <article class="stock-item">
+        <div class="stock-header">
+            <span class="ticker">AMZN</span>
+            <span class="company">Amazon</span>
+            <span class="signal signal-neutral">⚪ 中性</span>
+        </div>
+        <p class="stock-summary">AWS 持续强化 Lake Formation、OpenSearch 和 RAG 数据摄取能力，有助于提升云数据平台与 AI 工作负载粘性。今日信息更偏产品能力迭代，短期对股价的直接催化有限。本栏目仅供参考，不构成投资建议。</p>
+        <div class="stock-details">
+            <div class="catalysts">
+                <strong>🚀 催化剂</strong>
+                <ul><li>企业 RAG 和 AI 搜索工作负载增长</li><li>AWS 数据治理与数据湖产品采用率提升</li><li>跨 Region 数据共享需求增加</li></ul>
+            </div>
+            <div class="risks">
+                <strong>⚠️ 风险</strong>
+                <ul><li>云支出优化压力持续</li><li>Azure 与 Google Cloud 在 AI 数据平台领域竞争加剧</li><li>数据平台产品碎片化可能影响客户采用速度</li></ul>
+            </div>
+        </div>
+    </article>
+        </section>
+
+        <footer>
+            <p>Generated by Data+AI Daily Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
