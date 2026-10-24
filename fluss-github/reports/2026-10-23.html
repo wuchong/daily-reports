@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-10-23</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-10-23</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 16 新 Issues</div>
+            <div class="stat">✅ 12 关闭</div>
+            <div class="stat">✨ 20 新 PRs</div>
+            <div class="stat">🎉 18 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/4824">PR #4824</a> [build] Run Rust CI on arm64 for PRs and x86 on main</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4808">PR #4808</a> [docs] Improve AGENTS.md testing and review guidance</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4806">PR #4806</a> [build] Avoid the ubuntu-latest queue in client and gateway CI</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4805">PR #4805</a> [lake/paimon] Fix data lake enablement for nested VARCHAR and VARBINARY</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4791">PR #4791</a> [elixir] Add partition management to Admin</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4608">Issue #4608</a> FIP-53: Log Scanner Offset Management</h4>
+            <ul><li><span class="author">@pisceslj</span>: ### Subtasks - [x] **[4625 [server] Add consumer offset table foundations](https://github.com/apach…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4808">Issue #4808</a> [docs] Improve AGENTS.md testing and review guidance</h4>
+            <ul><li><span class="author">@wuchong</span>: cc @fresh-borzoni @polyzos, based on recent reviews, I noticed that AI-generated tests rely heavily…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4773">Issue #4773</a> [lake] Fix position-delete commit failures in Iceberg V3 tiering</h4>
+            <ul><li><span class="author">@litiliu</span>: @beryllw looking forward to your review! Thanks in advance!</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3460">Issue #3460</a> [test] Unstable test RemoteLogDownloaderTest.testPrefetchNum</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: https://github.com/apache/fluss/actions/runs/39846609951/job/120061436496 ``` [ERROR] org.apache.fl…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4703">Issue #4703</a> [flink] Report pending finished tiering tables on enumerator shutdown</h4>
+            <ul><li><span class="author">@polyzos</span>: Thanks @yangshangqing95. It turns out #4663 was merged this morning and fixes the same problem the…</li><li><span class="author">@yangshangqing95</span>: Thanks @polyzos !</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3743">Issue #3743</a> [server] Support DescribeTabletServers API for safe scaling and upgrades</h4>
+            <ul><li><span class="author">@polyzos</span>: Thanks for the rebase @morazow, I left a few inline notes on the points from the earlier discussion…</li><li><span class="author">@morazow</span>: Hello @polyzos, @fresh-borzoni thanks for the detailed review! I have addressed your findings, plea…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4805">Issue #4805</a> [lake/paimon] Fix data lake enablement for nested VARCHAR and VARBINARY</h4>
+            <ul><li><span class="author">@luoyuxia</span>: @wuchong Hi, now it's ready to review</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4373">Issue #4373</a> [coordinator] Add rebalance progress and outcome metrics</h4>
+            <ul><li><span class="author">@polyzos</span>: Thanks @heyallencao, this looks good to me. LGTM 🚀 One small optional suggestion, since metric name…</li><li><span class="author">@heyallencao</span>: Thanks @polyzos! Agreed — I've renamed the metric to `rebalanceInflightBucketDurationMs` and update…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4790">Issue #4790</a> [filesystems] Implement obtainSecurityToken for Google filesystem</h4>
+            <ul><li><span class="author">@falsity</span>: Thanks, all three points are addressed in 8e4168f. User credentials are rejected. `createScoped` do…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4737">Issue #4737</a> [server] Handle uninitialized table ZNodes in ZooKeeper metadata reads</h4>
+            <ul><li><span class="author">@polyzos</span>: The failed `build` job is a dependency download error in the InfluxDB metrics module, unrelated to…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4766">Issue #4766</a> [kafka] Unify schema type validation for Kafka table mappings</h4>
+            <ul><li><span class="author">@gyang94</span>: LGTM +1</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4557">Issue #4557</a> [lake] Flink lake reader names the Iceberg catalog after the Flink catalog, so JDBC catalog tables are not found</h4>
+            <ul><li><span class="author">@affo</span>: @firasbouzazi thanks for addressing this one 🤝</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4817">Issue #4817</a> [rpc] Reduce Netty shutdown latency and fix lifecycle races</h4>
+            <ul><li><span class="author">@polyzos</span>: @swuferhong Thanks for tracking these down 🙏 I left a few comments</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3099">Issue #3099</a> [spark] Add spark tiering service</h4>
+            <ul><li><span class="author">@Yohahaha</span>: @fresh-borzoni I already create a issue for docs updates https://github.com/apache/fluss/issues/4818</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4705">Issue #4705</a> [cpp] Add poll-based async lookups</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: @pbanakar you can take it, thank you for helping with this 👍</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4379">Issue #4379</a> [flink] Add $buckets virtual table for bucket metadata</h4>
+            <ul><li><span class="author">@wuchong</span>: @Kaixuan-Duan @platinumhamburg thanks, I agree. Let's deprecate `sys.list_partition_infos` when int…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4775">Issue #4775</a> [kv] Reuse ZSTD compression contexts during Arrow WAL serialization</h4>
+            <ul><li><span class="author">@ManasBhole</span>: Hi @platinumhamburg, I'd be interested in working on this issue if it's still available.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4545">Issue #4545</a> [Client] Support bounded log scanning</h4>
+            <ul><li><span class="author">@yangshangqing95</span>: Hi @polyzos, after rebasing several fixes for flaky CI tests, the CI pipeline is finally passing! A…</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3820">PR #3820</a> [server] add lake-aware partition drop when auto-partition retention is enabled</h4>
+            <ul><li><span class="author">@luoyuxia</span>: Could we handle buckets that have never received any writes as already tiered? For an empty bucket,…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3099">PR #3099</a> [spark] Add spark tiering service</h4>
+            <ul><li><span class="author">@Yohahaha</span>: done；nice advice!；thanks for the advice! Keep two `checkNotCancelled` for submit spark job and comm…</li><li><span class="author">@beryllw</span>: An empty WAL split or KV snapshot can finish without writing any records. Calling `complete()` on t…</li><li><span class="author">@fresh-borzoni</span>: Flink cuts a round off at the table's table.datalake.freshness, commits what it has tiered so far,…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3743">PR #3743</a> [server] Support DescribeTabletServers API for safe scaling and upgrades</h4>
+            <ul><li><span class="author">@polyzos</span>: As agreed in #1389 and earlier in this thread, server tags are moving to the server nodes API in #1…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4065">PR #4065</a> [kv] Batch old value lookups in write path</h4>
+            <ul><li><span class="author">@Copilot</span>: `savedValues` is keyed by `KvPreWriteBuffer.Key` instances produced via `stateAccessor.encodeKey(..…</li><li><span class="author">@platinumhamburg</span>: Aligned saved-value lookup with stateAccessor.encodeKey(primaryKey, null). Population and lookup no…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4284">PR #4284</a> [kafka] Handle basic Produce requests independently of storage</h4>
+            <ul><li><span class="author">@wuchong</span>: nit: replace to ```java failure = ExceptionUtils.stripCompletionException(failure); ```；Each key/va…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4817">PR #4817</a> [rpc] Reduce Netty shutdown latency and fix lifecycle races</h4>
+            <ul><li><span class="author">@polyzos</span>: Tables now keep their real id when they're being deleted, but partitions are still matched by name.…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4822">PR #4822</a> [FLUSS-4821][client] Skip lake snapshot recovery for old table IDs</h4>
+            <ul><li><span class="author">@Copilot</span>: This parsing can throw at runtime (e.g., missing parents, unexpected directory layout, missing '-',…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4791">PR #4791</a> [elixir] Add partition management to Admin</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: @nicolazar Good catch. Core doesn't return an error here, it retries forever: the sender refreshes……</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4844">#4844</a> [rpc] Measure synchronous request processing time <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/4842">#4842</a> [kafka] Add SASL/PLAIN end-to-end regression coverage <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/4840">#4840</a> [kafka] Enable SASL/PLAIN on Kafka listeners <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/4838">#4838</a> [kafka] Implement SASL handshake and authentication APIs <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/4836">#4836</a> [kafka] Propagate authenticated principals to gateway sessions <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/4834">#4834</a> [kafka] Add per-connection SASL authentication state <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/4832">#4832</a> [kafka] Share SASL/PLAIN server configuration <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/4831">#4831</a> [spark] Improve tiering job observability and round timing <span class="author">@Yohahaha</span> </li><li><a href="https://github.com/apache/fluss/issues/4830">#4830</a> [spark] Support concurrent table tiering within one Spark application <span class="author">@Yohahaha</span> </li><li><a href="https://github.com/apache/fluss/issues/4828">#4828</a> [metrics] Define empty-window semantics for expiring histogram reporters <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/4821">#4821</a> [lake] Skip snapshot recovery when offsets belong to a previous table ID <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/issues/4819">#4819</a> [Bug][Paimon] Predicate and scan schemas can become inconsistent after schema evolution <span class="author">@bryndenZh</span> </li><li><a href="https://github.com/apache/fluss/issues/4818">#4818</a> [docs] Document the Spark tiering service <span class="author">@Yohahaha</span> </li><li><a href="https://github.com/apache/fluss/issues/4815">#4815</a> [server] Reduce default writer ID expiration to one day <span class="author">@fxbing</span> </li><li><a href="https://github.com/apache/fluss/issues/4813">#4813</a> [kv] Support global secondary indexes <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/4811">#4811</a> [kv] Support ignoring nulls in upsert requests <span class="author">@platinumhamburg</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4845">#4845</a> [rpc] Measure synchronous request processing time <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/4843">#4843</a> [kafka] Add SASL/PLAIN end-to-end regression coverage <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/pull/4841">#4841</a> [kafka] Enable SASL/PLAIN on Kafka listeners <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/pull/4839">#4839</a> [kafka] Implement SASL handshake and authentication APIs <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/pull/4837">#4837</a> [kafka] Propagate authenticated principals to gateway sessions <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/pull/4835">#4835</a> [kafka] Add per-connection SASL authentication state <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/pull/4833">#4833</a> [kafka] Share SASL/PLAIN server configuration <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/pull/4829">#4829</a> [metrics] Expire idle histogram samples across reporters <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/4827">#4827</a> [docs] Add newly appointed Fluss committers <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/pull/4826">#4826</a> [lake] Fix Paimon scan schema mismatch after schema evolution <span class="author">@bryndenZh</span> </li><li><a href="https://github.com/apache/fluss/pull/4825">#4825</a> [kafka] Serve Metadata from a consistent table property cache <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/pull/4823">#4823</a> [server] Avoid recreating dropped database/table znodes when registering a partition <span class="author">@sakshichitnis27</span> </li><li><a href="https://github.com/apache/fluss/pull/4822">#4822</a> [FLUSS-4821][client] Skip lake snapshot recovery for old table IDs <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/pull/4820">#4820</a> [kv] Support global secondary indexes <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/4817">#4817</a> [rpc] Reduce Netty shutdown latency and fix lifecycle races <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/pull/4816">#4816</a> [server] Reduce default writer ID expiration to one day <span class="author">@fxbing</span> </li><li><a href="https://github.com/apache/fluss/pull/4814">#4814</a> [log] Add compression for COMPACTED log format <span class="author">@dstolis</span> </li><li><a href="https://github.com/apache/fluss/pull/4812">#4812</a> [kv] Support ignoring nulls in upsert requests <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/4810">#4810</a> [spark] Add Spark 4.2.0 support <span class="author">@Yohahaha</span> </li><li><a href="https://github.com/apache/fluss/pull/4809">#4809</a> [client] Support listing offsets by physical table and partition IDs <span class="author">@yangshangqing95</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4765">#4765</a> [kafka] Unify schema type validation for Kafka table mappings <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/issues/4738">#4738</a> [test] Stabilize RemoteLogDownloader prefetch permit assertions <span class="author">@yangshangqing95</span> </li><li><a href="https://github.com/apache/fluss/issues/4736">#4736</a> [server] Handle uninitialized table ZNodes in ZooKeeper metadata reads <span class="author">@yangshangqing95</span> </li><li><a href="https://github.com/apache/fluss/issues/4714">#4714</a> [server] Add consumer group owner discovery <span class="author">@pisceslj</span> </li><li><a href="https://github.com/apache/fluss/issues/4653">#4653</a> [test] Unstable test ControlRequestSendThreadTest.testShutdownCancelsInFlight <span class="author">@app/github-actions</span> </li><li><a href="https://github.com/apache/fluss/issues/4602">#4602</a> [rust]Support configuring the download directory for remote log segments in the Rust client <span class="author">@spoon-lz</span> </li><li><a href="https://github.com/apache/fluss/issues/4281">#4281</a> [kafka] Handle basic Produce requests independently of storage <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/4266">#4266</a> [kafka] Implement Metadata API for pre-created Fluss tables <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/3792">#3792</a> [TLS] Wire TLS encryption into the server Netty pipeline <span class="author">@affo</span> </li><li><a href="https://github.com/apache/fluss/issues/3436">#3436</a> Add "$buckets" virtual table for describing bucket metadata <span class="author">@raoluSmile</span> </li><li><a href="https://github.com/apache/fluss/issues/2985">#2985</a> [spark] Add spark tiering service <span class="author">@Yohahaha</span> </li><li><a href="https://github.com/apache/fluss/issues/2921">#2921</a> Add AGENTS.md coding guide for AI agents <span class="author">@vaibhavk1992</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4824">#4824</a> [build] Run Rust CI on arm64 for PRs and x86 on main <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/4808">#4808</a> [docs] Improve AGENTS.md testing and review guidance <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/pull/4806">#4806</a> [build] Avoid the ubuntu-latest queue in client and gateway CI <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/4805">#4805</a> [lake/paimon] Fix data lake enablement for nested VARCHAR and VARBINARY <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/pull/4791">#4791</a> [elixir] Add partition management to Admin <span class="author">@nicolazar</span> </li><li><a href="https://github.com/apache/fluss/pull/4781">#4781</a> [docs] Avoid Mockito in AI agent testing guidelines <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/pull/4766">#4766</a> [kafka] Unify schema type validation for Kafka table mappings <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/pull/4740">#4740</a> [server] Fix flaky shutdown metric assertion in ControlRequestSendThreadTest <span class="author">@yangshangqing95</span> </li><li><a href="https://github.com/apache/fluss/pull/4739">#4739</a> [client] Fix flaky prefetch permit assertion in RemoteLogDownloaderTest <span class="author">@yangshangqing95</span> </li><li><a href="https://github.com/apache/fluss/pull/4737">#4737</a> [server] Handle uninitialized table ZNodes in ZooKeeper metadata reads <span class="author">@yangshangqing95</span> </li><li><a href="https://github.com/apache/fluss/pull/4716">#4716</a> [server] Add consumer group owner discovery <span class="author">@pisceslj</span> </li><li><a href="https://github.com/apache/fluss/pull/4663">#4663</a> [flink] Flush finished tiering tables when closing enumerator <span class="author">@Jackeyzhe</span> </li><li><a href="https://github.com/apache/fluss/pull/4644">#4644</a> [FIP-29][rpc] Wire TLS encryption into the server Netty pipeline <span class="author">@morazow</span> </li><li><a href="https://github.com/apache/fluss/pull/4603">#4603</a> [rust] Allow configuring remote log download directory <span class="author">@spoon-lz</span> </li><li><a href="https://github.com/apache/fluss/pull/4379">#4379</a> [flink] Add $buckets virtual table for bucket metadata <span class="author">@fhan688</span> </li><li><a href="https://github.com/apache/fluss/pull/4284">#4284</a> [kafka] Handle basic Produce requests independently of storage <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/pull/4261">#4261</a> [kafka] Implement Metadata API over Fluss table metadata <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/pull/3099">#3099</a> [spark] Add spark tiering service <span class="author">@Yohahaha</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
