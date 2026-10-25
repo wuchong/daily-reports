@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-10-24</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-10-24</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 8 新 Issues</div>
+            <div class="stat">✅ 9 关闭</div>
+            <div class="stat">✨ 5 新 PRs</div>
+            <div class="stat">🎉 5 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/4853">PR #4853</a> [build] Unify Maven module names</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4826">PR #4826</a> [lake] Fix Paimon scan schema mismatch after schema evolution</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4786">PR #4786</a> [tiering] Expose the tiering reader waiting ratio</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4285">PR #4285</a> [kafka] Transcode binary and string Produce records to Arrow</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4284">PR #4284</a> [kafka] Handle basic Produce requests independently of storage</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4608">Issue #4608</a> FIP-53: Log Scanner Offset Management</h4>
+            <ul><li><span class="author">@pisceslj</span>: ### Subtasks - [x] **[4625 [server] Add consumer offset table foundations](https://github.com/apach…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4673">Issue #4673</a> [paimon] Preserve auto-partition settings when promoting Paimon tables</h4>
+            <ul><li><span class="author">@hutiefang76</span>: I'd like to take this. On current main, promotion still derives auto-partitioning only from Paimon'…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4622">Issue #4622</a> [test] Unstable test RebalanceITCase.testRebalanceForLogTable</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: https://github.com/apache/fluss/actions/runs/39916019976/job/120289667975 ``` [ERROR] org.apache.fl…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4813">Issue #4813</a> [kv] Support global secondary indexes</h4>
+            <ul><li><span class="author">@polyzos</span>: I’m gonna have some fun next week looking into this .. 🚀🎉</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4729">Issue #4729</a> [build] Make the Iceberg 1.12 build opt-in</h4>
+            <ul><li><span class="author">@wuchong</span>: As discussed offline with @loserwang1024 , we decided to keepping the current build behavior. Closi…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4728">Issue #4728</a> [build] Make the Iceberg 1.12 build opt-in</h4>
+            <ul><li><span class="author">@wuchong</span>: As discussed offline with @loserwang1024 and @naivedogger , we decided to keepping the current buil…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4851">Issue #4851</a> [docs] Document the Spark tiering service</h4>
+            <ul><li><span class="author">@Yohahaha</span>: @fresh-borzoni @wuchong @beryllw PTAL!</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/209">Issue #209</a> [Test] StopReplicaITCase.testStopReplica is unstable</h4>
+            <ul><li><span class="author">@ManasBhole</span>: Hi @wuchong, is this still open? I'd like to take the `StopReplicaITCase.testStopReplica` flakiness…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/206">Issue #206</a> [Test] ReplicaFetcherITCase.testProduceLogNeedAck is not stable </h4>
+            <ul><li><span class="author">@ManasBhole</span>: Hi @wuchong, is this still open? I'd like to take the `ReplicaFetcherITCase.testProduceLogNeedAck`…</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4786">PR #4786</a> [tiering] Expose the tiering reader waiting ratio</h4>
+            <ul><li><span class="author">@luoyuxia</span>: Nit: could we name the metric `readersAwaitingSplitRatio` and the helper `registerReadersAwaitingSp…</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4859">#4859</a> [kafka] Prevent Kafka endpoints from starting on CoordinatorServer <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/4856">#4856</a> [rpc] Isolate internal listener resources from client backpressure <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/4854">#4854</a> [kv] Add bounded TS-level RocksDB cache and read metrics <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/4852">#4852</a> [build] Unify Maven module names <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/issues/4849">#4849</a> [server] Implement consumer offset commits <span class="author">@pisceslj</span> </li><li><a href="https://github.com/apache/fluss/issues/4848">#4848</a> [Bug] Fluss enablement fails for nested Paimon VARCHAR and VARBINARY <span class="author">@luoyuxia</span> <span class="labels">component=lake/paimon</span></li><li><a href="https://github.com/apache/fluss/issues/4847">#4847</a> [lake/paimon] Enable Fluss on existing append-only Paimon tables <span class="author">@luoyuxia</span> <span class="labels">component=lake/paimon</span></li><li><a href="https://github.com/apache/fluss/issues/4846">#4846</a> [Umbrella] Implement FIP-25: Promote existing Paimon tables to Fluss <span class="author">@luoyuxia</span> <span class="labels">component=lake/paimon</span></li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4858">#4858</a> [rust] Share KV value decoding between lookup and batch scanner <span class="author">@ump45nose</span> </li><li><a href="https://github.com/apache/fluss/pull/4857">#4857</a> [rpc] Isolate internal listener resources from client backpressure <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/4855">#4855</a> [kv] Add TS-level RocksDB cache and read execution metrics <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/4851">#4851</a> [docs] Document the Spark tiering service <span class="author">@Yohahaha</span> </li><li><a href="https://github.com/apache/fluss/pull/4850">#4850</a> [server] Implement consumer offset commits <span class="author">@pisceslj</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4852">#4852</a> [build] Unify Maven module names <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/issues/4848">#4848</a> [Bug] Fluss enablement fails for nested Paimon VARCHAR and VARBINARY <span class="author">@luoyuxia</span> <span class="labels">component=lake/paimon</span></li><li><a href="https://github.com/apache/fluss/issues/4847">#4847</a> [lake/paimon] Enable Fluss on existing append-only Paimon tables <span class="author">@luoyuxia</span> <span class="labels">component=lake/paimon</span></li><li><a href="https://github.com/apache/fluss/issues/4819">#4819</a> [Bug][Paimon] Predicate and scan schemas can become inconsistent after schema evolution <span class="author">@bryndenZh</span> </li><li><a href="https://github.com/apache/fluss/issues/4782">#4782</a> [flink] Expose the tiering reader waiting ratio <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/issues/4728">#4728</a> [build] Make the Iceberg 1.12 build opt-in <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/issues/4282">#4282</a> [kafka] Transcode mapped raw and string records to Arrow <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/4281">#4281</a> [kafka] Handle basic Produce requests independently of storage <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/2849">#2849</a> [docs] Update s3.region in quickstart docs of flink and lakehouse <span class="author">@nhuantho</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4853">#4853</a> [build] Unify Maven module names <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/pull/4826">#4826</a> [lake] Fix Paimon scan schema mismatch after schema evolution <span class="author">@bryndenZh</span> </li><li><a href="https://github.com/apache/fluss/pull/4786">#4786</a> [tiering] Expose the tiering reader waiting ratio <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/pull/4285">#4285</a> [kafka] Transcode binary and string Produce records to Arrow <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/pull/4284">#4284</a> [kafka] Handle basic Produce requests independently of storage <span class="author">@gyang94</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
