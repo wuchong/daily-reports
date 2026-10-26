@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spark 社区周报 | 2026-W42</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Spark 社区周报 | 2026-W42</h1>
+            <p class="date-range">2026-10-12 ~ 2026-10-18</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (0)</h2>
+            <p class="empty">本周无公告</p>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (6)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/6jl3tw5v9hhrvlwp4v2r6jnmk2j678nj">Release Spark 4.2.1 (RC2)</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/rc7f5f9ogggv6rqy7w5m2753yq5n5ckq">SPIP: External Lookup Join</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/bq8z7gqwqzqb8v226tj8by92wv4jskp9">Release Spark 4.0.5 (RC2)</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/6qstjnttf8vt9gs2bf257wjjyptx4n02">Release Spark 4.2.1 (RC3)</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/o9n9chhj7pprcr0sq8zsgd36wmf050wh">Release Spark 4.1.4 (RC4)</a> <span class="status warning">⚠️ 有异议</span><p class="objection-inline">无人提出 -1；Szehon Ho 实际投的是 +1（non binding），表示已检查签名、校验和并做了基础测试。</p></li>
+<li><a href="https://lists.apache.org/thread/v5lk9pyn37x3j07fl0v0nvbtt362rzh1">Release Spark 4.0.5 (RC3)</a> <span class="status warning">⚠️ 有异议</span><p class="objection-inline">无人提出 -1；Szehon Ho 回复 +1（non binding），表示已检查 checksum、签名并完成基础测试。</p></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (9)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/vgm0x6bq0ckkq8l2yjml8vvyhxgrtfx5">Automated AI code review on new Spark PRs (trial)</a></h3>
+            <p class="meta">5 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕在 Spark 新 PR 中试用自动化 AI 代码评审机器人的进展与风险控制。Hyukjin 说明机器人已从自动触发改为通过 committer 添加 ai-review-requested 标签触发，并持续调整评论频率、成本和安全监控。目前机器人已重新启用试用，并配备异常停止与回滚机制。</p>
+            <div class="key-points"><p><strong>@Dongjoon Hyun:</strong> 支持试用，但建议增加按 PR 禁用/退出标签和限制 ASF Jira API 调用等安全防护，避免机器人产生噪音或被服务封禁。</p>
+<p><strong>@Hyukjin Kwon:</strong> 机器人只在有发现时发布评论，作者更新会再次触发，并通过控制 effort、关注 P3 评论数量来降低成本和噪音。</p>
+<p><strong>@Hyukjin Kwon:</strong> 已启用 ai-review-requested 标签供 committer 触发，并设置监控 bot；异常时立即停止并回滚，移除标签也可停止机器人。</p></div>
+            <p class="conclusion">初步结论是继续以标签触发方式试用 AI review，committers 可添加或移除 ai-review-requested 标签；下一步是继续监控评论质量、超时、安全和成本，并根据反馈调整。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/1qpb05g1rqdc118q1lwwj6bvbk3m4lcb">Using "Assisted-by" instead of "Generated-by" to indicate AI involvement</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">社区讨论是否将 Spark PR 模板中标示 AI 参与的提交 trailer 从“Generated-by”改为“Assisted-by”。提议者认为“Assisted-by”更能明确代码责任归属于人类提交者；也有参与者表示支持，但反对者认为保留“Generated-by”更通用、简洁且符合 ASF 建议。目前讨论仍在 GitHub PR 中进行，尚未形成明确一致结论。</p>
+            <div class="key-points"><p><strong>@Nicholas Chammas:</strong> 提议使用“Assisted-by”替代“Generated-by”，以明确 AI 只是辅助，代码作者和责任仍归于人类提交者。</p>
+<p><strong>@Holden Karau:</strong> 倾向于使用“Assisted-by”或“Co-authored-by”来标示 AI 参与。</p>
+<p><strong>@Dongjoon Hyun:</strong> 反对更改，认为“Generated-by”更通用、面向未来且是 ASF 建议之一，单一 trailer 可避免对 AI 参与程度进行复杂区分。</p></div>
+            <p class="conclusion">尚未形成最终结论；下一步是在 GitHub PR #59666 中继续征求意见并决定是否更新 PR 模板。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/ggt62g2pvb8z4c3rtcsw1hvfo2jd4o68">Univocity Parsers</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">社区讨论 Spark 依赖的 Univocity CSV 解析库无人维护的问题。David 提议借助 AI 吸收并改造该库，使其更高效地适配 Spark 内部实现。Nicholas 指出已有相关迁移工单，并要求澄清具体方案。</p>
+            <div class="key-points"><p><strong>@David:</strong> Univocity Parsers 已缺乏维护，建议利用 AI 消化并改造该库，使其更高效地适配 Spark 内部机制。</p>
+<p><strong>@Nicholas Chammas:</strong> 当前提议不够明确，询问是否要将 CSV parser 纳入 Spark 项目、如何利用 Spark 内部能力，以及为何不 fork 外部库或改用 FastCSV、Commons CSV 等替代方案。</p></div>
+            <p class="conclusion">尚未形成明确结论；下一步需要 David 澄清具体提案，并结合 SPARK-47180 评估内置改造、fork 或迁移到替代 CSV 库的可行性。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/mov95mhqg2cfdgyb02dpl78cold36ylf">SPIP: External Lookup Join</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">社区围绕 Spark 新 SPIP “External Lookup Join” 展开讨论，提议新增一种 join 策略，在处理左侧数据时按需查询外部静态侧存储，以避免预先物化并降低延迟。该提案主要面向低延迟外部存储和实时场景，同时也可惠及静态-静态及流-静态 join，目前已获得支持并进入投票阶段。</p>
+            <div class="key-points"><p><strong>@Jungtaek Lim:</strong> 提出 External Lookup Join 新 join 策略，通过按需查询外部存储解决静态侧必须预先物化的问题，适用于 RDBMS、内存存储、NoSQL 等低延迟数据源。</p>
+<p><strong>@Daniel Tenedorio:</strong> 表示支持，认为该能力在关系型数据库系统中较常见，并且在数据源支持索引点查或范围查询时效果较好。</p>
+<p><strong>@Kousuke Saruta:</strong> 对该提案表示 +1 支持。</p></div>
+            <p class="conclusion">提案已获得社区初步支持，下一步行动是参与已开启的 VOTE 线程进行投票。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/b2mzdn5ygvn3ynq261vkr6c1xj3phckc">SPARK-44437 Regarding the type expansion issue</a></h3>
+            <p class="meta">1 条回复 · 1 位参与者</p>
+            <p class="summary">讨论 SPARK-44437 中 Spark 表列类型扩展问题，即将 VARCHAR(10) 通过 ALTER TABLE 扩展为 VARCHAR(25) 时会报 NOT_SUPPORTED_CHANGE_COLUMN 错误。发起人询问社区是否应支持该类型扩展能力，并表示愿意实现。目前邮件中尚无其他参与者回复或形成明确结论。</p>
+            <div class="key-points"><p><strong>@zhiwei niu:</strong> 提出 VARCHAR 长度扩展场景会报错，询问社区是否应支持类型扩展，并表示如果认可该方向，他愿意推进实现。</p></div>
+            <p class="conclusion">暂无初步结论；下一步是等待社区确认是否支持类型扩展，如获得认可则由发起人实现相关功能。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/hd37q556l5210lyx4b638tltc9cxwdrj">URGENT ACTION NEEDED - Excessive Consumption of GitHub hosted Action Runners Resources</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">ASF Infra 警告 Spark 项目近期 GitHub Actions 托管 Runner 资源消耗过高，要求尽快审查并优化工作流，否则可能按政策限制或移除 GitHub Actions 权限。Nicholas Chammas 表示多位提交者正在积极降低资源消耗，并认为当前用量可能已超出 ASF 政策限制。讨论还关注缺少统一报告来核对项目用量是否超过各项限制。</p>
+            <div class="key-points"><p><strong>@Robert Thomson:</strong> Spark 项目过去一周位居 GitHub hosted Actions Runner 消耗前五，需要尽快减少并发作业数量和作业时长，否则可能被移除 GitHub Actions 访问权限。</p>
+<p><strong>@Robert Thomson:</strong> 建议参考生成的优化建议，例如错开定时任务、减少并发作业，并可借助 magpie 项目的 repo-health 工作流优化工具获取更详细反馈。</p>
+<p><strong>@Nicholas Chammas:</strong> 社区正在主动优化 GitHub Actions 使用，但当前缺少统一报告来直接核对日历周预算、连续五天限制和全局并发上限，希望 Infra 提供标准合规视图。</p></div>
+            <p class="conclusion">Spark 社区需要尽快优化 GitHub Actions 工作流，降低 Runner 资源消耗；后续行动包括减少并发和作业时长，并推动建立或获取统一的用量合规报告。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/wcv6lk49765of6q514wq2rv8fcyck40h">new restrictions on the use of pull_request_target in workflows</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论聚焦 ASF GitHub Actions 新政策：从 2026 年 11 起禁用 pull_request_target 触发器，而 Spark 的 notify workflow 目前仍在使用该触发器。Nicholas 提醒社区提前关注，并表示会后续研究迁移或豁免方案。</p>
+            <div class="key-points"><p><strong>@Nicholas Chammas:</strong> ASF 新政策将从 2026 年 11 月起禁用 pull_request_target，Spark 的 notify_test_workflow 会受到影响。</p>
+<p><strong>@Nicholas Chammas:</strong> 目前存在可能豁免特定 workflow 的方式，但细节尚未研究。</p>
+<p><strong>@Nicholas Chammas:</strong> 建议提前告知社区，避免到期时措手不及，并计划本周稍后跟进处理。</p></div>
+            <p class="conclusion">下一步是研究豁免机制或迁移到 ASF 推荐模式，并在 2026 年 11 月前完成调整。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/q24vqrx2xlh2wblmosbs90ryg9mndogh">Thoughts around getOrCreate for Dataset / DataFrame</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论围绕为 Dataset/DataFrame 引入 getOrCreate 模式，以便在 Spark 管道失败重试时复用已生成的数据。Airflow 维护者指出当前重试会重跑已完成阶段，社区通常靠手写目录检查实现类似能力，容易出错。讨论重点关注结果命名和一致性问题，并提到需要避免半写数据被误判。</p>
+            <div class="key-points"><p><strong>@Holden Karau:</strong> 提议在 Dataset/DataFrame 场景中使用 getOrCreate 模式：若数据已存在则加载，否则创建，适合处理瞬时失败的管道。</p>
+<p><strong>@Amogh Desai:</strong> 支持该模式，并指出 Airflow 重试 Spark 作业时会重复执行已完成阶段，用户目前通常自行实现目录检查逻辑。</p>
+<p><strong>@Amogh Desai:</strong> 建议由调用方传入存储名称以避免不同运行之间误复用数据，并需要成功标记防止半写目录被误认为已完成。</p></div>
+            <p class="conclusion">初步倾向支持 getOrCreate 模式；下一步设计应考虑允许调用方指定结果名称，并通过 success marker 等机制保证结果完整性。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/vz0s8nok4mgyfmcz1wmoc9ko14xkts9o">SPIP: ADBC Data Source</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Tornike Gurgenidze 发起 SPIP 讨论，提议在 Spark 中新增内置 ADBC 数据源，作为现有 JDBC 数据源的补充。该提案利用 ADBC 返回 Arrow 列式批数据以减少行式转换和拷贝，原型测试显示读取列式数据库可比 JDBC 快 3-10 倍。</p>
+            <div class="key-points"><p><strong>@Tornike Gurgenidze:</strong> 提议新增可选的 adbc format，不修改现有 JDBC 数据源和公共 API，ADBC 主要用于提升列式数据库读取性能。</p>
+<p><strong>@Tornike Gurgenidze:</strong> ADBC 数据源计划支持列裁剪、过滤、limit、Top-N 和基础聚合下推，并结合 JDBC 风格 range partitioning 与 ADBC driver partitioning。</p>
+<p><strong>@Tornike Gurgenidze:</strong> 写入方面支持通过 ADBC bulk ingest 追加数据，在驱动支持时按任务事务提交，并提供与 JDBC writer 类似的 at-least-once 保证。</p></div>
+            <p class="conclusion">目前该提案仍处于社区讨论和原型验证阶段，尚未形成最终结论；下一步预计围绕 SPIP 文档、JIRA SPARK-60255 及原型实现继续推进评审。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (0)</h2>
+            
+    <p>本周新建 <strong>0</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周无新建 JIRA。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Spark Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
