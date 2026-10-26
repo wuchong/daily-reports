@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-10-25</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-10-25</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 6 新 Issues</div>
+            <div class="stat">✅ 11 关闭</div>
+            <div class="stat">✨ 4 新 PRs</div>
+            <div class="stat">🎉 9 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/4861">PR #4861</a> [kafka] Add SASL/PLAIN authentication to Kafka listeners</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4682">PR #4682</a> [kafka] Add schema-aware JSON Produce with field rescue</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4680">PR #4680</a> [kafka] Convert JSON values to Fluss types</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4678">PR #4678</a> [kafka] Extract value decoding into format factories</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4545">PR #4545</a> [Client] Support bounded log scanning</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4861">Issue #4861</a> [kafka] Add SASL/PLAIN authentication to Kafka listeners</h4>
+            <ul><li><span class="author">@wuchong</span>: The build is failed at coverage checks. ``` [WARNING] Rule violated for class org.apache.fluss.secu…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4545">Issue #4545</a> [Client] Support bounded log scanning</h4>
+            <ul><li><span class="author">@polyzos</span>: Thanks @yangshangqing95, great work on this, and thanks for turning both review rounds around so qu…</li><li><span class="author">@yangshangqing95</span>: Hi @polyzos Thanks! I'll add doc later</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4820">Issue #4820</a> [kv] Support global secondary indexes</h4>
+            <ul><li><span class="author">@polyzos</span>: @platinumhamburg can you rebase and fix the CI? I you want i can also help do that. I want to go th…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/1410">Issue #1410</a> Change the implementation of Admin#getServerNodes() to support carrying ServerTag</h4>
+            <ul><li><span class="author">@polyzos</span>: Thank you @fresh-borzoni for catching this. @LiebingYu I pushed some commits myself to help unblock…</li><li><span class="author">@fresh-borzoni</span>: @polyzos @LiebingYu @affo FIP-41 may not need `listServerTags()` after all. The operator can get wh…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4622">Issue #4622</a> [test] Unstable test RebalanceITCase.testRebalanceForLogTable</h4>
+            <ul><li><span class="author">@wuchong</span>: Another occurrence on `main` in [CI run #11081, Java 11 / core](https://github.com/apache/fluss/act…</li><li><span class="author">@morazow</span>: Hello @wuchong, @swuferhong , I have opened PR for this flaky / bug case. Please have a look 🤝</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4764">Issue #4764</a> [flink] Apply partition filter to lake partitions in union read</h4>
+            <ul><li><span class="author">@Anurag15v</span>: Thanks @luoyuxia , that makes sense. I agree LakeSplitGenerator shouldn't become a second place tha…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4750">Issue #4750</a> [Bug] [lake/paimon] Union reads can fail after snapshot expiration</h4>
+            <ul><li><span class="author">@Jackeyzhe</span>: From code inspection, Paimon's DataSplit already carries a snapshot ID, and Fluss preserves it when…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4683">Issue #4683</a> [kafka] Support complex JSON values in Produce</h4>
+            <ul><li><span class="author">@wuchong</span>: Implemented in https://github.com/apache/fluss/pull/4682</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4684">Issue #4684</a> [kafka] Support complex JSON values in Produce</h4>
+            <ul><li><span class="author">@wuchong</span>: Implemented in https://github.com/apache/fluss/pull/4682</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4685">Issue #4685</a> [kafka] Preserve unknown JSON fields in rescue column</h4>
+            <ul><li><span class="author">@wuchong</span>: Implemented in https://github.com/apache/fluss/pull/4682</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4686">Issue #4686</a> [kafka] Preserve unknown JSON fields in rescue column</h4>
+            <ul><li><span class="author">@wuchong</span>: Implemented in https://github.com/apache/fluss/pull/4682</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4814">Issue #4814</a> [log] Add compression for COMPACTED log format</h4>
+            <ul><li><span class="author">@polyzos</span>: Thanks @dstolis 👍 Did you run any tests, by any chance - to see and understand the effect with and…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4698">Issue #4698</a> [test] Unstable test FlussAuthorizationITCase.testProduceAndConsumer</h4>
+            <ul><li><span class="author">@morazow</span>: I did quick analysis on this using agent, and seems like this unstable test is solved by three diff…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4865">Issue #4865</a> [kafka] Miscellaneous Kafka compatibility improvements</h4>
+            <ul><li><span class="author">@wuchong</span>: License build is failed, please check it.</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4680">PR #4680</a> [kafka] Convert JSON values to Fluss types</h4>
+            <ul><li><span class="author">@wuchong</span>: Could we avoid this extra full scan in the shared helper? The date/time parsers and Base64 decoder……</li><li><span class="author">@gyang94</span>: 2026-02-30 is not a valid date.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4861">PR #4861</a> [kafka] Add SASL/PLAIN authentication to Kafka listeners</h4>
+            <ul><li><span class="author">@wuchong</span>: This is a client side configuration. For servers, we should use `false` like fluss netty.；Could we…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4682">PR #4682</a> [kafka] Add schema-aware JSON Produce with field rescue</h4>
+            <ul><li><span class="author">@wuchong</span>: Could we restrict the reserved-name checks to the flat layout (`nestedType == null`), both here and…</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4867">#4867</a> [elixir] Use keyword options with false defaults in Fluss.Admin <span class="author">@nicolazar</span> </li><li><a href="https://github.com/apache/fluss/issues/4866">#4866</a> [rust] Writes to a missing partition retry forever and block other new partitions <span class="author">@nicolazar</span> </li><li><a href="https://github.com/apache/fluss/issues/4864">#4864</a> [kafka] Miscellaneous Kafka compatibility improvements <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/4863">#4863</a> [kafka] Convert JSON Produce values with Jackson streaming API <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/issues/4862">#4862</a> [rust] Lookup requests are not drained when batch timeout is zero <span class="author">@slfan1989</span> </li><li><a href="https://github.com/apache/fluss/issues/4860">#4860</a> [kafka] Add SASL/PLAIN authentication to Kafka listeners <span class="author">@gyang94</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4870">#4870</a> [Doc] Add client bounded scan APIs doc <span class="author">@yangshangqing95</span> </li><li><a href="https://github.com/apache/fluss/pull/4869">#4869</a> [server] Move leader during reassignment when old leader stays <span class="author">@morazow</span> </li><li><a href="https://github.com/apache/fluss/pull/4868">#4868</a> [elixir] Refactor Fluss.Admin module to use keyword opts <span class="author">@nicolazar</span> </li><li><a href="https://github.com/apache/fluss/pull/4865">#4865</a> [kafka] Miscellaneous Kafka compatibility improvements <span class="author">@gyang94</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4860">#4860</a> [kafka] Add SASL/PLAIN authentication to Kafka listeners <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/4685">#4685</a> [kafka] Preserve unknown JSON fields in rescue column <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/4683">#4683</a> [kafka] Support complex JSON values in Produce <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/4681">#4681</a> [kafka] Add schema-aware JSON Produce <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/4679">#4679</a> [kafka] Convert JSON scalar values to Fluss types <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/4674">#4674</a> [kafka] Separate value decoding and preserve record metadata <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/4544">#4544</a> [client] Support bounded Log Table scanning <span class="author">@yangshangqing95</span> </li><li><a href="https://github.com/apache/fluss/issues/4298">#4298</a> [kafka] Cover Produce lifecycle and replication regressions <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/4283">#4283</a> [kafka] Integrate Produce with native Fluss append <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/3570">#3570</a> [server] Support DescribeTabletServers API for safe scaling and rolling upgrades <span class="author">@morazow</span> </li><li><a href="https://github.com/apache/fluss/issues/1389">#1389</a> [rebalance] Change the implementation of Admin#getServerNodes() as introducing a new API to get cluster information <span class="author">@swuferhong</span> <span class="labels">component=client</span></li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4861">#4861</a> [kafka] Add SASL/PLAIN authentication to Kafka listeners <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/pull/4682">#4682</a> [kafka] Add schema-aware JSON Produce with field rescue <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/pull/4680">#4680</a> [kafka] Convert JSON values to Fluss types <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/pull/4678">#4678</a> [kafka] Extract value decoding into format factories <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/pull/4545">#4545</a> [Client] Support bounded log scanning <span class="author">@yangshangqing95</span> </li><li><a href="https://github.com/apache/fluss/pull/4299">#4299</a> [kafka] Cover Produce lifecycle and replication regressions <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/pull/4286">#4286</a> [kafka] Integrate Produce with native Fluss append <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/pull/3743">#3743</a> [server] Support DescribeTabletServers API for safe scaling and upgrades <span class="author">@morazow</span> </li><li><a href="https://github.com/apache/fluss/pull/1410">#1410</a> Change the implementation of Admin#getServerNodes() to support carrying ServerTag <span class="author">@LiebingYu</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
