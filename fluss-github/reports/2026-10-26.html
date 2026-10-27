@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-10-26</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-10-26</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 10 新 Issues</div>
+            <div class="stat">✅ 15 关闭</div>
+            <div class="stat">✨ 15 新 PRs</div>
+            <div class="stat">🎉 10 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/4876">PR #4876</a> Revert "[Client] Support bounded log scanning"</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4874">PR #4874</a> [client] Retry getServerNodes on stale coordinator address (#4873)</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4872">PR #4872</a> [build] Fix daemon shutdown timeout message</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4865">PR #4865</a> [kafka] Miscellaneous Kafka compatibility improvements</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4827">PR #4827</a> [docs] Add newly appointed Fluss committers</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4817">Issue #4817</a> [rpc] Reduce Netty shutdown latency and fix lifecycle races</h4>
+            <ul><li><span class="author">@swuferhong</span>: > @swuferhong Thanks for tracking these down 🙏 I left a few comments Hi, @polyzos These issues have…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/1410">Issue #1410</a> Change the implementation of Admin#getServerNodes() to support carrying ServerTag</h4>
+            <ul><li><span class="author">@swuferhong</span>: Hi, @polyzos Could we address one availability regression in a follow-up PR：https://github.com/apac…</li><li><span class="author">@polyzos</span>: @swuferhong Thanks for the detailed breakdown 👍</li><li><span class="author">@affo</span>: > FIP-41 may not need listServerTags() after all. @fresh-borzoni yes yes, that's why I was followin…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4820">Issue #4820</a> [kv] Support global secondary indexes</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: > @platinumhamburg can you rebase and fix the CI? I you want i can also help do that. > > I want to…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4790">Issue #4790</a> [filesystems] Implement obtainSecurityToken for Google filesystem</h4>
+            <ul><li><span class="author">@falsity</span>: @polyzos could you approve and run the workflows for the latest commit? CI is blocked on maintainer…</li><li><span class="author">@polyzos</span>: Thanks @falsity for the work here. I pushed one commit to make it merge-ready. Please take a look a…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4874">Issue #4874</a> [client] Retry getServerNodes on stale coordinator address (#4873)</h4>
+            <ul><li><span class="author">@polyzos</span>: @swuferhong PTAL</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4545">Issue #4545</a> [Client] Support bounded log scanning</h4>
+            <ul><li><span class="author">@polyzos</span>: Thanks @wuchong 👍 Reverting this</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4872">Issue #4872</a> [build] Fix daemon shutdown timeout message</h4>
+            <ul><li><span class="author">@LiebingYu</span>: @shuyouZZ Thanks for the PR. LGTM!</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4614">Issue #4614</a> [rust] Reuse Arrow columns for identity schema alignment</h4>
+            <ul><li><span class="author">@spoon-lz</span>: @fresh-borzoni Thanks for pointing this out. I submitted this optimization too early: the intended…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4544">Issue #4544</a> [client] Support bounded Log Table scanning</h4>
+            <ul><li><span class="author">@wuchong</span>: See the discussion about new approach: https://github.com/apache/fluss/pull/4545#discussion_r437386…</li><li><span class="author">@yangshangqing95</span>: Thanks @wuchong , there was discussion about leveraging log_start_offset and API version, I'll re-d…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4814">Issue #4814</a> [log] Add compression for COMPACTED log format</h4>
+            <ul><li><span class="author">@dstolis</span>: Thanks @polyzos! Yes, I ran a few tests with and without compression. **Local cluster**, 200k order…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4877">Issue #4877</a> [c++] Add poll-based async lookups</h4>
+            <ul><li><span class="author">@pbanakar</span>: Hi @fresh-borzoni @naivedogger could you please help review this when you have some time? Thanks</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4537">Issue #4537</a> [flink] Add Flink connector test suite ITCase for FlussSource</h4>
+            <ul><li><span class="author">@leonardBang</span>: This is a valuable addition to FlussSource test coverage. In particular, the savepoint case exercis…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2666">Issue #2666</a> [spark] to support Spark4.x</h4>
+            <ul><li><span class="author">@gezapeti</span>: Feel free to work on this @Yohahaha</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4883">Issue #4883</a> [client] Prune Arrow buffers before client-side decompression.</h4>
+            <ul><li><span class="author">@loserwang1024</span>: @leonardBang @platinumhamburg @swuferhong , WDYT?</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4887">Issue #4887</a> [rust] Add reusable UnionRead source boundaries</h4>
+            <ul><li><span class="author">@naivedogger</span>: @fresh-borzoni @beryllw Could you please take a look at this one when you got a chance? Thanks!🙏</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4859">Issue #4859</a> [kafka] Prevent Kafka endpoints from starting on CoordinatorServer</h4>
+            <ul><li><span class="author">@zephyr45</span>: I'd like to work on this. I'll add role-aware validation in the RPC protocol-selection path so Kafk…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4185">Issue #4185</a> [Umbrella] Kafka Protocols Compatibility - Basic Produce</h4>
+            <ul><li><span class="author">@dao-jun</span>: It seems that we have restarted the compatibility development of the Kafka protocol?</li><li><span class="author">@wuchong</span>: Hi @dao-jun, yes, the first stage focuses on producer compatibility, and the MVP features have been…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4312">Issue #4312</a> [server] Refactor CoordinatorEventProcessor and split its tests</h4>
+            <ul><li><span class="author">@pbanakar</span>: @swuferhong is this ticket still valid? if yes, happy to take it,</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4288">Issue #4288</a> [Umbrella] Rescale buckets for future partitions</h4>
+            <ul><li><span class="author">@pbanakar</span>: Hi @wuchong it seems only test related sub issue is pending here, happy to take it and help to clos…</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4869">PR #4869</a> [server] Move leader during reassignment when old leader stays</h4>
+            <ul><li><span class="author">@swuferhong</span>: This fixes the missing leader election, but combined replica-and-leader reassignment still complete…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4545">PR #4545</a> [Client] Support bounded log scanning</h4>
+            <ul><li><span class="author">@loserwang1024</span>: The current implementation makes bounded EARLIEST scans through `LogScanner` fail against older ser…</li><li><span class="author">@wuchong</span>: +1 for leveraging the existing `log_start_offset` in the `FETCH_LOG` API to avoid introducing new p…</li><li><span class="author">@yangshangqing95</span>: thank you all for the reviewing, there was discussion about using api version, I'll check and re-de…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3412">PR #3412</a> [server] Complete delayed fetches after log appends</h4>
+            <ul><li><span class="author">@swuferhong</span>: Could we keep the completion checks within `ReplicaManager` instead of introducing a global `Action…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3860">PR #3860</a> [server] Make timed-out rebalance tasks recoverable</h4>
+            <ul><li><span class="author">@fxbing</span>: There seems to be a cancellation recovery edge case here. A local test using real ZooKeeper and con…</li><li><span class="author">@swuferhong</span>: Good catch. `isRebalanceTaskAtOrigin` previously treated any leader change as evidence that a repli…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4865">PR #4865</a> [kafka] Miscellaneous Kafka compatibility improvements</h4>
+            <ul><li><span class="author">@wuchong</span>: Hard to understand. Please rephrase them. And do not put it under `SASL/PLAIN authentication` secti…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4391">PR #4391</a> [client] Expose all coordinator servers (leader and standbys) via the client API</h4>
+            <ul><li><span class="author">@morazow</span>: All these `zkClient` calls are blocking calls. I wonder if these information should be obtained wit…</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4894">#4894</a> [helm] Publish each listener's advertised address as a pod environment variable <span class="author">@morazow</span> </li><li><a href="https://github.com/apache/fluss/issues/4891">#4891</a> [server] Retry kv snapshot lease metadata file writes <span class="author">@morazow</span> </li><li><a href="https://github.com/apache/fluss/issues/4889">#4889</a> [Feature] Support adding nested fields to ROW and ARRAY<ROW> columns <span class="author">@raoluSmile</span> </li><li><a href="https://github.com/apache/fluss/issues/4886">#4886</a> [rust] Add reusable UnionRead source boundaries <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/issues/4885">#4885</a> [lake/lance] Support ADD COLUMN schema evolution for Lance lake catalog <span class="author">@dstolis</span> </li><li><a href="https://github.com/apache/fluss/issues/4882">#4882</a> [client] Push projection into Arrow loading for remote log scans <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/issues/4880">#4880</a> [rust] Projection fails when reading remote logs with older schemas <span class="author">@spoon-lz</span> </li><li><a href="https://github.com/apache/fluss/issues/4878">#4878</a> [log] Writer expiration ignores the injected clock <span class="author">@fxbing</span> </li><li><a href="https://github.com/apache/fluss/issues/4873">#4873</a> [client] getServerNodes fails to recover after coordinator IP changes <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/issues/4871">#4871</a> [Bug] Daemon shutdown timeout message reports 10 seconds instead of 120 <span class="author">@shuyouZZ</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4899">#4899</a> [docs] Document Kafka produce delivery guarantees <span class="author">@dao-jun</span> </li><li><a href="https://github.com/apache/fluss/pull/4898">#4898</a> [rpc] Gate channel reads on RequestChannel registration <span class="author">@dao-jun</span> </li><li><a href="https://github.com/apache/fluss/pull/4897">#4897</a> [kafka] Wire Kafka channels into RequestChannel backpressure <span class="author">@dao-jun</span> </li><li><a href="https://github.com/apache/fluss/pull/4896">#4896</a> [kafka] Add request metrics with per-table Produce breakdown <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/pull/4895">#4895</a> [helm] Publish each listener's advertised address as a pod env var <span class="author">@morazow</span> </li><li><a href="https://github.com/apache/fluss/pull/4893">#4893</a> [rust] Lookup requests are not drained when batch timeout is zero <span class="author">@slfan1989</span> </li><li><a href="https://github.com/apache/fluss/pull/4892">#4892</a> [server] Retry kv snapshot lease metadata file writes <span class="author">@morazow</span> </li><li><a href="https://github.com/apache/fluss/pull/4890">#4890</a> [kafka] Prevent Kafka endpoints on coordinator servers <span class="author">@zephyr45</span> </li><li><a href="https://github.com/apache/fluss/pull/4888">#4888</a> [flink] Add $partitions virtual table <span class="author">@fhan688</span> </li><li><a href="https://github.com/apache/fluss/pull/4887">#4887</a> [rust] Add reusable UnionRead source boundaries <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/pull/4884">#4884</a> [rpc] Avoid caching connections closed during construction <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/pull/4883">#4883</a> [client] Prune Arrow buffers before client-side decompression. <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/pull/4881">#4881</a> [rust] Fix projection of remote logs with older schemas <span class="author">@spoon-lz</span> </li><li><a href="https://github.com/apache/fluss/pull/4879">#4879</a> [log] Use the injected clock for writer expiration <span class="author">@fxbing</span> </li><li><a href="https://github.com/apache/fluss/pull/4877">#4877</a> [c++] Add poll-based async lookups <span class="author">@pbanakar</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4873">#4873</a> [client] getServerNodes fails to recover after coordinator IP changes <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/issues/4871">#4871</a> [Bug] Daemon shutdown timeout message reports 10 seconds instead of 120 <span class="author">@shuyouZZ</span> </li><li><a href="https://github.com/apache/fluss/issues/4864">#4864</a> [kafka] Miscellaneous Kafka compatibility improvements <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/4842">#4842</a> [kafka] Add SASL/PLAIN end-to-end regression coverage <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/4840">#4840</a> [kafka] Enable SASL/PLAIN on Kafka listeners <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/4838">#4838</a> [kafka] Implement SASL handshake and authentication APIs <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/4836">#4836</a> [kafka] Propagate authenticated principals to gateway sessions <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/4834">#4834</a> [kafka] Add per-connection SASL authentication state <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/4832">#4832</a> [kafka] Share SASL/PLAIN server configuration <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/4821">#4821</a> [lake] Skip snapshot recovery when offsets belong to a previous table ID <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/issues/4807">#4807</a> [kafka] Serve Metadata from the server cache with tablePropertyCache <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/4801">#4801</a> [build] Python 3.9 CI setup fails on Ubuntu 26.04 <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/issues/3780">#3780</a> [server] Prevent uncommitted ISR changes from being installed in CoordinatorContext <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/3455">#3455</a> [server] complete delayed fetch operations after produce to reduce fetch latency <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/280">#280</a> [Feature] Add itcase to test restoring for savepoint state. <span class="author">@loserwang1024</span> <span class="labels">good first issue</span></li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4876">#4876</a> Revert "[Client] Support bounded log scanning" <span class="author">@polyzos</span> </li><li><a href="https://github.com/apache/fluss/pull/4874">#4874</a> [client] Retry getServerNodes on stale coordinator address (#4873) <span class="author">@polyzos</span> </li><li><a href="https://github.com/apache/fluss/pull/4872">#4872</a> [build] Fix daemon shutdown timeout message <span class="author">@shuyouZZ</span> </li><li><a href="https://github.com/apache/fluss/pull/4865">#4865</a> [kafka] Miscellaneous Kafka compatibility improvements <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/pull/4827">#4827</a> [docs] Add newly appointed Fluss committers <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/pull/4825">#4825</a> [kafka] Serve Metadata from a consistent table property cache <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/pull/4822">#4822</a> [FLUSS-4821][client] Skip lake snapshot recovery for old table IDs <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/pull/4537">#4537</a> [flink] Add Flink connector test suite ITCase for FlussSource <span class="author">@Anurag15v</span> </li><li><a href="https://github.com/apache/fluss/pull/3781">#3781</a> [server] feat: committed isr boundary <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/pull/3412">#3412</a> [server] Complete delayed fetches after log appends <span class="author">@gyang94</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
