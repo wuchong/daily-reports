@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-10-27</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-10-27</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 10 新 Issues</div>
+            <div class="stat">✅ 5 关闭</div>
+            <div class="stat">✨ 8 新 PRs</div>
+            <div class="stat">🎉 6 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/4908">PR #4908</a> [docs] Revert authorization documentation changes from #4901</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4901">PR #4901</a> [client] Unify cluster inspection in DescribeCluster</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4892">PR #4892</a> [server] Retry kv snapshot lease metadata file writes</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4881">PR #4881</a> [rust] Fix projection of remote logs with older schemas</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4868">PR #4868</a> [elixir] Refactor Fluss.Admin module to use keyword opts</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4863">Issue #4863</a> [kafka] Convert JSON Produce values with Jackson streaming API</h4>
+            <ul><li><span class="author">@zephyr45</span>: I'd like to work on this. I'll compile schema-specific streaming converters over Jackson's JsonPars…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4889">Issue #4889</a> [Feature] Support adding nested fields to ROW and ARRAY<ROW> columns</h4>
+            <ul><li><span class="author">@raoluSmile</span>: I've started implementing this feature and opened draft PR #4905 for the API, RPC and coordinator-s…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4622">Issue #4622</a> [test] Unstable test RebalanceITCase.testRebalanceForLogTable</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: https://github.com/apache/fluss/actions/runs/40275825677/job/121418242442 ``` [ERROR] org.apache.fl…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4790">Issue #4790</a> [filesystems] Implement obtainSecurityToken for Google filesystem</h4>
+            <ul><li><span class="author">@falsity</span>: The connector-identity approach looks right. Dropping fs.gs.auth.type, keeping the read-only scope,…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2388">Issue #2388</a> Add collect/merge_map aggregations and binary merge optimizations.</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: Hi @fresh-borzoni, would you have time to review this PR? It adds new aggregate functions to the ag…</li><li><span class="author">@polyzos</span>: Thanks @platinumhamburg. I've added a few comments and suggestions. 👍</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4869">Issue #4869</a> [server] Move leader during reassignment when old leader stays</h4>
+            <ul><li><span class="author">@morazow</span>: Thanks @swuferhong for the review, checking and addressing today 🤝</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4149">Issue #4149</a> Coordinator can advertise a leader before the target tablet server admits the replica, causing NotLeaderOrFollowerException to recur for minutes after a large-table restart</h4>
+            <ul><li><span class="author">@polyzos</span>: We hit this on the **1.0.0 release** (3 tablet servers on Kubernetes, upstream Helm chart, Flink wr…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4150">Issue #4150</a> [coordinator] Withhold leader from UpdateMetadataRequest until NotifyLeaderAndIsr is acked</h4>
+            <ul><li><span class="author">@polyzos</span>: @damokelis can you rebase? and i will review and help merge 👍</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4256">Issue #4256</a> [client] NotLeaderOrFollowerException persists when a stale TabletServer endpoint is reused</h4>
+            <ul><li><span class="author">@polyzos</span>: Adding a server-to-server data point from **1.0.0** (upstream Helm chart, which advertises the INTE…</li><li><span class="author">@gyang94</span>: Hi @polyzos , there is a PR https://github.com/apache/fluss/pull/4263 for this issue. @loserwang102…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4911">Issue #4911</a> [helm] Publish not-ready addresses on the tablet headless Service so restarting servers stay resolvable</h4>
+            <ul><li><span class="author">@polyzos</span>: @morazow is this something you would be interesting in, since you are involved a lot with helm? Oth…</li><li><span class="author">@morazow</span>: Hello @polyzos , Sorry for the latency, yes let me come back to it tomorrow 🤝</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4779">Issue #4779</a> [spark] Fix batch reads on empty log buckets with nonzero offsets</h4>
+            <ul><li><span class="author">@litiliu</span>: @polyzos PTAL when you have a chance, thanks!</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3423">Issue #3423</a> Projection Pushdown with Newly Added Columns Fails for Old Batches</h4>
+            <ul><li><span class="author">@ymkim1006</span>: We ran into this on **Fluss 1.0.0** in a Flink **batch** read of a primary-key table (`FlussSource`…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2967">Issue #2967</a> Fix OutOfBoundException in writeChangeType when the number of records is large</h4>
+            <ul><li><span class="author">@ymkim1006</span>: We hit this on **Fluss 1.0.0** with partial deletes on a primary-key table (Flink `FlussSink` with…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4817">Issue #4817</a> [rpc] Reduce Netty shutdown latency and fix lifecycle races</h4>
+            <ul><li><span class="author">@polyzos</span>: Thanks @swuferhong for handling all The earlier comments are all addressed, but i left a few more,…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4601">Issue #4601</a> [lake] Fail fast when two plugins register the same lake format</h4>
+            <ul><li><span class="author">@polyzos</span>: Hi @Hachiman566, Is there any progress here, because we need to push this.</li><li><span class="author">@Hachiman566</span>: Hi @polyzos, I’ve opened draft PR #4916 for this issue. The fix and targeted tests are ready. I’ve…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4916">Issue #4916</a> [lake] Fail fast on duplicate lake format plugins</h4>
+            <ul><li><span class="author">@polyzos</span>: @Hachiman566 let me know once ready for review</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2327">Issue #2327</a> [rebalance] Support rebalancePlan interface in Admin</h4>
+            <ul><li><span class="author">@MaheshS08</span>: @swuferhong , I'd like to work on this issue. From my understanding, the goal is to support the `re…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4794">Issue #4794</a> Iceberg tables with multiple bucket keys can be created but cannot be written</h4>
+            <ul><li><span class="author">@polyzos</span>: @yangshangqing95 Thanks for the detailed answer.. do you think we should keep that restriction? I h…</li><li><span class="author">@yangshangqing95</span>: @polyzos No I really don't think we should keep this restriction in the long term, the single bucke…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4918">Issue #4918</a> [kafka] Add Produce request metrics by reusing RequestsMetrics</h4>
+            <ul><li><span class="author">@pbanakar</span>: @wuchong @gyang94 I'm intrested to work on this, can i take this one ?</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4893">Issue #4893</a> [rust] Lookup requests are not drained when batch timeout is zero</h4>
+            <ul><li><span class="author">@slfan1989</span>: @fresh-borzoni, could you please review this PR when you have a chance? Thanks!</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4883">PR #4883</a> [client] Prune Arrow buffers before client-side decompression.</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: The full IPC body is still deserialized and copied before pruning. Please describe this as skipping…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3860">PR #3860</a> [server] Make timed-out rebalance tasks recoverable</h4>
+            <ul><li><span class="author">@fxbing</span>: @swuferhong Thanks for clarifying. I understand that leader-only plans deliberately retain a leader…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4391">PR #4391</a> [client] Expose all coordinator servers (leader and standbys) via the client API</h4>
+            <ul><li><span class="author">@MaheshS08</span>: @morazow Thanks for the heads up! Agreed on this concern 🙂. I'll extract this into a separate dedic…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2388">PR #2388</a> Add collect/merge_map aggregations and binary merge optimizations.</h4>
+            <ul><li><span class="author">@polyzos</span>: With `distinct=true`, the first write for a key is stored as-is, so duplicates survive until the ne…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4869">PR #4869</a> [server] Move leader during reassignment when old leader stays</h4>
+            <ul><li><span class="author">@morazow</span>: Hello @swuferhong , I see it now, I had to understand first on the phase B part of the rebalance. <…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4817">PR #4817</a> [rpc] Reduce Netty shutdown latency and fix lifecycle races</h4>
+            <ul><li><span class="author">@polyzos</span>: This blocking coordinator call runs on the sender thread inside a synchronized method, and its time…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4887">PR #4887</a> [rust] Add reusable UnionRead source boundaries</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: Partitions are listed first, and their offsets are looked up by name afterwards. If a partition is……</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4918">#4918</a> [kafka] Add Produce request metrics by reusing RequestsMetrics <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/issues/4914">#4914</a> [server] Support parallel follower recovery per data directory <span class="author">@fxbing</span> </li><li><a href="https://github.com/apache/fluss/issues/4912">#4912</a> [test] ConsumerOffsetTableITCase fails after system table cleanup <span class="author">@fxbing</span> </li><li><a href="https://github.com/apache/fluss/issues/4911">#4911</a> [helm] Publish not-ready addresses on the tablet headless Service so restarting servers stay resolvable <span class="author">@polyzos</span> </li><li><a href="https://github.com/apache/fluss/issues/4909">#4909</a> [client] KV batch scans keep using a stale leader after failover <span class="author">@fxbing</span> </li><li><a href="https://github.com/apache/fluss/issues/4907">#4907</a> [test] Unstable test EnableFlussOnLakeTableProcedureITCase.testReenableExistingTableWithRegisteredSnapshot <span class="author">@app/github-actions</span> </li><li><a href="https://github.com/apache/fluss/issues/4904">#4904</a> [rpc] Immediate connection failure can leave a disconnected connection cached <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/issues/4903">#4903</a> [flink] Support historical partition batch union reads <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/issues/4902">#4902</a> [spark] Support batch and streaming reads of historical partitions <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/issues/4900">#4900</a> [client] Unify cluster inspection through Admin.describeCluster() <span class="author">@swuferhong</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4919">#4919</a> [flink] Retry initial lake snapshot commit in enable_fluss_on_lake_table <span class="author">@sakshichitnis27</span> </li><li><a href="https://github.com/apache/fluss/pull/4917">#4917</a> [docs] Fix three configuration keys that do not match the code <span class="author">@Jackeyzhe</span> </li><li><a href="https://github.com/apache/fluss/pull/4916">#4916</a> [lake] Fail fast on duplicate lake format plugins <span class="author">@Hachiman566</span> </li><li><a href="https://github.com/apache/fluss/pull/4915">#4915</a> [server] Add per-directory parallel follower recovery <span class="author">@fxbing</span> </li><li><a href="https://github.com/apache/fluss/pull/4913">#4913</a> [test] Isolate consumer offset table integration test clusters <span class="author">@fxbing</span> </li><li><a href="https://github.com/apache/fluss/pull/4910">#4910</a> [client] Invalidate stale KV scanner routing on failures <span class="author">@fxbing</span> </li><li><a href="https://github.com/apache/fluss/pull/4906">#4906</a> [kafka] Stream JSON Produce value conversion <span class="author">@zephyr45</span> </li><li><a href="https://github.com/apache/fluss/pull/4905">#4905</a> [server] Support adding nested fields to ROW columns <span class="author">@raoluSmile</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4900">#4900</a> [client] Unify cluster inspection through Admin.describeCluster() <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/issues/4891">#4891</a> [server] Retry kv snapshot lease metadata file writes <span class="author">@morazow</span> </li><li><a href="https://github.com/apache/fluss/issues/4880">#4880</a> [rust] Projection fails when reading remote logs with older schemas <span class="author">@spoon-lz</span> </li><li><a href="https://github.com/apache/fluss/issues/4867">#4867</a> [elixir] Use keyword options with false defaults in Fluss.Admin <span class="author">@nicolazar</span> </li><li><a href="https://github.com/apache/fluss/issues/993">#993</a> Implement obtainSecurityToken for google filesystem <span class="author">@luoyuxia</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4908">#4908</a> [docs] Revert authorization documentation changes from #4901 <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/pull/4901">#4901</a> [client] Unify cluster inspection in DescribeCluster <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/pull/4892">#4892</a> [server] Retry kv snapshot lease metadata file writes <span class="author">@morazow</span> </li><li><a href="https://github.com/apache/fluss/pull/4881">#4881</a> [rust] Fix projection of remote logs with older schemas <span class="author">@spoon-lz</span> </li><li><a href="https://github.com/apache/fluss/pull/4868">#4868</a> [elixir] Refactor Fluss.Admin module to use keyword opts <span class="author">@nicolazar</span> </li><li><a href="https://github.com/apache/fluss/pull/4790">#4790</a> [filesystems] Implement obtainSecurityToken for Google filesystem <span class="author">@falsity</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
