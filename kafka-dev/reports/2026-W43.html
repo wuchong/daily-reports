@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafka 社区周报 | 2026-W43</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Kafka 社区周报 | 2026-W43</h1>
+            <p class="date-range">2026-10-19 ~ 2026-10-25</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (2)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/4r9cgqjk26vos93oo52xqkw3sq4rvs1f">Apache Kafka 4.4.0</a></li>
+<li><a href="https://lists.apache.org/thread/vc8sq03lzjdo2mtm8rhmw09sgjvzbvjq">Apache Kafka 4.3.2</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (3)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/1brmzn95v932src632v7d2r974ngn6dy">KIP-1308: Extend Header API for Common Value Types</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/k44fqoxs8mdtpbh9ns1v0t4g6772yjt4">KIP-1322: Add metrics to Kraft that measure the number of fetch timeouts and election timeouts</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/br6s7nyrb72401136d29lo9qwxqt089f">KIP-1362: Add a rollback-compatible storage format option for KRaft migration</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/4mdh9dj4btlyqw37m87dlxsozkrb4nl7">[PR] MINOR: Update Kafka website to 4.4.0 [kafka-site]</a></h3>
+            <p class="meta">20 条回复 · 5 位参与者</p>
+            <p class="summary">该讨论围绕更新 Kafka 官网内容以发布 4.4.0 版本，主要包括下载页信息和发布公告博客。PR 已提交并在评审中补充了博客与 KIP 列表等内容，但仍存在博客链接未生效、旧版本归档等问题。</p>
+            <div class="key-points"><p><strong>@OmniaGM:</strong> 提交 PR 更新 Kafka 网站，添加 4.4.0 的下载信息、Docker 镜像和发布说明，并根据评审意见持续推送更新。</p>
+<p><strong>@chia7712:</strong> 指出 4.4.0 发布公告博客链接返回 404，并建议将 4.1.2 移动到归档区域。</p>
+<p><strong>@jiafu1115:</strong> 提醒可能遗漏了 Release Plan 4.4.0 中的部分 KIP，例如 KIP-1241，需要核对并补全。</p></div>
+            <p class="conclusion">下一步需要修复或发布 4.4.0 博客公告链接，按 Release Plan 核对并补全 KIP 列表，同时将 4.1.2 移入归档区域后继续评审合并。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/xwvjxv6g2f3dwxcc1bj3fs5k7p0pg73l">[PR] MINOR: Update Kafka website to 4.3.2 [kafka-site]</a></h3>
+            <p class="meta">8 条回复 · 2 位参与者</p>
+            <p class="summary">该讨论围绕将 Kafka 网站和文档更新到 4.3.2 的 PR #927 展开。评审中提出需补充更新多个版本文档、生成文件、下载页和升级指南，并修正版本号与链接。最终在要求解决冲突后，该 PR 被合并。</p>
+            <div class="key-points"><p><strong>@chia7712:</strong> 指出还需更新 4.3 版文档、生成文件、javadoc、下载页等多个网站文件，并要求归档下载使用 archive.apache.org。</p>
+<p><strong>@chia7712:</strong> 认为 Streams 升级指南中 KAFKA-20464 的修复版本应为 4.3.2 而非 4.3.0，并要求同步到 Kafka 主仓库。</p>
+<p><strong>@m1a2st:</strong> 提供了 Kafka 主仓库 PR #23935，用于跟进相关同步或修复。</p></div>
+            <p class="conclusion">PR #927 在要求解决冲突后已合并；相关行动包括修正版本信息、更新网站文件并同步到 Kafka 主仓库。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/wj61dhsd6tfhj38tdfb017qydob14gz0">Apache Kafka 3.9.3 release</a></h3>
+            <p class="meta">6 条回复 · 5 位参与者</p>
+            <p class="summary">社区讨论是否发布 Apache Kafka 3.9.3，以修复 ZK 到 KRaft 迁移中的关键缺陷，目前已有两个修复合并、一个仍在审阅。部分成员建议纳入 KIP-1362 及相关迁移问题，但发起人提醒 KIP 需单独推进并通过投票。整体讨论倾向支持发布 3.9.3，并有成员表示愿意参与修复和发布。</p>
+            <div class="key-points"><p><strong>@Chia-Ping Tsai:</strong> 因 ZK 迁移存在关键缺陷，提议发布 3.9.3；KAFKA-20960 和 KAFKA-21142 已合并，KAFKA-21062 仍在审阅。</p>
+<p><strong>@Tommi Vainikainen:</strong> 支持 3.9.3 发布，并询问是否可纳入卡在 KIP 阶段的 KIP-1362，以改善 KRaft 迁移回滚兼容性。</p>
+<p><strong>@Anton Agestam:</strong> 认为发版计划与 KIP-1362 相关，应重新考虑纳入底层修复，并指出迁移或双写阶段节点替换受阻也属关键问题。</p></div>
+            <p class="conclusion">初步共识是支持发布 3.9.3；下一步需完成 KAFKA-21062 审阅，将 KIP-1362 在独立线程推进投票，若通过可考虑纳入，并安排志愿者参与后续修复与发布。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/gygpxjhst8cwl7rwqdtr6nd0zh0yvok6">[PR] MINOR: Add 4.4 release [kafka-site]</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">该讨论围绕向 kafka-site 添加 Kafka 4.4 发布内容的 PR #925 展开。OmniaGM 说明 NOTICE 文件中的问题可能由 release.py 导致，并已手动处理相关条目。随后其确认已处理所有评审意见，PR 最终由 chia7712 合并。</p>
+            <div class="key-points"><p><strong>@OmniaGM:</strong> NOTICE 文件中的问题可能由 release.py 导致，已手动删除相关内容并计划后续修复。</p>
+<p><strong>@OmniaGM:</strong> 已处理所有评审意见，若无异议将合并 PR 并发送公告邮件。</p>
+<p><strong>@chia7712:</strong> 合并了添加 4.4 发布内容的 PR #925。</p></div>
+            <p class="conclusion">PR #925 已合并，后续行动是发送 4.4 发布公告邮件，并稍后修复 release.py 导致的问题。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/sygp3v1bgq6610syh4p8nbb54cj6svxp">KIP-1368: Client framework name and version</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕 KIP-1368 为 Kafka 客户端引入框架名称、版本和标识字段，重点是如何在 Kafka Connect、Kafka Streams 等框架中表达客户端来源与关联关系。目前 KIP 已取得进展并获总体认可，但 Connect 中 worker、connector、task 的映射及配置细节仍需完善。</p>
+            <div class="key-points"><p><strong>@Matthias J. Sax:</strong> 总体支持 KIP，但认为 Connect 的 task 信息层级过低且可能与客户端不是一一映射，不建议加入；同时提出字段数量、长度说明、正则约束等文档细节需要修正。</p>
+<p><strong>@Andrew Schofield:</strong> client.framework.id 用于关联同一框架下的多个客户端连接；认为 Connect 使用 worker ID 更合适，并已更新 KIP，同时禁止在 Connect 配置中设置这些新配置。</p>
+<p><strong>@Chris Egerton:</strong> 建议不要将 connector 类型和版本拼接到单一 instance ID 中，而应保留结构；Connect 更适合用 worker ID 标识，并可考虑引入 application 层级字段承载连接器类型/版本。</p></div>
+            <p class="conclusion">初步方向是 KIP 继续推进并在 Connect 中采用 worker ID 作为主要标识，但还需进一步明确 Connect 运行时与连接器连接的区分、新配置在 Connect/Streams 中的行为，以及字段长度、正则和文档表述等细节。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/d27pts7rdphfq9kjwmq4nkn43glpbt9c">[PR] KAFKA-20488 Check controller epoch after deprovisioning KRaft quorum when reverting migration [kafka-site]</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕 KAFKA-20488 展开，主题是在回滚迁移时于移除 KRaft quorum 后检查 controller epoch。目前 kafka-site 仓库中的 PR #920 已被合并，相关变更开始进入后续同步阶段。</p>
+            <div class="key-points"><p><strong>@chia7712:</strong> 合并了 kafka-site 仓库中的 PR #920，推进 KAFKA-20488 相关变更。</p>
+<p><strong>@mwesterby:</strong> 指出这些变更还需要同步到主 Kafka 仓库，并引用了 apache/kafka 的 PR #23958。</p></div>
+            <p class="conclusion">kafka-site 侧变更已合并；下一步是在主 Kafka 仓库中通过 PR #23958 继续添加或同步相关变更。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/rspdns3w0tl96z8bcwcp71fpmjnw3zhh">[PR] MINOR 4.3.2 blog [kafka-site]</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">社区围绕 kafka-site 仓库第 929 号 PR 讨论新增 Apache Kafka 4.3.2 发布博客。该 PR 由 m1a2st 提交，草稿说明 4.3.2 是错误修复版本，修复约 60 个问题，并重点提及分层存储和时间索引相关的潜在数据丢失风险。</p>
+            <div class="key-points"><p><strong>@m1a2st:</strong> 创建 PR #929，新增 Apache Kafka 4.3.2 发布博客页面。</p>
+<p><strong>@chia7712:</strong> 在代码评论中涉及博客内容，强调 4.3.2 修复约 60 个问题，尤其是分层存储大小保留和时间索引截断可能带来的数据丢失问题。</p></div>
+            <p class="conclusion">邮件内容未显示最终结论；当前进展是 PR 已创建并进入代码评论阶段，下一步是继续审阅并合并该博客更新。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/ymncrgcm5bm9lhffoyokr15xm4554k1k">[PR] KAFKA-21353: The incorrect parameter in internal-api-checker.md breaks the site build [kafka-site]</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕 kafka-site 仓库中 internal-api-checker.md 参数错误导致站点构建失败的问题。gabriellefu 提交 PR #931，将 fullDotVersion 参数修正为 4.4.0。该 PR 已被 OmniaGM 合并，修复工作完成。</p>
+            <div class="key-points"><p><strong>@gabriellefu:</strong> 提交 PR #931，将错误的 fullDotVersion 参数替换为 4.4.0。</p>
+<p><strong>@OmniaGM:</strong> 合并 PR #931，推进修复站点构建问题。</p></div>
+            <p class="conclusion">PR 已合并，internal-api-checker.md 参数错误导致的站点构建问题预计已解决，暂无进一步行动。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/q1cgr4cgxjohxqqm0v3bww6lvo1wnmr2">KIP-1379: Make server-side rack-aware assignment opt-in</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论围绕 KIP-1379 将服务端机架感知分配改为可选配置展开，重点是其适用范围、默认关闭的影响以及兼容性。社区认可该提案对常见场景的简化，但质疑现有机架感知分配仅在 fetch-from-follower 下生效，且集群级配置可能过于粗放。</p>
+            <div class="key-points"><p><strong>@Andrew Schofield:</strong> 机架感知分配的理想目标是尽量把 leader 位于客户端所在机架的分区分配给消费者，包括不支持 fetch-from-follower 的 share consumer；当前仅在 fetch-from-follower 启用时生效令人意外，默认关闭也暗示现有 consumer group 机架感知分配效果不理想。</p>
+<p><strong>@Lucas Brutschy:</strong> 认可 KIP 对常见场景的简化，但询问配置翻转是否具备与升级/降级相同的兼容性，并建议考虑组级配置，因为收益取决于具体 group 是否使用 fetch-from-follower 及副本机架分布。</p>
+<p><strong>@Lucas Brutschy:</strong> 指出 Streams group 在升级/降级会触发一次性再平衡但配置翻转不会，兼容性说明需更明确；同时禁用配置可能使 racksForPartition() 对存在 topic 返回空集，与既有 Javadoc 契约不一致。</p></div>
+            <p class="conclusion">目前尚未形成最终结论；下一步需要作者澄清或修订配置翻转兼容性、组级配置可行性、Streams 再平衡行为及 API 语义，并说明机架感知分配在非 fetch-from-follower 场景（如 share group）中的定位。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/9wwmm469ybqzvx837c86wb3wnyksh2wf">Review request for my first Apache Kafka contributions</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">新贡献者 Akshatha Ramesh 请求 Kafka 社区审阅其首次贡献的两个 PR。其中一个为 Streams DSL 文档语法修复，CI 等待维护者批准；另一个是 KAFKA-12986 的节流副本条目校验修复，CI 已通过并可审阅。</p>
+            <div class="key-points"><p><strong>@Akshatha Ramesh:</strong> 作为新贡献者提交首个 Apache Kafka 贡献，希望获得社区审阅和指导。</p>
+<p><strong>@Akshatha Ramesh:</strong> PR #23554 是文档语法小修复，当前 CI 流程等待维护者批准。</p>
+<p><strong>@Akshatha Ramesh:</strong> PR #23559 针对 KAFKA-12986，在解析前校验 throttled replica entries，CI 已通过并等待审阅。</p></div>
+            <p class="conclusion">目前尚未形成明确结论，下一步是等待维护者批准 CI 并由社区审阅两个 PR，作者将根据反馈进行修改。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (66)</h2>
+            
+    <p>本周新建 <strong>66</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周 JIRA 主要集中在异步 bootstrap DNS 解析的默认启用、异常处理、集成测试和跨客户端验证，以及相关构建、CI、文档和发布工具的改进。同时涉及消费者组/共享组、Rebalance、Streams EOS 与拓扑、事务协调器等问题的修复与增强。还包括客户端指标、Admin 限流指标、OAuth 指标等可观测性建设，以及测试基础设施和代码清理。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Kafka Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
