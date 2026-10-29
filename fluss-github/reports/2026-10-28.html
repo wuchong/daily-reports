@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-10-28</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-10-28</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 5 新 Issues</div>
+            <div class="stat">✅ 2 关闭</div>
+            <div class="stat">✨ 5 新 PRs</div>
+            <div class="stat">🎉 2 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/4881">PR #4881</a> [rust] Fix projection of remote logs with older schemas</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4868">PR #4868</a> [elixir] Refactor Fluss.Admin module to use keyword opts</li><li>🐛 <a href="https://github.com/apache/fluss/issues/4928">Issue #4928</a> [client] Metadata initialization failures can leave partition writes stuck</li><li>🐛 <a href="https://github.com/apache/fluss/issues/4926">Issue #4926</a> [server] Lookups queue for seconds behind slow putKv requests in the shared request worker pool</li><li>🐛 <a href="https://github.com/apache/fluss/issues/4924">Issue #4924</a> [Feature] Support InternalRow#createFieldToString</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4888">Issue #4888</a> [flink] Add $partitions virtual table</h4>
+            <ul><li><span class="author">@fhan688</span>: Could you please help review this PR when you have time? thanks! @swuferhong @platinumhamburg @Kaix…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4731">Issue #4731</a> [lake/paimon] Avoid repeated manifest scans for historical tiering</h4>
+            <ul><li><span class="author">@beryllw</span>: @luoyuxia cc</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4622">Issue #4622</a> [test] Unstable test RebalanceITCase.testRebalanceForLogTable</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: https://github.com/apache/fluss/actions/runs/40458033067/job/122035828388 ``` [ERROR] org.apache.fl…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4911">Issue #4911</a> [helm] Publish not-ready addresses on the tablet headless Service so restarting servers stay resolvable</h4>
+            <ul><li><span class="author">@swuferhong</span>: Cool, this is a really useful improvement! @morazow once the PR is ready, I’ll prioritize reviewing…</li><li><span class="author">@morazow</span>: Here it is: https://github.com/apache/fluss/pull/4925 🤝 Please have a look @polyzos, @swuferhong 🙌</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4926">Issue #4926</a> [server] Lookups queue for seconds behind slow putKv requests in the shared request worker pool</h4>
+            <ul><li><span class="author">@polyzos</span>: @wuchong @platinumhamburg before implementing anything, can you let me know your thoughts on this?</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/777">Issue #777</a> DelayedFetchLogOperation will not be trigged to complete when replica number set to 1</h4>
+            <ul><li><span class="author">@falsity</span>: I'd like to take this. ## Understanding This is still present on main. #768 removed `tryCompleteDel…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4857">Issue #4857</a> [rpc] Isolate internal listener resources from client backpressure</h4>
+            <ul><li><span class="author">@Jackeyzhe</span>: This PR currently conflicts with main, which now closes request handlers in `RequestProcessorPool.c…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4924">Issue #4924</a> [Feature] Support InternalRow#createFieldToString</h4>
+            <ul><li><span class="author">@ss666</span>: I'm willing to work on this one.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4200">Issue #4200</a> [client] Recover Admin writes after coordinator failover</h4>
+            <ul><li><span class="author">@sakshichitnis27</span>: Updated the PR: merged the latest `main` and resolved the conflicts, so it is mergeable again. - Ke…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/967">Issue #967</a> Implement Delta writer related interface based on POC code refinements</h4>
+            <ul><li><span class="author">@jx2lee</span>: @leonardBang I'd like to propose splitting Delta Lake support into three phases, similar to how Hud…</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2388">PR #2388</a> Add collect/merge_map aggregations and binary merge optimizations.</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: Good catch. `requiresAggOnFirstWrite()` now returns `distinct`, and the null-accumulator shortcut o…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4263">PR #4263</a> [rpc] Handle endpoint changes for cached server connections</h4>
+            <ul><li><span class="author">@swuferhong</span>: One small suggestion: please avoid Mockito, as it makes tests harder to maintain over time. Let’s u…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4391">PR #4391</a> [client] Expose all coordinator servers (leader and standbys) via the client API</h4>
+            <ul><li><span class="author">@morazow</span>: This is good from my side 🤝 Thanks! As discussed let's follow-up if this change could also be part…</li><li><span class="author">@MaheshS08</span>: cc @wuchong , @swuferhong</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4606">PR #4606</a> [rust] Return decoded scan batches before later errors</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: This drops the pipelined send_fetches() that main and Java do before returning data. Locally that m…</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4928">#4928</a> [client] Metadata initialization failures can leave partition writes stuck <span class="author">@threadfly2026</span> </li><li><a href="https://github.com/apache/fluss/issues/4926">#4926</a> [server] Lookups queue for seconds behind slow putKv requests in the shared request worker pool <span class="author">@polyzos</span> </li><li><a href="https://github.com/apache/fluss/issues/4924">#4924</a> [Feature] Support InternalRow#createFieldToString <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/issues/4921">#4921</a> [rust] Decode only selected columns in remote Arrow logs <span class="author">@spoon-lz</span> </li><li><a href="https://github.com/apache/fluss/issues/4920">#4920</a> [test] Unstable test KafkaMetadataITCase.testCustomDefaultDatabaseAliasAndNoRecreationByMetadata <span class="author">@app/github-actions</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4929">#4929</a> [kv] Enable prefix Bloom filters for compatible primary-key tables <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/4927">#4927</a> [log] Fix projection of added columns in historical Arrow batches <span class="author">@Joob1n</span> </li><li><a href="https://github.com/apache/fluss/pull/4925">#4925</a> [helm] Publish not-ready addresses on headless Services <span class="author">@morazow</span> </li><li><a href="https://github.com/apache/fluss/pull/4923">#4923</a> [server] Splice binary arrays in last_n merges <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/4922">#4922</a> [rust] Decode only selected columns in remote Arrow logs <span class="author">@spoon-lz</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4880">#4880</a> [rust] Projection fails when reading remote logs with older schemas <span class="author">@spoon-lz</span> </li><li><a href="https://github.com/apache/fluss/issues/4867">#4867</a> [elixir] Use keyword options with false defaults in Fluss.Admin <span class="author">@nicolazar</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4881">#4881</a> [rust] Fix projection of remote logs with older schemas <span class="author">@spoon-lz</span> </li><li><a href="https://github.com/apache/fluss/pull/4868">#4868</a> [elixir] Refactor Fluss.Admin module to use keyword opts <span class="author">@nicolazar</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
