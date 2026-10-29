@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flink 社区周报 | 2026-W43</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Flink 社区周报 | 2026-W43</h1>
+            <p class="date-range">2026-10-19 ~ 2026-10-25</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (2)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/3wm4l8fdfkw5v1qygc5b74v3hmrsf0w3">New Apache Flink Committer - Ramin Gharib</a></li>
+<li><a href="https://lists.apache.org/thread/vtzro4j8h323cxsvvmsv754pqdwgym6d">Flink 2.4 Branch Cut</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (4)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/w4pdlvh43j9q7k7krl4gxnszxtp7jonh">FLIP-616: Materialized Tables support for Table API</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/p6jm9zo93mjg4by1t7ksmq8n71pgh53n">Apache Flink Agents Release 0.4.0, release candidate #1</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/fmxcsdfd4yp4pm4vxdc8gkb2ddho55ys">Release Apache Flink Kafka Connector 5.1.0, release candidate rc1</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/20nrq5y0ldo6l6hbdsjdffnoo15f909k">FLIP-619: Store large operator coordinator state outside the checkpoint metadata</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/g6xvfg42wywsmq2sjv14d3pwzndqx3y9">Trying out the new Apache Trusted Releases by releasing a new Flink-Kafka connector</a></h3>
+            <p class="meta">5 条回复 · 6 位参与者</p>
+            <p class="summary">邮件讨论的核心是试用 Apache Trusted Releases 新发布工具，并以 Flink-Kafka connector 的新版本发布作为首个试点。社区普遍认为当前发布流程手工步骤较多，希望借此实现更频繁、可预测和安全的发布。目前已有成员响应并计划在其他连接器中尝试，同时建议补充配套文档或 Skills。</p>
+            <div class="key-points"><p><strong>@Martijn Visser:</strong> 提议并自愿使用 Flink-Kafka connector 试用 Apache Trusted Releases，并将流程整理到 Wiki，以推动 Flink 更频繁和自动化发布。</p>
+<p><strong>@Ferenc Csaky:</strong> 支持该方向，并计划在下一个 Pulsar connector 发布中尝试相同的新流程。</p>
+<p><strong>@Gustavo de Morais:</strong> 认可现有发布流程较为手工化，支持试点，并建议配套提供一组 Skills 以便社区使用。</p></div>
+            <p class="conclusion">社区对该试点总体支持，初步下一步是由 Martijn 通过 Flink-Kafka connector 发布实践并记录文档，同时可推进配套 Skills 或其他连接器的后续试用。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/kmn10h2lom467kkc70bpd0f9m7nn62l4">FLIP-608: Flink on Ray, Ray Resource Backend For Flink</a></h3>
+            <p class="meta">5 条回复 · 4 位参与者</p>
+            <p class="summary">社区讨论 FLIP-608 将 Ray 作为 Flink 的资源后端，以统一 Flink 与 Ray 集群并支持 GPU 等多模态场景。作者已根据反馈更新 FLIP，澄清 TaskManager 供给、制品分发、命名与 API 一致性，并回应了仅部署 TaskManager 或 Python worker 等替代方案。</p>
+            <div class="key-points"><p><strong>@Zhanghao Chen:</strong> 提案目标是统一 Flink 与 Ray 集群，排除仍会保留双集群的替代方案；初始阶段支持本地预置 JAR 和通过 Flink 文件系统获取 JAR，客户端自动上传与 Ray runtime_env 集成暂缓。</p>
+<p><strong>@Zander Matheson:</strong> 提出 Ray 仅提供 TaskManager 或由 Ray 调度 Python UDF worker 的替代方案，关注 GPU 资源隔离、按 worker 分配 GPU，以及 JobManager 是否必须运行在 Ray 上。</p>
+<p><strong>@Dian Fu:</strong> 认可更新已基本解决疑虑，但建议统一 RayJobManagerActor 命名，并修正 pyflink.ray.init()/init() 与示例 flinkray.init_flink() 的不一致。</p></div>
+            <p class="conclusion">FLIP 已整合社区反馈并补充被否决的替代方案；若无进一步问题，作者计划于 11 月 2 日发起投票。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/mq86bl9rv03om7xw1vox4483thgrsnn0">[PR] [FLINK-41049][ci] Make pre-downloaded Maven usable by the only-script Maven wrapper [flink-ci-docker]</a></h3>
+            <p class="meta">4 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕 flink-ci-docker PR #9 展开，目标是让预下载的 Maven 可被 jar-based 和 only-script Maven Wrapper 离线使用。PR 通过修改 Dockerfile 预热 Maven 发行版缓存、设置 MAVEN_USER_HOME，并用死代理验证构建不依赖网络。最终该 PR 被关闭，相关 only-script wrapper 更新将转到 Flink 主仓库处理。</p>
+            <div class="key-points"><p><strong>@MartijnVisser:</strong> 提出在 Dockerfile 中同时预热 jar-based 和 only-script Maven Wrapper 的缓存，并通过版本、SHA256 和 dead proxy 确保 CI 的 ./mvnw 离线可用。</p>
+<p><strong>@snuyanzin:</strong> 认为这是可行方案之一，但实现仍需要修改 Flink 主仓库。</p>
+<p><strong>@snuyanzin:</strong> 说明 only-script wrapper 的重新生成将单独在 Flink 主仓库中处理，并关闭了当前 PR。</p></div>
+            <p class="conclusion">当前 flink-ci-docker PR #9 已关闭，后续 only-script Maven wrapper 相关变更将在 Flink 主仓库单独推进。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/th1615dg711kgjow0rfrqwhydh4tgnc3">FLIP-618: Edit, Inspect and Build VARIANT Values</a></h3>
+            <p class="meta">3 条回复 · 3 位参与者</p>
+            <p class="summary">讨论围绕 FLIP-618 为 Flink VARIANT 类型新增编辑、检查和构建内置函数及 Java API。当前进展是 Ramin 与 Timo 迭代更新了 SQL NULL 与 variant null 的处理方式，使函数行为更加一致。</p>
+            <div class="key-points"><p><strong>@Ramin Gharib:</strong> 提出 VARIANT_SET、VARIANT_DELETE、VARIANT_OBJECT 等函数，并更新 NULL 语义：SQL NULL 参数通常返回 SQL NULL，同时新增 VARIANT_NULL() 和 TO_VARIANT() 用于显式写入 variant null。</p>
+<p><strong>@Timo Walther:</strong> 认可 FLIP 经过多轮迭代已较一致，设计参考了 BigQuery、Snowflake、Spark、DuckDB 及 Flink 现有函数，剩余细节将在 PR 和文档中完善。</p>
+<p><strong>@Martijn Visser:</strong> 支持该 FLIP 并赞同统一 SQL NULL 处理；对开放问题倾向 IS_VARIANT_NULL 遇到 SQL NULL 时返回 NULL，并建议补充 Dremio 作为 prior art。</p></div>
+            <p class="conclusion">初步共识是统一 SQL NULL 与 variant null 的处理，但 IS_VARIANT_NULL 对 SQL NULL 返回 NULL 还是 FALSE 仍待确认；后续将通过社区反馈、PR 讨论和文档继续推进。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/fkxwm850lw385srb9756w000clz8xhnc">FLIP-XXX: GEOGRAPHY type in Flink SQL and Table API</a></h3>
+            <p class="meta">3 条回复 · 3 位参与者</p>
+            <p class="summary">讨论围绕在 Flink SQL/Table API 中引入 GEOGRAPHY 类型，重点确认应先在上游 Calcite 定义和实现该类型，再同步到 Flink。Apache Sedona 社区加入后说明 SedonaFlink 已支持 Geography 类型和函数，但在序列化、SQL Gateway 结果以及 Iceberg/Parquet 原生映射方面仍有不足。社区进一步讨论原生类型的必要性、语义对齐以及与 Sedona 的集成边界。</p>
+            <div class="key-points"><p><strong>@Maximilian Michels:</strong> 支持增加 GEOGRAPHY 类型，建议按 Calcite JIRA、邮件列表讨论、PR、合并后同步到 Flink 的流程推进。</p>
+<p><strong>@Jia Yu:</strong> SedonaFlink 已通过 RAW 类型和专用序列化器支持 Geography 与部分 SQL Gateway 场景，但原生 Iceberg/Parquet 映射等仍缺失，建议采用统一 SRID 前缀 WKB SerDe 并让 Sedona 参与语义设计。</p>
+<p><strong>@Martijn Visser:</strong> 需要澄清 Sedona 现状对 Flink 原生类型必要性的影响，并在 Calcite 层对齐 CRS/SRID、球面语义等，同时明确 Flink 负责类型与互操作、Sedona 承担复杂空间计算的分工。</p></div>
+            <p class="conclusion">初步方向是先在 Calcite 中定义并实现 GEOGRAPHY，再引入 Flink；下一步由 David 在 Calcite 发起 JIRA 和讨论，并邀请 Sedona 社区参与，共同确认类型语义、序列化格式及 Iceberg/Parquet 集成方案。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/lhnkm9k4x3jwhhxkt7p6ql8pfqwkbybj">FLINK-37987: JdbcDynamicTableSink to Sink V2 in place</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">讨论将 JDBC 动态表 Sink 从旧 SinkFunction 迁移到 Sink V2，提议不新增 V2 类，而是在现有工厂内原地替换为仅 writer 的内部 Sink，并取消弃用窗口。目前已有草案 PR，社区总体认可，重点补充 savepoint 升级、回滚、无 uid 场景和发布说明。</p>
+            <div class="key-points"><p><strong>@Martijn Visser:</strong> 建议原地替换现有 JdbcDynamicTableSink，不新增 V2 类；由于接口、选项和语义保持不变且 writer 无状态，可不设弃用窗口，但需说明特定无 uid 场景的恢复限制。</p>
+<p><strong>@Krishna Sai:</strong> 认可方案，但建议补充回滚测试或说明；同时指出 timestamp inserter 可能改变算子哈希，影响其他分支状态恢复，allowNonRestoredState 并非安全绕过。</p>
+<p><strong>@Yanquan Lv:</strong> 支持原地迁移到 writer-only Sink V2，强调发布说明需要清楚描述受影响的 savepoint 恢复场景、升级和回滚预期。</p></div>
+            <p class="conclusion">社区初步倾向于接受原地迁移和不设弃用窗口的方案；下一步是完善升级与回滚验证、补充发布说明和 uid/compiled plan 注意事项，并更新 FLIP 页面。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/3w04cd3w162k7hvko52of7vrvmjm4cjs">Restructure the SQL built-in function docs</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕重构 Flink SQL 内置函数文档展开，拟将当前单页 306 个函数表格拆分为按类别组织、结构统一的独立函数页面。Ramin 提出方案并计划分类别提交 PR，Gustavo 表示支持并提出 Markdown/llms.txt 输出、YAML 数据化及补齐示例等建议。</p>
+            <div class="key-points"><p><strong>@Ramin Gharib:</strong> 提议为每个内置函数建立独立页面，统一包含语法、参数、返回值、使用说明和示例，并按类别在侧边栏分组；迁移将分类别提 PR，机械迁移可使用 AI 并披露。</p>
+<p><strong>@Gustavo de Morais:</strong> 支持重构，建议额外输出纯 Markdown 和 llms.txt 索引，用 YAML 存储函数字段并通过模板渲染，同时关注缺少示例的函数如何处理。</p>
+<p><strong>@Ramin Gharib:</strong> 接受建议，计划在迁移时补充示例而非隐藏示例章节，并考虑基于 YAML 让 CI 运行示例；实现需升级 Hugo 或用脚本生成页面。</p></div>
+            <p class="conclusion">初步方向获得支持，下一步将按类别推进 PR，采纳 YAML/Markdown 输出等建议，并在迁移中补齐示例；仍需确定 Hugo 升级或脚本方案以及 YAML 按函数还是按类别组织。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/f8pnocl8cw11wtz76rkbnqxfxwnx2qfd">[PR] [FLINK-41117][ci] Use ubuntu 26 in ci docker image [flink-ci-docker]</a></h3>
+            <p class="meta">1 条回复 · 1 位参与者</p>
+            <p class="summary">该讨论围绕 Flink CI Docker 镜像升级到 Ubuntu 26 的 PR 展开。snuyanzin 提交了 flink-ci-docker 仓库的 PR #10，用于更新 CI 镜像环境。随后该 PR 被合并。</p>
+            <div class="key-points"><p><strong>@snuyanzin:</strong> 提交 PR #10，提议在 Flink CI Docker 镜像中使用 Ubuntu 26。</p>
+<p><strong>@snuyanzin:</strong> 合并该 PR，使 CI Docker 镜像变更正式生效。</p></div>
+            <p class="conclusion">PR #10 已合并，后续需关注新 CI Docker 镜像在 Flink CI 中的实际运行和兼容性。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/1vlc47ozjvxcw4xydb8r5gxxy26365wl">[REQUEST] PMC help for 2.4 release Azure Devops change for flink-master-mirror</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">Flink 2.4 发布团队请求 PMC 协助完成发布分支流程中的 Azure DevOps 配置变更。具体是为已切出的 2.4 分支在 Azure DevOps pipelines 中启用对应的定时任务。</p>
+            <div class="key-points"><p><strong>@Mika Naylor:</strong> 2.4 分支已经创建，但需要 PMC 成员在 Azure DevOps pipelines 中启用对应的 cron job，以完成发布准备步骤。</p>
+<p><strong>@Martijn Visser:</strong> 已完成必要的 Azure DevOps 变更，该配置将在今晚的定时任务中被拾取并生效。</p></div>
+            <p class="conclusion">所需变更已由 Martijn Visser 完成，后续等待当晚计划任务生效即可。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/n2p0zt28k90n4bbnjdnwbdb0hx7n0ns5">Idle sources can make on-time records late after two exchanges</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论聚焦于 Flink 启用空闲检测且并行度大于 1 时，空闲源恢复后经过两次 all-to-all 交换，可能导致本应准时的记录在下游事件时间算子处晚于水印，从而被延迟或丢弃。Mate 提出了问题场景，并给出在 ACTIVE 时刷新网络输出的缓解方案，但认为其只能缩小竞态窗口。Roman 认可该问题，并建议通过复现测试和 JIRA 推进后续修复讨论。</p>
+            <div class="key-points"><p><strong>@Mate Czagany:</strong> 空闲源在两次 all-to-all 交换后可能使准时记录被先到达的水印判为迟到，导致停滞或丢弃；ACTIVE 时 flush 只能缓解，完整修复需要更正式的设计。</p>
+<p><strong>@Roman Khachatryan:</strong> 该场景可信，建议提供可强制复现顺序的测试并创建 JIRA，以便作为后续修复方案的验收测试。</p>
+<p><strong>@Roman Khachatryan:</strong> flush 只能缩小窗口，无法解决慢通道或反压问题；基于 marker 的方案在多源/多 split 混合通道下较复杂，可考虑源恢复后延迟推进水印的宽限机制。</p></div>
+            <p class="conclusion">下一步是提供复现测试并创建 JIRA；短期可考虑 flush 作为缓解手段，但根本修复仍需进一步设计，可能需要 FLIP 或替代方案。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (179)</h2>
+            
+    <p>本周新建 <strong>179</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周 JIRA 主要集中在 Flink CDC 文档与指标完善、SQL/Table 查询及函数缺陷修复，以及状态后端（ForSt/RocksDB/Python state）和运行时检查点相关问题。与此同时，多个连接器（Kafka、Pulsar、Cassandra、Hudi、MaxCompute）的兼容性、依赖升级与行为修正也受到关注。此外，社区开始集中推进 Flink 2.4 发布准备，包括分支创建、RC0、测试、发布说明和文档审查等事项。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Flink Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
