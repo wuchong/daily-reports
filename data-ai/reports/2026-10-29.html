@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data+AI 全球日报 | 2026-10-29</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Data+AI 全球日报 | 2026-10-29</h1>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="top-changes">
+            <h2>🔥 今日最重要的3个变化</h2>
+            <ol><li><strong>ClickHouse 自主代理 GroeneAI 成为开源贡献新变量</strong> — AI agent 在七个月内贡献超过 3,000 个合并 PR，可能改变数据库工程效率和开源治理方式。</li><li><strong>AWS 强化 EMR HBase 高可用运维能力</strong> — AWS 提供 HBase coordinator、RegionServer 和 transition regions 的排查方法，有助于提升云上大数据系统稳定性。</li><li><strong>StarTree 探索 Iceberg 原地向量搜索</strong> — 在 Apache Iceberg 上直接进行向量检索可减少数据移动，推动湖仓与 AI 检索融合。</li></ol>
+            <p class="judgment"><strong>总判断：</strong>今日行业信号集中在数据基础设施的工程自动化与湖仓 AI 化。ClickHouse 的自主代理显示 AI 正进入核心软件交付流程，AWS 和 StarTree 则分别从稳定性与向量检索强化数据平台底座。整体看，Data+AI 平台竞争正从单点模型能力转向数据工程效率、湖仓格式扩展和运维自动化。</p>
+        </section>
+
+        <section class="top-signals">
+            <h2>📡 重要信号</h2>
+            
+    <article class="news-item">
+        <h3>ClickHouse 引入自主工程代理 GroeneAI</h3>
+        <p class="sources">📌 <a href="https://clickhouse.com/blog/meet-groeneai-our-autonomous-contributor-to-clickhouse">ClickHouse Blog</a></p>
+        <p class="date">2026-10-29</p>
+        <p class="summary">ClickHouse 公布其自主工程代理 GroeneAI，称该代理在不到七个月内贡献了超过 3,000 个已合并 Pull Request。该案例显示 AI agent 正从辅助编码走向数据库核心工程流程，参与代码修改、测试和持续交付。若该模式可持续，将改变开源数据库维护、代码审查和社区治理方式。</p>
+        <div class="impact">📊 数据平台影响：AI 自主贡献可加速 ClickHouse 功能迭代与缺陷修复，但也带来代码质量、安全审计和开源治理挑战，平台团队需关注供应链可信度。</div>
+    </article>
+        </section>
+
+        <section class="product-tech">
+            <h2>💻 产品与技术</h2>
+            
+    <article class="news-item">
+        <h3>AWS 发布 Amazon EMR 上 Apache HBase 高可用优化实践（Part 1）</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/optimizing-apache-hbase-availability-on-amazon-emr-part-1-coordinator-startup-regionserver-recovery-and-regions-in-transition/">AWS Big Data Blog</a></p>
+        <p class="date">2026-10-29</p>
+        <p class="summary">AWS 发布 Amazon EMR 上 Apache HBase 可用性优化系列第一部分，围绕 coordinator 启动缓慢、RegionServer 离开集群以及 regions 长期处于 transition 等常见问题，提供可重复的排查流程、Web UI 检查页面、命令和日志特征。该内容偏运维最佳实践，旨在帮助企业在大规模 HBase 集群中缩短故障定位时间并提升服务稳定性。</p>
+        <div class="impact">📊 数据平台影响：对依赖 EMR + HBase 的数据平台，该实践可降低运维不确定性，提高实时 NoSQL 服务可用性，并推动云上 HBase 运维标准化。</div>
+    </article>
+    <article class="news-item">
+        <h3>StarTree 展示 Apache Iceberg 原地向量搜索方案</h3>
+        <p class="sources">📌 <a href="https://startree.ai/resources/vector-search-on-apache-iceberg-without-moving-your-data/">StarTree Blog</a></p>
+        <p class="date">2026-10-29</p>
+        <p class="summary">StarTree 发布关于在 Apache Iceberg 上进行向量搜索的内容，强调无需移动原始数据即可对日志、错误信息、服务名、客户 ID 和 embedding 等记录进行相似性检索。该方向面向大规模日志和可观测性场景，试图将向量检索能力直接嵌入湖仓数据层，减少 ETL 复制和额外向量数据库依赖。</p>
+        <div class="impact">📊 数据平台影响：若 Iceberg 原地向量搜索成熟，数据平台可在湖仓内统一支持分析、检索和 AI 应用，降低数据同步成本并提升治理一致性。</div>
+    </article>
+        </section>
+
+        <section class="people-views">
+            <h2>👤 人物与观点</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="analyst-insights">
+            <h2>📊 分析师洞察</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="watchlist">
+            <h2>👀 观察列表</h2>
+            
+    <article class="watchlist-item">
+        <h3>GroeneAI 对 ClickHouse 开源贡献质量与治理影响</h3>
+        <span class="status">待观察</span>
+        <p class="reason">AI agent 高频率合并 PR 可能提升迭代速度，但需要验证代码质量、安全性和社区审查机制。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>后续披露 GroeneAI 贡献范围、缺陷率、审查流程或治理规则。</p>
+    </article>
+    <article class="watchlist-item">
+        <h3>Apache Iceberg 向量搜索能力产品化</h3>
+        <span class="status">待观察</span>
+        <p class="reason">StarTree 展示原地向量搜索方向，但性能、索引格式、生态兼容性和生产可用性仍需验证。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>发布基准测试、GA 功能或与 Iceberg/查询引擎集成案例。</p>
+    </article>
+    <article class="watchlist-item">
+        <h3>Amazon EMR HBase 高可用系列后续</h3>
+        <span class="status">待观察</span>
+        <p class="reason">AWS 已发布 Part 1，后续可能覆盖更复杂恢复、自动化修复和成本优化。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>Part 2 或自动化运维工具发布。</p>
+    </article>
+        </section>
+
+        <section class="stock-analysis">
+            <h2>📈 股票分析</h2>
+            <p class="disclaimer">⚠️ 以下内容仅供参考，不构成任何投资建议。投资有风险，入市需谨慎。</p>
+            
+    <article class="stock-item">
+        <div class="stock-header">
+            <span class="ticker">AMZN</span>
+            <span class="company">Amazon</span>
+            <span class="signal signal-neutral">⚪ 中性</span>
+        </div>
+        <p class="stock-summary">AWS 发布 EMR 上 HBase 高可用运维实践，体现其在大数据基础设施可靠性和客户成功上的持续投入。该消息短期对财务影响有限，但有助于增强企业客户对 AWS 数据平台生态的粘性。本分析仅供参考，不构成投资建议。</p>
+        <div class="stock-details">
+            <div class="catalysts">
+                <strong>🚀 催化剂</strong>
+                <ul><li>AWS 大数据与 AI 基础设施新功能发布</li><li>企业客户在 EMR 和湖仓场景的采用扩大</li><li>云运维自动化能力增强</li></ul>
+            </div>
+            <div class="risks">
+                <strong>⚠️ 风险</strong>
+                <ul><li>企业云支出优化压力</li><li>Azure/GCP 及开源发行版竞争</li><li>HBase 等大数据组件需求增长不及预期</li></ul>
+            </div>
+        </div>
+    </article>
+        </section>
+
+        <footer>
+            <p>Generated by Data+AI Daily Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
