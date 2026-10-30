@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-10-29</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-10-29</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 8 新 Issues</div>
+            <div class="stat">✅ 4 关闭</div>
+            <div class="stat">✨ 8 新 PRs</div>
+            <div class="stat">🎉 8 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/4935">PR #4935</a> [test] Replace Mockito in metadata bootstrap tests</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4925">PR #4925</a> [helm] Publish not-ready addresses on headless Services</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4923">PR #4923</a> [server] Splice binary arrays in last_n merges</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4917">PR #4917</a> [docs] Fix three configuration keys that do not match the code</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4829">PR #4829</a> [metrics] Expire idle histogram samples across reporters</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/967">Issue #967</a> Implement Delta writer related interface based on POC code refinements</h4>
+            <ul><li><span class="author">@jx2lee</span>: @leonardBang I'd like to propose splitting Delta Lake support into three phases, similar to how Hud…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4927">Issue #4927</a> [log] Fix projection of added columns in historical Arrow batches</h4>
+            <ul><li><span class="author">@Joob1n</span>: @wuchong PTAL</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4924">Issue #4924</a> [Feature] Support InternalRow#createFieldToString</h4>
+            <ul><li><span class="author">@wuchong</span>: @ss666 This issue is assigned to you. Please ensure that timestamp, date, time, and bytes types are…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4692">Issue #4692</a> [docs] Reorganize documentation navigation and add ecosystem guides</h4>
+            <ul><li><span class="author">@falsity</span>: I'd like to work on this. Proposed scope for a first PR: - Reorganize the Next documentation sideba…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4926">Issue #4926</a> [server] Lookups queue for seconds behind slow putKv requests in the shared request worker pool</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: Hi @polyzos , Thanks for sharing the observations. I agree that connection-bound request queues can…</li><li><span class="author">@polyzos</span>: Thanks @platinumhamburg, this is helpful. 👍 **RocksDB config (1.0.0), per tablet server:** shared b…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4829">Issue #4829</a> [metrics] Expire idle histogram samples across reporters</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: Hi @polyzos , could you take a look at this PR when you have time? It expires idle histogram sample…</li><li><span class="author">@polyzos</span>: Thanks @platinumhamburg! I rebased onto main and pushed one small commit two changes: - Prometheus…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4263">Issue #4263</a> [rpc] Handle endpoint changes for cached server connections</h4>
+            <ul><li><span class="author">@swuferhong</span>: I'll merge this first, then update the Mockito-based tests.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2388">Issue #2388</a> [server] Add collect and merge_map aggregations</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: Thanks @polyzos and @fresh-borzoni for the thoughtful reviews! I’ll add the four Paimon-derived fil…</li><li><span class="author">@fresh-borzoni</span>: @platinumhamburg https://github.com/apache/fluss/pull/4923 is merged, so you can use it 👍</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4884">Issue #4884</a> [rpc] Avoid retaining failed connections in the connection pool</h4>
+            <ul><li><span class="author">@beryllw</span>: @loserwang1024 @swuferhong cc</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4934">Issue #4934</a> [Bug] Altering table config fails when datalake is disabled</h4>
+            <ul><li><span class="author">@Vidusha10</span>: Hi @litiliu! Thanks for reporting this. Are you currently working on a fix for this, or can I take…</li><li><span class="author">@litiliu</span>: I'm working on this. @Vidusha10</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4115">Issue #4115</a> [helm] First-class coordinator HA: standby-aware readiness gate</h4>
+            <ul><li><span class="author">@polyzos</span>: Thanks @morazow, this is a really nice improvement and overall LGTM 👍 The main two inline things fo…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4887">Issue #4887</a> [rust] Add reusable UnionRead source boundaries</h4>
+            <ul><li><span class="author">@beryllw</span>: Given the roadmap in #4713, could we open the API/interface PR first, with an end-to-end usage exam…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4424">Issue #4424</a> [helm] Support several Fluss clusters in one namespace</h4>
+            <ul><li><span class="author">@polyzos</span>: Thanks @affo, this is a good approach 👍 I've left a few small comments inline. The ZooKeeper root f…</li><li><span class="author">@affo</span>: @polyzos thanks for the careful review, going to address your points 🤝；@polyzos I addressed your po…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4936">Issue #4936</a> [lake/iceberg] Support composite bucket keys for Iceberg-tiered tables</h4>
+            <ul><li><span class="author">@polyzos</span>: @yangshangqing95 FYI @luoyuxia @MehulBatra @fresh-borzoni Can you let me know your thoughts on this…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4794">Issue #4794</a> Iceberg tables with multiple bucket keys can be created but cannot be written</h4>
+            <ul><li><span class="author">@polyzos</span>: @yangshangqing95 I opened #4936 for tracking and if you are interested. But If it's something we ca…</li><li><span class="author">@yangshangqing95</span>: Hi @polyzos It would be great if we could support this in the next release. My understanding is tha…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4745">Issue #4745</a> [server] Support group-aware tiering table assignment</h4>
+            <ul><li><span class="author">@luoyuxia</span>: Thanks. will have a look when i got some time</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4065">Issue #4065</a> [kv] Batch old value lookups in write path</h4>
+            <ul><li><span class="author">@polyzos</span>: Thanks @platinumhamburg, the design looks good 🙏 I left a few comments, so before merging my sugges…</li><li><span class="author">@platinumhamburg</span>: Thanks for the review, @polyzos. Holding the old values temporarily is a trade-off of batching: it…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2967">Issue #2967</a> Fix OutOfBoundException in writeChangeType when the number of records is large</h4>
+            <ul><li><span class="author">@gyang94</span>: Hi, @ymkim1006. Thanks for sharing this and letting us know you’ve run into the issue as well. It’s…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4820">Issue #4820</a> [kv] Support global secondary indexes</h4>
+            <ul><li><span class="author">@polyzos</span>: @platinumhamburg Thanks for all the great work here 🙏, the overall design looks solid. A few blocke…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4922">Issue #4922</a> [rust] Decode only selected columns in remote Arrow logs</h4>
+            <ul><li><span class="author">@zuston</span>: this is a good improvement! I will review in this week.</li><li><span class="author">@fresh-borzoni</span>: @zuston I'll wait for your feedback as well until next week 👍</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4915">Issue #4915</a> [server] Add per-directory parallel follower recovery</h4>
+            <ul><li><span class="author">@zuston</span>: Is this related with https://github.com/apache/fluss/pull/3999 ? @fxbing</li><li><span class="author">@fxbing</span>: > Is this related with #3999 ? @fxbing @zuston Yes, they are related. Both aim to reduce the latenc…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4857">Issue #4857</a> [rpc] Isolate internal listener resources from client backpressure</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: Hi @Jackeyzhe , Thanks for pointing this out. Rebased onto the latest main. Shared request handlers…</li><li><span class="author">@polyzos</span>: Thanks @platinumhamburg, the change looks good. Before merging: `netty.server.num-network-threads`,…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2586">Issue #2586</a> [docs][build] Complete automatic configuration documentation generation</h4>
+            <ul><li><span class="author">@pbanakar</span>: The previous implementation in #2588 is now outdated: the current branch has changed, `ConfigOption…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4606">Issue #4606</a> [rust] Return decoded scan batches before later errors</h4>
+            <ul><li><span class="author">@spoon-lz</span>: @fresh-borzoni Fixed for LogScanner::poll() as well. Both paths now return collected data before la…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4940">Issue #4940</a> [lake/iceberg] Truncated position-delete bounds break compaction</h4>
+            <ul><li><span class="author">@polyzos</span>: This only affect the 1.10 Iceberg version - the `1.12 plugin` writes full `file_path` bounds and is…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4488">Issue #4488</a> [kv] Fail multiGet on read errors instead of reporting missing keys</h4>
+            <ul><li><span class="author">@polyzos</span>: Thanks @zhang-arvin, good catch! I pushed a small commit: limit scan now checks the iterator status…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4200">Issue #4200</a> [client] Recover Admin writes after coordinator failover</h4>
+            <ul><li><span class="author">@sakshichitnis27</span>: Now that #4263 is merged, I merged the latest `main` and removed the explicit `client.disconnect(co…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4919">Issue #4919</a> [flink] Retry initial lake snapshot commit in enable_fluss_on_lake_table</h4>
+            <ul><li><span class="author">@sakshichitnis27</span>: Hi committers, `Java 11 / flink2` failed on this PR in `Flink22TableSourceITCase.testLookupCustomSh…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4923">Issue #4923</a> [server] Splice binary arrays in last_n merges</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: @platinumhamburg Thanks for the review, addressed, will merge once CI is green 👍 Curious to see res…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4757">Issue #4757</a> [client] Fail lookups and writes on a dropped or re-created table instead of hanging</h4>
+            <ul><li><span class="author">@polyzos</span>: Thanks @dstolis for tackling this 👍 I would like to suggest the following: 1. **Writer:** `recordFa…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4758">Issue #4758</a> [server] Fix stale metadata served for missing and re-created tables</h4>
+            <ul><li><span class="author">@polyzos</span>: Thanks @dstolis, the fix looks good 👍 A couple of things before merging: 1. `getPartitionMetadata`…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4814">Issue #4814</a> [log] Add compression for COMPACTED log format</h4>
+            <ul><li><span class="author">@polyzos</span>: Thanks again @dstolis 🙌 Really nice work on this, and the benchmarks are super helpful 👏 Re the ope…</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3860">PR #3860</a> [server] Make timed-out rebalance tasks recoverable</h4>
+            <ul><li><span class="author">@swuferhong</span>: Thanks, this is a valid issue rather than an expected recovery limitation. The current recovery log…</li><li><span class="author">@platinumhamburg</span>: Non-blocking: could we clarify what counts as migration progress here? Any observed ISR change rese…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4923">PR #4923</a> [server] Splice binary arrays in last_n merges</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: Could we reuse `BinaryArrayWriter.roundNumberOfBytesToNearestWord()` here to keep the alignment log…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4887">PR #4887</a> [rust] Add reusable UnionRead source boundaries</h4>
+            <ul><li><span class="author">@beryllw</span>: Could we apply safe partition pruning before fetching log offsets? For a single scan, freezing only…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4115">PR #4115</a> [helm] First-class coordinator HA: standby-aware readiness gate</h4>
+            <ul><li><span class="author">@polyzos</span>: Could standby answers be opt-in per request, e.g. an **optional bool allow_standby** on `GetCluster…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4424">PR #4424</a> [helm] Support several Fluss clusters in one namespace</h4>
+            <ul><li><span class="author">@polyzos</span>: Release names are only unique within a namespace, so two `orders` releases in different namespaces……</li><li><span class="author">@affo</span>: Agreed, and better settled now than after a second migration. One wrinkle with `<namespace>-<releas…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4065">PR #4065</a> [kv] Batch old value lookups in write path</h4>
+            <ul><li><span class="author">@polyzos</span>: multiGetAsList returns null both for a missing key and for a key whose read failed (#4484). The wri…</li><li><span class="author">@platinumhamburg</span>: Thanks for pointing this out. This is a known RocksJava issue tracked in [#12741](https://github.co…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4820">PR #4820</a> [kv] Support global secondary indexes</h4>
+            <ul><li><span class="author">@polyzos</span>: The leader retains WAL from `getMinRetainLogOffset()` here, but followers don't. `CoordinatorEventP…</li><li><span class="author">@fresh-borzoni</span>: A limit would really help here. In my test one lookup over 300k candidates takes about a second and…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4482">PR #4482</a> [flink] Support Cache ALL for lookup.</h4>
+            <ul><li><span class="author">@loserwang1024</span>: This is scope for the first iteration, rather than a permanent limitation. I have clarified that in…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4606">PR #4606</a> [rust] Return decoded scan batches before later errors</h4>
+            <ul><li><span class="author">@spoon-lz</span>: Fixed. Both poll paths now schedule the next fetches before returning data, without awaiting metada…</li><li><span class="author">@fresh-borzoni</span>: My earlier suggestion broke something here. On a partitioned table, if a's leader moves to another……</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4814">PR #4814</a> [log] Add compression for COMPACTED log format</h4>
+            <ul><li><span class="author">@polyzos</span>: I think we should go with the new magic value you offered in the description (only for compressed b…</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4945">#4945</a> [Bug] FIRST_VALUE does not preserve an initial null value <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/4943">#4943</a> [kafka] Kafka listener channels bypass RequestChannel backpressure <span class="author">@dao-jun</span> </li><li><a href="https://github.com/apache/fluss/issues/4942">#4942</a> [rpc] Channels registered during active backpressure are never paused <span class="author">@dao-jun</span> </li><li><a href="https://github.com/apache/fluss/issues/4940">#4940</a> [lake/iceberg] Truncated position-delete bounds break compaction <span class="author">@polyzos</span> </li><li><a href="https://github.com/apache/fluss/issues/4938">#4938</a> [lake/paimon] Create Fluss tables from existing Paimon primary-key tables <span class="author">@luoyuxia</span> <span class="labels">component=lake/paimon</span></li><li><a href="https://github.com/apache/fluss/issues/4936">#4936</a> [lake/iceberg] Support composite bucket keys for Iceberg-tiered tables <span class="author">@polyzos</span> </li><li><a href="https://github.com/apache/fluss/issues/4934">#4934</a> [Bug] Altering table config fails when datalake is disabled <span class="author">@litiliu</span> </li><li><a href="https://github.com/apache/fluss/issues/4930">#4930</a> [flink] DataStream FlussSource shares one KV snapshot lease ID per JVM, so one job can drop or overwrite another job's snapshot lease <span class="author">@ymkim1006</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4946">#4946</a> [server] Preserve null first values in aggregate merge engine <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/4944">#4944</a> [lake/delta] Support tiering log tables to Delta Lake <span class="author">@jx2lee</span> </li><li><a href="https://github.com/apache/fluss/pull/4941">#4941</a> [rust] Create missing partitions on write instead of retrying forever <span class="author">@SteNicholas</span> </li><li><a href="https://github.com/apache/fluss/pull/4939">#4939</a> [flink] Isolate default KV snapshot leases per DataStream source <span class="author">@hutiefang76</span> </li><li><a href="https://github.com/apache/fluss/pull/4937">#4937</a> [server] Fix Altering table config fails when datalake is disabled   <span class="author">@litiliu</span> </li><li><a href="https://github.com/apache/fluss/pull/4933">#4933</a> Bump rustls from 0.23.43 to 0.23.46 in /fluss-gateway <span class="author">@app/dependabot</span> <span class="labels">dependencies, rust</span></li><li><a href="https://github.com/apache/fluss/pull/4932">#4932</a> Bump io.opentelemetry:opentelemetry-api from 1.63.0 to 1.67.0 in /fluss-trino <span class="author">@app/dependabot</span> <span class="labels">dependencies, java</span></li><li><a href="https://github.com/apache/fluss/pull/4931">#4931</a> Bump org.xerial.snappy:snappy-java from 1.1.10.4 to 1.1.10.9 <span class="author">@app/dependabot</span> <span class="labels">dependencies, java</span></li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4911">#4911</a> [helm] Publish not-ready addresses on the tablet headless Service so restarting servers stay resolvable <span class="author">@polyzos</span> </li><li><a href="https://github.com/apache/fluss/issues/4828">#4828</a> [metrics] Define empty-window semantics for expiring histogram reporters <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/4532">#4532</a> [helm] Support several Fluss clusters in one namespace <span class="author">@affo</span> </li><li><a href="https://github.com/apache/fluss/issues/4484">#4484</a> [kv] RocksDBKv.multiGet reports read errors as missing keys <span class="author">@fresh-borzoni</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4935">#4935</a> [test] Replace Mockito in metadata bootstrap tests <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/pull/4925">#4925</a> [helm] Publish not-ready addresses on headless Services <span class="author">@morazow</span> </li><li><a href="https://github.com/apache/fluss/pull/4923">#4923</a> [server] Splice binary arrays in last_n merges <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/4917">#4917</a> [docs] Fix three configuration keys that do not match the code <span class="author">@Jackeyzhe</span> </li><li><a href="https://github.com/apache/fluss/pull/4829">#4829</a> [metrics] Expire idle histogram samples across reporters <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/4488">#4488</a> [kv] Fail multiGet on read errors instead of reporting missing keys <span class="author">@zhang-arvin</span> </li><li><a href="https://github.com/apache/fluss/pull/4424">#4424</a> [helm] Support several Fluss clusters in one namespace <span class="author">@affo</span> </li><li><a href="https://github.com/apache/fluss/pull/4263">#4263</a> [rpc] Handle endpoint changes for cached server connections <span class="author">@BackendArchitectX</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
