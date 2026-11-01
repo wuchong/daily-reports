@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-10-31</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-10-31</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 3 新 Issues</div>
+            <div class="stat">✅ 2 关闭</div>
+            <div class="stat">✨ 6 新 PRs</div>
+            <div class="stat">🎉 1 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/4958">PR #4958</a> 合并：支持从已加载表创建 PaimonLakeSource，完善 Paimon 湖源集成。</li><li>🐛 <a href="https://github.com/apache/fluss/pull/4967">PR #4967</a> 修复 Flink pendingRecords 指标测试因桶拉取顺序不确定导致的 flaky 问题。</li><li>✨ <a href="https://github.com/apache/fluss/pull/4970">PR #4970</a> 为客户端 lookup 重试增加指数退避，回应 <a href="https://github.com/apache/fluss/issues/4971">Issue #4971</a>。</li><li>✨ <a href="https://github.com/apache/fluss/pull/4965">PR #4965</a> 提出 FETCH_LOG v1 的有界日志扫描及旧服务端回退，正在征求 API 反馈。</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4185">Issue #4185</a> [Umbrella] Kafka Protocols Compatibility - Basic Produce</h4>
+            <ul><li><span class="author">@dao-jun</span>: 提出幂等生产者兼容缺口，建议记录批次升 V3，后确认由他人跟进。</li><li><span class="author">@gyang94</span>: 确认幂等生产是下一步，并分享社区会议文档说明 produceEpoch 等差距。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4920">Issue #4920</a> [test] Unstable test KafkaMetadataITCase.testCustomDefaultDatabaseAliasAndNoRecreationByMetadata</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: 报告 KafkaMetadataITCase 自定义默认数据库别名测试失败，附带 CI 链接和错误信息。</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4965">PR #4965</a> [Client][Server] Add bounded log scanning with FETCH_LOG v1 and legacy server fallback</h4>
+            <ul><li><span class="author">@yangshangqing95</span>: 说明已重设有界扫描 API 并处理兼容性，请求反馈，文档与上层集成后续分拆提交。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4795">PR #4795</a> [Server] Prevent creating iceberg format tables with multiple bucket keys</h4>
+            <ul><li><span class="author">@yangshangqing95</span>: 感谢评审，已 rebase 更新；CI 一次失败源于 Flink 指标测试不稳定，已有跟踪。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4890">PR #4890</a> [kafka] Prevent Kafka endpoints on coordinator servers</h4>
+            <ul><li><span class="author">@zephyr45</span>: 请求维护者批准待处理工作流并评审，说明测试、Spotless/RAT 等验证，当前 action_required。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4906">PR #4906</a> [kafka] Stream JSON Produce value conversion</h4>
+            <ul><li><span class="author">@zephyr45</span>: 请求批准 CI 与 license 工作流并评审，说明测试、JDK8 编译、检查及基准结果。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4970">PR #4970</a> [client] Add exponential backoff to lookup retries</h4>
+            <ul><li><span class="author">@polyzos</span>: 请求 fresh-borzoni 和 swuferhong 评审客户端指数退避重试 PR。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4958">PR #4958</a> [lake/paimon] Allow creating PaimonLakeSource from a loaded table</h4>
+            <ul><li><span class="author">@bryndenZh</span>: 感谢评审建议，已按要求更新 PaimonLakeSource 相关实现并完成修改。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4922">PR #4922</a> [rust] Decode only selected columns in remote Arrow logs</h4>
+            <ul><li><span class="author">@zuston</span>: 质疑 is_from_remote 分支必要性，建议复用 projection 变量而非新增变量。</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4971">#4971</a> [client] Lookups for a leaderless bucket retry without backoff <span class="author">@polyzos</span> </li><li><a href="https://github.com/apache/fluss/issues/4968">#4968</a> [rust] Timestamp partition names differ from Java <span class="author">@slfan1989</span> </li><li><a href="https://github.com/apache/fluss/issues/4966">#4966</a> [flink] Flaky testPendingRecordsMetric due to uncertainty bucket fetch ordering <span class="author">@yangshangqing95</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4972">#4972</a> [elixir] Add methods for getting offsets to Fluss.Admin <span class="author">@nicolazar</span> </li><li><a href="https://github.com/apache/fluss/pull/4970">#4970</a> [client] Add exponential backoff to lookup retries <span class="author">@polyzos</span> </li><li><a href="https://github.com/apache/fluss/pull/4969">#4969</a> [rust] Align timestamp partition names with Java <span class="author">@slfan1989</span> </li><li><a href="https://github.com/apache/fluss/pull/4967">#4967</a> [flink] Fix flaky pendingRecords metric test <span class="author">@yangshangqing95</span> </li><li><a href="https://github.com/apache/fluss/pull/4965">#4965</a> [Client][Server] Add bounded log scanning with FETCH_LOG v1 and legacy server fallback <span class="author">@yangshangqing95</span> </li><li><a href="https://github.com/apache/fluss/pull/4964">#4964</a> [kafka] Reject same-bucket alias writes in produce requests <span class="author">@dao-jun</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4961">#4961</a> [Umbrella] Kafka Protocols Compatibility - Idempotent Producer <span class="author">@dao-jun</span> </li><li><a href="https://github.com/apache/fluss/issues/4957">#4957</a> [lake/paimon] Allow passing an existing table to PaimonLakeSource <span class="author">@bryndenZh</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4958">#4958</a> [lake/paimon] Allow creating PaimonLakeSource from a loaded table <span class="author">@bryndenZh</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
