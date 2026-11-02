@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spark 社区周报 | 2026-W43</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Spark 社区周报 | 2026-W43</h1>
+            <p class="date-range">2026-10-19 ~ 2026-10-25</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (3)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/rv8l97x6398rc8rljrpolrvnk7cv29mf">Apache Spark 4.2.1 released</a></li>
+<li><a href="https://lists.apache.org/thread/j5sm6do6pvgohohot6bb4rvbvlkzvf4c">Apache Spark 4.1.4 released</a></li>
+<li><a href="https://lists.apache.org/thread/thv6y8yhl6yd0n1xj92cd76msxskrd10">Apache Spark 4.0.5 released</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (4)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/g8l45p2cohj1v4p4qgfvqtsfx4kcopld">Release Spark 4.2.1 (RC3)</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/9c5vr9xhrmqv7yqptscpmqjc7577ocqq">Release Spark 4.0.5 (RC3)</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/dycj6q3vymmxdqohrgz2kzcy8spny527">Release Spark 4.1.4 (RC4)</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/om9p5coq4z6z9rlmtthflo71ddlr2bg7">Release Spark 4.3.0 (RC3)</a> <span class="status passed">✅ 已通过</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/3qqpjrc8k2k5sm657808v6slggz574dl">Drop Java 17 support in Apache Spark 5.0.0 (SPARK-60669)</a></h3>
+            <p class="meta">13 条回复 · 11 位参与者</p>
+            <p class="summary">社区围绕 SPARK-60669 讨论在 Apache Spark 5.0.0 中移除 Java 17 支持，并将 Java 21 设为最低支持版本。Dongjoon Hyun 的提案获得较多支持，理由是 Java 21 已成熟、维护双版本成本高且生态正在迁移。Cheng Pan 进一步提议将最低版本提高到 Java 25，但引发对用户升级成本和兼容性的讨论。</p>
+            <div class="key-points"><p><strong>@Dongjoon Hyun:</strong> 提议 Spark 5.0.0 移除 Java 17，将 Java 21 作为最低版本；该变更仅影响 master/5.0.0，4.x 继续支持 Java 17，并将逐步清理构建、CI、文档和 Java 17 特定代码。</p>
+<p><strong>@Cheng Pan:</strong> 支持移除 Java 17，但建议 Spark 5.0.0 直接以 Java 25 为最低版本，以获得 G1 Region Pinning、FFM API、原生数据源和 SIMD 向量化等性能与架构优势。</p>
+<p><strong>@Xiao Li:</strong> 支持 Java 21 作为最低版本，不支持 Java 25 作为最低版本；Java 21 是成熟 LTS，更利于企业用户升级，Java 25 可作为支持和推荐版本而非强制要求。</p></div>
+            <p class="conclusion">社区对移除 Java 17 并以 Java 21 作为 Spark 5.0.0 最低版本已有较明显共识；是否将最低版本提高到 Java 25 尚未达成一致。下一步预计继续推进 SPARK-60669 的构建、GitHub Actions、文档和清理工作，并对 Java 25 最低版本问题继续或单独讨论。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/t1c05ojyd5bpwxgn87l2mb7tslk97l0q">Run post merge builds in committers' fork</a></h3>
+            <p class="meta">9 条回复 · 5 位参与者</p>
+            <p class="summary">讨论聚焦 Spark CI 资源紧张，尤其是合并后构建占用过高。Hyukjin 提议在 committer fork 中运行合并后构建或仅构建最新提交，但 Dongjoon 等认为会损害 committer 资源。社区随后转向探讨 merge queue、加强预合并验证、降低合并后构建频率/覆盖和增加预算等替代方案。</p>
+            <div class="key-points"><p><strong>@Hyukjin Kwon:</strong> 提出利用 committer fork 触发合并后构建，或只对最新提交运行构建，以缓解 CI 资源压力。</p>
+<p><strong>@Dongjoon Hyun:</strong> 反对该方案，认为会耗尽 committer 自身 fork 的 CI 资源，影响活跃提交者生产并波及姊妹项目。</p>
+<p><strong>@Nicholas Chammas:</strong> 建议探索自定义 merge queue，在合并前针对最新目标分支自动测试，从而减少或取消合并后构建。</p></div>
+            <p class="conclusion">初步共识是不宜将合并后构建转移到 committer fork；下一步将评估 merge queue、强化预合并检查、精简合并后测试、增加预算或优化测试选择等方案。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/c6s8hso6859ndmz24b7fhvgs2b303ofh">URGENT ACTION NEEDED - Excessive Consumption of GitHub hosted Action Runners Resources</a></h3>
+            <p class="meta">1 条回复 · 1 位参与者</p>
+            <p class="summary">Spark 项目因 GitHub 托管 Actions Runner 资源消耗进入 ASF 前五并可能超限，被 Infra 要求审查并降低用量。Nicholas Chammas 表示社区已在优化工作流，但缺少能直接对照官方限额的统一报告。Infra 回应正在开发用量衡量与告警功能，并提供 WIP 站点供查看。</p>
+            <div class="key-points"><p><strong>@Bob Thomson:</strong> Spark 过去一周 GitHub Actions Runner 消耗位居前五，需要审查并降低用量，否则可能被限制访问。</p>
+<p><strong>@Nicholas Chammas:</strong> 社区正在减少 GitHub Actions 资源消耗，并希望有统一报告来对照日历周预算、连续五天限制和全局并发上限。</p>
+<p><strong>@Bob Thomson:</strong> 用于衡量项目相对用量并支持告警阈值的功能正在开发中，WIP 站点已可查看。</p></div>
+            <p class="conclusion">下一步是 Spark 社区继续优化 GitHub Actions 工作流以降低资源消耗，并跟进 Infra 正在开发的用量监控、告警和报告工具。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/shoxqw5r43xhrpdrx1g3btjbd4v713t3">Review request: Spark driver optimizations (#59340 and #59341)</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Hussein Awala 请求社区审查两个 Spark driver 优化 PR，聚焦大型 DataFrame 计划中重复分支导致的驱动开销。两个提案分别通过剪枝子查询表达式遍历和复用编译正则表达式来减少开销，并已附带回归测试与基准测试。</p>
+            <div class="key-points"><p><strong>@Hussein Awala:</strong> 性能分析显示大型 DataFrame 计划存在不必要的子查询表达式遍历和重复正则编译开销。</p>
+<p><strong>@Hussein Awala:</strong> PR #59340 利用 PLAN_EXPRESSION 元数据跳过 DeduplicateRelations 中的多余遍历，并保持原有关系更新与属性映射。</p>
+<p><strong>@Hussein Awala:</strong> PR #59341 在 TreeNode.nodeName 中复用共享编译的 Exec$ 正则模式，并为每次调用使用独立 matcher。</p></div>
+            <p class="conclusion">目前尚未形成最终结论，下一步是请社区审查两个 PR 的正确性与测试覆盖。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/x5dv5wb85olw3d2c0x7x959dh0qsy6kx">Release Apache Spark 3.5.10</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">社区讨论是否发布 Apache Spark 3.5.10。自 3.5.9 发布以来，branch-3.5 已积累 36 个保留变更，包含安全加固和相关修复，且 3.5 LTS 安全支持已延长至 2027 年 11 月。发起人建议等待 4.3.0 RC3 投票结束后，再评估是否有额外安全补丁需要纳入 3.5.10。</p>
+            <div class="key-points"><p><strong>@Szehon Ho:</strong> 建议在 4.2.1、4.1.4 和 4.0.5 发布后重新启动 3.5.10 发布讨论，并表示愿意协助推动发布；同时建议等待 4.3.0 RC3 投票完成，以确认是否需要纳入未完成的安全补丁。</p></div>
+            <p class="conclusion">目前尚未形成最终结论；下一步是等待 4.3.0 RC3 投票结束，并确认相关安全补丁后再决定是否启动 3.5.10 RC1。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/2ym2k633sd7kr1zsx86q9ccg6qn9h039">Spark Connect Data Source for Spark FGAC</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论围绕 Spark 细粒度访问控制（FGAC）展开，重点是如何利用 Spark Connect 增强安全隔离。Holden Karau 提出更新 Spark Connect，使其可作为可信与不可信 Spark 代码之间的屏障。当前进展是已分享提案文档，等待社区进一步讨论。</p>
+            <div class="key-points"><p><strong>@Holden Karau:</strong> 提议更新 Spark Connect，将其作为可信与不可信 Spark 代码之间的隔离屏障，以支持 Spark FGAC。</p></div>
+            <p class="conclusion">初步下一步是社区审阅提案文档，并继续讨论 Spark Connect 支持 FGAC 的设计与实现方向。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/t7y7ooz680olqldoh2lb321n956ht2h5">SPIP: Extend DSv2 push-down with join, set operation, and window function support</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">该 SPIP 讨论提议扩展 Spark DSv2 的算子下推能力，在现有过滤、列裁剪、聚合、Limit/TopN、采样及部分 Join 下推基础上，进一步支持更多 Join 类型、集合操作和窗口函数等场景。提案基于已有 DSv2 Join 下推工作，采用数据源可选实现的接口，并以 JDBC/H2 作为参考实现。</p>
+            <div class="key-points"><p><strong>@Jing Zhan:</strong> 建议新增可选下推接口，覆盖 FULL OUTER/SEMI/ANTI Join、Join 别名容忍、公开 Join 下推配置并评估默认开启、Join 与聚合组合、UNION/INTERSECT/EXCEPT 集合操作以及窗口函数。</p>
+<p><strong>@Jing Zhan:</strong> 该提案不覆盖跨数据源下推或基于文件的数据源，JDBC/H2 将作为参考实现。</p></div>
+            <p class="conclusion">目前处于社区讨论阶段，待讨论稳定后将发起正式投票。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/mkn83xwykyx5mcmh1mc7b8bw55f9drf3">SPARK-59138 PR review</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论围绕 SPARK-59138 主 PR 的审阅与合并推进，核心是在 executor 丢失时保留可靠存储的 shuffle map 输出。作者感谢此前 review 并请求再次审阅，希望尽快合并，同时提到两个后续相关 PR。</p>
+            <div class="key-points"><p><strong>@Venkatakrishnan Sowrirajan:</strong> 请求 Wenchen 重新审阅主 PR 并推动合并，同时说明后续还有两个相关 PR，分别涉及 executor hold 拒绝和 shuffle tracking 存储感知。</p></div>
+            <p class="conclusion">下一步是等待 Wenchen 重新审阅主 PR，若通过则推进合并，并继续跟进两个后续 PR。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/4zc9ho9zgc3wfxzhd79hhm2vr0ro3q0h">SPARK-60062 PR review</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论围绕 SPARK-60062 的 PR 审查展开，该 PR 旨在允许 Spark Connect 会话在关闭后选择重用其 session id。作者感谢此前审查并请求 Dongjoon 和 Hyukjin 再次查看，希望尽快推进合并。</p>
+            <div class="key-points"><p><strong>@Venkatakrishnan Sowrirajan:</strong> 感谢 Dongjoon 和 Hyukjin 此前的 review，并请求他们再次审阅该 PR，希望尽快合并。</p></div>
+            <p class="conclusion">下一步是等待 Dongjoon 和 Hyukjin 再次审阅该 PR，并推动其合并。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/39r9713czk52dsfhcqq53b5hhcxn88b1">Board report draft for November 2026</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">本次讨论围绕 Apache Spark 2026 年 11 月董事会报告草稿展开，Matei Zaharia 提交草稿并邀请社区在 11 月 11 日前反馈。草稿汇总了项目过去一季度的活跃进展，包括多个版本发布、新增 committer、SPIP 通过、安全漏洞披露以及 AI 辅助代码评审和 CI 优化等。</p>
+            <div class="key-points"><p><strong>@Matei Zaharia:</strong> 提交 2026 年 11 月董事会报告草稿并征集反馈；报告强调项目处于高活跃状态，过去一季度完成 4 次发布并新增 1 名 committer。</p></div>
+            <p class="conclusion">下一步是在 2026 年 11 月 11 日前收集社区反馈并提交董事会报告。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (0)</h2>
+            
+    <p>本周新建 <strong>0</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周无新建 JIRA。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Spark Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
