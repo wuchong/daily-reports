@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-11-01</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-11-01</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 6 新 Issues</div>
+            <div class="stat">✅ 6 关闭</div>
+            <div class="stat">✨ 3 新 PRs</div>
+            <div class="stat">🎉 5 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/4941">PR #4941</a> 合并，修复 <a href="https://github.com/apache/fluss/issues/4866">Issue #4866</a>，Rust 写入缺失分区时创建分区而不是无限重试。</li><li>🐛 <a href="https://github.com/apache/fluss/pull/4893">PR #4893</a> 合并，修复 <a href="https://github.com/apache/fluss/issues/4862">Issue #4862</a>，Rust lookup 请求在 batch timeout 为 0 时未排空的问题。</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4969">PR #4969</a> 合并，对齐 Rust 与 Java 的时间戳分区命名，修复 <a href="https://github.com/apache/fluss/issues/4968">Issue #4968</a>。</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4869">PR #4869</a> 合并，副本重分配且旧 leader 保留时迁移 leader，关闭 <a href="https://github.com/apache/fluss/issues/3869">Issue #3869</a>。</li><li>✨ <a href="https://github.com/apache/fluss/issues/4980">Issue #4980</a> 新增 Java 客户端健壮性与性能改进伞任务，<a href="https://github.com/apache/fluss/pull/4981">PR #4981</a> 提出多键前缀查找。</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4622">Issue #4622</a> [test] Unstable test RebalanceITCase.testRebalanceForLogTable</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: 自动报告 RebalanceITCase.testRebalanceForLogTable 测试失败，出现断言错误。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4920">Issue #4920</a> [test] Unstable test KafkaMetadataITCase.testCustomDefaultDatabaseAliasAndNoRecreationByMetadata</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: 自动报告 KafkaMetadataITCase 自定义数据库别名测试失败，出现断言错误。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4936">Issue #4936</a> [lake/iceberg] Support composite bucket keys for Iceberg-tiered tables</h4>
+            <ul><li><span class="author">@polyzos</span>: 提出客户端前缀查找方案，按 bucket key 路由，用更长主键前缀扫描，并提交 PR #4981。</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2787">PR #2787</a> [server] RemoteStorageCleaner support clean for multiple remote directories</h4>
+            <ul><li><span class="author">@LiebingYu</span>: 已按评审意见补充多远程目录清理、分区目录恢复与删除测试，请审核。</li><li><span class="author">@platinumhamburg</span>: 评审通过，建议在方便时 rebase 该 PR。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3923">PR #3923</a> [tiering] Trigger job failover when coordinator epoch changes</h4>
+            <ul><li><span class="author">@polyzos</span>: 确认也遇到该问题，请作者 rebase 并处理评审意见。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4922">PR #4922</a> [rust] Decode only selected columns in remote Arrow logs</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 讨论远程 Arrow 列裁剪解码，建议后续统一 decode plan 并移除分支。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4941">PR #4941</a> [rust] Create missing partitions on write instead of retrying forever</h4>
+            <ul><li><span class="author">@SteNicholas</span>: 回应评审，补充文档与测试，并提交 #4973/#4974/#4975/#4976 后续问题。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4970">PR #4970</a> [client] Add exponential backoff to lookup retries</h4>
+            <ul><li><span class="author">@Jackeyzhe</span>: 建议将失败查找重试的描述限定为可重试 RPC 响应错误。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4972">PR #4972</a> [elixir] Add methods for getting offsets to Fluss.Admin</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 建议每次调用都刷新元数据，并询问未来时间戳或超过最新偏移量的行为。</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4980">#4980</a> [Umbrella][client] Java client robustness and performance improvements <span class="author">@polyzos</span> <span class="labels">component=client</span></li><li><a href="https://github.com/apache/fluss/issues/4979">#4979</a> [client] Incorrect ordering when merging multiple snapshot streams <span class="author">@slfan1989</span> </li><li><a href="https://github.com/apache/fluss/issues/4976">#4976</a> [client] Retried batches send a dropped partition's sequences to its re-created partition <span class="author">@SteNicholas</span> </li><li><a href="https://github.com/apache/fluss/issues/4975">#4975</a> [client] A missing partition fails the metadata refresh of other unknown-leader partitions <span class="author">@SteNicholas</span> </li><li><a href="https://github.com/apache/fluss/issues/4974">#4974</a> [client] A failed dynamic partition creation fails the whole writer <span class="author">@SteNicholas</span> </li><li><a href="https://github.com/apache/fluss/issues/4973">#4973</a> [rust] Support writes to historical partitions <span class="author">@SteNicholas</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4981">#4981</a> [client] Support prefix lookups with multiple keys <span class="author">@polyzos</span> </li><li><a href="https://github.com/apache/fluss/pull/4978">#4978</a> [test] Wait for Kafka Metadata visibility in alias test <span class="author">@coding-otter-bot</span> </li><li><a href="https://github.com/apache/fluss/pull/4977">#4977</a> [client] Fix table metadata initialization and partition refresh <span class="author">@threadfly2026</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4968">#4968</a> [rust] Timestamp partition names differ from Java <span class="author">@slfan1989</span> </li><li><a href="https://github.com/apache/fluss/issues/4957">#4957</a> [lake/paimon] Allow passing an existing table to PaimonLakeSource <span class="author">@bryndenZh</span> </li><li><a href="https://github.com/apache/fluss/issues/4866">#4866</a> [rust] Writes to a missing partition retry forever and block other new partitions <span class="author">@nicolazar</span> </li><li><a href="https://github.com/apache/fluss/issues/4862">#4862</a> [rust] Lookup requests are not drained when batch timeout is zero <span class="author">@slfan1989</span> </li><li><a href="https://github.com/apache/fluss/issues/4622">#4622</a> [test] Unstable test RebalanceITCase.testRebalanceForLogTable <span class="author">@app/github-actions</span> </li><li><a href="https://github.com/apache/fluss/issues/3869">#3869</a> [server] Apply the planned leader during replica reassignment <span class="author">@swuferhong</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/4969">#4969</a> [rust] Align timestamp partition names with Java <span class="author">@slfan1989</span> </li><li><a href="https://github.com/apache/fluss/pull/4958">#4958</a> [lake/paimon] Allow creating PaimonLakeSource from a loaded table <span class="author">@bryndenZh</span> </li><li><a href="https://github.com/apache/fluss/pull/4941">#4941</a> [rust] Create missing partitions on write instead of retrying forever <span class="author">@SteNicholas</span> </li><li><a href="https://github.com/apache/fluss/pull/4893">#4893</a> [rust] Lookup requests are not drained when batch timeout is zero <span class="author">@slfan1989</span> </li><li><a href="https://github.com/apache/fluss/pull/4869">#4869</a> [server] Move leader during reassignment when old leader stays <span class="author">@morazow</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
