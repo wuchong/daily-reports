@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iceberg 社区周报 | 2026-W44</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Iceberg 社区周报 | 2026-W44</h1>
+            <p class="date-range">2026-10-26 ~ 2026-11-01</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (3)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/6lz6ol8mjksxcczcmj42jflx9k8bd15m">CFP for Apache Iceberg Meetup Bay Area – Nov 2 @ Google Sunnyvale</a></li>
+<li><a href="https://lists.apache.org/thread/3jlgthdg0w921888t39qdjyt0k2wfcc7">Apache Iceberg Japan Meetup - Dec 7</a></li>
+<li><a href="https://lists.apache.org/thread/0bgzpkz65c8pltv9owzwlmmv1kw2hz0t">Virtual Apache Iceberg Meetup Nov 13</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (8)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/k1zo93v0zq8f783hnswt1n29g5clzqyd">Add table constraints to the v4 table spec</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/g7qvlhkt3kchgf7sgjdcr0z9sksbqgq6">Spec: Replace per-column tight_bounds with file-level tight_stats in v4</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/f7nwynr69g18kj61nt5h1f45cn8g768t">Add stats-only fields for v4</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/c5ldjw25fplxjfplfx8fnvbkv598yy3p">REST spec: Add none to X-Iceberg-Access-Delegation header values</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/w4rwgb65wky36pmfto69jjddd70trm9d">[Terraform] Release Apache Iceberg Terraform Provider v0.2.0 RC1</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/x1mlyjg7xlmkc9hqb1w8x8r97ovb1smq">Release Apache Iceberg Rust 0.11.0 RC3</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/pwzmjq579svsw7qh0nzpqwg25lqrdgrv">Spec: Add _last_updated_time row lineage metadata column in v4</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/th30oq0rcvn5gmn2qdx790k8vf4fz1ob">Default Value Expressions for v4</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/s5jqhbczoknftmojhrvzpsb53w1s7gd6">Iceberg Community Health Stats</a></h3>
+            <p class="meta">7 条回复 · 7 位参与者</p>
+            <p class="summary">Russell Spitzer 分享了为 Iceberg 构建的社区健康仪表盘，用于跟踪贡献情况、社区参与度以及与其他开源项目的对比。讨论重点聚焦于新贡献者从首次贡献到持续贡献的转化下降问题，尤其是 Java 仓库中的趋势。社区普遍认可该工具的价值，并建议将其用于发布决策、季度报告和后续社区治理改进。</p>
+            <div class="key-points"><p><strong>@Russell Spitzer:</strong> 构建了 Iceberg 社区健康仪表盘，并担忧社区消化贡献的能力、新贡献者持续参与不足，尤其是‘首次到二次’贡献者数量下降。</p>
+<p><strong>@Hongyue Zhang:</strong> 认为仪表盘有助于判断发布节奏和准备季度报告，建议将其加入社区同步会议讨论，并推动跨仓库评审等具体后续行动。</p>
+<p><strong>@Jared Yu:</strong> 认为贡献者转化下降可能与 AI 辅助贡献增加有关，维护者评审带宽成为瓶颈，关键系统仍需要严格的人工把关。</p></div>
+            <p class="conclusion">初步下一步是将仪表盘加入社区同步议程进行讨论，Russell 愿意做简要介绍并计划每月更新数据；社区也将进一步关注评审瓶颈、新贡献者转化以及邮件列表投递问题。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/5f40shqmwc2l647oskjg1vv8pq7q8od7">Spark: use the catalog's Hadoop configuration when listing orphan files (#17862)</a></h3>
+            <p class="meta">4 条回复 · 3 位参与者</p>
+            <p class="summary">讨论围绕 Spark remove_orphan_files 列举孤儿文件时仅使用 Spark session Hadoop 配置，导致与 table.io() 凭证不一致并在跨账号存储场景下访问失败的问题。Sebastian 提议通过 catalog 名称引入 spark.sql.catalog.<name>.hadoop.* 覆盖配置；Daniel 和 Russell 建议优先从 FileIO 获取配置以避免扩展 API。Sebastian 随后说明 S3FileIO 等非 HadoopConfigurable 场景无法从 FileIO 取得 Hadoop 配置，因此仍需走 catalog 配置路径。</p>
+            <div class="key-points"><p><strong>@Sebastian Daberdaku:</strong> DeleteOrphanFilesSparkAction 列举文件时未使用 catalog 凭证，导致 AccessDenied 或看不到文件；建议新增 catalogName 方法，让列举使用 session Hadoop 配置加 catalog 的 hadoop.* 覆盖配置。</p>
+<p><strong>@Daniel Weeks:</strong> 建议检查 FileIO 是否实现 HadoopConfigurable，直接获取该表 IO 使用的精确配置，而不是通过 catalog 路径解决。</p>
+<p><strong>@Russell Spitzer:</strong> 支持优先尝试不扩展公共 API 的方案，认为当前行为与新增 API 之间的关联不够直接。</p></div>
+            <p class="conclusion">尚未形成最终结论；Sebastian 已说明从 FileIO 获取配置在 S3FileIO 等场景不可行。下一步需继续确认是否接受新增 catalogName API，若方向确定，再将改动移植到 Spark 4.2 及相关版本。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/967dbjpjqt6kl9pnwv39vkvlvxv9rkcn">Drop PyIceberg Python 3.10 support</a></h3>
+            <p class="meta">3 条回复 · 3 位参与者</p>
+            <p class="summary">社区讨论在 PyIceberg 中移除 Python 3.10 支持，原因是 Python 3.10 已到达 EOL，且主要依赖 pyarrow 26 不再提供 3.10 wheels。提议将最低 Python 版本提升至 3.11，并同步提高依赖版本下限、清理版本兼容代码。目前讨论已推进到提交 PR 阶段。</p>
+            <div class="key-points"><p><strong>@Orest Tokovenko:</strong> 建议停止支持 Python 3.10，将 requires-python 设为 >=3.11，提高相关依赖版本下限，并删除不再需要的版本门控代码，这些变更可放在一个 PR 中完成。</p>
+<p><strong>@Fokko Driesprong:</strong> 支持停止维护 EOL 的 Python 版本，认为这与社区此前移除旧版本的做法一致，并鼓励提交 PR。</p>
+<p><strong>@Kevin Liu:</strong> 确认 Python 3.10 刚刚到达 EOL，并感谢 Orest 推进该项变更。</p></div>
+            <p class="conclusion">社区初步同意移除 Python 3.10 支持，Orest 已提交 PR #4170，后续将进入评审和合并流程。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/n63rcfkq5n6jd7vjxlmkq5jx5oppbmsb">Dedicated sync for Iceberg Index Support</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">社区围绕 Iceberg 索引支持召开专项同步，重点讨论索引规范（PR #16961）和索引 REST API 设计。索引规范已解决 region file 边界、索引 schema 与派生列等问题，REST 设计确认索引需与表同 namespace，首版暂不支持 rename/register。当前主要开放点是索引路由应放在 namespace 级还是嵌套在表下，后续将基于数据库和 REST API 调研结果继续确定。</p>
+            <div class="key-points"><p><strong>@huaxin gao:</strong> 索引规范已澄清 region file 边界、独立索引 schema 和派生列设计，PR #16961 无开放问题；调研后建议 REST 索引路由嵌套在表下，索引名按表唯一，首版不做 rename/register。</p>
+<p><strong>@Daniel Weeks:</strong> 认为各系统索引管理方式虽不一致，但该提案更符合 Iceberg 和 REST 规范，表示支持。</p></div>
+            <p class="conclusion">初步结论是推进索引规范 PR #16961 评审，并倾向于采用表级嵌套路由、索引名按表唯一的 REST 设计。下一步行动是社区评审 PR #16961，Huaxin 基于主流数据库和 REST API 调研结果继续完善路由设计，并在后续同步中确认。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/x95nkfkd6n1v1j4tyfr0ykz3qhbwrypm">Kafka Connect CDC writes without equality deletes</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论聚焦于为 Kafka Connect Iceberg sink 引入不依赖 equality delete 的 CDC 写入方案，以恢复此前因性能顾虑暂缓的 delta writer/CDC 支持。提案将 CDC 设为可选项并保留默认 append-only，同时说明 append+MERGE 仍适合需要保留 row ID 或转换跟不上提交间隔的场景。当前进展集中在方案合理性、性能验证和并发写入影响。</p>
+            <div class="key-points"><p><strong>@koodin 9:</strong> 该提案旨在让表始终不产生 equality delete，从而回应历史 issue、社区对 equality delete 的顾虑以及用户对 CDC/upsert 的持续需求；CDC 为可选功能，默认仍为 append-only。</p>
+<p><strong>@koodin 9:</strong> append+MERGE 仍更适合需要跨更新保留 row ID 的表，以及转换速度跟不上提交间隔的表；Kafka 基于主键的分区机制可缓解 CDC 写入的重分区问题。</p>
+<p><strong>@Péter Váry:</strong> 在合入前必须进行 equality delete 解析/相关转换的性能测试，并评估 compaction 与并发写入可能带来的提交饥饿问题；基础快照应使用当前表快照。</p></div>
+            <p class="conclusion">尚未形成最终结论；下一步是先进行性能测试和并发写入/压缩场景评估，再推进代码提交或方案落地。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/dlw1xvcx431qwpdfbfwsxcfxkps3hbdt">Iceberg / Spark syncs</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论聚焦 Iceberg 与 Spark 社区同步会议近期参与度偏低的问题，尤其是会议时间对不同时区成员不友好。与会者普遍认为会议仍有价值，因此决定调整时间继续尝试，并补充异步沟通渠道。</p>
+            <div class="key-points"><p><strong>@Anurag Mantripragada:</strong> Spark 同步会议对 Spark 专题协调和路线图讨论有价值，但因参与度低征求意见，并在反馈后将会议调整为 9:00 AM PST、每月一次。</p>
+<p><strong>@Eduard Tudenhöfner:</strong> 有意参与，但原时间 CET 19:00-20:00 太晚，个人无法参加。</p>
+<p><strong>@Manu Zhang:</strong> 原时间对应 GMT+8 凌晨 1:00-2:00，建议提前一到两个小时以便参与。</p></div>
+            <p class="conclusion">会议将保留并改期至 11 月 11 日起每月一次的 9:00 AM PST，同时建议通过 #spark Slack 频道加强异步协作。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/0cv0kfg2lnlyzqcl2n22gnzv9wbszl57">Extend Thur's biweekly sync to both File and Vector types (starting Oct 8)</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">社区讨论 Iceberg 中 vector 类型的建模及 Parquet 存储方案，重点是是否将 vector 视为原始类型以及嵌入数据的编码与统计开销。Philipp 已提交 Iceberg Java 的基础类型支持 PR，并倾向把 vector 作为 primitive type；Péter 分享了 FLOAT/FLOAT16 嵌入的基准测试结果。</p>
+            <div class="key-points"><p><strong>@Philipp Fischbeck:</strong> 提交了 vector 基础类型支持 PR，认为将 Iceberg vector 作为 primitive type 较为自然；虽然与 Parquet 嵌套结构存在特殊处理，但整体仍可接受。</p>
+<p><strong>@Péter Váry:</strong> 基准测试显示 ALP 不适合 FLOAT16 嵌入，字典编码更优；为提升写入性能关闭 Parquet 列统计，因为统计开销约 30%，且需要表或 schema 级信息识别 int8/float16。</p>
+<p><strong>@Russell Spitzer:</strong> 支持将 vector 视为 primitive type，因为当前不打算操作 vector 内部单元，消费方通常整体读取整个向量。</p></div>
+            <p class="conclusion">初步倾向将 Iceberg vector 建模为 primitive type；后续需继续推进 PR，并处理 Parquet 映射、编码选择与表/模式级列类型信息等优化。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/vk1yzvdnr4t8c6kywf4s2npwfkz6nvpz">Downscoping the OAuth2 AuthManager v2 proposal</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">社区围绕 Iceberg REST 中 OAuth2 AuthManager v2 提案展开讨论，认为原方案范围过大，需要缩小授权类型和遗留兼容支持。Alex Dutra 提出仅保留 client_credentials 等最小能力并提交 PR，目标是随 Iceberg 1.13 发布；该方向获得积极反馈。</p>
+            <div class="key-points"><p><strong>@Alex Dutra:</strong> 建议重启并缩小 OAuth2 AuthManager v2 范围，仅支持 client_credentials、两种客户端认证方式、简化 token 续期，并减少对 v1 遗留行为的支持，相关实现已提交为 PR 18756。</p>
+<p><strong>@Christian Thiel:</strong> 支持缩小后的方案，认为当前范围可能已经足够小，并建议将该议题加入本周 Catalog sync 会议讨论。</p></div>
+            <p class="conclusion">初步共识是缩小 OAuth2 AuthManager v2 提案范围并推进最小可用实现；下一步是将其纳入 Catalog sync 讨论，并推进 PR 18756，争取在 Iceberg 1.13 中发布。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/sl67qzcqqnqpdk25c90wq7xyqfq1ogmy">Pluggable Puffin blob types and a compaction-aware lifecycle for data-file-scoped indexes</a></h3>
+            <p class="meta">1 条回复 · 1 位参与者</p>
+            <p class="summary">Alex Cruise 提出一项面向 Iceberg Puffin 的可插拔 blob 类型与数据文件级索引生命周期提案，重点解决索引类型多样化、配置/作用域元数据以及删除和 compaction 下的行为。该提案源自渐进式索引需求，希望在不重写大型历史数据文件的前提下后续补充索引以提升读性能，并与 v4 二级索引提案形成互补。</p>
+            <div class="key-points"><p><strong>@Alex Cruise:</strong> 建议为 Puffin blob 类型建立轻量但有约束的元数据机制，用于管理配置、作用域以及索引在删除和 compaction 中的交互方式。</p>
+<p><strong>@Alex Cruise:</strong> 提出“渐进式索引”背景，强调大型旧文件不适合重写，需要支持在文件写入后按需补充索引，以优化读密集查询。</p>
+<p><strong>@Alex Cruise:</strong> 该提案与 v4 二级索引提案互补，更关注过滤器或“负索引”场景，过期索引只会降低查询效率，不应影响查询正确性。</p></div>
+            <p class="conclusion">目前仍处于提案和背景材料征求意见阶段，暂无最终结论；下一步是社区阅读背景文档并讨论其与现有 v4 二级索引提案的关系、边界和后续落地方式。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/c2pz3mqtkp7s41gwd5hbp7kckwjzdoho">Add HLL sketch blob type to Puffin spec</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">社区讨论在 Puffin 规范中新增 HLL sketch blob 类型，用于支持 NDV 统计。多位参与者表示支持，但讨论重点转向引入 HLL 后与现有 Theta sketch 的兼容性问题，以及 blob 元数据是否需要记录精度参数。</p>
+            <div class="key-points"><p><strong>@Raghvendra Yadav:</strong> 认为为很多查询不会使用的 sketch 在写入时承担 10-20% 开销并不划算，并提出 Theta 与 HLL 无法合并，需明确混合表如何处理表级 NDV。</p>
+<p><strong>@Raghvendra Yadav:</strong> 建议在 blob metadata 中除 ndv 外记录 lgK，否则读取端跨文件合并时无法判断结果精度。</p>
+<p><strong>@Jian Chen:</strong> 支持在规范中加入 HLL sketch blob 类型。</p></div>
+            <p class="conclusion">目前倾向于支持新增 HLL 类型，但仍需进一步明确与 Theta 类型共存时的读取策略、表级合并行为，以及是否在元数据中记录 lgK 等精度信息。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (0)</h2>
+            
+    <p>本周新建 <strong>0</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周无新建 JIRA。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Iceberg Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
