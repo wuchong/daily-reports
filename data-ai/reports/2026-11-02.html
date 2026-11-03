@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data+AI 全球日报 | 2026-11-02</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Data+AI 全球日报 | 2026-11-02</h1>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="top-changes">
+            <h2>🔥 今日最重要的3个变化</h2>
+            <ol><li><strong>AWS 推动 BigQuery 客户迁移至 Iceberg 开放湖仓</strong> — AWS 发布迁移指南，将 Google BigQuery 工作负载引向 Apache Iceberg + Amazon S3，强化开放湖仓与跨云竞争。</li><li><strong>OpenRouter 用 ClickHouse Cloud 支撑海量 LLM 请求分析</strong> — OpenRouter 日处理 7.4 亿 LLM 请求，显示 AI 路由与可观测性正成为高增长实时分析负载。</li><li><strong>ClickHouse 发布 clickhousectl v0.5.0</strong> — 新版本增强 UDF 上云、Managed Postgres 可观测性和权限治理，提升 ClickHouse Cloud 运维能力。</li></ol>
+            <p class="judgment"><strong>总判断：</strong>今日信号显示云厂商正围绕开放湖仓与 AI 数据负载展开更直接竞争，Apache Iceberg 成为争夺 Google BigQuery 存量客户的重要抓手。同时，LLM 路由与可观测性带来的高吞吐分析需求正在为 ClickHouse 等实时 OLAP 数据库创造新场景。整体看，数据平台正从传统数仓向开放、实时、AI 原生架构加速演进。</p>
+        </section>
+
+        <section class="top-signals">
+            <h2>📡 重要信号</h2>
+            
+    <article class="news-item">
+        <h3>AWS 发布 Google BigQuery 迁移至 Apache Iceberg 开放湖仓指南</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/migrate-google-bigquery-to-an-open-lakehouse-on-aws-with-apache-iceberg/">AWS Big Data Blog</a></p>
+        <p class="date">2026-11-02</p>
+        <p class="summary">AWS Big Data Blog 发布文章，介绍如何将 Google BigQuery 工作负载迁移到基于 Apache Iceberg 和 Amazon S3 的开放湖仓架构。文章强调开放湖仓可降低平台锁定、提升跨引擎互操作性，并给出评估、设计、转换、迁移与验证的步骤。这显示 AWS 正主动争夺 BigQuery 存量分析负载，将 Iceberg/S3 包装为 AI 与数据分析统一底座。</p>
+        <div class="impact">📊 数据平台影响：该指南将推动企业评估从专有数仓向 Iceberg 开放表格式迁移，强化 S3 作为湖仓底座，并提升 Glue、EMR、Athena、Redshift Spectrum 等 AWS 分析组件的协同竞争力。</div>
+    </article>
+    <article class="news-item">
+        <h3>OpenRouter 使用 ClickHouse Cloud 支撑每日 7.4 亿 LLM 请求分析</h3>
+        <p class="sources">📌 <a href="https://clickhouse.com/blog/openrouter-llm-routing-observability-clickhouse-cloud">ClickHouse Blog</a></p>
+        <p class="date">2026-11-02</p>
+        <p class="summary">ClickHouse 发布客户案例，OpenRouter 将 ClickHouse Cloud 作为客户分析、公共模型排名、内部 AI agents 和 500+ 模型路由的统一数据存储，日处理 7.4 亿 LLM requests，月请求量增长 33 倍至 197 亿。该案例体现 AI 路由与可观测性场景对高基数、低延迟实时分析数据库的需求，也显示 LLM 基础设施正形成独立的数据平台负载类型。</p>
+        <div class="impact">📊 数据平台影响：LLM 路由、日志、成本与质量指标正在成为高吞吐分析负载，推动实时 OLAP 与可观测性数据库在 AI 平台中的应用，并可能带动 ClickHouse、Iceberg、流式管道等组合架构。</div>
+    </article>
+        </section>
+
+        <section class="product-tech">
+            <h2>💻 产品与技术</h2>
+            
+    <article class="news-item">
+        <h3>ClickHouse 发布 clickhousectl v0.5.0</h3>
+        <p class="sources">📌 <a href="https://clickhouse.com/blog/clickhousectl-v0-5-0">ClickHouse Blog</a></p>
+        <p class="date">2026-11-02</p>
+        <p class="summary">ClickHouse 发布 clickhousectl v0.5.0，支持将本地 UDFs 迁移到 Cloud，增加 ClickHouse Managed Postgres 可观测性，统一命令行命令界面，并列出每个 Cloud 命令所需 API key 权限。该版本强化了开发者运维体验，降低本地到云迁移门槛，也显示 ClickHouse 在扩展托管服务与多引擎连接能力。</p>
+        <div class="impact">📊 数据平台影响：命令行工具完善有助于自动化部署、权限治理和多云运维，提升 ClickHouse Cloud 对企业数据平台团队的吸引力，尤其适合 AI 分析、可观测性和 Postgres 扩展场景。</div>
+    </article>
+        </section>
+
+        <section class="people-views">
+            <h2>👤 人物与观点</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="analyst-insights">
+            <h2>📊 分析师洞察</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="watchlist">
+            <h2>👀 观察列表</h2>
+            
+    <article class="watchlist-item">
+        <h3>BigQuery 到 Apache Iceberg 的迁移趋势</h3>
+        <span class="status">待观察</span>
+        <p class="reason">AWS 主动发布迁移指南，可能推动专有数仓客户评估开放湖仓，但实际迁移规模、性能表现和业务切换成本仍需验证。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>关注 AWS 是否发布更多 BigQuery 迁移工具、客户案例或性能 Benchmark。</p>
+    </article>
+    <article class="watchlist-item">
+        <h3>AI 路由与 LLM 可观测性数据负载增长</h3>
+        <span class="status">待观察</span>
+        <p class="reason">OpenRouter 请求量快速增长，显示 AI gateway、模型路由、成本分析和质量监控可能成为数据平台新的高吞吐负载。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>关注更多 AI gateway 或 LLM routing 厂商披露实时分析架构、请求规模和数据库选型。</p>
+    </article>
+        </section>
+
+        <section class="stock-analysis">
+            <h2>📈 股票分析</h2>
+            <p class="disclaimer">⚠️ 以下内容仅供参考，不构成任何投资建议。投资有风险，入市需谨慎。</p>
+            
+    <article class="stock-item">
+        <div class="stock-header">
+            <span class="ticker">AMZN</span>
+            <span class="company">Amazon</span>
+            <span class="signal signal-bullish">🟢 看多</span>
+        </div>
+        <p class="stock-summary">AWS 发布 BigQuery 到 Apache Iceberg/S3 的迁移指南，若促成 BigQuery 客户向 AWS 湖仓迁移，将带动 S3、Athena、Glue、EMR 等服务消费，对 AWS 数据与 AI 平台收入偏积极。本栏目仅供参考，不构成投资建议。</p>
+        <div class="stock-details">
+            <div class="catalysts">
+                <strong>🚀 催化剂</strong>
+                <ul><li>出现大型 BigQuery 迁移客户案例</li><li>Iceberg 工具链与性能 Benchmark 强化</li><li>AI 数据工程负载增加</li></ul>
+            </div>
+            <div class="risks">
+                <strong>⚠️ 风险</strong>
+                <ul><li>迁移复杂性和业务中断风险</li><li>Google BigQuery 生态粘性</li><li>多云价格竞争加剧</li></ul>
+            </div>
+        </div>
+    </article>
+    <article class="stock-item">
+        <div class="stock-header">
+            <span class="ticker">GOOGL</span>
+            <span class="company">Alphabet</span>
+            <span class="signal signal-neutral">⚪ 中性</span>
+        </div>
+        <p class="stock-summary">AWS 公开瞄准 Google BigQuery 客户，反映云数仓竞争加剧；但 BigQuery 与 Gemini/Vertex AI 的整合仍可能维持企业粘性，短期影响需观察。本栏目仅供参考，不构成投资建议。</p>
+        <div class="stock-details">
+            <div class="catalysts">
+                <strong>🚀 催化剂</strong>
+                <ul><li>BigQuery 开放湖仓与跨云能力更新</li><li>Gemini 企业 AI 应用带动分析消耗</li><li>Google Cloud 数据平台生态强化</li></ul>
+            </div>
+            <div class="risks">
+                <strong>⚠️ 风险</strong>
+                <ul><li>客户被 Iceberg/S3 开放架构吸引</li><li>云预算优化压力</li><li>AWS 与 Azure 竞争加剧</li></ul>
+            </div>
+        </div>
+    </article>
+        </section>
+
+        <footer>
+            <p>Generated by Data+AI Daily Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
