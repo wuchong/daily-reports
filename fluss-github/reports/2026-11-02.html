@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-11-02</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-11-02</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 18 新 Issues</div>
+            <div class="stat">✅ 12 关闭</div>
+            <div class="stat">✨ 17 新 PRs</div>
+            <div class="stat">🎉 12 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/5003">PR #5003</a> [client] Fail log fetch again on INVALID_BUCKET_ROUTING</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4988">PR #4988</a> [client] Retry log fetch on INVALID_BUCKET_ROUTING instead of failing</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4978">PR #4978</a> [test] Wait for Kafka Metadata visibility in alias test</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4970">PR #4970</a> [client] Add exponential backoff to lookup retries</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4969">PR #4969</a> [rust] Align timestamp partition names with Java</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4922">Issue #4922</a> [rust] Decode only selected columns in remote Arrow logs</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: @zuston @spoon-lz Proper fix for both Qs is one decode plan (schema + columns + alignment) built on…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2787">Issue #2787</a> [server] RemoteStorageCleaner support clean for multiple remote directories</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: > @platinumhamburg comments addressed, PTAL! LGTM. Please rebase this PR when you have time.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4373">Issue #4373</a> [coordinator] Add rebalance progress and outcome metrics</h4>
+            <ul><li><span class="author">@heyallencao</span>: @morazow @affo The latest update merges the current `main` into this PR and resolves the merge conf…</li><li><span class="author">@affo</span>: @heyallencao thanks for the great contribution, I am going to raise attention to committers to land…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4888">Issue #4888</a> [flink] Add $partitions virtual table</h4>
+            <ul><li><span class="author">@fhan688</span>: Could you please help review this PR when you have time? thanks! @wuchong</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4920">Issue #4920</a> [test] Unstable test KafkaMetadataITCase.testCustomDefaultDatabaseAliasAndNoRecreationByMetadata</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: https://github.com/apache/fluss/actions/runs/41375622421/job/125055097758 ``` [ERROR] org.apache.fl…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4978">Issue #4978</a> [test] Wait for Kafka Metadata visibility in alias test</h4>
+            <ul><li><span class="author">@luoyuxia</span>: cc @gyang94</li><li><span class="author">@gyang94</span>: LGTM</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4986">Issue #4986</a> [rust] Make cached RPC connections endpoint-aware</h4>
+            <ul><li><span class="author">@SteNicholas</span>: Ping @fresh-borzoni.；@fresh-borzoni, thanks for review. I have addressed minor nits. PTAL.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4980">Issue #4980</a> [Umbrella][client] Java client robustness and performance improvements</h4>
+            <ul><li><span class="author">@SteNicholas</span>: @polyzos, I'd like to take the P0 item `INVALID_BUCKET_ROUTING` / `LEADER_NOT_AVAILABLE` kill a run…</li><li><span class="author">@pbanakar</span>: Hi @polyzos, I’d like to take the security-token renewal item from the P1 section. Please let me kn…</li><li><span class="author">@polyzos</span>: @pbanakar just open a ticket, link it here and get started with it... anything that doesn't have a…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4969">Issue #4969</a> [rust] Align timestamp partition names with Java</h4>
+            <ul><li><span class="author">@slfan1989</span>: > @slfan1989 Thank you, LGTM 👍 > > Sidenote: FLOAT and DOUBLE probably have the some problems as we…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4893">Issue #4893</a> [rust] Lookup requests are not drained when batch timeout is zero</h4>
+            <ul><li><span class="author">@slfan1989</span>: > @slfan1989 Thank you, LGTM 👍 > > Side note: lookup_queue_size = 0 panics in LookupQueue::new (mps…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4970">Issue #4970</a> [client] Add exponential backoff to lookup retries</h4>
+            <ul><li><span class="author">@SteNicholas</span>: @fresh-borzoni, I would like to take this follow up for rust.</li><li><span class="author">@polyzos</span>: @SteNicholas Sure, just open a ticket to track it 👍</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4988">Issue #4988</a> [client] Retry log fetch on INVALID_BUCKET_ROUTING instead of failing</h4>
+            <ul><li><span class="author">@polyzos</span>: @SteNicholas LGTM, and I will merge once CI passes 🙏 One non-blocking thing that could be a follow-…</li><li><span class="author">@SteNicholas</span>: @polyzos Thanks for the review! Agreed. While `INVALID_BUCKET_ROUTING` persists, e.g. until the cli…</li><li><span class="author">@platinumhamburg</span>: @SteNicholas @polyzos Could we follow up with a revert of the `INVALID_BUCKET_ROUTING` handling and…</li><li><span class="author">@fresh-borzoni</span>: @polyzos Noted, thx, I'll fix rust afterwards.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4977">Issue #4977</a> [client] Fix table metadata initialization and partition refresh</h4>
+            <ul><li><span class="author">@threadfly2026</span>: I investigated the [failed lake job](https://github.com/apache/fluss/actions/runs/41269344876/job/1…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4705">Issue #4705</a> [cpp] Add poll-based async lookups</h4>
+            <ul><li><span class="author">@pbanakar</span>: Hi @fresh-borzoni submitted a PR & just resolved the merge conflicts, could you please take a look…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4998">Issue #4998</a> [server] Support COUNT in the aggregation merge engine</h4>
+            <ul><li><span class="author">@polyzos</span>: LGTM, thanks! 👍 **One note:** COUNT turns `agg(null, null)` into 0, unlike other aggregators. A par…</li><li><span class="author">@platinumhamburg</span>: Thanks @polyzos, good catch! Addressed in f38fff02e. First partial writes now respect the target co…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4778">Issue #4778</a> [spark] Add commit-time snapshot TVF</h4>
+            <ul><li><span class="author">@KnightChess</span>: Hi @Yohahaha , really appreciate the effort on this PR. We have a recommended/online feature pipeli…</li><li><span class="author">@Yohahaha</span>: > Hi @Yohahaha , really appreciate the effort on this PR. > > We have a recommended/online feature……</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2917">Issue #2917</a> [server] Add retract support for Aggregation Merge Engine</h4>
+            <ul><li><span class="author">@polyzos</span>: Hi @platinumhamburg, thank you so much for this work 🚀 This is something really useful and I'm happ…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4887">Issue #4887</a> [rust] Add reusable UnionRead source boundaries</h4>
+            <ul><li><span class="author">@naivedogger</span>: > [Could we open the API/interface PR first, with an end-to-end usage example?](https://github.com/…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4984">Issue #4984</a> [client][server] Use explicit routing bucket counts</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: @Kaixuan-Duan Could you review this follow-up to #3908? It makes routing bucket counts independent…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4488">Issue #4488</a> [kv] Fail multiGet on read errors instead of reporting missing keys</h4>
+            <ul><li><span class="author">@wuchong</span>: Hi @platinumhamburg, I noticed that you fixed this issue in fluss-rocksdb (https://github.com/fluss…</li><li><span class="author">@platinumhamburg</span>: > Hi @platinumhamburg, I noticed that you fixed this issue in fluss-rocksdb ([fluss-contrib/rocksdb…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4593">Issue #4593</a> [lake] Fail early when a REST catalog requires server-side scan planning</h4>
+            <ul><li><span class="author">@Trunghieuu0910</span>: Hi @polyzos, I’m working on this issue and would like to clarify the intended scope. I’ve added val…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4981">Issue #4981</a> [client] Support prefix lookups with multiple keys</h4>
+            <ul><li><span class="author">@polyzos</span>: @SteNicholas @platinumhamburg @fresh-borzoni Thank you all for your review and comments. Everything…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5007">Issue #5007</a> [flink] Add embedded-Flink tiering service image and Helm chart</h4>
+            <ul><li><span class="author">@JandyTenedora</span>: Have explored an [alternative route](https://github.com/JandyTenedora/fluss/compare/dc01ff83a...dem…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5009">Issue #5009</a> [client] Complete pending writes when the writer is closed</h4>
+            <ul><li><span class="author">@SteNicholas</span>: Ping @polyzos, @loserwang1024.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5011">Issue #5011</a> [build] Add action to process stale pull requests</h4>
+            <ul><li><span class="author">@SteNicholas</span>: Ping @wuchong, @polyzos.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4994">Issue #4994</a> [rust] Add exponential backoff to lookup retries</h4>
+            <ul><li><span class="author">@SteNicholas</span>: Ping @fresh-borzoni, @polyzos.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4065">Issue #4065</a> [kv] Batch old value lookups in write path</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: Thanks @polyzos and @wuchong for the thoughtful reviews and suggestions. The shared `KvConfig` chan…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5015">Issue #5015</a> [build] Upgrade fluss-rocksdb to 11.8.1-fluss-5</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: Hi @wuchong, could you please take a look at this dependency upgrade when you have a chance? It inc…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2833">Issue #2833</a> [server] Use per-table remote data directory when storing lake table offset files</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: Could we add a regression test through prepareLakeTableSnapshot with a table remoteDataDir that dif…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3923">Issue #3923</a> [tiering] Trigger job failover when coordinator epoch changes</h4>
+            <ul><li><span class="author">@Shawn-Hx</span>: @luoyuxia @beryllw Rebased onto the main and addressed comments. Could you please take another look…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5005">Issue #5005</a> [flink] Filter undo recovery records before row materialization</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: ### JMH evaluation of early undo-record filtering Compared this PR (`bf37df49c`) with its parent (`…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4391">Issue #4391</a> [client] Expose all coordinator servers (leader and standbys) via the client API</h4>
+            <ul><li><span class="author">@MaheshS08</span>: Thanks @wuchong, the proposed approach is much cleaner, and I've reworked the PR to follow it. cc @…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5019">Issue #5019</a> [flink] Make server-scan bypass lake union reads</h4>
+            <ul><li><span class="author">@loserwang1024</span>: @polyzos , WDYT?</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4972">PR #4972</a> [elixir] Add methods for getting offsets to Fluss.Admin</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: this refreshes only on a miss. after drop + re-create with other partition keys the spec is resolve…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4922">PR #4922</a> [rust] Decode only selected columns in remote Arrow logs</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: the server already drops unprojected columns, a remote segment still has all of them, so we decode……</li><li><span class="author">@zuston</span>: let's followup this in the another PR.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4981">PR #4981</a> [client] Support prefix lookups with multiple keys</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: Could we gate this extension on the table’s key encoding? For legacy Paimon KV v1 tables with PK `(…</li><li><span class="author">@SteNicholas</span>: **Gate longer prefixes on key-encoding compatibility**. For legacy Paimon KV v1 tables with primary…</li><li><span class="author">@fresh-borzoni</span>: this test passes on main as well, checked locally. `lookup=[name=b, address=...]` comes from Flink'…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4970">PR #4970</a> [client] Add exponential backoff to lookup retries</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: +1, though it's not only RPC response errors, lost connections and timeouts are backed off too</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4820">PR #4820</a> [kv] Support global secondary indexes</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: Thanks, removed the internal planning tag from both the proto and matching Rust comments in a83512c…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4771">PR #4771</a> [server] Add recoverable bulk-load transactions</h4>
+            <ul><li><span class="author">@Copilot</span>: A lost commit response followed by Begin's LOADING fence still causes deletion of committed files.……</li><li><span class="author">@platinumhamburg</span>: Thanks, this is a valid data-loss race. After an ambiguous commit attempt, a later rejection or exh…</li><li><span class="author">@luoyuxia</span>: Could we preserve the existing retry behavior for `UNKNOWN_SERVER_ERROR`? The warning path discards…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4956">PR #4956</a> [lake] Support creating primary-key tables from Paimon</h4>
+            <ul><li><span class="author">@beryllw</span>: Could we reject this configuration until delete/reinsert is handled correctly? With SUM and `aggreg…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4937">PR #4937</a> [server] Fix Altering table config fails when datalake is disabled  </h4>
+            <ul><li><span class="author">@litiliu</span>: You're right that this changes the existing synchronization contract. However, do we still need to…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3851">PR #3851</a> [build] Add a local development kit for contributors</h4>
+            <ul><li><span class="author">@wuchong</span>: Why do we need to validate the DevKit dependency versions in the Java 8 compilation job? This seems…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2917">PR #2917</a> [server] Add retract support for Aggregation Merge Engine</h4>
+            <ul><li><span class="author">@polyzos</span>: This rejects any update changelog (including `UPDATE_AFTER`-only upsert streams) for aggregation ta…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4850">PR #4850</a> [server] Implement consumer offset commits</h4>
+            <ul><li><span class="author">@gyang94</span>: A consumer should always be able to commit offsets, don't have to check permission.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4887">PR #4887</a> [rust] Add reusable UnionRead source boundaries</h4>
+            <ul><li><span class="author">@naivedogger</span>: I've updated boundary capture to recheck partition IDs after the offset lookups. A partition's log……</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/5018">#5018</a> [Improvement] Make server-scan bypass lake union reads <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/issues/5017">#5017</a> [rust] Close idle cached RPC connections <span class="author">@SteNicholas</span> </li><li><a href="https://github.com/apache/fluss/issues/5016">#5016</a> [kv] Simplify KvTablet construction <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/5014">#5014</a> [build] Upgrade fluss-rocksdb to 11.8.1-fluss-5 <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/5012">#5012</a> [client] Prevent invalid security-token renewal scheduling <span class="author">@pbanakar</span> </li><li><a href="https://github.com/apache/fluss/issues/5010">#5010</a> [build] Add action to process stale pull requests <span class="author">@SteNicholas</span> <span class="labels">component=build</span></li><li><a href="https://github.com/apache/fluss/issues/5008">#5008</a> [client] Writer close leaves in-flight and pending writes unfinished <span class="author">@SteNicholas</span> </li><li><a href="https://github.com/apache/fluss/issues/5006">#5006</a> [Umbrella][test] Fix flaky tests and stabilize CI <span class="author">@polyzos</span> <span class="labels">component=test, component=build</span></li><li><a href="https://github.com/apache/fluss/issues/5004">#5004</a> [Improvement] Filter undo recovery records before row materialization <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/5001">#5001</a> [rust] Support shared historical logs in bounded UnionRead <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/issues/4997">#4997</a> [Feature] Support COUNT in the aggregation merge engine <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/4995">#4995</a> [c++] Support relocatable local CMake installation <span class="author">@Yohahaha</span> </li><li><a href="https://github.com/apache/fluss/issues/4992">#4992</a> [flink] Support excluding tables from tiering jobs <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/issues/4989">#4989</a> [rust] Lookup retries have no backoff <span class="author">@SteNicholas</span> </li><li><a href="https://github.com/apache/fluss/issues/4987">#4987</a> [client] Log scan fails on INVALID_BUCKET_ROUTING instead of retrying <span class="author">@SteNicholas</span> </li><li><a href="https://github.com/apache/fluss/issues/4985">#4985</a> [test] Unstable test RebalanceITCase.testRebalanceForLogTable <span class="author">@app/github-actions</span> </li><li><a href="https://github.com/apache/fluss/issues/4983">#4983</a> [client][server] Use explicit routing bucket counts <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/4982">#4982</a> [rust] Cached connections ignore server endpoint changes <span class="author">@SteNicholas</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/5019">#5019</a> [flink] Make server-scan bypass lake union reads <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/pull/5015">#5015</a> [build] Upgrade fluss-rocksdb to 11.8.1-fluss-5 <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/5013">#5013</a> [client] Prevent invalid security-token renewal delays <span class="author">@pbanakar</span> </li><li><a href="https://github.com/apache/fluss/pull/5011">#5011</a> [build] Add action to process stale pull requests <span class="author">@SteNicholas</span> </li><li><a href="https://github.com/apache/fluss/pull/5009">#5009</a> [client] Complete pending writes when the writer is closed <span class="author">@SteNicholas</span> </li><li><a href="https://github.com/apache/fluss/pull/5007">#5007</a> [flink] Add embedded-Flink tiering service image and Helm chart <span class="author">@JandyTenedora</span> </li><li><a href="https://github.com/apache/fluss/pull/5005">#5005</a> [flink] Filter undo recovery records before row materialization <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/5000">#5000</a> [rust] Define UnionRead APIs and integration contracts <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/pull/4999">#4999</a> [lake/tiering] Support excluding tables from tiering jobs <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/pull/4998">#4998</a> [server] Support COUNT in the aggregation merge engine <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/4996">#4996</a> [c++] Add relocatable local CMake installation <span class="author">@Yohahaha</span> </li><li><a href="https://github.com/apache/fluss/pull/4994">#4994</a> [rust] Add exponential backoff to lookup retries <span class="author">@SteNicholas</span> </li><li><a href="https://github.com/apache/fluss/pull/4993">#4993</a> [lake] Iceberg deletion vectors for PK union read (FIP-31) <span class="author">@MehulBatra</span> </li><li><a href="https://github.com/apache/fluss/pull/4991">#4991</a> [client] Back off lookups for buckets without a leader <span class="author">@polyzos</span> </li><li><a href="https://github.com/apache/fluss/pull/4990">#4990</a> [common] Support InternalRow#createFieldToString <span class="author">@ss666</span> </li><li><a href="https://github.com/apache/fluss/pull/4986">#4986</a> [rust] Make cached RPC connections endpoint-aware <span class="author">@SteNicholas</span> </li><li><a href="https://github.com/apache/fluss/pull/4984">#4984</a> [client][server] Use explicit routing bucket counts <span class="author">@platinumhamburg</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/4987">#4987</a> [client] Log scan fails on INVALID_BUCKET_ROUTING instead of retrying <span class="author">@SteNicholas</span> </li><li><a href="https://github.com/apache/fluss/issues/4968">#4968</a> [rust] Timestamp partition names differ from Java <span class="author">@slfan1989</span> </li><li><a href="https://github.com/apache/fluss/issues/4959">#4959</a> [client] Lookup retries have no backoff: retriable errors cause a tight retry loop and log flood <span class="author">@polyzos</span> </li><li><a href="https://github.com/apache/fluss/issues/4920">#4920</a> [test] Unstable test KafkaMetadataITCase.testCustomDefaultDatabaseAliasAndNoRecreationByMetadata <span class="author">@app/github-actions</span> </li><li><a href="https://github.com/apache/fluss/issues/4866">#4866</a> [rust] Writes to a missing partition retry forever and block other new partitions <span class="author">@nicolazar</span> </li><li><a href="https://github.com/apache/fluss/issues/4862">#4862</a> [rust] Lookup requests are not drained when batch timeout is zero <span class="author">@slfan1989</span> </li><li><a href="https://github.com/apache/fluss/issues/4767">#4767</a> [kv] Run MultiGet outside the KV lock with snapshot read views <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/4622">#4622</a> [test] Unstable test RebalanceITCase.testRebalanceForLogTable <span class="author">@app/github-actions</span> </li><li><a href="https://github.com/apache/fluss/issues/4251">#4251</a> [lake/iceberg] Support custom Iceberg lake table path <span class="author">@litiliu</span> </li><li><a href="https://github.com/apache/fluss/issues/3869">#3869</a> [server] Apply the planned leader during replica reassignment <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/issues/2785">#2785</a> [server] RemoteStorageCleaner support clean for multiple remote directories <span class="author">@LiebingYu</span> </li><li><a href="https://github.com/apache/fluss/issues/2387">#2387</a> [Aggregation] Add collect/merge_map aggregation support <span class="author">@platinumhamburg</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/5003">#5003</a> [client] Fail log fetch again on INVALID_BUCKET_ROUTING <span class="author">@polyzos</span> </li><li><a href="https://github.com/apache/fluss/pull/4988">#4988</a> [client] Retry log fetch on INVALID_BUCKET_ROUTING instead of failing <span class="author">@SteNicholas</span> </li><li><a href="https://github.com/apache/fluss/pull/4978">#4978</a> [test] Wait for Kafka Metadata visibility in alias test <span class="author">@coding-otter-bot</span> </li><li><a href="https://github.com/apache/fluss/pull/4970">#4970</a> [client] Add exponential backoff to lookup retries <span class="author">@polyzos</span> </li><li><a href="https://github.com/apache/fluss/pull/4969">#4969</a> [rust] Align timestamp partition names with Java <span class="author">@slfan1989</span> </li><li><a href="https://github.com/apache/fluss/pull/4941">#4941</a> [rust] Create missing partitions on write instead of retrying forever <span class="author">@SteNicholas</span> </li><li><a href="https://github.com/apache/fluss/pull/4893">#4893</a> [rust] Lookup requests are not drained when batch timeout is zero <span class="author">@slfan1989</span> </li><li><a href="https://github.com/apache/fluss/pull/4869">#4869</a> [server] Move leader during reassignment when old leader stays <span class="author">@morazow</span> </li><li><a href="https://github.com/apache/fluss/pull/4768">#4768</a> [kv] Run MultiGet outside the KV lock with snapshot read views <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/4253">#4253</a> [lake/iceberg] Support custom Iceberg lake table path <span class="author">@litiliu</span> </li><li><a href="https://github.com/apache/fluss/pull/2787">#2787</a> [server] RemoteStorageCleaner support clean for multiple remote directories <span class="author">@LiebingYu</span> </li><li><a href="https://github.com/apache/fluss/pull/2388">#2388</a> [server] Add collect and merge_map aggregations <span class="author">@platinumhamburg</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
