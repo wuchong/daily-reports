@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafka 社区周报 | 2026-W44</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Kafka 社区周报 | 2026-W44</h1>
+            <p class="date-range">2026-10-26 ~ 2026-11-01</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (0)</h2>
+            <p class="empty">本周无公告</p>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (3)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/0r8qnd8bjnbqnqtjw1q7mpb0rxqhv8mh">KIP-1308: Extend Header API for Common Value Types</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/3d3fydyolfploszc6nfc3jtfvwgstk9q">KIP-1342: Deprecate Authorizer#aclCount</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/gd711p59blqppfosyqk7ls7pkx7x1d5b">KIP-1376: Support setting TLS named groups</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/n8yzcnddhxjhxcg6bcycrvh70jllxo0p">KIP-1279: Cluster Mirroring</a></h3>
+            <p class="meta">7 条回复 · 3 位参与者</p>
+            <p class="summary">本次讨论围绕 KIP-1279 Cluster Mirroring 是否需支持 2.1 等旧源集群，以及在社区移除 OffsetForLeaderEpochRequest 相关截断逻辑后是否恢复该逻辑。多数意见认为为避免复杂性和维护成本，不应重新引入旧逻辑，支持将源集群最低版本提高到 3.0+。最终 KIP 已据此更新。</p>
+            <div class="key-points"><p><strong>@Rajini Sivaram:</strong> 旧截断逻辑已被移除以降低维护成本，不建议在 Cluster Mirroring 中重新引入；考虑到 truncate-on-fetch 的稳定性修复，支持 3.0+ 更合适。</p>
+<p><strong>@Federico Valeri:</strong> 最初希望保留对 2.1 源集群的支持以帮助旧用户迁移，并考虑为 Cluster Mirroring 重新引入相关逻辑；后续接受建议并更新了 KIP。</p>
+<p><strong>@Mickael Maison:</strong> 同意不重新加入旧逻辑，认为如果迁移场景重要，支持 3.0+ 已能覆盖大部分旧集群。</p></div>
+            <p class="conclusion">初步结论是不为兼容 2.1 重新引入 OffsetForLeaderEpochRequest 相关旧逻辑，Cluster Mirroring 源集群计划仅支持 3.0+；Federico 已更新 KIP，后续可继续明确长期兼容性策略。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/b9y5mrd4ybk5nv4dgto8c0t82khqwz5n">KIP-1388: Add a committed-offsets filter to ListGroups</a></h3>
+            <p class="meta">4 条回复 · 3 位参与者</p>
+            <p class="summary">讨论聚焦 KIP-1388：为 ListGroups 增加 requireCommittedOffsets 过滤器，使 Admin.listGroups 仅返回至少有一个已提交 offset 的消费组，以减少 MirrorMaker 2 等工具发起无效 OffsetFetch。评审者关注仅 pending offset 的组是否应纳入、状态描述是否应基于 committed state，以及 MM2 的版本兼容与实现成本。作者已更新 KIP 澄清语义、简化状态表并补充采用指导，评审基本收敛。</p>
+            <div class="key-points"><p><strong>@David Jacot:</strong> 询问为何不包含仅有 pending offset 的组，并建议去掉快照实现细节，改为基于已提交状态简化描述。</p>
+<p><strong>@Nicole Du:</strong> 解释仅已提交 offset 计入，pending 事务可能被中止；已更新 KIP、测试计划，并说明过滤只需基于已提交状态的内存存在性检查。</p>
+<p><strong>@Rajini Sivaram:</strong> 建议补充 KIP 列表链接和 MM2 对旧版本 UnsupportedVersionException 的回退重试说明，确认实现语义后表示 LGTM。</p></div>
+            <p class="conclusion">主要评审意见已在 KIP 中解决，Rajini 给出 LGTM；后续可继续推进 KIP 评审/实现，并在采用时处理旧 broker 的兼容性回退。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/tl95fk77v4dkzqcm6d20ydnsnrgl5b1f">Tightening time-based releases</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">社区讨论如何收紧 Kafka 基于时间的发布节奏，重点是 4.5/4.6 版本与 2027 年 KIP freeze 日期安排。Matthias 提出将 4.5 视为第一个发布周期并调整后续日期，Andrew 和 Chia-Ping 表示支持。</p>
+            <div class="key-points"><p><strong>@Matthias J. Sax:</strong> 建议采用方案 2，将 AK 4.5 视为 release-1，并把 AK 4.6 的 KIP freeze 提前到 6 月 2 日，以平衡后续发布周期。</p>
+<p><strong>@Andrew Schofield:</strong> 认可方案 2，认为这是向更规律发布节奏过渡的好方式；此前已按既定计划推进 4.5.0。</p>
+<p><strong>@Chia-Ping Tsai:</strong> 支持方案 2，并指出发布延迟可能仍与必须回迁的修复和 CVE 有关。</p></div>
+            <p class="conclusion">讨论初步倾向采用方案 2，即将 AK 4.6 的 KIP freeze 定为 6 月 2 日，并据此推进更稳定的发布节奏。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/2nby0dqkq57x03c1yxzzbkklzysl3qty">KIP-1390: Add a tokenless login callback handler for SASL/OAUTHBEARER</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕 KIP-1390 展开，提议为 SASL/OAUTHBEARER 新增官方支持的 tokenless 登录回调处理器。该提案旨在解决仅验证 OAuth token 的 broker 无需自身 token，但目前仍依赖内部 OAuthBearerUnsecuredLoginCallbackHandler 的问题。评审反馈后，作者已对 KIP 进行更新。</p>
+            <div class="key-points"><p><strong>@Ming-Yen Chung:</strong> 提议新增 OAuthBearerTokenlessLoginCallbackHandler，正式支持 broker 在无自身 OAuth token 场景下的 tokenless 登录。</p>
+<p><strong>@Chia-Ping Tsai:</strong> 质疑新 handler 检查 unsecuredLogin* 配置并抛异常的必要性，并建议将原 handler 的无 token 日志级别从 info 调整为 warn。</p>
+<p><strong>@Ming-Yen Chung:</strong> 接受建议，移除对 unsecuredLogin* 配置的检查，使新 handler 忽略 JAAS options，并将相关日志更新为 WARN 且提示使用新 handler。</p></div>
+            <p class="conclusion">初步结论是采纳评审意见并更新 KIP：新 handler 不再检查 unsecuredLogin* 配置，原 unsecured handler 日志级别调整为 WARN；下一步将基于修改后的方案继续推进 KIP。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/rbz68fnp062ccm6y7q4mr0ovltookk5c">Apache Kafka 3.9.3 release</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">社区讨论是否发布 Apache Kafka 3.9.3，核心动因是回移 CVE 修复并修复 ZK 到 KRaft 迁移中的关键缺陷。Chia-Ping Tsai 表示将启动发布计划，并在计划就绪后另开线程推进。讨论也涉及 3.9 版本维护策略和用户预期管理。</p>
+            <div class="key-points"><p><strong>@Chia-Ping Tsai:</strong> 因 ZK 迁移关键缺陷和 CVE 修复回移，提议并推进 3.9.3 发布，将制定发布计划。</p>
+<p><strong>@Gaurav Narula:</strong> 支持发布 3.9.3，认为近期 CVE 公告进一步强化了发版必要性。</p>
+<p><strong>@Mickael Maison:</strong> 不反对发布，但建议明确 3.9 的支持状态与后续维护策略，以平衡用户预期和维护成本。</p></div>
+            <p class="conclusion">初步方向是推进 3.9.3 发布；下一步由 Chia-Ping Tsai 制定并分享发布计划，同时社区需要明确 3.9 的维护与支持边界。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/9s0r1l4ct25jpdx697yds5p3slvzhnhy">KIP-1389: Surface effective group configurations to clients</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕 KIP-1389 如何将 Kafka 组配置的有效值暴露给客户端展开。David 认可当前 DescribeConfigs 只返回存储值的问题，但反对通过 heartbeat、share fetch 等多个 API 下发配置，建议改为增强 DescribeConfigs。Sunmin 接受反馈并补充了 controller 与 broker bounds 不一致导致配置实际被截断的案例，进一步说明暴露有效值的必要性。</p>
+            <div class="key-points"><p><strong>@David Jacot:</strong> 认同无法查看有效配置的问题，但认为通过心跳、share fetch 等 API 分发配置会增加复杂性并绕过 DESCRIBE_CONFIGS 权限，建议改进 DescribeConfigs。</p>
+<p><strong>@이선민:</strong> 认可原方案复杂且不适合仅为客户端日志服务，倾向通过 DescribeConfigs 获取有效配置。</p>
+<p><strong>@이선민:</strong> 指出 controller 与 broker 的 group bounds 不一致时，配置可能被 broker 截断但 DescribeConfigs 仍返回原值，说明需要暴露有效值。</p></div>
+            <p class="conclusion">初步方向是不再通过多个客户端 API 分发组配置，而是推动 DescribeConfigs 返回有效值；下一步可针对 controller/broker bounds 不一致问题提交 ticket，并继续补充客户端侧记录有效配置的使用场景。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/0sxs3o2hj3vh0dxym376ntjf458px5lv">[PR] MINOR: Add October 2026 CVE entries to the CVE list [kafka-site]</a></h3>
+            <p class="meta">1 条回复 · 1 位参与者</p>
+            <p class="summary">讨论围绕向 Apache Kafka 网站的 CVE 列表中添加 2026 年 10 月公布的多个 CVE 条目。omkreddy 提交了 PR #932，将相关 CVE 按重要、中等、低级别更新到 content/en/community/cve-list.md。该 PR 随后已被合并。</p>
+            <div class="key-points"><p><strong>@omkreddy:</strong> 提交 PR #932，向 Kafka 网站 CVE 列表添加 2026 年 10 月 28 日公布的 CVE，并按严重级别排序。</p>
+<p><strong>@omkreddy:</strong> 合并 PR #932，完成 CVE 列表更新。</p></div>
+            <p class="conclusion">PR #932 已合并，Kafka 网站 CVE 列表已完成更新，暂无进一步行动。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/9byow7myyb8h41kv3jtcfwxwmrwrkzss">Jenkins build is unstable: Kafka » Kafka Branch Builder » 3.9 #283</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">该邮件是 Apache Jenkins Server 发出的自动构建通知，提示 Kafka 3.9 分支的第 283 次构建处于不稳定状态。邮件未包含社区讨论内容或失败原因，仅提供了 Jenkins 构建链接。</p>
+            <div class="key-points"><p><strong>@Apache Jenkins Server:</strong> 报告 Kafka 3.9 分支构建 #283 不稳定，并提供 Jenkins 链接供查看详情。</p></div>
+            <p class="conclusion">暂无初步结论或具体下一步行动，需访问 Jenkins 构建页面查看不稳定原因，并确认是否需要修复或重跑构建。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/rg397f9654mr6hdc955cx5mwywp1c8l2">CVE-2026-83525: Apache Kafka: Incorrect boolean operator in FetchSnapshot RPC handler allows authenticated network clients to crash the KRaft controller via a malformed request.</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">邮件通报了 CVE-2026-83525：Apache Kafka 的 FetchSnapshot RPC 处理器因错误使用布尔操作符，可能让具备 CLUSTER_ACTION 权限的已认证客户端通过构造畸形请求导致 KRaft controller 进程终止，形成拒绝服务。受影响版本包括 2.8.0 至 4.2.2 之前，以及 4.3.0 至 4.3.2 之前。</p>
+            <div class="key-points"><p><strong>@Manikumar:</strong> 该问题严重级别为低，影响 Apache Kafka 2.8.0 至 4.2.2 之前以及 4.3.0 至 4.3.2 之前版本，建议升级修复。</p>
+<p><strong>@Mike Read:</strong> 作为漏洞报告者，发现 FetchSnapshotRequest 中 topics 数组为空或主题没有分区时可触发该问题。</p>
+<p><strong>@Kevin Wu:</strong> 作为修复开发者参与了该漏洞的修复工作。</p></div>
+            <p class="conclusion">建议用户升级到 4.2.2、4.3.2 或 4.4.0；使用不受支持分支（4.1.x 及更早版本）的用户应升级到 4.2.2 或更高版本。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/qnvcxdjjhjc1f2g01jspv4o45ppgbtkc">CVE-2026-110952: Apache Kafka: Broker does not enforce JWT issuer and audience validation for SASL/OAUTHBEARER by default</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">社区邮件通报了 CVE-2026-110952：Apache Kafka 在 SASL/OAUTHBEARER 的 JWKS 校验器中默认只校验 JWT 签名，不强制校验 issuer 和 audience。该问题影响 3.1.0 至 4.4.0 之前版本，严重级别为 moderate，在多发行方或共享 JWKS 环境下可能允许错误签发或缺少 audience 的令牌通过认证。</p>
+            <div class="key-points"><p><strong>@Manikumar:</strong> JWT 签名始终会被验证，但 issuer 和 audience 校验仅在显式配置 sasl.oauthbearer.expected.issuer 和 sasl.oauthbearer.expected.audience 时生效。</p>
+<p><strong>@Manikumar:</strong> 实际风险主要出现在多租户身份提供方、聚合或共享 JWKS、共享签名密钥等场景；单发行方且令牌包含受众范围的部署风险较低。</p>
+<p><strong>@Manikumar:</strong> 无需升级即可缓解：为每个 listener 显式配置预期的 issuer 和 audience，配置后 Broker 将执行精确匹配检查。</p></div>
+            <p class="conclusion">建议受影响部署立即配置 sasl.oauthbearer.expected.issuer 和 sasl.oauthbearer.expected.audience，并升级到 4.4.0 或后续修复版本。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (66)</h2>
+            
+    <p>本周新建 <strong>66</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周 JIRA 主要集中在安全漏洞修复与多个 CVE 补丁向 3.9 版本回移，同时推进集群镜像（Mirror）相关的记录格式、解码器和工具支持。Kafka Streams 的任务分配、再平衡、静态成员、恢复状态与日志输出等问题也是重点，并涉及 KRaft/控制器记录、配额与选举接口等核心能力增强。此外还覆盖了事务协调器、日志清理、共享组消费、客户端重试与 SSL 断连等修复，以及文档和序列化配置说明的完善。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Kafka Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
