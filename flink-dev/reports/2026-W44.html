@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flink 社区周报 | 2026-W44</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Flink 社区周报 | 2026-W44</h1>
+            <p class="date-range">2026-10-26 ~ 2026-11-01</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (2)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/sph0o92pyjmb871ws2qr1n96qk6cpmo1">New Apache Flink Committer - Ramin Gharib</a></li>
+<li><a href="https://lists.apache.org/thread/w074q65z01m8zqrl55qzqn2m7mt7s89v">Apache Flink Agents 0.4.0 released</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (5)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/2xpygwz6y2vdhp9o26gpwbbjpdtyrpmb">[E] Re:  Apache Flink Agents Release 0.4.0, release candidate #1</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/lch3tnldch6qssm2x70f0wfb6t829cmw">Apache Flink Agents Release 0.4.0, release candidate #1</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/lhld9463k6mqz8f78633jqtcj8lflyl1">FLIP-619: Store large operator coordinator state outside the checkpoint metadata</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/hjyffsrx05vzlxto8wtttks25xfwzjg4">FLIP-618: Edit, Inspect and Build VARIANT Values</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/zg39q5231x5czbmw6pl5pbpq28xzkb47">FLIP-608: Flink on Ray - Ray Resource Backend For Flink</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/zyrnm79c0xmcbg37jond1drh7xjnv6l7">Restructure the SQL built-in function docs</a></h3>
+            <p class="meta">6 条回复 · 4 位参与者</p>
+            <p class="summary">社区讨论重构 Flink SQL 内置函数文档，计划将当前单页表格改为每个函数独立页面，并统一语法、参数、返回值、示例等结构。讨论中获得普遍支持，重点关注搜索体验、示例数据化与 CI 校验、移除 Scala 语法页，以及文档与源码行为对齐。目前方案已基本明确，进入创建 Jira 和提交 PR 的实施准备阶段。</p>
+            <div class="key-points"><p><strong>@Ramin Gharib:</strong> 提议将内置函数文档重构为按函数分页、统一章节和分类侧边栏，并计划引入 YAML 示例、CI 校验、移除 Scala 语法页，同时基于最新实现修正文档。</p>
+<p><strong>@Xiqian YU:</strong> 支持重构，但担心拆分页面后浏览器搜索不便，建议增加按字母排序的函数总览页以便浏览和查找。</p>
+<p><strong>@Ferenc Csaky:</strong> 支持重构，并建议在迁移过程中对照源码核对每个函数的实际行为，避免文档与实现不一致。</p></div>
+            <p class="conclusion">社区总体支持重构方案；Ramin 将采纳函数总览页建议、移除 Scala tab，并在迁移中补充示例和校正文档，随后创建 Jira 并按分类提交 PR。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/62v4r8fvoxd2bofpllrybpxbp1q9fwnn">FLIP-618: Edit, Inspect and Build VARIANT Values</a></h3>
+            <p class="meta">6 条回复 · 3 位参与者</p>
+            <p class="summary">讨论围绕 FLIP-618 提议为 Flink VARIANT 增加编辑、检查和构建值的内置 SQL 函数及 Java API。社区总体支持，并推动澄清 SQL NULL 语义、聚合函数在更新输入下的行为以及 VARIANT_OBJECT_AGG 重复键处理。FLIP 已根据反馈更新，讨论进入投票阶段。</p>
+            <div class="key-points"><p><strong>@Martijn Visser:</strong> 支持 FLIP，建议保持 SQL NULL 返回 NULL，并补充 Dremio、Snowflake 等引擎的相关行为作为参考。</p>
+<p><strong>@Krishna Sai:</strong> 指出 VARIANT_OBJECT_AGG 和 SCHEMA_OF_VARIANT_AGG 未说明更新输入下的回撤行为，建议明确采用哪种模式或声明不支持。</p>
+<p><strong>@Gustavo de Morais:</strong> 支持 FLIP，并询问 VARIANT_OBJECT_AGG 遇到重复键时的行为；后续认可 Ramin 关于报错行为与现有函数一致的解释。</p></div>
+            <p class="conclusion">初步结论是保持 SQL NULL 返回 NULL，VARIANT_OBJECT_AGG 重复键时报错，聚合函数是否支持更新输入应在 FLIP 中说明而实现细节留待 PR。下一步是进入投票流程并继续完善实现细节。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/wb3mzkvz194wdpbqfrv4vqzprocxdmmf">Which Java versions are you running Flink on?</a></h3>
+            <p class="meta">4 条回复 · 5 位参与者</p>
+            <p class="summary">讨论围绕 Martijn Visser 发起的 Flink Java 版本支持 FLIP 调研展开，收集社区当前生产环境中的 Flink 版本、运行和编译 Java 版本、部署方式及升级计划。多位用户反馈已在 Java 17/21 上运行 Flink，并希望尽快支持 Java 25 等新版本。</p>
+            <div class="key-points"><p><strong>@Martijn Visser:</strong> 计划撰写 FLIP，先调研用户实际使用的 Java 版本与部署情况，强调目前尚未做出决定，后续会在 dev 列表讨论。</p>
+<p><strong>@Daniel Burrell:</strong> 由于 Flink 对新版 Java 支持滞后，团队平台已迁移 Java 25 但 Flink 仍停留在 Java 21，造成 monorepo 和构建维护成本，甚至考虑替代技术。</p>
+<p><strong>@Zhanghao Chen:</strong> 建议将运行时 JDK 支持与编译 JDK/语言级别分开，优先支持新运行时版本以获得性能收益，编译级别升级应谨慎，可从 Java 17 开始。</p></div>
+            <p class="conclusion">目前尚未形成最终结论，下一步是由 Martijn 汇总反馈并推进 FLIP 讨论；社区倾向加快支持新版 Java 运行时，同时谨慎处理编译兼容，并关注虚拟线程等新特性。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/1lj1zrcygxq0sn41mtt3s6m2634shnlw">[PR] [hotfix] Reduce image size [flink-ci-docker]</a></h3>
+            <p class="meta">3 条回复 · 1 位参与者</p>
+            <p class="summary">snuyanzin 在 flink-ci-docker 仓库提交并合并了 PR #11，目标是缩减 CI Docker 镜像体积。该改动新增 Python 测试所需的 python3-dev，并移除 gosu、旧版 hugo 等未使用依赖。</p>
+            <div class="key-points"><p><strong>@snuyanzin:</strong> 新增 python3-dev 以满足 Python 测试需求，同时删除未使用的库来减小镜像大小。</p>
+<p><strong>@snuyanzin:</strong> 移除 gosu，因为在相关 flink-docker 变更后已不再使用。</p>
+<p><strong>@snuyanzin:</strong> 移除镜像中预装的 hugo 0.98.0，因为文档构建会自行安装 0.124.1。</p></div>
+            <p class="conclusion">PR 已合并，变更完成，暂无后续行动。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/x518kh64ofpqgqsd0074s6frx2q9ljz2">FLIP-620: Structured errors for Table API and SQL</a></h3>
+            <p class="meta">3 条回复 · 2 位参与者</p>
+            <p class="summary">本次讨论围绕 FLIP-620 提案，为 Table API 和 SQL 引入结构化错误模型，以替代当前不稳定、难解析的自由文本错误。提案计划先建立向后兼容的错误标识、类别和结构化参数基础设施，便于外部工具分类、展示和处理失败。讨论中确认现有异常治理将分阶段推进，CodeGenException 等也会在后续逐步纳入。</p>
+            <div class="key-points"><p><strong>@Timo Walther:</strong> FLIP-620 旨在为错误提供稳定标识、类别和结构化参数，先面向 Table API 和 SQL 建立向后兼容的基础设施，后续可供其他 Flink 组件采用。</p>
+<p><strong>@Krishna Sai:</strong> 支持将错误类别放在错误本身而非异常类上，并以 MAP 类型在排序、聚合和比较场景中的异常不一致为例，询问 CodeGenException 是否纳入本次重构范围。</p>
+<p><strong>@Timo Walther:</strong> 当前阶段优先建立结构化错误基础设施，后续会借助 AI 逐步梳理现有异常，包括 CodeGenException，但这项工作可能跨越多个 Flink 版本。</p></div>
+            <p class="conclusion">初步共识是先落地结构化错误基础设施和骨架，后续分阶段迁移并规范化现有异常；下一步是推进骨架实现，并继续讨论错误范围与消息规范。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/8gf7zcjggto0y6do60g4bhh2jfs85566">Idle sources can make on-time records late after two exchanges</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">讨论聚焦空闲 Source 恢复后因 watermark 借用、IDLE/ACTIVE 状态传播和缓冲区刷新竞态，导致记录在两次交换后被误判迟到的问题。社区评估了借用 watermark、对齐组和 resume marker 等方案，并已补充复现测试与延迟测量。</p>
+            <div class="key-points"><p><strong>@Roman Khachatryan:</strong> 认可该问题场景，建议提供可复现测试并创建 JIRA；认为仅在 ACTIVE 时 flush 只能缩小竞态窗口，无法根治慢路径或反压导致的延迟问题。</p>
+<p><strong>@Mate Czagany:</strong> 已创建 ticket 和复现测试；认为全局共享借用 watermark 可能让不相关 Source 互相推进或阻塞，因此更倾向 resume marker 方案。</p>
+<p><strong>@Krishna Sai:</strong> 指出全 idle 场景下 MAX_WATERMARK 不能直接作为流 watermark，且状态必须随 watermark 传播；实测恢复间隙受算子延迟和 flush 影响，因此支持 marker 方案。</p></div>
+            <p class="conclusion">初步共识是需要为全 idle 场景制定特殊规则，并解决状态与 watermark 同步问题；已建立 JIRA 和测试，后续更倾向推进 resume marker 方案，同时评估其 wire format 兼容性和恢复等待影响。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/yqd3c0zfoqtw1ohntf0o76kbrg8flmf5">FLIP-617: Support Pluggable REST Handler Extensions</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">本次讨论围绕 FLIP-617 为 Flink JobManager REST 增加可扩展处理器的方案展开，重点已从通用可插拔 REST 扩展收敛为单一公共端点，通过现有 coordinator 请求路径向 operator coordinator 传递不透明 JSON。社区进一步明确了不支持外部请求时的 404/400 错误语义，并要求补充测试覆盖内部专用与外部可用 coordinator 的场景。</p>
+            <div class="key-points"><p><strong>@Yunfeng Zhou:</strong> 提出并将 FLIP-617 从通用 REST 扩展机制收窄为单一公共 REST endpoint，通过现有 coordinator 请求路径向 operator coordinator 发送不透明 JSON 并返回响应。</p>
+<p><strong>@Zhe Wang:</strong> 质疑 404 契约：实现 CoordinationRequestHandler 但不支持外部请求的 coordinator 可能因 IllegalArgumentException 返回 400，建议明确区分并增加测试覆盖。</p>
+<p><strong>@Gen Luo:</strong> 支持自定义 REST handler 的方向，并建议将设计聚焦到外部可访问的 coordinator handler，复用已有交付路径而非引入额外 SPI/bridge。</p></div>
+            <p class="conclusion">初步结论是采纳收窄后的方案，并明确错误语义：Flink 可观察场景返回 404，coordinator 不支持外部请求时返回 NOT_FOUND，payload 错误返回 400；下一步是补充单元测试/集成测试、更新 FLIP 文档，并在原线程继续讨论。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/kgfhc6lmfc67md86tzsb75k2r4sywjfb">Make ON CONFLICT optional by default in Flink 2.4</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论是否将 Flink 2.4 中 table.exec.sink.require-on-conflict 的默认值由 true 改为 false，使 ON CONFLICT 子句默认变为可选。提议主要出于兼容性、规划器键推断限制以及 CTAS/RTAS 等语句无法显式使用该子句的问题。目前讨论倾向支持变更，并需同步更新文档。</p>
+            <div class="key-points"><p><strong>@Gustavo de Morais:</strong> 建议将默认值改为 false，保留 ON CONFLICT 功能，仅取消强制要求，以减少升级破坏和不可推断键导致的报错。</p>
+<p><strong>@Krishna Sai:</strong> 支持变更，并指出在 upsert-materialize=FORCE 场景下默认 true 会导致 2.4 中原本可运行查询失败，默认 false 可保持兼容。</p>
+<p><strong>@Krishna Sai:</strong> 若默认值变更，需要同步更新 insert.md 中英文文档和配置项描述。</p></div>
+            <p class="conclusion">初步方向是将 ON CONFLICT 改为默认可选；Gustavo 计划在无反对情况下于 2.4 发布前 1-2 周推进，后续需更新相关文档。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/zq61zlcrljnvm00zv688lrhrlb2bjtp0">Apache Flink 1.20.6, 2.2.2 and 2.3.1 release plan</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">社区讨论 Apache Flink 1.20.6、2.2.2 和 2.3.1 补丁版本的发布计划，目标是在 11 月 10 日左右切出 RC。当前进展集中在推进 backport PR 审查、跟进待回复 Jira，以及排查 CI 失败和不稳定测试。</p>
+            <div class="key-points"><p><strong>@Rui Fan:</strong> 计划 11 月 10 日左右切 RC，请求社区协助审查多个 backport PR、回复相关 Jira，并认领不稳定测试与 CI 失败；若无阻塞则按已合并内容发布。</p>
+<p><strong>@Purushottam Sinha:</strong> 已审查部分 backport PR，并说明 release-1.20 和 release-2.3 的 CI 失败分别与 FLINK-34427、FLINK-40132 相关；还有其他 backport/稳定性 PR 正在审查。</p></div>
+            <p class="conclusion">初步结论是若无人提出必须修复的阻塞问题，将按计划在 11 月 10 日左右基于已合并内容切 RC，未解决问题移入后续补丁；下一步继续审查 PR、跟进 Jira 和 CI 修复。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/52hwc7yv4tlx2llpo8rv0xts91ky79rb">Trying out the new Apache Trusted Releases by releasing a new Flink-Kafka connector</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论围绕试用 Apache Trusted Releases 新工具发布 Flink-Kafka connector 展开。Martijn 提议以这个已逾期的连接器发布为试点，并记录流程，推动 Flink 更自动化、更频繁地发布。Ramin 表示支持，认为该工具有前景且能减少许多手动步骤。</p>
+            <div class="key-points"><p><strong>@Martijn Visser:</strong> 建议试用 Apache Trusted Releases 新流程发布 Flink-Kafka connector，并在 Wiki 中记录 Flink 的使用方式，以推动更频繁和自动化的发布。</p>
+<p><strong>@Ramin Gharib:</strong> 认可新工具能够减少手动发布步骤，表示支持该尝试。</p></div>
+            <p class="conclusion">社区初步支持该试点，下一步是尝试使用 Apache Trusted Releases 发布 Flink-Kafka connector，并沉淀相关文档。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (97)</h2>
+            
+    <p>本周新建 <strong>97</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周 JIRA 主要集中在运行时稳定性与作业生命周期问题，包括故障恢复、检查点与 watermark 对齐、TaskManager 异常处理等。SQL/Table API 和 PyFlink 也是重点，涉及 CAST/VARIANT、窗口聚合、类型推断、UDF/UDAF 以及时间类型正确性。此外还覆盖 Kafka、MySQL CDC、Fluss、Parquet/JSON 等连接器与格式问题，以及 Kubernetes Operator、REST/Web UI、CI 测试、依赖升级和发布验证等基础设施改进。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Flink Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>

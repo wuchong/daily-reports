@@ -6,6 +6,12 @@
     <description>Apache Flink dev 邮件列表周报归档</description>
     <language>zh-CN</language>
     <item>
+      <title>Flink 社区周报 - 2026-W44</title>
+      <link>https://wuchong.github.io/daily-reports/flink-dev/reports/2026-W44.html</link>
+      <guid>https://wuchong.github.io/daily-reports/flink-dev/reports/2026-W44.html</guid>
+      <pubDate>2026-W44</pubDate>
+    </item>
+    <item>
       <title>Flink 社区周报 - 2026-W43</title>
       <link>https://wuchong.github.io/daily-reports/flink-dev/reports/2026-W43.html</link>
       <guid>https://wuchong.github.io/daily-reports/flink-dev/reports/2026-W43.html</guid>
@@ -118,12 +124,6 @@
       <link>https://wuchong.github.io/daily-reports/flink-dev/reports/2026-W24.html</link>
       <guid>https://wuchong.github.io/daily-reports/flink-dev/reports/2026-W24.html</guid>
       <pubDate>2026-W24</pubDate>
-    </item>
-    <item>
-      <title>Flink 社区周报 - 2026-W23</title>
-      <link>https://wuchong.github.io/daily-reports/flink-dev/reports/2026-W23.html</link>
-      <guid>https://wuchong.github.io/daily-reports/flink-dev/reports/2026-W23.html</guid>
-      <pubDate>2026-W23</pubDate>
     </item>
   </channel>
 </rss>
