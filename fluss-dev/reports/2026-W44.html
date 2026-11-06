@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fluss 社区周报 | 2026-W44</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Fluss 社区周报 | 2026-W44</h1>
+            <p class="date-range">2026-10-26 ~ 2026-11-01</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (0)</h2>
+            <p class="empty">本周无公告</p>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (0)</h2>
+            <p class="empty">本周无投票</p>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (4)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/kx3wqy001ospg2yz9bdc1jpw8wx06dzf">FIP-31: Introduce Deletion Vectors to accelerate Primary Key Table Union Read over Iceberg</a></h3>
+            <p class="meta">4 条回复 · 3 位参与者</p>
+            <p class="summary">社区围绕 FIP-31 中 Iceberg 删除向量方案展开讨论，重点是比较基于 RowId 的删除索引与基于主键索引并派生删除掩码的方案。多位参与者认可主键索引可避免额外系统列、支持外部引擎写入或重写文件，并能让数据与删除在同一快照中提交。讨论已从方案对比推进到恢复语义、日志保留和提交防护等契约细节。</p>
+            <div class="key-points"><p><strong>@Anton Borisov:</strong> 主张以主键而非 RowId 作为索引键，认为这可避免 __rowid 系统列、支持外部引擎写入或重写的数据被正确屏蔽，并可在同一 Iceberg 提交中完成数据写入与删除。</p>
+<p><strong>@Nicholas Jiang:</strong> 认可主键索引加派生删除掩码的方向，但强调需要明确快照语义、重复更新、删除后重插、恢复行为，并补充日志保留和 tiering epoch fencing 等契约。</p>
+<p><strong>@Giannis Polyzos:</strong> 倾向 derived design，认为每个 lake snapshot 应自洽，主键是自然行标识，从索引和日志派生删除掩码更易保证正确性，也能兼容不同 Iceberg 格式版本。</p></div>
+            <p class="conclusion">初步共识是优先探索基于主键索引和派生删除掩码的方案；下一步需要在 FIP 中完善恢复模型、日志保留、提交防护、Paimon 配置校验和回归测试。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/fmlyp6mjtzfncxtwysvrcp3f4vlpv3tt">FIP-59 Kafka Idempotent Produce</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">本次讨论围绕 FIP-59 如何支持 Kafka 幂等写入 Fluss，核心问题是采用新增 V3 批格式统一承载 epoch 和 sequence，还是保持现有格式并在服务端特殊处理 Kafka writer。目前讨论明显倾向于 Option A，认为其不仅支持 Kafka 幂等与事务，也能服务原生 Fluss writer 并为未来格式演进铺路。</p>
+            <div class="key-points"><p><strong>@Dionysis Stolis:</strong> 提出 Option A 与 Option B 两种方案，并指出 Kafka 事务依赖 epoch 做隔离，因此 Option A 比在服务端隐藏编码 writer ID 的 Option B 更可维护。</p>
+<p><strong>@Yang Guo:</strong> 支持 Option A，认为 writer epoch 对原生 Fluss writer 也有价值，可帮助解决 CDC 恢复后状态过期导致的序列错误，并且便于未来扩展如事件时间等格式能力。</p>
+<p><strong>@Dionysis Stolis:</strong> 建议为存储格式演进启动单独 FIP，并让 V3 格式成为该机制下的首个变更，同时征询社区是否反对 Option A。</p></div>
+            <p class="conclusion">目前初步倾向采用 Option A；下一步是继续征询社区反对意见，并考虑推进单独的存储格式演进 FIP，以便在目标版本中落地 V3 格式。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/r5h4nmhfdw6sr15m75jbtnxgw75lb5x6">Apache Fluss Community Call 30th October</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">本次 Apache Fluss 社区会议主要同步社区增长、Kafka Producer 支持进展以及实时 AI 与 Iceberg 相关规划。Kafka Producer 初步能力已合入主干，但性能、兼容性和幂等写入仍需完善。会议还讨论了 BLOB 存储与 HTTP 网关方案，以及 Iceberg 就绪能力在 1.1 版本中的不确定性。</p>
+            <div class="key-points"><p><strong>@Nicholas:</strong> Fluss 在 Lakehouse Day 和 Community Over Code 上获得积极反响，社区兴趣和潜在用户交流明显增加。</p>
+<p><strong>@Contributors:</strong> Kafka Producer 幂等写入可通过扩展 Fluss 批格式或由服务端做 Kafka 特定处理实现，相关权衡将继续讨论。</p>
+<p><strong>@New contributors:</strong> 新贡献者表达了参与 Fluss 开发以及项目长期方向建设的兴趣。</p></div>
+            <p class="conclusion">下一步将继续在邮件列表讨论 Producer 幂等方案，并推进性能、兼容性、BLOB/HTTP 网关及 Iceberg 相关能力验证；Iceberg 特性是否进入 1.1 取决于设计共识和实现测试进度。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/dcv78zn00cvbx2nsjk795vp595kzrqgd">FIP-47: Introduce Deletion Vectors to accelerate Primary Key Table Union Read over Paimon</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论围绕 FIP-47 在 Paimon 主键表联合读取中引入 Deletion Vectors 的设计展开，重点关注分区过期、快照过期、RowPos SST 保留与恢复一致性等问题。Anton Borisov 基于 FIP-31 提出了若干 Paimon 场景下的补充疑点，认为当前设计仍需明确清理与保护机制。</p>
+            <div class="key-points"><p><strong>@Anton Borisov:</strong> 在启用分区过期和自动快照过期时，被 OVERWRITE 删除的分区文件可能仍残留 LakeDv 和 RowPosIndex 条目，当前仅收集 COMPACT 快照文件变更可能无法覆盖该场景。</p>
+<p><strong>@Anton Borisov:</strong> RowPos SST 的可读 round 保留策略尚不明确，建议在所有 bucket checkpoint 追上后删除；如果恢复时发现 round 缺失，应失败而不是继续。</p>
+<p><strong>@Anton Borisov:</strong> 快照过期需要保护可读快照及其文件，但当前设计缺少类似 Iceberg tag 的强制保留机制，且 compaction 提交可能触发 Paimon 默认快照过期。</p></div>
+            <p class="conclusion">目前尚未形成最终结论，需要进一步澄清并补充 Paimon 场景下的过期清理、RowPos SST 保留和可读快照保护机制，下一步预计由设计者回应并继续推进 FIP 讨论。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (0)</h2>
+            
+    <p>本周新建 <strong>0</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周无新建 JIRA。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Fluss Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
