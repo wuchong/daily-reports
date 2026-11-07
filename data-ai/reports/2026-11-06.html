@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data+AI 全球日报 | 2026-11-06</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Data+AI 全球日报 | 2026-11-06</h1>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="top-changes">
+            <h2>🔥 今日最重要的3个变化</h2>
+            <ol><li><strong>Amazon Redshift 强化 SUPER 列大字符串与半结构化处理能力</strong> — AWS 通过 PartiQL 与 SUPER 数据类型增强 Redshift 对大型 JSON、数组和大字符串的存储与处理能力，减少数据拆分或截断，提升半结构化数据分析效率。</li><li><strong>ClickHouse 发布 26.10，聚焦查询性能与扩展格式</strong> — ClickHouse 26.10 引入函数组合、更灵活 JOIN、更快 GROUP BY、IN 子查询磁盘溢写、实验性 columns cache，以及 Freeform 和 SQLite 格式，增强实时分析竞争力。</li><li><strong>ClickHouse Managed Postgres 的 WalShadow 私测反馈公开</strong> — Hidehiko ASAHI 分享一个月 WalShadow 私有预览测试，关注复制延迟、数据正确性、schema 变更和恢复，为 Postgres 到 ClickHouse 的数据同步链路提供工程参考。</li></ol>
+            <p class="judgment"><strong>总判断：</strong>今日行业信号集中在数据仓库与分析数据库的半结构化处理、查询性能和复制可靠性。AWS 与 ClickHouse 的动作显示，数据平台竞争正从单一查询速度扩展到复杂数据形态支持、工程化体验和实时同步能力。</p>
+        </section>
+
+        <section class="top-signals">
+            <h2>📡 重要信号</h2>
+            
+    <article class="news-item">
+        <h3>Amazon Redshift 强化 SUPER 列大字符串与半结构化处理能力</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/store-and-process-large-strings-in-amazon-redshift-super-columns/">AWS Big Data Blog</a></p>
+        <p class="date">2026-11-06</p>
+        <p class="summary">AWS 介绍 Amazon Redshift 如何通过 PartiQL 与 SUPER 数据类型处理大型半结构化数据，减少传统数据仓库中对 JSON、数组和大字符串的拆分或截断。文章重点解释三项 SUPER 数据类型增强，帮助简化复杂嵌套数据的存储、查询与处理。</p>
+        <div class="impact">📊 数据平台影响：Redshift 强化 JSON、数组和大字符串原生处理，可降低 ETL 预处理成本，并提升 AWS 在日志、事件和应用分析等半结构化场景的竞争力。</div>
+    </article>
+        </section>
+
+        <section class="product-tech">
+            <h2>💻 产品与技术</h2>
+            
+    <article class="news-item">
+        <h3>ClickHouse 发布 26.10：函数组合、更灵活 JOIN 与更快 GROUP BY</h3>
+        <p class="sources">📌 <a href="https://clickhouse.com/blog/clickhouse-release-26-10">ClickHouse Blog</a></p>
+        <p class="date">2026-11-06</p>
+        <p class="summary">ClickHouse 26.10 引入函数组合、更灵活 JOIN、更快 GROUP BY、IN 子查询磁盘溢写、实验性 columns cache，以及 Freeform 和 SQLite 格式。此次更新聚焦查询性能、资源弹性和数据格式扩展，进一步增强其作为高性能分析数据库的工程能力。</p>
+        <div class="impact">📊 数据平台影响：新版本提升复杂查询性能与数据接入灵活性，有利于 ClickHouse 在实时分析、可观测性和用户行为分析等场景扩大应用，但也需关注实验特性的稳定性。</div>
+    </article>
+        </section>
+
+        <section class="people-views">
+            <h2>👤 人物与观点</h2>
+            
+    <article class="news-item">
+        <h3>一个月使用 WalShadow 与 ClickHouse Managed Postgres 的经验</h3>
+        <p class="sources">📌 <a href="https://clickhouse.com/blog/a-month-with-walshadow-clickhouse-managed-postgres">ClickHouse Blog</a></p>
+        <p class="date">2026-11-06</p>
+        <p class="summary">Hidehiko ASAHI 分享了为期一个月的 WalShadow 私有预览测试，重点比较其与 ClickPipes 的复制延迟，并验证数据正确性、schema 变更和恢复能力。文章为评估 ClickHouse Managed Postgres 的数据同步可靠性提供了工程实践视角。</p>
+        <div class="impact">📊 数据平台影响：若 WalShadow 在延迟、正确性和恢复方面稳定，将增强 Postgres 到 ClickHouse 的实时同步能力，降低构建复制管道和灾备方案的复杂度。</div>
+    </article>
+        </section>
+
+        <section class="analyst-insights">
+            <h2>📊 分析师洞察</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="watchlist">
+            <h2>👀 观察列表</h2>
+            
+    <article class="watchlist-item">
+        <h3>WalShadow 在 ClickHouse Managed Postgres 中的成熟度</h3>
+        <span class="status">待观察</span>
+        <p class="reason">私测结果显示其复制延迟、数据正确性、schema 变更和恢复能力是决定 Postgres 到 ClickHouse 同步方案可用性的关键。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>私有预览转向 GA，或官方发布更多性能与可靠性基准。</p>
+    </article>
+    <article class="watchlist-item">
+        <h3>Amazon Redshift SUPER 列大字符串增强</h3>
+        <span class="status">待观察</span>
+        <p class="reason">半结构化大字符串处理是日志、事件和应用数据场景痛点，实际采用效果仍需客户案例和性能验证。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>AWS 公布客户案例、性能基准或相关 re:Invent 更新。</p>
+    </article>
+        </section>
+
+        <section class="stock-analysis">
+            <h2>📈 股票分析</h2>
+            <p class="disclaimer">⚠️ 以下内容仅供参考，不构成任何投资建议。投资有风险，入市需谨慎。</p>
+            
+    <article class="stock-item">
+        <div class="stock-header">
+            <span class="ticker">AMZN</span>
+            <span class="company">Amazon</span>
+            <span class="signal signal-neutral">⚪ 中性</span>
+        </div>
+        <p class="stock-summary">Redshift SUPER 列增强有助于 AWS 数据仓库在半结构化分析场景与 Snowflake、Databricks 等竞争，但单点产品博客对短期财务影响有限。本分析仅供参考，不构成投资建议。</p>
+        <div class="stock-details">
+            <div class="catalysts">
+                <strong>🚀 催化剂</strong>
+                <ul><li>AWS 数据与 AI 产品采用率提升</li><li>企业半结构化分析需求增长</li></ul>
+            </div>
+            <div class="risks">
+                <strong>⚠️ 风险</strong>
+                <ul><li>云支出增长放缓</li><li>数据平台竞争加剧</li></ul>
+            </div>
+        </div>
+    </article>
+        </section>
+
+        <footer>
+            <p>Generated by Data+AI Daily Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
