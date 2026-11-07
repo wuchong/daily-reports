@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-11-06</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-11-06</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 10 新 Issues</div>
+            <div class="stat">✅ 9 关闭</div>
+            <div class="stat">✨ 4 新 PRs</div>
+            <div class="stat">🎉 8 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/5083">PR #5083</a> [rust] Serialize metadata changes without blocking readers</li><li>🎉 <a href="https://github.com/apache/fluss/pull/5075">PR #5075</a> [flink] Checkpoint only unread lake splits of streaming hybrid splits</li><li>🎉 <a href="https://github.com/apache/fluss/pull/5065">PR #5065</a> [lake] Surface repeated tiering commit failures</li><li>🎉 <a href="https://github.com/apache/fluss/pull/5042">PR #5042</a> [rust] Clear stale bucket leaders when refreshing metadata</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4792">PR #4792</a> [Trino][Client] Support equivalent bucket pruning, add Unified BucketCalculator in fluss-client</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4608">Issue #4608</a> FIP-53: Log Scanner Offset Management</h4>
+            <ul><li><span class="author">@pisceslj</span>: ### Subtasks - [x] **[4625 [server] Add consumer offset table foundations](https://github.com/apach…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4913">Issue #4913</a> [test] Isolate consumer offset table integration test clusters</h4>
+            <ul><li><span class="author">@fxbing</span>: Hi @polyzos , could you please take a look at this PR when you have a chance? Thanks!</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4915">Issue #4915</a> [server] Add per-directory parallel follower recovery</h4>
+            <ul><li><span class="author">@fxbing</span>: @zuston could you please take a look at this PR when you have a chance? Thanks!</li><li><span class="author">@zuston</span>: > @zuston could you please take a look at this PR when you have a chance? Thanks! sure. I will revi…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4879">Issue #4879</a> [log] Use the injected clock for writer expiration</h4>
+            <ul><li><span class="author">@fxbing</span>: Hi @polyzos , could you please take a look at this PR when you have a chance? Thanks! This is also…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/5060">Issue #5060</a> [client] Complete lookups when the response omits a requested bucket</h4>
+            <ul><li><span class="author">@loserwang1024</span>: @pbanakar Thanks for raising this. Could you clarify which server-side path could return bucket A b…</li><li><span class="author">@pbanakar</span>: Thanks for checking. After reviewing the server-side response handling, I could not find a producti…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4296">Issue #4296</a> [common] Fix negative timestamp decoding in Iceberg keys</h4>
+            <ul><li><span class="author">@fxbing</span>: Hi @fresh-borzoni , could you please take a look at this Iceberg negative timestamp decoding fix wh…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4761">Issue #4761</a> [client] Support explicit target buckets for append writes</h4>
+            <ul><li><span class="author">@fxbing</span>: @leonardBang @loserwang1024 PTAL</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4887">Issue #4887</a> [rust] Add reusable UnionRead source boundaries</h4>
+            <ul><li><span class="author">@naivedogger</span>: I've removed the new Java boundary API from this PR to keep it focused on Rust. Java coordinators c…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4669">Issue #4669</a> [docs] Document enabling Fluss on existing Paimon tables</h4>
+            <ul><li><span class="author">@jaimelopez89</span>: Hi @wuchong @luoyuxia, I'd like to work on this. Could you please assign it to me? My plan is to co…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5065">Issue #5065</a> [lake] Surface repeated tiering commit failures</h4>
+            <ul><li><span class="author">@polyzos</span>: Thanks @fresh-borzoni and I agree on all points. Comments addressed! PTAL；Small follow-up: I replac…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4614">Issue #4614</a> [rust] Reuse Arrow columns for identity schema alignment</h4>
+            <ul><li><span class="author">@spoon-lz</span>: @fresh-borzoni Thanks for identifying these follow-ups. I expect to start working through the five…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4240">Issue #4240</a> [poc] FIP-45 Log Enrichment</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: This PR has been marked as stale because it has had no activity for 60 days. It will be closed in 1…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4031">Issue #4031</a> [flink] Batch Log Table scan fix #3972</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: This PR has been marked as stale because it has had no activity for 60 days. It will be closed in 1…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3999">Issue #3999</a> [server] Parallelize replica leader transitions</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: This PR has been marked as stale because it has had no activity for 60 days. It will be closed in 1…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3564">Issue #3564</a> [server] feat: support table-level control for LogTable remote log copy</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: This PR has been marked as stale because it has had no activity for 60 days. It will be closed in 1…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3534">Issue #3534</a> [FLUSS-3415][client] Add per-scanner dimension for scanner metrics</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: This PR has been marked as stale because it has had no activity for 60 days. It will be closed in 1…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3517">Issue #3517</a> [docs] Fix version-replace plugin path split on Windows</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: This PR has been marked as stale because it has had no activity for 60 days. It will be closed in 1…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3504">Issue #3504</a> [docs] Make website dependency installs reproducible</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: This PR has been marked as stale because it has had no activity for 60 days. It will be closed in 1…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3498">Issue #3498</a> [server] Support limiting rebalance buckets per round</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: This PR has been marked as stale because it has had no activity for 60 days. It will be closed in 1…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/5077">Issue #5077</a> [lake/iceberg] Union read returns a bucket's lake data out of write order</h4>
+            <ul><li><span class="author">@polyzos</span>: Thanks @jaimelopez89 and @dgnester for the detailed analysis. Indeed, the Iceberg planner returns a…</li><li><span class="author">@hutiefang76</span>: Is anyone already implementing the sort or the pending-split restore part of this? The report says…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4820">Issue #4820</a> [kv] Support global secondary indexes</h4>
+            <ul><li><span class="author">@polyzos</span>: @platinumhamburg Thanks for all the work and improvements 🙏. I rebuilt the lab on the latest head (…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/5051">Issue #5051</a> [lake] Streaming hybrid splits keep serializing finished lake splits in every checkpoint</h4>
+            <ul><li><span class="author">@polyzos</span>: Step 3 (not shipping the lake file list in the split) is tracked in #5080. This issue covers steps…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5075">Issue #5075</a> [flink] Checkpoint only unread lake splits of streaming hybrid splits</h4>
+            <ul><li><span class="author">@polyzos</span>: Thanks @fresh-borzoni, good catch on both. - Step 3 of #5051 (not shipping the file list in the spl…</li><li><span class="author">@fresh-borzoni</span>: @polyzos still only in #3932: closing the lake iterators the reader skips(empty lake splits, and sp…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4792">Issue #4792</a> [Trino][Client] Support equivalent bucket pruning, add Unified BucketCalculator in fluss-client</h4>
+            <ul><li><span class="author">@yangshangqing95</span>: Hi @fresh-borzoni Thanks! Raised an issue to track this, will do it soon. #5081</li><li><span class="author">@fresh-borzoni</span>: @yangshangqing95 Thank you 🙇</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4877">Issue #4877</a> [c++] Add poll-based async lookups</h4>
+            <ul><li><span class="author">@pbanakar</span>: > Hi @naivedogger adrssed both follow up comments, but The Python jobs fail during uv sync before b…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5083">Issue #5083</a> [rust] Serialize metadata changes without blocking readers</h4>
+            <ul><li><span class="author">@polyzos</span>: @fresh-borzoni , two small things: **Ordering in `replace_cluster`** On main, the cluster write loc…</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5070">PR #5070</a> [elixir] Support column comments in Fluss.Schema</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: data_type is not checked here, so column(s, "c", :bogus) passes and TableDescriptor.new! then raise…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5050">PR #5050</a> [rust] Fail over lookups when the leader's tablet server is down</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: why UnexpectedError? it is expected behaviour, caller can not tell it from a real unexpected error……</li><li><span class="author">@SteNicholas</span>: Thanks, agreed. Added `Error::LookupClosed` and used it for every closing path: lookups rejected by…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4614">PR #4614</a> [rust] Reuse Arrow columns for identity schema alignment</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: nit: I wonder whether this can match outside tests, the decoder returns full_schema or a projected……</li><li><span class="author">@spoon-lz</span>: Agreed, removed the same-Arc branch. Identity mappings now reuse the column list through try_new_wi…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5042">PR #5042</a> [rust] Clear stale bucket leaders when refreshing metadata</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: can we build it in `Cluster::new` like java does? then callers can't pass two maps that disagree</li><li><span class="author">@naivedogger</span>: Done. `Cluster::new` now derives the bucket index from path locations, so callers can no longer pas…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4910">PR #4910</a> [client] Invalidate stale KV scanner routing on failures</h4>
+            <ul><li><span class="author">@fxbing</span>: Fixed in 437a7e27f. Invalidation and cache publication now share a separate lock, with RPC waits ou…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3860">PR #3860</a> [server] Make timed-out rebalance tasks recoverable</h4>
+            <ul><li><span class="author">@fxbing</span>: If the cancellation write commits to ZooKeeper but ultimately returns an error, could a pending buc…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4771">PR #4771</a> [server] Add recoverable bulk-load transactions</h4>
+            <ul><li><span class="author">@luoyuxia</span>: Could we use a consistent prefix for these BulkLoad options—either `coordinator.bulkload.*` or `bul…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4906">PR #4906</a> [kafka] Stream JSON Produce value conversion</h4>
+            <ul><li><span class="author">@gyang94</span>: Could we use parser.getIntValue() here and parser.getLongValue() in `bigIntConverter`? Ordinary int…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5079">PR #5079</a> [client] Support OSS fallback for ossj file system URIs</h4>
+            <ul><li><span class="author">@Copilot</span>: Fallback token delivery and primary-receiver precedence have no corresponding tests, leaving the cr…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5083">PR #5083</a> [rust] Serialize metadata changes without blocking readers</h4>
+            <ul><li><span class="author">@SteNicholas</span>: **Publish recovered addresses coherently with their availability.** Readers no longer take the clus…</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/5085">#5085</a> [rust] Every failed bucket copies the whole metadata cache <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5084">#5084</a> [rust] Cluster metadata changes deep-copy the whole cache <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5082">#5082</a> [rust] Metadata updates can overwrite each other, and invalidations block readers <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5081">#5081</a> [Trino] Remove mocked Admin and mockito in tests <span class="author">@yangshangqing95</span> </li><li><a href="https://github.com/apache/fluss/issues/5080">#5080</a> [flink] Plan lake files per reader instead of shipping them in hybrid splits <span class="author">@polyzos</span> </li><li><a href="https://github.com/apache/fluss/issues/5078">#5078</a> [client] Support OSS fallback for ossj file system URIs <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/issues/5077">#5077</a> [lake/iceberg] Union read returns a bucket's lake data out of write order <span class="author">@jaimelopez89</span> </li><li><a href="https://github.com/apache/fluss/issues/5074">#5074</a> [server] Preserve remote log files after uncertain manifest commits <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/5072">#5072</a> [test] Unstable test RemoteLogITCase.testAlterTableLogTtlEndToEnd <span class="author">@app/github-actions</span> </li><li><a href="https://github.com/apache/fluss/issues/5071">#5071</a> [server] Add ACL support for consumer groups <span class="author">@pisceslj</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/5086">#5086</a> [rust] Skip invalidating leaders that are already dropped <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/5079">#5079</a> [client] Support OSS fallback for ossj file system URIs <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/pull/5076">#5076</a> [server] Preserve files after uncertain remote log commits <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/5073">#5073</a> [server] Add ACL support for consumer groups <span class="author">@pisceslj</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/5082">#5082</a> [rust] Metadata updates can overwrite each other, and invalidations block readers <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5060">#5060</a> [client] Complete lookups when the response omits a requested bucket <span class="author">@pbanakar</span> </li><li><a href="https://github.com/apache/fluss/issues/5051">#5051</a> [lake] Streaming hybrid splits keep serializing finished lake splits in every checkpoint <span class="author">@polyzos</span> <span class="labels">component=lake</span></li><li><a href="https://github.com/apache/fluss/issues/5041">#5041</a> [rust] Stale bucket leaders after metadata refresh can stall Flush <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/issues/4613">#4613</a> [rust]Reuse Arrow columns for identity schema alignment in the Rust client <span class="author">@spoon-lz</span> </li><li><a href="https://github.com/apache/fluss/issues/4295">#4295</a> [common] Negative timestamps fail to decode in Iceberg keys <span class="author">@fxbing</span> </li><li><a href="https://github.com/apache/fluss/issues/4043">#4043</a> [Client] Add client.lookup.max-inflight-requests-per-bucket to restrict lookup requests per server <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/issues/3931">#3931</a> Streaming hybrid lake reads may skip splits and rescan after recovery <span class="author">@luoyuxia</span> </li><li><a href="https://github.com/apache/fluss/issues/3850">#3850</a> [Feature] Add a local development kit for contributors <span class="author">@Gezi-lzq</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/5083">#5083</a> [rust] Serialize metadata changes without blocking readers <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/5075">#5075</a> [flink] Checkpoint only unread lake splits of streaming hybrid splits <span class="author">@polyzos</span> </li><li><a href="https://github.com/apache/fluss/pull/5065">#5065</a> [lake] Surface repeated tiering commit failures <span class="author">@polyzos</span> </li><li><a href="https://github.com/apache/fluss/pull/5042">#5042</a> [rust] Clear stale bucket leaders when refreshing metadata <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/pull/4792">#4792</a> [Trino][Client] Support equivalent bucket pruning, add Unified BucketCalculator in fluss-client <span class="author">@yangshangqing95</span> </li><li><a href="https://github.com/apache/fluss/pull/4614">#4614</a> [rust] Reuse Arrow columns for identity schema alignment <span class="author">@spoon-lz</span> </li><li><a href="https://github.com/apache/fluss/pull/4296">#4296</a> [common] Fix negative timestamp decoding in Iceberg keys <span class="author">@fxbing</span> </li><li><a href="https://github.com/apache/fluss/pull/3851">#3851</a> [build] Add a local development kit for contributors <span class="author">@Gezi-lzq</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
