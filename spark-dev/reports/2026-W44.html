@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spark 社区周报 | 2026-W44</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Spark 社区周报 | 2026-W44</h1>
+            <p class="date-range">2026-10-26 ~ 2026-11-01</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (1)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/jp456tktqwdns6gs5jv506b08c6n4f1t">Apache Spark 4.3.0 released</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (0)</h2>
+            <p class="empty">本周无投票</p>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/0282t19qy3fsh9b4j2q9qwbwpln4c3jw">Set a buffer time before we upgrade to the latest version of dependencies</a></h3>
+            <p class="meta">5 条回复 · 4 位参与者</p>
+            <p class="summary">社区讨论如何将已投票通过的依赖升级 7 天缓冲期规则落实到 AGENTS.md 和 AI 审查中。Jungtaek 建议检查依赖发布日期并提示或阻断升级，同时考虑 CVE 安全例外和 PMC 覆盖；Wenchen 等表示支持，Dongjoon 反对可能限制 PMC 安全升级的额外限制。目前焦点是明确规则边界并推动共享化落地。</p>
+            <div class="key-points"><p><strong>@Jungtaek Lim:</strong> 建议将 7 天缓冲期检查写入 AGENTS.md，由 AI 审查提示/阻断依赖升级，并可加入 CVE 检查与 PMC 覆盖机制。</p>
+<p><strong>@Dongjoon Hyun:</strong> 反对可能禁止 PMC 安全升级的额外建议，强调既有投票已明确安全升级由 PMC 豁免处理。</p>
+<p><strong>@Wenchen Fan:</strong> 支持将检查落地；认为是否对 ASF 项目设置例外可后续再议，当前先避免升级延迟连锁。</p></div>
+            <p class="conclusion">初步方向是将 7 天缓冲期规则纳入 AGENTS.md/AI 审查，但需保留安全升级豁免；下一步是明确直接依赖、传递依赖、ASF 项目和 CVE/PMC 覆盖等细节后再实施。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/tr04707snmmmg9dwcqq4z81lrjj72mv8">Adding a Vector type to Spark</a></h3>
+            <p class="meta">4 条回复 · 3 位参与者</p>
+            <p class="summary">社区讨论在 Spark 中新增 VECTOR 类型，背景是 Parquet 和 Iceberg 侧正在推进相关类型支持。Uroš Stanković 已创建 SPIP JIRA SPARK-58787，并建议先等待 Parquet 提案定稿和投票完成后再推进 Spark 侧工作。</p>
+            <div class="key-points"><p><strong>@huaxin gao:</strong> 提议为 Spark 增加 VECTOR 类型支持，表示自己已进行调研，并愿意参与提案和实现协作。</p>
+<p><strong>@Uroš Stanković:</strong> 已开启 SPIP JIRA SPARK-58787，建议在 Parquet VECTOR 提案完成投票并定稿后再推进 Spark 侧讨论和实现。</p>
+<p><strong>@Holden Karau:</strong> 表示对该提案感兴趣，希望在 Parquet 投票完成后加入协作。</p></div>
+            <p class="conclusion">初步共识是等待 Parquet VECTOR 提案投票和定稿后，围绕 SPARK-58787 继续讨论并推进 Spark 的 VECTOR 类型 SPIP。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/b69cbn35qwotw2fkwkbq24jcy1g05oj6">Drop Java 17 support in Apache Spark 5.0.0 (SPARK-60669)</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">社区讨论 Apache Spark 5.0.0 是否移除 Java 17，并延伸到是否将最低版本提升到 Java 21 或 Java 25。多数意见支持在 Spark 5.0.0 移除 Java 17，同时保留 Java 21 作为最低版本并完整支持 Java 25。</p>
+            <div class="key-points"><p><strong>@Dongjoon Hyun:</strong> 本次讨论仅针对移除 Java 17；不认为需要在 Spark 5 中移除 Java 21，建议对 Java 21 问题另开 JIRA 讨论。</p>
+<p><strong>@Cheng Pan:</strong> 同意 Java 21 为最低版本并完整支持 Java 25；认为 Java 版本不会阻塞 Iceberg 等下游项目适配，Spark 4.2.0 已支持 Java 25。</p>
+<p><strong>@Manu Zhang:</strong> 支持移除 Java 17，但反对移除 Java 21，担心下游项目和 Spark 4.x 用户缺少清晰升级路径。</p></div>
+            <p class="conclusion">初步共识是在 Spark 5.0.0 移除 Java 17，采用 Java 21 最低版本并支持 Java 25；关于是否移除 Java 21 或进一步提升最低版本，建议后续单独提 JIRA 讨论。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/8qwojcsfshkdcnqrqckrc8f8lndg16ds">Automated AI code review on new Spark PRs (trial)</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">社区讨论 Spark 新 PR 自动化 AI 代码审查机器人的试用进展。Hyukjin Kwon 已启用该机器人，并通过 `ai-review-requested` 标签由 committer 触发，同时增加监控机器人以在异常时停止并回滚。当前机器人可并发审查 4 个 PR，单次约 1 小时，仍在持续监控稳定性、耗时和安全问题。</p>
+            <div class="key-points"><p><strong>@Hyukjin Kwon:</strong> AI 代码审查通过 `ai-review-requested` 标签触发，并设置监控机器人，异常时会立即停止并撤销错误操作。</p>
+<p><strong>@Hyukjin Kwon:</strong> 目前机器人可并行审查 4 个 PR，单次审查约 1 小时，仍需要关注耗时、资源和安全等细节。</p>
+<p><strong>@Dongjoon Hyun:</strong> 对试验状态更新表示确认和感谢，关注机器人运行情况。</p></div>
+            <p class="conclusion">试验已上线但仍处于监控阶段；committer 可通过添加标签触发审查，若发现异常可移除标签停止机器人，后续继续观察并收集反馈。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/skccwj4vyrcqy3jm6207ywqf5xjzt5zo">SPIP: Bring GraphFrames into Apache Spark</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">Sem 发起 SPIP，提议将 GraphFrames 以 Apache 2.0 许可并入 Apache Spark 成为树内模块，以弥补 GraphX 弃用后缺少公共图处理 API 的问题。讨论目前处于初步阶段，社区成员表示支持并询问其历史上未纳入 Spark 的原因。</p>
+            <div class="key-points"><p><strong>@Sem:</strong> GraphFrames 提供基于 DataFrame 的图数据表示及 PageRank、Connected Components、Node Embeddings 等算法，建议将其移入 Spark 成为内置模块。</p>
+<p><strong>@Nicholas Chammas:</strong> 认可 GraphFrames 长期实用价值，并询问当初未并入 Spark 是历史偶然还是存在已解决的阻碍。</p></div>
+            <p class="conclusion">尚未形成最终结论，待讨论结束后将发起 [VOTE] 投票。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/cn6djhhmjtcfvh6nx37t3xgq22rv5bfm">unsubscribe</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">该邮件主题为 unsubscribe，内容仅为 Biao Sun 请求取消订阅 Spark 社区邮件列表。邮件中没有涉及具体技术议题或社区讨论进展。</p>
+            <div class="key-points"><p><strong>@Biao Sun:</strong> 发送 unsubscribe 请求，希望退出 Spark 社区邮件列表。</p></div>
+            <p class="conclusion">无实质性讨论结论；后续通常由邮件列表系统或管理员处理退订请求。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/krnx29qzh19019sfk0hrp6k1bp18s91c">[NOTICE] Java 21 is now the minimum Java version on the master branch</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Apache Spark master 分支（5.0.0）已正式将最低 Java 版本提升到 Java 21，停止支持 Java 17。相关变更由 SPARK-60847 统一跟踪，部分任务已完成，仍有 benchmark 结果重生成和 Derby 升级在进行中。开发者和用户均需升级到 Java 21 或更高版本以构建和运行 Spark 5.0.0。</p>
+            <div class="key-points"><p><strong>@Dongjoon Hyun:</strong> master 分支现在要求 Java 21 或更高版本，Java 17 不再支持；构建需使用 JDK 21/25，受影响的 PR 需要 rebase，benchmark 结果也将按新版本重新生成。</p></div>
+            <p class="conclusion">Java 21 已成为 master 分支的最低要求；下一步需完成 SPARK-60848 benchmark 结果重生成和 SPARK-52822 Derby 升级，并提醒开发者检查 JAVA_HOME、IDE 设置及 rebase 旧 PR。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/mpjb2ndql6k1dqyx6y1hr7d3f9rmnmz1">SPIP: Extend DSv2 push-down with join, set operation, and window function support</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">社区正在讨论一项 SPIP，提议扩展 Spark DSv2 的算子下推能力，覆盖更多 join 类型、集合操作和窗口函数。该提案基于现有 DSv2 join 下推，提出由数据源可选实现的接口，并以 JDBC/H2 作为参考实现。目前讨论刚启动，已获得 shepherd 支持。</p>
+            <div class="key-points"><p><strong>@Jing Zhan:</strong> 提出扩展 DSv2 下推，支持 FULL OUTER/SEMI/ANTI join、join 别名容忍、公开并评估默认启用 join 下推配置、join+aggregate 组合、集合操作和窗口函数。</p>
+<p><strong>@Holden Karau:</strong> 支持该提案，认为当前是现代化 DSv2 下推能力的合适时机。</p></div>
+            <p class="conclusion">尚未形成最终结论；下一步是继续邮件讨论，待讨论稳定后发起投票。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/w3l1j203of03c0oojwx02j6v8vv7k3qn">Changes to how PR build status is reported</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论因 ASF 和 GitHub 对 pull_request_target 工作流的变更，Spark 需要调整贡献者 fork 的 PR 构建状态上报方式。PR 检查将移除 Notify，构建状态仍可正常显示但会因定时更新产生轻微延迟。作者正在优化延迟并将提交后续变更。</p>
+            <div class="key-points"><p><strong>@Nicholas Chammas:</strong> 由于 pull_request_target 受限，PR 构建状态报告方式需要调整，Notify check 将不再存在，状态更新改为定时触发并存在轻微延迟。</p></div>
+            <p class="conclusion">初步方案是取消 Notify check、按计划更新构建状态，后续将通过跟进 PR 优化报告延迟。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/7l33q9rrd07srhv40xxvn38mspo6s1x9">SPARK-59138 PR review</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论围绕 SPARK-59138 的 PR review 展开，核心是在 executor 丢失时保留可靠存储的 shuffle map outputs。Venkatakrishnan Sowrirajan 提醒 Wenchen Fan 继续审阅该改进，并强调其对使用外部 shuffle 服务（如 Celeborn）的平台很常见且有益。</p>
+            <div class="key-points"><p><strong>@Venkatakrishnan Sowrirajan:</strong> 请求 Wenchen Fan 重新审阅 SPARK-59138 主 PR，并希望尽快合并。</p>
+<p><strong>@Venkatakrishnan Sowrirajan:</strong> 该改进能解决外部 shuffle 服务场景下 executor 丢失带来的常见问题，有利于社区。</p>
+<p><strong>@Venkatakrishnan Sowrirajan:</strong> 还提出了两个后续 PR：拒绝不可靠 shuffle 活跃时的 executor hold，以及让 shuffle tracking 具备存储感知。</p></div>
+            <p class="conclusion">目前尚未形成最终结论，下一步是等待 Wenchen Fan 复审并推动主 PR 及后续相关 PR 合并。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (0)</h2>
+            
+    <p>本周新建 <strong>0</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周无新建 JIRA。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Spark Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
