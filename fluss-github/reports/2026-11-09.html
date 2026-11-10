@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-11-09</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-11-09</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 7 新 Issues</div>
+            <div class="stat">✅ 9 关闭</div>
+            <div class="stat">✨ 9 新 PRs</div>
+            <div class="stat">🎉 6 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/5116">PR #5116</a> [hotfix][test] Fix consumer offset test compilation</li><li>🎉 <a href="https://github.com/apache/fluss/pull/5105">PR #5105</a> [spark] Skip fluss-spark-ut tests on Java 8</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4850">PR #4850</a> [server] Implement consumer offset commits</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4816">PR #4816</a> [server] Reduce default writer ID expiration to one day</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4584">PR #4584</a> [lake] Propagate Hadoop configuration to Hudi writer</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4608">Issue #4608</a> FIP-53: Log Scanner Offset（Consumer Offsets）Management</h4>
+            <ul><li><span class="author">@pisceslj</span>: ### Subtasks - [x] **[4625 [server] Add consumer offset table foundations](https://github.com/apach…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5096">Issue #5096</a> [client] Fail listOffsets on invalid bucket or missing partition name</h4>
+            <ul><li><span class="author">@SteNicholas</span>: Ping @polyzos, @fresh-borzoni. PTAL.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4965">Issue #4965</a> [Client][Server] Add bounded log scanning with FETCH_LOG v1 and legacy server fallback</h4>
+            <ul><li><span class="author">@yangshangqing95</span>: Hi @polyzos, thanks for the thorough review and suggestions! I've addressed the issues raised in th…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3860">Issue #3860</a> [server] Make timed-out rebalance tasks recoverable</h4>
+            <ul><li><span class="author">@swuferhong</span>: @wuchong comments addressed. PTAL.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4910">Issue #4910</a> [client] Invalidate stale KV scanner routing on failures</h4>
+            <ul><li><span class="author">@fxbing</span>: @platinumhamburg PTAL；The `Java 11 / lake` CI failure https://github.com/apache/fluss/actions/runs/…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4360">Issue #4360</a> [metrics] Count per-bucket errors in TabletServer response metrics</h4>
+            <ul><li><span class="author">@fxbing</span>: @wuchong PTAL</li><li><span class="author">@wuchong</span>: Please do not use "git merge" to merge branches, otherwise the changes is hard to track. Please use…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4817">Issue #4817</a> [rpc] Reduce Netty shutdown latency and fix lifecycle races</h4>
+            <ul><li><span class="author">@swuferhong</span>: > @swuferhong Sorry for the slow review. This PR is still quite large, and the commits vary a lot i…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5056">Issue #5056</a> [server] Avoid interrupting historical WAL during shutdown</h4>
+            <ul><li><span class="author">@luoyuxia</span>: cc @swuferhong @wuchong</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4712">Issue #4712</a> [spark] Support custom Iceberg lake table paths</h4>
+            <ul><li><span class="author">@litiliu</span>: close via https://github.com/apache/fluss/pull/4253</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4271">Issue #4271</a> [rust] Return TableNotExist for missing tables</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: This PR has been marked as stale because it has had no activity for 60 days. It will be closed in 1…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4114">Issue #4114</a> [helm] Support multi-disk data.dirs for tablet servers</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: This PR has been marked as stale because it has had no activity for 60 days. It will be closed in 1…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5050">Issue #5050</a> [rust] Fail over lookups when the leader's tablet server is down</h4>
+            <ul><li><span class="author">@SteNicholas</span>: Ping @fresh-borzoni.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5058">Issue #5058</a> [rust] Reject zero lookup queue size and max inflight requests</h4>
+            <ul><li><span class="author">@slfan1989</span>: @fresh-borzoni Could you please take another look at this PR? Thanks a lot!</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4820">Issue #4820</a> [kv] Support global secondary indexes</h4>
+            <ul><li><span class="author">@polyzos</span>: @platinumhamburg Thanks for the rework **Everything looks good:** the index and the wide table were…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5104">Issue #5104</a> [server] Avoid ZK reads on partition metadata cache hits</h4>
+            <ul><li><span class="author">@wuchong</span>: This PR has grown far beyond the scope I had in mind. The core change requested in the issue is sma…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4097">Issue #4097</a> [server] Support configurable concurrent rebalance tasks</h4>
+            <ul><li><span class="author">@swuferhong</span>: @wuchong comments addressed.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/5018">Issue #5018</a> [Improvement] Make server-scan bypass lake union reads</h4>
+            <ul><li><span class="author">@wuchong</span>: `client.scanner.kv.batch-strategy` controls how Fluss KV data is read: reading snapshot SST files a…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5019">Issue #5019</a> [flink] Make server-scan bypass lake union reads</h4>
+            <ul><li><span class="author">@wuchong</span>: `client.scanner.kv.batch-strategy` controls how Fluss KV data is read: reading snapshot SST files a…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5043">Issue #5043</a> [client] Stop a dropped partition from stalling the writer</h4>
+            <ul><li><span class="author">@litiliu</span>: adding an option makes sense to me. @loserwang1024</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3860">PR #3860</a> [server] Make timed-out rebalance tasks recoverable</h4>
+            <ul><li><span class="author">@swuferhong</span>: Good catch. This case was possible, so I don’t think handling it is overly defensive. I addressed i…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5056">PR #5056</a> [server] Avoid interrupting historical WAL during shutdown</h4>
+            <ul><li><span class="author">@luoyuxia</span>: The production executor already uses `ExecutorThreadFactory`, which creates daemon threads, so unfi…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4910">PR #4910</a> [client] Invalidate stale KV scanner routing on failures</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: **[P2] Restore missing partition counts before subsequent lookups** For a table with `bucketCountEp…</li><li><span class="author">@fxbing</span>: @platinumhamburg Thanks for the repro. Fixed in ca46337ef. When the partition ID is cached but its…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5104">PR #5104</a> [server] Avoid ZK reads on partition metadata cache hits</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: Could we add the same snapshot check used by table refills here? A partition lookup can read P from…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4927">PR #4927</a> [log] Fix projection of added columns in historical Arrow batches</h4>
+            <ul><li><span class="author">@SteNicholas</span>: Could we **refresh the authoritative latest schema before treating these positions as invalid**? `S…</li><li><span class="author">@Joob1n</span>: Thanks for catching this! I see two possible approaches: 1. **Refresh the schema on the server.** I…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5079">PR #5079</a> [client] Support OSS fallback for ossj file system URIs</h4>
+            <ul><li><span class="author">@luoyuxia</span>: Minor, optional naming suggestion: how about `getAliasSchemes()`? This method declares additional U…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5007">PR #5007</a> [flink] Add embedded-Flink tiering service image and Helm chart</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: this repeats FlussLakeTiering's ctor with the ctor from the top-level comment it becomes `this.job……</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4097">PR #4097</a> [server] Support configurable concurrent rebalance tasks</h4>
+            <ul><li><span class="author">@wuchong</span>: This adds more scheduling machinery than the concurrency limit seems to require. We control the sem…</li><li><span class="author">@swuferhong</span>: Thanks, agreed. I removed the reentrancy flag and refactored the execution path to report an explic…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3337">PR #3337</a> [server] Add HLL sketch aggregation merge function</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: DataSketches Memory includes additional license terms for xxHash under BSD-2-Clause. With the curre…</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/5123">#5123</a> [Improvement] Confine rebalance timeout handling to the coordinator event thread <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/issues/5119">#5119</a> [flink] Reduce heap retained by sink undo recovery <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/5117">#5117</a> [rust] Reject duplicate scan projections <span class="author">@spoon-lz</span> </li><li><a href="https://github.com/apache/fluss/issues/5113">#5113</a> [rust] Validate Arrow row counts against log batch headers <span class="author">@spoon-lz</span> </li><li><a href="https://github.com/apache/fluss/issues/5111">#5111</a> [rust] Unify Arrow decoding with a precomputed decode plan <span class="author">@spoon-lz</span> </li><li><a href="https://github.com/apache/fluss/issues/5109">#5109</a> [kv] Avoid empty WAL batches for no-op primary-key writes <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/5108">#5108</a> [server] Unify LeaderAndIsr access between CoordinatorContext and ZooKeeper <span class="author">@swuferhong</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/5124">#5124</a> [server] Confine rebalance timeout checks to event thread <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/pull/5122">#5122</a> [docs] Archive Incubator release download links <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/pull/5121">#5121</a> [server] Add KLL double sketch aggregation merge function <span class="author">@rahulbsw</span> </li><li><a href="https://github.com/apache/fluss/pull/5120">#5120</a> [flink] Bound sink undo recovery concurrency and heap retention <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/5118">#5118</a> [rust] Reject duplicate scan projections <span class="author">@spoon-lz</span> </li><li><a href="https://github.com/apache/fluss/pull/5115">#5115</a> [flink] Skip updates to non-projected columns <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/pull/5114">#5114</a> [rust] Validate Arrow row counts against log batch headers <span class="author">@spoon-lz</span> </li><li><a href="https://github.com/apache/fluss/pull/5112">#5112</a> [rust] Unify Arrow decoding with a precomputed decode plan <span class="author">@spoon-lz</span> </li><li><a href="https://github.com/apache/fluss/pull/5110">#5110</a> [kv] Avoid empty WAL batches for first-row writes <span class="author">@platinumhamburg</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/5097">#5097</a> [spark] Java 8 spark3-lake nightly fails to load Iceberg in Paimon tests <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/issues/5018">#5018</a> [Improvement] Make server-scan bypass lake union reads <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/issues/4849">#4849</a> [server] Implement consumer offset commits <span class="author">@pisceslj</span> </li><li><a href="https://github.com/apache/fluss/issues/4815">#4815</a> [server] Reduce default writer ID expiration to one day <span class="author">@fxbing</span> </li><li><a href="https://github.com/apache/fluss/issues/4712">#4712</a> [spark] Support custom Iceberg lake table paths <span class="author">@litiliu</span> </li><li><a href="https://github.com/apache/fluss/issues/4585">#4585</a> [Bug] Hudi writer does not inherit Hadoop configuration <span class="author">@Gezi-lzq</span> </li><li><a href="https://github.com/apache/fluss/issues/3859">#3859</a> [Improvement] Make timed-out rebalance tasks recoverable <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/issues/2648">#2648</a> [tiering][lake] Race: duplicate commits possible if heartbeat times out but job still commits (after missing‑snapshot check) <span class="author">@litiliu</span> </li><li><a href="https://github.com/apache/fluss/issues/2076">#2076</a> [helm][template]both the client and internal address should be set in the advertised.listeners <span class="author">@litiliu</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/5116">#5116</a> [hotfix][test] Fix consumer offset test compilation <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/pull/5105">#5105</a> [spark] Skip fluss-spark-ut tests on Java 8 <span class="author">@ump45nose</span> </li><li><a href="https://github.com/apache/fluss/pull/4850">#4850</a> [server] Implement consumer offset commits <span class="author">@pisceslj</span> </li><li><a href="https://github.com/apache/fluss/pull/4816">#4816</a> [server] Reduce default writer ID expiration to one day <span class="author">@fxbing</span> </li><li><a href="https://github.com/apache/fluss/pull/4584">#4584</a> [lake] Propagate Hadoop configuration to Hudi writer <span class="author">@Gezi-lzq</span> </li><li><a href="https://github.com/apache/fluss/pull/3860">#3860</a> [server] Make timed-out rebalance tasks recoverable <span class="author">@swuferhong</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
