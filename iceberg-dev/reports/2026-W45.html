@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iceberg 社区周报 | 2026-W45</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Iceberg 社区周报 | 2026-W45</h1>
+            <p class="date-range">2026-11-02 ~ 2026-11-08</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (2)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/t53xb61k1gg3qmf5rc4zbmfc3g2zfqvs">Apache Iceberg Terraform Provider v0.2.0 released</a></li>
+<li><a href="https://lists.apache.org/thread/lm4sskbfojckzmo6l3fkko1wcoz5v8h6">Release Apache Iceberg Rust 0.11.0</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (3)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/7dygjggpy3wgxv3j9r173jnfxw8w1d6n">Default Value Expressions for v4</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/rfc6bc7lq1xllv2hd4sy80qy39d1vlcc">Release Apache Iceberg Rust 0.11.0 RC3</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/w71t6z3jp5zxwr24qq8ksb9o2f7n0szf">Spec: Add _last_updated_time row lineage metadata column in v4</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/0m2gc9yqt77cpy2nvcthm9vkvgsgwrqq">Spark: use the catalog's Hadoop configuration when listing orphan files (#17862)</a></h3>
+            <p class="meta">9 条回复 · 4 位参与者</p>
+            <p class="summary">讨论围绕 Spark 删除孤儿文件时如何获取正确的 Hadoop/云存储凭证，尤其是 Glue 跨账号与 S3FileIO 场景。社区倾向于不为列表操作新增 catalogName 或 hadoopConf API，而是优先使用表 FileIO 自身配置，并将 PR 改为仅在 FileIO 支持 HadoopConfigurable 时使用其配置。S3FileIO 的根本修复将依赖后续基于 FileIO 的可扩展前缀/并行列表能力。</p>
+            <div class="key-points"><p><strong>@Sebastian Daberdaku:</strong> 说明 Glue 跨账号下 remove_orphan_files 会因使用 session Hadoop 配置而 AccessDenied，并建议最终改为当 table.io() 支持 HadoopConfigurable 时使用其配置，不新增 API。</p>
+<p><strong>@Russell Spitzer:</strong> 认为 S3FileIO 等非 Hadoop FileIO 不应接受 Hadoop configuration，若用户假设 Hadoop 配置适用于 S3FileIO，是配置路径本身不正确。</p>
+<p><strong>@Jean-Baptiste Onofré:</strong> 不赞成把 Hadoop 列表作为第二 IO 路径，短期可让 HadoopConfigurable FileIO 使用自身配置，长期应通过 table FileIO 的并行/前缀列表解决凭证一致性问题。</p></div>
+            <p class="conclusion">初步结论是将 #17862 改为无新增 API 的小修复：当 table.io() 为 HadoopConfigurable 时使用其 Hadoop 配置，否则回退 session 配置；S3FileIO 场景暂用 prefix_listing，后续推进 #17790/#11906 的并行 FileIO listing 作为根本方案。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/cxbd9xkw0hor0vpm8hh73kjx2rsp7lh8">REST catalog spec: semantics of the metrics reporting endpoint when the server fails to process a report</a></h3>
+            <p class="meta">4 条回复 · 4 位参与者</p>
+            <p class="summary">讨论聚焦 Iceberg REST catalog 的 metrics 上报端点在服务器处理失败时的语义，起因是 Polaris 考虑将指标持久化失败从返回 500 改为记录并返回 204。社区普遍认为指标上报与读写/提交路径解耦，失败不应导致主流程失败，但对是否需要在规范中明确 best-effort 以及失败时能否返回 204 进行了讨论。</p>
+            <div class="key-points"><p><strong>@Anand Kumar Sankaran:</strong> Polaris 当前在指标写入失败时返回 500，拟改为记录失败、丢弃指标并返回 204，希望社区先明确 metrics 端点语义。</p>
+<p><strong>@Eduard Tudenhöfner:</strong> 指标上报是 best-effort，客户端不应重试；服务端可自行决定返回错误或记录后丢弃，规范无需进一步规定。</p>
+<p><strong>@Daniel Weeks:</strong> 规范无需明确写 best-effort，但服务端返回码应真实反映处理结果；客户端是否重试或忽略失败属于客户端实现问题。</p></div>
+            <p class="conclusion">初步结论是 metrics 上报独立于 commit，失败不应影响读写；规范暂不修改，但服务端不宜把实际失败伪装为成功码，是否重试由客户端决定。Anand 将把该讨论结果带回 Polaris 邮件列表继续决策。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/vj3x5knqb1h71j2sgpsbgbbsdb1kz7b6">Migrating Iceberg to Jackson 3</a></h3>
+            <p class="meta">3 条回复 · 2 位参与者</p>
+            <p class="summary">社区讨论 Iceberg 从 Jackson 2 迁移到 Jackson 3 的过渡方案，重点是如何避免破坏公共 API 和 REST 生态。讨论逐渐收敛为先引入 Iceberg 自有的 JSON 绑定 shim、短期同时支持 Jackson 2 和 Jackson 3，再通过适配模块处理 REST 层依赖。</p>
+            <div class="key-points"><p><strong>@Alex Dutra:</strong> 提出过渡期同时提供 Jackson 2 和 Jackson 3，并通过兼容性测试、移除 Json serde 与 REST 层中的 Jackson 2 类型来逐步完成迁移。</p>
+<p><strong>@Steve Loughran:</strong> 建议将 Jackson 绑定隐藏在 Iceberg 内部 API 后，弃用并逐步移除 Jackson 2，必要时可放入 legacy 模块，但要避免二进制不兼容影响用户升级。</p>
+<p><strong>@Jean-Baptiste Onofré:</strong> 支持先做 shim 重构并弃用 Jackson 类型 API，再通过测试开关或参数化测试验证 Jackson 2/3 行为；REST 层应通过独立适配模块提供 Jackson 2/3 module。</p></div>
+            <p class="conclusion">初步共识是先进行纯重构：引入 Iceberg 自有 shim 并弃用 Jackson 类型 API，再引入 Jackson 3 并短期共存；REST 层采用 adapter artifact 分离依赖。下一步建议先提交一个 PR，增加 shim 类型并迁移一个 parser 包作为参考，以便统一设计并并行推进后续改动。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/j7sggw14p560mgnhp8tm31h2ypl5phn8">AI Functions for FILE/VECTOR types</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">讨论聚焦于是否围绕 FILE/VECTOR 类型为 Iceberg 引入生成式 AI 和 embedding 函数。Alex Stephen 提出厂商无关函数提案，并询问社区是否接受以连接器内置函数或默认 UDF 形式落地。Russell Spitzer 和 Szehon Ho 则对实际用例、规范扩张以及模型语义标准化成本表示疑虑。</p>
+            <div class="key-points"><p><strong>@Alex Stephen:</strong> 提议为 Iceberg Spark/Flink 添加生成式 AI 和 embedding 函数，并探讨将其作为连接器内置函数或默认 UDF 的可能性。</p>
+<p><strong>@Russell Spitzer:</strong> 质疑该目标是否只是统一 Spark/Flink 函数词汇，认为各引擎仍有大量特定 API，用例不够清晰。</p>
+<p><strong>@Szehon Ho:</strong> 认为 Iceberg 表达式规范应保持小而中立，AI 函数会扩大范围并涉及模型版本、推理配置和确定性等复杂语义，建议优先使用现有 UDF 机制。</p></div>
+            <p class="conclusion">目前尚未形成采纳结论，社区更倾向于先明确 Iceberg 特定需求，暂不将 AI 函数纳入核心规范，可继续讨论是否通过 UDF 或连接器层面探索。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/mfo1bbd6gcc7969obj7wzzbrhmsdwq38">REST Spec: Batch remote signing endpoint</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">社区讨论在 Iceberg REST Catalog 规范中新增批量远程签名端点，以支持 FILE 类型带来的行级外部对象签名规模问题。讨论重点是授权语义和请求结构，尤其是否需要在批量签名请求中携带数据文件、字段等上下文以便服务端鉴权。目前倾向先等待 FILE 类型实现和相关访问委托机制明确后再定稿。</p>
+            <div class="key-points"><p><strong>@Daniel Weeks:</strong> 批量签名需要考虑文件访问授权成本，共享存储场景可能需要文件引用和列等上下文信息，这可能影响请求设计。</p>
+<p><strong>@Jean-Baptiste Onofré:</strong> 授权需求应决定请求结构，建议在批量元素中加入可选且规范化的上下文，如数据文件位置和 field ID，但上下文只是客户端声明，服务端仍需自行校验。</p>
+<p><strong>@Sung Yun:</strong> 同意需要明确 FILE 类型的授权语义，认为可选上下文可以作为后续增强，不必阻塞批量 API，但上下文应放在请求级还是元素级仍待讨论。</p></div>
+            <p class="conclusion">初步共识是批量签名端点有必要，但需与 FILE 类型实现和访问委托授权语义协调；下一步是等待 FILE 实现及相关 PR 推进，继续讨论可选授权上下文设计后再定稿或投票。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/bmq9bk11lko9rtqx5x139080llmjhglq">Iceberg Variant - Tracking Document & Sync Proposal</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">本次讨论主要围绕 Iceberg Variant 工作的跟踪文档与同步安排展开。Neelesh Salian 更新了 Variant 进展跟踪文档，并提示关注“Next milestones”中的后续计划。同时，由于假期原因，12月的同步会议被取消，计划于2027年1月恢复。</p>
+            <div class="key-points"><p><strong>@Neelesh Salian:</strong> 已更新 Variant 工作跟踪文档，并将持续维护，社区可通过文档了解最新进展和后续里程碑。</p>
+<p><strong>@Neelesh Salian:</strong> 因假期取消12月同步会议，下一次同步预计安排在2027年1月。</p>
+<p><strong>@Amit Sharma:</strong> 对文档更新和同步工作表示感谢，未提出新的技术意见。</p></div>
+            <p class="conclusion">下一步将继续通过跟踪文档同步 Variant 进展，12月会议暂停，2027年1月恢复社区同步。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/hcc1yo2pcyrc089rgywo8nh0tt9gs5yl">Clarify rounding before bucket hashing for nanosecond timestamps</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕 Iceberg 规范附录 B 中纳秒时间戳在 bucket 哈希前转换为微秒时，负值应如何舍入的问题。Roman 提议明确使用向负无穷舍入（floor division），因为 Java、Go、Rust 实现一致；JB 支持该澄清，并建议补充规范措辞和 pre-epoch 测试用例。</p>
+            <div class="key-points"><p><strong>@Roman Denysov:</strong> 规范未说明负纳秒时间戳转微秒的舍入方式，不同方式会产生不同哈希结果；建议在 Appendix B 明确除以 1000 后向负无穷舍入。</p>
+<p><strong>@Jean-Baptiste Onofré:</strong> Java 参考实现一直使用 floor division，且 Java、Go、Rust 当前行为一致，因此这是对既有行为的澄清而非格式变更。</p>
+<p><strong>@Jean-Baptiste Onofré:</strong> 建议将舍入规则写入 note 3，并为 timestamp_ns/timestamptz_ns 增加 1969 年 pre-epoch 测试值，以捕获错误实现。</p></div>
+            <p class="conclusion">初步方向是明确采用 floor division；下一步是在 PR 中更新规范措辞、补充负时间戳测试用例并继续评审。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/l83t4h47v3qgokz3h55wbwjr2fzmb77l">Iceberg Community Health Stats</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕 Iceberg 社区健康指标仪表盘及其反映的贡献者转化与维护者瓶颈展开。参与者认可基于 CHAOSS 的社区健康与情绪分析价值，并探讨将其作为 ASF 基础设施服务推广。同时指出 AI 辅助贡献带来大量 PR，加剧维护者审核压力，需要降低 PR 处理负担并保持人工把关。</p>
+            <div class="key-points"><p><strong>@Patrick McFadin:</strong> 社区健康统计借鉴 CHAOSS，正在推动将其作为 ASF 项目的基础设施服务，并通过 PR review 工具减少 PR 审核负担。</p>
+<p><strong>@Jared Yu:</strong> First to Second KPI 问题可能源于 AI 辅助贡献过热，AI 生成代码增加维护者负担，关键系统仍需严格人工审查。</p>
+<p><strong>@Jean-Baptiste Onofré:</strong> 愿意协助对接 ASF Infra，建议可考虑 reporter.apache.org，并强调情绪分析应停留在项目层面而非个人层面。</p></div>
+            <p class="conclusion">初步方向是将社区健康分析能力与 ASF 基础设施结合并继续讨论，后续可通过 ASF Slack 参与，同时关注项目级情绪分析和 PR 审核减负。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/zotft1lkrfh2181yjcqhs14ctsdm7ltx">Downscoping the OAuth2 AuthManager v2 proposal</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">社区讨论将 Iceberg REST 的 OAuth2 AuthManager v2 提案缩小范围，以避免一次性引入过多新能力和复杂遗留支持。Alex Dutra 提出仅支持 client_credentials、两种客户端认证方式、简化令牌续期，并提交 PR #18756。目前方案获得支持，并计划纳入本周 Catalog sync 讨论。</p>
+            <div class="key-points"><p><strong>@Alex Dutra:</strong> 建议重启 OAuth2 AuthManager v2，将范围缩小为 client_credentials、client_secret_basic/post、简化令牌续期和有限的 v1 迁移，并争取在 Iceberg 1.13 发布。</p>
+<p><strong>@Christian Thiel:</strong> 认可缩小后的方案，认为当前范围已足够小，建议将其加入本周 Catalog sync 会议议程。</p></div>
+            <p class="conclusion">初步方向是推进缩小范围后的 OAuth2 AuthManager v2 方案；下一步是在 Catalog sync 会议中讨论，并推进 PR #18756，争取随 Iceberg 1.13 发布。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/5blqm0r5wc8d9mnqcs0y3m5xs2dtbxx8">Dedicated sync for Iceberg Index Support</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论聚焦 Iceberg 索引支持在 REST API 中的资源路径与归属设计，尤其是索引应嵌套在表下还是放在 namespace 层级。与会者结合数据库、目录和 REST API 的调研结果，倾向于将索引作为表级资源管理。目前提案获得支持，认为其更符合 Iceberg REST 规范。</p>
+            <div class="key-points"><p><strong>@Péter Váry:</strong> 略倾向将索引路径嵌套在表下，因为这符合当前使用方式；多表索引场景可能性较低，未来如有需要可再调整结构。</p>
+<p><strong>@Daniel Weeks:</strong> 不同实现对索引跟踪和管理的方式并不一致，但该提案最符合 Iceberg 及 REST 规范，因此表示支持。</p>
+<p><strong>@huaxin gao:</strong> 调研显示 Iceberg REST、多数 catalog/REST API 以及部分数据库都将索引限定到表，表级定位是较常见做法。</p></div>
+            <p class="conclusion">初步倾向将索引作为表级资源嵌套在 REST 路径下推进；后续可按该方向完善设计，若未来出现多表索引需求再重新评估路径结构。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (0)</h2>
+            
+    <p>本周新建 <strong>0</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周无新建 JIRA。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Iceberg Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
