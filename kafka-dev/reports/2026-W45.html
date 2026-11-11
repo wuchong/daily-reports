@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafka 社区周报 | 2026-W45</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Kafka 社区周报 | 2026-W45</h1>
+            <p class="date-range">2026-11-02 ~ 2026-11-08</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (0)</h2>
+            <p class="empty">本周无公告</p>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (2)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/ljgl1zh1t31ln2o95v9l76nrm0x894yh">Tightening time-based releases</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/9jo6p81mrdhqr2wm8s6ry9ftsgs3j8h0">KIP-1370: Include Instance and Rack IDs in kafka-streams-groups.sh Member Output</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/3wpbyvozso34ww6c7141gpjpjzf7l56w">KIP-1388: Add a committed-offsets filter to ListGroups</a></h3>
+            <p class="meta">4 条回复 · 3 位参与者</p>
+            <p class="summary">社区讨论 KIP-1388 为 ListGroups 增加 committed-offsets 过滤选项，重点涉及 share group 行为、旧 broker 兼容性、命名一致性和权限语义。作者已根据反馈更新 KIP，并解释了统一过滤谓词、MM2 重试策略以及权限暴露范围。若无进一步意见，作者计划几天后发起投票。</p>
+            <div class="key-points"><p><strong>@Sean Quah:</strong> requireCommittedOffsets 对 share group 查询可能返回空结果，建议说明为何不返回“不支持”错误，并将该设计写入 Rejected Alternatives。</p>
+<p><strong>@Rajini Sivaram:</strong> 关注 KIP 链接、MM2 对旧 broker 的兼容重试机制，以及是否只需基于 committed-offsets 存在性进行查找；后续表示认可。</p>
+<p><strong>@Lucas Brutschy:</strong> 质疑 requireCommittedOffsets 命名与现有 ListGroups 过滤器风格不一致，并询问调用者无 topic 权限时该过滤器是否仍会匹配。</p></div>
+            <p class="conclusion">Nicole 已根据讨论更新 KIP，补充了拒绝方案、MM2 兼容指导和权限语义说明；若无进一步评论，将在数日内发起投票。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/6rzj463vl74c89onjz8h2qwdn2mrjhd2">Apache Kafka 3.9.3 release</a></h3>
+            <p class="meta">3 条回复 · 3 位参与者</p>
+            <p class="summary">社区讨论 Apache Kafka 3.9.3 的发布理由及 3.9 系列后续维护策略。焦点是回移 CVE 修复与保障 ZK 到 KRaft 迁移路径，讨论已从是否发布转向推进 3.9.3，并明确后续版本的触发条件。</p>
+            <div class="key-points"><p><strong>@Chia-Ping Tsai:</strong> 支持发布 3.9.3 以回移 CVE 修复，但更强调 3.9 是 ZK 迁移到 KRaft 的基线；后续 3.9.4 应主要由严重迁移缺陷驱动，CVE 不应单独触发新版本。</p>
+<p><strong>@Mickael Maison:</strong> 不反对发布 3.9.3，但建议明确 3.9 的支持定位和未来是否发布 3.9.4，以平衡维护成本并给用户明确预期。</p>
+<p><strong>@Luke Chen:</strong> 建议将“严重迁移 bug”定义为无 workaround、阻塞迁移过程，或导致迁移后元数据不一致的问题。</p></div>
+            <p class="conclusion">社区倾向于推进 3.9.3 发布，并将后续 3.9.4 的触发条件限定为严重迁移问题；PoAn Yang 担任发布经理，代码冻结时间为 11 月 20 日，随后产出首个 RC，相关结论将同步到发布页面。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/vkkpqfzv4s2ro975kqvnhbfoh7nsrpcs">KIP-1370: Include Instance and Rack IDs in kafka-streams-groups.sh Member Output</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">社区讨论 KIP-1370，提议在 kafka-streams-groups.sh 的成员输出中加入实例 ID 和机架 ID。Lucas Brutschy 建议输出列显示和缺失值处理应与 kafka-consumer-groups.sh 保持一致，Sanghyeok An 已根据反馈更新 KIP。目前方案已获得认可，讨论推进到后续文档更新阶段。</p>
+            <div class="key-points"><p><strong>@Sanghyeok An:</strong> 提议恢复 KIP-1370 讨论，在 kafka-streams-groups.sh 成员输出中包含实例 ID 和机架 ID。</p>
+<p><strong>@Lucas Brutschy:</strong> 建议 RACK-ID 列在无成员数据时隐藏，并且缺失实例 ID 的展示方式应与 kafka-consumer-groups.sh 保持一致。</p>
+<p><strong>@Sanghyeok An:</strong> 接受反馈，并更新了 KIP 中的变更说明、输出表和测试计划。</p></div>
+            <p class="conclusion">Lucas 已认可该 KIP；下一步是更新开发者指南中的 kafka-streams-group.sh 页面并继续推进提案。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/m5ncm8q2fq4dsfp0j2qb2hqok4tf6vx0">KIP-1384: Base image for system test dependencies</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕 KIP-1384 系统测试依赖基础镜像方案展开，重点是移除 S3 上传后对 Vagrant 的兼容性、latest 标签以及发行版保留策略。PoAn 根据 Chia-Ping 的评审意见更新了 KIP，补充了被拒绝方案、Vagrant 说明和兼容性影响。双方初步认可保留 vagrant/base.sh，并将 Vagrant 移除问题转到 KAFKA-21260 单独讨论。</p>
+            <div class="key-points"><p><strong>@Chia-Ping Tsai:</strong> 要求补充被拒绝的替代方案，并在兼容性部分说明移除 S3 上传后 Vagrant 将不再获得新版本；Vagrant 的移除应另线程讨论。</p>
+<p><strong>@PoAn Yang:</strong> 已更新 KIP，保留 vagrant/base.sh，并明确只要活跃分支仍在使用，对应发布不会从镜像中移除，因此 latest 标签可用于各活跃分支。</p></div>
+            <p class="conclusion">初步结论是暂时保留 vagrant/base.sh，不在本 KIP 中移除 Vagrant；latest 标签方案获认可，但需保证活跃分支使用的发行版不被删除。下一步是按更新后的 KIP 继续推进，Vagrant 移除在 KAFKA-21260 中单独讨论。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/7rw3ombdhlf3qh27fwwlgmzfykjo3otb">KIP-1390: Add a tokenless login callback handler for SASL/OAUTHBEARER</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">社区讨论 KIP-1390，提议为 SASL/OAUTHBEARER 新增生产可用的无 token 登录回调处理器，以支持仅验证 OAuth token 的 broker 无 token 登录。讨论重点是如何与现有非生产就绪的 unsecured handler 区分、调整日志级别并防止误用。目前提案已根据评审意见更新。</p>
+            <div class="key-points"><p><strong>@Ming-Yen Chung:</strong> 提出新增 OAuthBearerTokenlessLoginCallbackHandler，正式支持 broker 在无自身 OAuth token 场景下登录，并移除对 unsecuredLogin* JAAS 配置的检查。</p>
+<p><strong>@Chia-Ping Tsai:</strong> 建议在 Motivation 中明确 unsecured 类不适合生产使用，并将旧 handler 日志提升为 WARN，以引导用户使用新 handler。</p>
+<p><strong>@Chia-Ping Tsai:</strong> 新 handler 将作为生产就绪功能发布，应通过日志提示用户已成功进行无 token 登录，以避免误用。</p></div>
+            <p class="conclusion">Ming-Yen 已按建议更新 KIP：新 handler 忽略 JAAS 选项，旧 handler 输出 WARN，Motivation 补充非生产就绪说明，并为新 handler 增加 INFO 日志；后续将继续社区评审和推进实现。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/7w70ttoo04m5odm8nx6zpjm7g7rzjsbd">KIP-1385 : Measure local.retention.ms from remote upload time instead of record timestamps</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论 KIP-1385 是否将 local.retention.ms 的计时起点从记录时间戳改为远程上传时间，以解决时间戳异常下的本地日志删除问题。双方重点评估回填数据可能延迟删除带来的运维预期变化，以及元数据缓存未就绪时的删除行为。</p>
+            <div class="key-points"><p><strong>@Chia-Ping Tsai:</strong> 担心回填数据在上传后一段时间才删除本地副本会超出运维预期，并询问 RemoteLogMetadataCache 初始化期间是否会走回退逻辑。</p>
+<p><strong>@Muralidhar Basani:</strong> 确认这是行为变化但主要影响特定配置；提出两种方案：保持上传时间语义并通过文档和 local.retention.bytes 缓解，或改用 min(record timestamp, upload time) 保留回填行为。</p>
+<p><strong>@Muralidhar Basani:</strong> 说明元数据缓存初始化期间不会触发 fallback，删除会被暂停，直到 RemoteLogMetadataManager 就绪。</p></div>
+            <p class="conclusion">暂未形成最终结论；下一步是请社区在上传时间语义与 min(record timestamp, upload time) 两个方案间反馈取舍，并考虑升级说明及 local.retention.bytes 的使用。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/2vlhqcdnrz97ypnm21v81x39jqtqskcm">[PR] MINOR: Fix release announcement pager ordering [kafka-site]</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">该邮件通知了一个针对 kafka-site 的 PR，用于修复 /blog/releases/ 发布公告页面的分页器排序问题。讨论核心是让发布页面的 Previous/Next 按时间顺序导航，而其他栏目继续保留按权重排序。</p>
+            <div class="key-points"><p><strong>@Iskuskov:</strong> 提出修复 release announcement 分页顺序，使 /blog/releases/ 页面的 Previous/Next 按日期时间顺序展示。</p>
+<p><strong>@Iskuskov:</strong> 指出当前分页器对所有栏目使用 .RegularPages.ByWeight，导致发布页面的前后导航方向与博客按日期排序不一致。</p>
+<p><strong>@Iskuskov:</strong> 建议仅在 release 页面使用基于日期的排序，其他部分仍保持基于 weight 的排序。</p></div>
+            <p class="conclusion">目前邮件中没有形成明确讨论结论，下一步是审查并决定是否合并 PR #934。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/0os8rd49qgqv36yphq77zxhfp1tcmlkf">Record cache does not count the source raw record, so it never evicts large-value entries</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论聚焦 Kafka Streams 记录缓存因未计入源记录原始 key/value 而导致内存占用低估的问题。该缺陷会使大源记录、小存储值场景下缓存无法按 statestore.cache.max.bytes 正常淘汰，最终可能耗尽堆内存。</p>
+            <div class="key-points"><p><strong>@Paul Scarrone:</strong> 自 KAFKA-16505 起，LRUCacheEntry 会复制保存源记录的原始 key/value，但 ProcessorRecordContext#residentMemorySizeEstimate() 未计入这部分大小，导致 ThreadCache 少计内存；建议在 LRUCacheEntry 的 sizeBytes 中加入 rawKey/rawValue 长度。</p></div>
+            <p class="conclusion">初步修复方向是调整 LRUCacheEntry 的大小计算以包含源记录原始 key/value，作者表示可提交包含测试用例的 PR。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/d8qhycgm3pqp1jpgks8rnosob328krcg">KIP-1389: Surface effective group configurations to clients</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论聚焦 KIP-1389 是否应向客户端暴露生效的 group 配置，以及通过何种接口暴露更合适。Sunmin 提交了 KAFKA-21433，复现 controller 与 broker 在 group bounds 校验/钳制上的不一致，并请求确认这是预期行为还是需要修改验证逻辑。当前仍在征询 DescribeConfigs 暴露有效组配置的范围、是否需要 KIP，以及能否覆盖 KAFKA-20848 的诊断需求。</p>
+            <div class="key-points"><p><strong>@Sunmin (이선민):</strong> 提交 KAFKA-21433 复现 controller 与 broker 组配置边界不一致问题，并询问应保证边界一致还是调整校验逻辑。</p>
+<p><strong>@David:</strong> 此前反馈认为通过 heartbeat/share fetch 分发大量客户端不使用的组配置复杂且价值有限，应重新考虑暴露范围。</p>
+<p><strong>@Matthias:</strong> 待确认通过 DescribeConfigs 暴露有效组配置是否能解决 KAFKA-20848 的用例，或仍需要客户端诊断能力。</p></div>
+            <p class="conclusion">下一步是等待 David 明确 DescribeConfigs 暴露有效组配置的合理范围及是否需要 KIP，并由 Matthias 判断是否满足 KAFKA-20848 的诊断需求；同时跟进 KAFKA-21433 是否为重复问题或需要修复。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/z7yfln7v97cpl7r2hvmfrw18todvlcjo">[PR] MINOR: Add Amavie to the Powered By page [kafka-site]</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">该邮件通知了 Apache Kafka 社区一项针对 kafka-site 网站的 PR 提交。PR #935 提议将 Amavie 添加到官网的 Powered By 页面，并补充公司 Logo 和使用案例信息。目前该请求处于等待社区审阅和合并的阶段。</p>
+            <div class="key-points"><p><strong>@AriaAnima:</strong> 提交 PR #935，请求将 Amavie 添加到 Apache Kafka 官网的 Powered By 页面，并说明已提供 Logo 和使用案例信息。</p></div>
+            <p class="conclusion">暂无明确结论，下一步是等待社区审阅并合并该 PR。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (60)</h2>
+            
+    <p>本周新建 <strong>60</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周 JIRA 主要集中在消费者与组协调器相关能力与稳定性改进，涵盖异步消费者、经典/共享消费组、Streams 分配、事务和日志偏移一致性等问题。同时包含较多监控指标、MirrorMaker/镜像状态、KRaft 升级、运维配置、文档与测试工具方面的新增与修复。此外还涉及安全 CVE、Docker 镜像、客户端元数据和并发/锁正确性等工程化改进。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Kafka Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
