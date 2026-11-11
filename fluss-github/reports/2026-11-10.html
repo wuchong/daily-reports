@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-11-10</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-11-10</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 7 新 Issues</div>
+            <div class="stat">✅ 10 关闭</div>
+            <div class="stat">✨ 8 新 PRs</div>
+            <div class="stat">🎉 9 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/5129">PR #5129</a> [server] Restore ZooKeeper batch read compatibility</li><li>🎉 <a href="https://github.com/apache/fluss/pull/5127">PR #5127</a> [server] Make RocksDB compaction readahead configurable</li><li>🎉 <a href="https://github.com/apache/fluss/pull/5122">PR #5122</a> [docs] Archive Incubator release download links</li><li>🎉 <a href="https://github.com/apache/fluss/pull/5114">PR #5114</a> [rust] Validate Arrow row counts against log batch headers</li><li>🎉 <a href="https://github.com/apache/fluss/pull/5105">PR #5105</a> [spark] Skip fluss-spark-ut tests on Java 8</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4608">Issue #4608</a> FIP-53: Log Scanner Offset（Consumer Offsets）Management</h4>
+            <ul><li><span class="author">@pisceslj</span>: ### Subtasks - [x] **[4625 [server] Add consumer offset table foundations](https://github.com/apach…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4097">Issue #4097</a> [server] Support configurable concurrent rebalance tasks</h4>
+            <ul><li><span class="author">@swuferhong</span>: @wuchong comments addressed.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/5018">Issue #5018</a> [Improvement] Make server-scan bypass lake union reads</h4>
+            <ul><li><span class="author">@wuchong</span>: `client.scanner.kv.batch-strategy` controls how Fluss KV data is read: reading snapshot SST files a…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5019">Issue #5019</a> [flink] Make server-scan bypass lake union reads</h4>
+            <ul><li><span class="author">@wuchong</span>: `client.scanner.kv.batch-strategy` controls how Fluss KV data is read: reading snapshot SST files a…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5043">Issue #5043</a> [client] Stop a dropped partition from stalling the writer</h4>
+            <ul><li><span class="author">@litiliu</span>: adding an option makes sense to me. @loserwang1024</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4360">Issue #4360</a> [metrics] Count per-bucket errors in TabletServer response metrics</h4>
+            <ul><li><span class="author">@wuchong</span>: Please do not use "git merge" to merge branches, otherwise the changes is hard to track. Please use…</li><li><span class="author">@fxbing</span>: > Please do not use "git merge" to merge branches, otherwise the changes is hard to track. Please u…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5125">Issue #5125</a> [server] Support table-level minimum in-sync replicas</h4>
+            <ul><li><span class="author">@litiliu</span>: @platinumhamburg Please take a look at this PR when you have time, thanks!</li><li><span class="author">@platinumhamburg</span>: @litiliu Thanks for working on this. I still have a few concerns and would appreciate some clarific…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4820">Issue #4820</a> [kv] Support global secondary indexes</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: @polyzos Thanks for another thorough round of testing. I’m glad the results met expectations. This…</li><li><span class="author">@polyzos</span>: @platinumhamburg +1 from me and this is the best approach 👍 Let me know if you need any help 🙏</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5115">Issue #5115</a> [flink] Skip updates to non-projected columns</h4>
+            <ul><li><span class="author">@loserwang1024</span>: @leonardBang , would you like to help review this pr.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4965">Issue #4965</a> [Client][Server] Add bounded log scanning with FETCH_LOG v1 and legacy server fallback</h4>
+            <ul><li><span class="author">@loserwang1024</span>: Could you help me understand what accounts for the size of this change? I’d expected adding a per-b…</li><li><span class="author">@yangshangqing95</span>: @loserwang1024 Thanks for taking a look and raising the question. The API change itself is indeed s…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5104">Issue #5104</a> [server] Avoid ZK reads on partition metadata cache hits</h4>
+            <ul><li><span class="author">@SteNicholas</span>: @wuchong Thanks for the guidance. I reworked the PR into a focused cache invalidation fix: 1. Remov…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4292">Issue #4292</a> [test] Improve test coverage for utils.* classes</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: This PR has been marked as stale because it has had no activity for 60 days. It will be closed in 1…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3449">Issue #3449</a> [lake] Stabilize Paimon tiering IT</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: This PR has been marked as stale because it has had no activity for 60 days. It will be closed in 1…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4906">Issue #4906</a> [kafka] Stream JSON Produce value conversion</h4>
+            <ul><li><span class="author">@gyang94</span>: Hi @zephyr45, just following up on the review feedback. Streaming JSON parsing is important for imp…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4863">Issue #4863</a> [kafka] Convert JSON Produce values with Jackson streaming API</h4>
+            <ul><li><span class="author">@gyang94</span>: Hi @zephyr45, just following up on the review feedback. Streaming JSON parsing is important for imp…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5124">Issue #5124</a> [server] Confine rebalance timeout checks to event thread</h4>
+            <ul><li><span class="author">@swuferhong</span>: Thanks @wuchong, comments addressed.</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4097">PR #4097</a> [server] Support configurable concurrent rebalance tasks</h4>
+            <ul><li><span class="author">@swuferhong</span>: Thanks, agreed. I removed the reentrancy flag and refactored the execution path to report an explic…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3337">PR #3337</a> [server] Add HLL sketch aggregation merge function</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: DataSketches Memory includes additional license terms for xxHash under BSD-2-Clause. With the curre…</li><li><span class="author">@rahulbsw</span>: Addressed in 527a67a90. The full license from datasketches-memory 3.0.2 is now preserved at META-IN…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4977">PR #4977</a> [client] Initialize client table mapping from TableInfo</h4>
+            <ul><li><span class="author">@threadfly2026</span>: @loserwang1024 I've added `metadataUpdater.updateTableOrPartitionMetadata(tablePath, null)` back to…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5129">PR #5129</a> [server] Restore ZooKeeper batch read compatibility</h4>
+            <ul><li><span class="author">@cctvzd7</span>: If the node is null or empty, could you please log the node ID? This would help with troubleshootin…</li><li><span class="author">@platinumhamburg</span>: Added a WARN log with the full ZNode path when the batch response handler skips an empty value, so……</li><li><span class="author">@swuferhong</span>: Hi, @platinumhamburg @cctvzd7 I think there is no need to add this log. The partition ID is already…</li><li><span class="author">@wuchong</span>: @swuferhong @fhan688 I noticed that #4029 switched `ZooKeeperClient#getPartitionsAssignments` from……</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5104">PR #5104</a> [server] Avoid ZK reads on partition metadata cache hits</h4>
+            <ul><li><span class="author">@SteNicholas</span>: Thanks for catching this. Addressed: `TabletServerMetadataProvider#getPartitionsMetadataFromZK` now…</li><li><span class="author">@platinumhamburg</span>: **[BLOCKING] Removing registration validation leaves stale pushed metadata without recovery** Could…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4778">PR #4778</a> [spark] Add commit-time snapshot TVF</h4>
+            <ul><li><span class="author">@beryllw</span>: Normal non-DV tiering deletes older offset files, so retaining Paimon snapshots alone does not make…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5115">PR #5115</a> [flink] Skip updates to non-projected columns</h4>
+            <ul><li><span class="author">@leonardBang</span>: Could we also exclude `$changelog` scans from this optimization? `ChangelogFlinkTableSource` passes…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4383">PR #4383</a> [flink] Support consuming historical partition changelog</h4>
+            <ul><li><span class="author">@loserwang1024</span>: Could we document what happens when a partition expires while the job is running? A historical upda…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5124">PR #5124</a> [server] Confine rebalance timeout checks to event thread</h4>
+            <ul><li><span class="author">@wuchong</span>: Could we retry `persistFinalStatus()` directly in `checkTimeout()` when `finalizationPending` is se…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5099">PR #5099</a> [elixir] Add Fluss.Admin.alter_table and alter_database</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: what happens with `{:modify_column, "id", comment: "x"}`? server always reads `data_type_json` and……</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4877">PR #4877</a> [c++] Add poll-based async lookups</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: can we have a separate error code here, like `RD_KAFKA_RESP_ERR__QUEUE_FULL` in librdkafka? now it'…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5050">PR #5050</a> [rust] Fail over lookups when the leader's tablet server is down</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: what happens with a lookup to a dropped table now?；what happens if a server never answers the metad…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5090">PR #5090</a> [rust] Reject Arrow batches containing rows from different partitions</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: can we compare partition columns with row 0 first and build names only for rows that differ?；can we…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4887">PR #4887</a> [rust] Add reusable UnionRead source boundaries</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: in StarRocks or Doris each reader task gets one bucket, but from_boundary wants every bucket of the…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5139">PR #5139</a> [Trino] Remove mock in trino tests</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: each `Connection.close()` takes ~2s because of netty quiet period #4647, and we close two per test……</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5121">PR #5121</a> [server] Add KLL double sketch aggregation merge function</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: `other_user_hll` isn’t defined in the example table, so this query cannot run as written. Could you…</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/5137">#5137</a> [server] Implement consumer offset fetches <span class="author">@pisceslj</span> </li><li><a href="https://github.com/apache/fluss/issues/5134">#5134</a> [lake] Support configurable retention policies for snapshot offsets <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/issues/5132">#5132</a> [server] Track partition deletion with persistent tombstones <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/5130">#5130</a> [client] Make Java lookupers thread-safe <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/5128">#5128</a> [server] Empty partition assignment ZNodes prevent Coordinator startup <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/5126">#5126</a> [server] Support configuring RocksDB compaction readahead size <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/5123">#5123</a> [Improvement] Confine rebalance timeout handling to the coordinator event thread <span class="author">@swuferhong</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/5139">#5139</a> [Trino] Remove mock in trino tests <span class="author">@yangshangqing95</span> </li><li><a href="https://github.com/apache/fluss/pull/5138">#5138</a> [server] Implement consumer offset fetches <span class="author">@pisceslj</span> </li><li><a href="https://github.com/apache/fluss/pull/5136">#5136</a> [rpc] Wire TLS encryption into the client Netty pipeline <span class="author">@morazow</span> </li><li><a href="https://github.com/apache/fluss/pull/5135">#5135</a> [server] Track partition deletion with persistent tombstones <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/5133">#5133</a> [server] Store rebalance tasks in remote storage <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/pull/5131">#5131</a> [client] Make Java lookupers thread-safe <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/5125">#5125</a> [server] Support table-level minimum in-sync replicas <span class="author">@litiliu</span> </li><li><a href="https://github.com/apache/fluss/pull/5124">#5124</a> [server] Confine rebalance timeout checks to event thread <span class="author">@swuferhong</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/5134">#5134</a> [lake] Support configurable retention policies for snapshot offsets <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/issues/5128">#5128</a> [server] Empty partition assignment ZNodes prevent Coordinator startup <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/5126">#5126</a> [server] Support configuring RocksDB compaction readahead size <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/5113">#5113</a> [rust] Validate Arrow row counts against log batch headers <span class="author">@spoon-lz</span> </li><li><a href="https://github.com/apache/fluss/issues/5097">#5097</a> [spark] Java 8 spark3-lake nightly fails to load Iceberg in Paimon tests <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/issues/5078">#5078</a> [client] Support OSS fallback for ossj file system URIs <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/issues/5057">#5057</a> [rust] Reject zero lookup queue size and max inflight requests <span class="author">@slfan1989</span> </li><li><a href="https://github.com/apache/fluss/issues/5018">#5018</a> [Improvement] Make server-scan bypass lake union reads <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/issues/4359">#4359</a> [metrics] Count per-bucket errors in TabletServer response metrics <span class="author">@fxbing</span> </li><li><a href="https://github.com/apache/fluss/issues/3536">#3536</a> [server] Support dynamic rebalance concurrency control <span class="author">@swuferhong</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/5129">#5129</a> [server] Restore ZooKeeper batch read compatibility <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/5127">#5127</a> [server] Make RocksDB compaction readahead configurable <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/5122">#5122</a> [docs] Archive Incubator release download links <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/pull/5114">#5114</a> [rust] Validate Arrow row counts against log batch headers <span class="author">@spoon-lz</span> </li><li><a href="https://github.com/apache/fluss/pull/5105">#5105</a> [spark] Skip fluss-spark-ut tests on Java 8 <span class="author">@ump45nose</span> </li><li><a href="https://github.com/apache/fluss/pull/5079">#5079</a> [client] Support OSS fallback for ossj file system URIs <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/pull/5058">#5058</a> [rust] Reject zero lookup queue size and max inflight requests <span class="author">@slfan1989</span> </li><li><a href="https://github.com/apache/fluss/pull/4360">#4360</a> [metrics] Count per-bucket errors in TabletServer response metrics <span class="author">@fxbing</span> </li><li><a href="https://github.com/apache/fluss/pull/4097">#4097</a> [server] Support configurable concurrent rebalance tasks <span class="author">@swuferhong</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
