@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data+AI 全球日报 | 2026-11-11</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Data+AI 全球日报 | 2026-11-11</h1>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="top-changes">
+            <h2>🔥 今日最重要的3个变化</h2>
+            <ol><li><strong>Amazon OpenSearch Service 推出托管跨 Region 灾备</strong> — AWS 为 OpenSearch 3.7 及以后版本提供托管跨 Region 灾难恢复，支持主域到次域的数据复制、API 驱动切换与故障转移，RPO 低于 1 分钟、RTO 低于 20 分钟，显著增强搜索、日志和向量分析平台的高可用能力。</li><li><strong>AWS 提出面向 agentic AI 的数据基础框架</strong> — AWS 强调构建 agentic AI 数据基础需要统一 lakehouse、上下文工程、多 Agent 互操作和 Model Context Protocol（MCP），将数据平台从分析底座升级为 Agent 访问企业数据和执行任务的核心基础设施。</li><li><strong>Intuit 从 Hive Metastore 迁移到 AWS Glue Data Catalog</strong> — Intuit 通过分阶段双向同步方案，将数据目录从 Apache Hive Metastore 迁移到 AWS Glue Data Catalog，以降低运维负担、提升数据发现能力，并加强开放、安全 lakehouse 的治理与集成能力。</li></ol>
+            <p class="judgment"><strong>总判断：</strong>今日信号集中在 AWS 数据平台体系的韧性、治理和 agentic AI 底座建设上。OpenSearch 跨 Region 灾备、SageMaker Unified Studio 治理与 Terraform 部署、MSK 成本分摊等能力，显示云厂商正从基础设施可靠性、成本可视化和平台工程化角度强化企业数据平台粘性。同时，Iceberg、Lake Formation、MCP 等开放互操作能力正在成为跨系统数据访问和 Agent 化应用的重要基础。</p>
+        </section>
+
+        <section class="top-signals">
+            <h2>📡 重要信号</h2>
+            
+    <article class="news-item">
+        <h3>Managed cross-Region disaster recovery for Amazon OpenSearch Service</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/managed-cross-region-disaster-recovery-for-amazon-opensearch-service/">AWS Big Data Blog</a></p>
+        <p class="date">2026-11-11</p>
+        <p class="summary">Amazon OpenSearch Service 面向 OpenSearch 3.7 及以后版本推出托管跨 Region 灾难恢复能力，支持将主域数据复制到另一个 Region 的次域，并通过 API 驱动切换和故障转移。AWS 称该能力可实现低于 1 分钟的 RPO 和低于 20 分钟的 RTO，使搜索、日志、向量分析等关键负载具备更强的跨区域连续性。</p>
+        <div class="impact">📊 数据平台影响：降低跨区域灾备自建复杂度，提升搜索、日志和向量平台 SLA，推动企业将关键数据服务进一步放到 AWS 托管层。</div>
+    </article>
+    <article class="news-item">
+        <h3>Build a data foundation for agentic AI on AWS: From lakehouse to MCP</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/build-a-data-foundation-for-agentic-ai-on-aws-from-lakehouse-to-mcp/">AWS Big Data Blog</a></p>
+        <p class="date">2026-11-11</p>
+        <p class="summary">AWS 提出面向 agentic AI 的数据基础建设框架，强调统一 lakehouse、上下文工程、多 Agent 互操作和 Model Context Protocol（MCP）的重要性。文章将数据平台从传统分析与存储底座，扩展为 Agent 访问企业数据、执行任务和协同决策的基础设施。</p>
+        <div class="impact">📊 数据平台影响：lakehouse、元数据、权限和互操作协议将成为 Agent 时代数据平台核心，MCP 可能影响未来数据访问与 Agent 工具接口标准。</div>
+    </article>
+    <article class="news-item">
+        <h3>How Intuit migrated from Apache Hive Metastore to AWS Glue Data Catalog</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/how-intuit-migrated-from-apache-hive-mastore-to-aws-glue-data-catalog/">AWS Big Data Blog</a></p>
+        <p class="date">2026-11-11</p>
+        <p class="summary">Intuit 分享其从 Apache Hive Metastore 迁移到 AWS Glue Data Catalog 的实践，采用分阶段双向同步方案，以支持开放、安全的 lakehouse 演进。迁移后，Intuit 降低了元数据运维负担，提升数据发现能力，并与 AWS 安全、治理和分析生态更紧密集成。</p>
+        <div class="impact">📊 数据平台影响：大型客户从传统 Hive Metastore 转向云原生目录，验证元数据托管化趋势，也强化 Glue Data Catalog 在开放 lakehouse 中的入口地位。</div>
+    </article>
+        </section>
+
+        <section class="product-tech">
+            <h2>💻 产品与技术</h2>
+            
+    <article class="news-item">
+        <h3>Governance compliance beyond the catalog in Amazon SageMaker Unified Studio</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/governance-compliance-beyond-the-catalog-in-amazon-sagemaker-unified-studio/">AWS Big Data Blog</a></p>
+        <p class="date">2026-11-11</p>
+        <p class="summary">AWS 展示如何在 Amazon SageMaker Unified Studio 中整合元数据表单、数据质量评分、术语表覆盖和订阅数据等治理信号，并将这些信号写入单一 Apache Iceberg 表，形成可查询、可评分、可审计的合规记分卡。</p>
+        <div class="impact">📊 数据平台影响：治理从目录展示走向可计算指标，有助于数据平台把质量、合规和使用情况纳入统一分析与自动化管控闭环。</div>
+    </article>
+    <article class="news-item">
+        <h3>Allocate shared Amazon MSK costs to Kafka topics for cost visibility</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/allocate-shared-amazon-msk-costs-to-kafka-topics-for-cost-visibility/">AWS Big Data Blog</a></p>
+        <p class="date">2026-11-11</p>
+        <p class="summary">AWS 给出将 Amazon MSK 集群级成本分摊到 Kafka topic 的方法，通过结合 AWS Cost and Usage Report、CloudWatch 或 Prometheus 指标，为团队提供基于使用量的成本视图，弥补 MSK 默认仅按集群计费的成本可视性不足。</p>
+        <div class="impact">📊 数据平台影响：补足流式平台细粒度成本可观测性，有助于企业按业务线、团队或产品分摊 Kafka 成本并优化资源使用。</div>
+    </article>
+    <article class="news-item">
+        <h3>Build a multi-team AI and analytics environment on Amazon SageMaker Unified Studio with Terraform</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/build-a-multi-team-ai-and-analytics-environment-on-amazon-sagemaker-unified-studio-with-terraform/">AWS Big Data Blog</a></p>
+        <p class="date">2026-11-11</p>
+        <p class="summary">AWS 介绍使用 Amazon SageMaker Unified Studio Terraform 模块构建多团队 AI 与分析环境的实践，可一次部署域、蓝图、项目配置和项目，并支持共享治理与最小权限，帮助平台工程团队标准化 AI/分析环境供给。</p>
+        <div class="impact">📊 数据平台影响：IaC 化 AI/分析平台供给，提升多团队环境复制、合规和权限一致性，降低平台工程团队运维成本。</div>
+    </article>
+    <article class="news-item">
+        <h3>Optimizing Apache HBase availability on Amazon EMR, Part 2: Diagnose and tune compaction</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/optimizing-apache-hbase-availability-on-amazon-emr-part-2-diagnose-and-tune-compaction/">AWS Big Data Blog</a></p>
+        <p class="date">2026-11-11</p>
+        <p class="summary">AWS 发布 Amazon EMR 上 Apache HBase 可用性优化系列第二篇，聚焦如何诊断和调优 compaction。文章说明 compaction 在高峰期可能导致读延迟、写入停滞和 RegionTooBusyException，并给出低侵入式参数调优方法。</p>
+        <div class="impact">📊 数据平台影响：为传统大数据负载提供更细的运维诊断方法，有助于 EMR 用户稳定 HBase 性能并减少服务降级。</div>
+    </article>
+    <article class="news-item">
+        <h3>How Samsung Ads federated Snowflake Iceberg tables using Amazon Cognito</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/how-samsung-ads-federated-snowflake-iceberg-tables-using-amazon-cognito/">AWS Big Data Blog</a></p>
+        <p class="date">2026-11-11</p>
+        <p class="summary">Samsung Ads 展示如何将 Snowflake 管理的 Apache Iceberg 表联邦到 AWS Lake Formation，并通过 Amazon Cognito OAuth2 机器对机器认证，从 Amazon Athena 查询这些表，而无需维护第二份数据副本。</p>
+        <div class="impact">📊 数据平台影响：强化 Snowflake Iceberg 与 AWS 开放湖仓互操作，减少数据复制，但也可能让查询入口在 AWS 与 Snowflake 间重新分配。</div>
+    </article>
+        </section>
+
+        <section class="people-views">
+            <h2>👤 人物与观点</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="analyst-insights">
+            <h2>📊 分析师洞察</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="watchlist">
+            <h2>👀 观察列表</h2>
+            
+    <article class="watchlist-item">
+        <h3>Amazon OpenSearch 跨 Region 灾备生产采用</h3>
+        <span class="status">待观察</span>
+        <p class="reason">托管跨 Region 灾备刚发布，需观察企业是否将其用于生产搜索、日志和向量负载，以及对多 Region 架构成本和运维复杂度的实际影响。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>更多客户案例、Region 覆盖扩展或更明确的 SLA 与定价细节。</p>
+    </article>
+    <article class="watchlist-item">
+        <h3>Agentic AI 数据底座与 MCP 标准化</h3>
+        <span class="status">待观察</span>
+        <p class="reason">AWS 将 lakehouse、上下文工程和 MCP 作为 agentic AI 数据基础核心，显示数据平台正成为 Agent 访问企业数据的重要入口。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>AWS 是否将 MCP 与更多数据服务、Agent 框架或权限治理产品深度集成。</p>
+    </article>
+    <article class="watchlist-item">
+        <h3>SageMaker Unified Studio 治理与 IaC 成熟度</h3>
+        <span class="status">待观察</span>
+        <p class="reason">SageMaker Unified Studio 正在扩展治理指标、Terraform 模块和多团队项目能力，可能成为 AWS 统一 AI/分析平台的重要入口。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>Terraform 模块、治理记分卡和蓝图覆盖更多企业级场景。</p>
+    </article>
+    <article class="watchlist-item">
+        <h3>Snowflake Iceberg 表跨平台联邦查询</h3>
+        <span class="status">待观察</span>
+        <p class="reason">Samsung Ads 案例显示 Snowflake Iceberg 表可被 AWS Lake Formation 和 Athena 联邦查询，开放表格式正在成为跨平台互操作关键。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>更多 Snowflake Iceberg 表接入 AWS 目录、认证和查询体系，或出现反向联邦查询案例。</p>
+    </article>
+        </section>
+
+        <section class="stock-analysis">
+            <h2>📈 股票分析</h2>
+            <p class="disclaimer">⚠️ 以下内容仅供参考，不构成任何投资建议。投资有风险，入市需谨慎。</p>
+            
+    <article class="stock-item">
+        <div class="stock-header">
+            <span class="ticker">AMZN</span>
+            <span class="company">Amazon</span>
+            <span class="signal signal-bullish">🟢 看多</span>
+        </div>
+        <p class="stock-summary">AWS 当日集中发布数据平台韧性、治理、成本分摊和 agentic AI 底座能力，显示其继续强化企业数据与 AI 工作负载的平台粘性。OpenSearch 灾备、SageMaker Unified Studio 和 Glue Data Catalog 相关实践有助于提升托管服务采用。仅供参考，不构成投资建议。</p>
+        <div class="stock-details">
+            <div class="catalysts">
+                <strong>🚀 催化剂</strong>
+                <ul><li>OpenSearch 跨 Region 灾备生产采用扩大</li><li>SageMaker Unified Studio 与 Terraform 模块扩展</li><li>Agentic AI 数据底座与 MCP 生态推进</li><li>企业从 Hive Metastore 向 Glue Data Catalog 迁移</li></ul>
+            </div>
+            <div class="risks">
+                <strong>⚠️ 风险</strong>
+                <ul><li>Azure、GCP 及开源数据平台竞争</li><li>企业多云和开放格式可能降低平台锁定</li><li>托管服务复杂度和成本治理挑战</li></ul>
+            </div>
+        </div>
+    </article>
+    <article class="stock-item">
+        <div class="stock-header">
+            <span class="ticker">SNOW</span>
+            <span class="company">Snowflake</span>
+            <span class="signal signal-neutral">⚪ 中性</span>
+        </div>
+        <p class="stock-summary">Samsung Ads 将 Snowflake 管理的 Iceberg 表联邦到 AWS Lake Formation 并通过 Athena 查询，显示 Snowflake 开放表格式生态扩大。该模式减少数据复制并提升互操作，但也可能让部分查询入口转移到 AWS 侧，对 Snowflake 计算消费影响需观察。仅供参考，不构成投资建议。</p>
+        <div class="stock-details">
+            <div class="catalysts">
+                <strong>🚀 催化剂</strong>
+                <ul><li>Snowflake Iceberg 表采用增加</li><li>跨云开放湖仓联邦查询扩展</li><li>与 AWS 认证、目录和治理体系集成深化</li></ul>
+            </div>
+            <div class="risks">
+                <strong>⚠️ 风险</strong>
+                <ul><li>AWS Athena 和 Lake Formation 分流查询入口</li><li>Databricks 与云厂商开放表格式竞争加剧</li><li>开放格式降低数据平台粘性和迁移成本</li></ul>
+            </div>
+        </div>
+    </article>
+        </section>
+
+        <footer>
+            <p>Generated by Data+AI Daily Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
