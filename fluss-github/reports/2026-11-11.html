@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-11-11</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-11-11</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 17 新 Issues</div>
+            <div class="stat">✅ 8 关闭</div>
+            <div class="stat">✨ 16 新 PRs</div>
+            <div class="stat">🎉 9 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/5149">PR #5149</a> [test] Wait for async setup and replica readiness before scans</li><li>🎉 <a href="https://github.com/apache/fluss/pull/5139">PR #5139</a> [Trino] Remove mock in trino tests</li><li>🎉 <a href="https://github.com/apache/fluss/pull/5124">PR #5124</a> [server] Confine rebalance timeout checks to event thread</li><li>🎉 <a href="https://github.com/apache/fluss/pull/5114">PR #5114</a> [rust] Validate Arrow row counts against log batch headers</li><li>🎉 <a href="https://github.com/apache/fluss/pull/5112">PR #5112</a> [rust] Unify Arrow decoding with a precomputed decode plan</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5124">Issue #5124</a> [server] Confine rebalance timeout checks to event thread</h4>
+            <ul><li><span class="author">@swuferhong</span>: Thanks @wuchong, comments addressed.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4965">Issue #4965</a> [Client][Server] Add bounded log scanning with FETCH_LOG v1 and legacy server fallback</h4>
+            <ul><li><span class="author">@yangshangqing95</span>: @loserwang1024 Thanks for taking a look and raising the question. The API change itself is indeed s…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3571">Issue #3571</a> [lake/lance] Harden LanceLakeCommitter close() and commit() error paths</h4>
+            <ul><li><span class="author">@Jackeyzhe</span>: Could we add a focused test for the new `close()` catch branch, asserting that a leaked-child `Ille…</li><li><span class="author">@XuQianJin-Stars</span>: > Could we add a focused test for the new `close()` catch branch, asserting that a leaked-child `Il…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2327">Issue #2327</a> [rebalance] Support rebalancePlan interface in Admin</h4>
+            <ul><li><span class="author">@MaheshS08</span>: The Admin redesign from #1452 (rebalance() → id, listRebalanceProgress, cancelRebalance(id)) is alr…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4887">Issue #4887</a> [rust] Add reusable UnionRead source boundaries</h4>
+            <ul><li><span class="author">@naivedogger</span>: @fresh-borzoni, thank you for the helpful review! I've addressed these comments in the latest commi…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4305">Issue #4305</a> [client] Reject NOT NULL violations before Java table writes</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: This PR has been marked as stale because it has had no activity for 60 days. It will be closed in 1…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4304">Issue #4304</a> [client] Preserve partition keys in typed deletes</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: This PR has been marked as stale because it has had no activity for 60 days. It will be closed in 1…</li><li><span class="author">@fxbing</span>: Hi @polyzos @wuchong, could you please take a look at this PR when you have a chance? It fixes type…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5125">Issue #5125</a> [server] Support table-level minimum in-sync replicas</h4>
+            <ul><li><span class="author">@litiliu</span>: @platinumhamburg Thanks very much for the thoughtful review and for raising these concerns. The use…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4814">Issue #4814</a> [log] Add compression for COMPACTED log format</h4>
+            <ul><li><span class="author">@dstolis</span>: Thanks @wuchong for the detailed review, and agreed on the revert. You're right that the V3 layout…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4383">Issue #4383</a> [flink] Support consuming historical partition changelog</h4>
+            <ul><li><span class="author">@luoyuxia</span>: @loserwang1024 Thanks for your review. Comments have been addressed. PTAL</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/3799">Issue #3799</a> [TLS] Add certificate hot-reload and TLS metrics</h4>
+            <ul><li><span class="author">@morazow</span>: The client side needs a handshake counter too. The two metrics listed here are server side, so they…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5158">Issue #5158</a> [rust] Add lake source contracts and UnionRead planning</h4>
+            <ul><li><span class="author">@naivedogger</span>: Depends on #4887. The upstream diff includes prerequisite commits until they merge. [Incremental di…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5159">Issue #5159</a> [rust] Add budgeted deduplicate current-view reconciliation</h4>
+            <ul><li><span class="author">@naivedogger</span>: Independent of the lake PRs; based on main. [Incremental diff](https://github.com/naivedogger/fluss…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5164">Issue #5164</a> [client] Capture reusable UnionRead boundaries</h4>
+            <ul><li><span class="author">@naivedogger</span>: Depends on #4887. The upstream diff includes prerequisite commits until they merge. [Incremental di…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5160">Issue #5160</a> [rust] Add a Paimon lake source for UnionRead</h4>
+            <ul><li><span class="author">@naivedogger</span>: Depends on #5158. The upstream diff includes prerequisite commits until they merge. [Incremental di…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5161">Issue #5161</a> [rust] Add bounded append UnionRead execution</h4>
+            <ul><li><span class="author">@naivedogger</span>: Depends on #5158. The upstream diff includes prerequisite commits until they merge. [Incremental di…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5162">Issue #5162</a> [rust] Add bounded deduplicate PK UnionRead execution</h4>
+            <ul><li><span class="author">@naivedogger</span>: Depends on #5159, #5160, #5161. The upstream diff includes prerequisite commits until they merge. […</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4877">Issue #4877</a> [c++] Add poll-based async lookups</h4>
+            <ul><li><span class="author">@pbanakar</span>: Thanks @fresh-borzoni for the detailed review. I addressed the review comments as folows: - Added a…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5090">Issue #5090</a> [rust] Route Arrow batch rows to their partitions</h4>
+            <ul><li><span class="author">@slfan1989</span>: > @slfan1989 Thank you, makes sense, couple of comments, PTAL > > can we split the batch by partiti…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4758">Issue #4758</a> [server] Fix stale metadata served for missing and re-created tables</h4>
+            <ul><li><span class="author">@dstolis</span>: Thanks @wuchong for the detailed explanation, agreed that the ZK read on the cache-hit path was the…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3337">Issue #3337</a> [server] Add HLL sketch aggregation merge function</h4>
+            <ul><li><span class="author">@rahulbsw</span>: The remaining failing check is Java 11 / core: https://github.com/apache/fluss/actions/runs/4288647…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5104">Issue #5104</a> [server] Avoid ZK reads on partition metadata cache hits</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: @SteNicholas Thanks for revising the PR and addressing the earlier feedback. The cache invalidation…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5115">Issue #5115</a> [flink] Skip updates to non-projected columns</h4>
+            <ul><li><span class="author">@loserwang1024</span>: @leonardBang , I have modified it.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5121">Issue #5121</a> [server] Add KLL double sketch aggregation merge function</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: Thanks, @rahulbsw! HLL (#3337) has now been merged. Could you rebase this PR onto the latest `main`…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5165">Issue #5165</a> [client] Expose where to resume a scan after a log decode error</h4>
+            <ul><li><span class="author">@SteNicholas</span>: Ping @fresh-borzoni.</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4877">PR #4877</a> [c++] Add poll-based async lookups</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: can we have a separate error code here, like `RD_KAFKA_RESP_ERR__QUEUE_FULL` in librdkafka? now it'…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5050">PR #5050</a> [rust] Fail over lookups when the leader's tablet server is down</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: what happens with a lookup to a dropped table now?；what happens if a server never answers the metad…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5090">PR #5090</a> [rust] Route Arrow batch rows to their partitions</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: can we compare partition columns with row 0 first and build names only for rows that differ?；can we…</li><li><span class="author">@slfan1989</span>: The writer now compares the Arrow partition columns against row `0` first. Matching rows reuse the……</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4887">PR #4887</a> [rust] Add reusable UnionRead source boundaries</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: in StarRocks or Doris each reader task gets one bucket, but from_boundary wants every bucket of the…</li><li><span class="author">@naivedogger</span>: Added single-bucket import and validation. Table-wide capture is unchanged.；Import now resolves the…</li><li><span class="author">@leonardBang</span>: Would it make sense to reject tables with `table.datalake.historical-partition.enabled` until share…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5139">PR #5139</a> [Trino] Remove mock in trino tests</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: each `Connection.close()` takes ~2s because of netty quiet period #4647, and we close two per test……</li><li><span class="author">@yangshangqing95</span>: My overthought. Added this to check that a failed table open doesn't trigger an unnecessary close,……</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5121">PR #5121</a> [server] Add KLL double sketch aggregation merge function</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: `other_user_hll` isn’t defined in the example table, so this query cannot run as written. Could you…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4851">PR #4851</a> [docs] Document the Spark tiering service</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: nit: can we say which spark versions are supported? the jar is built against spark 3.5 only；what ab…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5112">PR #5112</a> [rust] Unify Arrow decoding with a precomputed decode plan</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: why do we need `is_from_remote` here?；right, missed the error path, thanks</li><li><span class="author">@spoon-lz</span>: This flag preserves full decoding for unprojected TabletServer batches during schema alignment. Wit…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4858">PR #4858</a> [rust] Share KV value decoding between lookup and batch scanner</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: do we have a test for `ensure_decoders`? can we add one with a row from an older schema id, like up…</li><li><span class="author">@ump45nose</span>: Added one in 49d03806: `lookup_and_batch_scanner_read_old_schema_kv_rows_after_add_column` (in `tes…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5124">PR #5124</a> [server] Confine rebalance timeout checks to event thread</h4>
+            <ul><li><span class="author">@wuchong</span>: Could we also return early from `checkTimeout()` when `hasActiveRebalance` is false? A timeout chec…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5073">PR #5073</a> [server] Add ACL support for consumer groups</h4>
+            <ul><li><span class="author">@wuchong</span>: Group should under Cluster.；Group is a resource should under Cluster.；We should disallow such `defa…</li><li><span class="author">@pisceslj</span>: Done. GROUP is now modeled as a Cluster child alongside DATABASE. Cluster grants apply to groups, w…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4977">PR #4977</a> [client] Initialize client table mapping from TableInfo</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: **Avoid overwriting newer table metadata with an older Admin response.** A different table ID is al…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4771">PR #4771</a> [server] Add recoverable bulk-load transactions</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: Reused `PbTableInfo` in `PbBulkLoadTargetInfo`. Begin returns the shared handle once for the multi-…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5138">PR #5138</a> [server] Implement consumer offset fetches</h4>
+            <ul><li><span class="author">@wuchong</span>: move it after `handleCommitConsumerOffsets`；Throwing `IllegalArgumentException` here and for duplic…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5118">PR #5118</a> [rust] Reject duplicate scan projections</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: nit: project_by_name(&["name", "name"]) reports Duplicate column index: 1, can we report the name?</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4779">PR #4779</a> [spark] Fix batch reads on empty log buckets with nonzero offsets</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: can we avoid mockito here?；can we fix it in FlussAppendPartitionReader instead? streaming and the l…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4383">PR #4383</a> [flink] Support consuming historical partition changelog</h4>
+            <ul><li><span class="author">@luoyuxia</span>: Added a warning in fc40c71f6 covering out-of-order updates and skipped unread records when a partit…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4910">PR #4910</a> [client] Invalidate stale KV scanner routing on failures</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: @fxbing I still have concerns about the potential performance impact of the current metadata recove…</li><li><span class="author">@fxbing</span>: Thanks @platinumhamburg. I agree with pausing this PR until we settle the metadata recovery design…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5145">PR #5145</a> [client] Request missing parent metadata with partitions</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: **BLOCKING: Preserve the forced metadata refresh in getTable().** If a connection has cached a tabl…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4215">PR #4215</a> [Gateway] DECIMAL decoder rejects exponent notation</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: `integer_lexeme` already splits sign, mantissa and exponent the same way, can we share one helper?……</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4271">PR #4271</a> [rust] Return TableNotExist for missing tables</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: can we call `fetch_table_id` only when `update_table_metadata` fails with `UnknownServerError`? rig…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5030">PR #5030</a> [rust] Add persisted KV snapshot reader</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: CI builds and tests without kv-snapshot, so this code and its tests never compile there can we add……</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/5172">#5172</a> [kv] Support distinct elements in last_n aggregation <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/5171">#5171</a> [server] Delayed deletion updates can remove metadata for a recreated table or partition <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/issues/5168">#5168</a> [rust] append_arrow_batch can return an error after queuing part of the batch <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5166">#5166</a> [rust] Writer doesn't retry SchemaNotExist <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5157">#5157</a> [rust] Add bounded deduplicate PK UnionRead execution <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/issues/5156">#5156</a> [rust] Add bounded append UnionRead execution <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/issues/5155">#5155</a> [rust] Add a Paimon lake source for UnionRead <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/issues/5154">#5154</a> [client] Capture reusable UnionRead boundaries <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/issues/5153">#5153</a> [rust] Add budgeted deduplicate current-view reconciliation <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/issues/5152">#5152</a> [rust] Add lake source contracts and UnionRead planning <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/issues/5151">#5151</a> [client] Writer silently drops records when dynamic batch size shrinks below record size (data loss) <span class="author">@weizuo93</span> </li><li><a href="https://github.com/apache/fluss/issues/5148">#5148</a> [test] test can fail when database creation, bucket startup, or cleanup is still in progress <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/issues/5146">#5146</a> [kafka] Reduce allocations in Kafka Produce <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/issues/5144">#5144</a> [rust] Support reading V3 log record batches <span class="author">@dstolis</span> </li><li><a href="https://github.com/apache/fluss/issues/5142">#5142</a> [common] Avoid quadratic field name validation when building wide schemas <span class="author">@fxbing</span> </li><li><a href="https://github.com/apache/fluss/issues/5141">#5141</a> [client] Concurrent metadata invalidation can remove another table's metadata <span class="author">@platinumhamburg</span> <span class="labels">component=client</span></li><li><a href="https://github.com/apache/fluss/issues/5140">#5140</a> [test] Unstable test TieringSourceEnumeratorTest.testTableValidationFailureDoesNotAssignSplits <span class="author">@app/github-actions</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/5173">#5173</a> [server] Preserve metadata identity across table recreation <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/pull/5170">#5170</a> [rust] Queue a split Arrow batch whole or not at all <span class="author">@ump45nose</span> </li><li><a href="https://github.com/apache/fluss/pull/5169">#5169</a> chore: run fluss-cpp Rust unit tests in CI <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/5167">#5167</a> [rust] Retry writes rejected with SchemaNotExist <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/5165">#5165</a> [client] Expose where to resume a scan after a log decode error <span class="author">@SteNicholas</span> </li><li><a href="https://github.com/apache/fluss/pull/5164">#5164</a> [client] Capture reusable UnionRead boundaries <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/pull/5163">#5163</a> [client] Fix silent data loss on the write path when dynamic batch size shrinks <span class="author">@weizuo93</span> </li><li><a href="https://github.com/apache/fluss/pull/5162">#5162</a> [rust] Add bounded deduplicate PK UnionRead execution <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/pull/5161">#5161</a> [rust] Add bounded append UnionRead execution <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/pull/5160">#5160</a> [rust] Add a Paimon lake source for UnionRead <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/pull/5159">#5159</a> [rust] Add budgeted deduplicate current-view reconciliation <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/pull/5158">#5158</a> [rust] Add lake source contracts and UnionRead planning <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/pull/5150">#5150</a> [docs] Clarify API extension compatibility guidelines <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/pull/5147">#5147</a> [kafka] Reduce allocations in Kafka Produce <span class="author">@gyang94</span> </li><li><a href="https://github.com/apache/fluss/pull/5145">#5145</a> [client] Request missing parent metadata with partitions <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/pull/5143">#5143</a> [common] Use a single pass to detect duplicate schema field names <span class="author">@fxbing</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/5148">#5148</a> [test] test can fail when database creation, bucket startup, or cleanup is still in progress <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/issues/5123">#5123</a> [Improvement] Confine rebalance timeout handling to the coordinator event thread <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/issues/5113">#5113</a> [rust] Validate Arrow row counts against log batch headers <span class="author">@spoon-lz</span> </li><li><a href="https://github.com/apache/fluss/issues/5111">#5111</a> [rust] Unify Arrow decoding with a precomputed decode plan <span class="author">@spoon-lz</span> </li><li><a href="https://github.com/apache/fluss/issues/5087">#5087</a> [rust] Reject Arrow batches containing rows from different partitions <span class="author">@slfan1989</span> </li><li><a href="https://github.com/apache/fluss/issues/5081">#5081</a> [Trino] Remove mocked Admin and mockito in tests <span class="author">@yangshangqing95</span> </li><li><a href="https://github.com/apache/fluss/issues/5057">#5057</a> [rust] Reject zero lookup queue size and max inflight requests <span class="author">@slfan1989</span> </li><li><a href="https://github.com/apache/fluss/issues/4886">#4886</a> [rust] Add reusable UnionRead source boundaries <span class="author">@naivedogger</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/5149">#5149</a> [test] Wait for async setup and replica readiness before scans <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/pull/5139">#5139</a> [Trino] Remove mock in trino tests <span class="author">@yangshangqing95</span> </li><li><a href="https://github.com/apache/fluss/pull/5124">#5124</a> [server] Confine rebalance timeout checks to event thread <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/pull/5114">#5114</a> [rust] Validate Arrow row counts against log batch headers <span class="author">@spoon-lz</span> </li><li><a href="https://github.com/apache/fluss/pull/5112">#5112</a> [rust] Unify Arrow decoding with a precomputed decode plan <span class="author">@spoon-lz</span> </li><li><a href="https://github.com/apache/fluss/pull/5090">#5090</a> [rust] Route Arrow batch rows to their partitions <span class="author">@slfan1989</span> </li><li><a href="https://github.com/apache/fluss/pull/5058">#5058</a> [rust] Reject zero lookup queue size and max inflight requests <span class="author">@slfan1989</span> </li><li><a href="https://github.com/apache/fluss/pull/4887">#4887</a> [rust] Add reusable UnionRead source boundaries <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/pull/3337">#3337</a> [server] Add HLL sketch aggregation merge function <span class="author">@rahulbsw</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
