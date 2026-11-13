@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fluss 社区周报 | 2026-W45</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Fluss 社区周报 | 2026-W45</h1>
+            <p class="date-range">2026-11-02 ~ 2026-11-08</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (0)</h2>
+            <p class="empty">本周无公告</p>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (2)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/hmzop24qv3nq73l81yffdx4vqk3gs4zx">FIP-36: Support Variant Type and Shredding</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/dj2kdzl1pmy43qsos0nh08yyklsqj1lh">[CANCEL] FIP-38: Global Secondary Index</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (8)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/tdxbzz1jk0z1vr55w882m8qnb6720f38">FIP-31: Introduce Deletion Vectors to accelerate Primary Key Table Union Read over Iceberg</a></h3>
+            <p class="meta">6 条回复 · 4 位参与者</p>
+            <p class="summary">讨论聚焦 FIP-31/FIP-47 中通过删除向量加速主键表 union read 的共享架构，重点解决位置索引、DV 状态恢复、提交防护和生命周期问题。Anton 整合了设计文档与实现，并给出 Iceberg/Paimon 的测试数据；社区逐步收敛到基于主键索引、可重建 mask 和异步维护的方向。</p>
+            <div class="key-points"><p><strong>@Anton Borisov:</strong> 整合派生 DV 设计并更新实现，覆盖提交恢复、tablet 重建、Paimon 方案和评测，提议围绕 PK/RowId、派生 mask、异步维护等关键选择达成一致。</p>
+<p><strong>@yuxia:</strong> 支持使用主键而非 RowId 建立位置索引，避免引入系统列；认为 DV/mask 可作为可重建缓存，初期无需独立 checkpoint，并倾向用 pinned cuts 简化协议。</p>
+<p><strong>@Nicholas Jiang:</strong> 支持 PK 索引、可重建 mask、异步维护和单次 lake commit 原子提交，但要求明确查询进度契约、Paimon fencing 风险，并对 pinned cuts 与 PendingDeletes 方案进行量化评估。</p></div>
+            <p class="conclusion">初步共识是采用主键位置索引、无独立 DV checkpoint、可重建 mask 和异步维护，并以原子 lake commit 与 pinned cuts 作为主要方向；下一步需明确协议细节、测量读取等待和写放大、评估 RocksDB 存储 PendingDeletes，并补充 Paimon 日志保留与 fencing 限制。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/lfmokn1j2g1582921w9f88kbqmybbypb">Leftover Incubator dist directories for Fluss</a></h3>
+            <p class="meta">3 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕 Fluss 在 Apache Incubator dist 区域遗留目录导致 Clutch 页面提示的问题。社区确认当前版本已位于顶级 release/fluss 目录，旧版本可通过 archive.apache.org 获取，因此应删除遗留 incubator 目录并更新下载页。Jark 已提交并合并 PR 移除下载页中的 incubator 链接，随后完成了 SVN 目录清理。</p>
+            <div class="key-points"><p><strong>@Rich Bowen:</strong> 指出 Fluss 仍残留 incubator dist 目录，建议先检查下载页链接，并由 PMC 成员通过 svn rm 删除这些遗留目录。</p>
+<p><strong>@Jark Wu:</strong> 提交 PR #5122 修复下载页，移除指向 incubator 路径的链接，并在合并后执行清理命令。</p>
+<p><strong>@Jark Wu:</strong> 确认下载页已修复，且 Fluss incubator SVN 仓库中的遗留目录已被清理。</p></div>
+            <p class="conclusion">问题已处理完成：下载页已移除 incubator 路径，遗留的 incubator dist 目录也已删除。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/mootp9n5c73fxybog287y2cpf9gx2o39">Add a $stream suffix for Fluss-only reads on lake-enabled tables</a></h3>
+            <p class="meta">3 条回复 · 4 位参与者</p>
+            <p class="summary">讨论为 lake-enabled 表新增 $stream 后缀，用于直接读取 Fluss 侧数据，与现有基础表 union read 和 $lake 查询形成互补。多数参与者认可该命名和用途，尤其在 KV TTL 场景下便于排查 Fluss 侧可见数据。</p>
+            <div class="key-points"><p><strong>@Hongshun Wang:</strong> 提议新增 $stream，保持基表 schema，用于查询 Fluss 自身仍可服务的数据，并与 $changelog/$binlog 的变更事件查询场景区分开。</p>
+<p><strong>@Jark Wu:</strong> 支持 $stream 命名，认为 $lake 表示历史层，$stream 表示实时层，LakeStream 作为统一视图，语义直观。</p>
+<p><strong>@Zhe Wang:</strong> 支持提议，但指出主键点查可能下推为 Fluss lookup，需要澄清示例是否真实走 union-scan；并建议考虑未启用 lake 的表也支持 $stream。</p></div>
+            <p class="conclusion">社区初步倾向采用 $stream 后缀；下一步需要澄清基础表点查与 union-scan 的语义，并讨论是否将该后缀扩展到非 lake-enabled 表。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/s4nddgrtzxv6v1fly37yog6lk91f8p6o">FIP-61: Snapshot-Based Bulk Loading for Primary Key Tables</a></h3>
+            <p class="meta">3 条回复 · 3 位参与者</p>
+            <p class="summary">社区围绕 FIP-61 展开讨论，提案为主键表引入基于 RocksDB 快照的 BulkLoad，绕过逐条写入路径以提升大批量导入效率。讨论重点集中在恢复完成语义、WAL 恢复偏移保护以及 lake-enabled 表兼容性。作者已回应将澄清相关语义并补充 WAL 保留规则，整体方向获得支持。</p>
+            <div class="key-points"><p><strong>@Yang Wang:</strong> 提出 FIP-61：在 TabletServer 外构建 RocksDB 快照并导入主键表，支持独立 bucket 提交、异步恢复，不保证跨 bucket 原子可见性。</p>
+<p><strong>@Nicholas Jiang:</strong> 支持将 BulkLoad 协议从 FIP-25 拆出，并提出恢复完成可观察性、WAL 恢复偏移保护和 lake-enabled 表状态对齐三个问题。</p>
+<p><strong>@Jark Wu:</strong> 认可当前提案方向，认为 FIP-61 按现有设计可行。</p></div>
+            <p class="conclusion">初步共识是继续推进 FIP-61；Yang Wang 计划澄清 COMMITTED 不承诺立即恢复可见、暂不新增恢复等待 API，并明确统一 recovery snapshot 的 WAL 保留规则。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/jh4519cff5wss9m0kp6gr6v77o8zgzxw">FIP-59 Kafka Idempotent Produce</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕 FIP-59 的 Kafka 幂等写入方案展开，重点是采用 Option A 并优化 V3 batch header、序列编号和滚动升级兼容性。目前方案已根据评审意见更新，Option A 成为主提案，并补充了公共接口与兼容性说明。</p>
+            <div class="key-points"><p><strong>@Jark Wu:</strong> 支持 Option A，建议保留 writerEpoch、将 batchSequence 作为 baseSequence，并复用 lastOffsetDelta 推导 lastSequence，同时用 attributes 位区分按 batch 和按 record 的序列编号模式。</p>
+<p><strong>@Jark Wu:</strong> 要求 FIP 明确协议与 batch 格式变更、公共客户端 API 影响，以及新旧客户端和服务端在滚动升级中的互操作行为。</p>
+<p><strong>@Dionysis Stolis:</strong> 已更新 FIP，将 Option B 和单独 lastSequenceDelta 字段移至被拒替代方案，并补充格式、RPC、错误码、Kafka 协议变更及兼容性处理说明。</p></div>
+            <p class="conclusion">初步共识是采用 Option A 并按建议完善文档；FIP 已更新，下一步等待确认是否仍有遗漏。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/b7ncx88vx3s0cgg5bh7q66sn8l5pjyvv">FIP-25: Support In-Place Promotion of Existing Paimon Tables to Datalake-Enabled Fluss Tables</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">讨论聚焦 FIP-25 将现有 Paimon 表原地提升为 datalake-enabled Fluss 表，并更新了 Bulk Load 的职责边界、写入隔离和多分区事务提交机制。为避免阻塞主流程，Bulk Load 被拆分为独立的 FIP-61 讨论，FIP-25 继续专注表提升设计。</p>
+            <div class="key-points"><p><strong>@yuxia:</strong> Bulk Load 限定为尚未开放普通读写的新目标，四个 RPC 由 Coordinator 处理，调用方负责隔离读写；同时支持一个事务提交同表多个分区，并在各分区 bucket leader 恢复快照后提交成功。</p>
+<p><strong>@Yang Wang:</strong> BulkLoad 已拆分为 FIP-61 单独讨论，FIP-25 聚焦 schema 映射、复用 Paimon 表和历史数据、提升接口与工作流，KV 初始化引用 FIP-61 的 BulkLoad。</p>
+<p><strong>@Jark Wu:</strong> 认可将 BulkLoad 拆分后的 FIP-25 方案，认为其已较成熟，并支持启动 FIP-25 投票。</p></div>
+            <p class="conclusion">初步结论是将 BulkLoad 协议移至 FIP-61 单独评审，FIP-25 聚焦原地提升设计并进入投票推进阶段。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/fosyrl9fj7r2op0nx8jj4010077f9b44">FIP-38: Global Secondary Index</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">邮件围绕 FIP-38 全局二级索引设计展开，重点讨论 DDL 入口统一、索引 bucket 配置以及主表到索引表的复制方式。作者根据 Jark Wu 的反馈更新了方案，采用 Schema 作为索引定义的权威来源，并将复制模式从 pull 改为 push，同时补充了幂等性和进度恢复机制。</p>
+            <div class="key-points"><p><strong>@Jark Wu:</strong> 建议避免 DDL 双入口，Java API 使用 Schema 定义索引，SQL connector 使用按索引命名的属性，并重新考虑 push 复制模式。</p>
+<p><strong>@pl:</strong> 已采纳 Schema 统一入口：Java API 通过 Schema.index(...) 声明索引，Flink SQL 使用 secondary-index.<name>.* 选项并转换为 Schema 定义。</p>
+<p><strong>@pl:</strong> 改用 push-based 复制：主表 bucket leader 消费已提交 WAL，并通过 PutIndex RPC 推送索引变更，同时通过 per-source-bucket PROGRESS 保证幂等和故障恢复。</p></div>
+            <p class="conclusion">初步结论是采用 Schema 作为索引定义权威来源，并使用 push 模式进行索引复制；后续仍需完善分区清理、故障恢复细节以及 Spark 集成等工作。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/yn02hfdbby62kkkxlg5l9ts2gl5dzhgp">FIP-48: Introduce a Union Read Kernel for fluss-rust</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">本次讨论围绕 FIP-48 为 fluss-rust 引入 Union Read Kernel 的设计更新展开。Jim Hu 表示已根据近期实现评审完善提案，补充了 Java 侧边界捕获、Java/Rust 共享边界契约、原生 reader 扩展点等内容，并澄清 PK baseline 选择及未来流式读取方向。目前提案已更新并征求社区反馈。</p>
+            <div class="key-points"><p><strong>@Jim Hu:</strong> 已更新 FIP-48，新增 Java 侧边界捕获、Java/Rust 共享边界契约以及 native readers 扩展点，以支持引擎集成。</p>
+<p><strong>@Jim Hu:</strong> 进一步澄清了 PK baseline selection，并补充了关于未来 streaming reads 的说明。</p>
+<p><strong>@Anton:</strong> 在前期评审中指出原提案存在缺口，推动了本次设计更新。</p></div>
+            <p class="conclusion">FIP-48 设计已根据评审意见更新，下一步是邀请社区对更新后的方案继续反馈。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (0)</h2>
+            
+    <p>本周新建 <strong>0</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周无新建 JIRA。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Fluss Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
