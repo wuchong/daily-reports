@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-11-12</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-11-12</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 16 新 Issues</div>
+            <div class="stat">✅ 10 关闭</div>
+            <div class="stat">✨ 13 新 PRs</div>
+            <div class="stat">🎉 15 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/5196">PR #5196</a> [Trino] Temporarily isolate test table paths to unblock CI</li><li>🎉 <a href="https://github.com/apache/fluss/pull/5191">PR #5191</a> [build] Run the remaining ubuntu-latest PR jobs on arm64</li><li>🎉 <a href="https://github.com/apache/fluss/pull/5169">PR #5169</a> chore: run fluss-cpp Rust unit tests in CI</li><li>🎉 <a href="https://github.com/apache/fluss/pull/5167">PR #5167</a> [rust] Retry writes rejected with SchemaNotExist</li><li>🎉 <a href="https://github.com/apache/fluss/pull/5150">PR #5150</a> [docs] Clarify API extension compatibility guidelines</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5104">Issue #5104</a> [server] Avoid ZK reads on partition metadata cache hits</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: @SteNicholas Thanks for revising the PR and addressing the earlier feedback. The cache invalidation…</li><li><span class="author">@SteNicholas</span>: @platinumhamburg Thanks for the review and for reproducing the ordering. **`metadata_version`:** yo…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5115">Issue #5115</a> [flink] Skip updates to non-projected columns</h4>
+            <ul><li><span class="author">@loserwang1024</span>: @leonardBang , I have modified it.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5121">Issue #5121</a> [server] Add KLL double sketch aggregation merge function</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: Thanks, @rahulbsw! HLL (#3337) has now been merged. Could you rebase this PR onto the latest `main`…</li><li><span class="author">@rahulbsw</span>: I checked the Trino failure. The same two tests also fail on main: https://github.com/apache/fluss/…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5165">Issue #5165</a> [client] Expose where to resume a scan after a log decode error</h4>
+            <ul><li><span class="author">@SteNicholas</span>: Ping @fresh-borzoni.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5163">Issue #5163</a> [client] Fix silent data loss on the write path when dynamic batch size shrinks</h4>
+            <ul><li><span class="author">@luoyuxia</span>: @loserwang1024</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4985">Issue #4985</a> [test] Unstable test RebalanceITCase.testRebalanceForLogTable</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: https://github.com/apache/fluss/actions/runs/43129135484/job/130888628490 ``` [ERROR] org.apache.fl…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5125">Issue #5125</a> [server] Support table-level minimum in-sync replicas</h4>
+            <ul><li><span class="author">@litiliu</span>: @platinumhamburg Thanks very much for the further clarification and for taking the time to review t…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5050">Issue #5050</a> [rust] Fail over lookups when the leader's tablet server is down</h4>
+            <ul><li><span class="author">@SteNicholas</span>: @fresh-borzoni, thanks for detailed review. I have addressed above comments. PTAL.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4215">Issue #4215</a> [Gateway] DECIMAL decoder rejects exponent notation</h4>
+            <ul><li><span class="author">@naivedogger</span>: Thanks @fresh-borzoni for the review! Updated the PR to share the sign, mantissa and exponent parse…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5030">Issue #5030</a> [rust] Add persisted KV snapshot reader</h4>
+            <ul><li><span class="author">@naivedogger</span>: Thanks @fresh-borzoni for the review! Updated the PR to enable `kv-snapshot` in the build, unit and…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4887">Issue #4887</a> [rust] Add reusable UnionRead source boundaries</h4>
+            <ul><li><span class="author">@wuchong</span>: Hi @fresh-borzoni , @naivedogger , `FlussApi.proto` now defines `PbUnionReadContext` and the relate…</li><li><span class="author">@naivedogger</span>: @wuchong Yes, that’s the intended use case. There’s no planned Fluss client–server RPC use.；@fresh-…</li><li><span class="author">@fresh-borzoni</span>: @wuchong yes, I asked for protobuf, so Java and Rust generate the same message from what they alrea…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4921">Issue #4921</a> [rust] Decode only selected columns in remote Arrow logs</h4>
+            <ul><li><span class="author">@loserwang1024</span>: @spoon-lz when skip crc, we can projection when loading batch from file (See : https://github.com/a…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/5080">Issue #5080</a> [flink] Plan lake files per reader instead of shipping them in hybrid splits</h4>
+            <ul><li><span class="author">@polyzos</span>: Additional evidence from a full-start test of two delta joins reading lake-enabled primary-key tabl…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5174">Issue #5174</a> [kv] Support distinct elements in last_n aggregation</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: Hi @fresh-borzoni and @polyzos, could you help review this PR? It adds optional `last_n(distinct)`,…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4858">Issue #4858</a> [rust] Share KV value decoding between lookup and batch scanner</h4>
+            <ul><li><span class="author">@ump45nose</span>: @fresh-borzoni #5167 has been merged, so I rebased this branch onto current `main` (including f1fd8…</li><li><span class="author">@fresh-borzoni</span>: @ump45nose merging...</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4877">Issue #4877</a> [c++] Add poll-based async lookups</h4>
+            <ul><li><span class="author">@pbanakar</span>: Hi @fresh-borzoni thanks for follow up review, adressed additional comments, PTAL</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5090">Issue #5090</a> [rust] Route Arrow batch rows to their partitions</h4>
+            <ul><li><span class="author">@slfan1989</span>: > @slfan1989 Thank you, lgtm 👍 Thanks for reviewing and merging this pr, @fresh-borzoni!</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5073">Issue #5073</a> [server] Add ACL support for consumer groups</h4>
+            <ul><li><span class="author">@wuchong</span>: Please fix the test coverage: `[WARNING] Rule violated for class org.apache.fluss.security.acl.Reso…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/5193">Issue #5193</a> [test] FlussSplitManagerTest intermittently fails waiting for tablet server table metadata</h4>
+            <ul><li><span class="author">@yangshangqing95</span>: Thanks @wuchong I'll check ASAP</li><li><span class="author">@wuchong</span>: Fixed in https://github.com/apache/fluss/pull/5196</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/1767">Issue #1767</a> Can the Fluss cluster change the datalake configuration from the cluster level to the table level?</h4>
+            <ul><li><span class="author">@dhama-shashank-meesho</span>: We're also very interested in this feature, since table-level format selection is important for our…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5196">Issue #5196</a> [Trino] Temporarily isolate test table paths to unblock CI</h4>
+            <ul><li><span class="author">@yangshangqing95</span>: @wuchong thanks, the deletion race has been verified in #5197 and am working on a proper fix.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5158">Issue #5158</a> [rust] Add lake source contracts and UnionRead planning</h4>
+            <ul><li><span class="author">@naivedogger</span>: cc @fresh-borzoni @beryllw, this PR adds UnionRead planning and lake source contracts for FIP-48. W…</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4271">PR #4271</a> [rust] Return TableNotExist for missing tables</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: can we call `fetch_table_id` only when `update_table_metadata` fails with `UnknownServerError`? rig…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4877">PR #4877</a> [c++] Add poll-based async lookups</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: looks like it's still the same docs now say validation happens at submission time；I tried the new t…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5030">PR #5030</a> [rust] Add persisted KV snapshot reader</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: CI builds and tests without kv-snapshot, so this code and its tests never compile there can we add……</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4817">PR #4817</a> [rpc] Reduce Netty shutdown latency and fix lifecycle races</h4>
+            <ul><li><span class="author">@swuferhong</span>: Hi, @polyzos Agreed that the global lock serializes these operations and only provides process-loca…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5163">PR #5163</a> [client] Fix silent data loss on the write path when dynamic batch size shrinks</h4>
+            <ul><li><span class="author">@luoyuxia</span>: Optional edge-case improvement: could we cap the estimator's minimum at `maxBatchSize`, while keepi…</li><li><span class="author">@weizuo93</span>: Done</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5104">PR #5104</a> [server] Avoid ZK reads on partition metadata cache hits</h4>
+            <ul><li><span class="author">@SteNicholas</span>: Thanks for the detailed reproduction. Addressed in a2f0cddfb, without a global version: - **Your or…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5121">PR #5121</a> [server] Add KLL double sketch aggregation merge function</h4>
+            <ul><li><span class="author">@rahulbsw</span>: Addressed in 8553d1b45. Removed the additional hll_union query that referenced undefined other_user…</li><li><span class="author">@platinumhamburg</span>: The input sketch is only read during the merge. Could we use `KllDoublesSketch.wrap(...)` here and……</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5050">PR #5050</a> [rust] Fail over lookups when the leader's tablet server is down</h4>
+            <ul><li><span class="author">@SteNicholas</span>: It fails with `TableNotExist`, whether or not its leader is still cached: - Leader cached: the serv…</li><li><span class="author">@fresh-borzoni</span>: okay, filed #5190, thank you 👍</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5073">PR #5073</a> [server] Add ACL support for consumer groups</h4>
+            <ul><li><span class="author">@pisceslj</span>: Done. Group is now modeled as a Cluster-scoped resource alongside Database. Cluster grants apply to…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5118">PR #5118</a> [rust] Reject duplicate scan projections</h4>
+            <ul><li><span class="author">@spoon-lz</span>: Thanks, updated project_by_name() to report the duplicate column name and added regression coverage…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5138">PR #5138</a> [server] Implement consumer offset fetches</h4>
+            <ul><li><span class="author">@pisceslj</span>: Done；Thanks for catching this. I’ve added a non-retriable InvalidRequestException and mapped it to…</li><li><span class="author">@wuchong</span>: We should cache this in ConsumerGroupManager. I'm sorry, I think the previous implementation of `ge…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5115">PR #5115</a> [flink] Skip updates to non-projected columns</h4>
+            <ul><li><span class="author">@leonardBang</span>: The flag `hasPrimaryKey` confuse me a little, could you give another meaningful word here?</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5007">PR #5007</a> [flink] Add embedded-Flink tiering service image and Helm chart</h4>
+            <ul><li><span class="author">@JandyTenedora</span>: Have removed 👍 , had it there to mark an experimental state (with the ongoing design decisions) but…</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/5198">#5198</a> [Umbrella][rust] Consumer offset management and language bindings <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/issues/5194">#5194</a> [lake/iceberg] PK Tables with WAL changelog image keep stale rows in Iceberg <span class="author">@wattt3</span> </li><li><a href="https://github.com/apache/fluss/issues/5193">#5193</a> [test] FlussSplitManagerTest intermittently fails waiting for tablet server table metadata <span class="author">@wuchong</span> <span class="labels">priority=blocker</span></li><li><a href="https://github.com/apache/fluss/issues/5190">#5190</a> Last ISR replica loses acknowledged rows after a TabletServer crash <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5189">#5189</a> [rust] Read only selected Arrow buffers from remote log files <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5188">#5188</a> [rust] Log scanner doesn't check batch CRCs <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5187">#5187</a> [server] Add a cluster feature gate to enable V3 log record batches <span class="author">@dstolis</span> </li><li><a href="https://github.com/apache/fluss/issues/5185">#5185</a> [rust] Integration tests don't check write results <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5183">#5183</a> [server] Expose per-TabletServer software versions in Admin.describeCluster() <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/issues/5181">#5181</a> [kv] Optimize distinct array aggregations <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/5180">#5180</a> [flink] Report pendingRecords for KV snapshot and lake splits <span class="author">@polyzos</span> </li><li><a href="https://github.com/apache/fluss/issues/5177">#5177</a> [spark] Spark UT fails to compile on Windows <span class="author">@ChengbingLiu</span> </li><li><a href="https://github.com/apache/fluss/issues/5172">#5172</a> [kv] Support distinct elements in last_n aggregation <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/5171">#5171</a> [server] Delayed deletion updates can remove metadata for a recreated table or partition <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/issues/5168">#5168</a> [rust] append_arrow_batch can return an error after queuing part of the batch <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5166">#5166</a> [rust] Writer doesn't retry SchemaNotExist <span class="author">@fresh-borzoni</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/5197">#5197</a> [DRAFT][tests] Reproduce stale table metadata deletion <span class="author">@yangshangqing95</span> </li><li><a href="https://github.com/apache/fluss/pull/5195">#5195</a> [lake/iceberg] Delete stale rows of WAL changelog tables on upsert <span class="author">@wattt3</span> </li><li><a href="https://github.com/apache/fluss/pull/5192">#5192</a> [rust] Check CRCs of fetched log batches <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/5186">#5186</a> [rust] Check write results in integration tests <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/5184">#5184</a> [server] Report TabletServer software versions in describeCluster <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/pull/5182">#5182</a> [kv] Optimize distinct last_n aggregation <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/5179">#5179</a> [spark] Fix Spark UT compilation on Windows <span class="author">@ChengbingLiu</span> </li><li><a href="https://github.com/apache/fluss/pull/5178">#5178</a> [trino] Add HLL and KLL sketch SQL functions <span class="author">@rahulbsw</span> </li><li><a href="https://github.com/apache/fluss/pull/5176">#5176</a> [spark] Add HLL and KLL sketch SQL helpers <span class="author">@rahulbsw</span> </li><li><a href="https://github.com/apache/fluss/pull/5175">#5175</a> [flink] Add HLL and KLL sketch SQL functions <span class="author">@rahulbsw</span> </li><li><a href="https://github.com/apache/fluss/pull/5174">#5174</a> [kv] Support distinct elements in last_n aggregation <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/5173">#5173</a> [server] Preserve metadata identity across table recreation <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/pull/5170">#5170</a> [rust] Queue a split Arrow batch whole or not at all <span class="author">@ump45nose</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/5193">#5193</a> [test] FlussSplitManagerTest intermittently fails waiting for tablet server table metadata <span class="author">@wuchong</span> <span class="labels">priority=blocker</span></li><li><a href="https://github.com/apache/fluss/issues/5166">#5166</a> [rust] Writer doesn't retry SchemaNotExist <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5148">#5148</a> [test] test can fail when database creation, bucket startup, or cleanup is still in progress <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/issues/5137">#5137</a> [server] Implement consumer offset fetches <span class="author">@pisceslj</span> </li><li><a href="https://github.com/apache/fluss/issues/5117">#5117</a> [rust] Reject duplicate scan projections <span class="author">@spoon-lz</span> </li><li><a href="https://github.com/apache/fluss/issues/5087">#5087</a> [rust] Reject Arrow batches containing rows from different partitions <span class="author">@slfan1989</span> </li><li><a href="https://github.com/apache/fluss/issues/5081">#5081</a> [Trino] Remove mocked Admin and mockito in tests <span class="author">@yangshangqing95</span> </li><li><a href="https://github.com/apache/fluss/issues/5029">#5029</a> [rust] Add a reader for specified persisted KV snapshots <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/issues/5022">#5022</a> [rust] Lookups don't fail over when the leader's tablet server is down <span class="author">@SteNicholas</span> </li><li><a href="https://github.com/apache/fluss/issues/4214">#4214</a> [Gateway] DECIMAL decoder rejects exponent notation <span class="author">@naivedogger</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/5196">#5196</a> [Trino] Temporarily isolate test table paths to unblock CI <span class="author">@yangshangqing95</span> </li><li><a href="https://github.com/apache/fluss/pull/5191">#5191</a> [build] Run the remaining ubuntu-latest PR jobs on arm64 <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/5169">#5169</a> chore: run fluss-cpp Rust unit tests in CI <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/5167">#5167</a> [rust] Retry writes rejected with SchemaNotExist <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/pull/5150">#5150</a> [docs] Clarify API extension compatibility guidelines <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/pull/5149">#5149</a> [test] Wait for async setup and replica readiness before scans <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/pull/5139">#5139</a> [Trino] Remove mock in trino tests <span class="author">@yangshangqing95</span> </li><li><a href="https://github.com/apache/fluss/pull/5138">#5138</a> [server] Implement consumer offset fetches <span class="author">@pisceslj</span> </li><li><a href="https://github.com/apache/fluss/pull/5118">#5118</a> [rust] Reject duplicate scan projections <span class="author">@spoon-lz</span> </li><li><a href="https://github.com/apache/fluss/pull/5090">#5090</a> [rust] Route Arrow batch rows to their partitions <span class="author">@slfan1989</span> </li><li><a href="https://github.com/apache/fluss/pull/5050">#5050</a> [rust] Fail over lookups when the leader's tablet server is down <span class="author">@SteNicholas</span> </li><li><a href="https://github.com/apache/fluss/pull/5030">#5030</a> [rust] Add persisted KV snapshot reader <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/pull/4858">#4858</a> [rust] Share KV value decoding between lookup and batch scanner <span class="author">@ump45nose</span> </li><li><a href="https://github.com/apache/fluss/pull/4215">#4215</a> [Gateway] DECIMAL decoder rejects exponent notation <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/pull/3337">#3337</a> [server] Add HLL sketch aggregation merge function <span class="author">@rahulbsw</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
