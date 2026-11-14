@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-11-13</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-11-13</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 16 新 Issues</div>
+            <div class="stat">✅ 8 关闭</div>
+            <div class="stat">✨ 14 新 PRs</div>
+            <div class="stat">🎉 8 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/5219">PR #5219</a> [server] Filter all-offset responses by table describe permission</li><li>🎉 <a href="https://github.com/apache/fluss/pull/5205">PR #5205</a> [c++] Fix callback completion test race</li><li>🎉 <a href="https://github.com/apache/fluss/pull/5196">PR #5196</a> [Trino] Temporarily isolate test table paths to unblock CI</li><li>🎉 <a href="https://github.com/apache/fluss/pull/5163">PR #5163</a> [client] Fix silent data loss on the write path when dynamic batch size shrinks</li><li>🎉 <a href="https://github.com/apache/fluss/pull/5138">PR #5138</a> [server] Implement consumer offset fetches</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4608">Issue #4608</a> FIP-53: Log Scanner Offset（Consumer Offsets）Management</h4>
+            <ul><li><span class="author">@pisceslj</span>: ### Subtasks - [x] **[4625 [server] Add consumer offset table foundations](https://github.com/apach…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4887">Issue #4887</a> [rust] Add reusable UnionRead source boundaries</h4>
+            <ul><li><span class="author">@wuchong</span>: Thanks @naivedogger @fresh-borzoni for the explanation. I think this looks good.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/5193">Issue #5193</a> [test] FlussSplitManagerTest intermittently fails waiting for tablet server table metadata</h4>
+            <ul><li><span class="author">@wuchong</span>: Fixed in https://github.com/apache/fluss/pull/5196</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5196">Issue #5196</a> [Trino] Temporarily isolate test table paths to unblock CI</h4>
+            <ul><li><span class="author">@yangshangqing95</span>: @wuchong thanks, the deletion race has been verified in #5197 and am working on a proper fix.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5158">Issue #5158</a> [rust] Add lake source contracts and UnionRead planning</h4>
+            <ul><li><span class="author">@naivedogger</span>: cc @fresh-borzoni @beryllw, this PR adds UnionRead planning and lake source contracts for FIP-48. W…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5201">Issue #5201</a> [rust] Add explicit consumer offset commits and restore</h4>
+            <ul><li><span class="author">@naivedogger</span>: @fresh-borzoni @pisceslj PTAL, thanks!</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/5199">Issue #5199</a> [spark] PK incremental reads fail when retention removes planned offsets</h4>
+            <ul><li><span class="author">@litiliu</span>: I'm working on this</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5205">Issue #5205</a> [c++] Fix callback completion test race</h4>
+            <ul><li><span class="author">@naivedogger</span>: cc @fresh-borzoni, this fixes a flaky callback test exposed by the newly enabled CI step. Would app…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5164">Issue #5164</a> [client] Capture bounded UnionRead boundaries</h4>
+            <ul><li><span class="author">@naivedogger</span>: cc @fresh-borzoni @beryllw, this adds Java-side boundary capture for bounded UnionRead, building on…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4322">Issue #4322</a> [test] Remove redundant merge-engine alter test from AlterBucketNumTest</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: This PR has been marked as stale because it has had no activity for 60 days. It will be closed in 1…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4321">Issue #4321</a> [flink] fix orphan scan rate limit</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: This PR has been marked as stale because it has had no activity for 60 days. It will be closed in 1…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4317">Issue #4317</a> [flink] preserve orphan cleanup job filesystem configuration</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: This PR has been marked as stale because it has had no activity for 60 days. It will be closed in 1…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4311">Issue #4311</a> [flink] Resolve per-partition bucket count in sink bucket shuffle</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: This PR has been marked as stale because it has had no activity for 60 days. It will be closed in 1…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4235">Issue #4235</a> [test] Fix flaky testUnionReadWithCustomLakeTablePath test</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: This PR was closed because it has been stale for 10 days with no activity.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4203">Issue #4203</a> [lake] Fail fast when a lake plugin is shadowed by a jar in lib</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: This PR was closed because it has been stale for 10 days with no activity.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4190">Issue #4190</a> [rpc] Validate config entries consistently in FlussProtocolPlugin</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: This PR was closed because it has been stale for 10 days with no activity.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4183">Issue #4183</a> [client] Add support of column value compression</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: This PR was closed because it has been stale for 10 days with no activity.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4178">Issue #4178</a> [server] Preserve resolved historical write probes</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: This PR was closed because it has been stale for 10 days with no activity.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4155">Issue #4155</a> [test] Fix flaky mixedOrphanAndActiveFilesInSameBucket test</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: This PR was closed because it has been stale for 10 days with no activity.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4100">Issue #4100</a> [docs] Align Flink add_acl procedure docs with the implementation</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: This PR was closed because it has been stale for 10 days with no activity.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4079">Issue #4079</a> [client] Fix flaky testKvSnapshotLeaseAfterCoordinatorServerRestart</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: This PR was closed because it has been stale for 10 days with no activity.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4076">Issue #4076</a> [hotfix][docs] Fix typos in JavaDoc and comments</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: This PR was closed because it has been stale for 10 days with no activity.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4068">Issue #4068</a> [rust] Add property overlays for rust client Config</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: This PR was closed because it has been stale for 10 days with no activity.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4058">Issue #4058</a> [kv] Improve point lookup concurrency with writes</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: This PR was closed because it has been stale for 10 days with no activity.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4041">Issue #4041</a> [server] Fix race condition in table/partition deletion ordering</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: This PR was closed because it has been stale for 10 days with no activity.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4023">Issue #4023</a> [test] Isolate replica test metric groups</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: This PR was closed because it has been stale for 10 days with no activity.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4004">Issue #4004</a> Fluss vector datatype POC</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: This PR was closed because it has been stale for 10 days with no activity.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3984">Issue #3984</a> [filesystem] Fix COS STS policy APPID and preserve session credentials</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: This PR was closed because it has been stale for 10 days with no activity.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3976">Issue #3976</a> Fix duplicate indexes in Flink schema adapter</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: This PR was closed because it has been stale for 10 days with no activity.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3962">Issue #3962</a> [rust] Support writing records to multiple tables</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: This PR was closed because it has been stale for 10 days with no activity.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3948">Issue #3948</a> [FLUSS-3878] Fix unstable TableChangeWatcherTest.testTableRegistrationChange</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: This PR was closed because it has been stale for 10 days with no activity.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3947">Issue #3947</a> [flink] Fix BETWEEN literal extraction in PredicateConverter</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: This PR was closed because it has been stale for 10 days with no activity.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3932">Issue #3932</a> [flink] Fix hybrid lake split recovery</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: This PR was closed because it has been stale for 10 days with no activity.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3896">Issue #3896</a> [server] Support time-based log segment rolling</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: This PR was closed because it has been stale for 10 days with no activity.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3834">Issue #3834</a> [client] feat: remote manifest v2 client</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: This PR was closed because it has been stale for 10 days with no activity.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3788">Issue #3788</a> Bump at.yawk.lz4:lz4-java from 1.10.2 to 1.11.1 in /fluss-common</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: This PR was closed because it has been stale for 10 days with no activity.</li><li><span class="author">@dependabot[bot]</span>: OK, I won't notify you again about this release, but will get in touch when a new version is availa…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5215">Issue #5215</a> [server] Skip log truncation for follower without leader</h4>
+            <ul><li><span class="author">@MaheshS08</span>: @fresh-borzoni , could you please review this?</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5192">Issue #5192</a> [rust] Check CRCs of fetched log batches</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: @naivedogger @loserwang1024 PTAL 🙏</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5073">Issue #5073</a> [server] Add ACL support for consumer groups</h4>
+            <ul><li><span class="author">@wuchong</span>: The group `DESCRIBE` check now covers both forms of `GET_CONSUMER_OFFSETS`. One table-level gap rem…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5007">Issue #5007</a> [flink] Add embedded-Flink tiering service image and Helm chart</h4>
+            <ul><li><span class="author">@JandyTenedora</span>: > The description says in-flight tiering is not killed mid-commit, but the hook cancels it held a l…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4048">Issue #4048</a> [lake/iceberg] Implement SupportsRecordBatchWrite for IcebergLakeWriter</h4>
+            <ul><li><span class="author">@mikepapadim</span>: @qzyu999 Heads-up: with this PR alone, Iceberg tables would still be tiered row by row. `TieringSpl…</li><li><span class="author">@qzyu999</span>: Hi @mikepapadim, thanks for taking a look, unfortunately this looks heavily bottlenecked by https:/…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/5226">Issue #5226</a> [lake/iceberg] Pluggable Arrow file writer for tiering append-only tables</h4>
+            <ul><li><span class="author">@mikepapadim</span>: Method, full numbers and limits for the motivation above: https://github.com/apache/fluss/discussio…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2915">Issue #2915</a> [tiering] Tiering Job Performance: Read-Write Pipeline Optimization</h4>
+            <ul><li><span class="author">@mikepapadim</span>: Some data that complements this issue, from a single-bucket profile of `TieringSplitReader` on one…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5175">Issue #5175</a> [flink] Add HLL and KLL sketch SQL functions</h4>
+            <ul><li><span class="author">@rahulbsw</span>: Added accumulator and serializer contract tests in c0d9b8177. They cover restore snapshots, copies,…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5176">Issue #5176</a> [spark] Add HLL and KLL sketch SQL helpers</h4>
+            <ul><li><span class="author">@rahulbsw</span>: Fixed the missing notices in 483743ffc. DataSketches is bundled by the 3.4 and 3.5 connector module…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5178">Issue #5178</a> [trino] Add HLL and KLL sketch SQL functions</h4>
+            <ul><li><span class="author">@rahulbsw</span>: Pulled in main, including #5196's fix for reusing table paths between tests. The full FlussSplitMan…</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5115">PR #5115</a> [flink] Skip updates to non-projected columns</h4>
+            <ul><li><span class="author">@loserwang1024</span>: fix it</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5121">PR #5121</a> [server] Add KLL double sketch aggregation merge function</h4>
+            <ul><li><span class="author">@rahulbsw</span>: Changed in a90a63480. The accumulator still uses heapify; the input now uses wrap. Added cases for……</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/5228">#5228</a> [server] Keep KV recovery and retention on the same snapshot <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/5226">#5226</a> [lake/iceberg] Pluggable Arrow file writer for tiering append-only tables <span class="author">@mikepapadim</span> </li><li><a href="https://github.com/apache/fluss/issues/5224">#5224</a> [Improvement] Reduce allocations in HLL sketch merging <span class="author">@rahulbsw</span> </li><li><a href="https://github.com/apache/fluss/issues/5222">#5222</a> [lake] Let the lake tiering factory declare record batch write support <span class="author">@mikepapadim</span> </li><li><a href="https://github.com/apache/fluss/issues/5220">#5220</a> [test] Upgrade SeaweedFS S3 test backend to 4.50 to avoid Admin port collisions <span class="author">@Jackeyzhe</span> </li><li><a href="https://github.com/apache/fluss/issues/5217">#5217</a> [helm] Configuration changes on helm upgrade do not restart Fluss pods <span class="author">@binary-signal</span> </li><li><a href="https://github.com/apache/fluss/issues/5216">#5216</a> [server] Filter consumer group offsets by source-table DESCRIBE permission <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/issues/5213">#5213</a> [client] Add consumer group owner discovery <span class="author">@pisceslj</span> </li><li><a href="https://github.com/apache/fluss/issues/5211">#5211</a> Add a $stream suffix for Fluss-only reads on lake-enabled tables <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/issues/5208">#5208</a> [flink] Lookup join drops matches when a join key filtered after the lookup is BINARY/BYTES <span class="author">@jx2lee</span> </li><li><a href="https://github.com/apache/fluss/issues/5206">#5206</a> [rust] Add log batch CRC validation <span class="author">@spoon-lz</span> </li><li><a href="https://github.com/apache/fluss/issues/5204">#5204</a> [c++] Fix flaky callback completion test <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/issues/5202">#5202</a> [server] Implement consumer group management APIs <span class="author">@pisceslj</span> </li><li><a href="https://github.com/apache/fluss/issues/5200">#5200</a> [rust] Add explicit consumer offset commits and restore <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/issues/5199">#5199</a> [spark] PK incremental reads fail when retention removes planned offsets <span class="author">@litiliu</span> </li><li><a href="https://github.com/apache/fluss/issues/5198">#5198</a> [Umbrella][rust] Consumer offset management and language bindings <span class="author">@naivedogger</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/5229">#5229</a> [server] Keep KV recovery and retention on the same snapshot <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/5225">#5225</a> [test] Fix flaky validation test in TieringSourceEnumeratorTest <span class="author">@wattt3</span> </li><li><a href="https://github.com/apache/fluss/pull/5223">#5223</a> [lake] Let the lake tiering factory declare record batch write support <span class="author">@mikepapadim</span> </li><li><a href="https://github.com/apache/fluss/pull/5221">#5221</a> [test] Upgrade SeaweedFS S3 test image to 4.50 <span class="author">@Jackeyzhe</span> </li><li><a href="https://github.com/apache/fluss/pull/5218">#5218</a> [helm] Roll servers when only configuration changes <span class="author">@binary-signal</span> </li><li><a href="https://github.com/apache/fluss/pull/5215">#5215</a> [server] Skip log truncation for follower without leader <span class="author">@MaheshS08</span> </li><li><a href="https://github.com/apache/fluss/pull/5214">#5214</a> [client] Add consumer group owner discovery <span class="author">@pisceslj</span> </li><li><a href="https://github.com/apache/fluss/pull/5212">#5212</a> [flink] Add $stream suffix for Fluss-only reads <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/pull/5210">#5210</a> [server] Complete delayed fetches after KV puts <span class="author">@pheadra</span> </li><li><a href="https://github.com/apache/fluss/pull/5209">#5209</a> [flink] Compare binary join keys by content in lookup remaining filter <span class="author">@jx2lee</span> </li><li><a href="https://github.com/apache/fluss/pull/5207">#5207</a> [rust] Add log batch CRC validation <span class="author">@spoon-lz</span> </li><li><a href="https://github.com/apache/fluss/pull/5203">#5203</a> [server] Implement consumer group management APIs <span class="author">@pisceslj</span> </li><li><a href="https://github.com/apache/fluss/pull/5201">#5201</a> [rust] Add explicit consumer offset commits and restore <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/pull/5197">#5197</a> [DRAFT][tests] Reproduce stale table metadata deletion <span class="author">@yangshangqing95</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/5216">#5216</a> [server] Filter consumer group offsets by source-table DESCRIBE permission <span class="author">@wuchong</span> </li><li><a href="https://github.com/apache/fluss/issues/5204">#5204</a> [c++] Fix flaky callback completion test <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/issues/5193">#5193</a> [test] FlussSplitManagerTest intermittently fails waiting for tablet server table metadata <span class="author">@wuchong</span> <span class="labels">priority=blocker</span></li><li><a href="https://github.com/apache/fluss/issues/5151">#5151</a> [client] Writer silently drops records when dynamic batch size shrinks below record size (data loss) <span class="author">@weizuo93</span> </li><li><a href="https://github.com/apache/fluss/issues/5137">#5137</a> [server] Implement consumer offset fetches <span class="author">@pisceslj</span> </li><li><a href="https://github.com/apache/fluss/issues/5071">#5071</a> [server] Add ACL support for consumer groups <span class="author">@pisceslj</span> </li><li><a href="https://github.com/apache/fluss/issues/3837">#3837</a> Support impersonation via SASL/PLAIN authorization id <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/issues/3095">#3095</a> [flink] Skip emitting update events when only non-projected columns are modified in source connector <span class="author">@wuchong</span> <span class="labels">component=connector/flink</span></li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/5219">#5219</a> [server] Filter all-offset responses by table describe permission <span class="author">@pisceslj</span> </li><li><a href="https://github.com/apache/fluss/pull/5205">#5205</a> [c++] Fix callback completion test race <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/pull/5196">#5196</a> [Trino] Temporarily isolate test table paths to unblock CI <span class="author">@yangshangqing95</span> </li><li><a href="https://github.com/apache/fluss/pull/5163">#5163</a> [client] Fix silent data loss on the write path when dynamic batch size shrinks <span class="author">@weizuo93</span> </li><li><a href="https://github.com/apache/fluss/pull/5138">#5138</a> [server] Implement consumer offset fetches <span class="author">@pisceslj</span> </li><li><a href="https://github.com/apache/fluss/pull/5115">#5115</a> [flink] Skip updates to non-projected columns <span class="author">@loserwang1024</span> </li><li><a href="https://github.com/apache/fluss/pull/5073">#5073</a> [server] Add ACL support for consumer groups <span class="author">@pisceslj</span> </li><li><a href="https://github.com/apache/fluss/pull/3857">#3857</a> [security] Support SASL/PLAIN proxy authorization <span class="author">@beryllw</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
