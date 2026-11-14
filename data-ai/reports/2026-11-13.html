@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data+AI 全球日报 | 2026-11-13</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Data+AI 全球日报 | 2026-11-13</h1>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="top-changes">
+            <h2>🔥 今日最重要的3个变化</h2>
+            <ol><li><strong>Amazon Redshift 支持 Apache Iceberg 多语句事务</strong> — Amazon Redshift 支持 Apache Iceberg 多语句事务，将多个 DML 合并为单个原子快照，提升湖仓写入一致性和管道可靠性。</li><li><strong>ClickHouse 推出 Loom 编码代理记忆能力</strong> — ClickHouse 推出 Loom，将 coding agent 的共享记忆与代码仓库索引绑定，使 AI 开发会话能够跨会话积累上下文。</li><li><strong>AWS 展示 Bedrock AgentCore 自愈 ETL 管道</strong> — AWS 展示 Bedrock AgentCore 自愈 ETL，自动修正坏记录、写回数据湖并提交 PR，推动数据工程运维代理化。</li></ol>
+            <p class="judgment"><strong>总判断：</strong>今日信号显示，云厂商正把开放表格式从读取兼容推向可靠写入与事务化，AWS 以 Iceberg、Glue 和 Bedrock AgentCore 强化湖仓与 agentic 数据工程闭环。ClickHouse 则切入 coding agent memory，显示数据基础设施正与 AI 代理状态层融合。</p>
+        </section>
+
+        <section class="top-signals">
+            <h2>📡 重要信号</h2>
+            
+    <article class="news-item">
+        <h3>Amazon Redshift 为 Apache Iceberg 表提供多语句事务</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/multi-statement-transactions-for-apache-iceberg-tables-in-amazon-redshift/">AWS Big Data Blog</a></p>
+        <p class="date">2026-11-13</p>
+        <p class="summary">Amazon Redshift 宣布支持 Apache Iceberg 表的多语句事务，允许在单个 BEGIN…COMMIT 中执行多个 DML 操作，并以一个原子 Iceberg 快照发布。该能力可减少多步骤 ETL 中逐条提交带来的中间状态、失败回滚和一致性问题，提升湖仓一体写入可靠性。</p>
+        <div class="impact">📊 数据平台影响：Redshift 强化 Iceberg 写入事务能力，将推动开放表格式从读取共享走向可靠写入，影响湖仓架构选型与数据管道设计。</div>
+    </article>
+    <article class="news-item">
+        <h3>ClickHouse 推出 Loom，为编码代理提供代码库感知记忆</h3>
+        <p class="sources">📌 <a href="https://clickhouse.com/blog/introducing-loom-agent-memory-that-keeps-up-with-your-code">ClickHouse Blog</a></p>
+        <p class="date">2026-11-13</p>
+        <p class="summary">ClickHouse 推出 Loom，为编码代理提供共享记忆和基于代码仓库的代码索引，使不同会话的 coding agent 能够延续上下文、积累学习结果。该能力将 agent memory 与代码库状态绑定，面向 AI 辅助开发场景提升长期任务连续性。</p>
+        <div class="impact">📊 数据平台影响：ClickHouse 将数据库能力延伸到 AI agent 状态管理，可能带动数据系统成为 agent memory 与知识索引的基础设施。</div>
+    </article>
+    <article class="news-item">
+        <h3>AWS 展示基于 Bedrock AgentCore 的自愈 ETL 管道</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/build-a-self-healing-etl-pipeline-with-amazon-bedrock-agentcore/">AWS Big Data Blog</a></p>
+        <p class="date">2026-11-13</p>
+        <p class="summary">AWS 展示如何基于 AWS Glue 和 Amazon Bedrock AgentCore 构建自愈 ETL 管道，自动利用领域知识修正坏记录，将修复写回数据湖，并通过提交 pull request 防止同类错误复发。这体现 agentic AI 进入数据工程运维环节。</p>
+        <div class="impact">📊 数据平台影响：数据质量修复从人工规则转向代理自动化，可降低管道运维成本，但也带来权限、审计和可解释性治理需求。</div>
+    </article>
+        </section>
+
+        <section class="product-tech">
+            <h2>💻 产品与技术</h2>
+            
+    <article class="news-item">
+        <h3>AWS 发布 Apache Iceberg 流式摄入路径选型指南</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/choose-the-right-streaming-ingestion-path-for-apache-iceberg-tables-on-aws/">AWS Big Data Blog</a></p>
+        <p class="date">2026-11-13</p>
+        <p class="summary">AWS 发布 Apache Iceberg 表流式摄入路径选型指南，比较五种 AWS 路径与八项技术标准，覆盖延迟、成本和功能能力，并给出可套用的决策框架。内容面向需要在数据湖中构建低延迟、可靠 Iceberg 写入的团队。</p>
+        <div class="impact">📊 数据平台影响：为 AWS 上 Iceberg 实时入湖提供工程选型依据，有助于平衡延迟、成本和运维复杂度，优化流批一体架构。</div>
+    </article>
+    <article class="news-item">
+        <h3>AWS Glue 6.0 基准测试原生 Arrow UDF 对 PySpark 的优化</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/optimizing-pyspark-udfs-on-aws-glue-6-0-with-native-arrow-udfs/">AWS Big Data Blog</a></p>
+        <p class="date">2026-11-13</p>
+        <p class="summary">AWS 在 Glue 6.0 上基准测试 PySpark UDF 的五种优化方式，包括标准 Python、Arrow 优化、vectorized pandas、native Arrow UDFs 和 Spark SQL，覆盖 1000 万至 1 亿行数据，并拆分序列化传输成本。</p>
+        <div class="impact">📊 数据平台影响：为大规模 Spark 数据管道提供性能调优参考，Arrow 原生 UDF 有望成为 Python 数据处理加速的重要默认路径。</div>
+    </article>
+    <article class="news-item">
+        <h3>ClickHouse Cloud 推出自助预览功能页面</h3>
+        <p class="sources">📌 <a href="https://clickhouse.com/blog/self-service-previews-in-clickhouse-cloud">ClickHouse Blog</a></p>
+        <p class="date">2026-11-13</p>
+        <p class="summary">ClickHouse Cloud 推出自助预览功能页面，用户可发现预览特性、自行启用部分功能、加入其他功能等待列表并提交反馈，同时提供 API 支持自动化管理。该机制降低新功能试用门槛。</p>
+        <div class="impact">📊 数据平台影响：加速 ClickHouse Cloud 新特性试验和反馈闭环，企业可更早评估能力，但需建立预览功能的使用边界和风险控制。</div>
+    </article>
+    <article class="news-item">
+        <h3>AWS 解析 Amazon OpenSearch Service 中的 span queries</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/understanding-span-queries-in-amazon-opensearch-service/">AWS Big Data Blog</a></p>
+        <p class="date">2026-11-13</p>
+        <p class="summary">AWS 介绍 Amazon OpenSearch Service 中 span queries 的使用方式，说明其如何精确控制词项位置、顺序和包含关系，并比较其与 phrase queries 的适用场景，帮助构建更严格的相关性查询。</p>
+        <div class="impact">📊 数据平台影响：提升 OpenSearch 在复杂文本检索、日志分析和 RAG 召回场景中的查询控制能力，有助于改善搜索质量与可解释性。</div>
+    </article>
+        </section>
+
+        <section class="people-views">
+            <h2>👤 人物与观点</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="analyst-insights">
+            <h2>📊 分析师洞察</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="watchlist">
+            <h2>👀 观察列表</h2>
+            
+    <article class="watchlist-item">
+        <h3>Apache Iceberg 事务化竞争</h3>
+        <span class="status">待观察</span>
+        <p class="reason">Redshift 支持 Iceberg 多语句事务，显示开放表格式正从元数据管理扩展到 ACID 写入与复杂管道场景，其他云数仓和引擎可能跟进。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>出现跨表事务、并发写入基准或更多云厂商/引擎跟进 Iceberg 事务能力。</p>
+    </article>
+    <article class="watchlist-item">
+        <h3>Agentic data engineering 生产化</h3>
+        <span class="status">待观察</span>
+        <p class="reason">Bedrock AgentCore 自愈 ETL 与 ClickHouse Loom 表明 AI agent 正进入数据管道修复、开发记忆和运维自动化环节。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>企业生产案例、权限审计框架或 agent 操作回滚机制成熟。</p>
+    </article>
+        </section>
+
+        <section class="stock-analysis">
+            <h2>📈 股票分析</h2>
+            <p class="disclaimer">⚠️ 以下内容仅供参考，不构成任何投资建议。投资有风险，入市需谨慎。</p>
+            
+    <article class="stock-item">
+        <div class="stock-header">
+            <span class="ticker">AMZN</span>
+            <span class="company">Amazon</span>
+            <span class="signal signal-bullish">🟢 看多</span>
+        </div>
+        <p class="stock-summary">AWS 在 Redshift Iceberg 事务、Glue 性能优化和 Bedrock AgentCore 自愈 ETL 上连续发布技术内容，强化湖仓一体与 AI 数据工程能力，有利于提升 AWS 在企业 Data+AI 平台支出中的竞争力。</p>
+        <div class="stock-details">
+            <div class="catalysts">
+                <strong>🚀 催化剂</strong>
+                <ul><li>Iceberg 多语句事务在企业数据管道中采用</li><li>Bedrock AgentCore 形成生产级自愈 ETL 案例</li><li>AWS 数据与 AI 工作负载迁移加速</li></ul>
+            </div>
+            <div class="risks">
+                <strong>⚠️ 风险</strong>
+                <ul><li>多云和开源湖仓方案分流</li><li>Agentic 自动化带来治理与审计风险</li><li>客户对云成本和性能优化敏感</li></ul>
+            </div>
+        </div>
+    </article>
+        </section>
+
+        <footer>
+            <p>Generated by Data+AI Daily Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
