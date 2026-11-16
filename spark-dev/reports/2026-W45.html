@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spark 社区周报 | 2026-W45</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Spark 社区周报 | 2026-W45</h1>
+            <p class="date-range">2026-11-02 ~ 2026-11-08</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (2)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/lpfwjy5bzo6wwlv6l41xpx9t1g2rkzc4">Apache Spark K8s Operator 1.1.0 released</a></li>
+<li><a href="https://lists.apache.org/thread/k8p8gtqcvmnwbl2vp0xshnfc91jo2l9s">Apache Spark Connect Swift Client 0.8.0 released</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (4)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/4qfqgwz9qwm5syoxh1bt88d6rf1wmq25">Release Apache Spark K8s Operator 1.1.0 (RC1)</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/0w9cn6vrrf3hxsybj2s2bw7b2ppo6omr">Release Apache Spark Connect Swift Client 0.8.0 (RC1)</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/vtkh3dkjf01q6fm4p4sh5b86oqtp7mxw">SPIP: Bring GraphFrames into Apache Spark</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/okq4v3z43v8m0275rx2hnh9fv0z8cf4b">Release Spark 3.5.10 (RC1)</a> <span class="status warning">⚠️ 有异议</span><p class="objection-inline">未有人提出 -1，邮件内容仅为请求退订或说明退订流程，并非对 Spark 3.5.10 RC1 发布的异议。</p></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/5v7cdf9l86pwosgnvm7z5yh53mtj43hp">Automated AI code review on new Spark PRs (trial)</a></h3>
+            <p class="meta">10 条回复 · 4 位参与者</p>
+            <p class="summary">本次讨论围绕在 Spark 新 PR 上试用自动化 AI code review bot 展开，重点关注其可用性、失败率、触发方式和评论格式。Hyukjin Kwon 持续调整并发数与超时时间并监控运行结果，目前触发方式已从添加 `ai-review-requested` 标签改为由 committers 将 `spark-test` 添加为 reviewer。社区建议优化评论简洁性，但大型 PR 失败率较高和近期失败仍需继续观察。</p>
+            <div class="key-points"><p><strong>@Hyukjin Kwon:</strong> AI review bot 整体可用但仍有失败，失败率随 PR 规模增大而显著上升；已提高并发和超时，并改为通过添加 `spark-test` reviewer 触发。</p>
+<p><strong>@Nicholas Chammas:</strong> 建议改用 GitHub Reviewers UI 触发 bot，并让评论更简洁，采用简短摘要加折叠详情以提升可读性。</p>
+<p><strong>@Holden Karau:</strong> 反馈部分并非特别大的 PR 也出现失败，提示可能还有其他问题；维护者表示近期存在基础设施问题并将继续监控。</p></div>
+            <p class="conclusion">初步结论是 AI review 试用继续推进，触发方式改为由 committers 添加 `spark-test` 为 reviewer；后续将监控失败和基础设施问题，评估评论简洁化配置，并建议大型 PR 暂不使用或拆分。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/526qjqo50bmqoqwwmnodoz2o51kl79xf">Spark 4.4.0 preparation</a></h3>
+            <p class="meta">6 条回复 · 6 位参与者</p>
+            <p class="summary">社区讨论 Spark 4.4.0 的发布筹备，尽管 4.3.0 耗时较长，仍建议按计划推进 4.4.0 和分支切出。多名成员响应志愿者征集，表示愿意参与发布相关工作。</p>
+            <div class="key-points"><p><strong>@Hyukjin Kwon:</strong> 建议继续按计划准备 Spark 4.4.0 并进行 branch cut，同时征集发布负责人，鼓励更多成员积累发布经验。</p>
+<p><strong>@Uroš Bojanić:</strong> 主动表示愿意担任 Spark 4.4.0 发布志愿者。</p>
+<p><strong>@Holden Karau:</strong> 指出通常主导发布需要 committer 身份，但欢迎其他成员通过测试和提交修复参与发布工作。</p></div>
+            <p class="conclusion">初步形成由 Uroš Bojanić 等志愿者参与 Spark 4.4.0 发布准备的共识，Yicong Huang 也有机会参与实践；后续将推进分支切出和发布流程，其他成员可通过测试与修复贡献力量。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/tvzxk1d53hwrrrorszjzploggj8ljsl2">Release Apache Spark 3.5.10</a></h3>
+            <p class="meta">6 条回复 · 6 位参与者</p>
+            <p class="summary">社区讨论是否发布 Apache Spark 3.5.10，重点是 branch-3.5 自 3.5.9 以来已累积 36 个保留变更，包含安全加固和相关修复。Szehon Ho 在 Spark 4.3 发布后重新推动该版本，并获得多位成员支持，讨论进展顺利。</p>
+            <div class="key-points"><p><strong>@Szehon Ho:</strong> 提议发布 Spark 3.5.10，指出 3.5 分支已积累安全修复，并表示愿意推动发布，同时建议确认是否有需要包含的安全补丁后再切 RC1。</p>
+<p><strong>@Uroš Bojanić:</strong> 支持发布 3.5.10，认为除非存在未解决的安全问题，否则应继续推进。</p>
+<p><strong>@Holden Karau:</strong> 支持发布 3.5.10 补丁版本。</p></div>
+            <p class="conclusion">社区已初步达成共识支持发布 Spark 3.5.10，Szehon Ho 表示将开始准备第一个 RC。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/r8ms8fgfvtr0zr3hmxn7p01fb8lry352">First Spark Community Sync</a></h3>
+            <p class="meta">5 条回复 · 5 位参与者</p>
+            <p class="summary">社区讨论首次 Spark Community Sync 会议的安排，Huaxin 提议于 11 月 30 日 8:30 AM PST 召开约 50 分钟，并提供议程和共享文档。多位成员表示支持，会议形式和会后总结机制获得认可。目前仍在等待确认时间，之后将创建会议链接和日历邀请。</p>
+            <div class="key-points"><p><strong>@huaxin gao:</strong> 提议召开首次 Spark 社区同步会议，给出时间、议程、共享文档以及会后总结和行动项讨论机制。</p>
+<p><strong>@Anurag Mantripragada:</strong> 支持该倡议，并询问是否已有共享日历邀请或会议链接。</p>
+<p><strong>@Nicholas Chammas:</strong> 对会议倡议和拟议时间表示支持。</p></div>
+            <p class="conclusion">会议方向和时间初步获得支持；下一步由 Huaxin 在确认时间合适后创建 Google Meet/日历邀请并分享链接。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/y3nrtt4zcjcsqzgov5s7f833032zt6qh">Add ai_query to PySpark</a></h3>
+            <p class="meta">4 条回复 · 3 位参与者</p>
+            <p class="summary">社区讨论在 PySpark 中引入 ai_query，以列形式调用模型并返回 AI 响应，类似 Databricks SQL 和 BigQuery 的能力。提案已有原型、Draft PR 和 JIRA，并正在从 PySpark 原型转向跨语言原生 SQL 实现方向。</p>
+            <div class="key-points"><p><strong>@Alejandro Morgante:</strong> 提出 ai_query 和 register_model API，支持通过模型端点对 DataFrame 列生成 AI 响应，并已完成 Databricks 与 Amazon Bedrock 的原型验证。</p>
+<p><strong>@Holden Karau:</strong> 认为不应只添加 PySpark 函数，建议构建跨语言实现，并分享了更广泛的设计文档以推动合作。</p>
+<p><strong>@Hemil Shah:</strong> 支持将 AI 能力引入 Spark 查询场景，表示愿意参与协作。</p></div>
+            <p class="conclusion">初步方向是将 ai_query 推进为基于 Catalyst 的跨语言原生 SQL 函数，当前正在准备 SPIP 并协调设计，下一步将邀请社区共同参与实现。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/3fhdsj551ocz2wsb1fjls002on74zqqk">Set a buffer time before we upgrade to the latest version of dependencies</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕是否将“依赖升级到最新版本前设置缓冲期”的社区共识写入 AGENTS.md 并用于 AI 审查。Dongjoon 认为既有共识仅约束提交政策，不应限制贡献者提交依赖变更 PR，因此反对修改；Jungtaek 希望集中编码规则，但也接受通过事后审查和 revert 保障政策。目前未推动写入 AGENTS.md，重点转为维持既有政策并允许事后纠正。</p>
+            <div class="key-points"><p><strong>@Jungtaek Lim:</strong> 建议将依赖升级缓冲期政策写入 AGENTS.md，用于规范依赖 PR 描述、强调发布日期和漏洞修复，并作为共享 AI 审查规则。</p>
+<p><strong>@Dongjoon Hyun:</strong> Spark 合并脚本独立于 AGENTS.md，社区只同意了提交政策而非限制 PR 提交；反对改变既有决定并投 -1。</p>
+<p><strong>@Dongjoon Hyun:</strong> 社区允许事后审查和随时 revert，但既有投票表明安全相关活动不受缓冲期限制，不能仅以缺少等待期为由否决。</p></div>
+            <p class="conclusion">暂不将缓冲期规则写入 AGENTS.md；继续维持既有依赖升级提交政策，违规依赖变更可通过事后 -1 或 revert 处理，安全相关更新不受缓冲期约束。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/sscb3n2hs2f3kol1qp4zn9kb4bzpwsp1">Adjusted Apache Spark 4.4.0 Release Timeline</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">社区讨论 Apache Spark 4.4.0 的发布时间线调整，重点围绕分支切分、QA 周期和发布时间。Yicong Huang 最初提议 2026 年 11 月 16 日切分支并将发布时间定在 2027 年 1 月中旬，随后根据保持季度发布节奏的反馈调整为更快的计划。</p>
+            <div class="key-points"><p><strong>@Yicong Huang:</strong> 作为发布经理，提议 2026-11-16 切分支并进入 QA 期，最初目标 2027 年 1 月中旬发布，后调整为约三周 QA，并争取 2026-12-07 前产出首个 RC。</p>
+<p><strong>@Xiao Li:</strong> 支持 11 月 16 日切分支，但建议尽量维持原发布目标、避免进一步延迟，以保持可预期的季度发布节奏。</p></div>
+            <p class="conclusion">讨论初步趋向于采用 11 月 16 日切分支、约三周 QA 和 12 月 7 日前首个 RC 的加速时间线；若无异议，Yicong 将更新网站并另行发送分支切分公告。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/db86x3yx97okrkklfyfc6obo59mvzoqn">SPIP: Extend Real-Time Mode to Distributed Batch SQL and DataFrame Queries</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">讨论一项 SPIP：将 Spark Real-Time Mode 扩展到符合条件的分布式批 SQL 和 DataFrame 查询，以减少物化 shuffle 带来的延迟。提案介绍了基于 RTM 的设计、初始范围和原型结果，社区反馈积极。</p>
+            <div class="key-points"><p><strong>@cheng xu:</strong> 提议让下游 stage 在中间数据到达时消费，重叠计算与传输；初始面向短只读查询，物化 shuffle 仍为默认，AQE 集成和自动重试后续推进。</p>
+<p><strong>@Kent Yao:</strong> 表示支持，认为原型性能结果有前景。</p>
+<p><strong>@Daniel Tenedorio:</strong> 表示支持，认为该方案复用已有的 RTM shuffle 基础设施，避免额外引入复杂实现。</p></div>
+            <p class="conclusion">目前讨论以支持为主，暂无正式结论；下一步可继续推进 SPIP 和原型实现，并跟进 AQE 集成、自动重试等后续工作。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/jng7pgo8n7jwkkh35mg5wwcxomxq84ty">Spark support for the proposed Parquet SERIALIZED_VALUE type</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕是否让 Spark 支持 Parquet 新逻辑类型 SERIALIZED_VALUE 展开，该类型可在 BYTE_ARRAY 列中记录 protobuf、FlatBuffers 或 Thrift 等序列化消息的格式和 schema。提案认为 Spark 可读取文件内元数据以减少用户手动提供消息名和 schema，并建议先以 BinaryType 映射、写入时携带格式和 schema 作为小步实现。目前讨论主要是提案介绍与适用范围澄清，尚未形成明确共识。</p>
+            <div class="key-points"><p><strong>@Neelesh Salian:</strong> 提议在 Parquet 中新增 SERIALIZED_VALUE 逻辑类型，由 Parquet 只存储序列化字节和 schema，由 Spark 负责解码；希望社区反馈并推动后续 SPIP。</p>
+<p><strong>@Holden Karau:</strong> 询问该类型是否可用于注解几乎任意数据。</p>
+<p><strong>@Neelesh Salian:</strong> 澄清该类型当前仅适用于带 schema 的序列化消息，如 protobuf、FlatBuffers 和 Thrift，未来可按需扩展更多格式。</p></div>
+            <p class="conclusion">暂无最终结论；下一步若方向获得认可，将推进 SPIP，先实现 BinaryType 映射和格式/schema 透传，并讨论直接读取消息字段与投影列支持。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/bml5q2tlystn9jvpp9qlwfqlow2mb0ns">SPIP: Bring GraphFrames into Apache Spark</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">社区正在讨论将 GraphFrames 作为内置模块合并进 Apache Spark，以弥补 GraphX 弃用后缺少公开图处理 API 的问题。讨论整体积极，重点回顾了 GraphFrames 未早期并入 Spark 的历史原因，并强调其对 DataFrame 图 API 和 Spark Connect 场景的价值。</p>
+            <div class="key-points"><p><strong>@Sem:</strong> 提议将 GraphFrames 代码以 Apache 2.0 许可并入 Spark，成为树内模块；并推测历史上未合并是为了先稳定 API。</p>
+<p><strong>@Nicholas Chammas:</strong> 支持该提案，并询问 GraphFrames 最初未成为 Spark 一部分是历史偶然还是存在已解决的阻塞因素。</p>
+<p><strong>@Ruifeng Zheng:</strong> 认为内置 DataFrame 图 API 符合用户预期，并可弥补 Spark Connect 下缺少图处理支持的问题。</p></div>
+            <p class="conclusion">目前讨论倾向支持，下一步将在讨论结束后发起 [VOTE] 投票。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (0)</h2>
+            
+    <p>本周新建 <strong>0</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周无新建 JIRA。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Spark Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
