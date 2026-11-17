@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data+AI 全球日报 | 2026-11-16</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Data+AI 全球日报 | 2026-11-16</h1>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="top-changes">
+            <h2>🔥 今日最重要的3个变化</h2>
+            <ol><li><strong>MSK Express 降低 Kafka 入湖成本</strong> — AWS 将 Kafka topic 数据托管投递至 Amazon S3，最高可降低 60% 成本，推动实时数据入湖进一步低门槛化。</li><li><strong>Glue 接入 Anthropic</strong> — AWS 将 Claude 使用量、成本和 API key 数据纳入 Glue/S3 Tables/Iceberg 分析链路，AI 成本治理成为数据平台能力。</li><li><strong>Managed Flink 快照 GA</strong> — Flink 快照成为独立 ARN 资源，支持导出、复用和蓝绿恢复，增强实时流处理平台化运维能力。</li></ol>
+            <p class="judgment"><strong>总判断：</strong>今日信号集中在 AWS 数据平台与 AI 治理的闭环：一方面通过 MSK、Flink、MWAA、OpenSearch 等强化流式、编排和搜索基础设施；另一方面通过 Anthropic connector 将 AI 用量纳入湖仓分析。行业关注点正从单纯接入 AI 转向 AI 成本、可观测性和实时数据新鲜度。</p>
+        </section>
+
+        <section class="top-signals">
+            <h2>📡 重要信号</h2>
+            
+    <article class="news-item">
+        <h3>Amazon MSK Express brokers 降低 Kafka 数据入湖成本</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/deliver-petabytes-of-apache-kafka-data-to-amazon-s3-at-up-to-60-lower-cost-with-amazon-msk-express-brokers/">AWS Big Data Blog</a></p>
+        <p class="date">2026-11-16</p>
+        <p class="summary">AWS 表示 Amazon MSK Express brokers 现已可将 Apache Kafka topic 数据直接投递至 Amazon S3，最高降低 60% 成本，并无需自行运行 Kafka Connect。用户可在 topic 上创建 channel，仅按实际投递数据量付费。文章重点讨论当前 Kafka 数据入湖在运维复杂性和成本上的挑战，以及 Express brokers 的简化路径。</p>
+        <div class="impact">📊 数据平台影响：该能力将 Kafka 到 S3 的管道进一步托管化，可能降低数据入湖门槛，强化 S3/Iceberg 作为实时数据湖底座的地位，并对自建 Kafka Connect 及第三方集成工具形成替代压力。</div>
+    </article>
+    <article class="news-item">
+        <h3>AWS Glue 接入 Anthropic，AI 用量成本进入数据平台</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/analyze-anthropic-usage-spend-and-access-with-aws-glue-amazon-s3-tables-and-aws-quick/">AWS Big Data Blog</a></p>
+        <p class="date">2026-11-16</p>
+        <p class="summary">AWS 推出新的 AWS Glue connector for Anthropic，可读取 Claude 使用量、成本和 API key 等数据，无需自定义代码。文章展示将数据写入 Amazon S3 Tables 中的 Apache Iceberg 表，再通过 Amazon Athena 查询，并用 AWS QuickSight 可视化 AI 支出、访问和治理情况。</p>
+        <div class="impact">📊 数据平台影响：LLM 调用明细开始被纳入数据仓库/湖仓治理体系，数据平台将承担 AI FinOps、权限审计和成本归因职责，可能推动 AI usage observability 成为标配。</div>
+    </article>
+    <article class="news-item">
+        <h3>Amazon Managed Flink 增强型快照 GA</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/introducing-enhanced-snapshots-for-amazon-managed-service-for-apache-flink/">AWS Big Data Blog</a></p>
+        <p class="date">2026-11-16</p>
+        <p class="summary">Amazon Managed Service for Apache Flink 的增强型快照正式 GA。增强型快照作为拥有独立 ARN 的 AWS 资源，与创建它的应用解耦，可用于启动新的 Flink 应用、导出到 Amazon S3，并支持导入 savepoints，以便蓝绿部署、恢复和迁移等场景。</p>
+        <div class="impact">📊 数据平台影响：流处理状态管理从应用附属资源升级为可独立治理的云资源，有助于 Flink 的灾备、升级、测试和多环境复制，提升实时数据管道的平台化运维能力。</div>
+    </article>
+        </section>
+
+        <section class="product-tech">
+            <h2>💻 产品与技术</h2>
+            
+    <article class="news-item">
+        <h3>AWS 发布 MWAA agent skills，辅助 Airflow 升级与排障</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/upgrading-and-troubleshooting-amazon-mwaa-with-aws-agent-skills/">AWS Big Data Blog</a></p>
+        <p class="date">2026-11-16</p>
+        <p class="summary">AWS 在开源 AWS agent toolkit 中发布 Amazon MWAA agent skills，让 AI coding assistant 可以执行从 Airflow 2.x 升级到 3.x、诊断失败等流程，并在每次环境变更前进行安全确认。此举将 agentic workflow 引入托管 Airflow 运维。</p>
+        <div class="impact">📊 数据平台影响：数据编排运维开始引入 AI agent，可降低 Airflow 升级和故障处理成本，但也需要配套的权限边界、变更审计和回滚机制。</div>
+    </article>
+    <article class="news-item">
+        <h3>AWS 展示 AI 驱动 Solr 到 OpenSearch 迁移助手</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/migrate-apache-solr-to-amazon-opensearch-service-with-the-ai-driven-migration-assistant/">AWS Big Data Blog</a></p>
+        <p class="date">2026-11-16</p>
+        <p class="summary">AWS 展示使用 Migration Assistant for Amazon OpenSearch Service 的 AI-driven agent mode，将 60 万文档的 Apache Solr catalog 端到端迁移到 Amazon OpenSearch Serverless，覆盖评估、迁移和验证回填等流程。</p>
+        <div class="impact">📊 数据平台影响：AI 驱动迁移助手可降低搜索系统迁移摩擦，加速 Solr 存量工作负载向 OpenSearch 和云原生搜索架构转移，并影响搜索数据服务竞争格局。</div>
+    </article>
+    <article class="news-item">
+        <h3>Infinitas Learning 用 ClickHouse Managed Postgres 支撑实时教育分析</h3>
+        <p class="sources">📌 <a href="https://clickhouse.com/blog/infinitas-learning-clickhouse-managed-postgres">ClickHouse Blog</a></p>
+        <p class="date">2026-11-16</p>
+        <p class="summary">ClickHouse 发布客户案例：Infinitas Learning 使用 ClickHouse Managed Postgres 处理数十亿事件，为 160 万学习者提供交易能力，并通过 ClickHouse Cloud 向教师提供实时分析。分布式缓存将 P99 延迟从约 13 秒降至 410 毫秒。</p>
+        <div class="impact">📊 数据平台影响：案例显示 Postgres 事务与 ClickHouse 分析组合可满足高并发教育数据场景，推动“操作型数据库+实时分析引擎”的融合架构。</div>
+    </article>
+        </section>
+
+        <section class="people-views">
+            <h2>👤 人物与观点</h2>
+            
+    <article class="news-item">
+        <h3>StarTree 讨论流式摄入关键问题：新数据何时可查询</h3>
+        <p class="sources">📌 <a href="https://startree.ai/resources/clickhouse-field-notes-ingestion/">StarTree Blog</a></p>
+        <p class="date">2026-11-16</p>
+        <p class="summary">StarTree 发文比较 ClickHouse Cloud 与 StarTree Cloud 在高吞吐流式摄入场景下的表现，强调更有意义的对比不是能否摄入，而是新数据在生产查询运行时何时可查询、系统如何保持新鲜度。文章还提到 Walmart 使用 Apache Pinot 处理 walmart.com 订单。</p>
+        <div class="impact">📊 数据平台影响：实时分析竞争焦点正从摄入吞吐转向查询新鲜度、并发查询下的稳定性以及端到端延迟，这将影响流式数据架构选型。</div>
+    </article>
+        </section>
+
+        <section class="analyst-insights">
+            <h2>📊 分析师洞察</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="watchlist">
+            <h2>👀 观察列表</h2>
+            
+    <article class="watchlist-item">
+        <h3>Kafka-to-S3 低成本托管管道竞争</h3>
+        <span class="status">待观察</span>
+        <p class="reason">Amazon MSK Express brokers 将 Kafka 数据直接投递至 S3，可能改变 Kafka Connect、Confluent 及第三方数据集成的竞争格局。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>更多企业客户案例、定价细节以及与 Iceberg/表格式生态的集成深度。</p>
+    </article>
+    <article class="watchlist-item">
+        <h3>AI 使用成本治理进入数据平台</h3>
+        <span class="status">待观察</span>
+        <p class="reason">AWS Glue connector for Anthropic 将 Claude 使用量、成本和 API key 数据纳入湖仓分析，显示 AI FinOps 正成为数据平台新模块。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>是否扩展到更多模型厂商、细粒度权限治理和跨云 AI 成本归因。</p>
+    </article>
+    <article class="watchlist-item">
+        <h3>实时分析的数据新鲜度标准</h3>
+        <span class="status">待观察</span>
+        <p class="reason">StarTree 强调流式摄入的关键不是写入吞吐，而是新数据何时可查询，这可能成为实时分析产品竞争的新指标。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>更多第三方基准测试或客户公开的数据新鲜度、查询延迟和并发稳定性指标。</p>
+    </article>
+        </section>
+
+        <section class="stock-analysis">
+            <h2>📈 股票分析</h2>
+            <p class="disclaimer">⚠️ 以下内容仅供参考，不构成任何投资建议。投资有风险，入市需谨慎。</p>
+            
+    <article class="stock-item">
+        <div class="stock-header">
+            <span class="ticker">AMZN</span>
+            <span class="company">Amazon</span>
+            <span class="signal signal-bullish">🟢 看多</span>
+        </div>
+        <p class="stock-summary">AWS 围绕 Kafka 入湖、Flink 状态管理、Anthropic AI 成本治理和迁移助手密集更新，强化数据平台与 AI 运营闭环，有助于提升 AWS 数据服务消耗和客户粘性。本项仅供参考，不构成投资建议。</p>
+        <div class="stock-details">
+            <div class="catalysts">
+                <strong>🚀 催化剂</strong>
+                <ul><li>MSK Express brokers 获得企业客户采用</li><li>Glue Anthropic connector 扩展到更多 AI 成本治理场景</li><li>OpenSearch/Flink 迁移带来云服务消耗增长</li></ul>
+            </div>
+            <div class="risks">
+                <strong>⚠️ 风险</strong>
+                <ul><li>客户对云成本和数据锁定敏感</li><li>AI 支出治理可能降低短期模型调用量</li><li>开源/第三方数据集成工具竞争</li></ul>
+            </div>
+        </div>
+    </article>
+        </section>
+
+        <footer>
+            <p>Generated by Data+AI Daily Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
