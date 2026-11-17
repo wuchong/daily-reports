@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iceberg 社区周报 | 2026-W46</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Iceberg 社区周报 | 2026-W46</h1>
+            <p class="date-range">2026-11-09 ~ 2026-11-15</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (1)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/8qw0omgt78cjpc3vcrsop83dyp026vc6">Iceberg Summit 2027 Call for Papers is open!</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (1)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/wq9gpwbloy3socj64vr4f1f5gk8tzwkb">Add Materialized Views to the Iceberg View Spec</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/vbq01jtsfgg2zfomsryvj2xpzlfv2gf3">Name mapping for data files that carry only some field IDs</a></h3>
+            <p class="meta">8 条回复 · 7 位参与者</p>
+            <p class="summary">讨论聚焦于 Iceberg 规范中当数据文件仅部分字段携带 field ID 时，name mapping 应按文件整体回退还是按单个字段回退。社区梳理了 Java、PyIceberg、Rust、Go 等实现差异，并追溯规范文本演变，最终倾向维持原有 per-file 语义。</p>
+            <div class="key-points"><p><strong>@Sylwester Lachiewicz:</strong> 指出规范对部分字段带 field ID 的文件存在按文件与按列两种解读，且各实现不一致，建议统一规范并补充验证用例。</p>
+<p><strong>@Russell Spitzer:</strong> 追溯历史后认为 name mapping 原意是仅用于完全不含 field ID 的文件，2024 年按列措辞并非有意变更，建议修正规范而非扩展行为。</p>
+<p><strong>@Ryan Blue:</strong> 反对混合使用 name mapping 与内嵌 field ID，认为文件出现任何 ID 即应按 ID 解析，缺失 ID 的列应读为 null。</p></div>
+            <p class="conclusion">初步共识是采用 per-file 规则：只要文件包含任意层级的 field ID，就按 ID 解析并忽略 name mapping；下一步是提交规范 PR 修正措辞，并更新 iceberg-verification 测试，以明确缺失 ID 及嵌套字段的预期行为。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/gm7pvw2cntp15mv86bvktq5vbnxmcso8">biweekly UDF sync</a></h3>
+            <p class="meta">5 条回复 · 5 位参与者</p>
+            <p class="summary">社区围绕 Iceberg UDF 功能推进缓慢、评审资源不足的问题，讨论建立双周 UDF 同步会。Huaxin 分享了本地完整实现正在拆分为多个 PR 提交的进展，包括类型定义和 REST API 端点。多名参与者表示愿意参与评审并加入同步会，整体进入确定会议时间和推进 PR 评审阶段。</p>
+            <div class="key-points"><p><strong>@Yufei Gu:</strong> 提议建立每两周 30 分钟的 UDF 同步会，用于讨论开放问题、确定下一步并寻找实现与评审人员，后续提议周四 9 AM PST 双周举行。</p>
+<p><strong>@huaxin gao:</strong> 已有完整 UDF 本地实现，正按小 PR 提交，包括 leaf types、REST list/load 和 create/drop/exists 端点，并愿意提供完整 draft PR 便于评审理解整体设计。</p>
+<p><strong>@Ajantha Bhat:</strong> 支持恢复同步会以吸引评审和讨论阻塞，将从 #15994 开始评审，并通过 Dremio POC 帮助发现实现差距。</p></div>
+            <p class="conclusion">初步下一步是确认双周同步会时间（建议周四 9 AM PST，首次 11 月 19 日），并推进相关 UDF PR 的评审与实现。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/x2h189xxb2p0fy37zhsb29kvxnkv2rdp">Should V4 stop writing ORC and Avro data files?</a></h3>
+            <p class="meta">3 条回复 · 4 位参与者</p>
+            <p class="summary">讨论围绕 Iceberg V4 是否停止新写 ORC 和 Avro 数据文件展开，重点权衡特性缺口、维护成本与向后兼容性。多数观点认可 Parquet 是当前主要选择，但需保留对既有 ORC/Avro 文件的读取能力，并保持未来写入路径对其他格式的开放性。</p>
+            <div class="key-points"><p><strong>@Kevin Liu:</strong> 提出 V4 可停止写入 ORC/Avro 数据文件，理由是二者对新特性支持不足且上游格式演进有限，但已有文件仍应可读。</p>
+<p><strong>@Maximilian Michels:</strong> 支持放弃 ORC/Avro 写支持，认为社区已选择 Parquet；但必须保留读取兼容，并确保写入路径未来仍能扩展到其他格式。</p>
+<p><strong>@Zheng Hu:</strong> 建议引入文件格式兼容性或能力标志，让表拒绝文件格式不支持的特性，从而将表格式演进与具体文件格式能力解耦。</p></div>
+            <p class="conclusion">初步方向是 V4 可能限制或停止 ORC/Avro 的新写入，以 Parquet 为主要写入格式并保留读取兼容；后续需要明确迁移指南、兼容性机制，以及是否引入如 Vortex 等新格式。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/tgnnqdjwwfw71ogwcf3qbptjctd1zg4w">Kafka Connect CDC writes without equality deletes</a></h3>
+            <p class="meta">3 条回复 · 4 位参与者</p>
+            <p class="summary">讨论聚焦 Kafka Connect CDC sink 是否通过在提交前将 equality deletes 转换为 deletion vectors，从而避免继续产生新的 equality deletes。当前已有基准测试显示顺序 ID 转换开销较低，但随机 UUID 在大表上扫描代价较高，社区关注其扩展性和并发提交竞争。</p>
+            <div class="key-points"><p><strong>@Andrei Tserakhau:</strong> 建议由 sink coordinator 在提交前把 equality deletes 转换为 DV，保持 append-only 默认、CDC 可选，并确保 sink 不再提交新的 equality delete。</p>
+<p><strong>@Maximilian Michels:</strong> 支持消除 equality deletes 的方向，认为实现可暂时引擎特定，但 v4 应尽量复用；同时担心无索引扫描的扩展性和 IO 成本。</p>
+<p><strong>@Grant Nicholas:</strong> 担心将 equality deletes 改为 DV 后，在删除多、低延迟提交的 Kafka Connect CDC 场景会加剧与 compaction 等写入的提交竞争，需要验证性能影响。</p></div>
+            <p class="conclusion">社区总体认可避免新增 equality deletes 的方向，但尚未最终定案；下一步是补充与 compaction 并发提交的竞争测试，并评估索引或更通用转换方案，koodin9 预计 12 月上半月提供测试结果。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/drhczwkksm7r266fqgovpb6s72zt6cbp">[FYI] 1.12.x release tag created</a></h3>
+            <p class="meta">3 条回复 · 3 位参与者</p>
+            <p class="summary">Maximilian Michels 创建了 Iceberg 1.12.x 维护分支，指向 1.12.0 release tag，并提示可能因重要 bug fix 发布 patch 版本。社区开始讨论 1.12.1 的候选修复，包括两个 Spark PR 以及新分支上的 CVE Scan 失败问题。</p>
+            <div class="key-points"><p><strong>@Maximilian Michels:</strong> 已创建 1.12.x 分支，并表示由于存在重要 bug fixes，可能考虑发布 patch 版本。</p>
+<p><strong>@Anurag Mantripragada:</strong> 建议 1.12.1 包含两个 Spark 修复 PR，并表示尚未完整梳理需要纳入补丁版本的所有修复。</p>
+<p><strong>@Yuya Ebihara:</strong> 指出新分支上的 CVE Scan workflow 失败，并提出 PR #18945 可解决该问题。</p></div>
+            <p class="conclusion">初步认为相关 Spark 修复适合纳入 1.12.1，Max 愿意在需要时协助发布；下一步是处理 CVE Scan 修复并继续确认需要进入补丁版本的 bug fixes。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/zpl1pk6v7k49s30gmm3kr986bc9y7jyv">Materialized view spec ready for broader review</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">Iceberg 社区讨论物化视图规范草案已进入更广泛评审阶段。该草案定义了物化视图元数据与刷新状态，并提供 Spark 和 Trino 的概念验证实现以验证设计。</p>
+            <div class="key-points"><p><strong>@Jan Kaul:</strong> 物化视图规范草案已提交 PR 11041，核心包括视图版本引用存储表，以及在存储表快照摘要中记录刷新状态，供读取端判断数据新鲜度。</p>
+<p><strong>@Walaa Eldin Moustafa:</strong> 已批准该 PR，认为规范已达到较好的一致性，并感谢社区贡献者推动讨论。</p>
+<p><strong>@Manish Malhotra:</strong> 感谢社区成员推动规范落地，并对进展表示期待。</p></div>
+            <p class="conclusion">下一步是邀请引擎和 Catalog 实现者在 PR 或邮件列表中反馈规范是否覆盖实际用例，继续推进社区评审与完善。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/6sbp6m633mpdrbwbq898frh9ogppb0r7">Disable Copilot reviews in iceberg-cpp</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">邮件讨论是否在 iceberg-cpp 中禁用 GitHub Copilot 自动代码评审。Manu Zhang 认为默认评审质量低且配额耗尽后会产生噪音评论，该提议得到其他参与者认可。</p>
+            <div class="key-points"><p><strong>@Manu Zhang:</strong> Copilot 默认评审质量低、存在误报，且配额耗尽后会持续发布“无法评审”评论，建议禁用自动评审。</p>
+<p><strong>@Junwang Zhao:</strong> 对禁用提议无异议，并确认偶尔看到“unable to review”评论。</p>
+<p><strong>@Gang Wu:</strong> 表示支持（+1）。</p></div>
+            <p class="conclusion">社区初步倾向禁用 iceberg-cpp 中的 Copilot 自动评审，下一步可关闭相关自动评审配置。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/78rdcjzhdbz4cpg08dyj4oor8tmq99z9">iceberg-go v0.8.0: proposed release blockers</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">社区讨论 iceberg-go v0.8.0 RC 前需要阻塞的严重缺陷。Badal 列出了可能导致错误结果、已删除行恢复或表不可读的多个 P0 问题。Andrei 建议将阻塞范围收窄为 0.7.0 回归或普通路径下可能静默丢数据的问题，并获得认可。</p>
+            <div class="key-points"><p><strong>@Badal Singh:</strong> 提出 v0.8.0 RC 前需修复一组 P0 问题，包括删除向量升级后丢失旧 position delete、分区列类型提升后删除失败、UpdateSchema 字段 ID 冲突等。</p>
+<p><strong>@Andrei Tserakhau:</strong> 主张只阻塞 #2604、#2605、#2609 以及 #2599/#2601 等回归或可能静默丢数据的问题，其余问题不应阻塞本次 RC。</p>
+<p><strong>@Andrei Tserakhau:</strong> 计划推进 #2605 的窄修复并视情况覆盖 #2610，同时为 #2609 增加 last-assigned-field-id 校验，必要时回退默认重试次数为 0。</p></div>
+            <p class="conclusion">初步确定以较窄范围作为 v0.8.0 RC 阻塞标准，优先修复 #2604、#2605、#2609 和 #2599/#2601；其余问题可延后处理、视进度合入或列入已知问题。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/mqpz7pfhztx79r5ok0m7j4r7l3yovktq">Dedicated sync for Iceberg Index Support</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">社区围绕 Iceberg 索引支持召开专项同步，重点讨论派生列是否纳入索引规范以及索引 REST API 设计。会议明确索引工作不应阻塞表格式演进，并在索引作为表子资源、REST 路由、权限约束等方面形成初步共识。loadTable 是否携带索引信息仍未确定。</p>
+            <div class="key-points"><p><strong>@huaxin gao:</strong> 索引 REST 路由应嵌套在表资源下，索引作为表的子资源，随表重命名或删除；多表索引不在当前范围内。</p>
+<p><strong>@Péter Váry:</strong> 已更新索引规范 PR，暂时移除派生列引用，待派生列方案达成共识后再通过共享 schema 接入索引规范。</p>
+<p><strong>@huaxin gao:</strong> loadTable 是否默认返回索引元数据仍开放，需要权衡读取路径减少请求与大多数场景避免额外元数据成本之间的关系。</p></div>
+            <p class="conclusion">初步结论是派生列从索引规范中暂时移除并独立推进，索引 REST 规范继续评审；下一步需要确定 loadTable 返回索引信息的方案，并跟进相关 PR 和会议录像。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/zrn1jb7g9wm7jgn4fx3klmtxs03k65zg">Initial IRC changes needed for Iceberg V4</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">社区围绕 Iceberg V4 表引入所需的初始 REST Catalog/OpenAPI 规范变更展开讨论。Daniel Weeks 创建了 rest-v4-changes 分支并提交 PR #17642，建议先集中处理规范层变更，实现细节后续按常规流程评审。讨论还涉及 loadTable 在不同版本下的响应结构、错误响应方式，以及是否将 partial metadata loading 纳入 v2 端点。</p>
+            <div class="key-points"><p><strong>@Daniel Weeks:</strong> 推动通过 rest-v4-changes 分支和 PR #17642 独立收集 V4 相关规范变更，以保持 rebase 范围小，并允许实现阶段灵活调整规范。</p>
+<p><strong>@Jean-Baptiste Onofré:</strong> 确认将查看相关变更和 PR，并跟进反馈。</p>
+<p><strong>@Yufei Gu:</strong> 对讨论方向表示认同，但邮件内容被截断，未形成完整观点。</p></div>
+            <p class="conclusion">初步下一步是社区评审 PR #17642，并优先在规范层收敛 V4 所需变更；partial metadata loading 等存在分歧的内容暂不并入 v2 端点，需后续继续讨论。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (0)</h2>
+            
+    <p>本周新建 <strong>0</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周无新建 JIRA。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Iceberg Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
