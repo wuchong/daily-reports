@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafka 社区周报 | 2026-W46</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Kafka 社区周报 | 2026-W46</h1>
+            <p class="date-range">2026-11-09 ~ 2026-11-15</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (0)</h2>
+            <p class="empty">本周无公告</p>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (3)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/yvc4n1ymj5tx6nkvy0yxkppp2g2txmjl">Tightening time-based releases</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/h25r7ykcyb6gxdszhlsksfjxqdw98cqs">KIP-1388: Add a committed-offsets filter to ListGroups</a> <span class="status warning">⚠️ 有异议</span><p class="objection-inline">无人提出 -1，原因是投票结果明确有 3 个 binding +1 且没有 -1 票。</p></li>
+<li><a href="https://lists.apache.org/thread/q8zjgpzn896n1o0h1qolok8kznltpyl4">KIP-1370: Include Instance and Rack IDs in kafka-streams-groups.sh Member Output</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/y8tln799zxqcxn8vlr5cwpnqr8g85r33">Delegate the log4j2 env overrides in the Docker image to Log4j2 composite configuration</a></h3>
+            <p class="meta">3 条回复 · 3 位参与者</p>
+            <p class="summary">社区讨论将 Kafka Docker 镜像中基于环境变量的 log4j2 配置覆盖逻辑，改为委托 Log4j2 composite configuration，以避免自研合并逻辑导致的缺陷。该方向获得支持，但被认为会改变用户可见行为。目前已创建 KAFKA-21556，并建议通过 KIP 记录相关变更。</p>
+            <div class="key-points"><p><strong>@Chia-Ping Tsai:</strong> 建议不再在 KafkaDockerWrapper 中重复实现 log4j2 配置合并，而是根据环境变量生成额外 YAML，并交由 Log4j2 composite configuration 处理。</p>
+<p><strong>@黃竣陽:</strong> 支持该方向，但提醒环境变量配置属于用户可见能力，行为变化可能影响现有用法，建议通过 KIP 文档化。</p>
+<p><strong>@Luke Chen:</strong> 如果该方案能简化配置并减少自定义 log4j2 配置合并带来的问题，则支持该改动。</p></div>
+            <p class="conclusion">初步共识是采纳委托 Log4j2 composite configuration 的方向；由于涉及用户可见行为变更，需要标记 needs-kip，并在 KAFKA-21556 中继续推进。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/t1y59z7r4z2lq17szfpqzt8bov2j36hk">KIP-1395: Redelivery delay and backoff for share groups</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕 KIP-1395 展开，目标是为 Kafka share groups 的重投递模型引入延迟和可选的指数退避能力，以控制记录释放或过期后的重试频率。Abhinav Dixit 提出按组配置重投递延迟并支持随投递次数增加的退避机制，Andrew Schofield 给出配置命名、动态 broker 配置和模式设计等建议。目前 Abhinav 已根据反馈更新 KIP。</p>
+            <div class="key-points"><p><strong>@Abhinav Dixit:</strong> 提出 KIP-1395，为 share group 增加记录释放或过期后的重投递延迟，并支持可选的指数退避，以避免记录被立即重投。</p>
+<p><strong>@Andrew Schofield:</strong> 认可该改进，并建议将配置改为 share.release.backoff.mode，支持 off、fixed、exponential 三种模式，同时明确最大退避配置为动态 broker 配置。</p>
+<p><strong>@Abhinav Dixit:</strong> 已修复文档问题，采纳三值模式配置建议，并将 group.share.max.release.backoff.ms 设为支持集群级动态更新的 broker 配置。</p></div>
+            <p class="conclusion">讨论初步达成一致，KIP 已根据反馈更新配置设计和文档表述，下一步预计继续推进社区评审与实现。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/oq7tbp62d244k41wdqw3c6rpl4kf9m7o">KIP-1385 : Measure local.retention.ms from remote upload time instead of record timestamps</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕 KIP-1385 是否将 local.retention.ms 的计时基准从记录时间戳改为远程上传时间展开。参与者主要关注该变更对回填数据、本地磁盘占用和容量规划的影响，并倾向采用更可预测的 uploadTime 语义。</p>
+            <div class="key-points"><p><strong>@Muralidhar Basani:</strong> 建议保留 uploadTime 语义并在升级说明中记录行为变化，同时可用 local.retention.bytes 限制本地磁盘占用；后续已根据反馈更新 KIP。</p>
+<p><strong>@Viktor Somogyi-Vass:</strong> 认为 uploadTime 会提高行为可预测性，但可能增加本地磁盘使用，应在 KIP 中补充磁盘容量影响；不推荐 min(timestamp, uploadTime) 方案，因为会使配置语义复杂化。</p>
+<p><strong>@Chia-Ping:</strong> 关注 Case C 下改为 uploadTime 可能带来的行为变化及本地磁盘影响，推动对兼容性和容量问题作进一步说明。</p></div>
+            <p class="conclusion">初步方向是继续以 remote upload time 作为 local.retention.ms 的计算基准，并将 min(record timestamp, upload time) 列为被拒绝方案；Murali 已更新 KIP，补充磁盘容量、上传时间来源和元数据缓存初始化期间暂停删除等内容，并等待进一步评审确认。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/ohjgqy8l7sb5cmjq3jx7398zjtt03p49">KIP-1393: Container-based system tests with JUnit and Testcontainers</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">社区围绕 KIP-1393 讨论使用 JUnit 和 Testcontainers 构建基于容器的 Kafka 系统测试，以改进现有系统测试方式。讨论重点集中在测试范围、兼容性处理、日志收集、故障注入能力以及对旧版本 Ducktape 测试的替代边界，目前仍在征求意见阶段。</p>
+            <div class="key-points"><p><strong>@Maroš Orsák:</strong> 发起 KIP-1393 讨论，提议基于 JUnit 和 Testcontainers 构建容器化系统测试框架。</p>
+<p><strong>@Luke Chen:</strong> 支持 Java 系统测试框架，但要求澄清兼容性跳过机制、Java 与 Python 系统测试的关系、测试日志收集以及 Testcontainers 依赖来源。</p>
+<p><strong>@Federico Valeri:</strong> 强调应突出测试官方 Docker 镜像的价值，并要求补充网络故障注入、日志产物组织、旧版本兼容限制及 ClusterInstance API 细节。</p></div>
+            <p class="conclusion">社区初步认可该方向，但尚未形成最终结论；下一步需要 KIP 作者补充测试范围、故障注入、日志收集、旧版本兼容和 API 设计等细节后继续讨论。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/orcrn5n8vxy0kwcmb5sk1ygw5dl2bt6n">KIP-1349 : Configurable snapshot frequency for share groups</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">社区讨论 KIP-1349 如何为 share group 配置快照频率，重点是使用记录数还是字节数，以及 broker 上限和超限值处理方式。Murali 已根据讨论更新 KIP，改回按组级别的记录数配置，将 broker 上限提高到 1000，并统一为运行时 clamp。同时，相关指标从 bytes-since-snapshot 调整为 snapshot-record-rate/total 和 update-record-rate/total。</p>
+            <div class="key-points"><p><strong>@Chia-Ping Tsai:</strong> 建议改回 per-group count 配置并提高 broker 上限；由于 broker 配置可能变化，组级值超过上限应在运行时 clamp，而不是在修改时拒绝。</p>
+<p><strong>@Muralidhar Basani:</strong> 认为清理进度受同一 state partition 上最慢组快照影响，字节阈值在该场景不如记录数直观，因此同意改回计数方案并更新 KIP。</p></div>
+            <p class="conclusion">初步结论是采用按组记录数配置、提高上限并在运行时截断超限值；下一步是审阅更新后的 KIP，并考虑重新启动投票。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/dtvzj56nt5bczy5w2jol57jwwcz2v99o">KIP-1390: Add a tokenless login callback handler for SASL/OAUTHBEARER</a></h3>
+            <p class="meta">1 条回复 · 1 位参与者</p>
+            <p class="summary">讨论围绕 KIP-1390 为 SASL/OAUTHBEARER 新增无 token 登录回调处理器展开，重点是如何区分生产可用的新处理器与非生产用途的 unsecured 处理器，并通过日志避免误用。Ming-Yen 已根据评审意见更新 KIP，包括忽略 JAAS 选项、调整日志级别并补充动机说明。目前评审基本认可，但仍需补充具体日志文案和说明 fallback 行为不在本 KIP 范围内。</p>
+            <div class="key-points"><p><strong>@Chia-Ping Tsai:</strong> 要求强调 unsecured 类非生产可用，并在新 handler 中增加日志提示；还需写明具体 INFO/WARN 日志，并在 Rejected Alternatives 中说明移除隐式 fallback 不在本 KIP 范围内。</p>
+<p><strong>@Ming-Yen Chung:</strong> 已移除对 unsecuredLogin* 配置的检查，使新 handler 忽略所有 JAAS 选项；并将旧 handler 日志改为 WARN、补充新 handler 的 INFO 日志和 Motivation 说明。</p></div>
+            <p class="conclusion">初步结论是方案接近通过（LGTM），下一步由 Ming-Yen 在 KIP 中补充确切日志消息，并添加关于隐式 fallback 行为不变的说明。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/c2rp90vrjp2zz95dtlhvx5k6np3yytj1">KIP-1396: Consumer isolation level read-committed by default</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕 KIP-1396 提议在 Kafka 5.0 中将消费者默认隔离级别从 read-uncommitted 改为 read-committed。社区初步认可该方向，并聚焦性能影响、文档准确性以及滚动升级下的一致性问题。</p>
+            <div class="key-points"><p><strong>@Andrew Schofield:</strong> 提议在 Apache Kafka 5.0 中将消费者默认隔离级别改为 read-committed，并发起 KIP 讨论。</p>
+<p><strong>@Lucas Brutschy:</strong> 认可默认值变更，但关注使用事务或分层存储的 topic 在 fetch 路径中查找 aborted transactions 可能增加 broker 负载。</p>
+<p><strong>@Lucas Brutschy:</strong> 指出 KIP 中关于 KIP-679 的表述应为 acks=all，并建议将 share group 的默认变更绑定 share.version，以避免滚动升级时出现不一致。</p></div>
+            <p class="conclusion">初步共识是默认改为 read-committed 合理且适合在 5.0 引入；下一步需澄清性能影响、修正 KIP 文案，并评估通过 share.version 控制 share group 行为以保证升级一致性。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/0k30vlkht65hnbl4dl2xb08dddfr686l">Request Kafka Jira Contributors role for wn1331</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">JONGHUN 请求将其 Jira 账户 wn1331 加入 Kafka Contributors 角色，以便处理 KAFKA-21479 的相关操作。社区成员 Lianet Magrans 已协助完成权限配置。</p>
+            <div class="key-points"><p><strong>@JONGHUN:</strong> 因无法在 KAFKA-21479 中执行 Assign 或 Submit Patch 操作，请求添加其账户至 Kafka Contributors 角色，并提供了相关 PR 链接。</p>
+<p><strong>@Lianet Magrans:</strong> 确认已为 JONGHUN 开通所需权限。</p></div>
+            <p class="conclusion">权限已成功配置，问题已解决。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/53vzkrf9v6yts020sckcnnbs3hf5trhc">KIP-1384: Base image for system test dependencies</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">本次讨论围绕 KIP-1384 提出的系统测试依赖基础镜像方案，重点涉及移除 S3 上传、镜像发布与版本保留策略。PoAn 已根据评审意见更新 KIP，补充兼容性、Vagrant 和发布标签说明。社区仍关注 GitHub Packages 发布权限、下载量限制及清理/缓存策略。</p>
+            <div class="key-points"><p><strong>@Chia-Ping Tsai:</strong> 建议先向 Infra JIRA 确认是否允许发布 GitHub Packages，并评估从 archive 站点下载量是否会触及限制。</p>
+<p><strong>@PoAn Yang:</strong> 已更新 KIP，说明移除 S3 上传后 Vagrant 不再获得新版本，且活跃分支使用的版本不会被删除以保证 latest 标签可用。</p>
+<p><strong>@Federico Valeri:</strong> 建议明确 EOL 分支后的版本清理策略，注明 Docker 缓存失效可能导致重新下载历史版本，并在 vagrant/base.sh 中加入弃用提示。</p></div>
+            <p class="conclusion">讨论已推动 KIP 更新，下一步需确认 GitHub Packages 发布权限、估算下载量限制，并补充清理策略与相关文档说明。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/oy07kzy1dfc173w93pqt7vgjrpg0t91k">Request to be added to Kafka Jira contributors list</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">Rajat Sujane 请求将其 Jira 账号 rajatsujane 添加到 Apache Kafka 贡献者列表，以便认领新手或次要问题。Bill Bejeck 已确认完成该请求，并表示期待其贡献。</p>
+            <div class="key-points"><p><strong>@Rajat Sujane:</strong> 请求加入 Kafka Jira 贡献者列表，以便分配 newbie/minor issues。</p>
+<p><strong>@Bill Bejeck:</strong> 确认已添加其 Jira 账号，并期待后续贡献。</p></div>
+            <p class="conclusion">该请求已完成，后续可由 Rajat Sujane 认领相关 issue。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (138)</h2>
+            
+    <p>本周新建 <strong>138</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周 JIRA 主要围绕消费者组与组协调器稳定性展开，涉及 classic 到 consumer group 转换、SyncGroup/心跳处理、重平衡监听器、消费者文档与测试修复，同时也覆盖了 producer 超时与事务、Kafka Streams 状态恢复、心跳异常和 Share Group 延迟重投递等问题。此外，本周还涉及 KRaft 分区复制因子、控制器元数据、事务列表、测试基础设施优化以及 flaky test 修复等内容。社区也在集中引入 Cluster Mirror / MirrorMaker 相关资源类型、配置、配额和元数据状态记录等新特性基础。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Kafka Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
