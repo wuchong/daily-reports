@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data+AI 全球日报 | 2026-11-17</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Data+AI 全球日报 | 2026-11-17</h1>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="top-changes">
+            <h2>🔥 今日最重要的3个变化</h2>
+            <ol><li><strong>AWS Kinesis Data Streams 新增 queues</strong> — Kinesis 增加队列消费模式，提供逐条投递、确认、重投和死信能力，降低实时流处理复杂性与成本。</li><li><strong>ClickHouse Cloud 打通 Claude Platform 计费</strong> — ClickHouse 支持链接 Claude Platform 组织，使 ClickHouse Agents 和 AI Functions 中的 Claude API 用量可按现有 Anthropic 条款计费。</li><li><strong>ClickHouse 引入时序基础模型分析</strong> — ClickHouse 通过 executable UDFs 连接 TimesFM，在 SQL 中完成需求预测、异常检测和已知未来事件建模。</li></ol>
+            <p class="judgment"><strong>总判断：</strong>今日信号集中在云数据平台将实时流、AI 模型与计费/运维体验进一步产品化。AWS 强化流处理与托管 Kafka 的性价比，ClickHouse 则把 LLM 与时序模型更深嵌入数据库工作负载。数据平台竞争正从引擎能力转向低复杂度的 AI/实时一体化体验。</p>
+        </section>
+
+        <section class="top-signals">
+            <h2>📡 重要信号</h2>
+            
+    <article class="news-item">
+        <h3>Amazon Kinesis Data Streams 推出 queues 消费模式</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/reduce-the-complexity-and-cost-of-real-time-processing-with-queues-in-amazon-kinesis-data-streams/">AWS Big Data Blog</a></p>
+        <p class="date">2026-11-17</p>
+        <p class="summary">Amazon Kinesis Data Streams 推出 queues，为 on-demand stream 提供新的记录消费方式。队列可逐条投递记录、跟踪投递状态、重投未确认记录、将持续失败记录转入 dead letters，并随 backlog 扩展。该能力面向需要更可靠任务级处理的实时管道，减少用户自建队列与状态管理负担。</p>
+        <div class="impact">📊 数据平台影响：流处理可从分区消费扩展到队列语义，提升可靠投递与重试能力，降低实时 ETL、事件驱动架构和 AI 数据管道的运维复杂度。</div>
+    </article>
+    <article class="news-item">
+        <h3>ClickHouse Cloud 与 Claude Platform 打通链接计费</h3>
+        <p class="sources">📌 <a href="https://clickhouse.com/blog/claude-platform-linked-billing">ClickHouse Blog</a></p>
+        <p class="date">2026-11-17</p>
+        <p class="summary">ClickHouse Cloud 支持将 Claude Platform 组织链接到 ClickHouse，用于 ClickHouse Agents 和 AI Functions 中的 Claude API 使用。客户可直接在现有 Anthropic 条款下计费，无需为数据库内 AI 调用单独建立新采购流程。此举降低 ClickHouse 用户使用 LLM 的商务与运维门槛。</p>
+        <div class="impact">📊 数据平台影响：数据库与 LLM 的计费打通后，企业更容易在 SQL/Agent 工作流中调用 Claude，推动数据平台从查询引擎转向 AI 应用运行时。</div>
+    </article>
+    <article class="news-item">
+        <h3>Amazon MSK Express brokers 上线 Graviton4 M8g 实例</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/amazon-msk-express-brokers-available-on-aws-graviton4-based-m8g-instances/">AWS Big Data Blog</a></p>
+        <p class="date">2026-11-17</p>
+        <p class="summary">Amazon MSK Express brokers 现已支持 AWS Graviton4-based M8g instances。相比 M7g，M8g 提供低 15% 的 broker-hour 价格、更低 P99 produce 延迟、更快消费者恢复、新增 24xlarge 规格，并免除跨 AZ 客户端流量的 broker 侧费用。该更新强化托管 Kafka 在成本和性能上的竞争力。</p>
+        <div class="impact">📊 数据平台影响：托管 Kafka 成本与延迟优化有利于高吞吐事件流、日志和 CDC 场景，降低实时数据管道的总体拥有成本。</div>
+    </article>
+        </section>
+
+        <section class="product-tech">
+            <h2>💻 产品与技术</h2>
+            
+    <article class="news-item">
+        <h3>ClickHouse 使用 TimesFM 时序基础模型进行预测与异常检测</h3>
+        <p class="sources">📌 <a href="https://clickhouse.com/blog/clickhouse-time-series-foundation-models">ClickHouse Blog</a></p>
+        <p class="date">2026-11-17</p>
+        <p class="summary">ClickHouse 展示如何将 TimesFM 时序基础模型通过 executable UDFs 连接到 ClickHouse，在 SQL 中完成零售需求预测、异常检测，并纳入已知未来事件。该方案把基础模型推理嵌入分析数据库，减少数据搬运和外部模型服务编排。</p>
+        <div class="impact">📊 数据平台影响：时序预测与异常检测可直接发生在数据仓库/数据库内，有助于缩短 BI 到 AI 决策的链路，提升运营分析自动化水平。</div>
+    </article>
+    <article class="news-item">
+        <h3>Veeva 基于 Amazon EMR on EKS 重构 PB 级大数据分析平台</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/how-veeva-scaled-big-data-with-amazon-emr-on-eks/">AWS Big Data Blog</a></p>
+        <p class="date">2026-11-17</p>
+        <p class="summary">Veeva Systems 基于 Amazon EMR on EKS 与 Karpenter 重建 PB 级分析平台，将 ETL 运行时间缩短 50% 以上，并通过弹性 Spark 计算消除空闲集群成本。集群可在数分钟内从 40 节点扩展到 520+ 节点，体现云原生大数据架构的弹性优势。</p>
+        <div class="impact">📊 数据平台影响：EMR on EKS 与 Karpenter 组合为大规模批处理提供更强弹性，适合需要峰值扩展和成本治理的现代数据湖仓架构。</div>
+    </article>
+        </section>
+
+        <section class="people-views">
+            <h2>👤 人物与观点</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="analyst-insights">
+            <h2>📊 分析师洞察</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="watchlist">
+            <h2>👀 观察列表</h2>
+            
+    <article class="watchlist-item">
+        <h3>Kinesis queues 采用与生态集成</h3>
+        <span class="status">待观察</span>
+        <p class="reason">队列消费模式改变 Kinesis 的可靠投递和重试设计，需观察开发者接受度、与 Lambda、Flink、EMR 等服务的集成深度。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>出现更多生产案例、性能基准测试或与 AWS 数据服务的原生集成。</p>
+    </article>
+    <article class="watchlist-item">
+        <h3>ClickHouse AI Functions 商业化</h3>
+        <span class="status">待观察</span>
+        <p class="reason">ClickHouse 与 Anthropic 计费打通后，数据库内 LLM 调用可能成为新增长点，但企业治理、成本和延迟仍需验证。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>出现更多客户使用 ClickHouse Agents 或 Claude API 的公开案例与用量指标。</p>
+    </article>
+    <article class="watchlist-item">
+        <h3>Graviton4 对 MSK 成本结构的影响</h3>
+        <span class="status">待观察</span>
+        <p class="reason">M8g 宣称降低 15% broker-hour 价格并改善延迟，实际迁移收益取决于工作负载兼容性和跨 AZ 流量模式。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>出现客户迁移案例、TCO 对比报告或 AWS 进一步扩展 Graviton4 覆盖。</p>
+    </article>
+        </section>
+
+        <section class="stock-analysis">
+            <h2>📈 股票分析</h2>
+            <p class="disclaimer">⚠️ 以下内容仅供参考，不构成任何投资建议。投资有风险，入市需谨慎。</p>
+            
+    <article class="stock-item">
+        <div class="stock-header">
+            <span class="ticker">AMZN</span>
+            <span class="company">Amazon</span>
+            <span class="signal signal-bullish">🟢 看多</span>
+        </div>
+        <p class="stock-summary">AWS 推出 Kinesis queues、MSK Graviton4，并展示 EMR on EKS 客户案例，强化实时数据、托管 Kafka 与弹性大数据能力。仅供参考，不构成投资建议。</p>
+        <div class="stock-details">
+            <div class="catalysts">
+                <strong>🚀 催化剂</strong>
+                <ul><li>企业实时数据管道需求增长</li><li>Graviton 成本优势扩大</li><li>AI/数据平台工作负载持续上云</li></ul>
+            </div>
+            <div class="risks">
+                <strong>⚠️ 风险</strong>
+                <ul><li>云市场竞争加剧</li><li>客户持续优化云支出</li><li>新功能采用速度不及预期</li></ul>
+            </div>
+        </div>
+    </article>
+    <article class="stock-item">
+        <div class="stock-header">
+            <span class="ticker">VEEV</span>
+            <span class="company">Veeva Systems</span>
+            <span class="signal signal-neutral">⚪ 中性</span>
+        </div>
+        <p class="stock-summary">Veeva 公开其基于 Amazon EMR on EKS 的 PB 级分析平台重构案例，显示 ETL 提速和弹性扩缩，但尚未直接对应财务业绩。仅供参考，不构成投资建议。</p>
+        <div class="stock-details">
+            <div class="catalysts">
+                <strong>🚀 催化剂</strong>
+                <ul><li>数据平台成本优化</li><li>产品分析能力增强</li><li>云原生架构提升弹性</li></ul>
+            </div>
+            <div class="risks">
+                <strong>⚠️ 风险</strong>
+                <ul><li>技术案例不直接等于收入增长</li><li>依赖 AWS 生态</li><li>大数据投入回报仍需验证</li></ul>
+            </div>
+        </div>
+    </article>
+        </section>
+
+        <footer>
+            <p>Generated by Data+AI Daily Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
