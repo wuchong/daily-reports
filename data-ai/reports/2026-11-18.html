@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data+AI 全球日报 | 2026-11-18</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Data+AI 全球日报 | 2026-11-18</h1>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="top-changes">
+            <h2>🔥 今日最重要的3个变化</h2>
+            <ol><li><strong>Amazon OpenSearch Memory GA</strong> — AWS 将 OpenSearch Memory 推向 GA，为 AI agent 提供托管的跨会话持久记忆，数据平台开始补齐 agent memory 层。</li><li><strong>Spark optimization agent GA</strong> — AWS 面向 EMR Serverless 和 Glue ETL 推出 Spark 优化 agent，数据工程运维开始从人工调参转向 agent 驱动的成本与性能治理。</li><li><strong>AWS Glue 自动版本升级</strong> — Glue 引入自动版本升级机制，ETL 平台生命周期管理进一步自动化，数据平台运维向审批、验证和可回滚的工程化流程演进。</li></ol>
+            <p class="judgment"><strong>总判断：</strong>今日信号集中在 AWS 将 agent 能力嵌入数据平台：从 OpenSearch Memory 的 agent 记忆层，到 Spark 优化 agent 和 Glue 自动升级，AWS 正在构建更自动化的数据开发与运维闭环。数据平台的竞争重点正从单一引擎性能转向 agent-native 基础设施、可观测性与成本治理能力。第三方可观测和生态集成商也将受益于这一趋势。</p>
+        </section>
+
+        <section class="top-signals">
+            <h2>📡 重要信号</h2>
+            
+    <article class="news-item">
+        <h3>Introducing Amazon OpenSearch Memory: Persistent memory for AI agents</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/introducing-amazon-opensearch-memory-persistent-memory-for-ai-agents/">AWS Big Data Blog</a></p>
+        <p class="date">2026-11-18</p>
+        <p class="summary">Amazon OpenSearch Memory 正式 GA。该服务基于 Amazon OpenSearch Serverless，为 AI agent 提供跨会话的持久记忆能力，可将交互记录为可搜索事件，自动派生记忆并检索相关上下文，帮助开发者无需自建记忆存储与检索系统，即可为 agent 增加长期上下文。</p>
+        <div class="impact">📊 数据平台影响：数据平台需新增 agent memory 层，涵盖事件存储、检索、权限和审计；OpenSearch 有望成为 agent 长期记忆入口。</div>
+    </article>
+    <article class="news-item">
+        <h3>Introducing the Apache Spark optimization agent for Amazon EMR Serverless and AWS Glue ETL</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/introducing-the-apache-spark-optimization-agent-for-amazon-emr-serverless-and-aws-glue-etl/">AWS Big Data Blog</a></p>
+        <p class="date">2026-11-18</p>
+        <p class="summary">AWS 推出面向 Amazon EMR Serverless 和 AWS Glue ETL 的 Apache Spark optimization agent，并宣布 GA。该 agent 会分析已完成的 Spark 作业运行遥测，在几分钟内给出成本或性能优化建议，使工程师无需深入 Spark 内部机制即可进行作业调优。</p>
+        <div class="impact">📊 数据平台影响：Spark 作业治理进入 agent 化阶段，成本优化、性能诊断和自动调优将成为数据平台标配，推动 FinOps 与 DataOps 融合。</div>
+    </article>
+    <article class="news-item">
+        <h3>Introducing automatic version upgrades for AWS Glue jobs</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/introducing-automatic-version-upgrades-for-aws-glue-jobs/">AWS Big Data Blog</a></p>
+        <p class="date">2026-11-18</p>
+        <p class="summary">AWS 宣布 AWS Glue 作业自动版本升级。用户将作业版本设为 auto 后，Glue 会检查破坏性变更、请求审批、迁移至最新稳定版本并验证升级后的运行，从而减少 ETL 运行时升级的人工成本、版本碎片和安全补丁滞后。</p>
+        <div class="impact">📊 数据平台影响：ETL 生命周期管理进一步自动化，数据团队需要建立审批、测试基线和回滚机制，平台工程化要求提升。</div>
+    </article>
+        </section>
+
+        <section class="product-tech">
+            <h2>💻 产品与技术</h2>
+            
+    <article class="news-item">
+        <h3>Long-term Amazon Redshift observability with Datadog and Amazon S3 Tables</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/long-term-amazon-redshift-observability-with-datadog-and-amazon-s3-tables/">AWS Big Data Blog</a></p>
+        <p class="date">2026-11-18</p>
+        <p class="summary">AWS 介绍如何将 Datadog Data Observability 与 Amazon Redshift 系统表集成到 Amazon S3 Tables，以突破 Redshift 默认仅保留 7 天系统表历史的限制，实现长期查询历史、血缘、性能和数据质量分析，而无需额外维护繁重的监控数据管道。</p>
+        <div class="impact">📊 数据平台影响：Redshift 可观测数据开始湖仓化，S3 Tables 可承担长期遥测与元数据存储角色，数据平台审计和诊断能力增强。</div>
+    </article>
+    <article class="news-item">
+        <h3>Orchestrate DuckDB analytics pipelines with Amazon MWAA</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/orchestrate-duckdb-analytics-pipelines-with-amazon-mwaa/">AWS Big Data Blog</a></p>
+        <p class="date">2026-11-18</p>
+        <p class="summary">AWS 展示使用 Amazon MWAA 编排嵌入式 DuckDB 分析管道：在 Airflow 任务中运行 DuckDB，读取 Amazon S3 的 Parquet 数据，应用时间有效模型费率，并以重试安全方式发布 Apache Iceberg 表到 Amazon S3 Tables，体现轻量分析引擎与 AWS lakehouse 生态的结合。</p>
+        <div class="impact">📊 数据平台影响：DuckDB 可作为轻量 ETL/分析引擎进入 AWS 编排体系，降低中小规模数据管道成本，丰富 Iceberg 和 S3 Tables 生态。</div>
+    </article>
+    <article class="news-item">
+        <h3>A New Architecture for Agent Trace Analytics: Kafka, Iceberg and StarTree</h3>
+        <p class="sources">📌 <a href="https://startree.ai/resources/agent-trace-analytics-kafka-iceberg/">StarTree Blog</a></p>
+        <p class="date">2026-11-18</p>
+        <p class="summary">StarTree 提出面向 agent trace analytics 的新架构，通过分离事件处理、存储和服务，使用 Kafka、Iceberg 和 StarTree 支撑大规模 agent traces。该架构旨在为 AI agent 的可观测性、调试、性能分析和成本追踪提供高吞吐、可扩展的基础设施。</p>
+        <div class="impact">📊 数据平台影响：Agent 可观测性需要事件流、湖仓存储和实时 OLAP 结合，数据平台需支持 trace、指标、成本和记忆数据的统一分析。</div>
+    </article>
+        </section>
+
+        <section class="people-views">
+            <h2>👤 人物与观点</h2>
+            
+    <article class="news-item">
+        <h3>Your AI agents spend at machine speed. Your team reacts at human speed.</h3>
+        <p class="sources">📌 <a href="https://www.deltastream.io/blogs/your-ai-agents-spend-at-machine-speed-your-team-reacts-at-human-speed/">DeltaStream Blog</a></p>
+        <p class="date">2026-11-18</p>
+        <p class="summary">DeltaStream 指出 AI agent 以机器速度消耗资源，而团队仍以人类速度响应。一个陷入循环的 agent 若每分钟花费 4 美元，每小时成本可达 240 美元，表面指标可能仍然正常，但账单会在下月显现，凸显 agent 成本治理、实时异常检测和预算熔断机制的重要性。</p>
+        <div class="impact">📊 数据平台影响：Agent 平台需要实时 spend telemetry、预算控制、异常检测和人工审批能力，FinOps 将成为 agent 基础设施核心模块。</div>
+    </article>
+        </section>
+
+        <section class="analyst-insights">
+            <h2>📊 分析师洞察</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="watchlist">
+            <h2>👀 观察列表</h2>
+            
+    <article class="watchlist-item">
+        <h3>AWS agent-native data platform 闭环</h3>
+        <span class="status">待观察</span>
+        <p class="reason">OpenSearch Memory、Spark optimization agent、Glue 自动升级等发布显示 AWS 正在将 agent 能力嵌入数据开发与运维流程，但尚未看到统一的 agent 治理、成本和遥测控制台。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>是否出现跨服务 agent telemetry、预算控制或统一 agent 运维控制台，以及早期企业采用案例。</p>
+    </article>
+    <article class="watchlist-item">
+        <h3>Agent trace 与成本可观测性标准化</h3>
+        <span class="status">待观察</span>
+        <p class="reason">StarTree 和 DeltaStream 均指向 agent trace、成本异常和实时治理需求，但 agent 可观测性的数据模型、事件规范和工具链仍较分散。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>是否出现类似 OpenTelemetry for agents 的通用 trace/cost 事件规范，或主流云平台原生集成。</p>
+    </article>
+    <article class="watchlist-item">
+        <h3>Amazon S3 Tables 在湖仓与可观测场景中的扩展</h3>
+        <span class="status">待观察</span>
+        <p class="reason">AWS 正在将 S3 Tables 用于 Redshift 长期系统表、DuckDB/Iceberg 发布和平台遥测存储，可能成为 lakehouse 元数据与运维数据的重要底座。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>更多 AWS 数据服务或第三方工具原生写入/查询 S3 Tables，并形成标准化运维数据层。</p>
+    </article>
+        </section>
+
+        <section class="stock-analysis">
+            <h2>📈 股票分析</h2>
+            <p class="disclaimer">⚠️ 以下内容仅供参考，不构成任何投资建议。投资有风险，入市需谨慎。</p>
+            
+    <article class="stock-item">
+        <div class="stock-header">
+            <span class="ticker">AMZN</span>
+            <span class="company">Amazon</span>
+            <span class="signal signal-bullish">🟢 看多</span>
+        </div>
+        <p class="stock-summary">AWS 密集发布 OpenSearch Memory、Spark optimization agent、Glue 自动升级和 S3 Tables 相关集成，强化其在数据平台与 AI agent 基础设施上的协同，有助于提升企业数据工作负载粘性和增值服务收入。仅供参考，不构成投资建议。</p>
+        <div class="stock-details">
+            <div class="catalysts">
+                <strong>🚀 催化剂</strong>
+                <ul><li>OpenSearch Memory 在企业 agent 应用中形成采用</li><li>EMR Serverless/Glue 优化 agent 提升数据工作负载自动化价值</li><li>S3 Tables 与 Iceberg 生态进一步扩展</li></ul>
+            </div>
+            <div class="risks">
+                <strong>⚠️ 风险</strong>
+                <ul><li>客户对云厂商锁定和 agent 成本失控的担忧</li><li>数据平台竞争对手推出更开放的 agent 基础设施</li><li>AI agent 事故或成本异常可能影响企业采用节奏</li></ul>
+            </div>
+        </div>
+    </article>
+    <article class="stock-item">
+        <div class="stock-header">
+            <span class="ticker">DDOG</span>
+            <span class="company">Datadog</span>
+            <span class="signal signal-bullish">🟢 看多</span>
+        </div>
+        <p class="stock-summary">Datadog 与 AWS Redshift、S3 Tables 的长期可观测集成增强其在云数据平台监控、数据质量和血缘分析中的位置，有望受益于企业对数据平台可观测性和 agent 运维治理的需求。仅供参考，不构成投资建议。</p>
+        <div class="stock-details">
+            <div class="catalysts">
+                <strong>🚀 催化剂</strong>
+                <ul><li>Redshift 客户采用长期可观测方案</li><li>数据质量、血缘和性能监控模块扩展</li><li>AWS Marketplace 和云生态集成深化</li></ul>
+            </div>
+            <div class="risks">
+                <strong>⚠️ 风险</strong>
+                <ul><li>AWS 原生监控和可观测能力增强形成替代</li><li>企业 IT 预算收紧影响可观测性支出</li><li>与云平台数据服务的集成深度可能受限</li></ul>
+            </div>
+        </div>
+    </article>
+        </section>
+
+        <footer>
+            <p>Generated by Data+AI Daily Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
