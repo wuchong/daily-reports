@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flink 社区周报 | 2026-W46</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Flink 社区周报 | 2026-W46</h1>
+            <p class="date-range">2026-11-09 ~ 2026-11-15</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (1)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/gqmyt17slx2809g36wb37nn3xqrxsz05">New Apache Flink PMC Member - Yuepeng Pan(RocMarshal)</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (7)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/sz4dsg49ft19kbq5jn2kgdx3lovyjphb">FLIP-610: Dynamic Ratelimit in Flink Source</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/hm22o7wnm7km3dkrtdccyrzjtmtmjjrx">Release 1.20.6, release candidate #3</a> <span class="status warning">⚠️ 有异议</span><p class="objection-inline">Rui Fan 提出 -1，原因是该投票邮件被重复发送，当前线程应忽略，需要到另一个线程进行投票。</p></li>
+<li><a href="https://lists.apache.org/thread/f50xlwvcynlf72fd5d6tfjt9ttyw4sbp">Release 2.2.2, release candidate #2</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/c27c463x6vnqzmthk17ncqmpbdpwoc75">Release 2.3.1, release candidate #2</a> <span class="status warning">⚠️ 有异议</span><p class="objection-inline">Martijn Visser 提出 -1，原因是多个发布 jar 打包了 Netty 及其第三方代码，但未随附编译后丢失的 MIT/BSD/公有领域等许可证和 NOTICE 信息。此外，部分包还缺少 Netty 原生库（如 BoringSSL 和 APSL 许可的 macOS DNS 解析器）的许可证。</p></li>
+<li><a href="https://lists.apache.org/thread/bfk7y2qcrjhsyvq5os15g3yrgok4qngr">FLIP-620: Structured errors for Table API and SQL</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/5lof8ms2s2ycn090ozjzvz1jqfcs7z7m">FLIP-621: Add TO_APPEND built-in PTF</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/94p9ljdjxw57l7f8djq86b9w4kzt5vxp">FLIP 622: Add built-in DEDUPLICATE and DEDUPLICATE_WINDOW PTFs</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/tpmtp7mt51dfdo442wl430f1p21rlo4d">[BUG] getUnionListState returns split state for State V2</a></h3>
+            <p class="meta">3 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕 Flink State V2 中 getUnionListState 错误委托给 getListState，导致 UnionListState 被注册为 SPLIT_DISTRIBUTE 而非 UNION。该问题会使恢复时各子任务仅获得部分状态，违反 union 重分布语义，并已在多个版本及 SQL 异步状态场景复现。社区确认这是 bug，并已建立 JIRA 跟进修复。</p>
+            <div class="key-points"><p><strong>@Lazarev Artemiy Maksimovich:</strong> 报告 State V2 的 getUnionListState 将 V2 描述符转换后错误调用 getListState，导致状态模式变为 SPLIT_DISTRIBUTE。</p>
+<p><strong>@Krishna Sai:</strong> 确认该行为符合 bug 表现，复现了恢复时状态被拆分的问题，并指出启用 async-state 的 SQL 场景也会受影响。</p>
+<p><strong>@Krishna Sai:</strong> 已创建 FLINK-41532 并表示将跟进修复。</p></div>
+            <p class="conclusion">初步结论是该问题为 bug；下一步行动是围绕 FLINK-41532 进行修复。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/gy8hxtob1hndkhn10jxp83ts3mr7oxo8">FLIP-620: Structured errors for Table API and SQL</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">社区讨论 FLIP-620 为 Table API 和 SQL 引入结构化错误框架，重点澄清错误分类、异常捕获、敏感信息处理和序列化等问题。Timo 已回应 Sergey 的疑问，并表示若无异议将发起投票。Gustavo 建议将 SQL 错误位置结构化，Timo 已采纳并更新 FLIP。</p>
+            <div class="key-points"><p><strong>@Timo Walther:</strong> INTERNAL 属于不应直接暴露给用户的内部错误，可在 Planner/Parser 关键位置捕获并重写异常；FlinkError 应可序列化，敏感信息可进行脱敏。</p>
+<p><strong>@Sergey Nuyanzin:</strong> 关注 INTERNAL 错误类别、AssertionError 捕获、FlinkError 序列化以及 Calcite 异常中敏感数据脱敏等问题，并对澄清表示认可。</p>
+<p><strong>@Gustavo de Morais:</strong> 支持结构化错误方向，建议将解析和校验错误的 SQL 起止行列位置作为结构化数据保留，便于编辑器、客户端和 AI 工具定位。</p></div>
+            <p class="conclusion">讨论基本收敛，Timo 已将 SQL 位置信息作为实现细节纳入 FLIP；若无进一步异议，将发起投票。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/tq261qh2992mr1mh3nxyk11jv3zg40jn">[BUG] VAR_SAMP(BIGINT) silently saturates at Long.MAX_VALUE in Flink 2.3.0</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论聚焦 Flink 2.3.0 中 VAR_SAMP(BIGINT) 结果超出 BIGINT 范围时静默饱和为 Long.MAX_VALUE 的正确性问题。报告者提供复现并询问是否新建 Jira，维护者确认问题可复现并解释根因是 DOUBLE 转 BIGINT 缺少范围检查。</p>
+            <div class="key-points"><p><strong>@Suweiwei:</strong> VAR_SAMP(BIGINT) 在结果超出 BIGINT 范围时静默返回 Long.MAX_VALUE，应使用更宽类型或显式溢出错误，并询问是否提交新 Jira。</p>
+<p><strong>@Krishna Sai:</strong> 问题在 2.3.0 和 master 可复现，根因是方差以 DOUBLE 计算后转 BIGINT 时未做范围检查，相关转换范围检查已由 FLINK-24420 和 FLINK-24847 跟踪。</p></div>
+            <p class="conclusion">初步认为无需新建 bug ticket，问题可归入既有 FLINK-24420/FLINK-24847；临时规避方法是先将输入 CAST 为 DOUBLE 再计算 VAR_SAMP。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/h1r45rx7rq602w6xty8nx69c71fhvwgo">FLIP-XXX: Dynamic Rate Limiting for FLIP-27 Source</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕为 FLIP-27 Source 提供动态限流能力的 FLIP 草案，重点是如何依据作业健康信号自适应调整读取速率并支持用户扩展。Peter 回应了 Reader 集成、退避恢复、启动不稳定和子任务配额分配等问题，并提供了 PoC。整体已进入反馈收敛阶段，计划发起投票。</p>
+            <div class="key-points"><p><strong>@Peter Huang:</strong> 动态限流通过 RateLimitCalculator 和 RateAllocator 接口实现，默认算法基于历史 checkpoint 时间，同时允许用户自定义策略。</p>
+<p><strong>@David Radley:</strong> 需要明确“健康/不健康”的定义，建议由用户可配置或自定义，而不是由方案固定假设。</p>
+<p><strong>@Weiqing:</strong> 关注 Reader 集成、退避后的恢复、超时重启以及非均匀配额分配等问题，建议结合 PoC 进一步验证。</p></div>
+            <p class="conclusion">初步共识是默认算法仅作为参考实现，应保留用户自定义健康信号和限流策略的扩展能力；Peter 计划下周发起投票，并可能通过单独 PR 修复 RateLimitedSourceReader 相关问题。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/20mvmbhg7h6mhppdnd9bnfhpv390pw4n">FLIP-622: Add built-in DEDUPLICATE and DEDUPLICATE_WINDOW PTFs</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">社区讨论 FLIP-622 引入内置 DEDUPLICATE 和 DEDUPLICATE_WINDOW PTF，重点聚焦去重语义和参数设计。整体反馈积极，认为该能力可显著简化流处理中的常见去重场景，并已形成基本共识。</p>
+            <div class="key-points"><p><strong>@Gustavo de Morais:</strong> 认可 FLIP 的整体设计，建议移除 DEDUPLICATE_WINDOW 的 reset_ttl_on_duplicate 参数，因为窗口关闭已能管理状态，state_ttl 仅作为兜底清理机制。</p>
+<p><strong>@Timo Walther:</strong> 强烈支持该 FLIP，同意移除该参数，并建议 DEDUPLICATE 默认采用重置 TTL 的行为，同时在可声明 append 的场景尽量声明 append。</p>
+<p><strong>@Vas Shabu:</strong> 接受社区反馈，表示将根据讨论更新 FLIP，移除 DEDUPLICATE_WINDOW 中的 reset_ttl_on_duplicate 参数。</p></div>
+            <p class="conclusion">初步结论是推进该 FLIP，并移除 DEDUPLICATE_WINDOW 的 reset_ttl_on_duplicate 参数；下一步由 Vas Shabu 更新 FLIP 文档。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/hswlx61w22vzs271vgpzf4f588vn8qfy">Make ON CONFLICT optional by default in Flink 2.4</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论是否在 Flink 2.4 中将 table.exec.sink.require-on-conflict 默认值从 true 改为 false，使 ON CONFLICT 子句默认变为可选。提议主要是为了解决 2.3 升级导致原有查询失败，以及 upsert key 推断过于保守造成误报的问题。社区主要参与者基本支持该默认值调整。</p>
+            <div class="key-points"><p><strong>@Gustavo de Morais:</strong> 建议将 ON CONFLICT 从强制要求改为可选，以缓解升级兼容性和 planner 保守推断导致的查询失败。</p>
+<p><strong>@Timo Walther:</strong> 认可 ON CONFLICT 的必要性，但认为该功能尚未生产就绪且缺少维护者，因此支持调整默认值。</p>
+<p><strong>@Ramin Gharib:</strong> 对提议没有异议，支持将默认值改为可选。</p></div>
+            <p class="conclusion">讨论初步达成一致，Gustavo 将推进把默认值改为 false，并在该功能端到端更加生产就绪后再重新评估。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/9wv4sfkd4olvsfyy4kp773t5z74zxkt5">Flink support for the proposed Parquet SERIALIZED_VALUE type</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论 Flink 是否支持 Parquet 提议的新逻辑类型 SERIALIZED_VALUE，用于在 BYTE_ARRAY 列中保存序列化的 protobuf、FlatBuffers 或 thrift 消息，并附带格式、schema 和根消息类型。提议认为该类型可帮助 Flink 在文件场景中直接读取自带 schema 的序列化消息，减少对编译类或外部 schema registry 的依赖，但需要升级 parquet-java 版本。</p>
+            <div class="key-points"><p><strong>@Neelesh Salian:</strong> SERIALIZED_VALUE 只负责在 Parquet 中保存原始序列化字节和 schema，不解码内容；Flink 可基于此实现消息字段读取、字段暴露和投影读取，并自行负责解码逻辑。</p>
+<p><strong>@Neelesh Salian:</strong> 当前 Flink 的 protobuf format 依赖生成的消息类且文件系统连接器支持有限，SERIALIZED_VALUE 可为文件读取场景提供类似 schema registry 的能力。</p>
+<p><strong>@Neelesh Salian:</strong> 读取该类型需要 parquet-java 1.18.0 或更高版本，因为 Flink 当前使用的 1.15.2 版本无法识别未知逻辑类型。</p></div>
+            <p class="conclusion">目前仍在征求 Flink 社区反馈，尚未形成最终结论；如果方向获得认可，下一步将推动 FLIP 讨论直接读取消息字段和投影列，并评估升级 Parquet 依赖。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/cf97l15jgfomjrm5330j17cp3smj0r6o">[2.4 Release][summary] sync meeting</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">本次讨论同步了 Flink 2.4 发布进展，重点关注阻塞问题、测试情况和合规文件修复。当前两个 blocker 问题仍未修复，将评估其对发布的影响；Python NOTICE 文件缺失问题已修复并合入 2.4 分支。跨团队测试新增了测试项，并发现一个 Materialized Table 相关缺陷。</p>
+            <div class="key-points"><p><strong>@Chanhae Oh:</strong> FLINK-41379 和 FLINK-41388 两个阻塞问题尚未修复，需要与维护者一起评估其对 2.4 发布的影响。</p>
+<p><strong>@Chanhae Oh:</strong> Python NOTICE 文件缺失问题已经修复并合并到 2.4 分支。</p>
+<p><strong>@Chanhae Oh:</strong> 跨团队测试新增 FLINK-41450 和 FLINK-41451，并在验证过程中发现 Materialized Table 缺陷，已提交 FLINK-41468。</p></div>
+            <p class="conclusion">按当前计划，预计下周启动 RC0 预发布构建测试，同时继续跟进 blocker 问题和新增缺陷。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/thkmctlpr23gmsjz7gm08ytm5rj0d81x">unsubscription</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">提供的邮件内容仅包含主题“unsubscription”和发件人 Amir Hossein Sharifzadeh，缺少正文与后续讨论内容。因此无法概括该 Flink 社区讨论的核心议题、进展或各方观点。</p>
+            <div class="key-points"><p><strong>@Amir Hossein Sharifzadeh:</strong> 仅知其发送了与“unsubscription”相关的邮件，但未提供具体观点或讨论内容。</p></div>
+            <p class="conclusion">当前信息不足，无法形成初步结论或下一步行动；需要补充完整邮件正文及讨论记录。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/2m2nyy3dsnbr99rtccqb7q63roqdz4d5">回复： [BUG] VAR_SAMP(BIGINT) silently saturates at Long.MAX_VALUE in Flink 2.3.0</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论围绕 Flink 2.3.0 中 VAR_SAMP(BIGINT) 在结果超出 BIGINT 范围时静默饱和为 Long.MAX_VALUE 的问题。参与者确认该问题可复现，根因是方差先以 DOUBLE 计算后转回 BIGINT 且未做范围检查。</p>
+            <div class="key-points"><p><strong>@Sepuri Sai Krishna:</strong> 已在 2.3.0 和 master 复现，VAR_SAMP(BIGINT) 返回 BIGINT，DOUBLE 转 BIGINT 的 cast 未做范围检查；相关范围检查已由 FLINK-24420 和 FLINK-24847 跟踪。</p>
+<p><strong>@Suweiwei:</strong> 报告该正确性问题，接受已有 issue 跟踪，不再新建 ticket，并计划通过将输入 CAST 为 DOUBLE 来获得更宽的方差结果。</p></div>
+            <p class="conclusion">初步结论是不新建 bug ticket，建议用户先将输入转为 DOUBLE 规避；后续范围检查问题继续由 FLINK-24420 和 FLINK-24847 跟进。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (121)</h2>
+            
+    <p>本周新建 <strong>121</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周 JIRA 主要集中在 Flink SQL/Table 与状态处理相关能力，包括 DEDUPLICATE PTF、UDF Metrics、Early Fire、AsyncScalarFunction、DDL/函数解析及状态恢复正确性。同时有大量连接器与生态事项，涉及 MongoDB、Elasticsearch、MySQL Pipeline、S3、Protobuf、PyFlink、依赖升级和 CI/发布验证。此外还关注运行时可靠性与运维体验，如 checkpoint/savepoint、HA、Autoscaler、故障信息、文档和构建兼容性修复。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Flink Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
