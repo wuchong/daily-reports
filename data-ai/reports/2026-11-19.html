@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data+AI 全球日报 | 2026-11-19</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Data+AI 全球日报 | 2026-11-19</h1>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="top-changes">
+            <h2>🔥 今日最重要的3个变化</h2>
+            <ol><li><strong>AWS 推出 EMR Serverless Flex</strong> — Amazon EMR Serverless Flex 以闲置算力运行非紧急 Spark 批处理，提供固定 60% 折扣，可能重塑批量计算的成本与调度策略。</li><li><strong>Amazon MSK 支持 Standard 到 Express 原地升级</strong> — MSK 现有 Provisioned 集群可无停机升级到 Express brokers，降低 Kafka 现代化门槛并强化托管流处理路径。</li><li><strong>ClickHouse Power BI Arrow Flight connector 公开预览</strong> — ClickHouse 通过 Arrow Flight 直连 Power BI，减少 gateway 部署和 CPU 开销，推动列式分析栈与 BI 生态融合。</li></ol>
+            <p class="judgment"><strong>总判断：</strong>今日信号显示云厂商正以更低成本、更简迁移和更强治理继续巩固 Data+AI 平台底座，AWS 在 Spark、Kafka、Redshift 与 S3 Iceberg 上同时发力。ClickHouse 则加速连接 BI 与运维工具生态。AI Agent 作为数据仓库的新消费主体，开始推动权限、预算与可靠性治理成为平台竞争重点。</p>
+        </section>
+
+        <section class="top-signals">
+            <h2>📡 重要信号</h2>
+            
+    <article class="news-item">
+        <h3>Introducing Amazon EMR Serverless Flex: Run non-urgent Spark jobs at a discount</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/introducing-amazon-emr-serverless-flex-run-non-urgent-spark-jobs-at-a-discount/">AWS Big Data Blog</a></p>
+        <p class="date">2026-11-19</p>
+        <p class="summary">AWS 推出 Amazon EMR Serverless Flex，面向非紧急 Spark 批处理任务，利用空闲算力提供较标准价格固定 60% 折扣。该选项自动处理可用区选择、实例多样化、driver 保护和自动重试，适合可容忍延迟的 ETL、数据质量检查和批量分析任务。</p>
+        <div class="impact">📊 数据平台影响：为批处理工作负载增加类似抢占式但更托管的低成本层，推动数据平台在 SLA 分级、任务调度和成本治理上进一步分层。</div>
+    </article>
+    <article class="news-item">
+        <h3>Announcing in-place upgrades from Standard brokers to Express brokers for Amazon MSK</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/announcing-in-place-upgrades-from-standard-brokers-to-express-brokers-for-amazon-msk/">AWS Big Data Blog</a></p>
+        <p class="date">2026-11-19</p>
+        <p class="summary">Amazon MSK 宣布支持从 Standard brokers 原地升级到 Express brokers，通过全托管滚动升级完成，无需新建集群、应用改造或停机。用户可先评估准备情况，再执行升级，将既有 Kafka 集群迁移到更高弹性、更低运维负担的 Express 架构。</p>
+        <div class="impact">📊 数据平台影响：降低 Kafka 现代化迁移摩擦，可能加速 Express broker 采用，并推动流数据平台向更低运维、更强弹性计费模型演进。</div>
+    </article>
+    <article class="news-item">
+        <h3>ClickHouse and Power BI, columnar end to end: the Arrow Flight connector is in public preview</h3>
+        <p class="sources">📌 <a href="https://clickhouse.com/blog/power-bi-arrow-flight-connector-public-preview">ClickHouse Blog</a></p>
+        <p class="date">2026-11-19</p>
+        <p class="summary">ClickHouse 发布 Power BI Arrow Flight connector 公开预览，可通过列式 Arrow Flight 协议直接连接 ClickHouse，提升刷新速度、降低 CPU 消耗，并无需部署 gateway。这使 Power BI 与 ClickHouse 之间形成更高效的端到端列式分析链路。</p>
+        <div class="impact">📊 数据平台影响：强化 ClickHouse 在企业 BI 场景的可接入性，可能扩大其在交互式分析和报表后端中的份额，并提升对网关型传统连接方案的替代压力。</div>
+    </article>
+    <article class="news-item">
+        <h3>Guardrails and cost control for your agentic workloads with Amazon Redshift</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/guardrails-and-cost-control-for-your-agentic-workloads-with-amazon-redshift/">AWS Big Data Blog</a></p>
+        <p class="date">2026-11-19</p>
+        <p class="summary">AWS 提出在 Amazon Redshift 上运行 AI agent 分析工作负载的治理框架，针对过度代理和无界消费两大风险，通过六类护栏和三层执行机制控制权限、查询范围、资源消耗与成本。该方案显示 AI agents 正成为数据仓库的重要消费者。</p>
+        <div class="impact">📊 数据平台影响：数据仓库需要新增面向 agent 的访问控制、预算约束和审计机制，治理与成本控制将成为 AI-native 数据平台核心能力。</div>
+    </article>
+        </section>
+
+        <section class="product-tech">
+            <h2>💻 产品与技术</h2>
+            
+    <article class="news-item">
+        <h3>How Twilio modernized billing at 70% lower cost with Amazon Redshift</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/how-twilio-modernized-billing-at-70-lower-cost-with-amazon-redshift/">AWS Big Data Blog</a></p>
+        <p class="date">2026-11-19</p>
+        <p class="summary">Twilio Commerce Platform 团队将计费管道迁移到 Amazon Redshift Serverless，结合 Amazon MSK 流式摄取和 Amazon Aurora MySQL Zero-ETL，将基础设施成本降低 70%，并使计费重算速度提升 12 倍。案例展示了流式摄入与 Zero-ETL 在复杂计费场景中的组合价值。</p>
+        <div class="impact">📊 数据平台影响：验证 Serverless 数仓 + 流式摄入 + Zero-ETL 可降低计费类高复杂管道的成本和延迟，为 SaaS 计费与收入数据架构提供参考。</div>
+    </article>
+    <article class="news-item">
+        <h3>Understanding and optimizing materialized views in Amazon Redshift</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/understanding-and-optimizing-materialized-views-in-amazon-redshift/">AWS Big Data Blog</a></p>
+        <p class="date">2026-11-19</p>
+        <p class="summary">AWS 发布 Amazon Redshift 物化视图优化指南，指出物化视图虽可加速昂贵查询，但刷新会持续消耗算力。文章提供 v_mv_health 诊断视图和 sp_populate_mv_definitions 存储过程，用于查看刷新资格、成本、陈旧程度和依赖关系。</p>
+        <div class="impact">📊 数据平台影响：推动物化视图从性能工具转向可观测、可治理对象，有助于团队平衡查询加速与刷新成本。</div>
+    </article>
+    <article class="news-item">
+        <h3>How Klaviyo processes 3 billion daily events at scale with Amazon MSK Express</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/how-klaviyo-processes-3-billion-daily-events-at-scale-with-amazon-msk-express/">AWS Big Data Blog</a></p>
+        <p class="date">2026-11-19</p>
+        <p class="summary">Klaviyo 将事件管道从 RabbitMQ 迁移到 Amazon MSK Express brokers，日处理约 30 亿事件。团队在 2025 年 Black Friday/Cyber Monday 期间将 broker 集群扩容数倍，处理 227 亿条消息，同比增长 25%，随后缩容。</p>
+        <div class="impact">📊 数据平台影响：展示托管 Kafka 在高并发营销事件流中的弹性能力，强化事件驱动数据架构对峰值负载成本控制的吸引力。</div>
+    </article>
+    <article class="news-item">
+        <h3>What's new in clickhousectl v0.6.0</h3>
+        <p class="sources">📌 <a href="https://clickhouse.com/blog/clickhousectl-v0-6-0">ClickHouse Blog</a></p>
+        <p class="date">2026-11-19</p>
+        <p class="summary">ClickHouse 发布 clickhousectl v0.6.0，改进项目发现方式，支持类似 Git 的项目查找、无密码连接 ClickHouse Cloud、搜索、shell 自动补全、反馈机制，并对每次安装进行验证。该工具旨在提升开发者管理 ClickHouse 项目的体验。</p>
+        <div class="impact">📊 数据平台影响：增强 ClickHouse 开发者运维和 CLI 生态，降低多项目、多环境管理门槛，有利于社区和企业用户采用。</div>
+    </article>
+    <article class="news-item">
+        <h3>Detect, act, keep the evidence: node reliability across three clouds</h3>
+        <p class="sources">📌 <a href="https://clickhouse.com/blog/node-reliability-across-three-clouds">ClickHouse Blog</a></p>
+        <p class="date">2026-11-19</p>
+        <p class="summary">ClickHouse 介绍 ClickHouse Cloud 如何在 AWS、GCP 和 Azure 上检测不健康 Kubernetes 节点、安全替换节点并保留诊断证据。文章强调跨云节点可靠性、自动化修复和故障取证能力，以提升托管服务稳定性。</p>
+        <div class="impact">📊 数据平台影响：多云托管数据库竞争正深入到底层 Kubernetes 可靠性，自动化节点治理与诊断留存成为平台信任度关键。</div>
+    </article>
+    <article class="news-item">
+        <h3>How Moonfrog scales analytics and lowers query cost with Amazon Redshift RG instances</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/how-moonfrog-scales-analytics-and-lowers-query-cost-with-amazon-redshift-rg-instances/">AWS Big Data Blog</a></p>
+        <p class="date">2026-11-19</p>
+        <p class="summary">Moonfrog Labs 通过一次 elastic resize，将 148 TB Amazon Redshift 数据仓库从 RA3 迁移到基于 Graviton 的 RG 实例。团队重新评估容量以适应增长分析需求，并验证仓库与数据湖访问，测量到更快加载和更低查询成本。</p>
+        <div class="impact">📊 数据平台影响：Graviton 型 Redshift 实例为大规模仓库提供成本与性能迁移路径，推动用户关注实例代际升级和弹性迁移工具。</div>
+    </article>
+    <article class="news-item">
+        <h3>Amazon S3 Tables with dbt: Iceberg-based data transformations using AWS Glue</h3>
+        <p class="sources">📌 <a href="https://aws.amazon.com/blogs/big-data/amazon-s3-tables-with-dbt-iceberg-based-data-transformations-using-aws-glue/">AWS Big Data Blog</a></p>
+        <p class="date">2026-11-19</p>
+        <p class="summary">AWS 展示如何使用 Amazon S3 Tables 与 dbt 进行基于 Apache Iceberg 的数据转换。通过 AWS Glue 的 dbt-glue adapter，可在 staging 和 mart 架构中执行 incremental merge 和 append 策略，将对象存储升级为具备表语义的数据湖底座。</p>
+        <div class="impact">📊 数据平台影响：S3 Tables、Iceberg 与 dbt 组合强化对象存储上的事务表能力，加速湖仓一体从存储格式到工程实践的标准化。</div>
+    </article>
+    <article class="news-item">
+        <h3>pg_clickhouse 0.11.1: Now with pgvector, UPDATE, DELETE pushdown</h3>
+        <p class="sources">📌 <a href="https://clickhouse.com/blog/pg-clickhouse-0-11-1">ClickHouse Blog</a></p>
+        <p class="date">2026-11-19</p>
+        <p class="summary">ClickHouse 发布 pg_clickhouse 0.11.1，为 ClickHouse Managed Postgres 增加 pgvector 搜索，以及 UPDATE、DELETE、TRUNCATE 下推，并进一步提升 PostgreSQL 兼容性。该版本有助于在 PostgreSQL 工作流中访问 ClickHouse 分析能力。</p>
+        <div class="impact">📊 数据平台影响：通过 PostgreSQL 接口和向量检索扩展，ClickHouse 可更容易嵌入现有应用栈，增强 HTAP/AI 检索混合场景吸引力。</div>
+    </article>
+        </section>
+
+        <section class="people-views">
+            <h2>👤 人物与观点</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="analyst-insights">
+            <h2>📊 分析师洞察</h2>
+            <p class="empty">暂无</p>
+        </section>
+
+        <section class="watchlist">
+            <h2>👀 观察列表</h2>
+            
+    <article class="watchlist-item">
+        <h3>EMR Serverless Flex 采用率与适用边界</h3>
+        <span class="status">待观察</span>
+        <p class="reason">60% 折扣可能改变 Spark 批处理成本结构，但适用性取决于任务容忍延迟、重试和稳定性。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>更多企业案例、SLA/成本基准和与 Spot/标准 Serverless 的对比数据。</p>
+    </article>
+    <article class="watchlist-item">
+        <h3>MSK Express 迁移规模</h3>
+        <span class="status">待观察</span>
+        <p class="reason">原地升级降低迁移门槛，需观察生产集群采用、性能与成本收益。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>大型生产集群完成 Standard 到 Express 升级的案例与定价反馈。</p>
+    </article>
+    <article class="watchlist-item">
+        <h3>ClickHouse Arrow Flight connector GA</h3>
+        <span class="status">待观察</span>
+        <p class="reason">Public preview 显示 ClickHouse 正强化 BI 直连，但正式可用性、企业部署和安全能力仍待验证。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>GA 发布、Power BI 企业部署案例和性能基准。</p>
+    </article>
+    <article class="watchlist-item">
+        <h3>Redshift agentic workload 治理</h3>
+        <span class="status">待观察</span>
+        <p class="reason">AI agents 成为仓库消费者，需要权限、预算和审计护栏，可能形成新产品模块。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>AWS 推出更细粒度 agent 治理功能或客户生产案例。</p>
+    </article>
+    <article class="watchlist-item">
+        <h3>S3 Tables/Iceberg + dbt 生态成熟度</h3>
+        <span class="status">待观察</span>
+        <p class="reason">对象存储原生表能力影响湖仓架构，但生态工具、事务语义和运维实践仍需验证。</p>
+        <p class="milestone"><strong>下一里程碑：</strong>更多 dbt/Glue/Iceberg 生产管道和性能成本案例。</p>
+    </article>
+        </section>
+
+        <section class="stock-analysis">
+            <h2>📈 股票分析</h2>
+            <p class="disclaimer">⚠️ 以下内容仅供参考，不构成任何投资建议。投资有风险，入市需谨慎。</p>
+            
+    <article class="stock-item">
+        <div class="stock-header">
+            <span class="ticker">AMZN</span>
+            <span class="company">Amazon</span>
+            <span class="signal signal-bullish">🟢 看多</span>
+        </div>
+        <p class="stock-summary">AWS 密集更新 EMR、MSK、Redshift 和 S3 Tables/dbt 生态，强化云数据平台成本优化与 AI agent 治理能力，有助于提升企业数据工作负载粘性。仅供参考。</p>
+        <div class="stock-details">
+            <div class="catalysts">
+                <strong>🚀 催化剂</strong>
+                <ul><li>EMR Serverless Flex 采用扩大</li><li>MSK Express 升级带来的流处理迁移</li><li>Redshift agentic 治理功能落地</li></ul>
+            </div>
+            <div class="risks">
+                <strong>⚠️ 风险</strong>
+                <ul><li>折扣型算力可能压缩单位收入</li><li>客户对成本优化功能的实际采用不及预期</li><li>多云与开源方案竞争</li></ul>
+            </div>
+        </div>
+    </article>
+    <article class="stock-item">
+        <div class="stock-header">
+            <span class="ticker">TWLO</span>
+            <span class="company">Twilio</span>
+            <span class="signal signal-neutral">⚪ 中性</span>
+        </div>
+        <p class="stock-summary">Twilio 披露利用 Redshift Serverless、MSK 和 Zero-ETL 将计费管道成本降低 70%，显示其基础设施优化能力，但属于技术案例，对短期财务影响有限。仅供参考。</p>
+        <div class="stock-details">
+            <div class="catalysts">
+                <strong>🚀 催化剂</strong>
+                <ul><li>成本节约改善毛利</li><li>计费系统稳定性提升</li><li>数据平台现代化</li></ul>
+            </div>
+            <div class="risks">
+                <strong>⚠️ 风险</strong>
+                <ul><li>案例未披露整体财务影响</li><li>核心通信业务增长仍是关键</li><li>迁移收益可持续性待验证</li></ul>
+            </div>
+        </div>
+    </article>
+    <article class="stock-item">
+        <div class="stock-header">
+            <span class="ticker">KVYO</span>
+            <span class="company">Klaviyo</span>
+            <span class="signal signal-bullish">🟢 看多</span>
+        </div>
+        <p class="stock-summary">Klaviyo 展示在 Amazon MSK Express 上处理每日约 30 亿事件和峰值 227 亿消息的能力，体现其营销自动化平台的数据规模与弹性基础设施，有助于支撑客户增长。仅供参考。</p>
+        <div class="stock-details">
+            <div class="catalysts">
+                <strong>🚀 催化剂</strong>
+                <ul><li>Black Friday/Cyber Monday 峰值数据处理能力验证</li><li>事件驱动营销场景扩张</li><li>基础设施效率提升</li></ul>
+            </div>
+            <div class="risks">
+                <strong>⚠️ 风险</strong>
+                <ul><li>高事件量带来的成本压力</li><li>对 AWS 生态依赖</li><li>营销支出周期波动</li></ul>
+            </div>
+        </div>
+    </article>
+    <article class="stock-item">
+        <div class="stock-header">
+            <span class="ticker">MSFT</span>
+            <span class="company">Microsoft</span>
+            <span class="signal signal-neutral">⚪ 中性</span>
+        </div>
+        <p class="stock-summary">ClickHouse Arrow Flight connector 进入 Power BI public preview，改善 Power BI 与第三方列式数据库连接体验，对微软 BI 生态是辅助性利好，但短期财务影响有限。仅供参考。</p>
+        <div class="stock-details">
+            <div class="catalysts">
+                <strong>🚀 催化剂</strong>
+                <ul><li>Power BI 连接器生态扩展</li><li>企业 BI 查询性能提升</li><li>更多第三方数据源集成</li></ul>
+            </div>
+            <div class="risks">
+                <strong>⚠️ 风险</strong>
+                <ul><li>连接器仍处 preview</li><li>微软自有 Fabric/Azure 生态优先级</li><li>第三方数据库竞争</li></ul>
+            </div>
+        </div>
+    </article>
+        </section>
+
+        <footer>
+            <p>Generated by Data+AI Daily Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
