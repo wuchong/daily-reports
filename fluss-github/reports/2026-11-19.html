@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-11-19</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-11-19</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 41 新 Issues</div>
+            <div class="stat">✅ 8 关闭</div>
+            <div class="stat">✨ 8 新 PRs</div>
+            <div class="stat">🎉 7 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/5267">PR #5267</a> 合并 consumer group Admin APIs，推进 FIP-53 消费位点管理客户端能力。</li><li>🐛 <a href="https://github.com/apache/fluss/pull/5282">PR #5282</a> 更新 Buildx action 至 v4.4.1，修复 Gateway CI 无法启动的问题。</li><li>🎉 <a href="https://github.com/apache/fluss/pull/5195">PR #5195</a> 修复 Iceberg WAL changelog 主键表 upsert 后残留旧行的问题。</li><li>✨ <a href="https://github.com/apache/fluss/pull/5160">PR #5160</a> 与 <a href="https://github.com/apache/fluss/pull/5161">PR #5161</a> 为 Rust UnionRead 增加 Paimon source 和 bounded append 执行。</li><li>✨ <a href="https://github.com/apache/fluss/issues/5294">Issue #5294</a> 提出 FIP-31 Iceberg 主键表 derived deletion vectors 总任务，拆分大量子任务。</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4608">Issue #4608</a> FIP-53: Log Scanner Offset（Consumer Offsets）Management</h4>
+            <ul><li><span class="author">@pisceslj</span>: 更新 FIP-53 子任务清单，服务端和客户端 Admin API 多已完成，剩 scanner 集成与 Flink 支持。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/5224">Issue #5224</a> [Improvement] Reduce allocations in HLL sketch merging</h4>
+            <ul><li><span class="author">@rahulbsw</span>: 基准显示包装降低分配但吞吐回退，保留 heapify，实验代码留存，Spark 示例另提文档。</li><li><span class="author">@platinumhamburg</span>: 认可保留 heapify，基准和 HIP 差异已足够决策，可关闭该问题。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/5077">Issue #5077</a> [lake/iceberg] Union read returns a bucket's lake data out of write order</h4>
+            <ul><li><span class="author">@jaimelopez89</span>: 修复已提交 #5288：按序号排序 lake split，恢复时保持顺序，并补充文档和测试。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/5239">Issue #5239</a> [client] Closing a KV snapshot scanner does not stop its download</h4>
+            <ul><li><span class="author">@pbanakar</span>: 确认关闭 KV snapshot scanner 后下载未停止的问题，准备提交修复。</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5267">PR #5267</a> [client] Implement consumer group Admin APIs</h4>
+            <ul><li><span class="author">@pisceslj</span>: 按评审移除 BucketOutcome，改为按 bucket Future；完善校验、去重、错误传播与测试。</li><li><span class="author">@wuchong</span>: 说明 deleteConsumerGroups 会先校验全部 group ID，并简化测试但保留核心覆盖。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5161">PR #5161</a> [rust] Add bounded append UnionRead execution</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 询问任务是否保存过滤条件，避免不同引擎重建扫描时行为不一致。</li><li><span class="author">@naivedogger</span>: 已为每个 split 加过滤条件指纹，缺失或变更会失败；同时完成 rebase。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5160">PR #5160</a> [rust] Add a Paimon lake source for UnionRead</h4>
+            <ul><li><span class="author">@naivedogger</span>: 认为 Paimon native split 未暴露授权标记，倾向暂用 JSON 并保留后续切换空间。</li><li><span class="author">@fresh-borzoni</span>: 强调二进制格式更稳定且 Java 使用，授权表可在读取帧类型时拒绝。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5162">PR #5162</a> [rust] Add bounded deduplicate PK UnionRead execution</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 关注空 CDC 批、停止条件、lake baseline 测试和魔数，要求补充测试与注释。</li><li><span class="author">@naivedogger</span>: 已 rebase 并等待 CI，后续需针对空批和停止位置继续处理。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5175">PR #5175</a> [flink] Add HLL and KLL sketch SQL functions</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: 建议补 batch 示例、空串说明、KLL wrap、移除 TypeInfo 并修 JAR。</li><li><span class="author">@rahulbsw</span>: 已补文档和测试：KLL 只读 wrap、空串 NULL、移除 TypeInfo，并修复 JAR manifest。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5247">PR #5247</a> [flink] Count tiered log records in the tiering source's numRecordsIn</h4>
+            <ul><li><span class="author">@beryllw</span>: 建议用 previous offset+1 简化计数，并注释 EARLIEST 首次计数可能漏空前导空批。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5136">PR #5136</a> [rpc] Wire TLS encryption into the client Netty pipeline</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: 关注 TLS1.3 客户端证书失败、主机名验证、SASL 缓存、重试日志和明文探测识别。</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5288">PR #5288</a> [lake] Keep a bucket's lake splits in write order for union read</h4>
+            <ul><li><span class="author">@jaimelopez89</span>: 给出本地 Flink、Iceberg、Paimon 测试结果、红绿验证、Flink 2.x 兼容和未覆盖范围。</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/5325">#5325</a> [FIP-31][lake/iceberg] Store the position index as an Iceberg index once the spec settles <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5324">#5324</a> [kv] Write the delete of an expired key to the changelog so it reaches the lake <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5323">#5323</a> [FIP-31][flink] Reserve index file ids per split so the committer stops renumbering index parts <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5322">#5322</a> [FIP-31][flink] Let a tiering reader take its next split while the previous one waits for its vectors <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5321">#5321</a> [FIP-31][docs] Document deletion vector tables <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5320">#5320</a> [FIP-31] Turn on union reads with masks for Iceberg deletion vector tables <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5319">#5319</a> [FIP-31] Accept the deletion vector table option on Iceberg tables for tiering <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5318">#5318</a> [FIP-31][spark] Read union reads of deletion vector tables in Spark <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5317">#5317</a> [FIP-31][flink] Read union reads of deletion vector tables in Flink <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5316">#5316</a> [FIP-31][client] Read union read parts through masks, or by key when a bucket has none <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5315">#5315</a> [FIP-31][client] Plan the parts of a union read and pin one cut per split bucket <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5314">#5314</a> [FIP-31][lake/iceberg] Prepare deletion vectors on the tiering writers <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5313">#5313</a> [FIP-31][lake/iceberg] Compact deletion vector tables and keep the snapshots the index needs <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5312">#5312</a> [FIP-31][lake] Re-index lake files another engine rewrote <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5311">#5311</a> [FIP-31][lake/iceberg] Commit a round's data files and deletion vectors on its base <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5310">#5310</a> [FIP-31][flink] Publish a round's index change and merge its deletes at the tiering committer <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5309">#5309</a> [FIP-31][flink] Plan tiering rounds at their leaders and fetch their masks and deletes on the readers <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5308">#5308</a> [FIP-31][lake] Write a tiering round through its log mask <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5307">#5307</a> [FIP-31][server] Save the change list with each KV snapshot and restore it on a leader change <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5306">#5306</a> [FIP-31][server] Serve the masks of union reads, with pinned cuts as leases <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5305">#5305</a> [FIP-31][server] Plan a tiering round's end and serve its log mask and deletes <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5304">#5304</a> [FIP-31][server] Cap the row TTL filter's clock so no untiered version expires <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5303">#5303</a> [FIP-31][server] Switch leaders to a newly registered lake snapshot, and rebuild after a leader change <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5302">#5302</a> [FIP-31][server] Apply changes through one owner per bucket, with a bounded hand-off and a heap budget <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5301">#5301</a> [FIP-31][server] Keep the change list of a primary key bucket on its leader's disk <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5300">#5300</a> [FIP-31][test] Answer GetDvSnapshot from scripted responses in the test gateways <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5299">#5299</a> [FIP-31][server] Add the versioned KV value layout of deletion vector tables <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5298">#5298</a> [FIP-31][common] Add the chain, checkpoints, trim and orphan cleanup of the position index store <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5297">#5297</a> [FIP-31][common] Add the remote position index store: format, writer and reader <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5296">#5296</a> [FIP-31][lake] Add the lake capability interfaces of deletion vector tables <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5295">#5295</a> [FIP-31][rpc] Add the GetDvSnapshot RPC, options and metrics of deletion vector tables <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5294">#5294</a> [Umbrella][FIP-31] Implement derived deletion vectors for Iceberg primary key tables <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5293">#5293</a> [rust] Add primary-key lookups and lookup join to the DataFusion catalog <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5292">#5292</a> [rust] Read tiered tables in DataFusion through the UnionRead kernel <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5291">#5291</a> [rust] Add a DataFusion catalog for Fluss log tables <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5290">#5290</a> [FIP-50][rust] Native DataFusion query engine for the Fluss Rust client <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5284">#5284</a> Improve TabletServer RPC scheduling under connection skew and bucket contention <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/5281">#5281</a> [Bug] Gateway CI cannot start after the Buildx action pin expired <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/issues/5279">#5279</a> [rust] Support snapshot bootstrap followed by changelog consumption in UnionRead <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/issues/5278">#5278</a> [rust] Use Paimon's native split format for UnionRead lake tasks <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/issues/5276">#5276</a> [KV] Support MVCC point and prefix lookups at a bucket log offset <span class="author">@platinumhamburg</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/5289">#5289</a> [client] Stop KV snapshot downloads when scanner closes <span class="author">@pbanakar</span> </li><li><a href="https://github.com/apache/fluss/pull/5288">#5288</a> [lake] Keep a bucket's lake splits in write order for union read <span class="author">@jaimelopez89</span> </li><li><a href="https://github.com/apache/fluss/pull/5287">#5287</a> [client] Integrate consumer group offsets with log scanners <span class="author">@pisceslj</span> </li><li><a href="https://github.com/apache/fluss/pull/5286">#5286</a> [server] Use WAL changelog image for sys.consumer_offsets <span class="author">@pisceslj</span> </li><li><a href="https://github.com/apache/fluss/pull/5285">#5285</a> [rpc] Prototype connection handoff and bucket-aware scheduling for TabletServer <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/5283">#5283</a> [test] Isolate table names in shared-cluster tests <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/pull/5280">#5280</a> [rust] Support streaming UnionRead <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/pull/5277">#5277</a> [kv] Support MVCC lookups at bucket log offsets <span class="author">@platinumhamburg</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/5281">#5281</a> [Bug] Gateway CI cannot start after the Buildx action pin expired <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/issues/5266">#5266</a> [client] Implement consumer group Admin APIs <span class="author">@pisceslj</span> </li><li><a href="https://github.com/apache/fluss/issues/5194">#5194</a> [lake/iceberg] PK Tables with WAL changelog image keep stale rows in Iceberg <span class="author">@wattt3</span> </li><li><a href="https://github.com/apache/fluss/issues/5156">#5156</a> [rust] Add bounded append UnionRead execution <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/issues/5155">#5155</a> [rust] Add a Paimon lake source for UnionRead <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/issues/4878">#4878</a> [log] Writer expiration ignores the injected clock <span class="author">@fxbing</span> </li><li><a href="https://github.com/apache/fluss/issues/4697">#4697</a> [test] Unstable test FlinkCatalogTest.testListMaterializedTables <span class="author">@app/github-actions</span> </li><li><a href="https://github.com/apache/fluss/issues/3628">#3628</a> [common] Schema.PrimaryKey violates the equals/hashCode contract <span class="author">@NestDream</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/5282">#5282</a> [build] Update Gateway CI to Buildx action v4.4.1 <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/pull/5267">#5267</a> [client] Implement consumer group Admin APIs <span class="author">@pisceslj</span> </li><li><a href="https://github.com/apache/fluss/pull/5195">#5195</a> [lake/iceberg] Delete stale rows of WAL changelog tables on upsert <span class="author">@wattt3</span> </li><li><a href="https://github.com/apache/fluss/pull/5161">#5161</a> [rust] Add bounded append UnionRead execution <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/pull/5160">#5160</a> [rust] Add a Paimon lake source for UnionRead <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/pull/4879">#4879</a> [log] Use the injected clock for writer expiration <span class="author">@fxbing</span> </li><li><a href="https://github.com/apache/fluss/pull/3629">#3629</a> [common] Fix equals/hashCode contract violation in Schema.PrimaryKey <span class="author">@NestDream</span> <span class="labels">Stale</span></li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
