@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-11-20</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-11-20</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 38 新 Issues</div>
+            <div class="stat">✅ 6 关闭</div>
+            <div class="stat">✨ 0 新 PRs</div>
+            <div class="stat">🎉 5 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/5283">PR #5283</a> [test] Isolate table names in shared-cluster tests</li><li>🎉 <a href="https://github.com/apache/fluss/pull/5267">PR #5267</a> [client] Implement consumer group Admin APIs</li><li>🎉 <a href="https://github.com/apache/fluss/pull/5162">PR #5162</a> [rust] Add bounded deduplicate PK UnionRead execution</li><li>🎉 <a href="https://github.com/apache/fluss/pull/5136">PR #5136</a> [rpc] Wire TLS encryption into the client Netty pipeline</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4817">PR #4817</a> [rpc] Reduce Netty shutdown latency and fix lifecycle races</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4608">Issue #4608</a> FIP-53: Log Scanner Offset（Consumer Offsets）Management</h4>
+            <ul><li><span class="author">@pisceslj</span>: ### Subtasks - [x] **[4625 [server] Add consumer offset table foundations](https://github.com/apach…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5162">Issue #5162</a> [rust] Add bounded deduplicate PK UnionRead execution</h4>
+            <ul><li><span class="author">@naivedogger</span>: @fresh-borzoni Thank you, I have rebased, ptal!</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/5224">Issue #5224</a> [Improvement] Reduce allocations in HLL sketch merging</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: Thanks for running such a thorough set of benchmarks, @rahulbsw, and for keeping the experimental c…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5246">Issue #5246</a> [client] Recover conflicting partition metadata on tablet servers</h4>
+            <ul><li><span class="author">@wuchong</span>: Fixed by https://github.com/apache/fluss/pull/5283</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5289">Issue #5289</a> [client] Stop KV snapshot downloads when scanner closes</h4>
+            <ul><li><span class="author">@pbanakar</span>: @polyzos it is ready for review, PTAL 🙏；Hey @shihchengwei-lab Thanks for the review, Addressed your…</li><li><span class="author">@shihchengwei-lab</span>: Could `close()` return before a download worker has finished creating its local file? In `FileDownl…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2945">Issue #2945</a> [hotfix] Check if batches is empty to prevent readNextOffset from throwing NoSuchElementException.</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: This PR has been marked as stale because it has had no activity for 60 days. It will be closed in 1…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2930">Issue #2930</a> [IT][fix]ServerITCaseBase fails when stderr contains "Picked up JAVA_TOOL_OPTIONS" </h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: This PR has been marked as stale because it has had no activity for 60 days. It will be closed in 1…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2920">Issue #2920</a> [lake/tiering] add table dropped handling and nullable write results</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: This PR has been marked as stale because it has had no activity for 60 days. It will be closed in 1…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2909">Issue #2909</a> [helm] Refactor using config map for STS configuration entries</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: This PR has been marked as stale because it has had no activity for 60 days. It will be closed in 1…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2907">Issue #2907</a> [client][fix] Deduplicate insertIfNotExists lookups with same key in same batch to prevent deadlock</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: This PR has been marked as stale because it has had no activity for 60 days. It will be closed in 1…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5136">Issue #5136</a> [rpc] Wire TLS encryption into the client Netty pipeline</h4>
+            <ul><li><span class="author">@morazow</span>: Hello @fresh-borzoni , thanks for the detailed and on point review! Please have another look, I hav…</li><li><span class="author">@fresh-borzoni</span>: @morazow Can you, pls, rebase?</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4647">Issue #4647</a> [rpc] NettyClient.close() always waits for Netty's 2 s shutdown quiet period</h4>
+            <ul><li><span class="author">@wuchong</span>: Fixed in https://github.com/apache/fluss/pull/4817</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5136">PR #5136</a> [rpc] Wire TLS encryption into the client Netty pipeline</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: what about a listener that requires a client certificate? with TLS 1.3 the client handshake complet…</li><li><span class="author">@morazow</span>: Addressed 🤝；The idea was to use similar mechanism like in Kafka with `reconnect.backoff.ms`, fixed…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5175">PR #5175</a> [flink] Add HLL and KLL sketch SQL functions</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: Could we add `SET 'execution.runtime-mode' = 'batch';` before this query? I tried it against `daily…</li><li><span class="author">@rahulbsw</span>: Added batch mode before the bounded queries and a separate windowed streaming write example, with w…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5162">PR #5162</a> [rust] Add bounded deduplicate PK UnionRead execution</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: what happens with an empty CDC batch in the tail? deleting a missing key writes a batch with no rec…</li><li><span class="author">@naivedogger</span>: You're right. A delete of a missing key advances the offset without producing a row. I removed the……</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5283">PR #5283</a> [test] Isolate table names in shared-cluster tests</h4>
+            <ul><li><span class="author">@wuchong</span>: Could we keep the database names fixed and use `tableNames.tablePath("Sales", "Users")` for tables……</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/5327">#5327</a> Support Java 25 (LTS) <span class="author">@binary-signal</span> </li><li><a href="https://github.com/apache/fluss/issues/5326">#5326</a> [rust] Client panics at cluster.rs:314 (unwrap on unknown table id) when a tablet server restarts; pending writes hang <span class="author">@brunolnetto</span> </li><li><a href="https://github.com/apache/fluss/issues/5325">#5325</a> [FIP-31][lake/iceberg] Store the position index as an Iceberg index once the spec settles <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5324">#5324</a> [kv] Write the delete of an expired key to the changelog so it reaches the lake <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5323">#5323</a> [FIP-31][flink] Reserve index file ids per split so the committer stops renumbering index parts <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5322">#5322</a> [FIP-31][flink] Let a tiering reader take its next split while the previous one waits for its vectors <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5321">#5321</a> [FIP-31][docs] Document deletion vector tables <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5320">#5320</a> [FIP-31] Turn on union reads with masks for Iceberg deletion vector tables <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5319">#5319</a> [FIP-31] Accept the deletion vector table option on Iceberg tables for tiering <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5318">#5318</a> [FIP-31][spark] Read union reads of deletion vector tables in Spark <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5317">#5317</a> [FIP-31][flink] Read union reads of deletion vector tables in Flink <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5316">#5316</a> [FIP-31][client] Read union read parts through masks, or by key when a bucket has none <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5315">#5315</a> [FIP-31][client] Plan the parts of a union read and pin one cut per split bucket <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5314">#5314</a> [FIP-31][lake/iceberg] Prepare deletion vectors on the tiering writers <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5313">#5313</a> [FIP-31][lake/iceberg] Compact deletion vector tables and keep the snapshots the index needs <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5312">#5312</a> [FIP-31][lake] Re-index lake files another engine rewrote <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5311">#5311</a> [FIP-31][lake/iceberg] Commit a round's data files and deletion vectors on its base <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5310">#5310</a> [FIP-31][flink] Publish a round's index change and merge its deletes at the tiering committer <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5309">#5309</a> [FIP-31][flink] Plan tiering rounds at their leaders and fetch their masks and deletes on the readers <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5308">#5308</a> [FIP-31][lake] Write a tiering round through its log mask <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5307">#5307</a> [FIP-31][server] Save the change list with each KV snapshot and restore it on a leader change <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5306">#5306</a> [FIP-31][server] Serve the masks of union reads, with pinned cuts as leases <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5305">#5305</a> [FIP-31][server] Plan a tiering round's end and serve its log mask and deletes <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5304">#5304</a> [FIP-31][server] Cap the row TTL filter's clock so no untiered version expires <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5303">#5303</a> [FIP-31][server] Switch leaders to a newly registered lake snapshot, and rebuild after a leader change <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5302">#5302</a> [FIP-31][server] Apply changes through one owner per bucket, with a bounded hand-off and a heap budget <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5301">#5301</a> [FIP-31][server] Keep the change list of a primary key bucket on its leader's disk <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5300">#5300</a> [FIP-31][test] Answer GetDvSnapshot from scripted responses in the test gateways <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5299">#5299</a> [FIP-31][server] Add the versioned KV value layout of deletion vector tables <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5298">#5298</a> [FIP-31][common] Add the chain, checkpoints, trim and orphan cleanup of the position index store <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5297">#5297</a> [FIP-31][common] Add the remote position index store: format, writer and reader <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5296">#5296</a> [FIP-31][lake] Add the lake capability interfaces of deletion vector tables <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5295">#5295</a> [FIP-31][rpc] Add the GetDvSnapshot RPC, options and metrics of deletion vector tables <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5294">#5294</a> [Umbrella][FIP-31] Implement derived deletion vectors for Iceberg primary key tables <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5293">#5293</a> [rust] Add primary-key lookups and lookup join to the DataFusion catalog <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5292">#5292</a> [rust] Read tiered tables in DataFusion through the UnionRead kernel <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5291">#5291</a> [rust] Add a DataFusion catalog for Fluss log tables <span class="author">@fresh-borzoni</span> </li><li><a href="https://github.com/apache/fluss/issues/5290">#5290</a> [FIP-50][rust] Native DataFusion query engine for the Fluss Rust client <span class="author">@fresh-borzoni</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <p class="empty">暂无</p>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/5266">#5266</a> [client] Implement consumer group Admin APIs <span class="author">@pisceslj</span> </li><li><a href="https://github.com/apache/fluss/issues/5245">#5245</a> [client] Existing partitions can appear missing after a table is recreated <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/issues/5224">#5224</a> [Improvement] Reduce allocations in HLL sketch merging <span class="author">@rahulbsw</span> </li><li><a href="https://github.com/apache/fluss/issues/5157">#5157</a> [rust] Add bounded deduplicate PK UnionRead execution <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/issues/4647">#4647</a> [rpc] NettyClient.close() always waits for Netty's 2 s shutdown quiet period <span class="author">@dstolis</span> </li><li><a href="https://github.com/apache/fluss/issues/3797">#3797</a> [TLS] Wire TLS encryption into the client Netty pipeline <span class="author">@affo</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/5283">#5283</a> [test] Isolate table names in shared-cluster tests <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/pull/5267">#5267</a> [client] Implement consumer group Admin APIs <span class="author">@pisceslj</span> </li><li><a href="https://github.com/apache/fluss/pull/5162">#5162</a> [rust] Add bounded deduplicate PK UnionRead execution <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/pull/5136">#5136</a> [rpc] Wire TLS encryption into the client Netty pipeline <span class="author">@morazow</span> </li><li><a href="https://github.com/apache/fluss/pull/4817">#4817</a> [rpc] Reduce Netty shutdown latency and fix lifecycle races <span class="author">@swuferhong</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
