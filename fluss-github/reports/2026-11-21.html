@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-11-21</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-11-21</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 2 新 Issues</div>
+            <div class="stat">✅ 1 关闭</div>
+            <div class="stat">✨ 2 新 PRs</div>
+            <div class="stat">🎉 1 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/5286">PR #5286</a> [server] Use WAL changelog image for sys.consumer_offsets</li><li>🐛 <a href="https://github.com/apache/fluss/issues/5330">Issue #5330</a> [flink] Undo recovery deletes or reverts rows written by other clients to an aggregation table</li><li>🐛 <a href="https://github.com/apache/fluss/issues/5328">Issue #5328</a> [test] Unstable test FlinkSourceEnumeratorTest.testBatchPartitionFilterOnlyGeneratesMatchingPartitionSplits</li><li>✨ <a href="https://github.com/apache/fluss/pull/5331">PR #5331</a> [docs] Document that undo recovery rolls back other writers' changes</li><li>✨ <a href="https://github.com/apache/fluss/pull/5329">PR #5329</a> [test] Fix flaky testBatchPartitionFilterOnlyGeneratesMatchingPartitionSplits</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/5327">Issue #5327</a> Support Java 25 (LTS)</h4>
+            <ul><li><span class="author">@MasteMind</span>: I will be willing to contribute here too.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/5328">Issue #5328</a> [test] Unstable test FlinkSourceEnumeratorTest.testBatchPartitionFilterOnlyGeneratesMatchingPartitionSplits</h4>
+            <ul><li><span class="author">@pbanakar</span>: I hit this failure three times while running CI on PR #5289. #### Root Cause `testBatchPartitionFil…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4462">Issue #4462</a> [filesystem] Fix COS STS APPID policy and preserve session tokens</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: This PR has been marked as stale because it has had no activity for 60 days. It will be closed in 1…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4308">Issue #4308</a> [server] Add pre-write buffer memory metrics for primary key tables</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: This PR has been marked as stale because it has had no activity for 60 days. It will be closed in 1…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4292">Issue #4292</a> [test] Improve test coverage for utils.* classes</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: This PR was closed because it has been stale for 10 days with no activity.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4201">Issue #4201</a> [rust] Support KvScan in Rust client</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: This PR has been marked as stale because it has had no activity for 60 days. It will be closed in 1…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3449">Issue #3449</a> [lake] Stabilize Paimon tiering IT</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: This PR was closed because it has been stale for 10 days with no activity.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5329">Issue #5329</a> [test] Fix flaky testBatchPartitionFilterOnlyGeneratesMatchingPartitionSplits</h4>
+            <ul><li><span class="author">@pbanakar</span>: CC @swuferhong, @loserwang1024</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/5119">Issue #5119</a> [flink] Reduce heap retained by sink undo recovery</h4>
+            <ul><li><span class="author">@mcgrj</span>: On 1.0.0, undo recovery holds a [`processedKeys`](https://github.com/apache/fluss/blob/v1.0.0/fluss…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/2967">Issue #2967</a> Fix OutOfBoundException in writeChangeType when the number of records is large</h4>
+            <ul><li><span class="author">@mcgrj</span>: I have also hit this, would be great to merge #3004 for the fix. Perhaps worth considering adding a…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/5330">Issue #5330</a> [flink] Undo recovery deletes or reverts rows written by other clients to an aggregation table</h4>
+            <ul><li><span class="author">@mcgrj</span>: This still reproduces on main (c2448838d). I'm happy to raise a PR for the writer-id approach in th…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5120">Issue #5120</a> [flink] Bound sink undo recovery concurrency and heap retention</h4>
+            <ul><li><span class="author">@mcgrj</span>: Small thought, possibly for a follow-up: a single bucket's `processedKeys` can still outgrow the he…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2917">Issue #2917</a> [server] Add retract support for Aggregation Merge Engine</h4>
+            <ul><li><span class="author">@polyzos</span>: @wuchong @loserwang1024 @fresh-borzoni any thoughts here?</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5287">PR #5287</a> [client] Integrate consumer group offsets with log scanners</h4>
+            <ul><li><span class="author">@wuchong</span>: Could we move these four public client options into `org.apache.fluss.config.ConfigOptions` alongsi…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5275">PR #5275</a> [server] Persist BulkLoad bucket commits atomically</h4>
+            <ul><li><span class="author">@wuchong</span>: Could we move `BulkLoadPublicationUnknownException` to `org.apache.fluss.server.exception` as a top…</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/5330">#5330</a> [flink] Undo recovery deletes or reverts rows written by other clients to an aggregation table <span class="author">@mcgrj</span> </li><li><a href="https://github.com/apache/fluss/issues/5328">#5328</a> [test] Unstable test FlinkSourceEnumeratorTest.testBatchPartitionFilterOnlyGeneratesMatchingPartitionSplits <span class="author">@app/github-actions</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/5331">#5331</a> [docs] Document that undo recovery rolls back other writers' changes <span class="author">@mcgrj</span> </li><li><a href="https://github.com/apache/fluss/pull/5329">#5329</a> [test] Fix flaky testBatchPartitionFilterOnlyGeneratesMatchingPartitionSplits <span class="author">@pbanakar</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/5272">#5272</a> Use WAL changelog mode for sys.consumer_offsets to reduce offset commit overhead <span class="author">@wuchong</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/5286">#5286</a> [server] Use WAL changelog image for sys.consumer_offsets <span class="author">@pisceslj</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
