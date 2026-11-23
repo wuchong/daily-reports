@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spark 社区周报 | 2026-W46</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Spark 社区周报 | 2026-W46</h1>
+            <p class="date-range">2026-11-09 ~ 2026-11-15</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (1)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/ksxxpjsj1z0h0yp6yrg0v4b4q9nrlvrj">Apache Spark 3.5.10 released</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (4)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/1f98y9zyqljs3dyd0y6xoczcs2bcb1fl">SPIP: Bring GraphFrames into Apache Spark</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/1hbd61gj61bo2jhtdddtjfwxlvs5lcpb">SPIP: Extend Real-Time Mode to Distributed Batch SQL and DataFrame Queries</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/y3j1npmtk0n4r10gqfcq98yhtn5kxyvg">Release Spark 3.5.10 (RC1)</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/sj3kydnv9s4cf1mc9467k4wtl9p13cjg">[SPIP] Spark Reading From Spark Connect & Parallel Spark Connect Reads</a> <span class="status warning">⚠️ 有异议</span><p class="objection-inline">Dongjoon Hyun 提出 -1，原因是该 SPIP 提出了安全边界但尚未明确定义信任边界，且将受信 Spark Connect 数据源与执行器并行读取协议变更两个独立提案合并投票。他希望补充安全边界说明并拆分提案后再表决。</p></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/r7kv3z4vp9rq1gr44qo13wrmh1gnntp0">Skip the CI in the master branch if the CI passed based on the latest commit in PR?</a></h3>
+            <p class="meta">8 条回复 · 3 位参与者</p>
+            <p class="summary">讨论围绕为降低 CI 资源消耗，是否在 PR 已基于 master 最新提交通过 CI 时跳过 master 分支的重复 CI 构建。Hyukjin 调研后发现该做法在现有 master/4.x 1/10 采样 CI 机制下几乎不能节省资源，讨论最终认为收益有限。</p>
+            <div class="key-points"><p><strong>@Hyukjin Kwon:</strong> 提议在 PR 基于最新 master 通过 CI 时跳过 master CI 以节省资源，并调研实际节省效果；后续确认现有采样机制下收益很小。</p>
+<p><strong>@Nicholas Chammas:</strong> 担心 master 在 PR CI 通过后继续变化可能导致合并后失败；认为在有限场景下跳过是安全的，长期更支持建设 merge queue。</p>
+<p><strong>@Tian Gao:</strong> 指出 master/4.x 已经采用 1/10 采样 CI，认为在此基础上进一步跳过 CI 的帮助不大。</p></div>
+            <p class="conclusion">初步结论是该优化在现有采样 CI 下节省非常有限，可能不继续推进；若长期改进 CI 策略，可考虑评估 merge queue，但当前没有明确落地行动。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/rldc8zt0p1wfpjjsdx7k0t22px29ypnt">First Spark Community Sync</a></h3>
+            <p class="meta">5 条回复 · 6 位参与者</p>
+            <p class="summary">社区围绕首次 Spark Community Sync 会议的安排展开讨论，重点包括会议议程、时间选择以及如何兼顾全球贡献者。多数参与者支持定期同步会议，但认为原定时间对亚洲贡献者不友好，因此讨论调整到更合适的时区并考虑后续轮换。</p>
+            <div class="key-points"><p><strong>@huaxin gao:</strong> 提议召开首次社区同步会议并给出议程，随后根据时区反馈建议改为 4 PM PST，并表示若周五前无异议将发送日历邀请。</p>
+<p><strong>@Xiao Li:</strong> 指出原时间对亚洲活跃贡献者和 PMC 成员不友好，建议寻找更便于亚洲参与者加入的时间。</p>
+<p><strong>@Holden Karau:</strong> 支持社区同步会议，并建议如果无法兼顾所有时区，可以轮换让不同地区承担不便时段。</p></div>
+            <p class="conclusion">初步计划将首次会议调整到 4 PM PST（北京时间 12 月 1 日 8 AM），未来考虑轮换会议时区；如周五前没有反对意见，huaxin gao 将发出日历邀请。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/8wcq3x43lskty3fytryqf3zlm6twg1w5">Automated AI code review on new Spark PRs (trial)</a></h3>
+            <p class="meta">3 条回复 · 3 位参与者</p>
+            <p class="summary">社区讨论 Spark 新 PR 自动化 AI code review 试运行的触发方式与失败排查。Hyukjin 已配置 spark-test 账户并改用 GitHub 普通 reviewer 流程，但 Holden 报告部分 PR 出现失败，Hyukjin 认为可能与基础设施问题有关并继续监控。讨论还涉及 GitHub reviewer 权限限制及旧标签清理。</p>
+            <div class="key-points"><p><strong>@Holden Karau:</strong> 在多个 PR（如 #60472）中观察到 AI review 相关失败，询问原因。</p>
+<p><strong>@Hyukjin Kwon:</strong> 已配置 spark-test 账户，移除旧标签并让 committer 通过添加 reviewer 触发 AI review；失败可能与基础设施有关，将继续观察。</p>
+<p><strong>@Yicong Huang:</strong> GitHub 要求被请求为 reviewer 的账户必须是 committer 或已与 PR 交互，因此 spark-test 账户可能无法直接通过 UI 被请求。</p></div>
+            <p class="conclusion">下一步是删除 ai-review-requested 标签，改由 committer 手动添加 spark-test 账户为 reviewer 触发审查，并继续监控失败原因。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/8swj2oxkh5hxxpv9kvx63ks55pxch9z2">SPIP: Add the OBJECT data type</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">社区讨论为 Spark SQL 新增 OBJECT 结构化数据类型，作为 STRUCT 的按名称匹配版本，以解决 STRUCT 按位置匹配导致的插入、比较和转换风险。提案保持 STRUCT 行为不变，不引入新存储格式，并通过配置开关默认关闭，同时提供 OBJECT_APPEND、OBJECT_DELETE、OBJECT_PICK 及显式 CAST。目前该提案已获得部分成员认可，认为其能弥补 INSERT BY NAME 无法在表级别保证名称安全的不足。</p>
+            <div class="key-points"><p><strong>@Serge Rielau:</strong> 提议新增 OBJECT 类型，使结构化对象按属性名匹配而非按位置匹配，并提供相关函数、显式 CAST 和默认关闭的配置开关。</p>
+<p><strong>@Xiao Li:</strong> 认可提案动机，认为当前表所有者无法在写入、比较等表达式中强制名称安全，仅靠 INSERT BY NAME 不足以解决该问题。</p>
+<p><strong>@Daniel Tenedorio:</strong> 支持按名称引用字段，认为 STRUCT 默认按位置匹配的行为可能令人意外。</p></div>
+            <p class="conclusion">初步反馈积极，但尚未形成最终结论；下一步继续收集关于问题描述、命名和被否决备选方案的意见，并按 SPIP/JIRA 计划推进，预计开发周期约 3 个月。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/30sg02r7z27nyh6bo2yf72kb0gr3mto0">SPIP: ADBC Data Source</a></h3>
+            <p class="meta">1 条回复 · 1 位参与者</p>
+            <p class="summary">社区讨论为 Spark 新增内置 ADBC 数据源，以 Arrow 列式批处理补充现有 JDBC 数据源，降低行式读取和转换开销。提案包括新增可选 adbc format、下推过滤与聚合、支持范围分区和驱动分区，以及批量写入。当前讨论已趋于稳定，正在考虑进入投票或在社区同步会上进一步沟通。</p>
+            <div class="key-points"><p><strong>@Tornike Gurgenidze:</strong> 提议为 Spark 增加内置 ADBC 数据源，利用 Arrow 列式批处理提升读取性能，原型测试中较 JDBC 快 3-10 倍。</p>
+<p><strong>@Holden Karau:</strong> 认为 SPIP 文档讨论已经基本稳定，可以推进到投票阶段。</p>
+<p><strong>@Holden Karau:</strong> 也可以选择等到 11 月底首次社区同步会后再讨论或推进。</p></div>
+            <p class="conclusion">初步结论是该 SPIP 讨论已接近收敛，下一步可发起 VOTE，或等待社区同步会进一步确认。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/xyb7pjsyl2p3j5blwcm7dphl6y6dqywv">[PSA] Apache Spark 4.4.0 branch cut status update</a></h3>
+            <p class="meta">1 条回复 · 1 位参与者</p>
+            <p class="summary">本次邮件主要同步 Apache Spark 4.4.0 的 branch cut 状态：branch-4.4 已从 branch-4.x 切出并进入 QA 阶段，branch-4.x 开始转向 4.5.0-SNAPSHOT。社区已完成 CI、发布工具和 JIRA 版本等后续配置，并明确了 QA 期间的代码合并与版本标记规则。</p>
+            <div class="key-points"><p><strong>@Yicong Huang:</strong> branch-4.4 已于 11 月 16 日从 branch-4.x 切出，QA 期持续到 12 月 6 日，首个 RC 计划在 12 月 7 日前发布。</p>
+<p><strong>@Yicong Huang:</strong> branch-4.x 已切换到 4.5.0-SNAPSHOT，branch-4.4 的 post-merge、定时 CI 和发布工具均已配置完成。</p>
+<p><strong>@Yicong Huang:</strong> QA 期间大多数 PR 应合并到 master 和 branch-4.x，branch-4.4 仅接收 bug 修复、测试、文档和发布阻塞项，并需按规则设置 JIRA Fix Version。</p></div>
+            <p class="conclusion">下一步是继续完成 branch cut 后续事项，在 12 月 6 日前进行 QA，并按计划推进首个 4.4.0 RC 发布。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/b4hgz11bbsgkg9hxtjrd3x261yjlnnnp">SPIP: Extend Real-Time Mode to Distributed Batch SQL and DataFrame Queries</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">社区讨论一项 SPIP，提议将 Spark Real-Time Mode 扩展到符合条件的分布式批 SQL/DataFrame 查询，通过减少 shuffle 物化并让下游阶段边接收边消费来降低交互式查询延迟。提案给出了计划选择、资源准入和批处理生命周期管理等设计，目前仍处于方案讨论阶段。</p>
+            <div class="key-points"><p><strong>@cheng xu:</strong> 提出将 RTM 用于批查询，支持下游提前消费中间数据，并通过显式 opt-in、资源限制和生命周期管理保证执行安全。</p>
+<p><strong>@Jerry Peng:</strong> 支持提案，但关注阻塞型批算子如何处理，以及是否会将这些算子改为增量执行。</p>
+<p><strong>@Ferdinand Xu:</strong> 认为阻塞算子如聚合可保持既有行为，通过算子内 spill 和 backpressure 控制内存与生产速度。</p></div>
+            <p class="conclusion">初步方向是阻塞算子可先沿用现有阻塞语义，并通过 spill 与 backpressure 缓解资源压力；后续需在 SPIP/JIRA 中继续明确阻塞算子支持和实现细节。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/3gfzcq9d4llsv9t9d21wvntorhwrvq42">SPIP: Pluggable Row-Filter and Column-Mask Enforcement in Catalyst</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">社区正在讨论 Spark SPIP 提案：在 Catalyst 中以可插拔方式强制执行行级过滤和列级掩码，以增强数据安全策略执行能力。提案者已根据反馈更新 V2 文档，补充安全保证、威胁模型、专用执行算子、写操作限制和潜在泄漏路径等内容。目前反馈总体积极，提案者准备推进投票。</p>
+            <div class="key-points"><p><strong>@huaxin gao:</strong> 已更新 SPIP 文档并逐项回应评审意见，提出通过 PolicyEnforcement 专用算子保障策略不被优化器移除或削弱，并计划若无重大反对意见则下周发起投票。</p>
+<p><strong>@Asif Shahid:</strong> 已阅读更新说明并同意提案方向，支持该功能最终进入 Spark 代码库。</p>
+<p><strong>@Holden Karau:</strong> 对更新后的提案表示认可，认为当前方案看起来没有问题。</p></div>
+            <p class="conclusion">目前讨论倾向支持该 SPIP；若后续没有重大关切，huaxin gao 将于下周发起 VOTE 线程推进表决。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/qxxd93prf88dcjywmrdrp8p7brvb2hsn">Spark Connect Data Source for Spark FGAC</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">Holden Karau 提议更新 Spark Connect，使其作为可信与不可信 Spark 代码之间的隔离层，以支持 Spark 细粒度访问控制（FGAC）。该提案已在设计文档中收到一些评论，作者再次在邮件列表提醒以增加社区关注。</p>
+            <div class="key-points"><p><strong>@Holden Karau:</strong> 提出利用 Spark Connect 作为可信与不可信 Spark 代码之间的屏障，推动 Spark FGAC 能力，并邀请社区在设计文档中反馈意见。</p></div>
+            <p class="conclusion">目前尚未形成最终结论，下一步是继续收集社区反馈并推进提案讨论。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/lczdo23np47xy6z71wm4hynt5m47sodh">[PSA] Apache Spark 4.4.0 branch cut on Monday, November 16</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">社区围绕 Apache Spark 4.4.0 的分支切出计划展开讨论，确认将于 2026 年 11 月 16 日从 branch-4.x 切出 branch-4.4。同时，部分仍在争议或接近完成的变更是否能纳入 4.4 版本也被提出讨论。</p>
+            <div class="key-points"><p><strong>@Yicong Huang:</strong> 由于没有异议，将按调整后的时间表于 11 月 16 日切出 4.4 分支，并会更新官网的发布窗口信息。</p>
+<p><strong>@Anton Okolnychyi:</strong> DSv2 中推断谓词等变更仍有争议，可能在发布前需要重做；同时希望将接近完成的 column updates PR 纳入 4.4。</p></div>
+            <p class="conclusion">即使 4.4 分支切出后，社区仍可以接受少量接近完成的 PR 合入 4.4，相关变更将继续完善并视进度纳入发布。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (0)</h2>
+            
+    <p>本周新建 <strong>0</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周无新建 JIRA。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Spark Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
