@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iceberg 社区周报 | 2026-W47</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Iceberg 社区周报 | 2026-W47</h1>
+            <p class="date-range">2026-11-16 ~ 2026-11-22</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (0)</h2>
+            <p class="empty">本周无公告</p>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (5)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/sbjn612bsnrf7frk75hl8w3hm9x6zlsc">Add Materialized Views to the Iceberg View Spec</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/cmrjszm4fsq4vgtbsm3b8z9og9qvwgpl">REST spec: Replace nullable with type arrays in rest catalog openapi spec</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/0sy2yr8x3tx1nljoqbngljro8opl3nf8">Add root manifest size field to V4 snapshot</a> <span class="status warning">⚠️ 有异议</span><p class="objection-inline">Steven Wu 未提出 -1；其回复为 +1 (binding)，没有异议原因。</p></li>
+<li><a href="https://lists.apache.org/thread/xv3l70f66n816yfdzml5b6ym6dtkggyv">[Go] Release Apache Iceberg Go v0.8.0 RC0</a> <span class="status warning">⚠️ 有异议</span><p class="objection-inline">Minh Vu 并未提出 -1，而是投 +0，原因是希望在发布 0.8.0 前优先完成已在评审中的 PR，并询问是否有必要提前发布。</p></li>
+<li><a href="https://lists.apache.org/thread/38wlgf3jrkhs7hmgtnyr2b0bnxommrv6">Forbid writing ORC files in V4</a> <span class="status warning">⚠️ 有异议</span><p class="objection-inline">无人提出 -1，原因是提供的投票回复中均为 +1，没有异议或反对理由。</p></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/no9ymdlfkk210933vy6fb1l5ob62t1qo">Cross-engine determinism for functions in stored expressions</a></h3>
+            <p class="meta">17 条回复 · 9 位参与者</p>
+            <p class="summary">社区讨论存储表达式中函数在不同引擎间重算时的确定性问题，重点涉及检查约束、派生列和 stats-only 字段。多数参与者认为仅靠现有 deterministic 标志不足，建议引入更明确的语义分类，并对需要跨引擎重算的关键场景采用严格定义的函数。讨论已从是否允许 UDF 转向如何划分关键特性、优化特性和一次性计算值的可靠性要求。</p>
+            <div class="key-points"><p><strong>@Péter Váry:</strong> 建议增加 VOLATILE、STABLE、IMMUTABLE 的 volatility 枚举，以替代或补充现有 deterministic 布尔标志，从而更清晰地区分不同确定性保证。</p>
+<p><strong>@Matt Butrovich:</strong> 不同引擎对函数语义可能存在差异，难以保证 UDF 在所有引擎中返回相同结果；因此检查约束、索引键和 stats-only 等关键场景应优先使用 Iceberg 规范中明确定义语义和测试向量的函数。</p>
+<p><strong>@Andrei Tserakhau:</strong> 未知值应按 VOLATILE 处理；stats-only 等优化类字段可以允许非规范函数，但应记录实现来源，引擎无法理解时可忽略并回退到扫描。</p></div>
+            <p class="conclusion">初步方向是将特性分为必须跨引擎可重算的关键场景和可忽略或一次计算后存储的场景；关键场景倾向仅允许规范函数，UDF 可保留给默认值等一次性计算存储值。下一步是继续明确函数语义、命名空间或实现标识机制，并更新约束、派生列等相关规范。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/rq9thwz9k1osv7ho0g2by8df9yrp11c4">biweekly UDF sync</a></h3>
+            <p class="meta">13 条回复 · 6 位参与者</p>
+            <p class="summary">社区决定建立 Iceberg UDF 双周同步会，以加速 UDF 规范实现、评审和跨引擎问题讨论。首次会议聚焦 UDF 确定性保证，认为在 Iceberg 需要强执行保证的场景中不宜依赖简单的 deterministic 标志。后续将围绕表达式分类/分析提案继续推进，并修复会议链接以便开放参与。</p>
+            <div class="key-points"><p><strong>@Yufei Gu:</strong> 发起并确定双周周四 9:00 PST 的 UDF 同步会，目标是解决实现和评审进度较慢的问题，并总结首次会议重点讨论 deterministic guarantees。</p>
+<p><strong>@Alex Cruise:</strong> 提交 Iceberg 表达式分析/分类提案，讨论如何为索引、约束等不同使用场景区分表达式类别。</p>
+<p><strong>@Péter Váry:</strong> 认为表达式分类需要覆盖叶节点及组合规则，包含 UDF 的表达式在可分类前应保持限制，并关注用户错误声明 UDF 分类可能带来的风险。</p></div>
+            <p class="conclusion">初步共识是 UDF 的 deterministic flag 不足以保证跨引擎确定性，后续将通过 Alex 的 expression analysis 提案继续讨论表达式和 UDF 分类；会议链接已改为公开，下次同步会定于 12 月 3 日举行。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/2gwjy0c810tzktfcfcnz3vps06p2k3kp">DISCUSS] Resolving compaction conflicts with concurrent deletion vectors</a></h3>
+            <p class="meta">10 条回复 · 7 位参与者</p>
+            <p class="summary">社区讨论 Iceberg 中并发删除向量导致 compaction 提交失败的问题。Shawn Chang 提议记录行位置映射，并在提交时将并发删除向量转换到 compaction 输出文件，以避免重写任务失败和重试。该方向获得多位参与者支持，当前进展倾向于先推进不修改规范的内存映射方案。</p>
+            <div class="key-points"><p><strong>@Shawn Chang:</strong> 提出基于可交换 compaction 的思路，在 rewrite 中记录行位置移动，提交时转换并发提交的删除向量；已有 Spark 实现，希望先聚焦不改规范的内存方案。</p>
+<p><strong>@Anurag Mantripragada:</strong> 认可方向，认为先不修改规范解决 compaction 提交失败是合理第一步，但设计文档需要补充 API、引擎范围、版本兼容、失败回退等细节。</p>
+<p><strong>@Grant Nicholas:</strong> 指出 v4 废弃 equality deletes 可能削弱低延迟删除/更新负载与 compaction 的并发兼容性，支持在完全废弃前引入持久化 compaction maps。</p></div>
+            <p class="conclusion">初步共识是分阶段推进：先实现内存 compaction map 以解决 compaction 侧冲突，后续再讨论持久化 map 和规范演进；Shawn 将根据反馈修订设计文档并继续征集意见。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/fgqq8jwvb1qj9kskk3qxssxlvk2nn4x7">Vector Type and Int8 Float16</a></h3>
+            <p class="meta">9 条回复 · 8 位参与者</p>
+            <p class="summary">讨论围绕 Iceberg v4 的 vector(E, D) 类型是否支持 float16 和 int8 元素类型展开，重点比较物理存储、性能和类型校验三类收益。社区总体倾向 Option 3，即在 vector 元素类型中加入 float16/int8，而不是新增通用 Iceberg 原始类型或仅作为存储编码。若相关细节阻碍 v4 完成，也可先发布 int/long/float/double，将窄类型推迟到 V5。</p>
+            <div class="key-points"><p><strong>@Russell Spitzer:</strong> 提出存储、性能、验证三类动机，并强调当前重点是完成 V4；如果无法尽快形成共识，建议将 float16/int8 推迟到 V5。</p>
+<p><strong>@Andrei Tserakhau:</strong> 反对把 float16 仅作为 float 的存储编码，支持将 float16/int8 作为独立 vector 元素类型，并要求支持父类型回退、禁止写入端隐式窄化、保持元素类型集合可扩展。</p>
+<p><strong>@Péter Váry:</strong> 指出 float16 在 Parquet BYTE_STREAM_SPLIT 等场景下仍有约 10% 存储收益，且 AI/ML 生态已有较多窄类型支持，因此倾向 Option 3，但需明确规范与回退行为。</p></div>
+            <p class="conclusion">初步结论是采用 Option 3：在 v4 vector 中引入 float16/int8 元素类型，但不作为通用 Iceberg 原始类型。Yan Yan 已根据 11/19 vector sync 会议共识更新 spec PR，下一步是继续评审并在无重大反馈后尽快启动投票。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/rm6cy2hf1wd1fj7p2314wqmj3d56bdsy">Should V4 stop writing ORC and Avro data files?</a></h3>
+            <p class="meta">8 条回复 · 8 位参与者</p>
+            <p class="summary">社区讨论 Iceberg V4 是否停止写入 ORC 和 Avro 数据文件，核心关注在保持多格式支持与降低维护成本之间取得平衡。多数意见认为应继续支持至少两种数据文件格式，并优先处理现有格式而非引入新格式。目前讨论已收敛到 V4 停止 ORC 写入但保留读取、暂保留 Avro 写入支持。</p>
+            <div class="key-points"><p><strong>@Ryan Blue:</strong> 支持 V4 停止写入 ORC，因其功能差距长期存在；同时保留 Avro 作为第二格式，避免只剩单一格式。</p>
+<p><strong>@Kevin Liu:</strong> 总结社区共识：V4 禁止新 ORC 文件写入、已有 ORC 可读且无需重写，保留 Avro 写入，新格式另议，并发起投票。</p>
+<p><strong>@Gábor Kaszab:</strong> 澄清提案仅移除 ORC 写支持，升级后现有 ORC 文件仍可读；并提出 V4 中 ORC 基文件上叠加 Parquet column files 的兼容性问题。</p></div>
+            <p class="conclusion">初步结论是 V4 停止写入 ORC 数据文件，但保留对既有 ORC 文件的读取支持；Avro 写入支持暂保留以维持至少两种格式。下一步为进行正式投票，并补充迁移文档、讨论新格式准入标准和 column file 跨格式细节。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/mzd0xm23krh1m47yxzl2rto2h26h6xwo">Name mapping for data files that carry only some field IDs</a></h3>
+            <p class="meta">7 条回复 · 4 位参与者</p>
+            <p class="summary">讨论围绕数据文件仅携带部分 field ID 时，Iceberg 应使用 name mapping 还是 field ID 解析列。社区总体倾向 per-file 规则：文件只要包含任意 field ID 就按 ID 解析，缺失 ID 的字段视为缺失或 NULL；但验证显示各实现对嵌套 list/map 等场景行为不一致，因此推动规范澄清和实现验证。</p>
+            <div class="key-points"><p><strong>@Ryan Blue:</strong> 文件中缺失 field ID 的列应被视为 NULL。</p>
+<p><strong>@Sylwester Lachiewicz:</strong> 四个读取器对部分 field ID 文件的处理结果不一致，建议规范明确基于文件 schema 判断，并将缺失 ID 的嵌套 list/map 整体读为 NULL。</p>
+<p><strong>@Daksh Dave:</strong> 提交 Java Parquet reader POC 验证 per-file 方案，并请求确认 required 容器及未支持嵌套场景应沿用默认值/NULL，还是允许读取失败。</p></div>
+            <p class="conclusion">初步方向是采用 per-file 规则，并通过 PR #19037 修订规范、用 PR #19073 提供实现验证；但 Russell 认为该场景类似破损文件，不宜过度细化，后续需围绕真实场景和现有行为继续确认。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/67tn0zg4sjs47nfsortgdl1d3fnwx34v">Spark versioning strategy with accelerated Spark releases.</a></h3>
+            <p class="meta">6 条回复 · 5 位参与者</p>
+            <p class="summary">讨论围绕 Spark 加速发布后，Iceberg 是否应支持 Spark 4.3 还是跳过该版本，以及 Spark 4.2 二进制尚未发布带来的影响。社区最终更倾向于不跳过任何 Spark minor 版本，以避免对应版本用户无法使用官方 Iceberg runtime jar。</p>
+            <div class="key-points"><p><strong>@Anurag Mantripragada:</strong> 最初建议跳过 Spark 4.3、优先完善 Spark 4.2，但社区同步会后总结认为应继续支持每个 Spark minor，并推动评审 Spark 4.3 PR。</p>
+<p><strong>@Cheng Pan:</strong> 认为已有共识仍然有效，即支持最新 LTS 加最近两个 minor；Spark 4.2 二进制是否发布应由 Anton 评估，并决定纳入 1.12.x 还是 1.13.0。</p>
+<p><strong>@Anton Okolnychyi:</strong> 由于 Iceberg 仍在部分地方依赖 Spark 内部实现，需要按 Spark 版本维护模块，并认可最新 LTS 加滚动两个 minor 的支持策略。</p></div>
+            <p class="conclusion">社区决定继续添加每个 Spark minor 版本支持，不跳过 Spark 4.3；下一步是评审 Spark 4.3 PR #18749，但尚未确定由哪个 Iceberg 版本发布。移除旧 Spark 版本将单独决策，当前继续维持按版本复制的代码组织方式。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/zf04t7zhgjzjyzljv3xjgt78hby4wo4c">iceberg-rust community sync time after the DST change</a></h3>
+            <p class="meta">3 条回复 · 4 位参与者</p>
+            <p class="summary">讨论因美欧夏令时结束导致 iceberg-rust 社区例会时间变化，重点是比较全年固定 15:00 UTC 与全年固定美国太平洋时间上午 8 点两种方案。多位贡献者倾向于固定为 8AM PT，以方便美国和欧洲参与者。</p>
+            <div class="key-points"><p><strong>@Nevin Zheng:</strong> 指出日历固定 UTC 导致美西时间提前到 7AM，提出保持 15:00 UTC 或固定 8AM US Pacific 两个方案，并提醒关注亚洲时区影响。</p>
+<p><strong>@Renjie Liu:</strong> 如果有利于更多贡献者，支持将会议全年固定到美国太平洋时间上午 8 点。</p>
+<p><strong>@Kevin Liu:</strong> 已根据讨论结果将开发日历中的例会从 12/3 起调整为 8AM-9AM PT。</p></div>
+            <p class="conclusion">初步结论是社区倾向将例会固定到美国太平洋时间上午 8 点，日历已更新并从 12/3 开始生效；后续可按此执行并继续听取不同时区意见。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/8mhl5dxsfxc9tqmzro51tqsbfb2ww8s5">Make format version 3 the default</a></h3>
+            <p class="meta">3 条回复 · 4 位参与者</p>
+            <p class="summary">社区讨论是否将 Iceberg 默认格式版本从 v2 切换为 v3，重点评估 Java 参考实现与整体生态的成熟度。多数意见支持在条件满足后切换，但仍需关注实现缺口、测试与 bug、文档及引擎支持等问题。讨论将继续进行，以决定 Java 是否先行切换。</p>
+            <div class="key-points"><p><strong>@Neelesh Salian:</strong> 提议参考 v2 切换流程，将默认格式版本切换到 v3；倾向 Java 先切换，其他实现就绪后跟进，但需先修复 concurrent replace bug，并继续评估纳秒时间戳是否阻塞。</p>
+<p><strong>@Amogh Jahagirdar:</strong> 支持 Java 参考实现默认 v3，认为标准是实现可靠读写 v3 核心特性且生态已有广泛支持；虽仍有部分实现不完整，但不必等待所有实现。</p>
+<p><strong>@Ajantha Bhat:</strong> 反对当前状态下将 Java 默认切换为 v3，理由是 multi-arg transform 等 Java 实现缺口仍存在，并建议等待加密密钥轮换等安全能力完善。</p></div>
+            <p class="conclusion">初步方向是 Java 可率先切换默认版本、其他实现后续跟进，但尚未形成最终结论；下一步需修复相关 bug，补充 v2 到 v3 迁移文档和引擎支持矩阵，并评估实现缺口是否阻塞切换。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/tr572xz4fm6xl7btw8m87wjtg1x01fk5">Spark Shared-source layout for version support</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">社区讨论 Iceberg Spark 多版本支持是否采用共享源码布局，以替代当前按 Spark 版本复制源码的方式。Anurag 通过无 shim 的 POC 评估后发现，共享源码可减少手工 backport，但也会因旧版本 API 限制新功能开发。讨论同时涉及 shim 的治理成本与 Spark 小版本 API 变化带来的风险。</p>
+            <div class="key-points"><p><strong>@Anurag Mantripragada:</strong> 提出无 shim 的共享源码 POC，认为其能减少 backport，但依赖成本较高，且 AI 使复制和 backport 更容易，因此建议暂不推进。</p>
+<p><strong>@Alex Cruise:</strong> 认为 shim 虽然烦琐，但比大量复制源码更不易出错，倾向采用大公共代码加薄 shim 的策略，并可根据兼容时代或文件特性调整。</p></div>
+            <p class="conclusion">社区同步会初步决定暂时保留按版本复制源码的布局，不合并共享源码 POC；#19025 可保留供后续审阅，若未来新增 Spark 版本造成严重 review 或维护负担，再重新评估。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (0)</h2>
+            
+    <p>本周新建 <strong>0</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周无新建 JIRA。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Iceberg Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
