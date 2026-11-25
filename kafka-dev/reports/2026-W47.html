@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafka 社区周报 | 2026-W47</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Kafka 社区周报 | 2026-W47</h1>
+            <p class="date-range">2026-11-16 ~ 2026-11-22</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (0)</h2>
+            <p class="empty">本周无公告</p>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (3)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/78mmvr435386hvfzfd7onw4908h281rp">Tightening time-based releases</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/c9ns4d53dqfwt575xrpdfgxhsx9hpms5">KIP-1368: Client framework name and version</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/2rgty9zlmwl4q2vc5ln6j96m0g21sdtq">KIP-1376: Support setting TLS named groups</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/5b0jw8pmy3hyqsj37v2ncohqytqb4wkv">KIP-1385 : Measure local.retention.ms from remote upload time instead of record timestamps</a></h3>
+            <p class="meta">4 条回复 · 3 位参与者</p>
+            <p class="summary">社区讨论 KIP-1385 将 local.retention.ms 从记录时间戳改为按远程上传时间计算，以更合理地管理本地日志保留。作者已根据反馈更新 KIP，补充磁盘容量影响、上传时间来源以及 leader/follower 分段不一致时的处理。当前讨论进一步聚焦延迟上传、活跃段滚动和 RLMM 不可用时的本地删除行为。</p>
+            <div class="key-points"><p><strong>@Muralidhar Basani:</strong> 主张以远程上传时间作为 local.retention.ms 的计算基准，并更新 KIP 说明磁盘增长、上传时间来源，以及 follower 在分段不匹配时使用覆盖范围内最后一个 leader 上传时间。</p>
+<p><strong>@Chia-Ping Tsai:</strong> 总体认可 KIP，重点询问 leader 与 follower 分段不一致时 follower 应选择哪个上传时间，在得到解释后表示愿意在投票中支持。</p>
+<p><strong>@Kamal Chandraprakash:</strong> 关注配置 remote.copy.lag 后的本地删除行为、旧时间戳导致文件描述符增加、RLMM 故障时不应阻塞已过期本地段删除，并倾向统一使用上传时间并明确文档说明。</p></div>
+            <p class="conclusion">初步方向是采用远程上传时间作为本地保留基准，并补充磁盘容量、follower 上传时间选择和拒绝替代方案等说明；下一步作者需完善延迟上传与活跃段滚动等细节，之后准备发起投票。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/glm1lbp88fyn79rwjzcr817gxvdy8wtl">KIP-1349 : Configurable snapshot frequency for share groups</a></h3>
+            <p class="meta">3 条回复 · 3 位参与者</p>
+            <p class="summary">讨论聚焦 KIP-1349 是否为 share groups 引入可配置的快照频率，尤其是是否保留 per-group count 以缩短恢复时间。Murali 已按此前共识更新 KIP，包括恢复 per-group count、提高 broker 上限并调整指标；但 Chia-Ping 后续认为在 KAFKA-21228 修复 timer 后，timer 可能已足够，甚至考虑废弃 count。</p>
+            <div class="key-points"><p><strong>@Chia-Ping Tsai:</strong> 最初认为 per-group count 可避免高吞吐分区积累过多更新导致恢复重放过长，但后续认为修复 timer 后其必要性下降，甚至可能废弃。</p>
+<p><strong>@Muralidhar Basani:</strong> 已更新 KIP：恢复 per-group count、将 broker 上限提高到 1000、对超限值采用运行时 clamp，并用 snapshot/update record 指标替换原指标。</p></div>
+            <p class="conclusion">目前尚未形成最终结论，需要继续讨论 timer 修复后是否仍保留 count；下一步是征求意见并据此更新 KIP 或重启投票。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/rx16p5899ww12f7qsqnxn5y5w9d4lj3w">KIP-1322: Add metrics to Kraft that measure the number of fetch timeouts and election timeouts</a></h3>
+            <p class="meta">2 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕 KIP-1322 为 KRaft 增加 fetch、election 和 check-quorum 超时计数指标展开。作者已根据反馈更新 KIP，包括新增 check-quorum 指标、澄清仅统计 voters、修正表述并采用 Gauge。目前仍需进一步修正 JMX 命名格式并确认 Resigned 状态是否计入 election timeout。</p>
+            <div class="key-points"><p><strong>@Jun Rao:</strong> 建议补充 check-quorum 指标，并要求指标名称、JMX MBean/属性格式与现有 KRaft 指标保持一致，同时确认相关状态覆盖。</p>
+<p><strong>@Tony Tang:</strong> 新增 check-quorum 指标，移除对 KAFKA-20514 的依赖并说明仅 voters 计数；选择 Gauge 而非 Meter，因为只需简单计数。</p>
+<p><strong>@Justine Olshan:</strong> 建议在 KIP 中增加 Rejected Alternatives，说明 Gauge/Meter 选择和状态重置等设计取舍。</p></div>
+            <p class="conclusion">初步方向是增加 fetch、election 和 check-quorum 超时指标并使用 Gauge；下一步需修正 JMX 命名文档并明确 Resigned 状态是否包含在 election timeout 统计中。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/yowstbdo06w04ck3b58kck7p0jf385p0">Clarification on Apache Kafka applicability – CVE-2026-114938 (Java4Shell)</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">社区讨论围绕 CVE-2026-114938（Java4Shell）是否影响 Apache Kafka 部署。Manikumar 澄清该漏洞属于 OpenJDK Base64 解码器问题，Kafka 是否受影响取决于运行的 JDK 和 CPU，而非 Kafka 版本。官方已发布相关缓解公告。</p>
+            <div class="key-points"><p><strong>@Masood Khan:</strong> 询问 Kafka 3.9.2 是否会因使用受影响的 OpenJDK Base64 解码器而被利用，以及是否需要 Kafka 侧缓解。</p>
+<p><strong>@Manikumar:</strong> 该漏洞是 JDK 漏洞，Kafka 本身不因版本受影响；风险取决于受影响 JDK 和支持 AVX-512 VBMI 的 x86-64 CPU。</p>
+<p><strong>@Manikumar:</strong> 升级到修复版 JDK 即可解决；短期可通过 -XX:-UseBASE64Intrinsics 缓解，且需注意 apache/kafka Docker 镜像捆绑的受影响 Temurin JRE。</p></div>
+            <p class="conclusion">无需升级 Kafka 本身；应升级所有 Kafka JVM 到修复版 JDK。若暂时无法升级，可通过 KAFKA_OPTS 设置 -XX:-UseBASE64Intrinsics 临时缓解。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/f9lh7175btzp8xx6v0tfz07sobswozm7">[PR] Bump hugo-extended from 0.168.0 to 0.169.0 [kafka-site]</a></h3>
+            <p class="meta">1 条回复 · 1 位参与者</p>
+            <p class="summary">该讨论围绕 kafka-site 仓库中将 hugo-extended 从 0.168.0 升级到 0.169.0 的 PR #933 展开。由于该升级请求已被新的 PR #937 取代，dependabot[bot] 关闭了原 PR。</p>
+            <div class="key-points"><p><strong>@dependabot[bot]:</strong> PR #933 已被 PR #937 取代，因此不再继续处理。</p></div>
+            <p class="conclusion">PR #933 已关闭，后续升级工作应关注 PR #937。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/fyvmgqpbzb59dq6ffhyjrv1h665b6y1s">[PR] KAFKA-21388: Add upgrade instructions for 4.4 [kafka-site]</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">该讨论围绕 kafka-site 仓库的 PR #938 展开，目标是为 Kafka 4.4 添加升级说明。harmadasg 提交了该 PR，随后 mimaison 将其合并。整体进展表现为从提交到合并完成，未涉及深入技术讨论。</p>
+            <div class="key-points"><p><strong>@harmadasg:</strong> 创建 PR #938，为 Kafka 4.4 添加升级说明，并关联相关 Kafka PR 评论。</p>
+<p><strong>@mimaison:</strong> 合并 PR #938，确认该站点文档变更进入仓库。</p></div>
+            <p class="conclusion">该 PR 已被合并，后续主要是站点内容更新或发布流程生效，邮件中未提出其他明确行动项。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/c554zx0fh7zhjj1h9m140mv0kfrwf0z3">KIP-1311: Make Time/Timer public API</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">社区讨论 KIP-1311 是否有必要将 Time/Timer 暴露为公共 API，重点是如何在满足内部构造和测试需求的同时避免新增不必要的公共接口。Chia-Ping 提出在公共类中嵌套 @InterfaceAudience.Private 内部类提供内部创建方法，并已提交 PR 示例；Sean 关注该方案能否在 5.0 中继续保持 Time 内部可见。</p>
+            <div class="key-points"><p><strong>@Chia-Ping Tsai:</strong> 建议在 @InterfaceAudience.Public 类中嵌套 @InterfaceAudience.Private 类（如 Metrics.Internal.create()）供仓库内部使用，以避免大量改动和不必要的公共 API，并保持 Time 内部；已提交 PR #24335 说明该方案。</p>
+<p><strong>@Sean Quah:</strong> 希望将该内部类方案具体化为面向 5.0 的 PR，并确认其是否能够让 Time 继续保持内部可见性。</p>
+<p><strong>@Matthias J. Sax:</strong> 建议通过测试专用对象或传入 Metrics 对象来替代暴露 Time，例如让测试代码创建 TestMetrics，而不是直接构造 Metrics。</p></div>
+            <p class="conclusion">初步方向倾向于通过 @InterfaceAudience.Private 嵌套类或内部工厂方法解决内部使用需求，而不是将 Time/Timer 公开。下一步是围绕 Chia-Ping 提交的 PR #24335 继续评审，并评估其在 5.0 及类似场景中的推广。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/44oq7s20j6nyh9qob5gxr70mr6ckfnvf">Helping KIPs reach a decision - delivery plans and finishing what we start</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论聚焦 Kafka KIP 数量增长导致评审带宽不足、提案长期停留在 Discussion 阶段的问题。Apoorv 建议作者先完成已有 KIP、在提案中说明交付计划并参与社区评审；Matthias 认同问题存在，但担心限制提案数量，认为应通过更显式的优先级排序和社区集中推进来解决。</p>
+            <div class="key-points"><p><strong>@Apoorv Mittal:</strong> 建议贡献者先将已有 KIP 推进到投票、撤回或明确下一步，并在 KIP 中提供实现者、时间和原型/PR 等交付计划，以降低评审负担。</p>
+<p><strong>@Matthias J. Sax:</strong> 认为作者同时提出多个 KIP 可能是因为原提案缺乏关注，不宜简单限制提案数量，而应让社区和 committer 更明确地进行优先级排序并集中推进重要 KIP。</p></div>
+            <p class="conclusion">目前尚未形成明确决议；下一步方向是讨论如何让 KIP 的优先级、交付承诺和社区评审责任更加透明，以推动已有提案更快达成结论。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/yv23sqqq6kyqy9wlz2yrx2l6y2torwc6">KIP-1398: Extending the client telemetry protocol</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕 KIP-1398 扩展客户端遥测协议中的分片推送细节展开，重点关注客户端切换 broker 时如何区分快照分片、推送跨间隔时的调度行为，以及压缩后数据可能超过大小限制的问题。作者提出疑问后，KIP 作者对部分设计进行了澄清并更新了提案。</p>
+            <div class="key-points"><p><strong>@Sanghyeok An:</strong> 指出在客户端切换 broker 时，broker 可能将不同时间的分片误认为同一快照，建议由客户端保证每个间隔只发送一个快照，broker 只需限制请求数量和大小。</p>
+<p><strong>@Nikita Shupletsov:</strong> 同意 broker 不需要跟踪同一快照的分片完整性或缺失请求，这类跟踪更适合由 exporter 处理，并据此更新 KIP。</p>
+<p><strong>@Nikita Shupletsov:</strong> 明确下一次遥测发送应从最后一次响应时间开始计算；同时接受压缩后数据可能变大的问题，更新 KIP 要求同时检查未压缩和压缩后的大小。</p></div>
+            <p class="conclusion">初步结论是弱化 broker 对快照分片完整性的校验职责，保持按最后响应时间计算下一次发送间隔，并要求客户端检查压缩前后的数据大小；下一步是更新 KIP 文档。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/qxtzqs848d7y7qo16r5hqltgv8xtbvxq">Release manager for Apache Kafka 4.4.1</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">Andrew Schofield 提议开始规划 Apache Kafka 4.4.1 补丁版本发布，因为 4.4 分支已积累多个重要修复，并建议在 4.5.0 发布启动前完成，以避免并行发布压力。随后他征集 committer 担任 4.4.1 的 release manager。</p>
+            <div class="key-points"><p><strong>@Andrew Schofield:</strong> 4.4 分支已有多个重要修复，应尽快规划 4.4.1 bugfix release，并建议在 4.5.0 启动前发布。</p>
+<p><strong>@Andrew Schofield:</strong> 询问是否有 committer 愿意担任 4.4.1 的 release manager。</p>
+<p><strong>@Sushant Mahajan:</strong> 以 committer 身份自荐担任 Apache Kafka 4.4.1 的 release manager。</p></div>
+            <p class="conclusion">Sushant Mahajan 已自荐担任 4.4.1 release manager，下一步预计是等待社区确认并启动发布流程。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (126)</h2>
+            
+    <p>本周新建 <strong>126</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周 JIRA 主要围绕消费者组与再平衡机制展开，涉及异步消费者心跳、静态成员替换、经典组升级、ListGroups 过滤及 assignor 投票等问题。同时也覆盖了 Streams、Connect、Producer 和 Broker 侧的缺陷修复与改进，包括 JMX 属性、状态存储泄漏、分区器行为、日志目录故障处理、请求限流和配置清理。此外还包含测试稳定性、CI 原生镜像验证、工具脚本、文档以及 OpenAPI 和记录格式等基础设施工作。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Kafka Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
