@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-11-24</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-11-24</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 11 新 Issues</div>
+            <div class="stat">✅ 4 关闭</div>
+            <div class="stat">✨ 11 新 PRs</div>
+            <div class="stat">🎉 4 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/5346">PR #5346</a> [test] Wait for snapshot cleanup in the snapshot lease test</li><li>🎉 <a href="https://github.com/apache/fluss/pull/5287">PR #5287</a> [client] Integrate consumer group offsets with log scanners</li><li>🎉 <a href="https://github.com/apache/fluss/pull/5275">PR #5275</a> [server] Persist BulkLoad bucket commits atomically</li><li>🎉 <a href="https://github.com/apache/fluss/pull/4580">PR #4580</a> [test] Stabilize FlinkSourceSplitReaderTest.testPendingRecordsMetric</li><li>🐛 <a href="https://github.com/apache/fluss/issues/5362">Issue #5362</a> [test] Make disk usage collector deduplication test deterministic</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4608">Issue #4608</a> FIP-53: Log Scanner Offset（Consumer Offsets）Management</h4>
+            <ul><li><span class="author">@pisceslj</span>: ### Subtasks - [x] **[4625 [server] Add consumer offset table foundations](https://github.com/apach…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5280">Issue #5280</a> [rust] Support streaming UnionRead</h4>
+            <ul><li><span class="author">@naivedogger</span>: I’m narrowing PK streaming to `table.changelog.image=FULL` for this PR. With FULL, an update from 1…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/5334">Issue #5334</a> [test] Unstable test Flink22TieringITCase.testTieringReachMaxDuration</h4>
+            <ul><li><span class="author">@swuferhong</span>: cc @luoyuxia @beryllw</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4571">Issue #4571</a> [test] Unstable test FlinkSourceSplitReaderTest.testPendingRecordsMetric</h4>
+            <ul><li><span class="author">@swuferhong</span>: another case： https://github.com/apache/fluss/actions/runs/45336643957/job/138250178915</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/5338">Issue #5338</a> [TLS] Any trusted client certificate gets server-level access on an mTLS internal listener</h4>
+            <ul><li><span class="author">@MaheshS08</span>: @morazow , can i work on this?</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5275">Issue #5275</a> [server] Persist BulkLoad bucket commits atomically</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: Thanks for taking another look, @wuchong. I’ve addressed your latest comments, including the snapsh…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4479">Issue #4479</a> [rust] Reduce append overhead with shared routing contexts</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: This PR has been marked as stale because it has had no activity for 60 days. It will be closed in 1…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4478">Issue #4478</a> [rust] Dispatch independent table writes concurrently</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: This PR has been marked as stale because it has had no activity for 60 days. It will be closed in 1…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4473">Issue #4473</a> [rust] Add extensible HTTP authentication to the gateway</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: This PR has been marked as stale because it has had no activity for 60 days. It will be closed in 1…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4472">Issue #4472</a> [rust] Add shared TLS profiles for Gateway REST</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: This PR has been marked as stale because it has had no activity for 60 days. It will be closed in 1…</li><li><span class="author">@hutiefang76</span>: @beryllw, I refreshed this proposal for #4470 and fixed a configuration edge case in `53c1268`: a v…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4471">Issue #4471</a> docs: add fluss-adk-toolkit to the Gateway community tools</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: This PR has been marked as stale because it has had no activity for 60 days. It will be closed in 1…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4322">Issue #4322</a> [test] Remove redundant merge-engine alter test from AlterBucketNumTest</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: This PR was closed because it has been stale for 10 days with no activity.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4321">Issue #4321</a> [flink] fix orphan scan rate limit</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: This PR was closed because it has been stale for 10 days with no activity.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4317">Issue #4317</a> [flink] preserve orphan cleanup job filesystem configuration</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: This PR was closed because it has been stale for 10 days with no activity.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4311">Issue #4311</a> [flink] Resolve per-partition bucket count in sink bucket shuffle</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: This PR was closed because it has been stale for 10 days with no activity.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3591">Issue #3591</a> [flink] Clean KV files and buckets with confirmed empty references</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: This PR was closed because it has been stale for 10 days with no activity.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3590">Issue #3590</a> [flink] Clean orphan children with conservative age and directory checks</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: This PR was closed because it has been stale for 10 days with no activity.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3589">Issue #3589</a> [flink] Support remove_orphan_files action for Flink 1.18</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: This PR was closed because it has been stale for 10 days with no activity.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3431">Issue #3431</a> [server] Fix NPE when processing table registration change</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: This PR was closed because it has been stale for 10 days with no activity.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3428">Issue #3428</a> Bump org.apache.flink:flink-table-api-java from 1.20.1 to 1.20.4 in /fluss-lake</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: This PR was closed because it has been stale for 10 days with no activity.</li><li><span class="author">@dependabot[bot]</span>: OK, I won't notify you again about this release, but will get in touch when a new version is availa…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/3420">Issue #3420</a> [lake/tiering] Support reporting watermark to Paimon snapshot</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: This PR was closed because it has been stale for 10 days with no activity.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5348">Issue #5348</a> [rust] Support the SASL/PLAIN authorization ID</h4>
+            <ul><li><span class="author">@beryllw</span>: @fresh-borzoni @loserwang1024 @naivedogger Could you take a look at this PR when you have a chance?</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4949">Issue #4949</a> [test] Unstable test TabletServiceITCase.testProduceLog</h4>
+            <ul><li><span class="author">@ChatwinLee</span>: **Investigation of this unstable test + proposed fix direction** I spent some time investigating th…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5289">Issue #5289</a> [client] Stop KV snapshot downloads when scanner closes</h4>
+            <ul><li><span class="author">@pbanakar</span>: Hi @swuferhong Thanks for Re trigerring the CI multiple times, Still it is failing, since we Merged…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5165">Issue #5165</a> [client] Report verified resume offsets for log decode errors</h4>
+            <ul><li><span class="author">@SteNicholas</span>: Ping @polyzos, @loserwang1024, @fresh-borzoni.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5333">Issue #5333</a> [rpc] Add mTLS authentication from client certificates</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: > Sorry, I approved by mistake. This is my actual review. > > Thanks, this fits FIP-29 well. The au…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5287">Issue #5287</a> [client] Integrate consumer group offsets with log scanners</h4>
+            <ul><li><span class="author">@wuchong</span>: In 444a0063e I changed how log scanners resolve `latest` offsets and commit consumer group offsets.…</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5275">PR #5275</a> [server] Persist BulkLoad bucket commits atomically</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: Agreed. In a5431872d, partitioned targets persist both `partition_id` and `partition_name`. Unparti…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/2917">PR #2917</a> [server] Add retract support for Aggregation Merge Engine</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: Thanks for catching this. For retract-enabled SQL writes that use the Fluss Catalog's configured en…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5280">PR #5280</a> [rust] Support streaming UnionRead</h4>
+            <ul><li><span class="author">@naivedogger</span>: Follow now reports a confirmed partition drop with each bucket’s next unread offset and continues w…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5348">PR #5348</a> [rust] Support the SASL/PLAIN authorization ID</h4>
+            <ul><li><span class="author">@naivedogger</span>: Could we keep the existing two-argument `with_sasl` and `new_plain` methods and add separately name…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5212">PR #5212</a> [flink] Add $stream suffix for Fluss-only reads</h4>
+            <ul><li><span class="author">@leonardBang</span>: Would it make sense to add an end-to-end case with an actual lake snapshot, perhaps in the existing…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5333">PR #5333</a> [rpc] Add mTLS authentication from client certificates</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: on the internal listener, can we accept only principals listed in super.users? Then a user certific…</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/5362">#5362</a> [test] Make disk usage collector deduplication test deterministic <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/issues/5360">#5360</a> [server] Complete the BulkLoad transaction lifecycle <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/5357">#5357</a> [flink] Support split-level watermark alignment in `FlussSource` <span class="author">@binary-signal</span> </li><li><a href="https://github.com/apache/fluss/issues/5355">#5355</a> [client] Writer sender busy-spins when ready buckets cannot be drained <span class="author">@binary-signal</span> </li><li><a href="https://github.com/apache/fluss/issues/5353">#5353</a> [flink] Client meters registered through `FlinkMetricRegistry` always report a rate of 0 <span class="author">@binary-signal</span> </li><li><a href="https://github.com/apache/fluss/issues/5351">#5351</a> [log] Arrow batch with more than about 131k records fails in `ChangeTypeVectorWriter` with `IndexOutOfBoundsException` <span class="author">@binary-signal</span> </li><li><a href="https://github.com/apache/fluss/issues/5349">#5349</a> [server] PK write with acks=-1 waits for `client.request-timeout` although its offset is already below the high watermark <span class="author">@binary-signal</span> </li><li><a href="https://github.com/apache/fluss/issues/5347">#5347</a> [python][c++][elixir] Expose the SASL/PLAIN authorization ID <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/issues/5345">#5345</a> [Bug] Flaky test BatchScannerITCase.testKvSnapshotLease <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/issues/5342">#5342</a> [c++][python][elixir] Expose consumer offset management <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/issues/5341">#5341</a> [rust] Complete consumer offset scanning and administration <span class="author">@naivedogger</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/5363">#5363</a> [test] Make disk usage collector deduplication test deterministic <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/pull/5361">#5361</a> [server] Complete the BulkLoad transaction lifecycle <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/5359">#5359</a> [lake/paimon] Report missing Fluss fields in tiering errors <span class="author">@heyallencao</span> </li><li><a href="https://github.com/apache/fluss/pull/5358">#5358</a> [flink] Support watermark alignment in FlinkSourceSplitReader <span class="author">@binary-signal</span> </li><li><a href="https://github.com/apache/fluss/pull/5356">#5356</a> [client] Stop the writer sender spinning when ready buckets cannot be drained <span class="author">@binary-signal</span> </li><li><a href="https://github.com/apache/fluss/pull/5354">#5354</a> [flink] Update Fluss meters registered through FlinkMetricRegistry <span class="author">@binary-signal</span> </li><li><a href="https://github.com/apache/fluss/pull/5352">#5352</a> [log] Let the change type vector of an Arrow batch span memory segments <span class="author">@binary-signal</span> </li><li><a href="https://github.com/apache/fluss/pull/5350">#5350</a> [server] Complete delayed writes when a leader write advances the high watermark <span class="author">@binary-signal</span> </li><li><a href="https://github.com/apache/fluss/pull/5348">#5348</a> [rust] Support the SASL/PLAIN authorization ID <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/pull/5344">#5344</a> [c++][python][elixir] Expose consumer offset management <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/pull/5343">#5343</a> [rust] Complete consumer offset scanning and administration <span class="author">@naivedogger</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/5345">#5345</a> [Bug] Flaky test BatchScannerITCase.testKvSnapshotLease <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/issues/5274">#5274</a> [server] Persist BulkLoad bucket commits atomically <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/5271">#5271</a> [client] Integrate consumer group offsets with log scanners <span class="author">@pisceslj</span> </li><li><a href="https://github.com/apache/fluss/issues/4571">#4571</a> [test] Unstable test FlinkSourceSplitReaderTest.testPendingRecordsMetric <span class="author">@app/github-actions</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/5346">#5346</a> [test] Wait for snapshot cleanup in the snapshot lease test <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/pull/5287">#5287</a> [client] Integrate consumer group offsets with log scanners <span class="author">@pisceslj</span> </li><li><a href="https://github.com/apache/fluss/pull/5275">#5275</a> [server] Persist BulkLoad bucket commits atomically <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/4580">#4580</a> [test] Stabilize FlinkSourceSplitReaderTest.testPendingRecordsMetric <span class="author">@zhang-arvin</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
