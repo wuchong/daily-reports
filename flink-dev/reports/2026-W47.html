@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flink 社区周报 | 2026-W47</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Flink 社区周报 | 2026-W47</h1>
+            <p class="date-range">2026-11-16 ~ 2026-11-22</p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+
+        <section class="announcements">
+            <h2>📢 公告 (2)</h2>
+            <ul><li><a href="https://lists.apache.org/thread/xd22pzdfhw4gr8brvfzwlxk672394kjd">New Apache Flink PMC Member - Yuepeng Pan(RocMarshal)</a></li>
+<li><a href="https://lists.apache.org/thread/bjp6mkjjok3lmhvofcz6gdzo5xvh5zqn">Apache Flink Kafka Connector 5.1.0 released</a></li></ul>
+        </section>
+
+        <section class="votes">
+            <h2>🗳️ 投票 (15)</h2>
+            <ul class="vote-list"><li><a href="https://lists.apache.org/thread/8fymh180gb8mnf755trsg3lpxxlwvylc">FLIP 622: Add built-in DEDUPLICATE and DEDUPLICATE_WINDOW PTFs</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/p6pr3hjjj08rsnqzopl0oc9sxpgp85b1">FLIP-622: Add built-in DEDUPLICATE and DEDUPLICATE_WINDOW PTFs</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/oks4ypoyfq57d2l5nvczzhzz863k1kt6">FLIP-621: Add TO_APPEND built-in PTF</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/lzdold3fyzpn8pozdc3gmsqjyhqcoxc3">FLIP-619: Store large operator coordinator state outside the checkpoint metadata</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/p5qn1ok1zmsmbvnm500ggs9cpkwdz327">FLIP-613 : Remote Artifact Fetch for Session-Mode Job Submission</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/9c1d0p2pqytw6ryr2zlpx7r16v993jbo">Release Apache Flink Kafka Connector 5.1.0, release candidate rc1</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/53dkmzrncphcbjs93gqd74qd114byt24">Release Apache Flink Kafka Connector 5.1.0 PASSED</a> <span class="status passed">✅ 已通过</span></li>
+<li><a href="https://lists.apache.org/thread/q50or0g5rl3y8hdhrj38lvnw0j2f1pjb">Release flink-connector-aws v6.1.0, release candidate #1</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/vprmcx6j8d19y1zmn0qzrvl369qg0qgq">Release 1.20.6, release candidate #3</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/wwqfn8bj0k4wjrws7b6x8xk9ogklrszd">Release 2.3.1, release candidate #2</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/6k3wyyw7gonpdbcvbg2rqx4o1mrmbcqh">Release 2.2.2, release candidate #2</a> <span class="status in-progress">🗳️ 进行中</span></li>
+<li><a href="https://lists.apache.org/thread/r7ghv57jwbgfzxn3pfbmoo6m7owo6byy">Release Apache Flink 1.20.6 CANCELLED</a> <span class="status failed">❌ 未通过</span><p class="fail-reason">投票因捆绑许可证问题（FLINK-41538）被取消。</p></li>
+<li><a href="https://lists.apache.org/thread/xc3dqpxrcb5vjp5pn8sjnqdpd90o5vxz">Release Apache Flink 2.2.2 CANCELLED</a> <span class="status failed">❌ 未通过</span><p class="fail-reason">因捆绑许可证问题（FLINK-41538），本次发布投票已被取消。</p></li>
+<li><a href="https://lists.apache.org/thread/p8dtt79cy15p5sjchw47z6jn6jzpt850">Release Apache Flink 2.3.1 CANCELLED</a> <span class="status failed">❌ 未通过</span><p class="fail-reason">投票因捆绑许可证问题（FLINK-41538）被取消。</p></li>
+<li><a href="https://lists.apache.org/thread/z1chdop4bp75z48hnzwc6f51gvmhosjd">Release flink-shaded 20.1, release candidate #2</a> <span class="status in-progress">🗳️ 进行中</span></li></ul>
+        </section>
+
+        <section class="discussions">
+            <h2>💬 讨论 (10)</h2>
+            
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/nff076vl23my538zkx7rz48hmrz2j2kc">Release flink-shaded 21.1</a></h3>
+            <p class="meta">5 条回复 · 5 位参与者</p>
+            <p class="summary">社区讨论发布 flink-shaded 21.1，主要目的是纳入大量安全修复，尤其是 Netty 相关 CVE 问题。讨论中 Sergey 澄清 Netty 大版本升级实际发生在 21.0，因此还需要发布 flink-shaded 20.1 来覆盖版本间隙。多位社区成员表示支持，并建议同时考虑发布 17 以覆盖 Flink 1.20。</p>
+            <div class="key-points"><p><strong>@Sergey Nuyanzin:</strong> 提议发布 flink-shaded 21.1 以包含大量安全修复，并后续澄清需要同时发布 20.1 来覆盖 Netty 升级带来的版本间隙。</p>
+<p><strong>@Martijn Visser:</strong> 支持发布，认为可以提前解决 CVE 相关安全风险。</p>
+<p><strong>@Purushottam Sinha:</strong> 支持发布，并建议同时发布 17 版本以覆盖 Flink 1.20。</p></div>
+            <p class="conclusion">社区普遍支持发布安全修复版本；下一步由 Sergey 准备发布 flink-shaded 21.1 和 20.1，同时可评估是否发布 17 版本以覆盖 Flink 1.20。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/qck2oyn86d5pbxsqxt42xon76md0gv85">FLIP-623: Java support policy</a></h3>
+            <p class="meta">3 条回复 · 3 位参与者</p>
+            <p class="summary">讨论围绕 FLIP-623 建立 Flink 的 Java 版本长期支持策略，提出同时支持两个稳定 LTS，新 LTS 先实验、下个 minor 转正，并移除最老 LTS。以 Flink 2.5 为例，Java 17/21 稳定、Java 25 实验、Java 11 移除。社区总体认可，并进一步讨论连接器兼容、推荐版本和默认镜像等细节。</p>
+            <div class="key-points"><p><strong>@Martijn Visser:</strong> 提出固定支持两个稳定 LTS，新 LTS 先实验、下个 minor 转正并移除最老 LTS；Flink 2.5 中 Java 17/21 稳定、Java 25 实验、Java 11 移除。</p>
+<p><strong>@Krishna Sai:</strong> 关注连接器如何跟随多个 Flink minor 版本，以及 Java 17 弃用后推荐版本和默认 Docker 镜像应在政策中明确。</p>
+<p><strong>@Purushottam Sinha:</strong> 支持该策略，建议跟踪 Java 11 清理和连接器迁移工单，并补充不支持最新 non-LTS 的原因。</p></div>
+            <p class="conclusion">初步共识是建立固定 LTS 支持策略；Martijn 将补充推荐版本规则和不支持 non-LTS 的理由，并说明连接器只需支持项目当前支持的 Flink minor 版本，后续还有连接器兼容性 FLIP。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/nsdh9m9xs2r2gm0s49ysq4g5ylcm6vpn">RocksDB MapState benchmark regression (FLINK-40584) resolution for Flink 2.4 release</a></h3>
+            <p class="meta">2 条回复 · 3 位参与者</p>
+            <p class="summary">讨论围绕 Flink 2.4 是否接受 FLINK-40584 引入的 RocksDB MapState 基准性能回退。Mika 定位到约 4%-6% 的回退，原因是迭代器上界机制带来额外调用开销，并已创建 FLINK-41519 跟踪。社区正在权衡接受、修复或回退，并需要 PMC 对发布决策给出意见。</p>
+            <div class="key-points"><p><strong>@Mika Naylor:</strong> 确认 MapState 相关基准出现约 4%-6% 回退，归因于 FLINK-40584 的 iterate_upper_bound 带来每次调用开销，并提出接受、在发布说明中标注，或在目标日期前无修复则回退相关提交。</p>
+<p><strong>@Aleksandr Savonin:</strong> 复现了基准回退，但指出该变更在生产环境中可显著减少大量 tombstone 场景下的恢复耗时，愿意接手修复并补充相关基准测试。</p>
+<p><strong>@Yuan Mei:</strong> 认为回退幅度虽小，但每次调用开销可能在生产环境中被放大，建议先运行 NexMark 和真实作业验证，再谨慎决定是否纳入正式发布。</p></div>
+            <p class="conclusion">目前尚未形成最终发布结论；下一步是跟进 FLINK-41519 以降低迭代器建立成本，并补充 timer/tombstone 相关基准，同时结合真实负载验证，由 PMC 决定 Flink 2.4 是接受、等待修复还是回退该变更。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/6zlq1w08jj9qnmxmo62yz5x3rvlwrt9x">FLIP-XXX: Dynamic Rate Limiting for FLIP-27 Source</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕 FLIP-XXX 为 FLIP-27 Source 引入动态限流机制，重点是如何判断作业健康并计算/分配速率。社区认可该特性价值，但认为 checkpoint 时间只是健康信号之一，应提供可扩展接口；同时有人指出初始速率未传递到 coordinator，可能导致首个 checkpoint 后限流失效。</p>
+            <div class="key-points"><p><strong>@Peter Huang:</strong> 默认 RatelimitCalculator 基于历史 checkpoint 时间，但提案提供 RatelimitCalculator 和 RateAllocator 接口，允许用户自定义限流计算与分配策略。</p>
+<p><strong>@David Radley:</strong> 质疑 healthy/unhealthy 的定义，建议健康状态应由用户定义，而不是由框架预设。</p>
+<p><strong>@Yanquan Lv:</strong> 指出 connector 配置的初始速率可能不会到达 coordinator，首个 checkpoint 可能广播 max-records-per-second，导致初始限速只维持一个 checkpoint 间隔，需要确认或修复。</p></div>
+            <p class="conclusion">初步方向被认可，但需要进一步澄清健康定义、完善可扩展接口，并确认/修复初始速率传递与首个 checkpoint 的行为；后续可考虑先以实验性实现和编程接口推进。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/b6okc1t0g9f2lly7kop08c95c812dljo">Release flink-connector-aws v6.1.0 for Flink 2.1 and 2.2</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">社区讨论发布 flink-connector-aws v6.1.0，以支持 Flink 2.1 和 2.2，并包含 DynamoDB Streams、Kinesis 等多项修复与增强。当前最新版本仅支持 Flink 2.0，而主分支已具备兼容 2.1/2.2 的构建与测试基础。Ferenc Csaky 自荐担任发布经理，Andreas Bube 表示支持并愿意协助验证。</p>
+            <div class="key-points"><p><strong>@Ferenc Csaky:</strong> 提议发布 flink-connector-aws v6.1.0，说明主分支已支持 Flink 2.1/2.2 并包含多项未发布修复，愿意担任 release manager。</p>
+<p><strong>@Andreas Bube:</strong> 明确支持发布该版本，认为相关修复很有价值，并愿意帮助验证 release candidate。</p></div>
+            <p class="conclusion">讨论初步获得支持，下一步预计由 Ferenc Csaky 推进发布流程，准备 release candidate 并进行社区验证。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/zh21b9c0n4mtyg3jopghp84sfdttx49v">Idle sources can make on-time records late after two exchanges</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕空闲源在两次 exchange 后可能导致本应准时的记录变迟到的问题。Ferenc 复现了多种触发场景，并验证在 ACTIVE 时 flush、先发送 ACTIVE 以及 resume marker 原型等修复效果。Zhe 进一步关注 unaligned checkpoint 恢复场景下 IDLE 状态回放可能带来的问题，并建议补充恢复测试。</p>
+            <div class="key-points"><p><strong>@Ferenc Csaky:</strong> 复现确认两次 exchange 及双输入场景都可能触发记录迟到；在 ACTIVE 时 flush、先发送 ACTIVE 或 resume marker 原型均可消除测试中的迟到，且回退 FLINK-40504 不改变该竞态。</p>
+<p><strong>@Zhe Wang:</strong> 关注从 unaligned checkpoint 恢复时，IDLE 状态可能被重放导致通道再次被视为空闲，建议补充恢复测试以验证 watermark 不会过早推进。</p></div>
+            <p class="conclusion">初步认为 resume marker 或 ACTIVE-first + flush 方案可修复已测试场景，但恢复路径仍需验证；下一步是补充 unaligned checkpoint 恢复测试，确认空闲通道的记录不会因状态回放而被错误判为迟到。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/l598qzxpv159okgqb52vyxf28kp0nm89">Operator-managed park/resume (scale-to-zero) for FlinkDeployments</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论围绕是否由 Flink Operator 原生支持 FlinkDeployment 的 park/resume（scale-to-zero），以降低空闲事件驱动作业的资源成本。发起者提出基于 park holder annotation 和 PARKED 生命周期状态/条件的初步方案，并征询社区是否值得推进为 FLIP。目前已有反馈讨论状态表达、兼容性与现有 JIRA 是否覆盖该需求。</p>
+            <div class="key-points"><p><strong>@Joao Boto:</strong> 当前停止作业依赖用户侧 suspended 字段且状态语义不足，导致各团队自建外部控制器；提议用 park holder annotations 和 PARKED lifecycle/condition 让 operator 管理 park/resume。</p>
+<p><strong>@Krishna Sai:</strong> condition-only 方案虽避免 CRD 变更并改善降级兼容，但会与手动 suspend 混淆；新增 PARKED 枚举的价值需权衡升级/降级约束；现有 JIRA 未覆盖该需求，FLINK-41262 也不足以解决 HA 场景。</p></div>
+            <p class="conclusion">目前尚未形成最终结论；若社区认为方向可行，发起人将提交正式 FLIP，后续需重点确认 operator 是否承载该能力以及采用独立 PARKED 状态还是仅用 condition。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/t61h4d337xlm4x7vmyq2wbq1dd8gmvsh">[PR] [hotfix] Update the Temurin JDKs to the latest releases [flink-ci-docker]</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">该讨论围绕 flink-ci-docker 镜像中 Temurin JDK 版本升级展开，目的是修复受 CVE-2026-114938 影响的旧版本并同步过期的 JDK 11。PR #12 已完成多个 Temurin 版本更新和校验，并随后被合并。</p>
+            <div class="key-points"><p><strong>@MartijnVisser:</strong> 提出将 Temurin 更新至 11.0.33.1+1、17.0.21.1+2、21.0.13.1+2 和 25.0.5.1+2，以修复 CVE 影响并替换过旧版本。</p>
+<p><strong>@MartijnVisser:</strong> 说明已通过 Adoptium API 校验各 tarball 的 SHA-256，并确认目录与新的 JAVA_HOME_*_X64 路径一致。</p>
+<p><strong>@snuyanzin:</strong> 合并了该 PR，使 JDK 更新进入仓库。</p></div>
+            <p class="conclusion">PR #12 已合并；后续需要发布新的 CI Docker 镜像标签，并在 apache/flink 中跟进使用该镜像。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/6hy60lfxpzczwz35t8ygszlkq1ocqb9w">Publishing Docker images to both flink and apache/flink</a></h3>
+            <p class="meta">1 条回复 · 2 位参与者</p>
+            <p class="summary">讨论 Flink 是否继续同时发布 Docker 镜像到官方镜像 flink 和 apache/flink，并更新发布流程与文档说明。社区倾向于保留两个镜像，但将 apache/flink 的推送迁移到 GitHub Actions 自动化，以减少人工依赖并提升发布效率。</p>
+            <div class="key-points"><p><strong>@Martijn Visser:</strong> 建议保留 flink 和 apache/flink 两个镜像，理由包括 Native Kubernetes 默认使用 apache/flink、apache/flink 拉取不受 Docker Hub 速率限制、官方镜像基础镜像更新更及时；同时提出通过 GitHub Actions 和 Infra 提供的 Docker Hub secrets 自动推送 apache/flink。</p>
+<p><strong>@Krishna Sai:</strong> 支持保留两个镜像并通过 GitHub Actions 推送 apache/flink，但指出当前 workflow 缺少定时运行，可能导致基础镜像或 CVE 修复滞后，建议为受支持标签增加 scheduled run。</p>
+<p><strong>@Krishna Sai:</strong> 提醒文档需要说明 kubernetes.container.image.ref 的默认镜像及其 JDK 标签问题，尤其是该默认值可能受 FLIP-623 影响。</p></div>
+            <p class="conclusion">初步共识是继续保留 flink 和 apache/flink 双镜像，并推进 apache/flink 的 GitHub Actions 自动推送；下一步需要评估定时构建、更新文档说明，并修正 kubernetes.container.image.ref 相关描述。</p>
+        </article>
+
+        <article class="discussion-item">
+            <h3><a href="https://lists.apache.org/thread/9h1w3hy33o4zpvfwyohx794qvr4lkcg2">[BUG] Wrong result on inner self-join with empty right input: HashAggregate(select=[]) + singleRowJoin preserves left groups</a></h3>
+            <p class="meta">0 条回复 · 1 位参与者</p>
+            <p class="summary">讨论围绕 Flink SQL 批模式下，INNER JOIN ON TRUE 自连接且右侧输入被过滤为空时返回错误结果的 BUG。报告者指出优化计划中全局 HashAggregate(select=[]) 会使空输入仍产生一行，并通过 singleRowJoin 错误保留左侧分组。</p>
+            <div class="key-points"><p><strong>@Weiwei Su:</strong> 在 Flink 1.19.1 中，右侧过滤为空的内连接应返回 0 行，但实际返回左侧分组，且提供了最小复现、执行结果和 DuckDB/Trino/Spark 的对比。</p>
+<p><strong>@Weiwei Su:</strong> 根因线索是优化器对右侧空输入应用无分组键的全局 HashAggregate，导致空输入产生单行，再经 singleRowJoin 造成错误结果。</p></div>
+            <p class="conclusion">初步判断问题来自全局空聚合与 singleRowJoin 的组合，下一步需要社区确认并修复相关优化规则或执行行为。</p>
+        </article>
+        </section>
+
+        <section class="jira">
+            <h2>🎫 JIRA (121)</h2>
+            
+    <p>本周新建 <strong>121</strong> 个 Issue</p>
+    <div class="jira-summary">
+        <p>本周 JIRA 主要集中在 SQL/Table 与函数语义的修复增强，包括类型转换、时间函数、JSON/VARIANT、校验和 Planner 兼容性问题，以及相关文档与 PyFlink/物化表支持。同时涉及运行时与集群稳定性，如类加载、Checkpoint/HA、委托令牌故障转移、Kubernetes JobResultStore、HistoryServer 和构建依赖安全升级。还包括 Kafka、Db2 CDC、Iceberg、YARN 等连接器与外部系统的问题修复、行为说明及测试文档完善。</p>
+    </div>
+        </section>
+
+        <footer>
+            <p>Generated by Flink Weekly Report System</p>
+        </footer>
+    </div>
+</body>
+</html>
