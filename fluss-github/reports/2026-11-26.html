@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Fluss 每日动态 - 2026-11-26</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Fluss 每日动态</h1>
+            <p class="date">📅 2026-11-26</p>
+            <p class="repo">🔗 <a href="https://github.com/apache/fluss">apache/fluss</a></p>
+            <nav class="back-link"><a href="../index.html">← 返回列表</a></nav>
+        </header>
+        
+        <section class="stats">
+            <div class="stat">📝 9 新 Issues</div>
+            <div class="stat">✅ 10 关闭</div>
+            <div class="stat">✨ 6 新 PRs</div>
+            <div class="stat">🎉 9 合并</div>
+        </section>
+        
+        <section class="highlights">
+            <h2>🔥 核心要点</h2>
+            <ul>
+                <li>🎉 <a href="https://github.com/apache/fluss/pull/5396">PR #5396</a> [test] Wait for table readiness in Spark planner reuse test</li><li>🎉 <a href="https://github.com/apache/fluss/pull/5390">PR #5390</a> [rust] Route read-only Admin requests to TabletServers</li><li>🎉 <a href="https://github.com/apache/fluss/pull/5361">PR #5361</a> [server] Complete the BulkLoad transaction lifecycle</li><li>🎉 <a href="https://github.com/apache/fluss/pull/5354">PR #5354</a> [flink] Update Fluss meters registered through FlinkMetricRegistry</li><li>🎉 <a href="https://github.com/apache/fluss/pull/5352">PR #5352</a> [log] Let the change type vector of an Arrow batch span memory segments</li>
+            </ul>
+        </section>
+                
+        <section class="critical">
+            <h2>⚠️ 重点关注</h2>
+            <p class="no-issues">✅ 今日无重大问题</p>
+        </section>
+                
+        <section class="activity">
+            <h2>💬 Issue/PR 动态</h2>
+            <h3>Issue 讨论</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5382">Issue #5382</a> [client] Recover idempotent writes after writer state expires</h4>
+            <ul><li><span class="author">@fxbing</span>: @wuchong PTAL</li><li><span class="author">@wuchong</span>: cc @swuferhong could you help to review this?</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4593">Issue #4593</a> [lake] Fail early when a REST catalog requires server-side scan planning</h4>
+            <ul><li><span class="author">@nhuantho</span>: Hi @polyzos, I opened a pr(https://github.com/apache/fluss/pull/5388). Could you please review it f…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/4926">Issue #4926</a> [server] Lookups queue for seconds behind slow putKv requests in the shared request worker pool</h4>
+            <ul><li><span class="author">@platinumhamburg</span>: Hi @polyzos, following up on the performance issues you reported, I see two separate scheduling pro…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5390">Issue #5390</a> [rust] Route read-only Admin requests to TabletServers</h4>
+            <ul><li><span class="author">@naivedogger</span>: @fresh-borzoni @loserwang1024 could you review the Rust Admin routing and retry changes? Thanks!；@l…</li><li><span class="author">@loserwang1024</span>: Could we split this change into two steps? 1. **Align read-only Admin routing with the Java client…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5254">Issue #5254</a> [common] Implement Variant binary encoding and JSON conversion</h4>
+            <ul><li><span class="author">@swuferhong</span>: > LGTM! > > Thanks for the updates! I agree with keeping Parquet’s unsigned UTF-8 field ordering fo…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5350">Issue #5350</a> [server] Complete delayed writes when a leader write advances the high watermark</h4>
+            <ul><li><span class="author">@binary-signal</span>: Agreed, a log-table append can't move the high watermark past a waiting write: the clamp to the flu…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5358">Issue #5358</a> [flink] Support watermark alignment in FlinkSourceSplitReader</h4>
+            <ul><li><span class="author">@binary-signal</span>: Added `testPauseOneOfTwoLogSplitsWhileTheOtherKeepsPolling`: a table with two buckets and one recor…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/issues/1519">Issue #1519</a> Update documentation about the default JDK version to Java11</h4>
+            <ul><li><span class="author">@tusharchou</span>: Opened #5392 for the part that was still missing, how to build for Java 8 with the java8 profile. S…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/1626">Issue #1626</a> [docs] Update security documentation for clarity and detail</h4>
+            <ul><li><span class="author">@github-actions[bot]</span>: This PR has been marked as stale because it has had no activity for 60 days. It will be closed in 1…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5331">Issue #5331</a> [docs] Document that undo recovery rolls back other writers' changes</h4>
+            <ul><li><span class="author">@mcgrj</span>: Thanks @platinumhamburg, sounds good to me - I've made the requested addition for your review.</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/4779">Issue #4779</a> [spark] Fix bounded log reads after retention</h4>
+            <ul><li><span class="author">@litiliu</span>: @dhama-shashank-meesho Thanks for sharing this case. Yes, the progress-only scenario is covered: af…</li></ul>
+        </div>
+            <h3>PR Review</h3>
+            
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5361">PR #5361</a> [server] Complete the BulkLoad transaction lifecycle</h4>
+            <ul><li><span class="author">@luoyuxia</span>: Could you add a comment documenting the numeric values of `state` here: `0 = RUNNING`, `1 = COMMITT…</li><li><span class="author">@platinumhamburg</span>: Added the numeric state mapping next to the protobuf field. Thanks for pointing this out.；Agreed, c…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5350">PR #5350</a> [server] Complete delayed writes when a leader write advances the high watermark</h4>
+            <ul><li><span class="author">@polyzos</span>: Nit: this comment appears three times. It also explains the change through KV flushes, which can't……</li><li><span class="author">@binary-signal</span>: Gone with the revert of `appendRecordsToLeader` (see my comment above): that method is back to its……</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5368">PR #5368</a> [flink] Add consumer group offset startup and checkpoint commits</h4>
+            <ul><li><span class="author">@loserwang1024</span>: Could we require `isSnapshotFinished()` before including this offset in the checkpoint's commit map…</li><li><span class="author">@pisceslj</span>: Good catch. Renamed it to `scan.commit-offset-on-checkpoint`, updated the constant and docs placeme…</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5288">PR #5288</a> [lake] Keep a bucket's lake splits in write order for union read</h4>
+            <ul><li><span class="author">@jaimelopez89</span>: Thanks @Jackeyzhe, good catch. You're right: my previous comment overclaimed. A commit's files can……</li></ul>
+        </div>
+        <div class="activity-item">
+            <h4><a href="https://github.com/apache/fluss/pull/5280">PR #5280</a> [rust] Support streaming UnionRead</h4>
+            <ul><li><span class="author">@fresh-borzoni</span>: can we make it #[non_exhaustive]? discovery is not there yet, so adding something like PartitionsAd…</li></ul>
+        </div>
+        </section>
+                
+        <section class="new-items">
+            <h2>📝 新建 Issue/PR</h2>
+            <h3>Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/5397">#5397</a> [server] Balance KV leader placement when creating local logs <span class="author">@ChengbingLiu</span> </li><li><a href="https://github.com/apache/fluss/issues/5395">#5395</a> [test] Wait for table readiness in FlussConnectionReuseTest <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/issues/5393">#5393</a> [rust] Add a reusable retry layer for Admin requests <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/issues/5391">#5391</a> [common] Support UTF-16-ordered Variant field lookup <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/issues/5389">#5389</a> [rust] Route read-only Admin requests to TabletServers <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/issues/5387">#5387</a> [client] Support client-side local aggregation <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/5386">#5386</a> [client] Support merge-engine tables in BulkLoad <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/5385">#5385</a> [common] Move RowMerger implementations to fluss-common <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/5383">#5383</a> [rpc] Improve server request scheduling and backpressure <span class="author">@platinumhamburg</span> </li></ul>
+            <h3>Pull Requests</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/5399">#5399</a> [client] Add a Java SDK for primary key table BulkLoad <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/5398">#5398</a> [server] Balance KV leader placement when creating local logs <span class="author">@ChengbingLiu</span> </li><li><a href="https://github.com/apache/fluss/pull/5394">#5394</a> [common] Move RowMerger implementations to fluss-common <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/5392">#5392</a> [docs] Document building for Java 8 with the java8 profile <span class="author">@tusharchou</span> </li><li><a href="https://github.com/apache/fluss/pull/5388">#5388</a> [lake] Fail early when a REST catalog requires server-side scan planning <span class="author">@nhuantho</span> </li><li><a href="https://github.com/apache/fluss/pull/5384">#5384</a> [rpc] Add per-connection scheduling and group-level backpressure <span class="author">@platinumhamburg</span> </li></ul>
+        </section>
+                
+        <section class="closed">
+            <h2>✅ 关闭 Issue/PR</h2>
+            <h3>已关闭 Issues</h3>
+            <ul><li><a href="https://github.com/apache/fluss/issues/5395">#5395</a> [test] Wait for table readiness in FlussConnectionReuseTest <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/issues/5389">#5389</a> [rust] Route read-only Admin requests to TabletServers <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/issues/5360">#5360</a> [server] Complete the BulkLoad transaction lifecycle <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/issues/5353">#5353</a> [flink] Client meters registered through `FlinkMetricRegistry` always report a rate of 0 <span class="author">@binary-signal</span> </li><li><a href="https://github.com/apache/fluss/issues/5351">#5351</a> [log] Arrow batch with more than about 131k records fails in `ChangeTypeVectorWriter` with `IndexOutOfBoundsException` <span class="author">@binary-signal</span> </li><li><a href="https://github.com/apache/fluss/issues/5338">#5338</a> [TLS] Any trusted client certificate gets server-level access on an mTLS internal listener <span class="author">@morazow</span> </li><li><a href="https://github.com/apache/fluss/issues/5330">#5330</a> [flink] Undo recovery deletes or reverts rows written by other clients to an aggregation table <span class="author">@mcgrj</span> </li><li><a href="https://github.com/apache/fluss/issues/5208">#5208</a> [flink] Lookup join drops matches when a join key filtered after the lookup is BINARY/BYTES <span class="author">@jx2lee</span> </li><li><a href="https://github.com/apache/fluss/issues/3959">#3959</a> [rust] Support SASL/PLAIN authorization identity(act as) <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/issues/3793">#3793</a> [TLS] Add mTLS authentication (certificate-based FlussPrincipal) <span class="author">@affo</span> </li></ul>
+            <h3>已合并 PRs</h3>
+            <ul><li><a href="https://github.com/apache/fluss/pull/5396">#5396</a> [test] Wait for table readiness in Spark planner reuse test <span class="author">@swuferhong</span> </li><li><a href="https://github.com/apache/fluss/pull/5390">#5390</a> [rust] Route read-only Admin requests to TabletServers <span class="author">@naivedogger</span> </li><li><a href="https://github.com/apache/fluss/pull/5361">#5361</a> [server] Complete the BulkLoad transaction lifecycle <span class="author">@platinumhamburg</span> </li><li><a href="https://github.com/apache/fluss/pull/5354">#5354</a> [flink] Update Fluss meters registered through FlinkMetricRegistry <span class="author">@binary-signal</span> </li><li><a href="https://github.com/apache/fluss/pull/5352">#5352</a> [log] Let the change type vector of an Arrow batch span memory segments <span class="author">@binary-signal</span> </li><li><a href="https://github.com/apache/fluss/pull/5348">#5348</a> [rust] Support the SASL/PLAIN authorization ID <span class="author">@beryllw</span> </li><li><a href="https://github.com/apache/fluss/pull/5333">#5333</a> [rpc] Add mTLS authentication from client certificates <span class="author">@morazow</span> </li><li><a href="https://github.com/apache/fluss/pull/5331">#5331</a> [docs] Document that undo recovery rolls back other writers' changes <span class="author">@mcgrj</span> </li><li><a href="https://github.com/apache/fluss/pull/5209">#5209</a> [flink] Compare binary join keys by content in lookup remaining filter <span class="author">@jx2lee</span> </li></ul>
+        </section>
+        
+        <footer>
+            <p>Generated by <a href="https://github.com/apache/fluss">daily-reports</a></p>
+        </footer>
+    </div>
+</body>
+</html>
